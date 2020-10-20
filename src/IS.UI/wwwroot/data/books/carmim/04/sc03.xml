@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>belisar</viewpoint>
+  <music>enigma</music>
+
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <background>lab</background>
+
+  <narration>O laboratório alquímico do palácio é um lugar impressionante, uma verdadeira homenagem ao conhecimento.</narration>
+  <narration>Normalmente, você gosta muito do lugar, principalmente da calma e da tranquilidade dos sábios que trabalham ali.</narration>
+  <narration>Infelizmente, no momento, aquela calma e tranquilidade não pode ser encontrada em parte alguma.</narration>
+  <person>norlando</person>
+  <emotion>surprised</emotion>
+  <voice>Fomos sabotados, senhor! É a única explicação.</voice>
+  <narration>Você olha para o sábio, que o encara de olhos arregalados, como se temesse pela própria vida.</narration>
+  <narration>Norlando é o mais experiente e poderoso dos sábios que trabalham aqui, o homem é famoso em toda a província.</narration>
+  <narration>Mas você sabe muito bem que, por mais poderoso que alguém seja, isso não significa que seja invencível ou imune à fadiga.</narration>
+  <protagonist />
+  <voice>Você está cansado.</voice>
+  <person>norlando</person>
+  <emotion>surprised</emotion>
+  <voice>Não poderia deixar de estudar esse caso, uma vez que é algo urgente e…</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Cale-se!</voice>
+  <person>norlando</person>
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <narration>O homem fica muito pálido, parecendo mortificado. Mas, pela primeira vez desde o começo daquela reunião, fica quieto.</narration>
+  <protagonist />
+  <voice>Você passou dos seus limites, está acabado, não está raciocinando direito.</voice>
+  <person>norlando</person>
+  <emotion>surprised</emotion>
+  <voice>Mas, senhor, eu...</voice>
+  <protagonist />
+  <voice>Não, não quero ouvir mais nada, apenas fique calado e escute.</voice>
+  <voice>Você vai para casa. Quero você longe deste laboratório por, pelo menos, uma semana.</voice>
+  <voice>Fique em casa com seus filhos ou vá para as montanhas, para a praia, ou qualquer outro lugar, desde que mantenha distância do trabalho.</voice>
+  <person>norlando</person>
+  <emotion>surprised</emotion>
+  <voice>Se vai me punir por isso, pelo menos me deixe antes...</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Ninguém está punindo você, homem!</voice>
+  <emotion>normal</emotion>
+  <voice>Apenas vá para casa e descanse. Nós cuidaremos de tudo agora.</voice>
+  <voice>Falcione, poderia, por favor, conduzir o sábio até a saída?</voice>
+  <person>norlando</person>
+  <emotion>surprised</emotion>
+  <voice>Mas eu não posso ir embora!</voice>
+  <emotion>sad</emotion>
+  <voice>Esse trabalho é a minha vida! O senhor não pode me expulsar daqui, assim!</voice>
+  <person>falcione</person>
+  <voice>Vamos.</voice>
+  <narration>Ela o agarra pelo braço e começa a conduzi-lo na direção da porta.</narration>
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>E pare de se debater, homem, o laboratório vai estar exatamente no mesmo lugar quando voltar!</voice>
+  <narration>O aposento fica em silêncio depois que os dois saem.</narration>
+  <protagonist />
+  <voice>...</voice>
+  <narration>Você encara por alguns instantes o “altar”, composto por inúmeros tubos de vidro de diversos tamanhos.</narration>
+  <narration>A estrutura está fixada sobre uma base de metal cuja superfície apresenta um relevo incomum, formando runas diferentes dependendo da direção em que se olha.</narration>
+  <narration>Durante séculos, aquele aparato havia vibrado com energia, pequenos pontos de luz de diversas cores percorrendo aqueles tubos para cima e para baixo, o tempo todo.</narration>
+  <narration>Mas agora, não há mais energia nenhuma emanando dali. Nenhum brilho, nenhum calor.</narration>
+  <narration>A seu lado, a tenente Emelin limpa a garganta.</narration>
+  <person>emelin</person>
+  <voice>Talvez a Grande Fênix não esteja mais nos dando sua proteção.</voice>
+  <protagonist />
+  <voice>...?</voice>
+  <narration>Ante o seu olhar inquisitivo, um leve rubor toma as faces dela.</narration>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>E-este altar era um símbolo do... compromisso que a entidade assumiu... de nos proteger dos invasores.</voice>
+  <voice>Quero dizer... que outra explicação existiria para ele parar de funcionar assim?</voice>
+  <emotion>sad</emotion>
+  <voice>A Fênix deve estar contrariada devido ao fato de o império não existir mais!</voice>
+  <protagonist />
+  <choice>
+    <a>A Fênix tem mais com o que se preocupar.</a>
+    <b>Norlando pode ter razão.</b>
+    <c>Ficar pensando nisso não vai ajudar.</c>
+  </choice>
+  <voice>Eu acho que...</voice>
+
+  <do when="a">
+    <narration>Seus dedos coçam, seus poderes vindo à flor da pele quando a familiar fúria justificada ameaça tomar conta de você.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+power</reward>
+    <voice>Se ela se importasse tanto assim, teria impedido a separação do império, para começo de conversa.</voice>
+    <voice>Se não fosse por aquilo, Ebora nunca teria sido invadida por esses demônios.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <narration>Ao ver a expressão de medo no rosto dela, você respira fundo e tenta se acalmar.</narration>
+
+    <music>goodbye</music>
+  </do>
+
+  <do when="b">
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Sobre alguém ter sabotado o artefato?</voice>
+    <voice>Mas como? Ninguém além dos sábios tem acesso a esse laboratório!</voice>
+    <protagonist />
+    <reward>+control</reward>
+    <voice>Você estuda artes místicas, não? Já deveria ter aprendido que, neste mundo, tudo é possível.</voice>
+    <narration>Ela abaixa a cabeça, envergonhada.</narration>
+    <person>emelin</person>
+    <emotion>sad</emotion>
+    <voice>S-sim, senhor.</voice>
+
+    <music>goodbye</music>
+  </do>
+
+  <do when="c">
+    <music>goodbye</music>
+
+    <narration>Você coloca uma mão sobre o ombro dela, tentando acalmá-la.</narration>
+    <protagonist />
+    <voice>O importante agora é tomarmos providências para resolver o problema, independentemente de qual tenha sido a causa.</voice>
+    <voice>E temos pessoas altamente qualificadas para essa tarefa, não se preocupe.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>M-mas... o senhor acabou de mandar o sábio Norlando para casa!</voice>
+    <protagonist />
+    <voice>Sim, e eu não teria feito isso se não soubesse que posso contar com você e com o resto do pessoal que trabalha aqui.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>Eu... hã... quero dizer, obrigada, senhor!</voice>
+  </do>
+
+  <protagonist />
+  <voice>Encontre os outros sábios e peça a eles para desmontar essa coisa. Quero saber como isso funciona.</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Mas, senhor, eles não podem fazer isso sem o sábio Norlando! Ele é quem mais estudou o artefato...</voice>
+  <protagonist />
+  <voice>Norlando vem trabalhando nisso dia e noite há semanas. Preciso dele saudável, descansado e disposto.</voice>
+  <voice>Enquanto ele estiver fora, quero que coloquem em prática tudo o que aprenderam e tentem fazer algo de útil.</voice>
+  <voice>Ah, e peça também para fazerem uma varredura residual, se qualquer pessoa estranha tiver chegado perto desse altar no último ano, eu quero saber.</voice>
+  <voice>Mande um mensageiro me avisar caso descubram qualquer coisa relevante.</voice>
+  <person>emelin</person>
+  <voice>S-sim, senhor!</voice>
+  <narration>Você se despede dela com um gesto de cabeça e se dirige à saída.</narration>
+  <narration>Falcione o encontra na porta.</narration>
+  <person>falcione</person>
+  <voice>A situação já estava ruim com aquela coisa funcionando. Agora este lugar vai virar um caos.</voice>
+  <voice>Não seria melhor tirar logo todo mundo daqui?</voice>
+  <protagonist />
+  <voice>Se não tiver ninguém por perto, a incursão não poderá ser contida. Eles poderão mandar verdadeiros exércitos para cá.</voice>
+  <voice>Não teremos para onde fugir porque não existirá mais nenhum lugar seguro.</voice>
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>E o que faremos?</voice>
+  <protagonist />
+  <voice>Eu vou descobrir o que está acontecendo e vou corrigir o problema.</voice>
+  <voice>O equilíbrio se manteve por centenas de anos. A bênção de uma Grande Entidade não se desvanece assim, de uma hora para outra.</voice>
+  <person>falcione</person>
+  <voice>E se a Fênix tiver retirado a bênção de propósito?</voice>
+
+  <protagonist />
+  <choice>
+    <a>Mostraremos que não precisamos dela.</a>
+    <b when="belisar_fight[3:]" req="Coragem +3">Eu farei com que ela resolva isso.</b>
+  </choice>
+  <voice>Se for esse o caso...</voice>
+
+  <do when="a">
+    <narration>Ela olha para você, expressando surpresa e confusão.</narration>
+    <person>falcione</person>
+    <emotion>surprised</emotion>
+    <voice>Mas... como?</voice>
+    <protagonist />
+    <voice>Já dominamos metade da província, contra todas as expectativas.</voice>
+    <voice>Encontramos soluções para todas as adversidades que encontramos pelo caminho até agora.</voice>
+    <voice>Não vejo razão para as coisas serem diferentes apenas porque um mero artefato parou de funcionar.</voice>
+    <emotion>angry</emotion>
+    <reward>+fight</reward>
+    <voice>Estou nisso até o fim.</voice>
+    <person>falcione</person>
+    <voice>...</voice>
+    <emotion>happy</emotion>
+    <voice>Com certeza, senhor.</voice>
+  </do>
+
+  <do when="b">
+    <music>crime-fighter</music>
+
+    <narration>Você aperta os punhos.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Nem que eu tenha que ir até ela pessoalmente e obrigá-la.</voice>
+    <person>falcione</person>
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <emotion>normal</emotion>
+    <voice>...</voice>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>Para falar a verdade, não duvido que o senhor seja capaz disso.</voice>
+    <protagonist />
+    <voice>Estou falando sério.</voice>
+    <emotion>angry</emotion>
+    <trophy>troublemaker</trophy>
+    <voice>Se as grandes entidades não queriam que eu causasse problemas, não teriam me dado esses poderes.</voice>
+    <voice>Quando tiver alguma evidência de que seja esse o caso, irei exigir satisfações.</voice>
+    <narration>Falcione assente, com um leve sorriso nos lábios.</narration>
+
+    <music>goodbye</music>
+
+    <narration>Você solta um suspiro.</narration>
+  </do>
+
+  <protagonist />
+  <emotion>normal</emotion>
+  <voice>As tropas estão prontas?</voice>
+  <person>falcione</person>
+  <voice>Sim. Posso liderar a busca, se quiser. O senhor tem algumas disputas a resolver, não?</voice>
+  <protagonist />
+  <voice>Zelmira pode se encarregar isso, ela leva jeito para resolver essas coisas.</voice>
+  <narration>Você se dirige para fora do palácio, na intenção de liderar mais uma caçada aos monstros invasores.</narration>
+  <protagonist />
+  <emotion>sad</emotion>
+  <thought>Desculpe, Zelmira, mas você vai ter que dormir sozinha esta noite.</thought>
+</storyboard>

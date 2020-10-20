@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>sulana</viewpoint>
+  <music>never-look-back</music>
+  <background>sulana</background>
+  <tutorial>Você agora está controlando Sulana Lautine</tutorial>
+
+  <background>oldroad</background>
+
+  <narration>Você leva vários minutos para voltar a abrir os olhos.</narration>
+  <narration>A vontade de voltar ao combate ainda era grande mas, não sentindo animosidade vinda de lugar nenhum, você podia sentir o seu controle se fortalecendo cada vez mais.</narration>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Você acordou!</voice>
+  <emotion>surprised</emotion>
+  <voice>Está tudo bem? Pode se levantar?</voice>
+  <narration>Ignorando a mão estendida dele, você se põe em pé com agilidade e tenta espanar um pouco do pó de suas roupas.</narration>
+  <narration>Aquela poeira branca formada quando os monstros se desintegravam era difícil de limpar e tinha um cheiro não muito bom, mas você tinha que admitir que era bem melhor estar coberta com aquilo do que com sangue.</narration>
+  <person>rebelde1</person>
+  <voice>...</voice>
+  <narration>Você nota o olhar desconfiado do rebelde, que se mantém à distância.</narration>
+  <protagonist />
+  <thought>Será que não passa pela cabeça dele que, se eu quisesse atacá-lo, um passo de distância ou trinta não fariam a menor diferença?</thought>
+  <narration>Então você levanta a cabeça e olha para as nuvens por um momento, soltando um longo suspiro.</narration>
+  <narration>Esta batalha tinha sido bastante longa, do jeito que você gostava, mas agora, o uso intenso de energia mística cobrava seu preço.</narration>
+  <narration>Parecia que quase toda a força havia sido drenada do seu corpo, que dava a sensação de estar mais pesado a cada segundo que se passava.</narration>
+  <person>ronam</person>
+  <voice>Parece que você está bem.</voice>
+  <voice>Temos que sair daqui, antes que os vermelhos se lembrem de nós e venham nos prender.</voice>
+  <narration>Subitamente, você se sente observada. Então você se vira na direção da cidade e percebe uma figura em pé a uma certa distância, olhando em sua direção, com um pequeno grupo de soldados atrás dela.</narration>
+  <person>falcione</person>
+  <voice>...</voice>
+  <protagonist />
+  <voice>...</voice>
+  <voice>Vamos para dentro. Quero saber para onde levaram Giarle.</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Não seria mais prudente aproveitar para fugir? Podemos descobrir o paradeiro dele mais tarde.</voice>
+  <protagonist />
+  <voice>Esqueça, estão nos vigiando.</voice>
+  <narration>Ronam olha na direção da cidade e percebe a mulher.</narration>
+  <person>ronam</person>
+  <emotion>sad</emotion>
+  <voice>É... parece que sim.</voice>
+  <voice>Imagino que seria pedir demais esperar que eles tivessem se esquecido de nós.</voice>
+  <protagonist />
+  <voice>Não estão fazendo menção de se aproximar.</voice>
+  <voice>Se não vão se colocar no meu caminho, não me importo com eles.</voice>
+  <narration>Você começa a caminhar na direção da cidade, quando o rebelde a faz se interromper.</narration>
+  <person>rebelde1</person>
+  <emotion>surprised</emotion>
+  <voice>Espere! Vocês estão pensando mesmo em voltar lá para dentro?!</voice>
+  <protagonist />
+  <choice>
+    <a>Com rudeza</a>
+    <b>Com paciência</b>
+    <c>Não responder</c>
+  </choice>
+  <thought>Como responder a isso?</thought>
+
+  <do when="a">
+    <narration>Você encara o rebelde nos olhos.</narration>
+    <protagonist />
+    <voice>Pode fazer o que quiser, ninguém está obrigando você a vir com a gente.</voice>
+    <person>rebelde1</person>
+    <emotion>angry</emotion>
+    <voice>Como é?</voice>
+    <narration>Você o encara novamente, cerrando os punhos.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+rage</reward>
+    <voice>...</voice>
+    <person>rebelde1</person>
+    <emotion>surprised</emotion>
+    <voice>Hã... quero dizer...</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Ei, relaxa, cara, ela tem razão.</voice>
+    <narration>Ronam coloca a mão em seu ombro num gesto amistoso e você desvia o olhar.</narration>
+  </do>
+
+  <do when="b">
+    <narration>Você respira fundo, tentando superar a irritação.</narration>
+    <protagonist />
+    <voice>Se quisessem nos prender, já teriam feito isso.</voice>
+    <person>rebelde1</person>
+    <emotion>surprised</emotion>
+    <voice>Mas voltar lá?! Seria como se estivéssemos nos rendendo!</voice>
+    <narration>Você olha ao redor. Havia soldados carmim por toda parte, retornando à cidade após o término da batalha.</narration>
+    <narration>Todos lançavam olhares em sua direção, alguns desconfiados, outros poucos expressando gratidão, mas a maioria tinha expressões neutras ou curiosas.</narration>
+    <narration>Lutar ao lado daquelas pessoas havia sido uma experiência estranha. Para dizer o mínimo.</narration>
+    <protagonist />
+    <reward>+hope</reward>
+    <voice>Quero saber o que vai acontecer agora. Ficar parado aqui não vai resolver nada e não temos como fugir.</voice>
+    <person>rebelde1</person>
+    <emotion>angry</emotion>
+    <voice>Não, se não tentarmos.</voice>
+  </do>
+
+  <do when="c">
+    <narration>Você apenas lança um olhar ao rebelde.</narration>
+    <protagonist />
+    <voice>...</voice>
+    <person>rebelde1</person>
+    <emotion>surprised</emotion>
+    <voice>...?</voice>
+    <narration>Ronam, por sua vez, lança um olhar divertido em sua direção.</narration>
+    <person>ronam</person>
+    <reward>+relationship</reward>
+    <emotion>happy</emotion>
+    <voice>Essa sua cara de "garota má" é impagável, sabia?</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>O quê?</voice>
+    <person>ronam</person>
+    <emotion>happy</emotion>
+    <voice>Nada. Deixa pra lá.</voice>
+    <narration>Ele olha para o outro rebelde.</narration>
+    <person>ronam</person>
+    <voice>Ela tem razão, cara.</voice>
+    <narration>Ele desvia o olhar para a cidade.</narration>
+  </do>
+
+  <person>ronam</person>
+  <voice>Melhor tentar não arranjar confusão. Tenho dúvidas se o fato de termos ajudado na batalha significa alguma coisa para o general.</voice>
+  <voice>Além disso, Sulana está ferida. Se tentarmos fugir podemos ser mortos.</voice>
+  <emotion>surprised</emotion>
+  <voice>Falando nisso, como está seu braço?</voice>
+  <narration>Você olha para Ronam por um momento, confusa, antes de baixar o olhar para o seu antebraço esquerdo, notando o pedaço de pano ensanguentado amarrado a ele.</narration>
+  <narration>Com a outra mão, você toca de leve o local e faz uma careta.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Ai!</voice>
+  <emotion>surprised</emotion>
+  <voice>Aquelas coisas eram bem mais fortes do que pareciam.</voice>
+  <person>ronam</person>
+  <voice>É, fazia tempo que eu não te via sangrar assim.</voice>
+  <narration>Ele se aproxima e desamarra o curativo com cuidado. Aquilo a faz sentir uma fisgada de dor, mas você tenta se manter imóvel.</narration>
+  <person>ronam</person>
+  <voice>Humm... não está tão mal.</voice>
+  <person>rebelde1</person>
+  <emotion>surprised</emotion>
+  <voice>Mas como?! Aquela coisa quase arrancou a mão dela fora!</voice>
+  <protagonist />
+  <voice>Besteira, mal senti a mordida, meu escudo corporal absorveu quase todo o dano. Além disso, eu me curo rápido.</voice>
+  <person>ronam</person>
+  <voice>Espere um pouco, deixa eu limpar isso aí direito e colocar um curativo novo.</voice>
+  <protagonist />
+  <voice>Não precisa.</voice>
+  <person>ronam</person>
+  <emotion>angry</emotion>
+  <voice>Não seja teimosa. Você ainda está sentindo dor.</voice>
+  <emotion>normal</emotion>
+  <voice>Esse curativo vai fazer com que você se cure ainda mais depressa. Se estamos prestes a entrar num lugar cheio de vermelhos, eu preferia que você estivesse em sua melhor forma, o mais rápido possível.</voice>
+  <narration>Você solta um novo suspiro e aguarda enquanto ele enrola um outro pano malcheiroso em seu braço.</narration>
+  <narration>Voltando a olhar na direção da cidade, você percebe que o grupo de soldados continua no mesmo lugar, mas a mulher não está mais ali.</narration>
+  <narration>Duas figuras levemente familiares lançam olhares em sua direção.</narration>
+  <person>soldado4</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <person>soldado5</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Parece que você conquistou alguns fãs.</voice>
+  <person>rebelde1</person>
+  <emotion>surprised</emotion>
+  <voice>Não acredito que você está fazendo piada com isso!</voice>
+  <voice>Sulana encheu aqueles dois de porrada! Eles podem querer dar o troco!</voice>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Eles deveriam é estar gratos a mim.</voice>
+  <voice>Se ainda estão vivos, é porque eu não quebrei a fase dos escudos militares deles. Duvido que, sem aquilo, eles tivessem sobrevivido à surra que tomaram.</voice>
+  <narration>Você abre e fecha sua mão esquerda várias vezes, testando as amarras do novo curativo feito por Ronam, antes de lançar um breve olhar aos soldados.</narration>
+  <protagonist />
+  <choice>
+    <a>Ignorar os olhares</a>
+    <b>Encarar de volta</b>
+  </choice>
+  <voice>...</voice>
+
+  <do when="a">
+    <narration>Você balança a cabeça e começa a caminhar na direção do portão.</narration>
+    <protagonist />
+    <voice>Aqueles dois parecem tão a fim de arranjar confusão quanto nós. Ignorem eles.</voice>
+    <voice>Vamos.</voice>
+    <person>ronam</person>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>Isso mesmo! Deixa esses perdedores pra lá.</voice>
+    <person>rebelde1</person>
+    <emotion>sad</emotion>
+    <voice>Vocês dois vão acabar sendo mortos desse jeito, sabiam?</voice>
+  </do>
+
+  <do when="b">
+    <narration>Você fecha a cara, enquanto encara primeiro um dos soldados, depois o outro.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+fight</reward>
+    <voice>...</voice>
+    <person>soldado4</person>
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <person>soldado5</person>
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <narration>Intimidados, os soldados desviam o olhar.</narration>
+    <narration>Você começa a caminhar na direção do portão.</narration>
+    <protagonist />
+    <voice>Vamos.</voice>
+  </do>
+
+  <background>village</background>
+
+  <narration>Ninguém os impede de entrar na cidade, apesar de os soldados lançarem olhares desconfiados a vocês três.</narration>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Vejam, eles libertaram nossos companheiros!</voice>
+  <person>rebelde2</person>
+  <emotion>surprised</emotion>
+  <voice>Ah, vocês voltaram!</voice>
+  <voice>Nos deixaram preocupados, saindo correndo daquele jeito na direção de um ataque de monstros! Pensamos tinham sido todos devorados!</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Os vermelhos soltaram todo mundo?</voice>
+  <person>rebelde2</person>
+  <voice>Sim. Parece que Giarle fez um acordo com o general.</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Que tipo de acordo?</voice>
+  <person>rebelde2</person>
+  <voice>Ele se entregaria sem luta em troca da vida e liberdade de todos nós.</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <person>ronam</person>
+  <emotion>angry</emotion>
+  <voice>Aquele general nunca honraria uma promessa como essa. Ele deve estar tramando alguma coisa.</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Sim, esse acordo não faz o menor sentido.</voice>
+  <person>rebelde1</person>
+  <voice>E quanto aos moradores da cidade?</voice>
+  <person>rebelde2</person>
+  <voice>Disseram que não vão prender ninguém, desde que não tentem resistir.</voice>
+
+  <music>enigma</music>
+
+  <narration>Nesse momento, o general entra pelo portão, seguido por seus lacaios, sendo um deles a mulher que tinha encarado você fora dos muros.</narration>
+  <person>falcione</person>
+  <voice>...</voice>
+  <person>belisar</person>
+  <voice>Peço a atenção de todos.</voice>
+  <narration>As pessoas imediatamente fazem silêncio. Os que estão mais longe tratam de se aproximar para ouvir melhor.</narration>
+  <person>belisar</person>
+  <voice>O perigo não acabou, ainda podem existir outros grupos de monstros pela região. Por isso, recomendo que os portões sejam trancados e que vocês permaneçam em vigília.</voice>
+  <voice>Estamos partindo para o norte, onde deve estar a abertura por onde essas criaturas vieram. Até que o portal seja destruído, ninguém estará seguro.</voice>
+  <narration>Uma onda de murmúrios pode ser ouvida, entre os aldeões.</narration>
+  <person>belisar</person>
+  <voice>Diversos dos meus camaradas estão feridos. Como não estão em condições de lutar, seria melhor que eles ficassem por aqui até voltarmos.</voice>
+  <voice>Alguém tem algo contra essa ideia?</voice>
+  <narration>Um silêncio perplexo toma conta das pessoas.</narration>
+  <protagonist />
+  <thought>Será isso uma pergunta ou uma ameaça de retaliação caso algo aconteça com os soldados feridos?</thought>
+  <person>belisar</person>
+  <voice>...</voice>
+  <voice>Ninguém? Ótimo.</voice>
+  <voice>Neste caso, estamos partindo. Voltaremos assim que possível.</voice>
+  <narration>A mulher volta a encarar você, parecendo contrariada.</narration>
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Você estreita os olhos e a encara de volta, levantando a cabeça, em um gesto de desafio.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Se é encrenca o que você quer, é só vir para cima, vadia.</thought>
+  <narration>Felizmente (ou não), a outra se vira e sai atrás do general, sem dizer nada.</narration>
+
+  <music>never-look-back</music>
+
+  <narration>As pessoas parecem respirar aliviadas quando veem o general partir levando a maior parte de sua tropa.</narration>
+  <narration>Os soldados vermelhos feridos ficaram em um acampamento improvisado, do lado de dentro dos muros, mas num ponto um pouco mais afastado das casas.</narration>
+  <narration>Havia uma única curandeira de uniforme carmim cuidando deles. Como o número de pacientes era grande, ela precisou de ajuda, ao que alguns aldeões se voluntariaram.</narration>
+  <narration>Tendo visto a forma como os soldados vermelhos lutaram contra os monstros, grande parte das pessoas dali os estava enxergando com outros olhos.</narration>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Eu acho impressionante a forma como as pessoas decidem ajudar umas às outras em tempo de necessidade, mesmo quando são supostamente inimigas.</voice>
+  <person>rebelde1</person>
+  <voice>Não sei não. Acho que aceitar cuidar desse pessoal pode ser um erro.</voice>
+  <protagonist />
+  <choice>
+    <a>Isso é irrelevante.</a>
+    <b>É melhor ficar de olho neles.</b>
+    <c>Nosso inimigo não são eles.</c>
+  </choice>
+  <thought>Eu acho que...</thought>
+
+  <do when="a">
+    <narration>Você cruza os braços.</narration>
+    <protagonist />
+    <voice>Hostilizar combatentes feridos é perda de tempo.</voice>
+    <voice>Deixe que se recuperem. Será mais gratificante derrubar eles de novo depois.</voice>
+    <person>ronam</person>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>Hahahaha!</voice>
+    <narration>Sua intenção não era fazer graça, mas todos os rebeldes ao redor riem, divertidos.</narration>
+  </do>
+
+  <do when="b">
+    <narration>Você lança um olhar na direção do acampamento.</narration>
+    <protagonist />
+    <reward>+fight</reward>
+    <voice>Não me importo com eles, desde que não tentem nenhuma gracinha.</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Os caras mal conseguem parar em pé, quanto mais fazer "gracinhas".</voice>
+  </do>
+
+  <do when="c">
+    <narration>Você olha enquanto a curandeira enfaixa, com cuidado, a perna de um oficial desacordado.</narration>
+    <protagonist />
+    <voice>Nosso problema não são esses... pobres coitados.</voice>
+    <emotion>angry</emotion>
+    <reward>+rage</reward>
+    <voice>O problema é o general.</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Acha que ele tem algum motivo escuso para deixar os soldados feridos aqui?</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Eu sei lá!</voice>
+    <voice>Vim aqui para lutar uma guerra, não para ficar tentando fazer advinhação!</voice>
+  </do>
+
+  <narration>Balançando a cabeça, você se dirige a um grupo de aldeões que consertava a parede de um velho celeiro.</narration>
+  <narration>Sem falar nada a ninguém, você pega uma marreta e um formão e começa a trabalhar no alisamento de um tronco que estava por ali, aguardando o acabamento para ser fincado no chão.</narration>
+  <narration>Seus amigos se aproximam e começam a ajudar na construção também, realizando diversas tarefas.</narration>
+  <protagonist />
+  <voice>Como os vermelhos chegaram aqui, afinal?</voice>
+  <person>rebelde2</person>
+  <voice>Eles vieram do chão.</voice>
+  <voice>Se prestar atenção, você vai ver que tem vários buracos espalhados por aí.</voice>
+  <voice>Parece que todos eles vão dar em um mesmo túnel, que agora está selado.</voice>
+  <protagonist />
+  <voice>Eles levaram Giarle embora e fecharam tudo para não irmos atrás dele.</voice>
+  <person>rebelde2</person>
+  <voice>Isso mesmo.</voice>
+  <emotion>sad</emotion>
+  <voice>Nosso pessoal está confuso, sem saber direito o que fazer.</voice>
+  <voice>Tem alguns querendo fugir, outros querem chamar nossos reforços para esperar o general voltar e aproveitar que os vermelhos estarão cansados para dar cabo deles.</voice>
+  <protagonist />
+  <voice>Ideia estúpida. Se o resto do nosso pessoal estivesse disponível, já estariam todos aqui.</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Acha que alguma coisa aconteceu com eles?</voice>
+  <protagonist />
+  <voice>Quantas pessoas seguem Giarle? Seiscentas? Setecentas?</voice>
+  <voice>Se juntasse todos os monstros que atacaram Revoada, nosso grupo não daria nem para o cheiro.</voice>
+  <voice>Se eles sabem o que é bom para eles, devem ter batido em retirada.</voice>
+  <person>ronam</person>
+  <voice>Assim espero. Só vencemos hoje porque os vermelhos estavam em um número bem maior.</voice>
+  <person>rebelde1</person>
+  <voice>E eles ainda têm treinamento e equipamentos melhores que os nossos.</voice>
+  <person>rebelde2</person>
+  <emotion>sad</emotion>
+  <voice>Sem contar que o general em pessoa veio comandando a tropa.</voice>
+  <voice>Ainda bem que nosso grupo não estava todo aqui, pois não teríamos chance nenhuma de vencê-los.</voice>
+  <protagonist />
+  <voice>E mesmo que a gente vencesse, aqueles monstros fariam picadinho de nós, depois.</voice>
+  <narration>Todos se movem, desconfortáveis, com aquela constatação.</narration>
+  <person>ronam</person>
+  <voice>Sulana, o que você acha que devemos fazer? Esperar aqui ou ir embora?</voice>
+  <protagonist />
+  <voice>Esperar. Se tiver mesmo mais monstros por aí, eu quero acabar com eles.</voice>
+  <narration>Não que você imaginasse que poderia voltar a lutar com a mesma eficácia.</narration>
+  <narration>Apesar de satisfatória, a batalha tinha sido longa e muito cansativa, e você estava ferida.</narration>
+  <protagonist />
+  <voice>Vamos terminar esta parede, pelo menos.</voice>
+  <narration>Com o esforço combinado de todos, logo a parede do celeiro estava consertada.</narration>
+  <narration>O prefeito da cidade agradeceu a ajuda e ofereceu comida a todos.</narration>
+  <narration>Os rebeldes não pensaram duas vezes antes de aceitar, e assim passaram algumas horas contando histórias e se divertindo.</narration>
+  <narration>No entanto, a perspectiva da volta do general pairava sobre todos como uma nuvem tempestuosa.</narration>
+  <narration>O sol já estava quase se pondo quando a tensão começou a ficar insuportável.</narration>
+  <person>rebelde1</person>
+  <emotion>angry</emotion>
+  <voice>Já estamos esperando há o quê? Umas quatro horas?</voice>
+  <voice>O que garante que os vermelhos não vão acabar prendendo a todos nós?</voice>
+  <person>ronam</person>
+  <voice>Não sei, cara. Se quisessem, já podiam ter nos prendido, junto com Giarle.</voice>
+  <narration>Neste momento, seus sentidos captam uma movimentação do lado de fora dos portões.</narration>
+  <protagonist />
+  <voice>O que quer que seja que o general quer de nós, já vamos descobrir. Estão chegando.</voice>
+  <narration>No entanto, a volta do Exército Carmim acaba sendo um anticlímax.</narration>
+  <narration>O general, que parece exausto, faz apenas um breve discurso, sem esclarecer muita coisa.</narration>
+  <person>belisar</person>
+  <voice>A ameaça foi neutralizada. A cidade está segura.</voice>
+  <voice>Soldados, quero que improvisem macas para transportarmos os feridos. Estamos voltando para casa.</voice>
+  <narration>E assim, o Exército Carmim parte da mesma forma como chegou: silenciosa e rapidamente.</narration>
+  <narration>E ignorando completamente as perguntas feitas por aldeões ou rebeldes.</narration>
+  <narration>Entram todos nos tuneis e usam meios místicos para selar as aberturas, de forma que ninguém possa segui-los.</narration>
+  <narration>Não levam ninguém com eles além de Giarle.</narration>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Não acredito! Eles simplesmente foram embora!</voice>
+  <protagonist />
+  <voice>Aconteceram tantas coisas absurdas hoje que nem estou me surpreendendo mais.</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>O que faremos agora?</voice>
+  <narration>Você olha ao redor. Os rebeldes a encaram ansiosos, como se fosse capaz de lhes dar qualquer resposta.</narration>
+  <protagonist />
+  <voice>Sem reforços, não tem nada para fazermos aqui.</voice>
+  <voice>Se eu fosse vocês, arranjaria algum lugar para dormir e voltaria para casa amanhã cedo. Ficar mais tempo por aqui pode ser perigoso.</voice>
+  <person>ronam</person>
+  <voice>Acho que é o jeito. Mas porque está falando só de nós? Você não vem com a gente?</voice>
+  <narration>Você olha para uma figura solitária sentada sobre o muro, que ninguém além de você é capaz de ver.</narration>
+  <person>derione</person>
+  <voice>...</voice>
+  <protagonist />
+  <voice>Eu preciso ir.</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Agora? Mas é perigoso andar sozinha por aí à noite. Eu vou com você.</voice>
+  <protagonist />
+  <voice>Não se preocupe, não vou ficar “andando por aí”.</voice>
+  <voice>Mas eu realmente tenho que ir. Sozinha.</voice>
+  <voice>Vejo vocês na próxima missão.</voice>
+</storyboard>

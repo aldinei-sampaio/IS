@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>belisar</viewpoint>
+  <music>enigma</music>
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <background>cave</background>
+
+  <narration>Você sente as paredes da caverna se fecharem ao seu redor. A sensação claustrofóbica parece ficar pior a cada segundo.</narration>
+  <narration>Respirando fundo, você tenta se concentrar nas conversas das pessoas ao seu lado.</narration>
+  <person>falcione</person>
+  <voice>Os geoportais de Revoada já foram dissipados?</voice>
+  <person>emelin</person>
+  <voice>Sim, senhora!</voice>
+  <person>falcione</person>
+  <voice>Alguma possibilidade de os portais terem desestabilizado o subsolo?</voice>
+  <person>emelin</person>
+  <voice>Não, senhora. Quero dizer, não de nenhuma forma perceptível.</voice>
+  <narration>Falcione solta um suspiro, tentando reunir paciência.</narration>
+  <person>falcione</person>
+  <voice>O que isso quer dizer? O chão vai ceder? As casas da cidade podem desabar?</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Oh, não, senhora!</voice>
+  <voice>O que eu quis dizer é que é impossível criar um geoportal que não desestabilize o terreno, mas nesse caso, os danos residuais ficaram muito abaixo das escalas determinadas, conforme...</voice>
+  <person>falcione</person>
+  <voice>Tudo bem, tenente, apenas um "não" é suficiente.</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Sim, senhora!</voice>
+  <emotion>sad</emotion>
+  <voice>Quer dizer, desculpe, senhora.</voice>
+  <person>falcione</person>
+  <voice>Me traga aqui um oficial capaz de usar um pergaminho ancorado, e avise aos tenentes para manter todos na área de efeito.</voice>
+  <person>emelin</person>
+  <voice>Sim, senhora!</voice>
+  <narration>Emelin sai caminhando, apressada, pelas escuras câmaras subterrâneas, que se estendiam por muitos quilômetros em todas as direções.</narration>
+  <narration>Quase mil soldados carmim estavam espalhados por aqueles túneis, aguardando para retornar para casa.</narration>
+  <person>falcione</person>
+  <voice>O senhor está bem?</voice>
+  <narration>Você levanta a cabeça e olha para ela.</narration>
+  <protagonist />
+  <voice>Pretende mesmo gastar um pergaminho desses por causa disso?</voice>
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>Acha mesmo que tenho alguma escolha?</voice>
+  <voice>Se tivesse, eu nunca concordaria em deixar aquele bando de rebeldes livre!</voice>
+  <protagonist />
+  <voice>Eu posso aguentar algumas horas de caminhada, Falcione.</voice>
+  <person>falcione</person>
+  <voice>O senhor está ferido e suas energias estão esgotadas.</voice>
+  <voice>Precisamos levá-lo de volta o mais rápido possível.</voice>
+  <protagonist />
+  <voice>Eu usei uma sucessão muito rápida de pulsos, sempre leva algum tempo para eu me recuperar depois disso.</voice>
+  <voice>Em algumas horas eu estarei bem.</voice>
+  <person>falcione</person>
+  <voice>O senhor salvou a minha vida e a de cada um dos soldados que está aqui!</voice>
+  <voice>Não quero nem pensar no que aconteceria se aquele portal não fosse destruído antes de mais daquelas aberrações surgirem!</voice>
+  <voice>E pode ter certeza de que nenhum de nós gostaria de voltar a enfrentar coisas como aquelas sem o senhor do nosso lado.</voice>
+  <voice>Por causa disso, não queremos arriscar sua saúde. Precisamos sair daqui o mais rápido possível.</voice>
+  <voice>Além disso, temos muitos feridos em estado grave, que não podem esperar.</voice>
+  <protagonist />
+  <voice>Não quero deixar ninguém para trás.</voice>
+  <person>falcione</person>
+  <voice>E não vamos.</voice>
+  <narration>Neste momento, a tenente entra correndo na câmara, esbaforida.</narration>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Estão todos dentro da área de efeito, senhora.</voice>
+  <person>falcione</person>
+  <voice>Encontrou alguém com experiência com esse tipo de pergaminho?</voice>
+  <person>emelin</person>
+  <emotion>sad</emotion>
+  <voice>Desculpe, senhora. Vieram conosco cinco oficiais experientes, mas um deles não sobreviveu, outro está entre a vida e a morte e os outros três estão inconscientes.</voice>
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Maldição!</voice>
+  <voice>Temos alguém que pelo menos SAIBA usar um pergaminho?</voice>
+  <person>emelin</person>
+  <voice>Acredito que eu seja a única que concluiu esse treinamento.</voice>
+  <narration>Falcione olha a tenente de cima a baixo.</narration>
+  <narration>Aparentemente convencida de que a moça era sua única opção, ela se ajoelha e abre uma bolsa que está no chão e tira de lá um pergaminho enrolado, que estende para a oficial.</narration>
+  <person>falcione</person>
+  <voice>Tome. Nos tire daqui.</voice>
+  <narration>Emelin olha para o pergaminho com uma expressão reverente, sem fazer nenhuma menção de pegá-lo.</narration>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <person>falcione</person>
+  <voice>O que está esperando? Pegue.</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Eu nunca... nunca segurei nada tão valioso antes...</voice>
+  <person>falcione</person>
+  <voice>No momento, esse negócio não vale absolutamente nada a menos que alguém seja capaz de ativá-lo!</voice>
+  <voice>Pode fazer isso ou não?</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Posso, sim senhora!</voice>
+  <narration>A moça pega o pergaminho e lança um olhar pesaroso para você.</narration>
+  <protagonist />
+  <voice>Algum problema, tenente?</voice>
+  <person>emelin</person>
+  <voice>Desculpe, senhor... eu estava só me perguntando... o senhor parece ferido... se ativarmos esse pergaminho... vai mesmo conseguir voltar para casa sozinho?</voice>
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>Do que você está falando, garota?</voice>
+  <person>emelin</person>
+  <voice>É que... como os artefatos de estabilidade peridual neutralizam todos os fluxos transversais... bem, a âncora é basicamente um fluxo transversal, então...</voice>
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>Como é?!</voice>
+  <protagonist />
+  <voice>Você está dizendo que o pergaminho vai mandar todo mundo de volta, exceto a mim, por causa dos meus estabilizadores?</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Desculpe, senhor... achei que soubesse...</voice>
+  <person>falcione</person>
+  <voice>Isso é fácil de resolver. O senhor remove os artefatos e assim o mandamos de volta junto com os outros.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Isso é arriscado demais. Estou muito cansado, não há como prever o que vai acontecer se eu tirar os estabilizadores agora.</voice>
+  <voice>Meus poderes podem sair totalmente de controle!</voice>
+  <person>falcione</person>
+  <voice>Isso ainda é menos arriscado do que manter o senhor longe de casa!</voice>
+  <protagonist />
+  <voice>É tão arriscado quando usar o resto das minhas energias para ir voando.</voice>
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>O senhor não pode estar falando sério!</voice>
+  <narration>Você fecha os olhos e pensa por um instante. Qualquer uma das opções poderia colocar inocentes em perigo.</narration>
+  <narration>Tinha que escolher a solução mais rápida, aquela em que o menor número possível de pessoas pudesse se machucar.</narration>
+  <protagonist />
+  <choice>
+    <a>Remover os estabilizadores</a>
+    <b when="falcione_relationship[3:]" req="Relacionamento com Falcione +3">Voar com o auxílio de Falcione</b>
+  </choice>
+  <thought>O que eu vou fazer?</thought>
+
+  <do when="a">
+    <narration>Você volta a abrir os olhos e encara a tenente.</narration>
+    <protagonist />
+    <voice>Está disposta a correr o risco de ficar ao meu lado quando eu tirar esses estabilizadores?</voice>
+    <narration>A moça responde imediatamente, sem nenhuma hesitação, apesar de sua voz soar um pouco mais trêmula do que o normal.</narration>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Claro, senhor!</voice>
+    <protagonist />
+    <voice>Falcione, tire todos daqui. Vai ser mais seguro se eu for...</voice>
+    <narration>Você se interrompe, de repente, quando uma figura entra no seu campo de visão.</narration>
+
+    <music>crime-fighter</music>
+
+    <person>elinora</person>
+    <emotion>happy</emotion>
+    <voice>...</voice>
+    <narration>Falcione e Emelin notam o seu olhar surpreso e olham para trás, mas, como você já esperava, não veem nada.</narration>
+    <person>falcione</person>
+    <voice>O que houve? O senhor viu alguma coisa?</voice>
+    <narration>Você solta um suspiro.</narration>
+    <protagonist />
+    <voice>Acabei de me dar conta de algo.</voice>
+    <voice>Não se preocupem comigo. Vão para a outra câmara e usem o pergaminho. Eu tenho um assunto para resolver.</voice>
+    <person>falcione</person>
+    <emotion>surprised</emotion>
+    <voice>Mas o senhor não está em condições de...</voice>
+    <protagonist />
+    <voice>Falcione, por favor. Isso é sério e eu sei o que estou fazendo.</voice>
+    <voice>Estarei de volta à capital em breve.</voice>
+    <person>falcione</person>
+    <voice>...</voice>
+    <narration>Ela franze o cenho por um instante e então arregala de leve os olhos ao se dar conta do que está acontecendo.</narration>
+    <narration>Então abre a boca para falar algo, mas desiste ao ver a expressão resoluta no seu rosto. Então solta um suspiro frustrado.</narration>
+    <person>falcione</person>
+    <emotion>angry</emotion>
+    <voice>Entendo. Vamos, tenente.</voice>
+    <narration>Emelin lança olhares confusos de Falcione para você, mas obedece, dirigindo-se à abertura na parede que leva à próxima câmara.</narration>
+    <narration>Com movimentos bruscos, Falcione pega a pesada bolsa de couro do chão e sai também, pisando duro.</narration>
+    <protagonist />
+    <voice>...</voice>
+    <narration>Você leva a mão à testa e sacode a cabeça para tentar clarear os pensamentos.</narration>
+    <narration>Está cada vez mais difícil lutar contra a sensação claustrofóbica.</narration>
+    <protagonist />
+    <voice>O que você quer?</voice>
+    <person>elinora</person>
+    <voice>Minha missão é erradicar esses demônios.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Você sabe muito bem onde fica o covil deles.</voice>
+    <person>elinora</person>
+    <emotion>angry</emotion>
+    <voice>Assim como você.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Não vou mandar meus soldados para a morte certa apenas para atender a um capricho seu.</voice>
+    <person>elinora</person>
+    <voice>Poupe seu fôlego.</voice>
+    <emotion>angry</emotion>
+    <voice>Olhe para o seu estado. Mal consegue dar conta de fechar um portal dimensional sem se ferir.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Foram vocês que...</voice>
+    <voice>...</voice>
+    <emotion>normal</emotion>
+    <voice>Esqueça. O que está fazendo aqui?</voice>
+    <person>elinora</person>
+    <voice>Impedindo que abra uma cratera no meio da província.</voice>
+    <emotion>angry</emotion>
+    <voice>Você sabe que nunca deve remover os estabilizadores quando está nesse estado.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Eu não ia abrir cratera nenhuma, eu tinha um plano!</voice>
+    <voice>Estaria bem longe daqui muito antes de a desestabilização atingir nível crítico.</voice>
+    <person>elinora</person>
+    <voice>Vejo que derrotar alguns monstros aumentou em muito sua confiança.</voice>
+    <voice>Entretanto, isso não trará nenhuma melhoria em seu controle sobre a força primordial. Não posso permitir que coloque tal ignóbil plano em ação.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Ah, é? E o que você vai fazer para me impedir? Vai retirar os meus poderes?</voice>
+    <voice>Por que não faz isso, então? Não é o que você quer? Ficar poderosa o suficiente para poder derrotar os demônios sozinha?</voice>
+    <person>elinora</person>
+    <voice>Vou dizer de novo: poupe seu fôlego. Seus patéticos ataques verbais não me afetam.</voice>
+    <voice>Agora fique quieto e feche os olhos.</voice>
+    <narration>Sentindo-se impotente, você solta o ar dos pulmões com força e cobre os olhos com uma das mãos.</narration>
+    <narration>E pergunta-se, pela milionésima vez, quando esse pesadelo em que sua vida se transformou vai terminar.</narration>
+  </do>
+
+  <do when="b">
+    <narration>Você volta a abrir os olhos e encara Falcione.</narration>
+    <protagonist />
+    <voice>Eu ainda tenho energia mais que suficiente para voltar.</voice>
+    <voice>Só não vou conseguir controlar o fluxo. Não, sozinho.</voice>
+    <person>falcione</person>
+    <voice>...</voice>
+    <narration>Ela encara você por um longo momento, enquanto a oficial lança olhares confusos para vocês dois.</narration>
+    <person>falcione</person>
+    <voice>Tenente, pode abrir um geoportal para a superfície?</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Sim, mas estamos fora das muralhas.</voice>
+    <voice>Não dá para saber o que tem lá em cima e...</voice>
+    <protagonist />
+    <voice>Está tudo bem, oficial.</voice>
+    <voice>Depois que atravessarmos o portal, você deve fechá-lo e ativar o pergaminho.</voice>
+    <narration>A moça abre e fecha a boca várias vezes, indecisa.</narration>
+    <protagonist />
+    <voice>Você entendeu o que eu disse?</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Si-sim senhor!</voice>
+    <narration>Falcione pega a bolsa de couro do chão e a coloca nos braços de Emelin.</narration>
+    <narration>A moça quase perde o equilíbrio, devido ao peso.</narration>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <bump />
+    <voice>Uff!</voice>
+    <person>falcione</person>
+    <emotion>angry</emotion>
+    <voice>Então, obedeça!</voice>
+    <emotion>normal</emotion>
+    <voice>E cuide bem das minhas coisas. Vou buscar essa bolsa com você assim que voltar e quero encontrar tudo intacto.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Sim, senhora!</voice>
+
+    <music>open-sky</music>
+    <background>forest2</background>
+
+    <narration>Minutos depois, você e Falcione chegam até a superfície e se vêem em meio a uma floresta.</narration>
+    <narration>A tarde está chegando ao fim e os pássaros cantam com entusiasmo nos galhos das árvores.</narration>
+    <narration>O caminho por onde vocês vieram se fecha abruptamente, como se nunca tivesse existido.</narration>
+    <person>falcione</person>
+    <voice>Fico pensando se aquela garota realmente vai conseguir levar todos para casa.</voice>
+    <protagonist />
+    <voice>Não se preocupe com isso. Se ela não fosse competente não teria chegado ao posto que ocupa.</voice>
+    <narration>Você respira fundo e levanta o rosto para o céu, mas mesmo em campo aberto, a sensação de falta de ar continua.</narration>
+    <person>falcione</person>
+    <emotion>angry</emotion>
+    <voice>O senhor não acha que confia demais nas pessoas?</voice>
+    <narration>Você olha para ela.</narration>
+
+    <music>goodbye</music>
+
+    <protagonist />
+    <choice>
+      <a>Não, mas procuro me cercar de aliados valorosos.</a>
+      <b>Talvez você devesse ter um pouco mais de fé.</b>
+    </choice>
+    <voice>...</voice>
+
+    <do when="a">
+      <person>falcione</person>
+      <emotion>surprised</emotion>
+      <reward>+relationship</reward>
+      <voice>...</voice>
+      <narration>Ela desvia o olhar e aperta os lábios, obviamente sentindo-se desconfortável.</narration>
+    </do>
+
+    <do when="b">
+      <person>falcione</person>
+      <emotion>angry</emotion>
+      <voice>Não teria sobrevivido nem mesmo à minha infância se fosse depender da boa vontade de outras pessoas.</voice>
+      <protagonist />
+      <voice>Nesse caso, fico contente que confie em mim o suficiente para estar aqui agora.</voice>
+    </do>
+
+    <person>falcione</person>
+    <voice>O que quer que eu faça?</voice>
+    <protagonist />
+    <voice>Você já operou esses estabilizadores antes, preciso que mantenha o fluxo dentro dos limites.</voice>
+    <emotion>sad</emotion>
+    <voice>Posso colocar a nós dois no ar, mas meu controle está diminuindo, logo vou começar a sentir náuseas.</voice>
+    <voice>Se eu tentar fazer isso sozinho, o estresse provavelmente vai me fazer desmaiar.</voice>
+    <narration>Ela aperta os lábios, nervosa, e estende a mão para um dos seus braceletes.</narration>
+    <narration>No momento em que os dedos dela tocam o artefato, você sente uma pontada de dor e recolhe o braço instintivamente.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <bump />
+    <voice>Ugh!</voice>
+    <person>falcione</person>
+    <emotion>surprised</emotion>
+    <voice>O que houve?</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Não sei, meu pulso está sensível.</voice>
+    <narration>Ela pega um cristal de luz contínua de um de seus bolsos e o aproxima de sua mão, enquanto examina a pele visível por baixo da manga do seu traje.</narration>
+    <person>falcione</person>
+    <emotion>surprised</emotion>
+    <voice>O dano é maior do que pensamos! A pele está bastante ferida!</voice>
+    <voice>Se continuar usando seus poderes, isso só vai piorar!</voice>
+    <protagonist />
+    <voice>Não tenho escolha. A única maneira de desativar o fluxo agora é recarregando minhas forças.</voice>
+    <emotion>surprised</emotion>
+    <voice>Tenho que voltar para casa o quanto antes.</voice>
+    <narration>Ela guarda o pequeno cristal brilhante e põe as mãos na cintura.</narration>
+    <person>falcione</person>
+    <voice>Como vamos fazer isso?</voice>
+    <narration>Você levanta as mãos.</narration>
+    <protagonist />
+    <voice>Tente assumir o controle dos estabilizadores.</voice>
+    <narration>Com cuidado, ela volta a tocar em um dos braceletes. Você trinca os dentes ao sentir outra pontada de dor, mas dessa vez consegue resistir ao impulso de afastar o braço.</narration>
+    <narration>Com toda a experiência que possui, ela não leva muito tempo para sentir e depois para impôr sua vontade ao fluxo energético do artefato.</narration>
+    <narration>Em seguida ela toca o outro bracelete com a outra mão e repete o processo.</narration>
+    <person>falcione</person>
+    <voice>Vai ser uma viagem turbulenta, e seus pulsos estão feridos.</voice>
+    <protagonist />
+    <voice>Sim. Melhor você segurar minhas mãos. Seu controle não será tão eficiente, mas as chances de sermos separados em pleno ar serão menores.</voice>
+    <narration>Sabendo que não poderia romper o contato para não perder a ligação com o artefato, ela desliza os dedos por seu pulso e depois por sua mão até estarem em posição para entrelaçar-se com os seus.</narration>
+    <narration>Vocês trocam um breve e desconfortável olhar.</narration>
+    <protagonist />
+    <voice>...</voice>
+    <person>falcione</person>
+    <voice>...</voice>
+    <protagonist />
+    <voice>Pronta?</voice>
+    <person>falcione</person>
+    <voice>Sim.</voice>
+
+    <music>crime-fighter</music>
+
+    <narration>Você fecha os olhos e relaxa o controle sobre o restante de suas energias.</narration>
+    <narration>Com habilidade, Falcione mantém o controle sobre os estabilizadores, garantindo que apenas a força necessária seja liberada.</narration>
+    <narration>Descargas energéticas os envolvem, como relâmpagos saídos do chão e se desvanecendo no ar acima de vocês.</narration>
+    <narration>Assustados, os pássaros param de cantar e levantam vôo, enquanto você e Falcione começam a perder peso e depois a levitar.</narration>
+    <narration>A energia mística os leva cada vez mais alto enquanto vocês giram devagar, um ao redor do outro.</narration>
+    <narration>Então você aperta os dedos dela com força e abre os olhos, encarando-a mais uma vez.</narration>
+    <protagonist />
+    <voice>...</voice>
+    <person>falcione</person>
+    <voice>...</voice>
+    <narration>Sentindo o mal estar piorando, você decide que não há mais tempo a perder e fecha os olhos novamente, ativando o gatilho mental da última parte daquele encantamento.</narration>
+    <narration>Mesmo através das pálpebras fechadas, você pode perceber o forte clarão que os envolve, de repente.</narration>
+    <trophy>energyontheair</trophy>
+    <narration>No instante seguinte, vocês dois estão cruzando os céus da província, numa velocidade quase inconcebível.</narration>
+  </do>
+</storyboard>

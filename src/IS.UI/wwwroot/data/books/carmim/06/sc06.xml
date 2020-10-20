@@ -1,0 +1,538 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>belisar</viewpoint>
+  <music>crime-fighter</music>
+
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <background>beach</background>
+
+  <narration>Você ainda não tinha recobrado energia suficiente para lidar com aquilo.</narration>
+  <narration>Felizmente, havia antecipado a possibilidade de um ataque e trazido uma tropa considerável consigo naquela manhã.</narration>
+  <narration>De qualquer forma, o momento que mais temia finalmente havia chegado.</narration>
+  <narration>O momento em que os inimigos encontrariam uma forma de ultrapassar todas as barreiras e invadir o coração de seus domínios, ameaçando sua família.</narration>
+  <person>monster1</person>
+  <emotion>angry</emotion>
+  <voice>Graaaaaarrrr!</voice>
+  <protagonist />
+  <unset>battle</unset>
+  <emotion>angry</emotion>
+  <voice>Daqui vocês não passarão!</voice>
+  <choice time="4" timeout="b" randomorder="1">
+    <a>Fulminante</a>
+    <b>Passável</b>
+    <b>Impactante</b>
+    <b>Considerável</b>
+  </choice>
+  <thought>Desferir um golpe...</thought>
+
+  <do when="a">
+    <narration>Você eletrifica seu braço e utiliza a energia para potencializar sua força, atingindo a criatura no ventre com um poderoso soco.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Grr..!</voice>
+    <narration>O ser é lançado para trás com violência, sendo empalado pelo ferrão de um dos outros de sua espécie.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+battle</reward>
+    <thought>Ainda tem muito mais de onde veio isso, suas aberrações!</thought>
+  </do>
+
+  <do when="b">
+    <narration>Você eletrifica seu braço e utiliza a energia para potencializar sua força.</narration>
+    <narration>Esquivando-se dos ataques dos ferrões, você aplica uma sequência de golpes até que consegue romper a carapaça do monstro e finalmente aplicar um golpe mortal.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Grr..!</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <reward>-battle</reward>
+    <thought>Estou lento demais. Nesse ritmo vou acabar sendo cercado.</thought>
+    <emotion>angry</emotion>
+    <thought>Preciso acabar com isso logo!</thought>
+  </do>
+
+  <narration>Enquanto a criatura ferida se desintegra, você ataca a próxima.</narration>
+
+  <protagonist />
+  <emotion>angry</emotion>
+  <choice time="4" timeout="b" randomorder="1">
+    <a>Decisivo</a>
+    <b>Hesitante</b>
+    <b>Ineficiente</b>
+    <b>Incerto</b>
+  </choice>
+  <thought>Desferir um golpe...</thought>
+
+  <do when="a">
+    <narration>Você usa seus punhos eletrificados para atacar os ferrões da criatura, quebrando-lhe primeiro um e depois o outro.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Urrarrrggh..!</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+battle</reward>
+    <thought>Isso!</thought>
+    <narration>Desarmado, o monstro tenta mordê-lo, o que apenas facilita sua vida, pois a cabeça dele acaba entrando no raio de alcance de seu soco.</narration>
+  </do>
+
+  <do when="b">
+    <narration>Você tenta ir para o ataque, mas o monstro é mais rápido e você precisa recuar para esquivar-se dos mortíferos ferrões.</narration>
+    <narration>Sem encontrar nenhuma abertura, você vai se afastando até suas costas colidirem com uma palmeira.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>-battle</reward>
+    <thought>Raios!</thought>
+    <narration>O monstro lança um ataque impetuoso, tentando impalar você com um dos ferrões.</narration>
+    <narration>Você se esquiva para o lado no último segundo, e o monstro atinge a árvore, a lâmina penetrando fundo.</narration>
+    <narration>Ele tenta recolher o membro e percebe que ficou preso.</narration>
+    <narration>Antes que ele possa reunir força suficiente para se libertar, você se aproxima e o atinge com violência na cabeça.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Hááá!</voice>
+  </do>
+
+  <person>monster1</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>...</voice>
+  <narration>Você afunda o crânio da criatura e ela silenciosamente começa a se transformar em pó.</narration>
+  <narration>Olhando para os lados, você percebe que dois outros monstros correm em sua direção, vindo por lados opostos.</narration>
+  <person>monster1</person>
+  <emotion>angry</emotion>
+  <voice>Grrrrrrr...</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Essa, não!</thought>
+  <choice time="4" timeout="b" randomorder="1">
+    <a>Focar</a>
+    <b>Distrair</b>
+    <b>Preocupar</b>
+    <b>Desesperar</b>
+  </choice>
+  <thought>Eu tenho que me...</thought>
+
+  <do when="a">
+    <narration>Você fecha os olhos, ativando o poder de clarividência eletromagnética.</narration>
+    <narration>Sua mente imediatamente recebe a imagem de si mesmo, como se vista de longe.</narration>
+    <narration>Concentrando-se na movimentação dos monstros, você calcula a trajetória de seus ataques e se move levemente para a direita, antes de abaixar-se e rolar pelo chão na direção oposta.</narration>
+    <narration>Os monstros tentam corrigir a trajetória de seus golpes com o fim de atingi-lo e um deles acaba acertando o outro no ventre.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Grarrr...</voice>
+    <narration>Escapando por pouco do outro ferrão, você se levanta e concentra toda sua força para atacar o monstro que ainda está ileso pelas costas.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+battle</reward>
+    <voice>Hááá!</voice>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Uuuurrr...</voice>
+    <narration>Enquanto ele cai, mortalmente ferido, o outro tenta atacar, mas o ferimento no ventre o torna lento.</narration>
+    <narration>Você facilmente se esquiva do golpe e o atinge com mais um soco fulminante, tirando-o de combate.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Gaahhh!...</voice>
+    <narration>Nesse momento, um outro grupo de monstros vem em sua direção, mas subitamente o chão onde pisam se torna mole e começa a tragá-los.</narration>
+  </do>
+
+  <do when="b">
+    <narration>A tensão e o cansaço são tão grandes que você mal consegue raciocinar.</narration>
+    <narration>Você tenta eletrificar suas pernas, na esperança de fortalecê-las o suficiente para poder tirá-lo dali.</narration>
+    <narration>O salto sai desajeitado e você se vê sendo lançado sem controle para longe.</narration>
+    <narration>Aquilo salva sua vida, mas você acaba se chocando com a copa de uma palmeira.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <bump />
+    <reward>-battle</reward>
+    <voice>Ufff!</voice>
+    <narration>O caule da árvore não resiste ao impacto e se quebra. Você mal tem tempo de se empurrar para longe dele de forma a controlar sua queda e poder cair rolando pelo chão arenoso.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <bump />
+    <voice>Humpf!</voice>
+    <narration>Quando vêem você se levantando, os monstros tentam correr em sua direção, mas subitamente o chão aos pés deles se torna mole e começa a tragá-los.</narration>
+  </do>
+
+  <person>monster1</person>
+  <emotion>angry</emotion>
+  <voice>Gaaaaahhhh!</voice>
+  <narration>Em poucos segundos, as criaturas são completamente engolidas pela areia.</narration>
+  <narration>Você olha para o lado e vê Norlando desativando, com um gesto, o poder de um de seus bastões especiais.</narration>
+  <person>norlando</person>
+  <voice>Senhor!</voice>
+  <protagonist />
+  <voice>Bom vê-lo por aqui, meu amigo.</voice>
+  <person>norlando</person>
+  <voice>Viemos assim que detectamos a anomalia.</voice>
+
+  <do when="belisar_battle[3]">
+    <trophy>destroyer</trophy>
+    <emotion>surprised</emotion>
+    <voice>Devo dizer que assistir ao senhor em ação é sempre bastante educativo.</voice>
+    <narration>Você agradece ao elogio com um gesto de cabeça.</narration>
+  </do>
+
+  <do when="belisar_battle[-3]">
+    <trophy>destroyed</trophy>
+    <emotion>surprised</emotion>
+    <voice>Estou feliz por ter chegado a tempo. O senhor parece exausto.</voice>
+    <narration>Você solta um suspiro frustrado e balança a cabeça, tentando recuperar a compostura.</narration>
+  </do>
+
+  <protagonist />
+  <reward when="belisar_battle[3]">++power</reward>
+  <reward when="belisar_battla[1]">+power</reward>
+  <voice>Alguma ideia de como isso aconteceu? Achei que tínhamos conseguido isolar de novo as muralhas ontem.</voice>
+  <person>norlando</person>
+  <voice>Sim, senhor, eu sei o que aconteceu. Mas o senhor não vai gostar.</voice>
+  <voice>E conversar sobre isso não vai adiantar de nada se não neutralizarmos esta invasão primeiro.</voice>
+  <protagonist />
+  <voice>Muito bem.</voice>
+  <person>norlando</person>
+  <voice>E sua família?</voice>
+  <protagonist />
+  <voice>Zelmira e as crianças estão na praia ali atrás, com outros não combatentes, protegidos por alguns soldados.</voice>
+  <person>norlando</person>
+  <voice>Decisão inteligente.</voice>
+  <voice>As emanações daquela ilha interferem com a frequência dos portais.</voice>
+  <voice>Para chegar lá, os monstros precisarão passar por nós.</voice>
+  <protagonist />
+  <voice>Assim espero.</voice>
+  <narration>Você e Norlando avançam para se juntar às tropas que combatem os monstros numa luta acirrada, mais adiante.</narration>
+
+  <background>palmtree</background>
+
+  <narration>E então você a vê.</narration>
+
+  <music>desert-squad</music>
+
+  <person>sulana</person>
+  <emotion>angry</emotion>
+  <voice>Aaaaaahhhhh!</voice>
+  <person>monster1</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>Guu..!</voice>
+  <narration>Um grupo de soldados dá cobertura enquanto ela aniquila um monstro após o outro.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>O quê...? Mas como...?</voice>
+  <narration>Você sacode a cabeça, tentando recuperar-se da surpresa, e corre na direção dos soldados, aproveitando para derrubar um dos monstros.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Saia. Do. Caminho!</voice>
+  <person>monster1</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>Graahhh!</voice>
+  <narration>Pegando a criatura de surpresa, você desfere um preciso golpe em um de seus pontos vitais, o que a coloca imediatamente fora de combate.</narration>
+  <person>soldado5</person>
+  <emotion>surprised</emotion>
+  <voice>Obrigada, senhor!</voice>
+  <narration>Você aponta para Sulana.</narration>
+  <protagonist />
+  <voice>Ela estava inconsciente há menos de meia hora.</voice>
+  <voice>Como é possível estar lutando assim?</voice>
+  <person>soldado5</person>
+  <emotion>surprised</emotion>
+  <voice>Não sabemos, senhor. Quando a vimos, ela já estava em ação.</voice>
+  <voice>Tentamos falar com ela, mas não conseguimos.</voice>
+  <voice>Ela até parece ouvir, mas nos ignora. Acho que não entende o que falamos.</voice>
+  <narration>Olhando de perto, você percebe que ela está se movendo de uma forma estranha, travada, como se precisasse fazer um esforço além do normal para realizar seus movimentos.</narration>
+  <narration>Os olhos dela também estão diferentes. O vermelho está mais brilhante, mais intenso, mais sinistro.</narration>
+  <protagonist />
+  <voice>Tem algo errado. Em Revoada ela não estava assim.</voice>
+  <emotion>surprised</emotion>
+  <voice>O ferimento!</voice>
+  <voice>Ela ainda não se recuperou do ataque de Falcione, deve estar com sangramento interno!</voice>
+  <person>soldado4</person>
+  <emotion>surprised</emotion>
+  <voice>Mas como pode? Ela, sozinha, já deu conta de um verdadeiro exército desses bichos!</voice>
+  <narration>Um novo grupo de criaturas surge nesse momento, correndo na direção de vocês.</narration>
+  <protagonist />
+  <voice>Continuem dando cobertura!</voice>
+  <voice>Ela pode não entender o que dizem, mas tem bons instintos de combate em equipe.</voice>
+  <voice>Os monstros dificilmente vão conseguir atingi-la se não puderem cercá-la.</voice>
+  <person>soldado5</person>
+  <voice>Sim, senhor. Essa é a estratégia que temos usado até agora.</voice>
+  <person>sulana</person>
+  <emotion>angry</emotion>
+  <voice>Iaaaaaahhhhh!</voice>
+  <person>monster1</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>Urrr..!</voice>
+  <narration>Você assiste, perplexo, enquanto ela derruba um monstro com extrema facilidade.</narration>
+  <narration>E então outro.</narration>
+  <narration>E mais outro.</narration>
+  <narration>Em poucos instantes, mais da metade do grupo de monstros é massacrado.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Pela misericórdia!</thought>
+  <thought>Ela até parece mais fraca, mas está é muito mais forte do que antes!</thought>
+  <narration>Mais de uma vez você a vê defletir os ferrões afiados com os antebraços nus e sair completamente ilesa.</narration>
+  <narration>Os poucos ataques que os monstros conseguem acertar nela soam como metal se chocando contra rocha sólida. Alguns chegam até mesmo a gerar faíscas.</narration>
+  <narration>O escudo corporal dela, no momento, parece mais resistente do que qualquer um que você já viu na vida.</narration>
+  <narration>Você entra no combate, lutando ombro a ombro com os soldados, tentando não gastar mais poder do que o imprescindível.</narration>
+  <narration>Então, quando o último monstro cai, você se vê face a face com ela.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <person>sulana</person>
+  <voice>...</voice>
+  <narration>O que você vê não é humano, mas também não parece um animal.</narration>
+  <narration>É uma face de puro caos, emanando destruição e morte.</narration>
+  <narration>Os olhos cor de sangue brilham intensamente, mas os lábios estão ressecados, a pele pálida.</narration>
+  <narration>E ela não parece estar respirando.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <narration>Você sente seu coração se apertar, um horror profundo o envolvendo.</narration>
+  <narration>Um estranho sentimento de perda o faz apertar os punhos, frustrado.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>O que houve com você?</voice>
+  <person>sulana</person>
+  <voice>...</voice>
+  <narration>Ela ergue a cabeça de leve, como se estivesse tentando sentir seu cheiro ou algo assim, mas logo parece perder o interesse e olha ao redor.</narration>
+  <narration>Ruídos de batalha podem ser ouvidos por toda parte.</narration>
+  <person>sulana</person>
+  <emotion>surprised</emotion>
+  <voice>!!</voice>
+  <narration>Então ela parece detectar alguma coisa na direção da praia e sai em disparada para lá.</narration>
+  <narration>A postura dela enquanto corre é estranha, encurvada, às vezes tocando uma mão no chão, quase como se fosse um quadrúpede lutando para ficar em pé nas patas traseiras.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Atrás dela!</voice>
+  <person>soldado5</person>
+  <voice>Sim, senhor.</voice>
+
+  <music>enigma</music>
+
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>General!</voice>
+  <narration>Você estaca no lugar e, com um gesto, ordena que os soldados continuem atrás de Sulana, antes de se virar para a tenente.</narration>
+  <narration>E se surpreende ao ver o quê, ou melhor, quem ela está carregando nas costas enquanto corre pelo campo de batalha, como se sua carga não tivesse peso nenhum.</narration>
+  <person>falcione</person>
+  <voice>Ge... neral...</voice>
+  <narration>Você corre até elas.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Tenente, o que está fazendo? Ela deveria estar descansando!</voice>
+  <voice>Vai acabar complicando a situação dela carregando-a por aí desse jeito!</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Foram ordens dela, senhor!</voice>
+  <person>falcione</person>
+  <voice>Me... coloque... no chão...</voice>
+  <narration>Você ajuda Emelin a deitar a convalescente, que ainda está com a maior parte do corpo enrolada em bandagens, de costas sobre a areia.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>O que estão fazendo aqui?</voice>
+  <person>emelin</person>
+  <voice>Ela ficou inquieta quando soube que a rebelde estava aqui com o senhor.</voice>
+  <voice>E então, quando Norlando deu o alerta de invasão nessa região, ela insistiu que a trouxesse.</voice>
+  <narration>Emelin une as mãos atrás das costas, num alongamento estranho e faz uma careta quando seus ossos estalam.</narration>
+  <person>emelin</person>
+  <emotion>angry</emotion>
+  <voice>Ai! Odeio encantos de aumento de força.</voice>
+  <person>falcione</person>
+  <voice>Onde... ela está...?</voice>
+  <protagonist />
+  <voice>Sulana está lutando. E eu preciso ir ajudar, tenho que...</voice>
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>Ah, não!</voice>
+  <voice>Como... ela está?</voice>
+  <narration>Você luta para controlar sua impaciência.</narration>
+  <protagonist />
+  <voice>Está estranha. Olhar febril e comportamento quase animalesco.</voice>
+  <voice>E está mais forte do que nunca.</voice>
+  <person>falcione</person>
+  <emotion>sad</emotion>
+  <voice>É... o último estágio...</voice>
+  <voice>Ela... já está morta...</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Não pode ser!</voice>
+  <voice>Ela está lutando lado a lado com os soldados!</voice>
+  <voice>Consegue distinguir muito bem aliados de inimigos!</voice>
+  <person>falcione</person>
+  <voice>Não sei... como faz isso... mas ela nunca perde o controle... não importa o que aconteça...</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Você tentou me convencer do contrário inúmeras vezes!</voice>
+  <person>falcione</person>
+  <voice>Eu olhei... nos olhos dela... depois que... a feri...</voice>
+  <voice>Ela não é... como eles...</voice>
+  <protagonist />
+  <choice>
+    <a>O que vai acontecer com ela depois da batalha?</a>
+    <b>Não tem como fazê-la voltar ao normal?</b>
+    <c>Por que você quis vir aqui?</c>
+  </choice>
+  <voice>...</voice>
+
+  <do when="a">
+    <person>falcione</person>
+    <voice>Se não tiver... mais inimigos... ela vai desmaiar... e não acordará mais....</voice>
+    <narration>Você sente uma dolorosa pontada no peito ao ouvir aquilo.</narration>
+    <protagonist />
+    <voice>...</voice>
+    <emotion>angry</emotion>
+    <reward>+fight</reward>
+    <voice>Eu vou para lá.</voice>
+    <voice>Se alguém está sacrificando a vida para vencer uma batalha que é minha, não vou ficar parado observando.</voice>
+    <voice>Tenente, leve Falcione a um lugar seguro.</voice>
+    <person>emelin</person>
+    <voice>Sim, senhor!</voice>
+    <person>falcione</person>
+    <emotion>sad</emotion>
+    <voice>Eu... a matei...</voice>
+    <narration>Aquelas palavras calam fundo em você, aumentando ainda mais sua apreensão.</narration>
+  </do>
+
+  <do when="b">
+    <person>falcione</person>
+    <emotion>sad</emotion>
+    <voice>...</voice>
+    <voice>Eu... gostaria que tivesse...</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Pense!</voice>
+    <voice>Temos sábios aqui!</voice>
+    <voice>Nosso conhecimento sobre energias místicas é muito maior hoje do que 20 anos atrás.</voice>
+    <voice>Tem que existir uma forma de reverter isso!</voice>
+    <person>falcione</person>
+    <emotion>surprised</emotion>
+    <voice>Mas... eu não saberia... por onde... começar...</voice>
+    <protagonist />
+    <voice>Tenente, você pode ajudar, não pode?</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Não tenho certeza, senhor, mas posso tentar.</voice>
+    <protagonist />
+    <voice>Leve Falcine a algum local seguro e faça isso.</voice>
+    <voice>Norlando também está aqui, se precisarem de algo, falem com ele. Você pode contatá-lo, não pode?</voice>
+    <person>emelin</person>
+    <voice>Sim, senhor, ele sempre carrega um emissor.</voice>
+    <protagonist />
+    <voice>Conto com você.</voice>
+    <person>emelin</person>
+    <reward>+relationship</reward>
+    <voice>Farei tudo o que estiver ao meu alcance, senhor.</voice>
+  </do>
+
+  <do when="c">
+    <person>falcione</person>
+    <voice>Eu... eu...</voice>
+    <protagonist />
+    <voice>Você está arriscando sua vida e prejudicando sua recuperação.</voice>
+    <voice>Não entende? Se você estivesse em condições, esta batalha já teria terminado.</voice>
+    <person>falcione</person>
+    <emotion>surprised</emotion>
+    <voice>!!</voice>
+    <protagonist />
+    <voice>Eu posso cuidar das coisas por enquanto, mas a guerra não vai terminar aqui.</voice>
+    <voice>Haverá novas batalhas. E eu quero que você participe delas.</voice>
+    <emotion>surprised</emotion>
+    <voice>Precisamos de você.</voice>
+    <person>falcione</person>
+    <emotion>surprised</emotion>
+    <reward>+relationship</reward>
+    <voice>...</voice>
+    <protagonist />
+    <voice>Entendo você se sentir responsável pelo estado de Sulana, mas não tem nada que possa fazer quanto a isso.</voice>
+    <voice>Preciso apenas que se cuide. Se lembrar de algo relevante, reporte a alguém, mas fora isso, quero que se mantenha em segurança.</voice>
+    <person>falcione</person>
+    <emotion>sad</emotion>
+    <voice>...</voice>
+    <protagonist />
+    <voice>Tenente, leve Falcione a um lugar seguro.</voice>
+    <person>emelin</person>
+    <voice>Sim, senhor!</voice>
+  </do>
+
+  <narration>Dando as costas às duas, você sai correndo na direção da praia.</narration>
+  <narration>É possível ouvir os soldados batalhando contra monstros em quase todas as direções.</narration>
+  <narration>Você constata que o Exército Carmim está se saindo muito bem, dadas as circunstâncias, os tenentes parecem ter pleno controle da situação.</narration>
+  <protagonist />
+  <thought>Humm... Sulana correu para uma região afastada, sendo que tinha monstros muito mais próximos de onde estava.</thought>
+  <emotion>surprised</emotion>
+  <thought>Será que ela detectou uma ameaça maior?</thought>
+  <emotion>angry</emotion>
+  <thought>Tenho que me apressar!</thought>
+
+  <music>desert-squad</music>
+  <background>beach</background>
+
+  <narration>Quando você finalmente consegue encontrá-la, numa parte isolada da praia, a situação, que já lhe parecia preocupante, se transforma em um pesadelo.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Não!</voice>
+  <narration>Seus filhos… suas pobres crianças… estão caídos no chão, próximo a uma palmeira.</narration>
+  <narration>Há sangue e corpos espalhados por toda parte.</narration>
+  <narration>Vênega está imóvel, caída de bruços.</narration>
+  <narration>Baliorge está deitado sobre o irmão mais novo, um ferimento horrível em suas costas sangrando abundantemente.</narration>
+  <narration>O pequeno Sagante chora, desesperado, abraçado ao irmão inconsciente.</narration>
+  <narration>E, diante deles...</narration>
+  <person>sulana</person>
+  <emotion>angry</emotion>
+  <voice>Aaaaahhhhh!</voice>
+  <person>amarelo</person>
+  <voice>...</voice>
+  <narration>Sulana e o monstro amarelo estão envolvidos em um abraço mortal, um tentando esganar o outro.</narration>
+  <narration>Você para no lugar, tentando recuperar o fôlego.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>O que... eu faço?</voice>
+  <narration>Você já sente uma leve dormência nos dedos das mãos e dos pés.</narration>
+  <narration>Com certeza não tem forças para batalhar contra um monstro daqueles.</narration>
+  <narration>E então, como se tudo aquilo não fosse desesperador o suficiente, você ouve passos atrás de si.</narration>
+
+  <music>last-duel</music>
+
+  <person>demonio</person>
+  <voice>Esperava você, general.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>!!</voice>
+  <narration>Você encara, estarrecido, o rosto de seu pior inimigo. Ou melhor, de um deles.</narration>
+  <narration>Um demônio. Pele escura e levemente avermelhada, grandes chifres brotando da testa calva, caninos proeminentes, garras mortíferas nas mãos e nos pés e uma cauda que termina numa espécie de apêndice pontudo.</narration>
+  <narration>E ele acaba de jogar no chão um corpo inerte, cujo tronco e membros formam ângulos impossíveis, envoltos por pedaços de um tecido cor de vinho todo dilacerado e ensanguentado.</narration>
+  <narration>Você sente suas pernas fraquejarem e cai de joelhos sobre a areia.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Zelmira!</voice>
+  <narration>Várias coisas passam por sua cabeça neste momento.</narration>
+  <narration>Como aquelas criaturas tinham conseguido ultrapassar todas as barreiras místicas e chegar até ali?</narration>
+  <narration>Teria sua hora finalmente chegado?</narration>
+  <narration>É assim que sua cruzada terminará? Com você fraco, indefeso e sozinho frente ao pior tipo de monstro que já pisou sobre essa terra?</narration>
+  <person>venega</person>
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <person>sagante</person>
+  <emotion>sad</emotion>
+  <voice>Buááááá!</voice>
+  <narration>Mesmo que, por algum milagre, vença essa batalha, o que vai lhe restar?</narration>
+  <person>baliorge</person>
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <person>zelmira</person>
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <narration>Você sonhou durante muito tempo com o dia em que finalmente teria a sua libertação.</narration>
+  <narration>Mas agora que vê o fim diante de si, o abençoado alívio que sempre imaginou que sentiria, simplesmente não vem.</narration>
+
+
+  <background>carmim</background>
+</storyboard>

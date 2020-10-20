@@ -1,0 +1,2355 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>sulana</viewpoint>
+  <music>open-sky</music>
+  <background>carmim</background>
+  <observe />
+  <narration>Capítulo 2: Rotina</narration>
+
+  <background>sulana</background>
+
+  <tutorial>Você agora está controlando Sulana Lautine</tutorial>
+
+  <background>shack_interior</background>
+
+  <do when="seductress">
+    <narration>Você acorda, sozinha, em sua própria cama.</narration>
+    <protagonist />
+    <voice>...</voice>
+    <narration>Sentando-se, você alonga os músculos.</narration>
+    <narration>Aparentemente, Derione tinha usado os poderes dele para transportar você de volta à cabana em algum momento no meio da noite.</narration>
+    <narration>Se não fosse pelo fato de estar sem roupas e pelo leve desconforto que sentia em algumas partes do corpo, não teria problemas em acreditar que a noite passada era apenas fruto de sua imaginação.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <thought>Eu passei mesmo a noite com um cara?</thought>
+    <thought>E com Derione, ainda por cima?</thought>
+    <narration>Você não costuma se aproximar de outras pessoas, principalmente daquela forma.</narration>
+    <narration>Então, a única explicação em que consegue pensar para seu comportamento era a euforia que sempre sente após uma batalha.</narration>
+    <narration>Euforia essa que agora a impulsionava a se levantar e encarar o dia.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Não vou mesmo conseguir entender o que aconteceu ontem, então, dane-se. Tenho coisas demais para fazer, para ficar me preocupando com isso.</thought>
+    <narration>Você empurra para o fundo da mente os sentimentos desconfortáveis causados pela lembrança da noite anterior e se levanta.</narration>
+    <narration>Seu corpo está cheio de energia, pronto para encarar qualquer desafio.</narration>
+  </do>
+
+  <do when="!seductress">
+    <narration>Você abre os olhos e encara, por um instante, as paredes de madeira sua cabana.</narration>
+    <protagonist />
+    <voice>...</voice>
+    <narration>Os acontecimentos do dia anterior retornam à sua mente, especialmente a batalha na velha fortaleza.</narration>
+    <narration>A euforia que você sempre sente após uma boa luta percorre seu corpo, numa sensação quente, elétrica, deixando-a alerta e cheia de disposição.</narration>
+    <narration>Você se senta e alonga os músculos, preparando-se para encarar o dia.</narration>
+    <narration>O fato de Derione tê-la transportado da fortaleza de Mercília para cá poupara você de uma longa caminhada.</narration>
+    <narration>No entanto, em seu atual estado de espírito, nem fazia muita diferença, pois sentia-se cheia de energia, pronta para encarar qualquer desafio.</narration>
+  </do>
+
+  <narration>Até mesmo a ideia de ajudar na lavanderia do abrigo lhe parece atraente.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <thought>Humm... que fome!</thought>
+  <narration>Você salta da cama e veste as primeiras peças que encontra na pilha de roupas velhas e gastas sobre a mesa.</narration>
+  <narration>Há uma sacola de couro pendurada numa das paredes. Você enfia a mão dentro dela e retira uma fruta.</narration>
+  <object>
+    <image>tufax</image>
+    <title>Tufax</title>
+    <prompt>Dar uma mordida</prompt>
+  </object>
+  <narration>Trata-se de um tufax, uma espécie de maçã gigante, pouco maior que um abacate, que é cultivada em climas frios.</narration>
+  <narration>Tem uma coloração vermelho amarronzada e um sabor que é considerado ácido demais pela maioria das pessoas.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <voice>Hummmm... Bem do jeito que eu gosto.</voice>
+
+  <background>shack</background>
+
+  <narration>Você devora a fruta em questão de instantes enquanto sai da cabana e aprecia a quietude dos arredores.</narration>
+  <protagonist />
+  <choice>
+    <a>É perfeito.</a>
+    <b>É melhor do que nada, eu suponho.</b>
+    <c>É um tédio.</c>
+  </choice>
+  <thought>Este lugar...</thought>
+
+  <do when="a">
+    <reward>+hope</reward>
+    <thought>Tranquilo, longe de tudo e de todos, comida e água abundantes...</thought>
+    <thought>E de vez em quando ainda aparecem alguns predadores que chegam a representar algum desafio.</thought>
+    <emotion>happy</emotion>
+    <thought>É a imagem da perfeição.</thought>
+  </do>
+
+  <do when="b">
+    <reward>+fight</reward>
+    <thought>Essa cabana está me servindo bem, por enquanto.</thought>
+    <thought>Mas talvez já esteja na hora de procurar algo melhor.</thought>
+    <thought>Aquela fortaleza de Mercília tinha umas camas bem confortáveis.</thought>
+    <thought>Talvez esteja na hora de andar por aí para ver se encontro algum lugar interessante dando sopa.</thought>
+  </do>
+
+  <do when="c">
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+rage</reward>
+    <thought>Há meses não aparece nenhum monstro ou animal feroz por aqui.</thought>
+    <emotion>normal</emotion>
+    <thought>Talvez eu devesse esquecer aquele abrigo e procurar algum lugar mais interessante ao sul.</thought>
+    <emotion>happy</emotion>
+    <thought>Derione, com certeza, ficaria mordido de raiva se eu me mudasse para o meio de uma zona de guerra.</thought>
+  </do>
+
+  <narration>Você pega dois baldes e percorre o curto trajeto até o córrego próximo.</narration>
+  <narration>Depois de enchê-los com água, você retorna à cabana e os deixa de lado.</narration>
+  <narration>Com uma empolgação que não sente há semanas, você inicia seus exercícios matinais.</narration>
+  <narration>Mais de meia hora depois, os primeiros raios do sol a atingem enquanto você treina equilíbrio, sustentando-se com apenas um braço enquanto mantinha as pernas para o ar.</narration>
+
+  <background>sun_rising</background>
+
+  <narration>Voltando a pôr os pés no chão, você vira o rosto suado para o horizonte e aprecia a paisagem por algum tempo, enquanto sua respiração volta ao normal.</narration>
+  <narration>Então, voltando até onde tinha deixado os baldes, você rapidamente se livra das roupas, atirando-as dentro de um deles enquanto pega o outro e vira sobre sua cabeça.</narration>
+  <narration>A sensação da água gelada sobre sua pele quente devido ao esforço físico é bastante agradável.</narration>
+  <protagonist />
+  <thought>Hora de começar o dia.</thought>
+
+  <background>shelter</background>
+
+  <narration>O abrigo onde você trabalha fica há pouco menos de uma hora de caminhada da sua cabana.</narration>
+  <narration>Aliás, a cabana não é exatamente “sua”.</narration>
+  <narration>Trata-se apenas de uma velha construção abandonada para a qual você se mudou quando os alojamentos do abrigo haviam se tornado escassos.</narration>
+  <narration>O número de necessitados havia aumentado devido aos diversos ataques de monstros ocorridos na região nos últimos meses.</narration>
+
+  <music>free-mind</music>
+
+  <person>linete</person>
+  <emotion>happy</emotion>
+  <voice>Sulana! Estava imaginando quando você apareceria!</voice>
+  <narration>Você se vira para olhar para a jovem que se aproxima caminhando com dificuldade, com o auxílio de muletas.</narration>
+  <protagonist />
+  <voice>...</voice>
+  <narration>Este lugar havia se tornado a última esperança de sobrevivência de dezenas de pessoas.</narration>
+  <narration>Muitos haviam perdido quase todas as suas posses, outros haviam perdido parte da saúde. Outros ainda, sua sanidade.</narration>
+  <narration>Linete era uma das que haviam perdido as três coisas.</narration>
+  <person>linete</person>
+  <voice>Você tem que consertar a parede do meu quarto! Ela vai cair, qualquer hora dessas!</voice>
+  <protagonist />
+  <voice>...</voice>
+  <voice>Eu sou boa em derrubar paredes, não em consertá-las.</voice>
+  <person>linete</person>
+  <emotion>surprised</emotion>
+  <voice>Não sei como vocês deixaram esses prédios ficarem nesse estado!</voice>
+  <emotion>normal</emotion>
+  <voice>Quero dizer, eles são sólidos. Foram erguidos pelo exército imperial, antes do golpe de estado.</voice>
+  <emotion>surprised</emotion>
+  <voice>Você sabe, não é? Aquele que dividiu o império e lançou Ebora no completo caos em que vivemos hoje.</voice>
+  <narration>Como sempre, ela falava rápido, pulando de um assunto para outro de forma súbita e confusa.</narration>
+  <protagonist />
+  <choice>
+    <a>Você parece saber muito sobre esse assunto.</a>
+    <b>Por que não fala com Riodes sobre sua parede?</b>
+    <c>Falo com você depois, está bem?</c>
+  </choice>
+  <voice>...</voice>
+
+  <do when="a">
+    <narration>Um enorme sorriso se forma no rosto dela.</narration>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Eu sei tudo sobre o assunto, sou muito bem informada, você sabe. Minha família era uma das mais influentes da província.</voice>
+    <emotion>sad</emotion>
+    <voice>A verdade é que um dos coronéis da Província Central enlouqueceu e assassinou o imperador, com a intenção de tomar o lugar dele.</voice>
+    <emotion>normal</emotion>
+    <voice>Mas aí ele foi derrotado pelo filho do general.</voice>
+    <protagonist />
+    <voice>Linete...</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Então, os conselheiros imperiais decidiram tomar o poder para eles e dividiram o império entre si.</voice>
+    <emotion>normal</emotion>
+    <voice>Ainda não se sabe direito como eles conseguiram fazer com que o povo aceitasse o golpe.</voice>
+    <emotion>surprised</emotion>
+    <voice>Mas algumas pessoas não gostaram disso, como o General Vermelho, que se rebelou e derrotou o conselheiro imperial que tentou tomar o poder em Ebora.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Linete!</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Sim?</voice>
+    <protagonist />
+    <voice>Falo com você depois, está bem?</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Claro!</voice>
+    <voice>Sabe, Sulana, eu adoro você!</voice>
+    <protagonist />
+    <voice>...</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>É sério! Você é a única daqui que tem paciência para conversar comigo!</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <narration>Você a encara, incrédula por algum instantes.</narration>
+    <narration>O absurdo da situação é tão grande que você não consegue se conter e acaba caindo na risada.</narration>
+    <protagonist />
+    <emotion>happy</emotion>
+    <reward>+hope</reward>
+    <voice>Hahahaha!</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>O que foi?</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Nada. Deixa pra lá.</voice>
+  </do>
+
+  <do when="b">
+    <person>linete</person>
+    <emotion>sad</emotion>
+    <voice>Está brincando?</voice>
+    <emotion>angry</emotion>
+    <voice>Aquele velhote não tem forças nem para tirar água do poço, o que dirá para consertar uma parede!</voice>
+    <emotion>normal</emotion>
+    <voice>E os outros não são muito melhores do que ele.</voice>
+    <emotion>surprised</emotion>
+    <voice>Quero dizer, olhe ao redor! O mato está tomando conta de tudo!</voice>
+    <protagonist />
+    <voice>...</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>É um trabalho muito grande manter esse lugar funcionando.</voice>
+    <emotion>angry</emotion>
+    <voice>Trabalho demais para esse bando de preguiçosos!</voice>
+    <protagonist />
+    <voice>Linete...</voice>
+    <person>linete</person>
+    <voice>Quero dizer, isso aqui era um abrigo mantido pela comunidade e pelo governo, mas quando foi a última vez que recebemos doações?</voice>
+    <emotion>angry</emotion>
+    <voice>Só recebemos alguma coisa quando algum viajante se mostra corajoso o suficiente para se aventurar a vir até aqui para entregar!</voice>
+    <emotion>normal</emotion>
+    <voice>A maior parte dos suprimentos precisam ser cultivados, caçados ou coletados aqui mesmo!</voice>
+    <emotion>surprised</emotion>
+    <voice>Isso não é um absurdo?</voice>
+    <protagonist />
+    <voice>Linete, podemos conversar depois?</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Claro! Eu adoro conversar com você!</voice>
+    <voice>Você é a pessoa mais bacana desse lugar!</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Obrigada... Eu acho.</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Nós é quem temos que agradecer! Este lugar não existiria sem você!</voice>
+    <voice>Sei que você se esforça muito por nós.</voice>
+    <voice>Nunca desista, está bem? Continue sendo sempre essa pessoa maravilhosa que você é!</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <reward>+fight</reward>
+    <voice>...</voice>
+  </do>
+
+  <do when="c">
+    <person>linete</person>
+    <emotion>sad</emotion>
+    <voice>Não posso esperar até mais tarde! Quero falar agora!</voice>
+    <protagonist />
+    <voice>Linete...</voice>
+    <person>linete</person>
+    <emotion>sad</emotion>
+    <voice>Eu tive um sonho essa noite!</voice>
+    <emotion>surprised</emotion>
+    <voice>Um sonho horrível!</voice>
+    <emotion>sad</emotion>
+    <voice>Sonhei que aqueles trolls voltavam a nos atacar, e dessa vez vinham acompanhados por um montão de harpias!</voice>
+    <emotion>surprised</emotion>
+    <voice>Eles pilhavam toda a nossa cozinha e botavam fogo nas nossas camas!</voice>
+    <emotion>angry</emotion>
+    <voice>E aí eles queimavam os meus preciosos livros, acredita nisso?!</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+rage</reward>
+    <thought>Sim, acredito! Tanto que estou tentada a fazer a mesma coisa, neste momento!</thought>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Mas aí você aparecia e matava eles um por um!</voice>
+    <emotion>surprised</emotion>
+    <voice>Cada soco ou chute que você dava transformava um deles em pó!</voice>
+    <emotion>happy</emotion>
+    <voice>Eu e as crianças fazíamos torcida por você.</voice>
+    <emotion>normal</emotion>
+    <voice>No fim, até o Riodes abriu um sorriso para agradecer pelo salvamento!</voice>
+    <protagonist />
+    <voice>Linete, eu tenho que...</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Todos nós somos muito gratos.</voice>
+    <emotion>sad</emotion>
+    <voice>Quero dizer, nem sempre lembramos de dizer isso...</voice>
+    <voice>Mas só estamos vivos hoje graças a você.</voice>
+    <emotion>normal</emotion>
+    <voice>Obrigada, Sulana.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+  </do>
+
+  <narration>Uma borboleta passa voando entre vocês e Linete a encara com olhar sonhador por um momento.</narration>
+  <person>linete</person>
+  <emotion>surprised</emotion>
+  <voice>Que coisinha mais linda! Vem aqui, bonitinha! Vem com a mamãe...</voice>
+  <narration>Ela esquece de sua deficiência e tenta dar um passo na direção da borboleta, perdendo o equilíbrio.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <narration>Por puro reflexo, você se adianta e a segura antes que se esborrache no chão.</narration>
+  <person>linete</person>
+  <emotion>sad</emotion>
+  <voice>Ah... ela foi embora!</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Tenha um pouco mais de cuidado, sim?</voice>
+  <person>linete</person>
+  <emotion>surprised</emotion>
+  <voice>Com o quê?</voice>
+  <narration>A pergunta dela é completamente inocente.</narration>
+  <narration>Como alguém obviamente tão inteligente pôde ficar com as faculdades mentais tão seriamente comprometidas era um mistério para você.</narration>
+  <protagonist />
+  <voice>Com nada. Esqueça.</voice>
+  <person>linete</person>
+  <emotion>happy</emotion>
+  <voice>Está bem.</voice>
+  <emotion>normal</emotion>
+  <voice>Sabe, tem uma coisa que eu queria te perguntar.</voice>
+  <narration>Você solta um suspiro.</narration>
+  <protagonist />
+  <voice>O que é?</voice>
+  <person>linete</person>
+  <emotion>surprised</emotion>
+  <voice>Você é tão forte, tão independente...</voice>
+  <emotion>normal</emotion>
+  <voice>Por que cuida de nós?</voice>
+  <emotion>surprised</emotion>
+  <voice>Quero dizer, você poderia morar em qualquer lugar do mundo!</voice>
+  <emotion>normal</emotion>
+  <voice>Por que aqui?</voice>
+  <narration>Aquela era uma boa pergunta. Você já tinha pensado muito sobre isso.</narration>
+  <protagonist />
+  <voice>...</voice>
+  <voice>Eu não vim para cá para cuidar de vocês, Linete.</voice>
+  <voice>Eu não sou uma pessoa altruísta ou idealista.</voice>
+  <narration>Você reflete por um instante.</narration>
+  <protagonist />
+  <thought>Nesse ponto, Derione está completamente certo a meu respeito.</thought>
+  <thought>Nunca viria para cá se fosse só para arranjar comida e limpar a bagunça de um monte de desabrigados cheios de... problemas.</thought>
+  <person>linete</person>
+  <emotion>surprised</emotion>
+  <voice>Então por que está aqui?</voice>
+  <protagonist />
+  <choice>
+    <a>Para lutar.</a>
+    <b>Para encontrar meu lugar nesse mundo.</b>
+    <c>Para procurar respostas.</c>
+  </choice>
+  <thought>Eu vim aqui...</thought>
+
+  <do when="a">
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Contra os monstros, você quer dizer?</voice>
+    <voice>Foi nessa época que você veio, não foi? Quando os portais dimensionais surgiram?</voice>
+    <narration>Você suspira novamente e olha para o céu.</narration>
+    <protagonist />
+    <voice>Estamos bem no centro da província. Esta foi a região mais afetada pelos ataques.</voice>
+    <voice>Vim para cá em busca de ação. Sou uma guerreira, vivo para lutar.</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Nesse caso, imagino que tenha se divertido muito naquela época...</voice>
+    <emotion>normal</emotion>
+    <voice>Pelo menos até os portais pararem de se abrir.</voice>
+    <protagonist />
+    <voice>Sim.</voice>
+    <person>linete</person>
+    <voice>Mas então você resolveu ficar. Quero dizer, por que você não foi procurar... ação em outro lugar?</voice>
+    <protagonist />
+    <voice>Fiquei aqui porque achei que esse aglomerado de gente no meio do nada pudesse atrair mais confusão.</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Você foi resolvendo as confusões tão rápido que logo elas pararam de acontecer.</voice>
+    <emotion>normal</emotion>
+    <voice>Não sente falta da ação?</voice>
+    <protagonist />
+    <voice>Sim.</voice>
+    <narration>Você desvia o olhar.</narration>
+    <protagonist />
+    <thought>Sinto tanta falta que comecei a procurar outros tipos de... entretenimento.</thought>
+    <thought>Como, por exemplo, me envolver nessa guerra civil.</thought>
+    <emotion>angry</emotion>
+    <reward>+rage</reward>
+    <thought>Mas aí o nó cego do Derione tinha que aparecer de novo.</thought>
+    <thought>Será que ele não tem mais o que fazer além de ficar se metendo em minha vida?</thought>
+  </do>
+
+  <do when="b">
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Como assim?</voice>
+    <narration>Você dá de ombros.</narration>
+    <protagonist />
+    <voice>Eu morei em um monte de lugares, às vezes com famílias, às vezes sozinha.</voice>
+    <voice>Depois que meus pais morreram, nunca tive um lugar para chamar de lar.</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Deve ter sido difícil, não? Quero dizer, você sendo descendente do povo das montanhas e tal...</voice>
+    <narration>Você dá de ombros, novamente.</narration>
+    <protagonist />
+    <voice>Eu sempre era obrigada a ir embora depois de um tempo.</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Por quê?</voice>
+    <protagonist />
+    <voice>Ou as pessoas descobriam quem eu era ou eu... arrumava confusão.</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Bom, pode ter certeza de que, aqui, ninguém liga para quem eram seus pais!</voice>
+    <voice>Todos nós gostamos de você do jeito que é!</voice>
+    <protagonist />
+    <reward>+hope</reward>
+    <thought>Talvez, desde que eu continue os protegendo e providenciando comida.</thought>
+  </do>
+
+  <do when="c">
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Respostas?</voice>
+    <narration>Você dá de ombros.</narration>
+    <protagonist />
+    <voice>A vida aqui é difícil e perigosa.</voice>
+    <voice>Eu gosto disso, porque desde criança a febre da batalha me compele a buscar ação.</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>E nunca encontrou uma luta que não pudesse vencer?</voice>
+    <protagonist />
+    <voice>Não. Pelo menos não até chegar aqui.</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Então você decidiu vir para cá para desafiar a si mesma, para testar seus limites?</voice>
+    <protagonist />
+    <reward>+fight</reward>
+    <voice>Sim.</voice>
+    <emotion>angry</emotion>
+    <voice>E tentar descobrir o quão diferente de meus pais eu sou.</voice>
+    <thought>E por quê.</thought>
+  </do>
+
+  <person>linete</person>
+  <emotion>happy</emotion>
+  <voice>...</voice>
+  <voice>Foi muito bom conversar com você Sulana!</voice>
+  <voice>Você é minha heroína!</voice>
+  <protagonist />
+  <voice>...</voice>
+  <person>linete</person>
+  <emotion>normal</emotion>
+  <voice>Que tal vermos o que o velho Riodes fez para o desjejum?</voice>
+
+  <narration>Vocês se dirigem para a construção maior.</narration>
+  <narration>Exceto pela tagarelice de Linete, o lugar estava calmo.</narration>
+  <narration>A maioria dos habitantes do abrigo devia ainda estar dormindo.</narration>
+  <narration>Linete seguia atrás de você devagar, manejando as muletas com cuidado por entre as ervas daninhas.</narration>
+  <protagonist />
+  <choice>
+    <b>Não falar nada e poupar meus ouvidos de mais falatório.</b>
+    <a when="sulana_hope[6:]" req="Esperança +6">Perguntar sobre o ferimento dela.</a>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <narration>Você pára a um passo da porta da cozinha e se volta para ela.</narration>
+    <protagonist />
+    <trophy>compassionate</trophy>
+    <voice>Como está seu pé?</voice>
+    <person>linete</person>
+    <voice>Como sempre.</voice>
+    <emotion>surprised</emotion>
+    <voice>Dá para acreditar que eu quase perdi uma perna por causa de um arranhão?</voice>
+    <protagonist />
+    <voice>Achei que sua perna quase tinha sido devorada por um troll.</voice>
+    <person>linete</person>
+    <emotion>angry</emotion>
+    <voice>Sim, mas eu escapei do bicho.</voice>
+    <emotion>sad</emotion>
+    <voice>Só que, enquanto fugia, eu tropecei num espinheiro.</voice>
+    <emotion>surprised</emotion>
+    <voice>Dá para acreditar que um arranhãozinho poderia deixar alguém assim?</voice>
+    <protagonist />
+    <voice>...</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Se aquilo acontecesse hoje, não teria problema nenhum, pois vocês todos estariam aqui para me ajudar.</voice>
+    <emotion>surprised</emotion>
+    <voice>Mas, na época, eu estava sozinha.</voice>
+    <emotion>sad</emotion>
+    <voice>E agora, meu pé vai ficar assim para sempre!</voice>
+    <protagonist />
+    <voice>Tudo bem, Linete, calma.</voice>
+    <voice>Vamos procurar algo para comer, está bem?</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Você é a minha pessoa favorita no mundo inteiro!</voice>
+    <protagonist />
+    <reward>+hope</reward>
+    <voice>...</voice>
+    <narration>Você solta um suspiro exasperado e se vira para a construção, escancarando a porta.</narration>
+  </do>
+
+  <narration when="b">Chegando até a construção onde ficava a cozinha e o refeitório, você não se faz de rogada e vai logo escancarando a porta.</narration>
+
+  <music>never-look-back</music>
+  <background>shelter_kitchen</background>
+
+  <protagonist />
+  <voice>Bom dia, Riodes.</voice>
+  <narration>O velho senhor de barba branca e cara amarrada a olha por sobre o ombro enquanto mexe algo num grande caldeirão ao fogo.</narration>
+  <person>riodes</person>
+  <voice>Sulana.</voice>
+  <voice>Chegou bem na hora, estou precisando de lenha.</voice>
+  <protagonist />
+  <choice>
+    <a>Atender ao pedido sem dizer nada.</a>
+    <b>Perguntar se não tem algo para comer primeiro.</b>
+    <c>Me sentir insultada.</c>
+  </choice>
+  <thought>Eu vou...</thought>
+
+  <do when="a">
+    <person>linete</person>
+    <emotion>angry</emotion>
+    <voice>Puxa, Riodes! Está cada vez mais ranzinza! Nem para retribuir um “bom dia”?</voice>
+    <narration>Você agarra um velho machado que estava pendurado na parede e era tão velho e tinha sido afiado tantas vezes que a lâmina devia estar com menos da metade do tamanho original.</narration>
+    <protagonist />
+    <voice>...</voice>
+    <person>riodes</person>
+    <emotion>angry</emotion>
+    <voice>Não estou aqui para bater papo ou fazer amigos, Linete.</voice>
+    <narration>Ele aponta para você.</narration>
+    <person>riodes</person>
+    <voice>E nem ela.</voice>
+    <protagonist />
+    <voice>Já volto.</voice>
+  </do>
+
+  <do when="b">
+    <voice>Tem algo para mastigar por aí?</voice>
+    <narration>Riodes pega um pedaço de pão de um cesto ao lado do fogão e arremessa na sua direção.</narration>
+    <narration>Você o agarra no ar e dá uma satisfatória mordida, antes de pegar um velho machado que estava pendurado na parede.</narration>
+    <narration>Enquanto se dirige para a porta, ouve a reclamação de Linete.</narration>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Vocês dois poderiam ter um pouco mais de modos!</voice>
+    <emotion>normal</emotion>
+    <voice>Sabe como é... se cumprimentarem direito e terem uma conversa civilizada antes de saírem exigindo coisas um do outro.</voice>
+    <person>riodes</person>
+    <voice>Bah! Isso é perda de tempo.</voice>
+  </do>
+
+  <do when="a,b">
+    <background>shelter</background>
+
+    <narration>Você se dirige à pilha de madeira que havia trazido e serrado em pequenas toras, dias atrás.</narration>
+    <protagonist />
+    <reward>+fight</reward>
+    <thought>Hummm... a madeira está acabando. Talvez seja hora de providenciar mais.</thought>
+    <thought>Aquele carvalho gigante que derrubei mês passado já deve estar seco o suficiente para a madeira ficar um pouco mais leve.</thought>
+    <narration>Quando não estava sob o efeito da febre, você não era muito mais forte que uma pessoa normal e tinha muitas limitações, o que, às vezes, era frustrante.</narration>
+    <protagonist />
+    <thought>Com a febre, eu poderia rachar essas toras com as mãos nuas.</thought>
+    <thought>Mas suponho que seja melhor ser uma fracote de vez em quando do que uma monstrenga truculenta incontrolável o tempo todo.</thought>
+    <narration>Depois de passar algum tempo trabalhando com o machado, você recolhe um razoável volume da lenha que tinha rachado e volta para o refeitório.</narration>
+
+    <background>shelter_kitchen</background>
+
+    <narration>Você empilha a lenha próximo ao fogão.</narration>
+    <narration>Riodes, como sempre, não fez nenhum comentário ou gesto de agradecimento. Ao invés disso, pergunta:</narration>
+    <person>riodes</person>
+    <voice>Como está a guerra?</voice>
+    <narration>Você se senta à mesa ao lado de Linete, que está mastigando um pedaço de pão enquanto canta baixinho uma melodia antiga, ignorando completamente o que se passa ao seu redor.</narration>
+  </do>
+
+  <do when="c">
+    <narration>Você encara o velho.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+rage</reward>
+    <voice>...</voice>
+    <narration>Ele a encara de volta por um instante mas, por fim, desiste e balança a cabeça.</narration>
+    <person>riodes</person>
+    <emotion>angry</emotion>
+    <voice>Esqueça! Depois que aqueles energúmenos acordarem, eu peço para algum deles.</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Misericórdia! O que há com vocês dois hoje?</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Por quê? Não somos sempre assim?</voice>
+    <person>linete</person>
+    <voice>Sim, mas olha que manhã mais linda lá fora!</voice>
+    <emotion>surprised</emotion>
+    <voice>Não acham que é um dia perfeito para sorrir, cantar e espalhar o amor pelos quatro cantos do mundo?</voice>
+    <protagonist />
+    <voice>...</voice>
+    <person>riodes</person>
+    <voice>...</voice>
+    <protagonist />
+    <voice>Imagino que, se alguém entende desse assunto, Linete, é você.</voice>
+    <person>riodes</person>
+    <voice>Não dê trela para ela, Sulana, senão não vamos ter silêncio ou sossego a manhã toda.</voice>
+    <person>linete</person>
+    <emotion>angry</emotion>
+    <voice>Ei!</voice>
+    <narration>Você pega um pedaço de pão do cesto que Riodes coloca sobre a mesa e se senta ao lado de Linete, mastigando, satisfeita.</narration>
+    <person>riodes</person>
+    <voice>Como está a guerra?</voice>
+  </do>
+
+  <protagonist />
+  <voice>Perdemos Mercília.</voice>
+  <person>riodes</person>
+  <emotion>angry</emotion>
+  <voice>Que filhos de uma nuti!</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Não se preocupe, podemos ter perdido a batalha, mas essa guerra está muito longe de terminar.</voice>
+  <voice>Aquele infeliz ainda vai sentir o gostinho da derrota.</voice>
+  <narration>Linete olha para você, surpresa.</narration>
+  <person>linete</person>
+  <emotion>surprised</emotion>
+  <voice>Qual infeliz?</voice>
+  <narration>Riodes revira os olhos e volta a seus afazeres.</narration>
+  <protagonist />
+  <voice>O General Vermelho, Linete. O líder do exército Carmim.</voice>
+  <person>linete</person>
+  <emotion>surprised</emotion>
+  <voice>Você conhece ele?</voice>
+  <protagonist />
+  <voice>...</voice>
+  <voice>Não pessoalmente.</voice>
+  <person>linete</person>
+  <emotion>surprised</emotion>
+  <voice>Então por que não gosta dele?</voice>
+  <person>riodes</person>
+  <emotion>angry</emotion>
+  <voice>Linete, o general é mau, lembra? Muita gente foi ferida por causa dele.</voice>
+  <voice>Tonien, Irassar, Manesta, todos eles estão aqui hoje porque quase morreram na guerra.</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Sim, decidir a qual lado me juntar foi bastante fácil.</voice>
+  <voice>Aquele tirano não pode vencer.</voice>
+  <person>linete</person>
+  <emotion>sad</emotion>
+  <voice>Não é educado falar mal dos outros pelas costas, vocês sabem.</voice>
+  <narration>Riodes chega a abrir a boca para retrucar, mas acaba decidindo que não valia a pena e apenas balança a cabeça, voltando a encarar você.</narration>
+  <person>riodes</person>
+  <voice>E ainda tem o problema da escravidão. Se ele...</voice>
+  <person>linete</person>
+  <emotion>surprised</emotion>
+  <voice>Escravidão?!</voice>
+  <emotion>angry</emotion>
+  <voice>Escravidão é proibida no mundo todo há séculos!</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Sim, Linete, mas aquele homem a pratica sem arrependimentos.</voice>
+  <voice>Mais de uma vez tive que lutar contra antigos companheiros, que tinham sido capturados e escravizados.</voice>
+  <voice>Um dia desses ainda vou encarar esse general frente a frente.</voice>
+  <narration>Você bate o punho de uma mão contra a palma da outra.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>E vou colocar o miserável no seu devido lugar.</voice>
+  <person>riodes</person>
+  <voice>Não alimente esperanças.</voice>
+  <emotion>angry</emotion>
+  <voice>Guerras são criadas por homens que ficam protegidos atrás de suas mesas e nunca pisam no campo de batalha.</voice>
+
+  <viewpoint>belisar</viewpoint>
+  <music>goodbye</music>
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <background>palace_bedroom</background>
+  <narration>Como sabia que aconteceria, você passou boa parte da noite acordado, acariciando os cabelos de Zelmira, enquanto ela dormia profundamente.</narration>
+  <narration>Considerando todas as coisas ruins que você fez para ela, não deixava de ser uma enorme ironia o fato de que tocá-la desta forma consiga lhe acalmar.</narration>
+  <narration>Você imagina que isso se deva à rotina, afinal, estão casados há mais de treze anos.</narration>
+  <narration>De qualquer forma, o calor e a proximidade dela acabaram por levá-lo a esquecer seus demônios internos por tempo suficiente para voltar a pegar no sono.</narration>
+  <narration>O sol ainda não tinha nascido quando a porta do quarto foi escancarada.</narration>
+
+  <music>free-mind</music>
+
+  <person>sagante</person>
+  <emotion>happy</emotion>
+  <voice>Bom dia!</voice>
+  <person>venega</person>
+  <emotion>happy</emotion>
+  <voice>Hora de acordar!</voice>
+  <narration>Você abre um dos olhos e encara a garotinha risonha que pára bem na sua frente, fitando-o com expectativa.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <voice>Mas já?</voice>
+  <narration>Enquanto isso, o garotinho, que havia corrido para o outro lado da cama, é envolvido num abraço apertado por Zelmira.</narration>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Que foi, seus danadinhos? Por que acordaram tão cedo?</voice>
+  <person>venega</person>
+  <emotion>happy</emotion>
+  <voice>Queremos treinar com o papai!</voice>
+  <person>zelmira</person>
+  <emotion>sad</emotion>
+  <voice>Mas o papai está cansado, meus queridos. Ele trabalhou até muito tarde ontem.</voice>
+  <person>venega</person>
+  <emotion>sad</emotion>
+  <voice>Aaaahhhhhhh!</voice>
+  <person>sagante</person>
+  <emotion>sad</emotion>
+  <voice>Mas ele prometeu!</voice>
+  <narration>Você lança um longo olhar a seus filhos.</narration>
+  <protagonist />
+  <choice>
+    <a>Acho que posso arrumar um tempinho.</a>
+    <b>Quando foi que eu fiz essa promessa?</b>
+    <c>Andaram se comportando?</c>
+  </choice>
+  <voice>...</voice>
+
+  <do when="a">
+    <person>sagante</person>
+    <emotion>happy</emotion>
+    <voice>Ebaaaa!</voice>
+    <person>venega</person>
+    <emotion>happy</emotion>
+    <voice>Legaaaaaaal!</voice>
+    <narration>Você se senta na cama e desarruma o cabelo da menina, afetuosamente.</narration>
+    <protagonist />
+    <voice>Eu vou começar o treinamento com o seu irmão mais velho, mas já que Falcione não está me esperando antes do meio da tarde, acho que dá para praticar bastante com todo mundo.</voice>
+    <person>sagante</person>
+    <emotion>happy</emotion>
+    <voice>Eu vou ser o sargento!</voice>
+    <person>venega</person>
+    <emotion>happy</emotion>
+    <voice>Eu vou ser a tenente!</voice>
+    <narration>Enquanto as crianças riem, excitadas, Zelmira se vira para você, fazendo um biquinho.</narration>
+    <person>zelmira</person>
+    <emotion>sad</emotion>
+    <voice>Já está pensando em correr para a outra?</voice>
+    <person>sagante</person>
+    <emotion>happy</emotion>
+    <voice>Ahahaha! Papai deixou a mamãe com ciúmes!</voice>
+    <person>venega</person>
+    <emotion>happy</emotion>
+    <voice>Agora vai ter que dar um presente!</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Hahahaha! Não se preocupem, eu sempre tenho um presente guardado para emergências.</voice>
+    <narration>Você se vira para Zelmira.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Você está mesmo com ciúmes... de Falcione?</voice>
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <voice>Ela é jovem.</voice>
+    <person>sagante</person>
+    <emotion>surprised</emotion>
+    <voice>Ela não tem um olho!</voice>
+    <person>venega</person>
+    <emotion>surprised</emotion>
+    <voice>Nem cabelo!</voice>
+    <person>sagante</person>
+    <voice>E é feia!</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Ei, nada disso é culpa dela. Não sejam mal-educados.</voice>
+    <person>sagante</person>
+    <emotion>surprised</emotion>
+    <voice>Não quis dizer que ela é feia.</voice>
+    <voice>Só que a mamãe é mais bonita.</voice>
+    <person>venega</person>
+    <emotion>happy</emotion>
+    <voice>Isso mesmo! A mamãe é muuuuuuuuuuuito mais bonita!</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Hahahahaha!</voice>
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <reward>relationship+2</reward>
+    <voice>Ahhhhh! Seus fofos!</voice>
+  </do>
+
+  <do when="b">
+    <person>sagante</person>
+    <emotion>surprised</emotion>
+    <voice>Antes de viajar, o senhor não lembra?</voice>
+    <person>venega</person>
+    <emotion>surprised</emotion>
+    <voice>Papai, o senhor bateu a cabeça?</voice>
+    <emotion>happy</emotion>
+    <voice>A mamãe disse que as pessoas esquecem as coisas quando batem a cabeça.</voice>
+    <protagonist />
+    <voice>Minha cabeça está muito bem, obrigado.</voice>
+    <emotion>happy</emotion>
+    <voice>E eu lembro muito bem de ter prometido isso, mas não para vocês dois.</voice>
+    <person>venega</person>
+    <emotion>surprised</emotion>
+    <voice>O quêêê?!</voice>
+    <person>sagante</person>
+    <emotion>sad</emotion>
+    <voice>Ahhhhh, pai!!</voice>
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>Vocês não acham que são jovens demais para querer aprender a lutar, seus fofinhos?</voice>
+    <protagonist />
+    <voice>Prometi ensinar seu irmão mais velho para que ele possa ficar de olho em vocês dois.</voice>
+    <narration>As duas crianças fazem biquinho.</narration>
+    <protagonist />
+    <emotion>happy</emotion>
+    <reward>+control</reward>
+    <voice>Vamos fazer assim: eu deixo vocês assistirem enquanto ensino ele, tudo bem?</voice>
+    <person>venega</person>
+    <emotion>happy</emotion>
+    <voice>Êêêêêêê!!</voice>
+    <person>sagante</person>
+    <emotion>happy</emotion>
+    <voice>Ebaaaaa!!</voice>
+  </do>
+
+  <do when="c">
+    <narration>Os dois pequenos olham um para o outro, com expressão preocupada.</narration>
+    <person>zelmira</person>
+    <voice>Que olhar é esse? O que vocês dois andaram aprontando?</voice>
+    <person>venega</person>
+    <emotion>surprised</emotion>
+    <voice>Nada!</voice>
+    <person>sagante</person>
+    <emotion>sad</emotion>
+    <voice>...</voice>
+    <protagonist />
+    <voice>Certo, agora tenho certeza de que fizeram alguma travessura.</voice>
+    <voice>Sabem que nós vamos descobrir de qualquer jeito.</voice>
+    <emotion>angry</emotion>
+    <voice>E também sabem que é muito melhor quando vocês nos contam antes.</voice>
+    <emotion>normal</emotion>
+    <voice>Agora, quem vai me dizer o que houve?</voice>
+    <narration>Os dois abaixam a cabeça, envergonhados.</narration>
+    <person>venega</person>
+    <emotion>sad</emotion>
+    <voice>...</voice>
+    <person>zelmira</person>
+    <voice>Vamos lá!</voice>
+    <person>sagante</person>
+    <emotion>sad</emotion>
+    <voice>O Predador foi embora...</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>O falcão velho que dorme na torre norte?</voice>
+    <person>zelmira</person>
+    <emotion>surprised</emotion>
+    <voice>O que vocês fizeram com ele?</voice>
+    <person>sagante</person>
+    <emotion>sad</emotion>
+    <voice>Nós fomos dar um pedaço de carne para ele.</voice>
+    <person>venega</person>
+    <emotion>surprised</emotion>
+    <voice>Ele estava tristinho, a corrente estava machucando a perna dele!</voice>
+    <person>zelmira</person>
+    <emotion>surprised</emotion>
+    <voice>Vocês soltaram o bichinho?!</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>control+2</reward>
+    <voice>Espere aí, quem deixou vocês subirem na torre?!</voice>
+    <narration>Muitas explicações e um longo sermão depois...</narration>
+  </do>
+
+  <music>never-look-back</music>
+  <background>palace_diningroom</background>
+
+  <narration>Algum tempo depois, você e Zelmira descem para tomar o desjejum.</narration>
+
+  <protagonist />
+  <voice>Não acredito naqueles dois!</voice>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Eles são adoráveis, não são?</voice>
+  <protagonist />
+  <emotion>sad</emotion>
+  <voice>Acho que o único arrependimento que vou levar para o túmulo será o de não ter a oportunidade de ver os dois crescerem, se tornarem adultos, se casarem e terem seus próprios filhos.</voice>
+  <person>zelmira</person>
+  <emotion>surprised</emotion>
+  <voice>Marcelius!</voice>
+  <emotion>angry</emotion>
+  <voice>Não quero mais ouvir nenhuma palavra sobre isso!</voice>
+  <narration>Você solta um suspiro.</narration>
+  <protagonist />
+  <voice>...</voice>
+  <voice>Bom, independente do que aconteça, estou feliz por termos os dois.</voice>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Se você está feliz, então todo o esforço valeu a pena!</voice>
+  <narration>Realmente, eram crianças adoráveis. Sagante tinha oito anos de idade e a pequena Vênega tinha sete.</narration>
+  <narration>Foram as gravidezes mais difíceis de Zelmira. Não que alguma delas tivesse sido fácil, muito pelo contrário.</narration>
+  <narration>Você tinha ficado, de certa forma, aliviado ao saber que ela havia perdido completamente a capacidade de engravidar depois que a menina precisou ser extraída, felizmente viva, através de um corte em sua barriga.</narration>
+  <narration>Vê-la passar por todo o sofrimento que era gerar um filho dentro de si e depois perdê-lo, como havia acontecido nada menos do que seis vezes, tinha sido uma tortura.</narration>
+  <narration>Apenas três de seus filhos sobreviveram à gravidez e o parto.</narration>
+  <narration>O mais velho entrava na sala neste momento, parecendo animado.</narration>
+  <person>baliorge</person>
+  <emotion>happy</emotion>
+  <voice>Bom dia!</voice>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Bom dia, querido.</voice>
+  <narration>Zelmira se aproxima para dar um beijo no rosto do filho.</narration>
+  <protagonist />
+  <voice>Bom ver você se juntando a nós tão cedo.</voice>
+  <voice>E, falando em cedo, olha só quem resolveu se apressar hoje também.</voice>
+  <person>sagante</person>
+  <emotion>happy</emotion>
+  <voice>Bom dia!</voice>
+  <person>venega</person>
+  <emotion>happy</emotion>
+  <voice>Diiiiiiaaaa!</voice>
+  <person>zelmira</person>
+  <emotion>surprised</emotion>
+  <voice>Nem lembro a última vez que se arrumaram e desceram tão rápido.</voice>
+  <narration>Ela olha para o filho mais velho, que está se acomodando à mesa.</narration>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Sabia que aqueles dois ali resolveram fazer um ataque surpresa para nos tirar da cama?</voice>
+  <protagonist />
+  <voice>Claro que sabia.</voice>
+  <emotion>happy</emotion>
+  <voice>Provavelmente ele é quem foi o autor do plano.</voice>
+  <narration>Baliorge Belísar subitamente ficou muito interessado em um detalhe da toalha.</narration>
+  <narration>Zelmira olhou para os dois pequenos.</narration>
+  <person>zelmira</person>
+  <emotion>surprised</emotion>
+  <voice>É verdade isso?</voice>
+  <person>venegasagante</person>
+  <emotion>happy</emotion>
+  <voice>Siiiiimmmmmm!!</voice>
+  <narration>Você olha para Baliorge. O rapaz parece bastante ansioso para o treinamento de combate que você vem prometendo a ele há semanas.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <choice>
+    <a>E por que não se juntou à sua tropa?</a>
+    <b>Está com pressa para tomar a maior surra da sua vida?</b>
+    <c>Temos um trio de conspiradores dentro de nossa própria casa?!</c>
+  </choice>
+  <voice>Quem diria...</voice>
+
+  <do when="a">
+    <person>baliorge</person>
+    <emotion>angry</emotion>
+    <voice>Ah, pai! Eu já tenho 15 anos!</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Se quiser ser um bom líder, garoto, é bom aprender desde cedo que nunca deve delegar a seus subordinados tarefas que você mesmo não esteja disposto a realizar.</voice>
+    <person>baliorge</person>
+    <emotion>surprised</emotion>
+    <voice>Ah, mas o senhor vive dizendo que um governante não faz nada sozinho e precisa delegar coisas para os outros!</voice>
+    <protagonist />
+    <voice>Sim, mas eu mando meus soldados fazerem apenas as tarefas que eu mesmo não me importaria em fazer.</voice>
+    <narration>Por um momento, você se recorda da expressão amedrontada daqueles invasores na caverna.</narration>
+    <protagonist />
+    <emotion>sad</emotion>
+    <reward>+fight</reward>
+    <voice>Aquelas que eu não gosto, eu não delego a ninguém, prefiro fazer eu mesmo.</voice>
+    <emotion>normal</emotion>
+    <voice>E, se ver que eu não posso dar conta sozinho, eu tomo a dianteira e apenas peço para meus soldados me darem apoio.</voice>
+  </do>
+
+  <do when="b">
+    <person>baliorge</person>
+    <emotion>happy</emotion>
+    <voice>Eu faço exercícios todo dia, sou muito mais forte do que pareço!</voice>
+    <person>zelmira</person>
+    <emotion>surprised</emotion>
+    <voice>Vão com calma, por favor! Não vão se machucar!</voice>
+    <person>sagante</person>
+    <emotion>happy</emotion>
+    <voice>Não se preocupe, mamãe!</voice>
+    <person>venega</person>
+    <voice>É! Nós vamos ter cuidado!</voice>
+    <person>zelmira</person>
+    <emotion>angry</emotion>
+    <voice>Como se desse para acreditar nisso!</voice>
+    <emotion>surprised</emotion>
+    <voice>Vocês dois nem deveriam participar dessas coisas...</voice>
+    <protagonist />
+    <emotion>sad</emotion>
+    <voice>Eu serei obrigado a pegar leve hoje, pois não estou na minha melhor forma.</voice>
+    <emotion>normal</emotion>
+    <reward>+power</reward>
+    <voice>Então aproveitem bem e aprendam, porque quando eu recarregar minhas forças, não vou pegar leve com nenhum dos três!</voice>
+  </do>
+
+  <do when="c">
+    <person>baliorge</person>
+    <emotion>surprised</emotion>
+    <voice>Eu só falei pra eles que eu ia treinar com o senhor agora cedo!</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Tudo bem, mas você disse isso a eles quando, exatamente?</voice>
+    <person>venegasagante</person>
+    <emotion>happy</emotion>
+    <voice>Hojeee!!</voice>
+    <person>baliorge</person>
+    <emotion>angry</emotion>
+    <voice>Seus traidorezinhos de uma figa!</voice>
+    <person>zelmira</person>
+    <emotion>angry</emotion>
+    <voice>Olha a linguagem, rapazinho!</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Talvez já esteja na hora de você enfrentar sozinho suas batalhas ao invés de mandar seus irmãos fazerem isso por você.</voice>
+    <person>baliorge</person>
+    <emotion>surprised</emotion>
+    <voice>Mas eu não queria... quer dizer, vocês não ficam bravos quando eles entram em seu quarto...</voice>
+    <protagonist />
+    <voice>O que aconteceu hoje não tem importância.</voice>
+    <voice>Mas você já está amadurecendo, precisa desenvolver sua responsabilidade.</voice>
+    <reward>+control</reward>
+    <voice>Não se esqueça que eu sempre vou contar com você para proteger sua mãe e seus irmãos quando eu não estiver por perto.</voice>
+    <person>baliorge</person>
+    <emotion>happy</emotion>
+    <voice>Sim, senhor!</voice>
+  </do>
+
+  <person>zelmira</person>
+  <voice>Muito bem, agora vamos comer.</voice>
+  <voice>Se vocês três querem tanto se divertir junto com seu pai, quero que pelo menos estejam muito bem alimentados, ouviram?</voice>
+
+  <music>goodbye</music>
+  <background>palace_cortyard</background>
+
+  <narration>Você passa a maior parte do dia treinando artes marciais com seus filhos.</narration>
+  <narration>Talvez aquilo fosse uma bênção, mas o fato é que nenhum dos três parecia ter herdado suas afinidades místicas.</narration>
+  <narration>De qualquer forma, eram muito fortes, rápidos e inteligentes, além de cheios de energia e animação.</narration>
+  <narration>Treiná-los em combate era uma tarefa bastante gratificante, pois aprendiam rápido e gostavam de praticar.</narration>
+  <narration>Infelizmente, você não tinha mais todo o tempo livre de que gostaria.</narration>
+  <narration>Desde que começara sua cruzada para dominar a província, eram muito raros esses dias em que podia passar uma manhã ou uma tarde inteira com eles, avaliando seus progressos, vendo-os rir e se divertir.</narration>
+  <protagonist />
+  <voice>Eu tenho que ir agora. Crianças, se comportem, hein?</voice>
+  <person>venegasagante</person>
+  <emotion>happy</emotion>
+  <voice>Tchau, papai!!</voice>
+  <narration>Por um momento, você olha para aqueles rostinhos cansados.</narration>
+  <protagonist />
+  <thought>...</thought>
+  <thought>Esta, provavelmente, é a única parte de minha vida que eu teria dificuldade em abrir mão, caso houvesse a possibilidade de mudar o passado.</thought>
+  <emotion>angry</emotion>
+  <thought>Quase tudo em minha existência está viciado, contaminado por meus erros de tal forma que eu abriria mão sem pensar duas vezes.</thought>
+  <emotion>happy</emotion>
+  <thought>Mas não eles. Eles são perfeitos.</thought>
+  <person>baliorge</person>
+  <emotion>happy</emotion>
+  <voice>Boa sorte!</voice>
+  <protagonist />
+  <thought>Olhe para ele. Tão inocente, tão... puro.</thought>
+  <emotion>happy</emotion>
+  <thought>Talvez eu sirva para alguma coisa além de lutar, afinal.</thought>
+  <narration>Uma onda agradável de calor percorre seu peito ao chegar àquela conclusão.</narration>
+  <narration>Ironicamente, aquilo também lhe trouxe uma ponta de tristeza.</narration>
+  <protagonist />
+  <emotion>sad</emotion>
+  <thought>Se eu tivesse uma revelação como esta durante minha juventude, as coisas hoje seriam diferentes.</thought>
+  <emotion>angry</emotion>
+  <thought>Muito diferentes.</thought>
+  <narration>Você coloca aqueles pensamentos de lado e corre os olhos mais uma vez pela praça.</narration>
+  <narration>A maioria das pessoas que trabalhavam e moravam no palácio observava de longe, fazendo uma espécie de círculo ao redor do grande pátio, como um comitê de despedida improvisado.</narration>
+  <narration>Os que não estavam por ali apareciam nas janelas, como se o fato de você estar partindo fosse algum tipo de espetáculo, algo tão interessante que não podiam perder de jeito nenhum.</narration>
+  <narration>Você não gosta muito desse tipo de atenção, mas as pessoas pareciam se sentir bem tratando-o daquela forma, como se fosse uma celebridade, um imperador ou um rei.</narration>
+  <narration>Você não se considerava nada daquilo, mas se o povo estava feliz pensando assim, então, que fosse.</narration>
+  <protagonist />
+  <choice>
+    <a>Acenar para minha família.</a>
+    <b when="belisar_fight[5:]" req="Coragem +5">Soltar um grito de guerra.</b>
+    <c when="belisar_control[5:]" req="Controle +5">Prestar continência.</c>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <narration>Você força um sorriso no rosto enquanto acena para sua família, num último gesto de despedida.</narration>
+    <person>zelmira</person>
+    <emotion>surprised</emotion>
+    <voice>Tenha cuidado!</voice>
+    <emotion>happy</emotion>
+    <voice>Estaremos aqui esperando sua volta e torcendo por você!</voice>
+    <narration>Você lança um último sorriso à sua esposa.</narration>
+    <narration>Não havia sentido em refletir sobre coisas que não podia mudar.</narration>
+    <narration>Agora tinha trabalho a fazer. Era hora de Marcelius mais uma vez dar lugar a Belísar, o General Vermelho.</narration>
+  </do>
+
+  <do when="b">
+    <narration>Você levanta os dois braços e solta o grito de guerra padrão do Exército Vermelho.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Por Ebora!</voice>
+    <narration>Todos os presentes imediatamente imitam você e gritam também.</narration>
+    <person>zelmira</person>
+    <voice>Por Ebora!</voice>
+    <person>venegasagante</person>
+    <emotion>happy</emotion>
+    <voice>Por Ebora!</voice>
+    <person>baliorge</person>
+    <emotion>angry</emotion>
+    <voice>Por Ebora!</voice>
+    <narration>As pessoas começam a gritar e assobiar, em uma grande ovação. Você bate palmas junto com eles.</narration>
+    <protagonist />
+    <emotion>happy</emotion>
+    <trophy>inspirer</trophy>
+    <thought>Esse sorriso no rosto das pessoas não tem preço. Vale a pena qualquer sacrifício.</thought>
+  </do>
+
+  <do when="c">
+    <narration>Você leva a mão à têmpora, em um gesto de continência.</narration>
+    <narration>A multidão imediatamente fica em silêncio e retribui o gesto militar.</narration>
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <voice>...</voice>
+    <person>venegasagante</person>
+    <emotion>happy</emotion>
+    <voice>...</voice>
+    <person>baliorge</person>
+    <emotion>angry</emotion>
+    <voice>...</voice>
+    <narration>Aquele era um gesto simples, mas que representava tantas coisas. União, respeito, camaradagem.</narration>
+    <narration>Tudo o que seu povo mais precisa nesse momento tão complicado de sua história.</narration>
+    <narration>Você baixa a mão e olha para a expressão solene daquelas pessoas.</narration>
+    <protagonist />
+    <trophy>inspirer</trophy>
+    <thought>Não se preocupem, amigos, nós triunfaremos.</thought>
+  </do>
+  
+  <music>crime-fighter</music>
+
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Você olha ao redor, assegurando-se de que não tenha ninguém muito próximo.</narration>
+  <narration>Fechando os punhos, você sente os estabilizadores em seus cotovelos e joelhos pulsarem conforme a energia era acumulada.</narration>
+  <narration>Logo, pequenas descargas elétricas começam a percorrer toda a extensão de seu uniforme, algumas delas atingindo o chão, enquanto você começa a levitar, subindo devagar, a princípio, mas ganhando velocidade aos poucos, enquanto uma aura azulada similar a uma chama o envolve, até que em poucos instantes apenas a silhueta de seu corpo podia ser avistada através das energias místicas.</narration>
+  <narration>Você lança um último olhar à sua família e aos seus fiéis súditos antes de completar o processo de ignição e se lançar pelo ar, com incomparável velocidade, cruzando os céus da província.</narration>
+
+  <viewpoint>sulana</viewpoint>
+  <music>never-look-back</music>
+  <background>sulana</background>
+  <tutorial>Você agora está controlando Sulana Lautine</tutorial>
+
+  <background>shelter</background>
+  <person>riodes</person>
+  <emotion>angry</emotion>
+  <voice>Sulana, já não era sem tempo! Onde você estava?</voice>
+  <narration>Você limpa o suor da testa e encara o velho com irritação.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <choice>
+    <a>Evitando que os animais morram de fome.</a>
+    <b>Tirando uma soneca.</b>
+  </choice>
+  <voice>...</voice>
+
+  <do when="a">
+    <person>riodes</person>
+    <emotion>angry</emotion>
+    <voice>...</voice>
+    <voice>E você quer o quê? Um prêmio? Por fazer sua obrigação?</voice>
+    <narration>Aquilo não fazia nenhum sentido e ambos sabiam disso, já que você era voluntária ali e não recebia absolutamente nada por aquele trabalho, bem como Riodes.</narration>
+    <narration>Você leva as mãos à cintura e franze o cenho.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>O que quer?</voice>
+    <person>riodes</person>
+    <reward>+relationship</reward>
+    <voice>Temos que consertar a goteira do alojamento das crianças.</voice>
+    <voice>Veja se encontra algo que preste na pilha de sapê para colocar no lugar da palha podre.</voice>
+    <narration>Você lança um olhar para o telhado da construção em questão, notando a mancha escura no lugar onde uma depressão havia se formado e a água se acumulava sempre que chovia.</narration>
+    <protagonist />
+    <voice>...</voice>
+    <person>riodes</person>
+    <voice>O que foi?</voice>
+    <emotion>surprised</emotion>
+    <voice>Vai dizer que já está cansada? Ainda não é nem meio dia.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Estou cansada é desse seu falatório.</voice>
+    <emotion>normal</emotion>
+    <voice>Este lugar está um tédio.</voice>
+    <person>riodes</person>
+    <voice>...</voice>
+    <voice>Por que não vai no vale depois de consertar o telhado? Precisamos de mais sapê.</voice>
+    <narration>Você imediatamente se sente mais animada ante à perspectiva de um longo passeio pela floresta.</narration>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Pode ser.</voice>
+    <narration>Você começa a se afastar para pôr as mãos à obra, quase não ouvindo o resmungo baixinho dele.</narration>
+    <person>riodes</person>
+    <voice>Só você mesma para ficar alegre ao pensar em pôr os pés naquele lugar...</voice>
+  </do>
+
+  <do when="b">
+    <person>riodes</person>
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <narration>Ele a olha de cima a baixo, notando o suor e a sujeira gerados pelo trabalho duro que andou executando durante toda a manhã.</narration>
+    <person>riodes</person>
+    <voice>Se você diz...</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+rage</reward>
+    <voice>O que quer?</voice>
+    <person>riodes</person>
+    <voice>...</voice>
+    <voice>Vá comer alguma coisa. Se quiser se lavar, pode pegar uns trapos na lavanderia, acabei de recolher as roupas do varal.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>O que há com você? Por que essa gentileza toda, de repente?</voice>
+    <person>riodes</person>
+    <voice>Porque, quando você começa a usar ironia, significa que está muito entediada ou aborrecida.</voice>
+    <voice>Geralmente você fica calma por semanas depois de uma batalha.</voice>
+    <protagonist />
+    <voice>Essa última foi meio... frustrante.</voice>
+    <person>riodes</person>
+    <voice>Tem guisado na cozinha.</voice>
+    <voice>E estamos precisando de mais sapê para consertar os telhados.</voice>
+    <narration>Imediatamente você se anima ante à perspectiva de um passeio pela floresta.</narration>
+    <protagonist />
+    <voice>Tudo bem, depois eu vou buscar mais.</voice>
+  </do>
+
+  <music>open-sky</music>
+  <background>forest2</background>
+
+  <narration>Uma hora depois, você está andando pela parte da floresta que todos costumam evitar.</narration>
+  <narration>Não que existam muitas pessoas nessa região que tenham vontade ou capacidade para isso.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <thought>Parece que faz anos desde que vim aqui pela última vez.</thought>
+  <thought>Estava mesmo precisando disso.</thought>
+
+  <music>enigma</music>
+
+  <emotion>surprised</emotion>
+  <thought>...?!</thought>
+  <narration>De repente, as árvores ficam silenciosas.</narration>
+  <narration>Você pode sentir uma presença próxima. Algo grande, forte, perigoso.</narration>
+  <protagonist />
+  <thought>Um predador.</thought>
+  <emotion>happy</emotion>
+  <thought>Bem o que eu estava esperando.</thought>
+  <choice>
+    <a>Ir à caça.</a>
+    <b>Evitar o animal.</b>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <music>crime-fighter</music>
+    <background>forest</background>
+
+    <narration>Você caminha entre as árvores com cuidado, com seus sentidos em alerta.</narration>
+    <narration>Depois de alguns minutos, como você esperava, o predador se convence de que você é um alvo fácil e se revela, pulando das sombras sobre você.</narration>
+    <person>tiger</person>
+    <emotion>angry</emotion>
+    <voice>Graaauuuurrrr!!</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <choice>
+      <a>Esquivar</a>
+      <b>Atacar</b>
+      <c>Bloquear</c>
+    </choice>
+    <thought>Eu irei...</thought>
+
+    <do when="a">
+      <narration>Tendo antecipado o ataque, você se move agilmente para o lado, evitando as garras que passam a poucos centímetos de sua pele.</narration>
+      <protagonist />
+      <emotion>angry</emotion>
+      <reward>+hunt</reward>
+      <voice>Ooaa!</voice>
+    </do>
+
+    <do when="b">
+      <narration>Você desfere um soco na direção da cabeça do animal.</narration>
+      <narration>Infelizmente, não houve tempo suficiente para os efeitos da febre da batalha fortalecerem seu corpo completamente.</narration>
+      <narration>O golpe não sai forte o suficiente para parar o animal, e ele consegue atingí-la com as garras.</narration>
+      <person>tiger</person>
+      <emotion>angry</emotion>
+      <bump />
+      <voice>Grrrr!</voice>
+      <protagonist />
+      <emotion>angry</emotion>
+      <bump />
+      <voice>Ugh!</voice>
+      <narration>Ambos caem rolando pelo chão, num confuso emaranhamento, até que você consegue reunir energia o suficiente para empurrar o animal para longe.</narration>
+      <protagonist />
+      <emotion>angry</emotion>
+      <reward>-hunt</reward>
+      <voice>...</voice>
+    </do>
+
+    <do when="c">
+      <narration>Sentindo a febre da batalha aflorar aos poucos, você consegue se mover com agilidade suficiente para agarrar as patas do animal antes que elas a atinjam.</narration>
+      <narration>Seus pés se afundam no solo enquanto você absorve o impacto e vira o corpo levemente, arremessando o tigre para o lado.</narration>
+      <narration>As costas do animal se chocam com força contra o chão.</narration>
+      <person>tiger</person>
+      <emotion>angry</emotion>
+      <bump />
+      <voice>Grrrr!</voice>
+      <protagonist />
+      <emotion>angry</emotion>
+      <reward>+hunt</reward>
+      <voice>Desculpe o mau jeito!</voice>
+    </do>
+  </do>
+
+  <do when="b">
+    <narration>Você caminha de forma furtiva entre as árvores, tentando colocar distância entre você e a presença que está sentindo.</narration>
+    <narration>A perseguição continua por longos minutos, até ficar óbvio que o predador não está interessado em deixar que você vá embora.</narration>
+
+    <background>forest</background>
+
+    <narration>Da forma mais silenciona que consegue, você se embrenha entre a vegetação do topo de um barranco e aguarda.</narration>
+    <narration>Depois de algum tempo, seu perseguidor aparece na trilha abaixo de você.</narration>
+    <person>tiger</person>
+    <voice>...</voice>
+
+    <music>crime-fighter</music>
+
+    <narration>Aproveitando o elemento surpresa, você sai de seu esconderijo e se lança sobre a fera.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Haaaaaahhhhhh!!</voice>
+    <person>tiger</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Grrrauuu!</voice>
+    <narration>Você consegue atingir a lateral do animal com um golpe de joelho que o faz cair rolando pelo chão.</narration>
+    <protagonist />
+    <emotion>happy</emotion>
+    <reward>+hunt</reward>
+    <voice>Se é briga que está procurando, você encontrou!</voice>
+  </do>
+
+  <narration>O animal se recupera e encara você, soltando um forte rugido.</narration>
+  <person>tiger</person>
+  <emotion>angry</emotion>
+  <voice>Grrrraaaaaaauuuuuuuuurrrrr!!</voice>
+  <narration>Sem se intimidar, você o encara de volta.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Venha me pegar!</voice>
+  <narration>A névoa vermelha da febre de batalha cai sobre seus olhos, ocultando tudo ao seu redor, exceto por seu oponente.</narration>
+  <narration>Focados exclusivamente no animal, seus sentidos conseguem captar uma leve concentração de energia mística se formando nele.</narration>
+  <protagonist />
+  <thought>Como eu imaginava, não é uma criatura normal.</thought>
+  <person>tiger</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Um leve brilho se forma em suas garras enquanto ele se prepara para atacar novamente.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <choice>
+    <a>Atacar as garras</a>
+    <b>Atacar o corpo</b>
+    <c>Esquivar-me</c>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <narration>O tigre salta e você golpeia com toda força na direção das garras que vem em sua direção.</narration>
+    <narration>As energias místicas da febre da batalha se chocam contra as da criatura.</narration>
+    <narration>Ambas são incrivelmente fortes, mas incapazes de sobrepujar uma à outra.</narration>
+    <narration>Como resultado, uma força repulsiva é gerada, jogando vocês dois para bem longe um do outro.</narration>
+    <person>tiger</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Graauuurr!</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <bump />
+    <reward>-hunt</reward>
+    <voice>Uuuuufff!</voice>
+    <narration>Você se coloca em pé novamente e vê que o tigre está levemente atordoado com o choque que recebeu.</narration>
+  </do>
+
+  <do when="b">
+    <narration>Você usa sua incrível velocidade para avançar e, antes que tigre complete o salto, você o atinge com um violento golpe no flanco.</narration>
+    <person>tiger</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Graaarrrggg!</voice>
+    <narration>O animal cai rolando, parecendo sentir muita dor.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+hunt</reward>
+    <thought>Que tal essa?</thought>
+  </do>
+
+  <do when="c">
+    <narration>Você usa sua velocidade misticamente ampliada pela febre para escapar do ataque.</narration>
+    <narration>O animal acaba caindo entre alguns arbustos.</narration>
+    <narration>Confuso, tanto pelo fato de sua presa ter conseguido sair da frente dele como por se ver inesperadamente no meio daqueles ramos, o animal leva algum tempo para se recuperar.</narration>
+    <person>tiger</person>
+    <emotion>surprised</emotion>
+    <voice>Grr...?!</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <reward>+hunt</reward>
+    <voice>Agora eu te peguei!</voice>
+  </do>
+
+  <narration>A confusão de seu oponente lhe dá tempo suficiente para planejar seu próximo movimento.</narration>
+  <protagonist />
+  <choice>
+    <a>Atacar antes que ele se recupere</a>
+    <b>Reunir minhas energias para realizar um ataque fulminante</b>
+    <c>Recuar</c>
+  </choice>
+  <thought>Eu vou...</thought>
+
+  <do when="a">
+    <narration>Você desfere um chute com toda sua força contra o ventre do animal.</narration>
+    <person>tiger</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Grruuuufff!</voice>
+    <do when="sulana_hunt[-2]">
+      <narration>O tigre, no entanto, parece ter conseguido reunir energia mística suficiente para criar uma espécie de escudo rudimentar, que o protege de parte do impacto.</narration>
+      <narration>Ele se levanta e encara você por um instante, antes de dar-lhe as costas e sair correndo por entre os arbustos.</narration>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <voice>...!</voice>
+      <narration>Você começa a se mover para ir atrás dele, mas seu corpo está lento e dolorido devido aos golpes que recebeu.</narration>
+      <protagonist />
+      <emotion>angry</emotion>
+      <voice>Ainda vou te pegar, seu covarde!</voice>
+    </do>
+    <do when="sulana_hunt[0:2]">
+      <narration>O tigre se convulsiona por alguns instantes, dando a você tempo suficiente para se aproximar e golpeá-lo no pescoço, acabando de vez com seu sofrimento.</narration>
+      <protagonist />
+      <set>huntsuccess</set>
+      <trophy when="sulana_hunt[2]">huntress</trophy>
+      <reward>+fight</reward>
+      <voice>Por um momento, você quase conseguiu me deixar preocupada.</voice>
+    </do>
+  </do>
+
+  <do when="b">
+    <narration>A sua visão fica ainda mais avermelhada enquanto você se entrega completamente à febre.</narration>
+    <narration>Os movimentos do tigre agora parecem extremamente lentos em comparação a você.</narration>
+    <narration>Você não consegue discernir muito bem o que a criatura tentou fazer a seguir, e nem se importa.</narration>
+    <narration>Tudo o que lhe interessa agora é destruir seu oponente.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Aaaahhhhhh!!</voice>
+    <do when="sulana_hunt[-2]">
+      <narration>Quando você volta a si, sabe-se lá quanto tempo depois, você está sozinha no meio da clareira.</narration>
+      <narration>A floresta continua silenciosa, mas não há nenhum sinal do tigre em parte alguma.</narration>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <thought>O quê?! Ele fugiu?!</thought>
+      <emotion>angry</emotion>
+      <thought>Maldição!</thought>
+    </do>
+    <do when="sulana_hunt[0:2]">
+      <narration>Quando você volta a si, sabe-se lá quanto tempo depois, você está de joelhos com o animal dilacerado à sua frente.</narration>
+      <protagonist />
+      <set>huntsuccess</set>
+      <trophy when="sulana_hunt[2]">huntress</trophy>
+      <reward>+rage</reward>
+      <thought>Um monstro a menos para ficar solto por aí.</thought>
+    </do>
+  </do>
+
+  <do when="c">
+    <narration>Você se afasta do animal e começa a correr pela floresta.</narration>
+    <narration>Depois de algum tempo, você chega a uma grande árvore e começa a escalar seus galhos recurvados.</narration>
+    <narration>Quando chega quase ao topo, você olha ao redor, notando a trilha por onde veio.</narration>
+    <narration>Uma figura está lá parada, olhando em sua direção.</narration>
+    <person>tiger</person>
+    <voice>...</voice>
+    <narration>Lentamente, o animal dá meia volta e começa a se afastar.</narration>
+    <do when="sulana_hunt[-2]">
+      <narration>Você suspira, aliviada.</narration>
+      <protagonist />
+      <emotion>sad</emotion>
+      <trophy>defeated</trophy>
+      <thought>O que há comigo hoje?</thought>
+      <emotion>angry</emotion>
+      <thought>Sei que posso fazer melhor do que isso!</thought>
+    </do>
+    <do when="sulana_hunt[0:2]">
+      <protagonist />
+      <reward>+hope</reward>
+      <thought>Não se preocupe, amigo.</thought>
+      <thought>Volto para brincar com você de novo outro dia.</thought>
+      <emotion>happy</emotion>
+      <thought>Nada como um bom "pega" para espantar o tédio.</thought>
+    </do>
+  </do>
+
+  <music>free-mind</music>
+  <background>shelter</background>
+
+  <narration>Ao fim da tarde, você está em meio ao pasto das cabras, ao lado de uma velha cabana de paredes de barro, colocando a tampa em um grande barril de madeira, quando sente a aproximação de alguém.</narration>
+  <narration>Uma animação quase eufórica toma conta de você ao reconhecer o homem através da cadência de suas passadas decididas.</narration>
+  <person>giarle</person>
+  <voice>Vejo que está bem ocupada, como sempre.</voice>
+  <narration>Você se vira para ele, com um sorriso cheio de expectativa.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <voice>Por favor, me diga que temos uma missão!</voice>
+  <person>giarle</person>
+  <emotion>happy</emotion>
+  <voice>Nós temos uma missão.</voice>
+  <protagonist />
+  <emotion>happy</emotion>
+  <voice>Que alívio! Já estava começando a ficar louca sem algo para fazer.</voice>
+  <person>giarle</person>
+  <emotion>surprised</emotion>
+  <voice>Pelo que ouvi por aí, coisa para fazer é o que não falta neste lugar.</voice>
+  <emotion>normal</emotion>
+  <voice>A propósito, o que está fazendo?</voice>
+  <narration>Você olha para o barril.</narration>
+
+  <do when="sulana_huntsuccess">
+    <protagonist />
+    <voice>Ah, isso? Nada, só estou colocando um pedaço de couro para curtir.</voice>
+    <narration>Ele tapa o nariz enquanto levanta a tampa, sabendo que alguns ingredientes usados naquele processo tinham odores bastante… característicos.</narration>
+    <person>giarle</person>
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <narration>Franzindo o cenho, ele pega a colher de pau que está em sua mão e a introduz no líquido, levantando um pequeno pedaço do couro submerso, de forma que pudesse vê-lo melhor.</narration>
+    <person>giarle</person>
+    <emotion>surprised</emotion>
+    <voice>Onde conseguiu isso?</voice>
+    <protagonist />
+    <voice>Estava rondando a região, provavelmente atrás de algo mais suculento que um coelho.</voice>
+    <person>giarle</person>
+    <emotion>surprised</emotion>
+    <voice>Você matou um tigre?</voice>
+    <narration>Ele olha na direção das construções à distância. Conhecia o lugar bem o suficiente para saber que nenhuma das pessoas que viviam ali tinham qualquer habilidade de caça.</narration>
+    <person>giarle</person>
+    <emotion>surprised</emotion>
+    <voice>E sozinha?</voice>
+    <narration>Você recupera a colher e volta a ajeitar o couro no barril.</narration>
+    <protagonist />
+    <voice>Já matei muitas coisas.</voice>
+    <person>giarle</person>
+    <emotion>surprised</emotion>
+    <voice>Pelo tom do pelo, me parece que era um daqueles que dão bastante trabalho.</voice>
+    <narration>Você volta a tampar o barril.</narration>
+    <protagonist />
+    <voice>Ah, ele só usava aumento místico de força e um escudo mequetrefe.</voice>
+    <voice>Nada muito preocupante.</voice>
+    <person>giarle</person>
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>Só você mesma para fazer pouco caso de uma criatura dessas.</voice>
+  </do>
+
+  <do when="!sulana_huntsuccess">
+    <protagonist />
+    <voice>Esse negócio estava começando a cheirar mal, por isso eu dei uma lavada nele mais cedo e agora estava colocando de volta no lugar.</voice>
+    <person>giarle</person>
+    <voice>Não tem outros voluntários para ajudar nessas tarefas?</voice>
+    <narration>Você dá de ombros.</narration>
+    <protagonist />
+    <voice>Todos os que não eram doentes e que estavam com todas as partes do corpo intactas foram embora.</voice>
+    <person>giarle</person>
+    <emotion>sad</emotion>
+    <voice>Oh...</voice>
+    <voice>Isso é... triste.</voice>
+    <protagonist />
+    <voice>Isso são consequências dessa guerra.</voice>
+    <person>giarle</person>
+    <emotion>angry</emotion>
+    <voice>Tem razão! Temos que acabar logo com isso!</voice>
+  </do>
+
+  <narration>Você pega uma bacia cheia de ferramentas de carpintaria e entra na cabana.</narration>
+
+  <background>woodworkshop</background>
+
+  <narration>Enquanto começa a guardar cada coisa em seu lugar, Giarle se encosta no batente da porta e dá uma olhada no interior.</narration>
+  <protagonist />
+  <voice>Você disse que temos uma missão.</voice>
+  <voice>Para onde vamos?</voice>
+  <person>giarle</person>
+  <voice>Parece que os carmins não estão satisfeitos com Mercília, estão se preparando para avançar de novo.</voice>
+  <voice>Querem agora tomar a próxima cidade do vale: Revoada.</voice>
+  <narration>Você solta um suspiro, desapontada.</narration>
+  <protagonist />
+  <emotion>sad</emotion>
+  <voice>Temos que proteger outra cidade?</voice>
+  <voice>Quando é que vamos sair da defensiva e começar a atacar?</voice>
+  <person>giarle</person>
+  <voice>Se vencermos ali, será muito mais fácil retomar Mercília depois.</voice>
+  <narration>Ele volta a correr o olhar pelo interior da minúscula cabana que, assim como das outras vezes em que esteve ali, estava cheia de figuras entalhadas na madeira.</narration>
+  <narration>A maioria era de animais de diversos tipos, mas havia algumas que representavam pessoas.</narration>
+  <person>giarle</person>
+  <emotion>surprised</emotion>
+  <voice>Puxa!</voice>
+  <narration>Ele se adianta e toca em uma escultura nova, cuja madeira ainda não estava completamente seca.</narration>
+  <person>giarle</person>
+  <emotion>surprised</emotion>
+  <voice>Não sei como acha tempo para esculpir essas coisas, considerando todo o trabalho que faz por aqui.</voice>
+  <narration>Você dá de ombros.</narration>
+  <protagonist />
+  <voice>As tarefas que me dão não podem ser feitas à noite.</voice>
+  <person>giarle</person>
+  <voice>E por que traz as esculturas para cá? Não seria melhor guardar em sua cabana?</voice>
+  <protagonist />
+  <voice>Não tenho espaço para mais nada lá.</voice>
+  <narration>Ele dirige a atenção para duas peças maiores e mais antigas, num canto.</narration>
+  <person>giarle</person>
+  <voice>Você disse que aqueles dois ali são seus pais, não é?</voice>
+  <narration>Você olha para as esculturas, avaliando criticamente seu trabalho e concluindo que já fez coisas muito melhores.</narration>
+  <protagonist />
+  <voice>Têm uma vaga semelhança.</voice>
+  <person>giarle</person>
+  <voice>Me parecem perfeitas.</voice>
+  <protagonist />
+  <voice>É porque não conheceu minha família.</voice>
+  <person>giarle</person>
+  <voice>Hummm...</voice>
+  <protagonist />
+  <voice>O quê?</voice>
+  <person>giarle</person>
+  <voice>Me parece que, quanto maior a escultura, maior o significado que ela tem para você.</voice>
+  <narration>Você volta a dar de ombros.</narration>
+  <protagonist />
+  <voice>Sei lá. Não costumo pensar muito nisso.</voice>
+  <voice>Só uso o cinzel quando me dá vontade e não tenho nada melhor para fazer.</voice>
+  <person>giarle</person>
+  <voice>Bom, aquelas duas no canto ali, com certeza, são as maiores...</voice>
+  <emotion>surprised</emotion>
+  <voice>Ei! Exceto por aquela ali!</voice>
+  <narration>Ele aponta para um busto esculpido em madeira, que está pendurando por um fio amarrado à viga que sustenta o teto de palha.</narration>
+  <person>giarle</person>
+  <emotion>surprised</emotion>
+  <voice>Essa também é nova, não é? Não tinha visto ela antes.</voice>
+  <emotion>normal</emotion>
+  <voice>É um trabalho sensacional!</voice>
+  <emotion>surprised</emotion>
+  <voice>Quero dizer, não que os outros não sejam também.</voice>
+  <emotion>normal</emotion>
+  <voice>Mas olha para os detalhes desse rosto... parece tão real...</voice>
+  <narration>Você muda o peso de um pé para o outro, incomodada.</narration>
+  <protagonist />
+  <voice>Como eu disse, estava entediada. Podemos ir agora?</voice>
+  <narration>Ele a ignora e continua estudando a figura.</narration>
+  <person>giarle</person>
+  <voice>Isso não parece ser uma pessoa.</voice>
+  <voice>O que é? Algum tipo de monstro com feições humanas?</voice>
+  <protagonist />
+  <voice>Não sei. Não me importo.</voice>
+  <person>giarle</person>
+  <voice>Você não costuma entalhar coisas que não tenham importância.</voice>
+  <voice>Ainda mais num trabalho tão grande e detalhado como esse.</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Para tudo tem uma primeira vez. Podemos ir logo?</voice>
+
+  <viewpoint>belisar</viewpoint>
+  <music>enigma</music>
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <background>cave</background>
+
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Adiante! Vamos!</voice>
+  <narration>A voz grave e imponente de Falcione ecoa pelos túneis subterrâneos nas proximidades da cidade de Revoada.</narration>
+  <person>soldado4</person>
+  <emotion>surprised</emotion>
+  <voice>Mas senhora, temos que cuidar dos feridos...</voice>
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Se não avançarmos agora, não teremos chance de cuidar de ninguém!</voice>
+  <person>soldado4</person>
+  <emotion>surprised</emotion>
+  <voice>Mas...</voice>
+  <protagonist />
+  <voice>Encontre outro voluntário para cuidar dos outros junto com você, soldado!</voice>
+  <person>soldado4</person>
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <emotion>normal</emotion>
+  <voice>Sim, senhor!</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>O restante de vocês, atrás de mim!</voice>
+  <person>falcione</person>
+  <voice>A maior leva deles deve estar logo à frente.</voice>
+
+  <narration>Como que em resposta àquela afirmação, um coro de urros e rosnados chega até vocês, vindo dos túneis mais adiante.</narration>
+  <person>soldado5</person>
+  <emotion>surprised</emotion>
+  <voice>Ahhhh!</voice>
+  <protagonist />
+  <choice>
+    <a>Fiquem juntos!</a>
+    <b>Se espalhem!</b>
+    <c>Protejam a passagem!</c>
+  </choice>
+  <unset>battle</unset>
+  <unset>choice1</unset>
+  <voice>Quero que vocês...</voice>
+
+  <do when="a">
+    <set>++choice1</set>
+    <voice>Protejam uns aos outros e não deixem que eles cheguem até onde estão os feridos!</voice>
+  </do>
+
+  <do when="b">
+    <voice>Não deixem que eles escapem!</voice>
+  </do>
+
+  <do when="c">
+    <set>+choice1</set>
+    <voice>Eu vou na frente, não deixem que eles cheguem até a superfície!</voice>
+  </do>
+
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Vocês ouviram, vamos!</voice>
+
+  <narration>Você se prepara para liberar seus poderes e segue com passos determinados pela passagem.</narration>
+
+  <music>last-duel</music>
+
+  <narration>Nesse momento, uma horda de monstruosidades sai das sombras e vem em sua direção, rosnando de forma ameaçadora.</narration>
+  <person>monster1</person>
+  <emotion>angry</emotion>
+  <voice>Urrrrrriiiiieeeeehhhhh!!!</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <choice>
+    <a>Usar um ataque de grande área de efeito.</a>
+    <b>Economizar energia usando ataques individuais.</b>
+    <c>Atacar as rochas do teto para causar um desmoronamento.</c>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <narration>Você libera seus poderes elétricos com força total!</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Brrruuuurrrlaaauuurr!</voice>
+    <narration>Os monstros são arremessados para trás e caem no chão, convulsionando por alguns instantes enquanto a vida se esvai de seus corpos.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Ugh! Meu peito...!</thought>
+    <thought>Raios, devo ter gasto energia demais!</thought>
+    <narration>Você olha ao redor e percebe que os soldados estão todos o encarando, impressionados com aquela demonstração de poder.</narration>
+    <protagonist />
+    <emotion>normal</emotion>
+    <reward>+battle</reward>
+    <thought>Ao menos consegui acabar com isso rápido, poupando meus aliados.</thought>
+  </do>
+
+  <do when="b">
+    <narration>Você aponta sua mão na direção do primeiro monstro e libera um choque mortal, fazendo com que ele imediatamente caia no chão convulsionando descontroladamente.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Brrruuuurrrlaaauuurr!</voice>
+    <narration>Então você levanta sua outra mão para derrubar o segundo.</narration>
+    <narration>Graças aos céus seus reflexos conseguem ser rápidos o suficiente para atingir o terceiro e o quarto antes que eles o acertassem com seus ferrões.</narration>
+    <narration>Falcione se coloca a seu lado e apara, com a espada, os ataques de outros dois que você nem mesmo tinha visto.</narration>
+    <person>falcione</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Urgh!</voice>
+    <narration>A manobra dela dá a você tempo suficiente para se recuperar e derrubar os monstros com uma nova descarga.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Glaaaauuurr!</voice>
+    <protagonist />
+    <reward>+battle</reward>
+    <voice>Obrigado pela ajuda. Tudo bem aí?</voice>
+    <person>falcione</person>
+    <reward>+relationship</reward>
+    <voice>Não precisa se preocupar comigo.</voice>
+  </do>
+
+  <do when="c">
+    <narration>Você dispara uma descarga elétrica no teto da caverna, o que faz com que uma chuva de estalactites caia sobre os monstros.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Glaaaauuurr!</voice>
+    <narration>No entanto, nem todos são atingidos e os sobreviventes se espalham, atacando Falcione e os soldados.</narration>
+    <narration>Você pensa em se virar para ajudá-los, mas outros monstros atacam você.</narration>
+    <narration>Quando você finalmente consegue derrubá-los com novas rajadas energéticas, os soldados já deram conta dos demais monstros.</narration>
+    <narration>Infelizmente, você constata que pelo menos dois dos soldados sofreram ferimentos graves.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>-battle</reward>
+    <voice>Maldição!</voice>
+  </do>
+
+  <narration>Ruídos de passos apressados na passagem mais adiante chamam sua atenção.</narration>
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Tem mais um monte deles na outra câmara! E parecem estar fugindo!</voice>
+  <narration>Você se vira para uma oficial.</narration>
+  <protagonist />
+  <voice>Existem mais túneis naquela direção?</voice>
+  <narration>A moça desenrola um pergaminho e o analisa com atenção por um rápido instante.</narration>
+  <person>emelin</person>
+  <voice>Não, senhor!</voice>
+  <protagonist />
+  <voice>Eles não têm outra saída!</voice>
+  <choice>
+    <a>Avançar e terminar o trabalho!</a>
+    <b>Ficar de prontidão e aguardar!</b>
+    <c>Recuar para a câmara anterior!</c>
+  </choice>
+  <voice>Nós devemos...</voice>
+
+  <do when="a">
+    <narration>Você corre na direção dos monstros, seguido pelos soldados.</narration>
+    <narration>Apenas para ser surpeendido quando uma verdadeira horda deles salta das sombras em sua direção!</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <voice>Rarrrrr!</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Essa não!</voice>
+    <narration>Você é obrigado a usar seus poderes de forma frenética para compensar a vantagem que os monstros tinham devido ao ataque surpresa.</narration>
+    <narration>A batalha é intensa e leva vários minutos até os intrusos finalmente serem erradicados.</narration>
+    <person>falcione</person>
+    <voice>Dessa vez eles quase nos pegaram de jeito.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>-battle</reward>
+    <voice>Talvez essa não tenha sido uma das minhas decisões mais brilhantes.</voice>
+    <person>falcione</person>
+    <voice>Estamos vivos, é o que importa.</voice>
+  </do>
+
+  <do when="b">
+    <narration>Você e os soldados se concentram, preparando suas habilidades e armas para uma possível batalha iminente.</narration>
+    <narration>Então, uma verdadeira horda de monstros surge pela passagem, num frenesi desenfreado.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <voice>Rarrrrr!</voice>
+    <narration>Você e os soldados utilizam seus ataques de longa distância contra eles!</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Urraaarrrrgggghhh!</voice>
+    <narration>Poucos monstros conseguem se aproximar o suficiente para conseguir atacar e a maioria dos que conseguem estão feridos demais para representar grandes problemas.</narration>
+    <narration>Você e os soldados conseguem dar conta deles rapidamente.</narration>
+    <protagonist />
+    <reward>+battle</reward>
+    <voice>Bom trabalho!</voice>
+    <narration>Os soldados comemoram a vitória com exclamações animadas.</narration>
+    <person>soldado4</person>
+    <emotion>happy</emotion>
+    <voice>Conseguimos!</voice>
+    <person>soldado5</person>
+    <emotion>happy</emotion>
+    <voice>Uuuufa!</voice>
+  </do>
+
+  <do when="c">
+    <narration>Você e os soldados recuam devagar na direção de onde vieram.</narration>
+    <narration>Logo, vocês ouvem o barulho de passos e rugidos, indicando que uma grande quantidade de monstros está vindo na direção de vocês.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <voice>Rarrrrr!</voice>
+    <narration>Vocês não têm muito tempo para se preparar para a batalha iminente, mas esta câmara tem muito mais espaço do que a outra e os soldados conseguem se colocar em posições mais estrategicamente vantajosas.</narration>
+    <narration>A maioria dos oponentes é derrotada antes de dar mais do que três passos depois de cruzar a passagem.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Urraaarrrrgggghhh!</voice>
+    <narration>Infelizmente, isso não é suficiente para evitar que alguns oponentes precisem ser combatidos no corpo a corpo, mas a batalha termina rápido, sem grandes incidentes.</narration>
+    <protagonist />
+    <emotion>happy</emotion>
+    <reward>+battle</reward>
+    <voice>Excelente trabalho, pessoal!</voice>
+    <person>falcione</person>
+    <voice>Realmente. Vocês excederam minhas expectativas.</voice>
+  </do>
+
+  <music>goodbye</music>
+
+  <protagonist />
+  <voice>Estão todos bem?</voice>
+
+  <do when="belisar_choice1[2]">
+    <person>soldado4</person>
+    <emotion>happy</emotion>
+    <voice>Ótimos, senhor!</voice>
+    <person>falcione</person>
+    <voice>Parece que manter os soldados juntos foi uma ótima decisão.</voice>
+    <protagonist />
+    <reward>+battle</reward>
+    <voice>Fico satisfeito por ver que vocês conseguem cuidar bem das costas um do outro.</voice>
+  </do>
+
+  <do when="belisar_choice1[1]">
+    <person>soldado4</person>
+    <voice>Alguns arranhões, mas nada muito grave, senhor!</voice>
+    <person>soldado5</person>
+    <voice>Ainda bem que priorizamos a proteção da passagem.</voice>
+    <voice>Se aquelas coisas tivessem passado por nós, nem quero pensar no que aconteceria aos outros.</voice>
+    <protagonist />
+    <reward>+battle</reward>
+    <voice>Sim, essa realmente se mostrou ser uma boa estratégia.</voice>
+  </do>
+
+  <do when="!belisar_choice1">
+    <person>soldado5</person>
+    <voice>Temos diversos feridos, senhor!</voice>
+    <person>emelin</person>
+    <voice>Estavam todos longe demais um do outro, fica muito difícil dar apoio desse jeito.</voice>
+    <protagonist />
+    <reward>-battle</reward>
+    <voice>Falcione, lembre-me de não tentar mais separar as tropas quando estivermos sob ataque iminente.</voice>
+    <person>falcione</person>
+    <voice>Com todo prazer, senhor.</voice>
+  </do>
+
+  <narration>Falcione se afasta dos outros, fazendo um discreto gesto para indicar que quer falar com você a sós. Você a segue até um canto.</narration>
+
+  <do when="belisar_battle[3]">
+    <person>falcione</person>
+    <emotion>happy</emotion>
+    <voice>Devo dizer que estou orgulhosa de lutar a seu lado.</voice>
+    <trophy>caveconqueror</trophy>
+    <voice>Essa foi uma batalha muito bem dirigida.</voice>
+    <protagonist />
+    <voice>Obrigado. Vindo de você isso significa muito.</voice>
+    <person>falcione</person>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>...</voice>
+    <emotion>normal</emotion>
+    <voice>Se continuarmos nesse ritmo, não deve demorar muito para conseguirmos cumprir nosso objetivo.</voice>
+    <protagonist />
+    <voice>Talvez.</voice>
+  </do>
+
+  <do when="belisar_battle[1]">
+    <person>falcione</person>
+    <voice>Essa foi uma grande vitória para nós.</voice>
+    <protagonist />
+    <voice>Poderia ter sido melhor.</voice>
+    <person>falcione</person>
+    <voice>Cumprimos a nossa missão e é isso o que importa.</voice>
+  </do>
+
+  <do when="belisar_battle[-1]">
+    <person>falcione</person>
+    <voice>Essa vitória teve um sabor amargo.</voice>
+    <protagonist />
+    <voice>Sim, não posso mais me dar ao luxo de cometer tantos erros desse jeito.</voice>
+    <emotion>sad</emotion>
+    <voice>Tem muitas vidas em jogo.</voice>
+    <person>falcione</person>
+    <voice>Sim. Mas não se esqueça de que tem aliados com os quais pode contar.</voice>
+    <voice>Ficaremos felizes em ajudar no que pudermos.</voice>
+    <protagonist />
+    <voice>Obrigado. Terei isso em mente.</voice>
+  </do>
+
+  <do when="belisar_battle[-3]">
+    <person>falcione</person>
+    <reward>-relationship</reward>
+    <voice>Creio que já tivemos desempenhos melhores antes.</voice>
+    <trophy>cavefail</trophy>
+    <protagonist />
+    <emotion>sad</emotion>
+    <voice>Toda a tensão dos últimos dias deve estar me afetando.</voice>
+    <person>falcione</person>
+    <voice>Talvez seja melhor o senhor ir um pouco mais devagar, talvez descansar mais.</voice>
+    <protagonist />
+    <voice>Vou considerar isso. Obrigado pela sinceridade.</voice>
+  </do>
+
+  <narration>Você olha ao redor, pensativo.</narration>
+  <protagonist />
+  <emotion>sad</emotion>
+  <voice>Por que me sinto como um amador impotente toda vez que enfrentamos esses invasores?</voice>
+  <person>falcione</person>
+  <voice>É compreensível. Esses seres são imprevisíveis demais.</voice>
+  <voice>Não há como planejar uma estratégia infalível contra eles.</voice>
+  <protagonist />
+  <voice>Essa situação não pode continuar. Tenho que acabar logo com isso.</voice>
+  <narration>Você percebe a oficial olhando em sua direção.</narration>
+  <person>emelin</person>
+  <voice>...</voice>
+  <narration>Você troca um olhar com Falcione, antes de se aproximar da moça.</narration>
+  <person>emelin</person>
+  <voice>Nenhuma leitura energética nos arredores, senhor.</voice>
+  <narration>Pode-se dizer que Emelin Necravis é a garota prodígio da tropa.</narration>
+  <narration>Conquistou a patente de tenente ainda muito jovem e hoje é uma das melhores aprendizes de artes místicas de seus domínios.</narration>
+  <narration>No entanto, como a grande maioria dos sábios, tem certa dificuldade para interagir com outras pessoas, sendo quieta e reservada.</narration>
+  <protagonist />
+  <voice>Excelente. Parece que esses eram os últimos.</voice>
+  <voice>Acha que este lugar é seguro, Falcione?</voice>
+  <person>falcione</person>
+  <voice>Se houvesse algum portal por aqui, já teríamos encontrado.</voice>
+  <voice>Nada no comportamento dessas criaturas sugere que possa existir alguma toca por aqui.</voice>
+  <voice>Além disso, os túneis são desolados demais, não há comida ou água suficiente para eles se sustentarem.</voice>
+  <voice>Tenente, estamos na área de alcance?</voice>
+  <person>emelin</person>
+  <voice>As leituras indicam que já ultrapassamos uma margem relativamente confortável além do limite mínimo.</voice>
+  <narration>Você e Falcione lançam um olhar confuso à moça.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Perdão?</voice>
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>O que você disse?</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Não... quero dizer, sim! Estamos dentro da área de alcance!</voice>
+  <person>falcione</person>
+  <voice>Ótimo. Mesmo que os túneis não terminassem ali na frente, não haveria necessidade de avançar mais.</voice>
+  <protagonist />
+  <voice>Tenente, dê o sinal para a base enviar as tropas e mande iniciar a abertura do geoportal.</voice>
+  <person>emelin</person>
+  <voice>Sim, senhor!</voice>
+  <person>falcione</person>
+  <emotion>happy</emotion>
+  <voice>Desta vez, aqueles terroristas nem vão ver o que os atingiu.</voice>
+
+  <viewpoint>sulana</viewpoint>
+  <music>never-look-back</music>
+  <background>sulana</background>
+  <tutorial>Você agora está controlando Sulana Lautine</tutorial>
+  <background>village</background>
+
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Esta é a cidade de Revoada?</voice>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Estava esperando outra coisa?</voice>
+  <protagonist />
+  <voice>É menor do que imaginei.</voice>
+  <voice>Tem cidades maiores na região, não tem? Por que os vermelhos decidiriam atacar logo aqui?</voice>
+  <person>ronam</person>
+  <voice>Não sei. Estratégia, talvez.</voice>
+  <narration>Vocês dois passam pelos portões e observam as cabanas rústicas distribuídas de forma irregular pelo terreno.</narration>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Dizem que, antigamente, havia tantos pássaros por aqui que, quando levantavam voo, pareciam formar uma cortina no céu.</voice>
+  <voice>É por causa disso que decidiram dar o nome de "Revoada" quando a cidade foi fundada.</voice>
+  <protagonist />
+  <voice>Não vi muitos pássaros por aqui.</voice>
+  <person>ronam</person>
+  <emotion>sad</emotion>
+  <voice>É... as coisas mudam quando um monte de gente passa a morar no lugar, eu acho. A vida é difícil, as pessoas têm que comer...</voice>
+  <voice>É uma pena.</voice>
+  <narration>Você olha na direção do centro da vila, onde Giarle está conversando com um grupo de pessoas.</narration>
+  <narration>Seus olhares se encontram por um momento.</narration>
+  <person>giarle</person>
+  <emotion when="giarle_relationship[3:]">happy</emotion>
+  <voice>...</voice>
+  <narration when="giarle_relationship[3:]">A julgar pela forma que os lábios dele se curvam em um sorriso por um momento, ele parece satisfeito em vê-la.</narration>
+  <narration when="giarle_relationship[:2]">Ele cumprimenta você e Ronam com um discreto gesto de cabeça.</narration>
+  <narration>Então ele levanta uma mão apontando o indicador para cima e desenha um círculo no ar.</narration>
+  <narration>Reconhecendo o gesto, você assente, assim como Ronam, e vocês dois começam a andar ao redor das casas, mantendo os olhos e ouvidos atentos.</narration>
+  <person>ronam</person>
+  <voice>Parece que chegamos cedo. O resto do pessoal provavelmente vai demorar mais um pouco.</voice>
+  <protagonist />
+  <voice>Só espero que isso não demore muito. Odeio esperar.</voice>
+  <narration>Assim como a maior parte das cidades e vilas livres da província, ou seja, que não haviam sido ainda dominadas pelo Exército Carmim, Revoada tinha um muro improvisado ao redor, obviamente construído às pressas e mantido em pé de forma bastante precária.</narration>
+  <narration>Algumas partes dele eram feitas de pedra e outras de madeira, o que fazia com que parecesse uma colcha de retalhos gigante.</narration>
+  <narration>Em determinado momento, você se aproxima da estrutura e dá umas batidinhas de leve, testando sua firmeza.</narration>
+  <protagonist />
+  <voice>Que nome dão para isso? “Muro”? “Cerca”?</voice>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>“Última esperança”?</voice>
+  <narration>Você olha para ele, levantando uma sobrancelha.</narration>
+  <person>ronam</person>
+  <voice>Tem razão, tem razão. O pessoal da cidade ficaria com o orgulho ferido se ouvisse isso.</voice>
+  <protagonist />
+  <voice>Por quê? Não é como se eles tivessem escolha quando construíram esse negócio.</voice>
+  <voice>Duvido que conseguissem fazer um trabalho melhor do que esse. E sabe-se lá quantas vezes tiveram que reconstruir depois de algum ataque.</voice>
+  <narration>Você aponta para uma determinada parte da estrutura, onde podem ser vistas marcas de garras ou mordidas.</narration>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Sabe, às vezes é difícil entender você. Num momento está caçoando do negócio e no momento seguinte o está defendendo.</voice>
+  <protagonist />
+  <voice>Não espero que ninguém me compreenda. Nem sei se eu mesma me entendo.</voice>
+  <narration>Ronam levanta a cabeça e solta uma risada.</narration>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Ao menos você parece descansada.</voice>
+  <protagonist />
+  <voice>Você também, e isso é outra coisa que não entendo.</voice>
+  <voice>Dez dias atrás estava sangrando tanto que parecia estar nas últimas. Como pode hoje aparecer aqui assim, como se nada tivesse acontecido?</voice>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Minha irmã é curandeira. Ela deu um jeitinho.</voice>
+  <protagonist />
+  <choice>
+    <a>Ela sabe que você está aqui?</a>
+    <b>Sorte a sua.</b>
+    <c>Ela deveria é ter amarrado você na cama.</c>
+  </choice>
+  <voice>Ah, é?</voice>
+
+  <do when="a">
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Hã...</voice>
+    <emotion>sad</emotion>
+    <voice>Não.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Se ela soubesse não o deixaria vir, não é? Você ainda não está curado.</voice>
+    <person>ronam</person>
+    <voice>Besteira, estou ótimo. Além disso, você precisa de mim.</voice>
+  </do>
+
+  <do when="b">
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Como assim?</voice>
+    <protagonist />
+    <voice>Considerando seu desempenho nas últimas batalhas, acho que você vai precisar de MUITA ajuda hoje.</voice>
+    <person>ronam</person>
+    <emotion>angry</emotion>
+    <reward>-relationship</reward>
+    <voice>Ei!</voice>
+  </do>
+
+  <do when="c">
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Como é que é?</voice>
+    <protagonist />
+    <voice>O que está fazendo aqui, afinal? Aquela maldita empalou você com uma lança!</voice>
+    <voice>Devia ficar bem longe disso aqui. Até se recuperar, pelo menos.</voice>
+    <person>ronam</person>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>Eu estou bem, não se preocupe.</voice>
+  </do>
+
+  <narration>Você solta um suspiro.</narration>
+  <protagonist />
+  <voice>Escute, eu não dou a mínima para a maioria desse pessoal, mas você é um cara decente.</voice>
+  <voice>Devia voltar para sua irmã e ficar com ela, esquecer essa guerra.</voice>
+  <person>ronam</person>
+  <voice>Você esqueceria?</voice>
+  <protagonist />
+  <voice>Eu tenho outros motivos para estar aqui.</voice>
+  <person>ronam</person>
+  <voice>Nós dois formamos uma ótima dupla.</voice>
+  <protagonist />
+  <voice>Você conhece a história dos membros do meu clã, não conhece?</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Sim, mas você é diferente.</voice>
+  <protagonist />
+  <voice>Não há diferença. Qualquer um que fique perto de mim está correndo risco.</voice>
+  <person>ronam</person>
+  <emotion>angry</emotion>
+  <voice>Não exagere.</voice>
+  <emotion>normal</emotion>
+  <voice>E em relação aos outros, eu acho que você tem que dar um desconto. Eles só não a conhecem direito.</voice>
+  <protagonist />
+  <voice>Eles têm medo de mim. E talvez seja até melhor assim.</voice>
+  <person>ronam</person>
+  <voice>O que há com você hoje? Por que está tão… sei lá… amarga?</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Eu sei lá!</voice>
+  <voice>Já te disse: na maior parte do tempo nem eu mesma me entendo.</voice>
+  <narration>Você sacode a cabeça e olha ao redor.</narration>
+  <protagonist />
+  <voice>Afinal, cadê o resto do nosso pessoal? Já não deviam ter chegado?</voice>
+  <person>ronam</person>
+  <voice>Devem estar nas redondezas. Giarle não quer todo mundo aguardando num lugar só para não repetirmos o fiasco de Mercília.</voice>
+  <protagonist />
+  <voice>É, mas tem quantos de nós aqui dentro? Vinte?</voice>
+
+  <music>enigma</music>
+
+  <narration>Nesse momento, uma estranha movimentação ocorrendo entre as casas chama a sua atenção.</narration>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>(O que está acontecendo?)</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Pshhh!</voice>
+  <narration>Você se aproxima da movimentação devagar, tomando cuidado para não ser vista.</narration>
+  <narration>Para sua surpresa, um grande número de soldados vermelhos tinha surgido sabe-se lá de onde e estavam rendendo os moradores e os poucos membros da resistência que estavam por ali.</narration>
+  <person>rebelde1</person>
+  <emotion>angry</emotion>
+  <voice>Me solte!</voice>
+  <person>soldado4</person>
+  <emotion>angry</emotion>
+  <voice>Calado!</voice>
+  <person>soldado5</person>
+  <voice>Fique em silêncio e não se mova!</voice>
+  <narration>Você observa a cena por um momento, perplexa.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+
+  <music>crime-fighter</music>
+
+  <narration>Com um rápido olhar para o incrédulo Ronam, você entra em ação, pulando sobre o casal de soldados que está mais próximo.</narration>
+  <narration>Com uma agilidade nascida de muito treino e condicionamento físico, você empurra o homem para o lado.</narration>
+  <person>soldado4</person>
+  <emotion>surprised</emotion>
+  <bump />
+  <voice>Uffff!</voice>
+  <narration>Você desfere então uma série de golpes na mulher, finalizando com um gancho no queixo que a faz tombar para trás.</narration>
+  <person>soldado5</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>Argh!</voice>
+  <narration>Enquanto ela cai, inconsciente, o parceiro dela reage, tentando fazer algum tipo de invocação.</narration>
+  <person>ronam</person>
+  <emotion>angry</emotion>
+  <voice>Nem pense nisso!</voice>
+  <narration>Ronam levanta uma das mãos na direção do homem e utiliza seus poderes para romper a fase das energias místicas que o outro tentava manipular.</narration>
+  <narration>Ao ver que seus poderes desapareciam de repente, o homem olha para as próprias mãos, incrédulo.</narration>
+  <person>soldado4</person>
+  <emotion>surprised</emotion>
+  <voice>Mas o quê...?</voice>
+  <narration>Aquilo lhe dá tempo suficiente para se aproximar dele e colocá-lo para dormir também.</narration>
+  <person>soldado4</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>Ughh!</voice>
+  <narration>O rebelde que os soldados estavam rendendo fica ali, parado, completamente embasbacado, enquanto diversos outros soldados correm em sua direção.</narration>
+  <person>rebelde1</person>
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Vai ajudar ou não?</voice>
+  <person>rebelde1</person>
+  <emotion>surprised</emotion>
+  <voice>Mas estamos cercados!</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Se quiser se render sem lutar, o problema é seu.</voice>
+  <narration>Você sente seu sangue se aquecer, a fúria se avolumando dentro de você, quase pronta para ser liberada.</narration>
+
+  <music>enigma</music>
+
+  <narration>Mas então, uma voz autoritária brada atrás de você.</narration>
+  <person>belisar</person>
+  <emotion>angry</emotion>
+  <voice>O que está acontecendo aqui?</voice>
+  <narration>Por um momento, você olha para aquele rosto autoritário e perigoso, sentindo uma emoção estranha percorrer seu corpo, enquanto diversos soldados a cercam, apontando-lhe suas lanças de forma ameaçadora.</narration>
+  <person>soldado7</person>
+  <voice>Rebeldes, senhor. Atacaram de surpresa e derrubaram dois dos nossos.</voice>
+  <narration>Seus olhos percorrem o homem de cima a baixo, notando os artefatos de metal em seus pulsos, cintura e tornozelos.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Você é o General Vermelho!</voice>
+  <person>belisar</person>
+  <voice>...</voice>
+  <protagonist />
+  <thought>Posso acabar com essa guerra! Aqui! Agora!</thought>
+  <thought>Se esse maldito morrer, o conflito se encerra!</thought>
+  <narration>O homem percebe a intenção assassina em seu olhar.</narration>
+  <person>belisar</person>
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <emotion>angry</emotion>
+  <voice>Parem!</voice>
+  <voice>Vocês não vão querer começar uma batalha aqui.</voice>
+  <voice>Estão sozinhos, cercados, e seus aliados são meus prisioneiros.</voice>
+  <narration>Para enfatizar o que dizia, o general se move para o lado, permitindo que você veja Giarle, que está um pouco atrás dele, amordaçado e com as mãos amarradas atrás do corpo, ladeado por dois soldados de uniforme carmim.</narration>
+  <person>giarle</person>
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <person>belisar</person>
+  <voice>Como podem ver, seu comandante já se rendeu.</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Seu covarde!</voice>
+  <voice>Ao invés de tomar alguém como refém, por que não luta comigo?</voice>
+  <voice>Vamos resolver isso como guerreiros! Ou você, por acaso, é um daqueles que só manda os outros resolverem as coisas por você, sem nunca sujar as próprias mãos?</voice>
+  <narration>Aquelas palavras, no entanto, acabam tendo um efeito bem diverso do que você imaginava.</narration>
+  <narration>Os soldados vermelhos se entreolham por um momento e… caem na gargalhada.</narration>
+  <person>soldado7</person>
+  <emotion>happy</emotion>
+  <voice>Hahahaha! A moça quer tombar como uma guerreira, senhor, por que não realiza o pedido dela?</voice>
+  <person>soldado8</person>
+  <emotion>happy</emotion>
+  <voice>Hehehe! Isso mesmo, queremos ver um pouco de ação!</voice>
+  <narration>O general lança um olhar atravessado para eles.</narration>
+  <person>belisar</person>
+  <voice>...</voice>
+  <narration>Os soldados continuam sorrindo, não parecendo muito intimidados, mas pelo menos ficam quietos.</narration>
+  <person>belisar</person>
+  <voice>Não temos tempo para diversão.</voice>
+  <voice>Levem todos para os túneis, vamos!</voice>
+  <person>emelin</person>
+  <voice>Sim, senhor!</voice>
+  <narration>Enquanto era levado pelos braços, Giarle encontra seu olhar por um breve momento.</narration>
+  <person>giarle</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Você percebe o estreitar de olhos, o brilho determinado do olhar.</narration>
+  <narration>Estava lhe dando uma ordem. Ele queria que você matasse o general.</narration>
+  <narration>Não se importava com seu próprio destino, desde que a guerra terminasse.</narration>
+  <narration>O general vira a cabeça em sua direção.</narration>
+  <person>belisar</person>
+  <voice>Quanto a você, acalme-se, agora não é hora para isso.</voice>
+  <narration>Uma outra sensação toma conta de você. Alguma coisa, de repente, lhe parece fora do lugar.</narration>
+  <narration>A forma como o general está se comportando não se encaixa muito bem com a imagem que tem dele.</narration>
+  <narration>Pela primeira vez em muito tempo, você fica confusa diante da possibilidade de entrar em batalha.</narration>
+  <narration>Para ganhar tempo, você pergunta:</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Você não acha mesmo que vou deixar que faça o que quiser com essa cidade, não é?</voice>
+  <narration>Você tenta manter acesa a chama da fúria, mas seus instintos parecem não considerar o general como uma ameaça.</narration>
+  <narration>Como era possível estar cercada por inimigos, na iminência de ser capturada e se sentir tão calma?</narration>
+  <narration>Para aumentar ainda mais sua confusão, o general percebe a sua hesitação e relaxa um pouco, parecendo... aliviado?</narration>
+  <person>belisar</person>
+  <voice>Não, não acho, e no seu lugar eu faria a mesma coisa. Mas, se puder me ouvir por um momento…</voice>
+  <protagonist />
+  <voice>O que pretende fazer com toda essa gente?</voice>
+  <person>belisar</person>
+  <voice>...</voice>
+  <voice>Temos que tirar todos daqui. E rápido.</voice>
+  <protagonist />
+  <voice>Por quê?</voice>
+  <narration>Neste momento, um grito vindo dos portões chama a atenção de todos.</narration>
+
+  <music>desert-squad</music>
+
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Estão aqui!</voice>
+  <narration>Você imediatamente sente todos os seus instintos de combate aflorarem.</narration>
+  <narration>Algo estava ali, logo além daquele muro. Algo sinistro. Hostil.</narration>
+  <narration>E, aparentemente, muito mais perigoso que o General Vermelho e seu exército.</narration>
+
+  <background>carmim</background>
+</storyboard>

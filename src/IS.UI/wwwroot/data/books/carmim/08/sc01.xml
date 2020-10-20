@@ -1,0 +1,980 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>sulana</viewpoint>
+  <music>never-look-back</music>
+  <background>carmim</background>
+  <observe />
+  <narration>Capítulo 8: Confronto</narration>
+
+  <background>sulana</background>
+  <tutorial>Você agora está controlando Sulana Lautine</tutorial>
+
+  <do>
+    <protagonist />
+    <choice>
+      <a when="sulana_hope[:7]" req="Esperança &lt; 8">Esperança+8</a>
+      <b when="sulana_fight[:7]" req="Coragem &lt; 8">Coragem+8</b>
+      <d>Prosseguir</d>
+    </choice>
+    <voice>...</voice>
+    <exit when="d" />
+    <do when="a">
+      <protagonist />
+      <reward>hope+8</reward>
+      <voice>...</voice>
+    </do>
+    <do when="b">
+      <person>sulana</person>
+      <reward>fight+8</reward>
+      <voice>...</voice>
+    </do>
+    <restart />
+  </do>
+
+  <background>forest</background>
+
+  <narration>Depois de passar um dia bastante confuso, tentando sem sucesso se lembrar do que ocorreu no dia anterior, você decide procurar por Ronam.</narration>
+  <narration>Assim, você acorda cedo e toma a trilha pela floresta que leva até a vila mais próxima.</narration>
+  <narration>Mais de três horas de caminhada depois, você nota um grupo de pessoas vindo em sua direção com cavalos e carroças.</narration>
+  <narration>Quase todos carregavam sacolas ou mochilas nas costas.</narration>
+  <narration>Não leva muito tempo para você reconhecer Ronam e Lura entre o grupo.</narration>
+
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Ei! O que está havendo? Estão se mudando?</voice>
+  <narration>Ronam e Lura estacam no lugar, surpresos, ao vê-la.</narration>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>!!</voice>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>!!</voice>
+  <voice>Sulana! É você mesma?!</voice>
+  <narration>Ronam a olha de cima a baixo, como se não acreditasse no que estava vendo.</narration>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Você parece… bem.</voice>
+  <protagonist />
+  <voice>Estou ótima.</voice>
+  <narration>Você se aproxima, consciente de que o resto do grupo deles também havia parado e a observavam com desconfiança.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Mas por que a surpresa? Aconteceu algo aquele dia?</voice>
+  <narration>Ronam e Lura se entreolharam, surpresos.</narration>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Você não... se lembra?</voice>
+  <narration>Você olha mais uma vez para a meia dúzia de pessoas que a encaram, alguns montados em cavalos e outros os segurando pelas rédeas.</narration>
+  <narration>Aqueles rostos eram todos familiares. Eram todos rebeldes.</narration>
+  <protagonist />
+  <voice>A última coisa de que me lembro é de ter saído em uma missão com vocês.</voice>
+  <voice>Mas acordei em minha cama ontem como se nunca tivesse saído dela.</voice>
+  <narration>Ronam se vira para os outros rebeldes.</narration>
+  <person>ronam</person>
+  <voice>Vão na frente. Depois alcançamos vocês.</voice>
+  <narration>Sem dizer nada, os rebeldes se pões a caminho, assim que você, Lura e Ronam saem da trilha para que eles possam passar. </narration>
+  <narration>Você aguarda até que eles estejam a alguma distância antes de se voltar para Ronam.</narration>
+  <protagonist />
+  <choice>
+    <a>Para onde vocês estão indo?</a>
+    <b>É bom ver vocês de novo.</b>
+    <c>Por que esse pessoal está tão sisudo?</c>
+  </choice>
+  <voice>...</voice>
+
+  <do when="a">
+    <person>ronam</person>
+    <voice>Fomos convocados para uma nova missão.</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <reward>+fight</reward>
+    <voice>Ótimo. Eu estou mesmo precisando de um pouco de ação.</voice>
+    <narration>Ronam e Lura voltam a se entreolhar.</narration>
+  </do>
+
+  <do when="b">
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>!!</voice>
+    <person>lura</person>
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>O que foi? Eu disse algo errado?</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Não! Quero dizer...</voice>
+    <person>lura</person>
+    <voice>Você parece estar de muito bom humor.</voice>
+    <protagonist />
+    <voice>E isso é ruim?</voice>
+    <person>lura</person>
+    <emotion>surprised</emotion>
+    <voice>De forma nenhuma.</voice>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>Mas é a primeira vez que a vejo assim, então... bem, estou um pouco surpresa, só isso.</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>É... estamos muito... surpresos.</voice>
+  </do>
+
+  <do when="c">
+    <person>ronam</person>
+    <voice>Ah, não ligue para eles.</voice>
+    <voice>Recebemos uma missão que parece importante, então estão todos um pouco apreensivos.</voice>
+    <person>lura</person>
+    <voice>E ninguém esperava encontrar você por aqui. Acho que ficaram meio desconfiados.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Temos uma missão?</voice>
+    <emotion>happy</emotion>
+    <voice>Ótimo! Estou mesmo precisando de um pouco de ação!</voice>
+    <person>ronam</person>
+    <voice>...</voice>
+    <narration>Você percebe que Ronam parece preocupado.</narration>
+    <protagonist />
+    <voice>Sua irmã não está indo com você?</voice>
+    <person>ronam</person>
+    <voice>Não. Ela não pode lutar.</voice>
+    <protagonist />
+    <voice>Você não deveria ficar com ela?</voice>
+    <narration>Aquilo trouxe um sorriso ao rosto dele.</narration>
+    <person>ronam</person>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>Já tivemos essa conversa antes, não tivemos?</voice>
+  </do>
+
+  <narration>Lura olha para você, de cenho franzido.</narration>
+  <person>lura</person>
+  <voice>Tem certeza de que está bem?</voice>
+  <protagonist />
+  <voice>Por quê?</voice>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>Você disse que acordou sem se lembrar de nada do que aconteceu.</voice>
+  <voice>Se isso acontecesse comigo, nem sei o que faria, acho que entraria em pânico.</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Você não se lembra de nada mesmo? Nem de Alasdio e... Petroir?</voice>
+  <protagonist />
+  <voice>Lembro que aqueles dois estavam indo conosco para a muralha.</voice>
+  <emotion>surprised</emotion>
+  <voice>Por que? O que houve?</voice>
+  <narration>Ronam tira a pesada mochila que carregava nas costas e a joga no chão.</narration>
+  <person>ronam</person>
+  <voice>Por que não nos sentamos um pouco aqui?</voice>
+  <voice>Parece que essa vai ser uma longa conversa.</voice>
+
+  <music>the-awakening</music>
+
+  <narration>Durante a meia hora seguinte, Ronam e Lura contam tudo o que aconteceu durante a incursão que fizeram no território carmim.</narration>
+  <person>lura</person>
+  <voice>Você ficou para trás para garantir nossa fuga.</voice>
+  <voice>Depois de ver você marchar sozinha na direção de uma tropa tão grande quanto aquela, eu tinha poucas esperanças de um dia poder voltar a conversar com você.</voice>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Fale por você mesma, eu tinha certeza que ela acharia um jeito de escapar.</voice>
+  <protagonist />
+  <voice>Encarar uma tropa dessas parece algo que eu faria. Mesmo assim não consigo me lembrar de nada disso.</voice>
+  <voice>Então Alasdio sobreviveu?</voice>
+  <person>ronam</person>
+  <voice>Sim. Mas vai levar um bom tempo até se recuperar.</voice>
+  <person>lura</person>
+  <voice>Não creio que ele vá querer voltar a lutar pela resistência.</voice>
+  <voice>Não podemos culpar o homem por isso. Quero dizer, depois de ser quase retalhado por um monstro como aquele...</voice>
+  <person>ronam</person>
+  <voice>Eu achava que tínhamos perdido três companheiros.</voice>
+  <emotion>happy</emotion>
+  <voice>Não sabe o quão feliz eu fiquei por ver você ilesa.</voice>
+  <person>lura</person>
+  <emotion>happy</emotion>
+  <voice>Ele estava justamente tentando me convencer a procurar por você, quando você apareceu.</voice>
+  <protagonist />
+  <voice>É mesmo?</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Claro que sim.</voice>
+  <emotion>normal</emotion>
+  <voice>Não fui atrás de você antes porque não tive tempo, chegamos ontem à noite, mal deu para ter uma noite de sono.</voice>
+  <person>lura</person>
+  <voice>Você disse que não foi ferida, mas essa perda de memória é muito estranha.</voice>
+  <emotion>surprised</emotion>
+  <voice>Será que você não sofreu algum ferimento na cabeça?</voice>
+  <narration>Você apalpa o couro cabeludo.</narration>
+  <protagonist />
+  <voice>Acho que não. Não sinto nada.</voice>
+  <voice>Para falar a verdade, estou me sentindo muito bem.</voice>
+  <person>lura</person>
+  <voice>Me deixe dar uma olhada.</voice>
+  <narration>Ela se levanta e se posiciona atrás de você, tocando sua cabeça e examinando com atenção.</narration>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Ter você com a gente na próxima batalha será muito bom.</voice>
+  <voice>Vai ser a maior luta que já tivemos.</voice>
+  <protagonist />
+  <voice>Você parece animado.</voice>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Claro que sim.</voice>
+  <voice>Soubemos que o General Vermelho foi atacado por monstros e está ferido, assim como os tenentes dele. Esta é a nossa chance de tomar de volta algumas das nossas cidades.</voice>
+  <narration>Um sentimento estranho e desconfortável a envolve ao ouvir aquilo.</narration>
+  <person>lura</person>
+  <voice>Sim, talvez possamos virar o jogo e finalmente deixar o General em desvantagem.</voice>
+  <voice>Humm... realmente, não tem ferimento nenhum aqui. Não notou nada de estranho? Cortes? Cicatrizes? Vermelhidão? Coceiras?</voice>
+  <protagonist />
+  <voice>Nada.</voice>
+  <person>ronam</person>
+  <voice>Bom, se não tem nenhum ferimento, então acho que não temos com o que nos preocupar.</voice>
+  <voice>Deve ser estranho não conseguir se lembrar, mas sua memória deve voltar com o tempo.</voice>
+  <emotion>happy</emotion>
+  <voice>E você parece estar em forma. O que me diz? Vem com a gente?</voice>
+  <person>lura</person>
+  <emotion>happy</emotion>
+  <voice>Sim, ter você conosco seria ótimo.</voice>
+  <narration>Os dois parecem muito excitados com essa batalha.</narration>
+  <narration>Para falar a verdade, você pode sentir a mesma excitação também, mas alguma coisa parece... errada.</narration>
+  <narration>Essa situação é quase irreal, como se estivesse em uma espécie de sonho.</narration>
+  <protagonist />
+  <thought>Será que essa sensação esquisita tem a ver com a perda de memória?</thought>
+  <thought>Mas, se fosse, eu não deveria estar sentindo desde que acordei?</thought>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Vai saber. Com você do nosso lado, talvez possamos até mesmo derrotar o general e acabar com a guerra.</voice>
+  <protagonist />
+  <voice>Eu duvido.</voice>
+  <narration>Ronam e Lura a encaram, espantados.</narration>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Como assim, “duvida”?</voice>
+  <voice>Você é, de longe, a mais forte de todos nós. Se alguém pode enfrentar o homem, é você.</voice>
+  <protagonist />
+  <voice>Não se ele tiver mesmo o poder de uma divindade.</voice>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>Divindade? Como assim?</voice>
+  <narration>Você olha para eles, confusa, por um momento, mas então se lembra de que eles provavelmente não conhecem aquela história.</narration>
+  <protagonist />
+  <voice>O cozinheiro do acampamento me contou umas coisas.</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>É mesmo? Ele conhece o general?</voice>
+  <protagonist />
+  <voice>Parece que sim.</voice>
+  <person>lura</person>
+  <voice>Agora você me deixou curiosa. O que ele disse?</voice>
+
+  <music>goodbye</music>
+
+  <do>
+    <protagonist />
+    <choice>
+      <a>A sede por poder</a>
+      <b>Como a guerra começou</b>
+      <c>Os poderes dele</c>
+      <d>Nada. Chega de conversa</d>
+    </choice>
+    <thought>Sobre o que devo contar?</thought>
+
+    <exit when="d" />
+
+    <do when="a">
+      <narration>As palavras do velho Riodes lhe voltam à mente, com incrível clareza.</narration>
+
+      <background>shelter</background>
+
+      <person>riodes</person>
+      <voice>Depois do casamento, Marcelius Belísar revelou sua verdadeira face: a de um homem ambicioso e faminto por poder.</voice>
+      <voice>Viajou pelo continente à procura de encantamentos e poções, começou a cultivar todo tipo de ervas venenosas, construiu um enorme laboratório, gastou quase toda a fortuna da esposa com isso.</voice>
+      <voice>Chamava sábios para ajuda-lo, mas depois frustrava-se com eles e os mandava embora.</voice>
+      <voice>Certo dia ouviu falar de uma entidade que havia se manifestado em uma floresta no centro da província e foi para lá.</voice>
+      <voice>Depois de gastar até sua última moeda, ele conseguiu fazer contato com o ser.</voice>
+      <voice>Então, usando todas as poções e encantamentos que tinha aprendido, derrotou a entidade e tentou assumir o lugar dela.</voice>
+      <voice>Esse, no entanto, foi seu pior erro: é impossível um humano assumir uma posição divina.</voice>
+      <voice>Mesmo tendo conseguido roubar alguns dos poderes da entidade, ele foi violentamente banido de lá e amaldiçoado a viver em um certo local, ao qual precisa voltar periodicamente para restabelecer suas energias e não enlouquecer.</voice>
+      <voice>Não satisfeito com o enorme poder que tinha conseguido, o homem criou artefatos para ajudar a ampliá-los ainda mais.</voice>
+      <voice>Mas nunca conseguiu se livrar da maldição.</voice>
+
+      <background>forest</background>
+
+      <narration>Ronam e Lura olham para você, parecendo fascinados.</narration>
+      <protagonist />
+      <voice>O que foi?</voice>
+      <person>lura</person>
+      <emotion>surprised</emotion>
+      <voice>Nada. Só nunca tinha visto você... quero dizer...</voice>
+      <person>ronam</person>
+      <emotion>happy</emotion>
+      <voice>Nunca tínhamos visto você contar uma história desse jeito.</voice>
+      <narration>Então você percebe que havia repetido todas as palavras de Riodes em voz alta.</narration>
+      <protagonist />
+      <voice>...</voice>
+      <person>lura</person>
+      <voice>Ele disse qual era o nome dessa tal entidade?</voice>
+      <protagonist />
+      <voice>Cantranis.</voice>
+      <person>ronam</person>
+      <voice>Nunca ouvi falar.</voice>
+      <person>lura</person>
+      <voice>Eu, já. Chamavam ela de "deusa dos raios".</voice>
+      <voice>Costumava atender desejos de quem conseguisse passar em seus testes de bravura.</voice>
+      <voice>Desapareceu misteriosamente há quase 20 anos.</voice>
+      <person>ronam</person>
+      <voice>Acha que o cozinheiro do abrigo pode ter se enganado?</voice>
+      <person>lura</person>
+      <voice>Não sei. Agora que pensei nisso, o General Vermelho pode voar e soltar raios pelas mãos, não pode?</voice>
+      <voice>Isso se encaixa com o que eu lembro sobre os poderes de Cantranis.</voice>
+    </do>
+
+    <do when="b">
+      <narration>Você recorda mais algumas coisas que Riodes lhe contou</narration>
+
+      <background>shelter</background>
+
+      <person>riodes</person>
+      <voice>Quando o império foi dissolvido e o conselheiro imperial Raduar tentou assumir o comando da província, ele o desafiou.</voice>
+      <voice>O conselheiro aceitou o desafio, mas Belísar usou de truques sujos e trapaças para derrota-lo.</voice>
+      <voice>Raduar conseguiu fugir, prometendo que nunca deixaria alguém tão perverso assumir o comando de sua gente.</voice>
+      <voice>Então, quando as pessoas começaram a aceitar Belísar como seu novo governante, o conselheiro fundou a resistência, e aí a guerra teve início.</voice>
+      <emotion>angry</emotion>
+      <voice>Como pode ver, o General Vermelho vai até as últimas consequências para conseguir poder, não tendo nenhuma hesitação em vender a própria alma, se isso lhe for útil.</voice>
+
+      <background>forest</background>
+
+      <person>ronam</person>
+      <emotion>angry</emotion>
+      <voice>Isso aí nos sabemos que é verdade.</voice>
+      <person>lura</person>
+      <emotion>angry</emotion>
+      <voice>Sim.</voice>
+      <protagonist />
+      <voice>...</voice>
+      <voice>Onde está esse conselheiro Raduar?</voice>
+      <voice>Quero dizer, ele é o líder da resistência, não é? Algum de vocês já o viu?</voice>
+      <person>lura</person>
+      <voice>Pessoalmente, não.</voice>
+      <person>ronam</person>
+      <voice>Eu também não. Ele está desaparecido, eu acho.</voice>
+      <voice>A rebelião hoje não é centralizada, não tem um único líder.</voice>
+      <voice>Talvez ele esteja vivendo na surdina.</voice>
+      <voice>Se foi ele mesmo o fundador, faz sentido que queira se manter escondido.</voice>
+      <person>lura</person>
+      <voice>Sabemos que ele foi seriamente ferido pelo General Vermelho durante uma batalha.</voice>
+      <voice>É possível que não tenha se recuperado completamente ainda.</voice>
+      <protagonist />
+      <thought>Um ferimento que não se curou ainda depois de quase um ano?</thought>
+      <thought>Provavelmente não vai se curar nunca mais.</thought>
+      <person>lura</person>
+      <voice>Mas por que a pergunta, Sulana? Sabe de alguma coisa sobre ele?</voice>
+      <protagonist />
+      <voice>Não. Mas tem alguma coisa esquisita nessa história.</voice>
+    </do>
+
+    <do when="c">
+      <narration>Você recorda mais algumas coisas que Riodes lhe contou</narration>
+
+      <background>shelter</background>
+
+      <person>riodes</person>
+      <voice>Os poderes do general são variados, mas a maioria deles se baseia em eletricidade.</voice>
+      <voice>Pode voar e conjurar relâmpagos com a mesma facilidade com que um soldado brande uma espada.</voice>
+      <voice>Também pode criar escudos energéticos capazes de resistir aos mais poderosos impactos.</voice>
+      <emotion>angry</emotion>
+      <voice>O homem é um monstro em combate.</voice>
+      <emotion>normal</emotion>
+      <voice>Para piorar ainda mais as coisas, ele pode ver e ouvir o que falam a quilômetros de distância.</voice>
+      <emotion>surprised</emotion>
+      <voice>Tome muito cuidado! Ele pode te espionar a qualquer momento sem que você perceba!</voice>
+
+      <background>forest</background>
+
+      <narration>Um tremor involuntário percorre o corpo de Ronam.</narration>
+      <person>ronam</person>
+      <emotion>surprised</emotion>
+      <voice>Céus! Por favor me diga que você inventou essa última parte!</voice>
+      <protagonist />
+      <voice>Não inventei nada.</voice>
+      <person>lura</person>
+      <voice>O homem é perigoso mesmo.</voice>
+      <emotion>surprised</emotion>
+      <voice>Mas soubemos que ele está ferido, não é?</voice>
+      <voice>Que tipo de monstro seria forte o bastante para deixar tanto o general quanto seus tenentes fora de combate?</voice>
+      <person>ronam</person>
+      <emotion>surprised</emotion>
+      <voice>Alguma coisa... que esteja do nosso lado, eu espero?</voice>
+    </do>
+
+    <restart />
+  </do>
+
+  <protagonist />
+  <thought>Não sei se há algum fundo de verdade no que Riodes disse.</thought>
+  <thought>O Marcelius Belísar que conheci não se parece nem um pouco com a pessoa egoísta e faminta por poder que ele descreveu.</thought>
+  <emotion>surprised</emotion>
+  <thought>Ainda não acredito que passei tantas horas ao lado dele naquela praia.</thought>
+  <thought>Aquilo é completamente impossível, não é?</thought>
+  <thought>Tem que ser um sonho, uma ilusão ou algo do tipo.</thought>
+  <narration>Ronam parece cético, apesar de um pouco assustado.</narration>
+  <person>ronam</person>
+  <voice>Essa história toda me parece um pouco exagerada, mas até que explica algumas coisas.</voice>
+  <voice>O homem realmente tem poderes que não são normais.</voice>
+  <person>lura</person>
+  <voice>É. Controlar mentes, por exemplo.</voice>
+  <voice>Nenhum ser humano tem esse tipo de poder. Apenas uma entidade divina poderia conceder um dom como esse.</voice>
+  <narration>Você tenta imaginar como seria ter sua vontade dominada por outra pessoa.</narration>
+  <narration>Então pensa naquela excitação que sente, que parece ser compartilhada, em menor grau, por todos os outros rebeldes.</narration>
+  <narration>Aquela vontade de ir para o combate e subjugar o inimigo.</narration>
+  <narration>Seria o controle da mente algo assim? Ter uma vontade dentro de si o empurrando a fazer algo?</narration>
+  <narration>Mas alguma coisa ainda não bate.</narration>
+  <protagonist />
+  <voice>Riodes não falou nada sobre ele controlar mentes.</voice>
+  <person>lura</person>
+  <voice>Bom, sabemos que ele faz isso, não sabemos?</voice>
+  <voice>Talvez não seja um poder dele próprio, mas de algum de seus subalternos, talvez?</voice>
+  <person>ronam</person>
+  <voice>De qualquer forma, eu nunca tinha ouvido essa história antes. Tem certeza que não é só uma invenção?</voice>
+  <protagonist />
+  <voice>Ele diz que era amigo da família da esposa do general.</voice>
+  <person>lura</person>
+  <voice>Muito suspeito isso.</voice>
+  <voice>Eu tomaria cuidado com esse cozinheiro, se fosse você.</voice>
+  <narration>Você assente, sem dizer nada.</narration>
+  <person>ronam</person>
+  <voice>Eu fico pensando: por que o general se daria ao trabalho de fazer tudo isso?</voice>
+  <voice>Quero dizer, se o objetivo dele era poder, ele conseguiu, pois todo mundo sabe que o homem é poderoso pacas.</voice>
+  <voice>Para que dominar o país? Quero dizer, ele não vai ganhar mais poder fazendo isso.</voice>
+  <person>lura</person>
+  <voice>Talvez ele só queira ser reverenciado.</voice>
+  <emotion>happy</emotion>
+  <voice>Ou talvez ele acredite naquela história maluca de que os conselheiros imperiais são malignos e dividiram o império entre si para que cada um deles pudesse governar uma das províncias.</voice>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Hehehe!</voice>
+  <voice>Os soldados vermelhos gostam de falar isso, bem como as pessoas que têm sua vontade roubada.</voice>
+  <emotion>normal</emotion>
+  <voice>Garanto que o general os obriga a falar essas coisas para que o povo não o veja como o vilão que é.</voice>
+
+  <music>the-awakening</music>
+
+  <narration>De repente, Lura olha para você com um sorriso.</narration>
+  <person>lura</person>
+  <emotion>happy</emotion>
+  <voice>Você está diferente. Parece mais calma, mais tranquila, menos…</voice>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Assustadora?</voice>
+  <protagonist />
+  <choice>
+    <a when="sulana_hope[8:]" req="Esperança+8">Não tem nada de errado</a>
+    <b when="sulana_fight[8:]" req="Coragem+8">Eu me sinto diferente</b>
+    <c>Chega de papo.</c>
+  </choice>
+  <thought>Como devo responder a isso?</thought>
+
+  <do when="a">
+    <narration>Você balança a cabeça.</narration>
+    <protagonist />
+    <voice>Não tem nada de errado comigo, continuo a mesma de sempre.</voice>
+    <person>lura</person>
+    <voice>Isso é bom. Mas se sentir qualquer coisa estranha, fale com a gente.</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Isso mesmo!</voice>
+    <emotion>normal</emotion>
+    <voice>Somos seus parceiros, estamos aqui para qualquer coisa que precisar.</voice>
+    <protagonist />
+    <voice>...</voice>
+    <person>ronam</person>
+    <voice>Sei não, hein? Isso aí não foi muito convincente...</voice>
+    <narration>Você aperta os lábios, olha pra cima e sacode a cabeça.</narration>
+    <person>lura</person>
+    <emotion>happy</emotion>
+    <voice>Hehehe!</voice>
+    <voice>Vocês dois têm uma dinâmica que eu acho curiosa.</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Como assim?</voice>
+    <person>lura</person>
+    <emotion>happy</emotion>
+    <voice>Ah, sei lá. Vocês são tão diferentes um do outro que às vezes parece até estranho se darem tão bem...</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Ei!</voice>
+    <voice>Eu me dou bem com todo mundo!</voice>
+    <protagonist />
+    <voice>Sério?</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Sim, eu me dou bem com todo mundo, sim!</voice>
+    <emotion>angry</emotion>
+    <voice>O que é isso agora? Dia nacional da implicância com o Ronam?</voice>
+    <person>lura</person>
+    <emotion>happy</emotion>
+    <voice>Hahahaha!</voice>
+    <narration>Você cruza os braços e olha para ele.</narration>
+
+    <do>
+      <protagonist />
+      <choice>
+        <a>De por que você fugiu de casa?</a>
+        <b>Dos seus primeiros dias de rebelde?</b>
+        <c>Daquela cicatriz que tem nas costas?</c>
+        <d>Ah, deixa pra lá, chega de conversa.</d>
+      </choice>
+      <voice>Por que não conta para ela...</voice>
+      <exit when="d" />
+
+      <do when="a">
+        <narration>Ronam solta um gemido de frustração.</narration>
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>Como é? Você fugiu de casa?!</voice>
+        <voice>Por quê?</voice>
+        <person>ronam</person>
+        <voice>Obrigado, Sulana!</voice>
+        <narration>Você apenas levanta uma sobrancelha, ante a expressão irônica dele.</narration>
+        <narration>Ronam solta um suspiro, antes de lançar um sorriso triste para a professora.</narration>
+        <person>ronam</person>
+        <emotion>surprised</emotion>
+        <voice>E qual o problema? Eu também já fui jovem e idiota como todo mundo.</voice>
+        <protagonist />
+        <voice>E continua sendo até hoje.</voice>
+        <narration>Lura olha para você surpresa, por um momento, antes de soltar uma gargalhada.</narration>
+        <narration>Ronam tenta fazer uma cara indignada, mas acaba rindo também.</narration>
+        <person>lura</person>
+        <emotion>happy</emotion>
+        <voice>Se até a Sulana pensa assim, fica difícil defender você, Ronam.</voice>
+        <person>ronam</person>
+        <emotion>happy</emotion>
+        <voice>Eu e minha boca grande.</voice>
+        <person>lura</person>
+        <emotion>happy</emotion>
+        <voice>Agora fiquei curiosa, essa história deve ser boa!</voice>
+        <narration>Ele solta um suspiro.</narration>
+        <person>lura</person>
+        <emotion>happy</emotion>
+        <voice>Ora, vamos lá, você contou para a Sulana, por que não pode contar para mim também?</voice>
+        <person>ronam</person>
+        <emotion>surprised</emotion>
+        <voice>Tá bom, tá bom!</voice>
+        <narration>Ele desvia o olhar e pensa por um instante, escolhendo as palavras.</narration>
+        <person>ronam</person>
+        <voice>Eu venho de o que as pessoas chamam de…</voice>
+        <narration>Ele hesita e você decide completar a frase por ele.</narration>
+        <protagonist />
+        <voice>Tribo selvagem.</voice>
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>Sério?!</voice>
+        <narration>Ronam dá de ombros.</narration>
+        <voice>Meu povo viveu por séculos nessa terra antes de a… civilização surgir.</voice>
+        <voice>Muitos da minha família se ressentem até hoje por termos nossas florestas roubadas de nós para que algum senhor feudal possa criar seus cavalos premiados.</voice>
+        <person>lura</person>
+        <emotion>sad</emotion>
+        <voice>Oh. Sinto muito.</voice>
+        <narration>Ele balança a cabeça.</narration>
+        <person>ronam</person>
+        <voice>Ah, não é culpa sua.</voice>
+        <voice>Com o tempo, meu povo teve que se adaptar e a adotar um estilo de vida diferente. Era a única forma de sobreviver, penso eu.</voice>
+        <voice>De qualquer forma, a vila em que eu cresci era de maioria nativa. As pessoas lá eram… quer dizer, são muito supersticiosas.</voice>
+        <voice>Para ter uma ideia, depois que manifestou suas habilidades de cura, minha irmã passou a ser tratada como uma espécie de deusa.</voice>
+        <voice>Ofereciam a ela presentes, construíram uma casa enorme só para ela. Davam a ela… preferência para tudo.</voice>
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>Não creio! Eles nunca viram pessoas com poderes místicos?</voice>
+        <person>ronam</person>
+        <voice>Sim, todos que tinham poderes na vila eram tratados com… veneração.</voice>
+        <voice>Mas Mariena era diferente. Achavam que era a manifestação da divindade das colheitas e da fertilidade.</voice>
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>Mas espere! Você também tem poderes!</voice>
+        <narration>Ele suspirou de novo.</narration>
+        <person>ronam</person>
+        <voice>Sim, mas só fui descobrir isso depois que entrei na academia militar.</voice>
+        <voice>Minha habilidade é o tipo de coisa que só pode ser desenvolvida através de treinamento.</voice>
+        <voice>Eu não tenho controle sobre meu próprio fluxo como você e Sulana.</voice>
+        <voice>A única coisa que sou capaz de fazer é usar minha afinidade para influenciar o fluxo dos outros.</voice>
+        <person>lura</person>
+        <voice>Bom, eu acho fantástico o que você consegue fazer.</voice>
+        <person>ronam</person>
+        <emotion>happy</emotion>
+        <voice>No começo, eu também achei.</voice>
+        <emotion>normal</emotion>
+        <voice>Logo depois das primeiras sessões de treinamento com meu sargento, eu voltei para casa ansioso para contar para todo mundo.</voice>
+        <emotion>sad</emotion>
+        <voice>Mas eu não gostei do que encontrei lá.</voice>
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>Ronam, tem certeza de que está tudo bem? Você não precisa falar mais nada se não quiser.</voice>
+        <person>ronam</person>
+        <voice>Ah, nem foi nada tão fora do comum assim.</voice>
+        <voice>Quero dizer, já tratavam minha irmã de forma descabida antes, mas quando voltei para casa depois de passar meses em treinamento… bem… descobri que aquilo tinha piorado.</voice>
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>Piorado quanto?</voice>
+        <narration>Ao ver Ronam novamente hesitar por tempo demais, você decide responder por ele.</narration>
+        <protagonist />
+        <voice>Ergueram um altar no meio da vila onde faziam orações para a irmã dele.</voice>
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>O quê?!</voice>
+        <person>ronam</person>
+        <emotion>sad</emotion>
+        <voice>Pois é.</voice>
+        <voice>Mariena não estava suportando mais tudo aquilo, estava com os nervos à flor da pele, mas não queria desapontar ninguém então fazia o que queriam.</voice>
+        <voice>Quando conversei com ela, Mariena admitiu que estava começando a pensar em suicídio.</voice>
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>Céus!</voice>
+        <person>ronam</person>
+        <voice>Bom, para encurtar a história, eu tentei convencer todo mundo que não tinha nada de sobrenatural nos poderes dela.</voice>
+        <voice>Tentei explicar que o campo místico cobre todo o mundo e qualquer pessoa com afinidade consegue manipular a energia dele.</voice>
+        <voice>Eu falei para meus pais tudo o que eu tinha aprendido com os militares sobre o nosso fluxo vital e como ele pode ser usado para influenciar o campo místico.</voice>
+        <emotion>sad</emotion>
+        <voice>Mas, para eles, aquilo soou como... heresia.</voice>
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>Oh, não! E foi aí que você decidiu pegar sua irmã e fugir?</voice>
+        <protagonist />
+        <voice>Ele é idiota demais para isso.</voice>
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>Sulana!</voice>
+        <person>ronam</person>
+        <emotion>surprised</emotion>
+        <voice>Não, ela está certa.</voice>
+        <emotion>sad</emotion>
+        <voice>Eu deveria ter percebido que não dava para argumentar com eles.</voice>
+        <voice>Mesmo assim, eu tentei de novo, e de novo, e de novo.</voice>
+        <voice>Nunca achei que as coisas podiam piorar.</voice>
+        <emotion>angry</emotion>
+        <voice>Até que um grupo de aldeões revoltados tentou me matar por achar que eu estava querendo separar sua... “deusa” deles.</voice>
+        <voice>Acabei tendo que lutar sozinho contra metade da vila.</voice>
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>Céus! E sua família? Seus pais? Ninguém tentou te ajudar?</voice>
+        <person>ronam</person>
+        <emotion>sad</emotion>
+        <voice>Meus pais estavam entre os… revoltados.</voice>
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>Que horror! Isso é… inacreditável!</voice>
+        <emotion>angry</emotion>
+        <voice>Como é possível uma coisa dessas?!</voice>
+        <protagonist />
+        <voice>As pessoas são assim mesmo. Já vi acontecer várias vezes.</voice>
+        <voice>É mais fácil acreditar cegamente em divindades do que tentar entender o que acontece no mundo.</voice>
+        <emotion>angry</emotion>
+        <voice>E qualquer coisa que contradiga essa fé cega vira ameaça.</voice>
+        <voice>Quando essa “ameaça” parece muito grande, reagem com violência.</voice>
+        <narration>Ronam coloca a mão em seu ombro e dá um apertão de leve, num gesto de camaradagem.</narration>
+        <person>ronam</person>
+        <emotion>happy</emotion>
+        <reward>+relationship</reward>
+        <voice>...</voice>
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>Mas e aí, o que aconteceu? Você foi ferido?</voice>
+        <person>ronam</person>
+        <voice>Eu tinha um pouco de treinamento militar e um escudo corporal de soldado raso.</voice>
+        <voice>Não era grande coisa, mas foi suficiente para derrubar alguns dos que eram considerados bons guerreiros.</voice>
+        <voice>Aquilo, no entanto, serviu apenas para irritar ainda mais as pessoas.</voice>
+        <voice>Aqueles que eram considerados “privilegiados” tentaram usar seus poderes contra mim, e eu fui obrigado a quebrar a fase deles para impedir que alguém se machucasse.</voice>
+        <emotion>surprised</emotion>
+        <voice>Num momento, lá estava eu, fazendo de tudo para permanecer vivo e, no instante seguinte, as pessoas estavam paradas me olhando, apalermadas, sem saber o que fazer.</voice>
+        <voice>Alguns deles chegaram a… se ajoelhar na minha frente.</voice>
+        <emotion>angry</emotion>
+        <voice>Então eu não aguentei mais aquilo, peguei minha irmã e fui embora.</voice>
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>Eles… deixaram vocês irem?</voice>
+        <person>ronam</person>
+        <emotion>angry</emotion>
+        <voice>Deixaram, quando ameacei lançar a fúria dos céus sobre todos eles.</voice>
+        <person>lura</person>
+        <emotion>sad</emotion>
+        <voice>Você... não voltou mais a ver o resto de sua família?</voice>
+        <narration>Ronam sacode a cabeça.</narration>
+        <person>ronam</person>
+        <voice>Eles vieram atrás de nós uma vez.</voice>
+        <person>sulana</person>
+        <emotion>angry</emotion>
+        <voice>Tentaram levar Mariena de volta à força.</voice>
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>Oh, não!</voice>
+        <person>ronam</person>
+        <emotion>angry</emotion>
+        <voice>Oh, sim!</voice>
+        <voice>Por sorte, tivemos ajuda. Os guardas foram chamados e prenderam os “sequestradores” em flagrante.</voice>
+        <voice>Tanto eu como Mariena já éramos maiores de idade, então, pelas leis do Império, não podiam nos arrastar de volta sem nosso consentimento.</voice>
+        <voice>Quando meu pai pareceu entender aqui, o sargento liberou a ele e aos outros, sob a promessa de ir embora e não mais voltar.</voice>
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>E o que vocês fizeram?</voice>
+        <person>ronam</person>
+        <voice>Nos mudamos para a cidade de Tarnagam, onde conhecemos Giarle.</voice>
+        <voice>Gentilmente, ele nos ofereceu emprego na fazenda da família dele.</voice>
+        <person>lura</person>
+        <voice>Oh, então foi assim que vocês se conheceram?</voice>
+        <person>ronam</person>
+        <voice>Sim. Eles são todos pessoas decentes.</voice>
+        <emotion>angry</emotion>
+        <voice>Não mereciam o fim que tiveram.</voice>
+        <protagonist />
+        <voice>Guerras são sempre injustas.</voice>
+      </do>
+
+      <do when="b">
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>O que tem?</voice>
+        <person>ronam</person>
+        <voice>Bom, eu sempre simpatizei um pouco com Sulana.</voice>
+        <emotion>angry</emotion>
+        <voice>Ainda mais quando eu via todo mundo exceto Giarle tratar ela como se fosse, sei lá, um tipo de cão raivoso.</voice>
+        <narration>Lura olha para você arregalando os olhos.</narration>
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>Então eles sempre trataram você dessa forma?</voice>
+        <narration>Você dá de ombros.</narration>
+        <protagonist />
+        <voice>Eu não vi nada demais nisso.</voice>
+        <voice>Todos sempre me trataram dessa forma.</voice>
+        <person>ronam</person>
+        <emotion>angry</emotion>
+        <voice>Está vendo? Isso não é revoltante?</voice>
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>Hã... acho que sim.</voice>
+        <emotion>normal</emotion>
+        <voice>Então você tentou ajudar Sulana a se enturar?</voice>
+        <person>ronam</person>
+        <emotion>happy</emotion>
+        <voice>Hahaha! Duvido que isso fosse possível!</voice>
+        <protagonist />
+        <emotion>angry</emotion>
+        <voice>Esse idiota saiu é gritando com todo mundo!</voice>
+        <voice>Fez um monte de inimigos e acabou apanhando por causa disso.</voice>
+        <voice>Tive que separar várias brigas em que ele se meteu.</voice>
+        <person>ronam</person>
+        <emotion>happy</emotion>
+        <reward>+relationship</reward>
+        <voice>Por “separar”, ela quis dizer “enfiar a mão na cara dos cabeças-duras até eles pedirem por misericórdia”.</voice>
+        <narration>Lura solta uma risada.</narration>
+        <person>lura</person>
+        <emotion>happy</emotion>
+        <voice>Isso é bem a cara de vocês dois, mesmo.</voice>
+        <emotion>surprised</emotion>
+        <voice>Mas reagir dessa forma não piorou as coisas?</voice>
+        <person>ronam</person>
+        <voice>Não, por causa de Giarle.</voice>
+        <emotion>happy</emotion>
+        <voice>O máximo que aconteceu foi eu ganhar fama de puxa-saco.</voice>
+      </do>
+      
+      <do when="c">
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>Cicatriz? Que cicatriz?</voice>
+        <person>ronam</person>
+        <emotion>surprised</emotion>
+        <voice>Ah, é uma longa história...</voice>
+        <person>lura</person>
+        <emotion>happy</emotion>
+        <voice>Ah, não, agora você vai ter que contar!</voice>
+        <narration>Ronam olha para vocês duas por um instante e solta um suspiro.</narration>
+        <person>ronam</person>
+        <emotion>surprised</emotion>
+        <voice>Tá bom, tá bom!</voice>
+        <emotion>normal</emotion>
+        <voice>Um</voice>
+      </do>
+  
+      <restart />
+    </do>
+  </do>
+
+  <do when="b">
+    <narration>Você dá de ombros</narration>
+    <protagonist />
+    <voice>Eu me sinto um pouco diferente. Mas não acho que tenha nada errado ou fora do lugar.</voice>
+    <person>lura</person>
+    <voice>Vamos falar com um curandeiro.</voice>
+    <voice>Eu não percebi nenhuma anomalia, mas nunca se sabe.</voice>
+    <protagonist />
+    <voice>Não, obrigada.</voice>
+    <person>lura</person>
+    <voice>Tem certeza? Não quer conversar sobre isso?</voice>
+    <emotion>happy</emotion>
+    <voice>Às vezes uma boa conversa pode fazer maravilhas.</voice>
+    <protagonist />
+    <voice>Não quero conversar.</voice>
+    <person>lura</person>
+    <voice>Ora, vamos! Não tem nada demais em bater um papo de vez em quando.</voice>
+    <emotion>happy</emotion>
+    <voice>Já sei! Por que você não me pergunta alguma coisa?</voice>
+    <voice>Não tem nada que você queira saber sobre mim?</voice>
+    <narration>Você a encara por um momento.</narration>
+    <do>
+      <protagonist />
+      <choice>
+        <a>Sua infância</a>
+        <b>Seus poderes</b>
+        <c>Sua dedicação à rebelião</c>
+        <d>Nada</d>
+      </choice>
+      <thought>O que quero saber sobre Lura?</thought>
+      <exit when="d" />
+
+      <do when="a">
+        <protagonist />
+        <voice>Você sabe como foi minha infância.</voice>
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>Tenho uma boa ideia. Imagino que não tenha sido nada fácil.</voice>
+        <protagonist />
+        <voice>E a sua foi diferente?</voice>
+        <person>lura</person>
+        <emotion>surprised</emotion>
+        <voice>Com certeza! Quero dizer, eu acredito que sim.</voice>
+        <emotion>normal</emotion>
+        <voice>Eu nasci em um santuário da Irmandade da Terra.</voice>
+        <person>ronam</person>
+        <emotion>surprised</emotion>
+        <voice>É mesmo? Deve ter sido uma infância interessante.</voice>
+        <person>lura</person>
+        <voice>Nem tanto. Nunca conheci meu pai.</voice>
+        <voice>Minha mãe era uma… bem, ela trabalhava em uma casa de entretenimento noturno.</voice>
+        <voice>Aparentemente, eu só nasci porque ela esqueceu de tomar o chá de abelastro.</voice>
+        <voice>Quando a condição dela ficou evidente, foi mandada embora e as únicas pessoas que a acolheram foram os monges.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>...</voice>
+        <person>ronam</person>
+        <emotion>surprised</emotion>
+        <voice>Uau… eu… nem sei o que dizer…</voice>
+        <narration>Lura dá de ombros.</narration>
+        <person>lura</person>
+        <voice>Tudo isso aconteceu antes de eu nascer.</voice>
+        <voice>Os monges disseram que o trabalho de parto levou dias e, apesar de todos os esforços deles, minha mãe não sobreviveu.</voice>
+        <voice>Falaram que era da vontade do Grande Espírito que ela fosse levada para um local melhor, onde receberia todo o conforto e amor que merecia.</voice>
+        <person>ronam</person>
+        <emotion>sad</emotion>
+        <voice>Oh, sinto muito.</voice>
+        <person>lura</person>
+        <voice>Não se preocupe. Os monges acabaram meio que me adotando e a vida no santuário foi boa.</voice>
+        <voice>Eu invejava um pouco as crianças que tinham pai e mãe, mas os membros da irmandade cuidaram muito bem de mim, eu não gostaria de mudar nada da minha infância mesmo que pudesse.</voice>
+        <person>ronam</person>
+        <voice>Você não quis se tornar sacerdotisa ou paladina?</voice>
+        <person>lura</person>
+        <voice>Não. Eu nunca fui uma pessoa muito religiosa.</voice>
+        <voice>Eu sempre preferi ler livros de física ao invés de participar das cerimônias.</voice>
+        <person>ronam</person>
+        <emotion>surprised</emotion>
+        <voice>Os monges não exigiam que você participasse?</voice>
+        <person>lura</person>
+        <voice>Não, eles diziam que o Grande Espírito toca as pessoas de formas diferentes e que se eu tivesse vocação para aquela vida, eu saberia quando chegasse o momento certo.</voice>
+        <person>ronam</person>
+        <emotion>surprised</emotion>
+        <voice>Uau! Fiquei com inveja, agora!</voice>
+        <person>lura</person>
+        <emotion>happy</emotion>
+        <voice>Hehehe.</voice>
+        <voice>O dia mais feliz da minha vida foi quando consegui fazer minha primeira flutuação mística.</voice>
+        <voice>Os monges ficaram tão alegres quanto eu e fizeram uma celebração.</voice>
+        <person>ronam</person>
+        <voice>Eles parecem gente boa.</voice>
+        <voice>Foi para isso que você entrou para a rebelião? Para proteger o santuário?</voice>
+        <person>lura</person>
+        <emotion>sad</emotion>
+        <voice>Não, eu saí de lá muito antes de a guerra começar.</voice>
+        <person>ronam</person>
+        <emotion>surprised</emotion>
+        <voice>Ah, é? Por quê?</voice>
+        <person>lura</person>
+        <emotion>sad</emotion>
+        <voice>Bom, eu… conheci alguém…</voice>
+        <person>ronam</person>
+        <emotion>surprised</emotion>
+        <voice>Oh.</voice>
+        <person>lura</person>
+        <voice>O que eu posso dizer? Eu era jovem e estava confusa.</voice>
+        <person>ronam</person>
+        <emotion>surprised</emotion>
+        <voice>Confusa por quê?</voice>
+        <voice>Você não é a primeira e nem vai ser a última garota a querer sair de casa para poder viver com o namorado.</voice>
+        <person>lura</person>
+        <emotion>sad</emotion>
+        <voice>É, mas no meu caso era… uma namorada.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>...</voice>
+        <person>ronam</person>
+        <emotion>surprised</emotion>
+        <voice>Oh! Quero dizer, isso é um pouco mais incomum, mas também não tem nada demais.</voice>
+        <protagonist />
+        <voice>Coisas incomuns são sempre problema.</voice>
+        <voice>Pessoas reagem mal quando descobrem que o mundo não é do jeito que elas acreditam.</voice>
+        <person>lura</person>
+        <emotion>sad</emotion>
+        <voice>...</voice>
+        <person>ronam</person>
+        <emotion>surprised</emotion>
+        <voice>Mas não as pessoas que realmente importam!</voice>
+        <narration>Você lança um longo olhar para Ronam e depois para Lura.</narration>
+        <narration>Grande parte das pessoas, incluindo os rebeldes, prefere evitar sua companhia, mas não esses dois.</narration>
+        <protagonist />
+        <voice>É. Talvez tenha razão.</voice>
+        <person>lura</person>
+        <emotion>happy</emotion>
+        <reward>+relationship</reward>
+        <voice>...</voice>
+        <narration>Ronam se vira para Lura.</narration>
+        <person>ronam</person>
+        <voice>Quer dizer então que você tem uma companheira?</voice>
+        <person>lura</person>
+        <emotion>sad</emotion>
+        <voice>...</voice>
+        <voice>Não mais.</voice>
+        <voice>Com o tempo descobri que ela tinha uma visão de mundo muito diferente da minha.</voice>
+        <voice>Ela não tinha a mesma opinião que eu sobre coisas que considero importantes, então, acabamos seguindo caminhos separados.</voice>
+        <person>ronam</person>
+        <emotion>sad</emotion>
+        <voice>Sinto muito.</voice>
+        <narration>A professora apenas balança a cabeça.</narration>
+      </do>
+
+      <restart />
+    </do>
+
+    <protagonist />
+    <voice>Não se preocupem comigo. Tudo o que eu preciso é esmagar alguns crânios.</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <person>lura</person>
+    <emotion>surprised</emotion>
+    <voice>!!</voice>
+    <narration>Claro que você não quis dizer aquilo a sério. As expressões nos rostos dos dois quase a fizeram cair na risada.</narration>
+  </do>
+
+  <do when="c">
+    <narration>Você se levanta.</narration>
+    <protagonist />
+    <voice>Já perdemos tempo demais.</voice>
+    <reward>+rage</reward>
+    <voice>Vamos embora. Temos uma batalha para vencer e inimigos para esmagar.</voice>
+    <person>ronam</person>
+    <emotion>happy</emotion>
+    <voice>E aí está ela, de volta!</voice>
+    <person>lura</person>
+    <emotion>happy</emotion>
+    <voice>Hehehe.</voice>
+    <emotion>normal</emotion>
+    <voice>Mas ela tem razão, os outros já estão muito longe.</voice>
+    <voice>Se demorarmos demais chegaremos atrasados.</voice>
+  </do>
+</storyboard>

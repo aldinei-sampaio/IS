@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>sulana</viewpoint>
+  <music>open-sky</music>
+  <background>sulana</background>
+  <tutorial>Você agora está controlando Sulana Lautine</tutorial>
+
+  <do>
+    <protagonist />
+    <choice>
+      <d>Prosseguir</d>
+    </choice>
+    <voice>...</voice>
+    <exit when="d" />
+    <restart />
+  </do>
+
+  <background>camp</background>
+
+  <narration>Vocês chegam no acampamento rebelde no meio da manhã do dia seguinte.</narration>
+  <narration>Aparentemente, toda a resistência está reunida ali.</narration>
+  <narration>Você nunca lutou ao lado de grupos muito grandes, a maior força rebelde de que você se lembra não passava de algumas centenas de pessoas.</narration>
+  <narration>No entanto, ali há milhares delas.</narration>
+  <narration>O tratamento que vocês recebem é frio, quase hostil.</narration>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>O que está acontecendo? Ninguém veio nos dar boas vindas.</voice>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>Estão evitando até mesmo olhar para nós. O que está acontecendo.</voice>
+  <protagonist />
+  <voice>Estão com medo de mim.</voice>
+  <person>ronam</person>
+  <voice>É o que parece. Se ao menos Giarle estivesse aqui…</voice>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>Onde será que está o resto do nosso grupo?</voice>
+  <voice>Vocês vêm algum conhecido?</voice>
+  <person>iraele</person>
+  <emotion>surprised</emotion>
+  <voice>Ah, vocês chegaram.</voice>
+  <narration>Você vira o rosto para encarar uma mulher grandalhona e mal-encarada, que se aproxima e põe as mãos na cintura.</narration>
+  <person>iraele</person>
+  <voice>São do antigo grupo de Giarle, não são?</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Hã... sim, nós somos.</voice>
+  <narration>A mulher avalia você por um momento e assente.</narration>
+  <person>iraele</person>
+  <voice>Podem me chamar de Iraele.</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Ah, então foi você quem comandou a resistência na batalha de Fragata.</voice>
+  <person>iraele</person>
+  <emotion>happy</emotion>
+  <voice>Isso mesmo.</voice>
+  <voice>E aquela vitória não será nem de longe tão grandiosa quanto a de amanhã.</voice>
+  <narration>A mulher volta a se concentrar em você.</narration>
+  <person>iraele</person>
+  <emotion>happy</emotion>
+  <voice>E, para isso, precisamos de toda a ajuda possível.</voice>
+  <protagonist />
+  <voice>...</voice>
+  <narration>Ronam olha de você para Iraele e dá um meio sorriso.</narration>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>É para isso que estamos aqui. Qual é o plano?</voice>
+  <person>iraele</person>
+  <emotion>happy</emotion>
+  <voice>Vamos arrebentar a muralha e invadir o território inimigo.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>...</voice>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>É mesmo? Vocês conseguiram desenvolver um encanto que funcione naquela parede?</voice>
+  <person>iraele</person>
+  <emotion>happy</emotion>
+  <voice>Pode ter certeza que sim. Agora aqueles filhos da mãe não vão ter chance contra nós.</voice>
+  <voice>Vamos tomar primeiro a cidade de Laguna. Estabeleceremos uma base lá e depois vamos expandir para o norte, nordesde e leste.</voice>
+  <voice>Eles nem vão saber o que os atingiu!</voice>
+  <narration>Você pode sentir a excitação tomando conta de seus amigos.</narration>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Uau! Você está otimista, hein?</voice>
+  <person>iraele</person>
+  <emotion>happy</emotion>
+  <voice>Claro que sim! Nunca tivemos uma chance como essa antes.</voice>
+  <narration>Ela volta a encarar você.</narration>
+  <person>iraele</person>
+  <voice>Você não é mesmo de muitas palavras, não? Ouvi várias coisas a seu respeito.</voice>
+  <voice>Podemos contar com sua ajuda amanhã?</voice>
+  <protagonist />
+  <voice>...</voice>
+  <voice>É para isso que estou aqui... eu acho.</voice>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>É claro que vamos ajudar!</voice>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Não perderíamos isso por nada no mundo!</voice>
+  <person>iraele</person>
+  <emotion>happy</emotion>
+  <voice>Explêndido!</voice>
+  <emotion>normal</emotion>
+  <voice>Tenho mais alguns preparativos a fazer.</voice>
+  <voice>Procurem um canto por aí e descansem, amanhã vai ser um dia cheio.</voice>
+  <voice>Vejo vocês pela manhã.</voice>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Tudo bem. Boa noite!</voice>
+  <person>lura</person>
+  <emotion>happy</emotion>
+  <voice>Boa noite!</voice>
+  <protagonist />
+  <voice>...</voice>
+  
+  <music>goodbye</music>
+
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Bom, vocês ouviram a mulher! Vamos achar um lugar para passar a noite.</voice>
+  <person>lura</person>
+  <voice>O que foi, Sulana? Você parece preocupada.</voice>
+  <protagonist />
+  <voice>Só curiosa.</voice>
+  <voice>Como ela vai conseguir explodir a muralha?</voice>
+  <person>lura</person>
+  <emotion>happy</emotion>
+  <voice>Eu também estou intrigada. Considerando a forma confiante como ela disse aquilo, deve ter um bom plano.</voice>
+  <voice>O que será que vão usar?</voice>
+  <voice>Ouvi dizer que temos aliados capazes de conjurar elementais de fogo. Queria muito ver um deles em ação.</voice>
+  <narration>Você pega um tufax de sua mochila e dá uma mordida.</narration>
+  <protagonist />
+  <voice>Eu não sou inteligente como você, então não entendo direito essas coisas.</voice>
+  <emotion>surprised</emotion>
+  <voice>Mas para que derrubar o muro?</voice>
+  <voice>Já entramos lá uma vez saltando por cima dele, então para que gastar energia com isso?</voice>
+  <voice>Quero dizer, vocês viram algum cavalo ou carroça de guerra por aí?</voice>
+  <voice>Parece que tudo o que temos é um bando de gente andando a pé.</voice>
+  <narration>Lura e Ronam olham para você arregalando os olhos, como se nenhum deles tivesse pensado nisso até agora.</narration>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>Hã… imagino que a derrubada do muro facilite uma possível retirada estratégica.</voice>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>E lembre-se de que quem escalou o muro foi você. Nós só conseguimos porque usamos escadas.</voice>
+  <protagonist />
+  <voice>...</voice>
+  <narration>Você acha desnecessário comentar que estão no meio de uma floresta e que a confecção de um objeto simples como uma escada, se feita direito, consumiria bem menos energia do que lançar uma bola de fogo.</narration>
+  <protagonist />
+  <voice>Se você diz.</voice>
+  <narration>Você começa a se afastar na direção das árvores.</narration>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Ei! Onde você vai?</voice>
+  <protagonist />
+  <voice>Procurar um lugar calmo para dormir.</voice>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>Espere! Vamos com você!</voice>
+  <narration>Dando uma olhada ao redor, você percebe que os rebeldes continuam lançando olhares desconfiados em sua direção, mas viram a cabeça quando você olha para eles.</narration>
+  <protagonist />
+  <voice>Vão procurar seus amigos. Esse pessoal aí não tem nada contra vocês dois.</voice>
+  <voice>A bronca deles é comigo.</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>O quê? Não! Você é da nossa unidade!</voice>
+  <emotion>angry</emotion>
+  <voice>Quando tratam um de nós desse jeito, estão desrespeitando a todos nós.</voice>
+  <person>lura</person>
+  <voice>Isso mesmo. Vamos procurar um lugar bem longe desses babacas.</voice>
+
+</storyboard>

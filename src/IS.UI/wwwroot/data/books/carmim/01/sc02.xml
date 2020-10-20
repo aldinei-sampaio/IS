@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>belisar</viewpoint>
+  <music>enigma</music>
+  <background>transition</background>
+
+  <narration>Enquanto isso, não muito longe dali...</narration>
+
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <background>village</background>
+
+  <narration>Você marcha para a praça principal da cidade chamada Mercília, avaliando as estruturas que via ao redor.</narration>
+  <protagonist />
+  <thought>...</thought>
+  <thought>Humm... as casas estão todas intactas, sem danos decorrentes de batalha.</thought>
+  <thought>Teria sido muito diferente se os cidadãos não tivessem se rendido assim que o cerco começou.</thought>
+  <thought>De qualquer forma, isso é excelente. Vai nos poupar bastante tempo, trabalho e recursos.</thought>
+  <narration>Mas, apesar da rendição, alguns moradores ainda eram valentes o suficiente para lhe gritar insultos através das janelas.</narration>
+  <person>aldeao1</person>
+  <emotion>angry</emotion>
+  <voice>Oportunista!</voice>
+  <person>aldeao2</person>
+  <emotion>angry</emotion>
+  <voice>Covarde!</voice>
+  <person>aldeao3</person>
+  <emotion>angry</emotion>
+  <voice>Assassino!</voice>
+  <narration>Obviamente, todos ali sabem muito bem quem você é.</narration>
+  <protagonist />
+  <thought>Ou, pelo menos, pensam que sabem.</thought>
+  <narration>Não era de estranhar que o reconhecessem, pois você não é uma figura que possa se chamada de “discreta”. Principalmente quando usava o traje que lhe dera o apelido de “General Vermelho”.</narration>
+  <narration>A função original daquele traje era canalizar seus poderes, para que você tivesse uma certa segurança quando precisasse usá-los, mas a combinação de cores, somada à sua postura e porte físico acabou por projetar uma inesperada imagem de força e poder, capaz de despertar o temor em seus oponentes.</narration>
+  <narration>Não que você gostasse daquele efeito, mas, em uma guerra, era necessário aproveitar qualquer vantagem que se pudesse obter.</narration>
+  <narration>Ignorando os brados insultuosos dos cidadãos que estavam aprisionados em suas casas, você se aproxima daquela que era um de seus oficiais mais confiáveis.</narration>
+  <person>falcione</person>
+  <voice>Senhor!</voice>
+  <tutorial>Sulana e Belísar têm alguns atributos em comum, como "Coragem", no entanto, quando você recebe um bônus, o mesmo fica vinculado ao personagem que você está controlando no momento.</tutorial>
+  <tutorial>Dessa forma, Sulana e Belísar podem ter valores diferentes para o mesmo atributo.</tutorial>
+  <protagonist />
+  <choice>
+    <a>E quanto à fortaleza?</a>
+    <b>Como está a segurança?</b>
+    <c>Você parece cansada.</c>
+    <d>Notícias de casa?</d>
+  </choice>
+  <voice>Bom trabalho.</voice>
+
+  <do when="a">
+    <person>falcione</person>
+    <voice>Perdemos contato com a tropa.</voice>
+    <protagonist />
+    <voice>Leituras de vida?</voice>
+    <narration>A mulher abaixou a cabeça.</narration>
+    <person>falcione</person>
+    <emotion>sad</emotion>
+    <voice>Não, senhor. Acreditamos que estejam todos mortos.</voice>
+    <do when="sulana_pious">
+      <narration>Ela faz um gesto de cabeça para indicar dois soldados que recebiam cuidados de um curandeiro ali perto.</narration>
+      <person>soldado2</person>
+      <voice>...</voice>
+      <person>soldado3</person>
+      <voice>...</voice>
+      <person>falcione</person>
+      <voice>Com exceção daqueles dois ali, que parecem ser os únicos que conseguiram escapar.</voice>
+    </do>
+    <narration>Você estreita os olhos.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+power</reward>
+    <voice>Que tipo de resistência é essa que não faz prisioneiros, Falcione?</voice>
+    <narration>Você achava que aquele apelido combinava perfeitamente com a mulher, pois tratava-se do nome de uma espada de lâmina encurvada, de difícil fabricação e bastante perigosa, inclusive para quem a empunhava, caso não soubesse usá-la direito.</narration>
+    <person>falcione</person>
+    <emotion>angry</emotion>
+    <reward>+relationship</reward>
+    <voice>Isso é porque não é uma resistência, senhor. São apenas terroristas.</voice>
+  </do>
+
+  <do when="b">
+    <person>falcione</person>
+    <reward>-relationship</reward>
+    <voice>Nada a reportar, senhor. Com todo o respeito, se tivesse algo errado, eu não teria solicitado sua presença.</voice>
+    <protagonist />
+    <voice>Qual o problema?</voice>
+    <person>falcione</person>
+    <voice>Não há problema nenhum.</voice>
+    <protagonist />
+    <voice>Você não perde a compostura dessa forma sem uma boa razão. Fale.</voice>
+    <narration>Ela olha ao redor, nervosa.</narration>
+    <do when="sulana_pious">
+      <person>falcione</person>
+      <emotion>angry</emotion>
+      <voice>Os rebeldes... mataram quase toda a tropa que enviamos à fortaleza.</voice>
+      <narration>Ela faz um gesto de cabeça para indicar dois soldados que recebiam cuidados de um curandeiro ali perto.</narration>
+      <person>soldado2</person>
+      <voice>...</voice>
+      <person>soldado3</person>
+      <voice>...</voice>
+      <person>falcione</person>
+      <voice>Só aqueles dois ali retornaram.</voice>
+    </do>
+    <do when="!sulana_pious">
+      <person>falcione</person>
+      <emotion>angry</emotion>
+      <voice>Os rebeldes... mataram toda a tropa que enviamos à fortaleza.</voice>
+    </do>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Maldição!</voice>
+    <reward>+fight</reward>
+    <voice>Precisamos garantir a segurança deste lugar.</voice>
+    <person>falcione</person>
+    <voice>As providências já foram tomadas, conforme o plano, senhor.</voice>
+    <narration>Você faz um gesto de assentimento.</narration>
+  </do>
+
+  <do when="c">
+    <reward>+control</reward>
+    <voice>Quando foi a última vez que dormiu?</voice>
+    <person>falcione</person>
+    <voice>Passamos a madrugada em claro abrindo caminho pelos túneis para chegar até aqui.</voice>
+    <protagonist />
+    <voice>Precisamos de todos em sua melhor forma.</voice>
+    <voice>Vejo que a segurança está garantida. Quando terminarmos aqui, delegue a liderança para alguém e vá comer alguma coisa e descansar.</voice>
+    <person>falcione</person>
+    <reward>+relationship</reward>
+    <voice>Sim, senhor.</voice>
+  </do>
+
+  <do when="d">
+    <reward>+control</reward>
+    <voice>Zelmira entrou em contato?</voice>
+    <person>falcione</person>
+    <voice>Sim, ela disse que está tudo sob controle.</voice>
+    <protagonist />
+    <reward>+fight</reward>
+    <voice>Excelente. Tudo está correndo de acordo com o plano.</voice>
+    <do when="sulana_pious">
+      <person>falcione</person>
+      <emotion>angry</emotion>
+      <voice>Sim, exceto pelo fato de os rebeldes terem chacinado quase toda a tropa que enviamos à fortaleza.</voice>
+      <narration>Ela faz um gesto de cabeça para indicar dois soldados que recebiam cuidados de um curandeiro ali perto.</narration>
+      <person>soldado2</person>
+      <voice>...</voice>
+      <person>soldado3</person>
+      <voice>...</voice>
+      <person>falcione</person>
+      <voice>Só aqueles dois ali retornaram.</voice>
+    </do>
+    <do when="!sulana_pious">
+      <person>falcione</person>
+      <emotion>angry</emotion>
+      <voice>Sim, exceto pelo fato de os rebeldes terem chacinado toda a tropa que enviamos à fortaleza.</voice>
+    </do>
+    <narration>Você fecha os olhos por um momento, tentando controlar suas emoções.</narration>
+    <protagonist />
+    <voice>Consideramos essa possibilidade.</voice>
+    <person>falcione</person>
+    <emotion>angry</emotion>
+    <voice>Sim, mas não deixa de ser revoltante! Ainda mais agora, com tudo o que estamos passando!</voice>
+    <protagonist />
+    <voice>Seria pior se não tivéssemos enviado aquela tropa. Eles iriam lutar dentro da cidade.</voice>
+    <voice>A tragédia de Iliora teria voltado a se repetir.</voice>
+    <person>falcione</person>
+    <emotion>sad</emotion>
+    <voice>...</voice>
+  </do>
+
+  <protagonist />
+  <voice>E quanto aos preparativos para a construção do muro?</voice>
+  <person>falcione</person>
+  <voice>Tudo segue conforme o planejado. Os trabalhadores deverão chegar em três dias.</voice>
+  <narration>Você levanta os olhos para o céu e encara as nuvens por um momento.</narration>
+  <protagonist />
+  <voice>Não temos três dias.</voice>
+  <voice>Mobilize todas as tropas disponíveis para cá. Não quero outra Iliora em nossas mãos.</voice>
+  <person>falcione</person>
+  <voice>Sim, senhor.</voice>
+  <voice>Mas devo lembrar que, se diminuirmos o policiamento nos muros, os terroristas poderão se sentir tentados a atacar.</voice>
+  <protagonist />
+  <voice>Deixo isso a seu encargo.</voice>
+  <voice>No momento, eu tenho que me apressar. Tem muitos vermes se escondendo nas tocas, precisando ser exterminados.</voice>
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>Não seria prudente levar mais alguns soldados com o senhor?</voice>
+  <choice>
+    <a>A segurança da cidade.</a>
+    <b>A eliminação dos inimigos.</b>
+  </choice>
+  <protagonist />
+  <thought>Devo priorizar...</thought>
+  <narration>Você olha mais uma vez para as construções humildes ao redor.</narration>
+
+  <do when="a">
+    <protagonist />
+    <reward>+fight</reward>
+    <voice>Minha tropa pessoal terá que bastar. Esta cidade precisa de toda a proteção possível.</voice>
+    <narration>Falcione lhe dirige um olhar entre irritado e preocupado.</narration>
+    <person>falcione</person>
+    <voice>...</voice>
+    <narration>Ela está exausta, o que é facilmente percebido pela dificuldade que está tendo em controlar suas emoções.</narration>
+    <protagonist />
+    <voice>Descanse. Eu resolverei isso, como sempre faço.</voice>
+  </do>
+
+  <do when="b">
+    <protagonist />
+    <reward>+power</reward>
+    <emotion>angry</emotion>
+    <voice>Talvez seja uma boa ideia.</voice>
+    <voice>A melhor defesa às vezes é o ataque.</voice>
+    <person>falcione</person>
+    <voice>Enviarei todos que estiverem disponíveis e descansados.</voice>
+    <protagonist />
+    <voice>Obrigado. Vejo você mais tarde.</voice>
+  </do>
+
+  <narration>Você começa a se afastar, mas então pára e olha para Falcione por sobre o ombro.</narration>
+  <choice>
+    <a>Os soldados que perdemos precisam de um funeral adequado.</a>
+    <b>Me mantenha informado sobre a movimentação dos rebeldes.</b>
+  </choice>
+  <protagonist />
+  <voice>...</voice>
+
+  <do when="a">
+    <person>falcione</person>
+    <voice>Naturalmente, senhor. Já estamos providenciando.</voice>
+    <protagonist />
+    <reward>+control</reward>
+    <voice>Deixo a seus cuidados.</voice>
+  </do>
+
+  <do when="b">
+    <person>falcione</person>
+    <emotion>surprised</emotion>
+    <voice>Desculpe, senhor, mas não acho que tenhamos contingente disponível para...</voice>
+    <protagonist />
+    <voice>Falcione, nós nos conhecemos há anos. Eu sei muito bem que você tem seus recursos.</voice>
+    <narration>Ela pensa por alguns instantes, antes de concordar.</narration>
+    <person>falcione</person>
+    <reward>+relationship</reward>
+    <voice>Se insiste, senhor.</voice>
+  </do>
+</storyboard>

@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>belisar</viewpoint>
+  <music>goodbye</music>
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <background>palace_bedroom</background>
+  <narration>Como sabia que aconteceria, você passou boa parte da noite acordado, acariciando os cabelos de Zelmira, enquanto ela dormia profundamente.</narration>
+  <narration>Considerando todas as coisas ruins que você fez para ela, não deixava de ser uma enorme ironia o fato de que tocá-la desta forma consiga lhe acalmar.</narration>
+  <narration>Você imagina que isso se deva à rotina, afinal, estão casados há mais de treze anos.</narration>
+  <narration>De qualquer forma, o calor e a proximidade dela acabaram por levá-lo a esquecer seus demônios internos por tempo suficiente para voltar a pegar no sono.</narration>
+  <narration>O sol ainda não tinha nascido quando a porta do quarto foi escancarada.</narration>
+
+  <music>free-mind</music>
+
+  <person>sagante</person>
+  <emotion>happy</emotion>
+  <voice>Bom dia!</voice>
+  <person>venega</person>
+  <emotion>happy</emotion>
+  <voice>Hora de acordar!</voice>
+  <narration>Você abre um dos olhos e encara a garotinha risonha que pára bem na sua frente, fitando-o com expectativa.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <voice>Mas já?</voice>
+  <narration>Enquanto isso, o garotinho, que havia corrido para o outro lado da cama, é envolvido num abraço apertado por Zelmira.</narration>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Que foi, seus danadinhos? Por que acordaram tão cedo?</voice>
+  <person>venega</person>
+  <emotion>happy</emotion>
+  <voice>Queremos treinar com o papai!</voice>
+  <person>zelmira</person>
+  <emotion>sad</emotion>
+  <voice>Mas o papai está cansado, meus queridos. Ele trabalhou até muito tarde ontem.</voice>
+  <person>venega</person>
+  <emotion>sad</emotion>
+  <voice>Aaaahhhhhhh!</voice>
+  <person>sagante</person>
+  <emotion>sad</emotion>
+  <voice>Mas ele prometeu!</voice>
+  <narration>Você lança um longo olhar a seus filhos.</narration>
+  <protagonist />
+  <choice>
+    <a>Acho que posso arrumar um tempinho.</a>
+    <b>Quando foi que eu fiz essa promessa?</b>
+    <c>Andaram se comportando?</c>
+  </choice>
+  <voice>...</voice>
+
+  <do when="a">
+    <person>sagante</person>
+    <emotion>happy</emotion>
+    <voice>Ebaaaa!</voice>
+    <person>venega</person>
+    <emotion>happy</emotion>
+    <voice>Legaaaaaaal!</voice>
+    <narration>Você se senta na cama e desarruma o cabelo da menina, afetuosamente.</narration>
+    <protagonist />
+    <voice>Eu vou começar o treinamento com o seu irmão mais velho, mas já que Falcione não está me esperando antes do meio da tarde, acho que dá para praticar bastante com todo mundo.</voice>
+    <person>sagante</person>
+    <emotion>happy</emotion>
+    <voice>Eu vou ser o sargento!</voice>
+    <person>venega</person>
+    <emotion>happy</emotion>
+    <voice>Eu vou ser a tenente!</voice>
+    <narration>Enquanto as crianças riem, excitadas, Zelmira se vira para você, fazendo um biquinho.</narration>
+    <person>zelmira</person>
+    <emotion>sad</emotion>
+    <voice>Já está pensando em correr para a outra?</voice>
+    <person>sagante</person>
+    <emotion>happy</emotion>
+    <voice>Ahahaha! Papai deixou a mamãe com ciúmes!</voice>
+    <person>venega</person>
+    <emotion>happy</emotion>
+    <voice>Agora vai ter que dar um presente!</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Hahahaha! Não se preocupem, eu sempre tenho um presente guardado para emergências.</voice>
+    <narration>Você se vira para Zelmira.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Você está mesmo com ciúmes... de Falcione?</voice>
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <voice>Ela é jovem.</voice>
+    <person>sagante</person>
+    <emotion>surprised</emotion>
+    <voice>Ela não tem um olho!</voice>
+    <person>venega</person>
+    <emotion>surprised</emotion>
+    <voice>Nem cabelo!</voice>
+    <person>sagante</person>
+    <voice>E é feia!</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Ei, nada disso é culpa dela. Não sejam mal-educados.</voice>
+    <person>sagante</person>
+    <emotion>surprised</emotion>
+    <voice>Não quis dizer que ela é feia.</voice>
+    <voice>Só que a mamãe é mais bonita.</voice>
+    <person>venega</person>
+    <emotion>happy</emotion>
+    <voice>Isso mesmo! A mamãe é muuuuuuuuuuuito mais bonita!</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Hahahahaha!</voice>
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <reward>relationship+2</reward>
+    <voice>Ahhhhh! Seus fofos!</voice>
+  </do>
+
+  <do when="b">
+    <person>sagante</person>
+    <emotion>surprised</emotion>
+    <voice>Antes de viajar, o senhor não lembra?</voice>
+    <person>venega</person>
+    <emotion>surprised</emotion>
+    <voice>Papai, o senhor bateu a cabeça?</voice>
+    <emotion>happy</emotion>
+    <voice>A mamãe disse que as pessoas esquecem as coisas quando batem a cabeça.</voice>
+    <protagonist />
+    <voice>Minha cabeça está muito bem, obrigado.</voice>
+    <emotion>happy</emotion>
+    <voice>E eu lembro muito bem de ter prometido isso, mas não para vocês dois.</voice>
+    <person>venega</person>
+    <emotion>surprised</emotion>
+    <voice>O quêêê?!</voice>
+    <person>sagante</person>
+    <emotion>sad</emotion>
+    <voice>Ahhhhh, pai!!</voice>
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>Vocês não acham que são jovens demais para querer aprender a lutar, seus fofinhos?</voice>
+    <protagonist />
+    <voice>Prometi ensinar seu irmão mais velho para que ele possa ficar de olho em vocês dois.</voice>
+    <narration>As duas crianças fazem biquinho.</narration>
+    <protagonist />
+    <emotion>happy</emotion>
+    <reward>+control</reward>
+    <voice>Vamos fazer assim: eu deixo vocês assistirem enquanto ensino ele, tudo bem?</voice>
+    <person>venega</person>
+    <emotion>happy</emotion>
+    <voice>Êêêêêêê!!</voice>
+    <person>sagante</person>
+    <emotion>happy</emotion>
+    <voice>Ebaaaaa!!</voice>
+  </do>
+
+  <do when="c">
+    <narration>Os dois pequenos olham um para o outro, com expressão preocupada.</narration>
+    <person>zelmira</person>
+    <voice>Que olhar é esse? O que vocês dois andaram aprontando?</voice>
+    <person>venega</person>
+    <emotion>surprised</emotion>
+    <voice>Nada!</voice>
+    <person>sagante</person>
+    <emotion>sad</emotion>
+    <voice>...</voice>
+    <protagonist />
+    <voice>Certo, agora tenho certeza de que fizeram alguma travessura.</voice>
+    <voice>Sabem que nós vamos descobrir de qualquer jeito.</voice>
+    <emotion>angry</emotion>
+    <voice>E também sabem que é muito melhor quando vocês nos contam antes.</voice>
+    <emotion>normal</emotion>
+    <voice>Agora, quem vai me dizer o que houve?</voice>
+    <narration>Os dois abaixam a cabeça, envergonhados.</narration>
+    <person>venega</person>
+    <emotion>sad</emotion>
+    <voice>...</voice>
+    <person>zelmira</person>
+    <voice>Vamos lá!</voice>
+    <person>sagante</person>
+    <emotion>sad</emotion>
+    <voice>O Predador foi embora...</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>O falcão velho que dorme na torre norte?</voice>
+    <person>zelmira</person>
+    <emotion>surprised</emotion>
+    <voice>O que vocês fizeram com ele?</voice>
+    <person>sagante</person>
+    <emotion>sad</emotion>
+    <voice>Nós fomos dar um pedaço de carne para ele.</voice>
+    <person>venega</person>
+    <emotion>surprised</emotion>
+    <voice>Ele estava tristinho, a corrente estava machucando a perna dele!</voice>
+    <person>zelmira</person>
+    <emotion>surprised</emotion>
+    <voice>Vocês soltaram o bichinho?!</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>control+2</reward>
+    <voice>Espere aí, quem deixou vocês subirem na torre?!</voice>
+    <narration>Muitas explicações e um longo sermão depois...</narration>
+  </do>
+
+  <music>never-look-back</music>
+  <background>palace_diningroom</background>
+
+  <narration>Algum tempo depois, você e Zelmira descem para tomar o desjejum.</narration>
+
+  <protagonist />
+  <voice>Não acredito naqueles dois!</voice>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Eles são adoráveis, não são?</voice>
+  <protagonist />
+  <emotion>sad</emotion>
+  <voice>Acho que o único arrependimento que vou levar para o túmulo será o de não ter a oportunidade de ver os dois crescerem, se tornarem adultos, se casarem e terem seus próprios filhos.</voice>
+  <person>zelmira</person>
+  <emotion>surprised</emotion>
+  <voice>Marcelius!</voice>
+  <emotion>angry</emotion>
+  <voice>Não quero mais ouvir nenhuma palavra sobre isso!</voice>
+  <narration>Você solta um suspiro.</narration>
+  <protagonist />
+  <voice>...</voice>
+  <voice>Bom, independente do que aconteça, estou feliz por termos os dois.</voice>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Se você está feliz, então todo o esforço valeu a pena!</voice>
+  <narration>Realmente, eram crianças adoráveis. Sagante tinha oito anos de idade e a pequena Vênega tinha sete.</narration>
+  <narration>Foram as gravidezes mais difíceis de Zelmira. Não que alguma delas tivesse sido fácil, muito pelo contrário.</narration>
+  <narration>Você tinha ficado, de certa forma, aliviado ao saber que ela havia perdido completamente a capacidade de engravidar depois que a menina precisou ser extraída, felizmente viva, através de um corte em sua barriga.</narration>
+  <narration>Vê-la passar por todo o sofrimento que era gerar um filho dentro de si e depois perdê-lo, como havia acontecido nada menos do que seis vezes, tinha sido uma tortura.</narration>
+  <narration>Apenas três de seus filhos sobreviveram à gravidez e o parto.</narration>
+  <narration>O mais velho entrava na sala neste momento, parecendo animado.</narration>
+  <person>baliorge</person>
+  <emotion>happy</emotion>
+  <voice>Bom dia!</voice>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Bom dia, querido.</voice>
+  <narration>Zelmira se aproxima para dar um beijo no rosto do filho.</narration>
+  <protagonist />
+  <voice>Bom ver você se juntando a nós tão cedo.</voice>
+  <voice>E, falando em cedo, olha só quem resolveu se apressar hoje também.</voice>
+  <person>sagante</person>
+  <emotion>happy</emotion>
+  <voice>Bom dia!</voice>
+  <person>venega</person>
+  <emotion>happy</emotion>
+  <voice>Diiiiiiaaaa!</voice>
+  <person>zelmira</person>
+  <emotion>surprised</emotion>
+  <voice>Nem lembro a última vez que se arrumaram e desceram tão rápido.</voice>
+  <narration>Ela olha para o filho mais velho, que está se acomodando à mesa.</narration>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Sabia que aqueles dois ali resolveram fazer um ataque surpresa para nos tirar da cama?</voice>
+  <protagonist />
+  <voice>Claro que sabia.</voice>
+  <emotion>happy</emotion>
+  <voice>Provavelmente ele é quem foi o autor do plano.</voice>
+  <narration>Baliorge Belísar subitamente ficou muito interessado em um detalhe da toalha.</narration>
+  <narration>Zelmira olhou para os dois pequenos.</narration>
+  <person>zelmira</person>
+  <emotion>surprised</emotion>
+  <voice>É verdade isso?</voice>
+  <person>venegasagante</person>
+  <emotion>happy</emotion>
+  <voice>Siiiiimmmmmm!!</voice>
+  <narration>Você olha para Baliorge. O rapaz parece bastante ansioso para o treinamento de combate que você vem prometendo a ele há semanas.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <choice>
+    <a>E por que não se juntou à sua tropa?</a>
+    <b>Está com pressa para tomar a maior surra da sua vida?</b>
+    <c>Temos um trio de conspiradores dentro de nossa própria casa?!</c>
+  </choice>
+  <voice>Quem diria...</voice>
+
+  <do when="a">
+    <person>baliorge</person>
+    <emotion>angry</emotion>
+    <voice>Ah, pai! Eu já tenho 15 anos!</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Se quiser ser um bom líder, garoto, é bom aprender desde cedo que nunca deve delegar a seus subordinados tarefas que você mesmo não esteja disposto a realizar.</voice>
+    <person>baliorge</person>
+    <emotion>surprised</emotion>
+    <voice>Ah, mas o senhor vive dizendo que um governante não faz nada sozinho e precisa delegar coisas para os outros!</voice>
+    <protagonist />
+    <voice>Sim, mas eu mando meus soldados fazerem apenas as tarefas que eu mesmo não me importaria em fazer.</voice>
+    <narration>Por um momento, você se recorda da expressão amedrontada daqueles invasores na caverna.</narration>
+    <protagonist />
+    <emotion>sad</emotion>
+    <reward>+fight</reward>
+    <voice>Aquelas que eu não gosto, eu não delego a ninguém, prefiro fazer eu mesmo.</voice>
+    <emotion>normal</emotion>
+    <voice>E, se ver que eu não posso dar conta sozinho, eu tomo a dianteira e apenas peço para meus soldados me darem apoio.</voice>
+  </do>
+
+  <do when="b">
+    <person>baliorge</person>
+    <emotion>happy</emotion>
+    <voice>Eu faço exercícios todo dia, sou muito mais forte do que pareço!</voice>
+    <person>zelmira</person>
+    <emotion>surprised</emotion>
+    <voice>Vão com calma, por favor! Não vão se machucar!</voice>
+    <person>sagante</person>
+    <emotion>happy</emotion>
+    <voice>Não se preocupe, mamãe!</voice>
+    <person>venega</person>
+    <voice>É! Nós vamos ter cuidado!</voice>
+    <person>zelmira</person>
+    <emotion>angry</emotion>
+    <voice>Como se desse para acreditar nisso!</voice>
+    <emotion>surprised</emotion>
+    <voice>Vocês dois nem deveriam participar dessas coisas...</voice>
+    <protagonist />
+    <emotion>sad</emotion>
+    <voice>Eu serei obrigado a pegar leve hoje, pois não estou na minha melhor forma.</voice>
+    <emotion>normal</emotion>
+    <reward>+power</reward>
+    <voice>Então aproveitem bem e aprendam, porque quando eu recarregar minhas forças, não vou pegar leve com nenhum dos três!</voice>
+  </do>
+
+  <do when="c">
+    <person>baliorge</person>
+    <emotion>surprised</emotion>
+    <voice>Eu só falei pra eles que eu ia treinar com o senhor agora cedo!</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Tudo bem, mas você disse isso a eles quando, exatamente?</voice>
+    <person>venegasagante</person>
+    <emotion>happy</emotion>
+    <voice>Hojeee!!</voice>
+    <person>baliorge</person>
+    <emotion>angry</emotion>
+    <voice>Seus traidorezinhos de uma figa!</voice>
+    <person>zelmira</person>
+    <emotion>angry</emotion>
+    <voice>Olha a linguagem, rapazinho!</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Talvez já esteja na hora de você enfrentar sozinho suas batalhas ao invés de mandar seus irmãos fazerem isso por você.</voice>
+    <person>baliorge</person>
+    <emotion>surprised</emotion>
+    <voice>Mas eu não queria... quer dizer, vocês não ficam bravos quando eles entram em seu quarto...</voice>
+    <protagonist />
+    <voice>O que aconteceu hoje não tem importância.</voice>
+    <voice>Mas você já está amadurecendo, precisa desenvolver sua responsabilidade.</voice>
+    <reward>+control</reward>
+    <voice>Não se esqueça que eu sempre vou contar com você para proteger sua mãe e seus irmãos quando eu não estiver por perto.</voice>
+    <person>baliorge</person>
+    <emotion>happy</emotion>
+    <voice>Sim, senhor!</voice>
+  </do>
+
+  <person>zelmira</person>
+  <voice>Muito bem, agora vamos comer.</voice>
+  <voice>Se vocês três querem tanto se divertir junto com seu pai, quero que pelo menos estejam muito bem alimentados, ouviram?</voice>
+
+  <music>goodbye</music>
+  <background>palace_cortyard</background>
+
+  <narration>Você passa a maior parte do dia treinando artes marciais com seus filhos.</narration>
+  <narration>Talvez aquilo fosse uma bênção, mas o fato é que nenhum dos três parecia ter herdado suas afinidades místicas.</narration>
+  <narration>De qualquer forma, eram muito fortes, rápidos e inteligentes, além de cheios de energia e animação.</narration>
+  <narration>Treiná-los em combate era uma tarefa bastante gratificante, pois aprendiam rápido e gostavam de praticar.</narration>
+  <narration>Infelizmente, você não tinha mais todo o tempo livre de que gostaria.</narration>
+  <narration>Desde que começara sua cruzada para dominar a província, eram muito raros esses dias em que podia passar uma manhã ou uma tarde inteira com eles, avaliando seus progressos, vendo-os rir e se divertir.</narration>
+  <protagonist />
+  <voice>Eu tenho que ir agora. Crianças, se comportem, hein?</voice>
+  <person>venegasagante</person>
+  <emotion>happy</emotion>
+  <voice>Tchau, papai!!</voice>
+  <narration>Por um momento, você olha para aqueles rostinhos cansados.</narration>
+  <protagonist />
+  <thought>...</thought>
+  <thought>Esta, provavelmente, é a única parte de minha vida que eu teria dificuldade em abrir mão, caso houvesse a possibilidade de mudar o passado.</thought>
+  <emotion>angry</emotion>
+  <thought>Quase tudo em minha existência está viciado, contaminado por meus erros de tal forma que eu abriria mão sem pensar duas vezes.</thought>
+  <emotion>happy</emotion>
+  <thought>Mas não eles. Eles são perfeitos.</thought>
+  <person>baliorge</person>
+  <emotion>happy</emotion>
+  <voice>Boa sorte!</voice>
+  <protagonist />
+  <thought>Olhe para ele. Tão inocente, tão... puro.</thought>
+  <emotion>happy</emotion>
+  <thought>Talvez eu sirva para alguma coisa além de lutar, afinal.</thought>
+  <narration>Uma onda agradável de calor percorre seu peito ao chegar àquela conclusão.</narration>
+  <narration>Ironicamente, aquilo também lhe trouxe uma ponta de tristeza.</narration>
+  <protagonist />
+  <emotion>sad</emotion>
+  <thought>Se eu tivesse uma revelação como esta durante minha juventude, as coisas hoje seriam diferentes.</thought>
+  <emotion>angry</emotion>
+  <thought>Muito diferentes.</thought>
+  <narration>Você coloca aqueles pensamentos de lado e corre os olhos mais uma vez pela praça.</narration>
+  <narration>A maioria das pessoas que trabalhavam e moravam no palácio observava de longe, fazendo uma espécie de círculo ao redor do grande pátio, como um comitê de despedida improvisado.</narration>
+  <narration>Os que não estavam por ali apareciam nas janelas, como se o fato de você estar partindo fosse algum tipo de espetáculo, algo tão interessante que não podiam perder de jeito nenhum.</narration>
+  <narration>Você não gosta muito desse tipo de atenção, mas as pessoas pareciam se sentir bem tratando-o daquela forma, como se fosse uma celebridade, um imperador ou um rei.</narration>
+  <narration>Você não se considerava nada daquilo, mas se o povo estava feliz pensando assim, então, que fosse.</narration>
+  <protagonist />
+  <choice>
+    <a>Acenar para minha família.</a>
+    <b when="belisar_fight[5:]" req="Coragem +5">Soltar um grito de guerra.</b>
+    <c when="belisar_control[5:]" req="Controle +5">Prestar continência.</c>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <narration>Você força um sorriso no rosto enquanto acena para sua família, num último gesto de despedida.</narration>
+    <person>zelmira</person>
+    <emotion>surprised</emotion>
+    <voice>Tenha cuidado!</voice>
+    <emotion>happy</emotion>
+    <voice>Estaremos aqui esperando sua volta e torcendo por você!</voice>
+    <narration>Você lança um último sorriso à sua esposa.</narration>
+    <narration>Não havia sentido em refletir sobre coisas que não podia mudar.</narration>
+    <narration>Agora tinha trabalho a fazer. Era hora de Marcelius mais uma vez dar lugar a Belísar, o General Vermelho.</narration>
+  </do>
+
+  <do when="b">
+    <narration>Você levanta os dois braços e solta o grito de guerra padrão do Exército Vermelho.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Por Ebora!</voice>
+    <narration>Todos os presentes imediatamente imitam você e gritam também.</narration>
+    <person>zelmira</person>
+    <voice>Por Ebora!</voice>
+    <person>venegasagante</person>
+    <emotion>happy</emotion>
+    <voice>Por Ebora!</voice>
+    <person>baliorge</person>
+    <emotion>angry</emotion>
+    <voice>Por Ebora!</voice>
+    <narration>As pessoas começam a gritar e assobiar, em uma grande ovação. Você bate palmas junto com eles.</narration>
+    <protagonist />
+    <emotion>happy</emotion>
+    <trophy>inspirer</trophy>
+    <thought>Esse sorriso no rosto das pessoas não tem preço. Vale a pena qualquer sacrifício.</thought>
+  </do>
+
+  <do when="c">
+    <narration>Você leva a mão à têmpora, em um gesto de continência.</narration>
+    <narration>A multidão imediatamente fica em silêncio e retribui o gesto militar.</narration>
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <voice>...</voice>
+    <person>venegasagante</person>
+    <emotion>happy</emotion>
+    <voice>...</voice>
+    <person>baliorge</person>
+    <emotion>angry</emotion>
+    <voice>...</voice>
+    <narration>Aquele era um gesto simples, mas que representava tantas coisas. União, respeito, camaradagem.</narration>
+    <narration>Tudo o que seu povo mais precisa nesse momento tão complicado de sua história.</narration>
+    <narration>Você baixa a mão e olha para a expressão solene daquelas pessoas.</narration>
+    <protagonist />
+    <trophy>inspirer</trophy>
+    <thought>Não se preocupem, amigos, nós triunfaremos.</thought>
+  </do>
+  
+  <music>crime-fighter</music>
+
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Você olha ao redor, assegurando-se de que não tenha ninguém muito próximo.</narration>
+  <narration>Fechando os punhos, você sente os estabilizadores em seus cotovelos e joelhos pulsarem conforme a energia era acumulada.</narration>
+  <narration>Logo, pequenas descargas elétricas começam a percorrer toda a extensão de seu uniforme, algumas delas atingindo o chão, enquanto você começa a levitar, subindo devagar, a princípio, mas ganhando velocidade aos poucos, enquanto uma aura azulada similar a uma chama o envolve, até que em poucos instantes apenas a silhueta de seu corpo podia ser avistada através das energias místicas.</narration>
+  <narration>Você lança um último olhar à sua família e aos seus fiéis súditos antes de completar o processo de ignição e se lançar pelo ar, com incomparável velocidade, cruzando os céus da província.</narration>
+</storyboard>

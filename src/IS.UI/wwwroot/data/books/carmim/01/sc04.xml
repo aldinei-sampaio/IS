@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>belisar</viewpoint>
+  <music>enigma</music>
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar.</tutorial>
+
+  <background>cave</background>
+
+  <narration>Você olha para a vastidão dos túneis e solta um suspiro desanimado.</narration>
+  <protagonist />
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <narration>A guerra é uma coisa brutal. Suja, desumana, horrível.</narration>
+  <narration>A única forma de manter a sanidade é não enxergar seus oponentes como pessoas, mas sim como monstros, parasitas que precisam ser exterminados para que o corpo sobreviva.</narration>
+  <narration>Infelizmente para você, esse tipo de “desumanização” não é sua especialidade.</narration>
+  <narration>Por mais que se esforce a não se deixar afetar, essas investidas contra invasores sempre lhe parece como um genocídio gratuito e sem sentido.</narration>
+  <narration>E por mais que tente lembrar a si mesmo de que a realidade não é exatamente essa, o sofrimento de seus oponentes sempre acaba o tocando, apesar de não poder fazer nada em relação a isso.</narration>
+  <person>soldado4</person>
+  <voice>Túneis leste e oeste limpos, senhor!</voice>
+  <protagonist />
+  <choice>
+    <a>Por que demoraram tanto?</a>
+    <b>Mantenham posição enquanto cuido do resto.</b>
+    <c>Vou precisar de ajuda aqui.</c>
+  </choice>
+  <voice>Ótimo.</voice>
+
+  <do when="a">
+    <person>soldado4</person>
+    <voice>Desculpe, senhor, fizemos o possível.</voice>
+    <protagonist />
+    <reward>+power</reward>
+    <emotion>angry</emotion>
+    <voice>Raios! Estamos perdendo tempo demais aqui!</voice>
+    <voice>Temos que acabar logo com isso. Chame os outros, temos que...</voice>
+  </do>
+
+  <do when="b">
+    <reward>+fight</reward>
+    <voice>Algumas famílias desceram por ali. Fechem o cerco para não deixá-los passar caso escapem de mim.</voice>
+    <person>soldado4</person>
+    <voice>Sim, senhor!</voice>
+    <narration>Você checa seus braceletes, assegurando-se de que estejam intactos e operantes.</narration>
+    <protagonist />
+    <voice>Vou acabar com isso para que possamos ir para casa.</voice>
+  </do>
+
+  <do when="c">
+    <reward>+control</reward>
+    <voice>Algumas famílias desceram por ali.</voice>
+    <voice>Vou precisar de um time de apoio para ir atrás deles comigo. O resto deve ficar aqui, para caso...</voice>
+  </do>
+
+  <person>soldado5</person>
+  <voice>Senhor!</voice>
+  <narration>Você se vira para a oficial que corre até você, esbaforida.</narration>
+  <protagonist />
+  <voice>O que houve?</voice>
+  <person>soldado5</person>
+  <voice>Dois dos nossos estão seriamente feridos, precisam de cuidados.</voice>
+  <protagonist />
+  <voice>E os inimigos?</voice>
+  <person>soldado5</person>
+  <voice>Estão todos mortos, mas tivemos que usar um pergaminho de fogo, e não tinha espaço para todos se protegerem da explosão.</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Pela misericórdia!</voice>
+  <choice>
+    <a>Repreender os soldados por se colocarem em perigo.</a>
+    <b>Focar em resolver a confusão o mais rápido possível.</b>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <narration>Você encara a oficial, sério.</narration>
+    <protagonist />
+    <voice>Não importa de quem seja a culpa, vocês vão responder por isso.</voice>
+    <reward>+power</reward>
+    <voice>Avise a seu pelotão que vou querer ter uma conversa com todos quando voltarmos.</voice>
+    <person>soldado5</person>
+    <voice>Sim, senhor!</voice>
+  </do>
+
+  <narration>Você se vira para o outro soldado.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Reúna os outros e vão ajudar.</voice>
+  <narration>O soldado aponta para o túnel escuro que formava uma escada natural, serpenteando para o interior da terra.</narration>
+  <person>soldado4</person>
+  <voice>E quanto ao resto dos invasores, senhor?</voice>
+  <protagonist />
+  <voice>Eu cuido deles. Tratar os feridos e protegê-los caso mais invasores apareçam é sua prioridade agora.</voice>
+  <person>soldado4</person>
+  <voice>Sim, senhor!</voice>
+  <narration>Enquanto os soldados se afastam, apressados, você se vira para o buraco no chão e solta um suspiro.</narration>
+  <narration>Alguns dizem que você é um dos homens mais poderosos do mundo, mas em situações como essa aquilo parecia um disparate absurdo.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Que grande poder é esse, que não serve nem para proteger meus aliados quando mais precisam?</thought>
+  <narration>Você desce pelo túnel escuro, acionando o artefato em sua boina que faz com que a estrela bordada nela comece a brilhar como se fosse um cristal de luz contínua.</narration>
+  <narration>Não leva muito tempo para encontrar os fugitivos.</narration>
+  <narration>Estavam todos amontoados em um canto, olhando para você, parecendo completamente aterrorizados.</narration>
+  <protagonist />
+  <voice>...</voice>
+  <narration>À primeira vista, parecem aldeões normais, pessoas de baixa estatura, magras, de pele pálida e de expressão triste.</narration>
+  <narration>Mas você já encarou cenas como esta vezes demais para se deixar enganar.</narration>
+  <narration>Sabe muito bem que não passam de vilões da pior espécie, aguardando um único descuido para mostrarem sua verdadeira face.</narration>
+  <protagonist />
+  <choice>
+    <a>Acabar com isso o mais rápido possível.</a>
+    <b>Não despender mais energia do que o necessário.</b>
+    <c>Estudar os invasores com atenção.</c>
+  </choice>
+  <emotion>angry</emotion>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <narration>Então você levanta uma das mãos e aciona seus poderes com força total, exterminando a todos sem piedade.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+fight</reward>
+    <voice>...</voice>
+    <narration>Haveria muito tempo para se recriminar por aquilo nas infindáveis noites insones que se seguiriam.</narration>
+  </do>
+
+  <do when="b">
+    <music>last-duel</music>
+    <narration>Você percebe a movimentação de um dos intrusos um instante antes de ele saltar sobre você, começando a se transformar no monstro que realmente é.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <voice>Grlaaarrrghhh!</voice>
+    <narration>Levantando uma das mãos, você libera uma descarga elétrica.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Grrarshh!</voice>
+    <narration>A energia mística é forte o suficiente para desviar a trajetória do mostro, que cai a vários passos de distância, convulsionando, descontrolado.</narration>
+    <narration>No instante seguinte, os demais também decidem lançar-se contra você.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <voice>Grrrrrr!!!</voice>
+    <narration>Fazendo o possível para manter a calma, você derruba a todos um por um, antes que consigam chegar perto.</narration>
+    <narration>Quando o último deles cai por terra, você estuda a cena por algum tempo, até ter certeza de não há mais sinais de vida.</narration>
+    <protagonist />
+    <reward>+control</reward>
+    <thought>Meu trabalho aqui terminou. Hora de voltar para casa.</thought>
+  </do>
+
+  <do when="c">
+    <narration>Você fica parado durante algum tempo observando as expressões dos intrusos e acaba se distraindo com as expressões de seus rostos.</narration>
+    <music>last-duel</music>
+    <narration>Apenas seus reflexos, aguçados depois de anos de combate, conseguem salvá-lo quando um deles assume sua verdadeira forma e salta sobre você das sombras.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <voice>Grlaaarrrghhh!</voice>
+    <narration>Com uma das mãos, você consegue disparar uma carga elétrica no peito dele uma fração de segundo antes que ele cravasse um enorme ferrão em seu ventre.</narration>
+    <person>monster1</person>
+    <bump />
+    <voice>!!!</voice>
+    <narration>O ataque energético sai bem mais forte do que você normalmente se permite.</narration>
+    <narration>Depois de convulsionar por alguns instantes, o corpo do monstro é feito, literalmente, em pedaços.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <reward>+power</reward>
+    <voice>...!</voice>
+    <narration>Os demais intrusos também assumem suas verdadeiras aparências e atacam em conjunto.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <voice>Grrrrrr!!!</voice>
+    <narration>Você mais uma vez é obrigado a confiar em seus reflexos para protegê-lo.</narration>
+    <narration>Depois de algum tempo, a batalha acaba.</narration>
+    <narration>Seus poderes permitiram que vencesse sem levar nenhum arranhão, mas você usou muito mais energia do que deveria.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Meu peito...!</thought>
+    <narration>Fazendo o que pode para suportar as fortes pontadas, você dá as costas à carnificina e caminha, com dificuldade, na direção onde ficaram seus soldados.</narration>
+  </do>
+</storyboard>

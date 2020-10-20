@@ -1,0 +1,401 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>belisar</viewpoint>
+  <music>the-awakening</music>
+
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <background>village</background>
+
+  <narration>Está anoitecendo quando você pousa no solo, próximo à entrada do pequeno vilarejo.</narration>
+  <protagonist />
+  <voice>...</voice>
+  <narration>Os soldados que estão de guarda o recebem demonstrando respeito e o conduzem até uma das pobres cabanas de chão batido e teto de palha.</narration>
+
+  <background>shack_interior2</background>
+
+  <narration>A mulher deitada em meio a uma pilha de trapos velhos tem muito pouca semelhança com a forte e orgulhosa guerreira que você conhece.</narration>
+  <person>falcione</person>
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <narration>Há feios hematomas na pele raspada da cabeça e no olho esquerdo, que normalmente ela mantém coberto para não exibir as marcas do golpe que a privara da visão daquele lado, anos atrás.</narration>
+  <narration>Seu peito está envolto com faixas apertadas, o que devia significar uma ou mais costelas quebradas.</narration>
+  <narration>A mão esquerda e a perna direita também estavam enfaixadas e presas com talas, o que indicava mais ossos partidos.</narration>
+  <protagonist />
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <narration>Você lança um olhar para a moça que está passando um pano umedecido na testa da convalescente.</narration>
+  <narration>Imediatamente, ela assente e levanta-se, saindo do pequeno recinto, em silêncio.</narration>
+  <narration>Depois que a cortina velha e empoeirada da entrada é fechada, você ajeita a fogueira, colocando mais um pouco de lenha.</narration>
+  <narration>O fogo se reaviva e a fumaça sobre até o teto de palha, desaparecendo através dele, atravessando com facilidade a barreira de caules secos de um tipo de gramínea de grande porte bastante comum na região.</narration>
+  <protagonist />
+  <voice>Você sabia que muitos consideram que essa palha tem habilidades místicas?</voice>
+  <voice>Afinal, impede a passagem da água e do vento vindos de um lado, mas não do outro.</voice>
+  <narration>Falcione abre o olho direito e o encara.</narration>
+  <person>falcione</person>
+  <emotion>sad</emotion>
+  <voice>Chamaram… você…</voice>
+  <narration>A voz dela está fraca e sonolenta, provavelmente efeito das beberagens ministradas para tornar a dor suportável.</narration>
+  <narration>E era bem possível que ela também não tenha percebido que o chamara de “você” ao invés de “senhor”.</narration>
+  <protagonist />
+  <voice>Não, ninguém me chamou. Eu vim quando percebi que estava demorando demais.</voice>
+  <person>falcione</person>
+  <emotion>sad</emotion>
+  <voice>Minha… tropa…</voice>
+  <protagonist />
+  <voice>Estão todos bem. Ou, pelo menos, bem melhor do que você.</voice>
+  <person>falcione</person>
+  <emotion>sad</emotion>
+  <voice>Fracotes…</voice>
+  <voice>Caem… no primeiro… golpe…</voice>
+  <protagonist />
+  <emotion>happy</emotion>
+  <voice>E você, que de fracote não tem nada, precisou ser espancada até não conseguir mais se mexer antes de cair, não é?</voice>
+  <emotion>normal</emotion>
+  <voice>Me disseram que o responsável não foi um monstro.</voice>
+  <person>falcione</person>
+  <emotion>sad</emotion>
+  <voice>Acha que… alguém… normal… conseguiria… fazer isso…?</voice>
+  <protagonist />
+  <voice>Quem foi?</voice>
+  <person>falcione</person>
+  <emotion>sad</emotion>
+  <voice>Sulana… Lautine… a rebelde… do clã… das montanhas…</voice>
+  <narration>Você sente o coração se acelerar ao ouvir aquele nome.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>“Sulana”? O nome dela é Sulana?!</voice>
+  <narration>Falcione balbucia algo ininteligível.</narration>
+  <narration>Você leva a mão ao queixo, pensativo.</narration>
+  <protagonist />
+  <thought>Será possível?</thought>
+  <narration>Você se recorda da guerreira loira, alta e corpulenta, vestida em trapos enquanto dilacerava um monstro atrás do outro.</narration>
+  <narration>Depois tenta compará-la com a imagem daquela protetora de pele branca e macia, cabelos presos na nuca e usando trajes imaculados.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Sim. É possível, sim!</thought>
+  <thought>Como não percebi antes?</thought>
+  <narration>A maior diferença entre as duas eram os olhos. Os da protetora eram negros como a noite e profundos, misteriosos.</narration>
+  <narration>Os da guerreira apresentavam um sinistro brilho avermelhado, mas aquilo, pelo que Falcione lhe contara antes, podia ser apenas um efeito colateral do uso dos poderes dela.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Será que ela é realmente uma protetora?</thought>
+  <emotion>normal</emotion>
+  <thought>Mas, se for esse o caso, ela, definitivamente, não vem do clã das montanhas.</thought>
+  <thought>Afinal, protetores não são humanos e são enviados para este mundo diretamente dos céus.</thought>
+  <emotion>angry</emotion>
+  <thought>Isso, se houver algum fundo de verdade nas coisas que Elinora diz.</thought>
+  <narration>Falcione nota você perdido em pensamentos.</narration>
+  <person>falcione</person>
+  <emotion>sad</emotion>
+  <voice>Você também… não parece muito melhor… do que eu…</voice>
+  <narration>Você leva a mão ao pescoço e move a cabeça de um lado para o outro, tentando aliviar os músculos doloridos por toda tensão e esforço.</narration>
+  <narration>Realmente, você se sente como se tivesse tomado uma surra e tanto.</narration>
+  <protagonist />
+  <voice>Talvez você esteja certa.</voice>
+  <person>falcione</person>
+  <emotion>sad</emotion>
+  <voice>A muralha…?</voice>
+  <narration>Você pega um pequeno objeto do bolso e o atira no fogo.</narration>
+  <narration>Imediatamente, o brilho da chama se torna avermelhado e uma onda de energia se expande pelo ambiente.</narration>
+  <narration>Os sons vindos do lado de fora silenciam e, subitamente, aquele pequeno aposento parece se afastar de tudo e todos.</narration>
+  <narration>A sensação é como se estivessem dentro de uma bolha, flutuando no ar.</narration>
+  <narration>Confiante de que nada do que dissessem poderia ser ouvido por quem quer que fosse, você se senta no chão e apoia as mãos atrás de si, inclinando a cabeça para trás e fechando os olhos.</narration>
+  <protagonist />
+  <voice>Concluída.</voice>
+  <voice>Drenamos toda a energia do artefato que Elinora nos deu, mas o encantamento funcionou perfeitamente.</voice>
+  <voice>Os demônios estão presos em Ebora, assim como nós.</voice>
+  <person>falcione</person>
+  <emotion>sad</emotion>
+  <voice>Descobriram… mais alguma… coisa…?</voice>
+  <protagonist />
+  <voice>Norlando decifrou o restante dos pensamentos do amarelo.</voice>
+  <voice>Apesar de virem de outro mundo, eles são construtos, criados para guiar e liderar os monstros durante os ataques.</voice>
+  <voice>Não conseguimos descobrir quem os controla porque ele não pensava em seu criador, apenas nas ordens que recebeu dele.</voice>
+  <voice>Mas agora temos certeza de que se trata de um oportunista, querendo se aproveitar do momento em que as Grandes Entidades estão enfraquecidas para invadir este plano e tentar tomar o lugar delas.</voice>
+  <person>falcione</person>
+  <emotion>sad</emotion>
+  <voice>Então as profecias… e augúrios…</voice>
+  <protagonist />
+  <voice>Sim, estavam todos certos. Você estava certa.</voice>
+
+  <music>goodbye</music>
+
+  <person>falcione</person>
+  <emotion>sad</emotion>
+  <voice>Se minhas certezas… valessem algo… eu… não estaria… assim…</voice>
+  <narration>Você a encara.</narration>
+  <protagonist />
+  <voice>Eu não teria realizado nada disso sem você, Gardênia.</voice>
+  <narration>Ao ouvir aquele nome, que não é mais usado por ninguém além de você, ela fecha o olho e suspira.</narration>
+  <narration>O ato, no entanto, parece lhe causar uma pontada de dor e ela se empertiga, fazendo uma careta e soltando um leve gemido.</narration>
+  <narration>Você aperta os lábios.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Como é que ela conseguiu te deixar desse jeito, afinal?</voice>
+  <person>falcione</person>
+  <emotion>sad</emotion>
+  <voice>A… infeliz… tem a proteção… de alguma… coisa… ou de alguém…</voice>
+  <narration>Você tem vontade de fazer mais perguntas, mas a voz hesitante dela o faz mudar de ideia.</narration>
+  <protagonist />
+  <voice>Descanse. Podemos conversar quando estiver se sentindo melhor.</voice>
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Não ouse me… tratar como… uma inútil…</voice>
+  <narration>Você solta um suspiro e se ajeita no chão, sentando-se de pernas cruzadas.</narration>
+  <protagonist />
+  <voice>Muito bem.</voice>
+  <narration>Você pensa um pouco, decidindo o que quer saber.</narration>
+
+  <do>
+    <protagonist />
+    <choice>
+      <a>Por que acha que que algo a protege?</a>
+      <b>Como você ainda está viva?</b>
+      <c>Por que você a atacou, afinal?</c>
+      <d>Já basta de perguntas por hoje.</d>
+    </choice>
+    <voice>...</voice>
+
+    <do when="a">
+      <person>falcione</person>
+      <voice>Eu usei… as técnicas de… controle que foram eficazes… contra o clã dela…</voice>
+      <voice>Tinha certeza… de que ela estava… sob controle…</voice>
+      <voice>A fúria estava… contida… escudo corporal… desativado…</voice>
+      <voice>Estava… indefesa…</voice>
+      <voice>Então… a trespassei no ventre… com a espada…</voice>
+      <voice>A maldita… devia estar morta…</voice>
+      <voice>Mas então… ela se libertou… de repente…</voice>
+      <voice>E começou a… lutar como uma… louca…</voice>
+      <protagonist />
+      <voice>Se ela se libertou de uma técnica que afetava o clã das montanhas, isso não prova que ela não é um deles?</voice>
+      <person>falcione</person>
+      <voice>Não…! A técnica… funcionou…</voice>
+      <voice>Alguma coisa… desativou o encanto…</voice>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <voice>Espere! Você disse que a trespassou com a espada.</voice>
+      <voice>Ela fez tudo isso com você mesmo estando mortalmente ferida?</voice>
+      <person>falcione</person>
+      <voice>A febre da batalha… dá muito poder… principalmente… às portas da morte…</voice>
+      <protagonist />
+      <voice>E o que ela fez depois de… terminar com você e com os soldados?</voice>
+      <person>falcione</person>
+      <emotion>angry</emotion>
+      <voice>A maldita… virou as costas… e foi embora…</voice>
+      <narration>Você franze o cenho.</narration>
+    </do>
+
+    <do when="b">
+      <person>falcione</person>
+      <voice>...</voice>
+      <protagonist />
+      <voice>Pelo que sei sobre o clã das montanhas, quando estavam à beira da morte, entravam em um frenesi assassino.</voice>
+      <voice>Não pensavam, não sentiam, não faziam nada além de matar qualquer coisa que estivesse à sua frente.</voice>
+      <voice>Mas os soldados que estavam com você estão todos vivos e bem.</voice>
+      <voice>O máximo que sofreram foram alguns cortes e escoriações.</voice>
+      <voice>Os que quiseram lutar até o fim foram colocados para dormir com golpes na cabeça, que parecem ter sido aplicados com cuidado suficiente para não deixar sequelas.</voice>
+      <voice>Aqueles que levantaram as mãos e se renderam nada mais sofreram.</voice>
+      <voice>Graças a isso você foi salva, diga-se de passagem, pois eles puderam cuidar de você e trazê-la para cá.</voice>
+      <person>falcione</person>
+      <voice>...</voice>
+      <protagonist />
+      <voice>Se ela fosse um deles, vocês não deveriam estar todos mortos?</voice>
+      <person>falcione</person>
+      <voice>Eu… não sei…</voice>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <voice>Como, não sabe?</voice>
+      <person>falcione</person>
+      <voice>Ela teve… ajuda…</voice>
+      <voice>Tinha alguma coisa… lá…</voice>
+      <voice>Ela pode… ela deve…</voice>
+      <protagonist />
+      <voice>Você mesma me disse antes que nada consegue controlar essa gente.</voice>
+      <person>falcione</person>
+      <voice>...</voice>
+    </do>
+
+    <do when="c">
+      <person>falcione</person>
+      <voice>Houve um… massacre…</voice>
+      <voice>Dezenas… de famílias… mortas… estraçalhadas…</voice>
+      <voice>Como se… tivessem sido… atacadas por um… animal descontrolado…</voice>
+      <voice>Seguimos a… trilha… e a encontramos…</voice>
+      <protagonist />
+      <voice>E você a atacou sem fazer perguntas.</voice>
+      <person>falcione</person>
+      <voice>Eu…</voice>
+      <voice>...</voice>
+      <narration>Você solta um suspiro.</narration>
+      <protagonist />
+      <voice>Você me disse que já tinha superado isso, Gardênia.</voice>
+      <voice>Me prometeu que não agiria mais de forma irracional quando algo a lembrasse de seu passado.</voice>
+      <person>falcione</person>
+      <emotion>surprised</emotion>
+      <voice>Ela estava… do lado de dentro… das muralhas…</voice>
+      <voice>O que… mais… ela poderia… estar fazendo… ali?</voice>
+      <protagonist />
+      <voice>A maldição do clã das montanhas é similar à dos demônios, não é?</voice>
+      <voice>Partindo desse princípio, a muralha não permitiria que alguém sob esse efeito a atravessasse.</voice>
+      <voice>E mesmo se não fosse o caso, ela claramente lutou em legítima defesa.</voice>
+      <voice>E ainda se recusou a usar força excessiva quando teve a chance.</voice>
+      <emotion>angry</emotion>
+      <voice>Ela não é um deles.</voice>
+      <voice>Temos evidências demais do contrário para que você possa continuar afirmando isso.</voice>
+      <person>falcione</person>
+      <emotion>surprised</emotion>
+      <voice>...!</voice>
+      <voice>Não…! Tem que ter… outra explicação…</voice>
+      <voice>Eu sei… que ela tem… o mesmo sangue deles… eu pude sentir… você…</voice>
+      <narration>Ela se interrompe, dando-se conta da forma inapropriada que o está tratando.</narration>
+      <person>falcione</person>
+      <emotion>sad</emotion>
+      <voice>O senhor… tem que… acreditar em mim…</voice>
+    </do>
+
+    <restart when="!d" />
+  </do>
+
+  <narration>Você a encara por um momento.</narration>
+
+  <protagonist />
+  <choice>
+    <a>Precisa descansar.</a>
+    <b when="belisar_control[5:]" req="Controle +5">Tem que deixar o passado para trás.</b>
+  </choice>
+  <voice>Gardênia você...</voice>
+
+  <do when="a">
+    <narration>Você se levanta.</narration>
+    <protagonist />
+    <voice>Você precisa descansar.</voice>
+    <person>falcione</person>
+    <emotion>sad</emotion>
+    <voice>...</voice>
+    <protagonist />
+    <voice>Sua condição ainda é muito delicada para poder viajar, então vai ter que ficar aqui por alguns dias.</voice>
+    <voice>Eu gostaria de ficar por perto, mas não posso. Também preciso me recuperar.</voice>
+  </do>
+
+  <do when="b">
+    <music>the-awakening</music>
+
+    <person>falcione</person>
+    <voice>...</voice>
+    <protagonist />
+    <voice>Eu nem poderia sequer começar a imaginar os horrores pelos quais você passou.</voice>
+    <voice>Mas não pode deixar que isso defina quem você é.</voice>
+    <person>falcione</person>
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <protagonist />
+    <voice>Eu pedi para que trabalhasse comigo porque eu vi em primeira mão o seu potencial.</voice>
+    <voice>Você se tornou uma comandante excepcional APESAR de seu passado e não por causa dele.</voice>
+    <person>falcione</person>
+    <emotion>sad</emotion>
+    <voice>...</voice>
+    <protagonist />
+    <emotion>sad</emotion>
+    <voice>Não me olhe com essa cara.</voice>
+    <emotion>normal</emotion>
+    <voice>Você tem ótimos sentidos e consegue julgar pessoas melhor do que eu.</voice>
+    <voice>Se você está convencida de que Sulana é filha do clã das montanhas, eu acredito em você.</voice>
+    <voice>Estou questionando apenas porque não tenho certeza de até onde você está sendo racional e até onde está se deixando levar pelo ódio.</voice>
+    <narration>Você se levanta.</narration>
+    <protagonist />
+    <voice>Pense no que eu disse, tudo bem?</voice>
+    <voice>O fato de alguma coisa não fazer sentido não significa que não exista.</voice>
+    <voice>Isso pode simplesmente indicar que não entendemos o que acontece, que não temos informações suficientes para isso.</voice>
+    <person>falcione</person>
+    <voice>...</voice>
+    <protagonist />
+    <voice>Por enquanto, eu quero que você descanse, recupere suas forças.</voice>
+    <voice>Não sei se Sulana sobreviveu, mas de qualquer forma, ela é um mistério que precisa ser solucionado.</voice>
+    <voice>Essa já é a segunda vez que ela aparece em um lugar onde não deveria ser capaz de entrar.</voice>
+    <voice>E você é a pessoa mais capacitada para decifrar esse enigma.</voice>
+    <voice>Nós precisamos de você.</voice>
+    <voice>Acha que vai poder nos ajudar? Faria esse favor para mim?</voice>
+    <person>falcione</person>
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <narration>Ela o encara, em silêncio, por um longo tempo.</narration>
+    <trophy>persuasive</trophy>
+    <person>falcione</person>
+    <reward>+relationship</reward>
+    <voice>Se é isso… o que o senhor… deseja…</voice>
+    <voice>Eu posso… tentar… eu suponho…</voice>
+    <protagonist />
+    <choice>
+      <a>Fico feliz com isso.</a>
+      <b when="falcione_relationship[5:]" req="Relacionamento +5">Por que essa cara?</b>
+    </choice>
+    <voice>...</voice>
+
+    <do when="b">
+      <person>falcione</person>
+      <voice>Hã?</voice>
+      <protagonist />
+      <voice>Você está com expressão de quem quer dizer alguma coisa.</voice>
+      <person>falcione</person>
+      <voice>É que eu… não esperava…</voice>
+      <emotion>surprised</emotion>
+      <voice>Digo… acreditava que… o senhor…</voice>
+      <voice>Não ficaria satisfeito… com o que eu fiz…</voice>
+      <protagonist />
+      <voice>E não estou mesmo. Você atacou sem conhecer direito sua oponente.</voice>
+      <voice>Mas você já me viu ficando irritado com Baliorge várias vezes, não viu?</voice>
+      <voice>O fato de eu não gostar da forma como ele se comporta de vez em quando não quer dizer que eu não reconheça o valor dele.</voice>
+      <voice>Não me leve a mal: eu entendo as suas razões. Sei porque você age dessa forma.</voice>
+      <emotion>sad</emotion>
+      <voice>Eu só não quero ver ninguém se machucando.</voice>
+      <voice>Nem você e nem ninguém.</voice>
+      <person>falcione</person>
+      <voice>...</voice>
+      <emotion>sad</emotion>
+      <voice>Acho que… o senhor… tem razão…</voice>
+      <voice>Tem muita coisa… que não se encaixa…</voice>
+      <voice>Eu não gosto de…</voice>
+      <voice>Digo… odeio quando… não consigo… entender alguém…</voice>
+      <narration>Lágrimas começam a escorrer dos olhos dela.</narration>
+      <protagonist />
+      <voice>Eu gostaria de dizer que a tragédia que ocorreu com sua família nunca mais voltará a acontecer, mas isso seria mentira.</voice>
+      <voice>Não tenho como garantir isso.</voice>
+      <emotion>sad</emotion>
+      <voice>E sinto muito que você tenha se deparado novamente com uma cena como aquela.</voice>
+      <emotion>normal</emotion>
+      <voice>Mas quero que se lembre de que agora não está mais sozinha.</voice>
+      <voice>Toda a tropa respeita você. E estaremos aqui sempre que precisar de nós.</voice>
+      <narration>Ela assente.</narration>
+      <trophy>puzzle</trophy>
+      <person>falcione</person>
+      <voice>Eu posso… conversar com algumas… pessoas…</voice>
+      <voice>Descobrir… de onde ela veio…</voice>
+      <voice>Tem que haver… uma… explicação…</voice>
+      <protagonist />
+      <emotion>happy</emotion>
+      <reward>+control</reward>
+      <voice>Com toda certeza.</voice>
+      <voice>Vou deixar isso a seu encargo. Quando descobrir alguma coisa, me avise.</voice>
+    </do>
+  </do>
+
+  <person>falcione</person>
+  <voice>...</voice>
+  <voice>Conseguiram… rastrear… onde ela está…?</voice>
+  <protagonist />
+  <voice>Não está mais nos nossos domínios.</voice>
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>Hã?</voice>
+  <protagonist />
+  <voice>Emelin detectou anomalias que sugerem que cinco pessoas pularam por sobre a muralha e entraram.</voice>
+  <voice>Depois que você foi ferida, três delas atravessaram de volta.</voice>
+  <person>falcione</person>
+  <voice>Mas então…</voice>
+  <protagonist />
+  <voice>Mas então, nada. Não há mais nenhum vestígio da presença dos outros dois em lugar algum dentro da área murada.</voice>
+  <voice>Ou encontraram uma outra forma de fugir…</voice>
+  <voice>Ou estão mortos.</voice>
+</storyboard>

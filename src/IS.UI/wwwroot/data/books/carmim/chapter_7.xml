@@ -1,0 +1,2635 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>derione</viewpoint>
+  <music>the-awakening</music>
+  <background>carmim</background>
+  <observe />
+  <narration>Capítulo 7: Sacrifício</narration>
+
+  <do when="derione_relationship[2:]">
+    <background>black</background>
+    <tutorial>Você conseguiu pontos de relacionamento com Derione suficientes para desbloquear uma cena especial.</tutorial>
+    <tutorial>Em cenas como esta, você estará no comando de um personagem coadjuvante, revelando informações ou acontecimentos relevantes à trama principal.</tutorial>
+    <tutorial>Durante uma cena especial, você poderá adquirir pontos de relacionamento para ser utilizados posteriormente por Sulana ou Belísar.</tutorial>
+
+    <background>transition</background>
+    <tutorial>Você agora está controlando Derione de Dalins</tutorial>
+
+    <background>shelter</background>
+
+    <narration>Você levanta a incrivelmente pesada viga acima de sua cabeça e a posiciona no lugar.</narration>
+    <protagonist />
+    <voice>...</voice>
+    <narration>A garota que assiste à cena sentada a um tronco à distância bate palmas e solta exclamações empolgadas.</narration>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Aí! Muito bem! Você é demais!!</voice>
+    <narration>O senhor de cara amarrada faz um gesto de assentimento, o que você imagina que pode ser considerado como um elogio.</narration>
+    <person>riodes</person>
+    <voice>Muito bem, seus molengas, agora subam lá e façam a parte de vocês, pelo menos!</voice>
+    <narration>Obedecendo à ordem do mais velho, dois homens encostam uma escada na viga para poderem subir e prosseguir com o trabalho de reconstrução, cuja próxima etapa é refazer o telhado.</narration>
+    <narration>Você observa o trabalho por um minuto, em silêncio.</narration>
+    <protagonist />
+    <voice>...</voice>
+    <narration>Aquela forma de construção lhe parece muito antiquada e improdutiva. Com as ferramentas arcaicas que os humanos são obrigados a trabalhar, lhe parece incrível que consigam fazer qualquer coisa.</narration>
+    <protagonist />
+    <thought>Eu não deveria estar aqui.</thought>
+    <thought>Muito menos me mostrando para os humanos ou me passando por um deles.</thought>
+    <emotion>sad</emotion>
+    <thought>Mas esse é o trabalho que Sulana faria se estivesse por aqui.</thought>
+    <thought>Se eu não tivesse interferido da vida dela.</thought>
+    <thought>E se ela não tivesse se ferido tão gravemente por causa disso.</thought>
+    <narration>A imagem dela lutando contra os soldados vermelhos não sai de sua cabeça.</narration>
+    <narration>Vê-la poupando a vida deles o havia enchido de alegria e culpa ao mesmo tempo.</narration>
+    <narration>Ela devia estar com Belísar agora. Você sentiu quando o gatilho que pôs na túnica foi ativado.</narration>
+    <narration>E as pessoas daquele abrigo seriam prejudicadas pela ausência dela.</narration>
+    <narration>Você não queria mais um peso na consciência, então decidiu ajudar um pouco, pelo menos até pensar numa forma mais permanente de solucionar esse problema.</narration>
+    <person>riodes</person>
+    <voice>Obrigado pela ajuda, meu jovem.</voice>
+    <voice>Esses idiotas nunca conseguiriam terminar esse telhado antes da chuva se não fosse por você.</voice>
+    <narration>Não é difícil perceber que agradecimentos não fazem parte do comportamento normal desse homem.</narration>
+    <narration>Ele está desconfiado, provavelmente tentando descobrir mais informações sobre você.</narration>
+    <narration>Olhando para o céu, que escurecia a cada minuto, você imagina se realmente conseguirão terminar aquilo, com ou sem sua ajuda.</narration>
+    <protagonist />
+    <voice>As nuvens estão ficando carregadas.</voice>
+    <person>riodes</person>
+    <voice>Não se preocupe. Aqueles dois ali são uns fracotes, mas com as vigas no lugar, eles terminam isso rápido.</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Senhor Derione, você é tão forte!</voice>
+    <voice>Por acaso é um soldado? Está a serviço do império?</voice>
+    <emotion>surprised</emotion>
+    <voice>Espere! Não me diga que é alguém do alto escalão! Da Guarda Imperial, talvez?</voice>
+    <emotion>happy</emotion>
+    <voice>Minha mãe namorou um deles uma vez, sabe? Ela sempre dizia que os homens da guarda são tão... heróicos!</voice>
+    <protagonist />
+    <voice>Não, senhora. Sou apenas um viajante.</voice>
+    <voice>Agora, se não precisam de mais assistência, irei retomar meu caminho.</voice>
+    <person>riodes</person>
+    <voice>Fique um pouco mais, o guisado está quase pronto.</voice>
+    <voice when="sulana_javalihunter">Já comeu carne de javali com tempero de ervas brancas? Garanto que é uma experiência que não irá se esquecer.</voice>
+    <protagonist />
+    <voice>Fico grato pela oferta, mas devo declinar.</voice>
+    <person>riodes</person>
+    <voice>Sulana nunca falou de você.</voice>
+    <narration>Você já se virava com intenção de ir embora, mas estaca ao ouvir aquilo.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Como?</voice>
+    <person>riodes</person>
+    <voice>Vocês não se parecem em nada.</voice>
+    <voice>A princípio achei que fosse irmão ou primo dela, mas olhando para você agora isso não me parece possível.</voice>
+    <voice>Vocês estão juntos há quanto tempo?</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Por que acha que conheço essa mulher?</voice>
+    <person>riodes</person>
+    <voice>Você, eu não posso dizer nada, mas ela, com certeza, o conhece.</voice>
+    <protagonist />
+    <voice>Está falando em enigmas, caro senhor.</voice>
+    <person>riodes</person>
+    <emotion>happy</emotion>
+    <voice>Todos temos nossas pequenas distrações, não?</voice>
+    <emotion>normal</emotion>
+    <voice>Mas não se preocupe, não quero me intrometer, nem nada. Só estou realmente grato pela ajuda.</voice>
+    <voice>Sulana é quem normalmente faz o trabalho pesado por aqui, mas hoje de manhã ela não parecia muito bem.</voice>
+    <voice>Estava fraca e abatida.</voice>
+    <voice>Como você pode ver, tivemos uma infestação de cupins em algumas paredes, uma delas chegou a desabar, inclusive.</voice>
+    <narration>O homem lança um olhar torto na direção da garota, que responde com um sorriso inocente.</narration>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>...</voice>
+    <person>riodes</person>
+    <voice>De qualquer forma, para Sulana não ficar fazendo esse serviço pesado o dia todo, mandei ela arranjar alguma comida.</voice>
+    <voice>Mas você sabe como ela é.</voice>
+    <voice when="sulana_javalihunter[3]">Acabou achando uma manada de javalis na floresta e abateu vários deles.</voice>
+    <voice when="sulana_javalihunter[2]">Acabou achando uma manada de javalis na floresta e abateu dois deles.</voice>
+    <voice when="sulana_javalihunter[1]">Acabou achando uma manada de javalis na floresta e abateu um deles.</voice>
+    <voice when="!sulana_javalihunter">Acabou achando uma manada de javalis na floresta e tentou abatê-los.</voice>
+    <voice when="!sulana_javalihunter">Ela não teve sorte, mas depois encontramos umas batatas muito bonitas, que ficam ótimas com carne seca.</voice>
+    <voice when="sulana_javalihunter[2:]">Agora teremos que comer carne todos os dias se não quisermos deixar estragar.</voice>
+    <narration>O homem abre um sorriso, exibindo as falhas em seus dentes.</narration>
+    <person>riodes</person>
+    <emotion>happy</emotion>
+    <voice when="sulana_javalihunter[2:]">Por que não fica mais um pouco e nos ajuda com isso?</voice>
+    <voice when="sulana_javalihunter[:1]">Por que não fica mais um pouco e almoça conosco?</voice>
+    <voice>Ninguém reclama do gosto do meu tempero por aqui.</voice>
+    <narration>Você olha para ele, boquiaberto.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Ela saiu para caçar naquele estado?</voice>
+    <person>riodes</person>
+    <voice when="sulana_javalihunter">Sim, e trouxe tudo nos ombros numa viagem só.</voice>
+    <voice when="!sulana_javalihunter">Sim, e voltou parecendo muito frustrada.</voice>
+    <voice>Estava com aquela cara de quem não quer conversa, então achei melhor deixar ela ir embora sem falar nada.</voice>
+    <voice>Imaginei que você fosse namorado dela e poderia saber se ela está melhor ou se precisa de alguma coisa.</voice>
+    <voice when="worried_riodes">Mandei alguns desses inúteis para ver como ela estava, mas voltaram dizendo tanta bobagem que acho que se perderam no caminho e estão inventando história por vergonha de adimitir.</voice>
+    <voice when="!worried_riodes">A maior parte dos moradores daqui é velho ou deficiente e o caminho até a cabana dela é difícil.</voice>
+    <protagonist />
+    <choice>
+      <a>Não tenho ligação amorosa com ela.</a>
+      <b>Ela não tem interesse em envolvimentos amorosos.</b>
+    </choice>
+    <voice>...</voice>
+
+    <do when="a">
+      <narration>Você sabe que aquilo é apenas uma meia verdade, mas não tem interesse em revelar mais detalhes.</narration>
+      <person>riodes</person>
+      <voice>Mas você já sabia que ela está machucada, não é?</voice>
+      <voice>Esteve cuidando dela, por acaso?</voice>
+      <person>linete</person>
+      <emotion>surprised</emotion>
+      <voice>Você está cuidando dela?</voice>
+      <emotion>happy</emotion>
+      <voice>Então você é, tipo, um cavaleiro errante salvando uma donzela em apuros?</voice>
+      <person>riodes</person>
+      <emotion>surprised</emotion>
+      <voice>Pare de falar tontice, sua doida!</voice>
+      <voice>Desde quando alguém seria idiota suficiente para pensar em Sulana como uma "donzela"?</voice>
+      <person>linete</person>
+      <reward>+relationship</reward>
+      <voice>Isso é tão romântico!</voice>
+      <emotion>surprised</emotion>
+      <voice>Quero dizer, você está interessado, não está? Devia se declarar logo para ela!</voice>
+      <emotion>happy</emotion>
+      <voice>Ela é sempre tão séria e sisuda! Está mesmo precisando de um pouco de romance.</voice>
+    </do>
+
+    <do when="b">
+      <person>riodes</person>
+      <reward>+relationship</reward>
+      <voice>Pela minha experiência, isso é o que as mulheres dizem quando não querem admitir que estão interessadas.</voice>
+      <narration>O homem parece muito satisfeito consigo mesmo por ter feito com que você admitisse que tem uma ligação com Sulana.</narration>
+      <person>linete</person>
+      <emotion>angry</emotion>
+      <voice>Ei! Eu nunca falei isso não!</voice>
+      <emotion>normal</emotion>
+      <voice>Está certo que eu nunca tive um admirador atraente assim...</voice>
+      <emotion>happy</emotion>
+      <voice>Mas minha mãe sempre disse que um dia alguém deslumbrante entraria em minha vida e me daria tudo o que eu mereço.</voice>
+      <person>riodes</person>
+      <emotion>angry</emotion>
+      <voice>Você merece é umas palmadas por ficar se intrometendo na conversa dos outros.</voice>
+      <person>linete</person>
+      <emotion>happy</emotion>
+      <voice>Não se preocupe, Riodes, tenho certeza que um dia uma princesa encantada irá entrar em sua vida, também.</voice>
+      <person>riodes</person>
+      <voice>Isso já aconteceu há décadas, pirralha, eu sou casado, já esqueceu?</voice>
+      <emotion>angry</emotion>
+      <voice>Agora feche essa matraca ou vá fazer algo de útil!</voice>
+      <narration>A garota abre a boca para retrucar, mas então uma borboleta passa em sua frente e ela mais do que depressa pega suas muletas e sai em uma perseguição desajeitada ao inseto.</narration>
+      <person>linete</person>
+      <emotion>surprised</emotion>
+      <voice>Vem aqui, coisinha linda!</voice>
+    </do>
+
+    <protagonist />
+    <voice>...</voice>
+    <narration>Riodes estuda você com atenção.</narration>
+    <person>riodes</person>
+    <voice>Sulana parece ter você em alta conta. Como a conheceu?</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Ela falou sobre mim?</voice>
+    <person>riodes</person>
+    <voice>Como eu disse antes, não, não falou.</voice>
+    <voice>Você sabe como ela é, não tem como arrancar informações daquela teimosa, ela é fechada, quase não conversa.</voice>
+    <narration>Você solta um suspiro.</narration>
+    <protagonist />
+    <voice>Fui eu quem sugeriu que ela viesse morar neste lugar.</voice>
+    <narration>O velho deu um sorriso satisfeito.</narration>
+    <person>riodes</person>
+    <emotion>happy</emotion>
+    <voice>É mesmo? Por quê?</voice>
+    <protagonist />
+    <voice>Porque imaginei que trabalhar com pessoas necessitadas pudesse torna-la um pouco mais…</voice>
+    <person>riodes</person>
+    <voice>Humana?</voice>
+    <protagonist />
+    <voice>Sociável.</voice>
+    <narration>O velho dá de ombros.</narration>
+    <person>riodes</person>
+    <voice>Ela trabalha. Se fosse depender só dos inúteis que moram aqui estaríamos todos mortos de fome.</voice>
+    <voice>De vez em quando começa a ficar inquieta, como se tivesse uma coceira que não consegue coçar e aí some por alguns dias, mas aí volta parecendo nova em folha e até trabalha um pouco naquele passatempo dela.</voice>
+    <narration>Nesse momento, um relâmpago corta os céus e Riodes se vira para apressar os homens que consertam o telhado.</narration>
+    <narration>Você o observa por um momento, desconfiado. O homem parece saber muito mais do que dá a entender.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Estará Sulana realmente segura com estas pessoas?</thought>
+    <emotion>sad</emotion>
+    <thought>Não que isso importe, já que jurei não mais interferir na vida dela, então o assunto não mais me diz respeito.</thought>
+    <thought>Não é?</thought>
+    <emotion>normal</emotion>
+    <thought>...</thought>
+    <thought>Mas como esse homem poderia saber de minha ligação com ela?</thought>
+    <thought>Estou certo de que Sulana nunca falaria sobre isso com ninguém, então como...?</thought>
+    <emotion>surprised</emotion>
+    <thought>Espere!</thought>
+    <thought>O “passatempo” dela. Seria possível…?</thought>
+    <narration>Quando Riodes volta a se virar, fica surpreso ao perceber que está sozinho.</narration>
+    <person>riodes</person>
+    <emotion>surprised</emotion>
+    <voice>Hã? Para onde ele foi?</voice>
+
+    <music>goodbye</music>
+
+    <narration>Envolto em seu campo de ocultamento, você voa até a velha cabana caindo aos pedaços onde Sulana guarda suas ferramentas.</narration>
+    <narration>A culpa não para de atormentá-lo.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Não devia tê-la deixado sozinha. Não naquele estado.</thought>
+    <thought when="sulana_javalihunter">Devia ter ficado por perto para impedir que fizesse alguma sandice, como lutar sozinha contra um bando de javalis, ou carregar animais abatidos nos ombros por sabe-se lá que distância.</thought>
+    <thought when="!sulana_javalihunter">Devia ter ficado por perto para impedir que fizesse alguma sandice, como tentar lutar sozinha contra um bando de javalis.</thought>
+    <narration>Ao chegar à velha construção, você se torna imaterial e caminha através da porta.</narration>
+
+    <background>woodworkshop</background>
+
+    <narration>A primeira coisa que percebe são as faces de Aliane e Rinaru Lautine, esculpidas em madeira.</narration>
+    <narration>Você tinha que admitir que eles foram excelentes pais.</narration>
+    <narration>Claro que também foram os mais impiedosos e cruéis assassinos que você já conheceu, mas no que dizia respeito a Sulana, cumpriram seus papéis de protetores e educadores de maneira invejável até o fim.</narration>
+    <protagonist />
+    <thought>Apesar de todas as atrocidades que cometeram, esta homenagem, vinda de sua filha, é deveras adequada.</thought>
+    <narration>Você olha ao redor, identificando outros rostos que ela esculpiu, em pedaços de madeira de tamanhos diferentes.</narration>
+    <narration>A única coisa que há em comum entre aqueles rostos é que todos pertencem a pessoas que ela havia considerado importantes em alguma parte de sua vida.</narration>
+    <narration>Familiares, antigos amigos e pessoas que a ajudaram de alguma forma. A maior parte dessa gente já faleceu há anos.</narration>
+    <narration>O tamanho das peças parece ser proporcional à importância que Sulana dá às pessoas retratadas, por isso não é surpresa para você ver a face da melhor amiga que ela já teve na maior peça.</narration>
+    <narration>Você suspira ao reconhecer um outro rosto.</narration>
+    <protagonist />
+    <thought>...</thought>
+    <emotion>angry</emotion>
+    <thought>Eu devia saber que ela faria uma estátua dele.</thought>
+    <narration>Você mesmo havia ceifado aquela vida durante o episódio que ficara conhecido entre os humanos como a “chacina de Lantena”.</narration>
+    <narration>Sentindo-se um intruso ali dentro, você dá uma volta em torno de si, olhando para todos aqueles trabalhos e admirando a forma como a técnica dela havia progredido com o passar do tempo.</narration>
+    <narration>Ela também havia esculpido algumas imagens de animais, mostrando-se mais talentosa e versátil naquele trabalho do que você jamais imaginara.</narration>
+    <narration>Então você levanta a cabeça ao perceber que há uma peça pendurada no teto.</narration>
+
+    <music>somewhere-sunny</music>
+
+    <narration>E toma um susto ao perceber que está encarando a si mesmo.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <thought>!!</thought>
+    <thought>Mas... como? Por quê...?</thought>
+    <narration>Quando Riodes tinha falado sobre o “passatempo” de Sulana, você havia considerado essa possibilidade, mas ver aquele trabalho como seus próprios olhos o deixa completamente estupefato.</narration>
+    <narration>Não se trata de uma escultura feita às pressas, muito pelo contrário, é algo muito bem trabalhado, com cuidado até para os mínimos detalhes.</narration>
+    <narration>Também não é algo feio ou odioso, como era de se pensar considerando o que ela pensa de você.</narration>
+    <narration>Ou, pelo menos, o que ela dá a entender que pensa de você.</narration>
+    <narration>Ela o havia retratado de asas abertas, como se estivesse planando no ar.</narration>
+    <narration>A expressão do rosto na madeira é de surpresa e contemplação, como se estivesse olhando para algo muito agradável, algo que excede expectativas.</narration>
+    <narration>O mesmo olhar que você, involuntariamente, lança a ela toda vez que a vê. E que sempre se esforçou para não deixar que ela percebesse.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <thought>...</thought>
+    <narration>Além de maior, aquela é, de longe, a melhor escultura de todas as que estão ali dentro.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <thought>Pelo criador!</thought>
+    <thought>Ela deve ter trabalhado nisso por semanas...</thought>
+    <thought>Não! Não creio que em semanas seria possível! Deve ter levado meses, muitos meses!</thought>
+    <trophy>imortalized</trophy>
+    <thought>Ela... ela...</thought>
+    <narration>Você subitamente sente seus olhos se encherem de lágrimas.</narration>
+  </do>
+
+
+  <viewpoint>belisar</viewpoint>
+  <music>last-duel</music>
+
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <background>beach</background>
+
+  <narration>Você está de joelhos sobre a areia da praia.</narration>
+  <protagonist />
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <narration>O desespero e a desolação tomam conta de você enquanto olha para o corpo de Zelmira no chão, aos pés do demônio.</narration>
+  <narration>Levantando os olhos devagar, você encara o rosto da criatura, contorcido em um sorriso grotesco.</narration>
+  <person>demonio</person>
+  <emotion>happy</emotion>
+  <voice>...</voice>
+  <narration>Diversos pensamentos passam por sua mente atordoada.</narration>
+  <narration>Entre eles, vem a lembrança de uma revelação da entidade que lhe concedeu seus poderes, tantos anos atrás.</narration>
+
+  <background>white</background>
+
+  <person>cantranis</person>
+  <voice>As criaturas negras pisarão sobre essa terra e trarão dor, morte e desespero.</voice>
+  <voice>Você será meu vingador. Lançará sobre eles a minha fúria e mostrará aos renegados o poder da União.</voice>
+  <voice>Não deverá deixar pedra sobre pedra, não irá descansar enquanto cada seguidor do abismo respirar.</voice>
+  <voice>Vá e traga a fúria da tempestade até a terra, expurgando a escória contaminada para que a vida possa renascer das cinzas.</voice>
+  <narration>Você teve pesadelos com aquelas palavras por meses.</narration>
+
+  <background>beach</background>
+
+  <protagonist />
+  <emotion>sad</emotion>
+  <thought>Tentei apagar isso da memória, tomar o controle de meu destino, construir uma vida diferente.</thought>
+  <thought>E de que isso adiantou?</thought>
+  <narration>Então um choro de criança chega ao seu ouvido.</narration>
+  <person>sagante</person>
+  <emotion>sad</emotion>
+  <voice>Buááááááááá!</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>!!</voice>
+  <narration>Seu peito arde com o sentimento amargo da derrota. O que você pode fazer? Nada!</narration>
+  <narration>Está fraco, suas energias quase esgotadas e o demônio levanta uma das mãos, preparando-se para lançar o ataque final.</narration>
+  <protagonist />
+  <thought>Perdoe-me, filho. Não posso salvá-lo.</thought>
+  <narration>Você volta a olhar para o corpo de Zelmira e sente o peito se apertar mais ainda.</narration>
+  <narration>Você fracassou de forma espetacular com ela. Havia prometido amá-la e protegê-la, e no fim, permitiu que isso acontecesse.</narration>
+  <narration>Ao menos ela finalmente está livre.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Sim. Ela está livre.</thought>
+  <narration>Aquele pensamento subitamente lhe tira um peso das costas.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Ela não vai mais sofrer por minha causa.</thought>
+  <thought>Está... livre.</thought>
+  <emotion>angry</emotion>
+  <thought>Livre!</thought>
+
+  <music>desert-squad</music>
+
+  <narration>Você volta a se colocar de pé, ainda encarando o demônio.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Não preciso mais protegê-la!</thought>
+  <thought>Posso ter falhado com ela, mas ainda tem uma coisa que posso fazer!</thought>
+  <person>demonio</person>
+  <emotion>happy</emotion>
+  <voice>Persistente até o fim, não é, general?</voice>
+  <voice>Pois vou acabar com essa teimosia agora!</voice>
+  <narration>Você cerra os punhos. O momento de trazer a tempestade à terra chegou.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Se eu não vou sobreviver ao dia de hoje, você também não vai, maldito!</thought>
+  <narration>Ele então lança uma enorme bola de energia azulada em sua direção.</narration>
+  <narration>Por experiência própria, você sabe que aquele ataque tem mais poder de destruição do que duas dezenas de bolas de fogo combinadas.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <unset>battle</unset>
+  <unset>trials</unset>
+  <voice>...</voice>
+  <narration>Você fecha os olhos e ativa seu poder de clarividência eletromagnética.</narration>
+  <narration>Imediatamente, ganha consciência de tudo o que está acontecendo ao seu redor.</narration>
+  <narration>Sulana sendo violentamente arremessada para trás pelo monstro amarelo.</narration>
+  <narration>Emelin chegando até a praia carregando Falcione.</narration>
+  <narration>Norlando ativando um de seus bastões místicos e fazendo com que a areia prenda os pés do amarelo e o puxem para dentro da água.</narration>
+  <narration>E a enorme bola de energia azulada voando na sua direção.</narration>
+
+  <tutorial>Ajude Belísar a canalisar energia suficiente para lutar.</tutorial>
+  <tutorial>Para avançar esta cena, você precisará escolher a opção correta antes do tempo acabar, repetindo o processo até reunir a energia necessária.</tutorial>
+  <tutorial>Preste atenção, pois você deverá escolher a opção mais condizente com o que Belísar está tentando fazer no momento.</tutorial>
+
+  <do>
+    <protagonist />
+    <emotion>angry</emotion>
+    <set>trials</set>
+    <thought>Tenho que me concentrar...</thought>
+    <choice time="3" timeout="b" randomorder="1">
+      <a>Concentrar</a>
+      <b>Desconcentrar</b>
+      <b>Fraquejar</b>
+      <b>Desanimar</b>
+    </choice>
+    <thought>...</thought>
+
+    <do when="a">
+      <protagonist />
+      <emotion>angry</emotion>
+      <reward>+battle</reward>
+      <thought>Isso!</thought>
+    </do>
+
+    <exit when="belisar_battle[3]" />
+
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Devo canalisar a energia...</thought>
+    <choice time="3" timeout="b" randomorder="1">
+      <a>Canalisar</a>
+      <b>Dissipar</b>
+      <b>Amplificar</b>
+      <b>Neutralizar</b>
+    </choice>
+    <thought>...</thought>
+
+    <do when="a">
+      <protagonist />
+      <emotion>angry</emotion>
+      <reward>+battle</reward>
+      <thought>Bom!</thought>
+    </do>
+
+    <exit when="belisar_battle[3]" />
+
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Agora preciso fazer com que o poder se manifeste...</thought>
+    <choice time="3" timeout="b" randomorder="1">
+      <a>Manifestar</a>
+      <b>Destruir</b>
+      <b>Assolar</b>
+      <b>Proteger</b>
+    </choice>
+    <thought>...</thought>
+
+    <do when="a">
+      <protagonist />
+      <emotion>angry</emotion>
+      <reward>+battle</reward>
+      <thought>Perfeito!</thought>
+    </do>
+
+    <exit when="belisar_battle[3]" />
+
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought when="belisar_trials[1]">Isso ainda não é suficiente! Vamos tentar de novo, do início!</thought>
+    <thought when="belisar_trials[2]">Preciso de mais! Vamos lá, foco!</thought>
+    <thought when="belisar_trials[3]">Não acredito que não estou conseguindo! O que há comigo?</thought>
+    <thought when="belisar_trials[4]">Mais uma última tentativa, vamos lá!</thought>
+    <thought when="belisar_trials[5]">Não consigo!</thought>
+    <thought when="belisar_trials[5]">A energia que reuni até agora vai ter que ser suficiente!</thought>
+
+    <restart when="belisar_trials[:4]" />
+  </do>
+
+  <trophy when="belisar_trials[1]">zen</trophy>
+
+  <narration>Você levanta suas mãos, concentrando toda a energia que reuniu em seus punhos.</narration>
+  <narration>Os estabilizadores começam a brilhar intensamente, faíscas elétricas surgindo por todos os lados.</narration>
+  <narration>Você utiliza seu poder de clarividência para prever o exato momento de liberar a energia.</narration>
+  <narration>O processo todo ocorre rápido demais para que olhos humanos consigam acompanhar.</narration>
+  <narration>E, no final, ocorre uma violenta explosão.</narration>
+
+  <background>white</background>
+
+  <narration>KA-BOOM!</narration>
+
+  <background>beach</background>
+
+  <protagonist />
+  <emotion>angry</emotion>
+  <bump />
+  <voice>Ufff!!</voice>
+  <narration>Você é lançado dezenas de metros para trás, quicando e rolando pela areia no processo.</narration>
+  <narration>Seu escudo corporal entra em colapso e não consegue absorver todo o impacto, mas, como já imaginava que aconteceria, você não sente nada: o uso excessivo de poder cobrava seu preço.</narration>
+  <narration>É como se sua pele estivesse amortecida, incapaz de perceber toque, atrito, calor ou qualquer outra coisa.</narration>
+  <narration>Você também não sente dor, apesar de ter certeza de que se machucou consideravelmente.</narration>
+  <narration>Seus ouvidos captam apenas um zumbido alto e constante.</narration>
+  <narration>Provavelmente sua visão está comprometida também, então você nem tenta abrir os olhos e reativa a clarividência.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Observando a si mesmo através da habilidade mística, percebe que seus braceletes e ombreiras se desintegraram completamente na explosão.</narration>
+  <narration>Tendo sido construídos especialmente para conter seu poder e evitar que ele causasse estragos de forma involuntária, aqueles artefatos se mostraram perfeitos para absorver o ataque energético do demônio.</narration>
+  <narration>No entanto, como você atacou ao mesmo tempo, eles não suportaram a tensão e foram destruídos, o que apenas serviu para intensificar a onda de choque que você liberou na direção de seu oponente.</narration>
+  <narration>A clarividência lhe mostra que a onda de choque atingiu o demônio em cheio e o lançou a centenas de metros de distância.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Não esperava por essa, não é, maldito?</thought>
+  <narration>Analisando seus arredores, você percebe Norlando sendo atingido por um ataque do amarelo enquanto Emelin corre na direção de Sulana, que está se levantando.</narration>
+  <narration>Soldados se aproximam correndo, mas param e desviam o rosto, levantando a mão para tentar se proteger de algo que vem da sua direção.</narration>
+  <person>soldado7</person>
+  <emotion>surprised</emotion>
+  <voice>!!</voice>
+  <narration>Você percebe então que o poder flui de seu corpo, descontrolado, gerando descargas elétricas ocasionais em direções aleatórias.</narration>
+  <narration>A energia mística praticamente banha você, palpável, viva, como que implorando para ser utilizada.</narration>
+  <narration>Então sua clarividência capta um movimento à distância. O demônio usou poder místico para se lançar para cima, num salto gigantesco, em sua direção.</narration>
+  <protagonist />
+  <unset>battle</unset>
+  <unset>trials</unset>
+  <emotion>happy</emotion>
+  <thought>Ótimo! Eu não podia pedir por uma oportunidade melhor!</thought>
+  <narration>Você não sente seus membros. Para falar a verdade, nem tem certeza se eles ainda existem.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <thought>Mas, com tanto poder à disposição, quem precisa de braços ou pernas?</thought>
+  <narration>Você então se prepara para liberar o que sabe que será seu último ataque, provavelmente seu último ato nesta vida.</narration>
+
+  <do>
+    <protagonist />
+    <emotion>angry</emotion>
+    <set>+trials</set>
+    <thought>Tenho que guiar o fluxo!</thought>
+    <choice time="3" timeout="b" randomorder="1">
+      <a>Guiar</a>
+      <b>Dirigir</b>
+      <b>Apontar</b>
+      <b>Se distrair com a imagem de Sulana e suas roupas rasgadas</b>
+    </choice>
+    <thought>...</thought>
+
+    <do when="a">
+      <protagonist />
+      <emotion>angry</emotion>
+      <reward>+battle</reward>
+      <thought>...</thought>
+    </do>
+
+    <exit when="belisar_battle[3]" />
+
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Agora, abrir uma ruptura no espaço!</thought>
+    <choice time="3" timeout="b" randomorder="1">
+      <a>Abrir</a>
+      <b>Fechar</b>
+      <b>Abanar</b>
+      <b>Fazer... o quê, mesmo?</b>
+    </choice>
+    <thought>...</thought>
+
+    <do when="a">
+      <protagonist />
+      <emotion>angry</emotion>
+      <reward>+battle</reward>
+      <thought>Canais abertos!</thought>
+    </do>
+
+    <exit when="belisar_battle[3]" />
+
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>E vamos gerar propulsão...</thought>
+    <choice time="3" timeout="b" randomorder="1">
+      <a>Gerar propulsão</a>
+      <b>Iniciar combustão</b>
+      <b>Canalizar exaustão</b>
+      <b>Não aguento toda essa tensão!</b>
+    </choice>
+    <thought>...</thought>
+
+    <do when="a">
+      <protagonist />
+      <emotion>angry</emotion>
+      <reward>+battle</reward>
+      <thought>Ignição bem sucedida!</thought>
+    </do>
+
+    <exit when="belisar_battle[3]" />
+
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought when="belisar_trials[1]">Raios, ainda não deu!</thought>
+    <thought when="belisar_trials[1]">Tenho que me concentrar e tentar de novo!</thought>
+    <thought when="belisar_trials[2]">Raios! Vamos tentar outra vez!</thought>
+    <thought when="belisar_trials[3]">Eu consigo! Vamos lá!</thought>
+    <thought when="belisar_trials[4]">Essa não! O tempo está acabando!</thought>
+    <thought when="belisar_trials[5]">Raios, não há mais tempo!</thought>
+    <thought when="belisar_trials[5]">Vou ter que acionar essa coisa de qualquer jeito mesmo!</thought>
+
+    <restart when="belisar_trials[:4]" />
+  </do>
+
+  <trophy when="belisar_trials[1]">eletrocrusher</trophy>
+
+  <narration>Você ativa a habilidade eletromagnética que normalmente utiliza para voar, mas com força total.</narration>
+  <narration>A energia o envolve e o lança pelo espaço a uma velocidade incalculável.</narration>
+  <narration>Você não sente nada. O colchão energético criado a seu redor anula toda a inércia, impedindo que você seja esmagado pela aceleração súbita.</narration>
+  <narration>A última coisa que sua clarividência consegue captar são os olhos arregalados do demônio, ao verem você vindo na direção dele.</narration>
+  <person>demonio</person>
+  <emotion>surprised</emotion>
+  <voice>!!</voice>
+  <narration>Tudo ocorre rápido demais para que seu oponente consiga sequer ter tempo de pensar em reagir.</narration>
+
+  <background>white</background>
+
+  <narration>BADA-BOOM!</narration>
+
+  <music>enigma</music>
+  <background>black</background>
+
+  <narration>Tudo volta a ficar escuro.</narration>
+  <narration>Você usou mais poder nesse último ataque do que em toda sua vida.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Eu ainda... estou consciente?</thought>
+  <thought>Espero que tenha conseguido canalisar toda a força da explosão para cima.</thought>
+  <thought>Seria irônico se meu último ato neste mundo tenha sido abrir uma cratera gigantesca, encerrando não apenas a minha vida, mas a de todos os meus aliados também.</thought>
+
+  <background>beach</background>
+
+  <narration>Você consegue encontrar uma reserva de energia para reativar a clarividência.</narration>
+  <narration>Seu corpo está caído sobre a areia, pequenos pontos de luz caindo do céu sobre ele, como uma chuva de fagulhas.</narration>
+  <narration>Uma nuvem escura surgiu no local onde deve ter ocorrido o impacto. A força da explosão realmente parece ter excedito todas as escalas.</narration>
+  <narration>Você varre a região ao redor com seus sentidos místicos e encontra Sulana, se levantando.</narration>
+  <person>sulana</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Na frente dela, o amarelo faz o mesmo.</narration>
+  <person>amarelo</person>
+  <voice>...</voice>
+  <narration>Tudo indica que a explosão foi forte o suficiente para derrubá-los, interrompendo sua luta.</narration>
+  <narration>Ali perto, Emelin e Norlando também estão se levantando, parecendo ilesos.</narration>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>...</voice>
+  <person>norlando</person>
+  <emotion>surprised</emotion>
+  <voice>...</voice>
+  <narration>Sulana encara o monstro por um momento antes de saltar sobre ele, atacando-o com poderosos socos e chutes.</narration>
+  <person>sulana</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>O amarelo não consegue fazer nada além de conjurar um escudo místico para se proteger.</narration>
+  <person>amarelo</person>
+  <bump />
+  <voice>...</voice>
+  <narration>Você direciona a clarividência para o outro lado da praia, encontrando o demônio.</narration>
+  <narration>Para sua surpresa, ele também está se levantando.</narration>
+  <person>demonio</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Ele está sangrando e respirando pesadamente.</narration>
+  <narration>Seus sentidos não captam mais nenhuma emanação mística vinda dele. Nenhum escudo corporal.</narration>
+  <narration>A explosão obviamente o exauriu, mas não o matou.</narration>
+
+  <music>crime-fighter</music>
+
+  <narration>Então uma bola de fogo corta o ar sobre você, deixando um rastro luminoso pelo céu enquanto voa na direção do demônio.</narration>
+  <person>demonio</person>
+  <emotion>surprised</emotion>
+  <voice>!!</voice>
+  <narration>Você não consegue ouvir o barulho da explosão que ocorre a seguir, mas a julgar por toda a fumaça e pela quantidade de areia lançada pelos ares, ela teve uma força considerável.</narration>
+  <narration>No entanto, o demônio continua em pé, apesar de ter sido lançado vários metros para trás.</narration>
+  <person>demonio</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Você vasculha o ar acima de você em busca da origem da bola de fogo e a vê.</narration>
+  <person>elinora</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Elinora, em sua forma alada, levanta sua lança prateada, cuja ponta começa a brilhar.</narration>
+  <narration>Então, com um movimento ágil, ela corta o ar com a lança. O brilho se desprende da arma, transformando-se em uma nova bola de fogo, que voa na direção do demônio.</narration>
+  <narration>O monstro reage, levantando uma das mãos e fechando o punho.</narration>
+  <narration>A bola de fogo então explode em pleno ar, muito antes de chegar até ele.</narration>
+  <narration>Em seguida ele levanta a outra mão, fazendo alguma invocação que você não compreende imediatamente.</narration>
+  <narration>Mas então você capta uma emanação próxima a seu corpo. Não é nada difícil reconhecer as emissões de um empuxo gravitacional.</narration>
+  <narration>Elinora bate as asas, tentando escapar, mas não consegue. Por fim, a energia mística a puxa na direção do chão com violência.</narration>
+  <person>elinora</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>...</voice>
+  <narration>Ela atinge o solo não muito longe de você.</narration>
+  <narration>Enquanto isso, o demonio começa a se aproximar, caminhando devagar.</narration>
+  <person>demonio</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Você se move, na tentativa de voltar a entrar em contato com seus poderes.</narration>
+  <narration>Então nota Elinora, que já havia se levantado, lança um breve olhar na sua direção.</narration>
+  <person>elinora</person>
+  <emotion>angry</emotion>
+  <voice>Descanse em paz, humano, esta luta não é mais sua!</voice>
+  <narration>Você não consegue ouvir nada do que ela diz, mas é perfeitamente possível adivinhar a partir do movimento de seus lábios e de seu olhar, que esbanja arrogância.</narration>
+  <narration>Com um gesto, ela desmaterializa as próprias asas e depois levanta uma das mãos, chamando a lança prateada que tinha caído a alguma distância.</narration>
+  <narration>Obedientemente, a arma começa a levitar e flutua na direção dela.</narration>
+  <narration>Elinora então a agarra e esbraveja algo, provavelmente aquele grito de guerra favorito dela que você ouviu várias vezes no passado, de forma tão intensa que dá a impressão de que o chão treme.</narration>
+  <person>elinora</person>
+  <emotion>angry</emotion>
+  <voice>Pela glória do criador!!</voice>
+  <narration>Aquilo costumava aterrorizar seus oponentes, mas não teve muito efeito contra o demônio.</narration>
+  <narration>Você não consegue mais reunir seu poder, por mais que tente. A sensação parecida com calor que a presença da energia lhe causa está desaparecendo aos poucos, deixando você frio, vazio.</narration>
+  <narration>A desorientação o atinge, as imagens geradas pela clarividência se tornando confusas, embaralhadas.</narration>
+  <narration>Não é possível saber por quanto tempo permaneceu ali, buscando clarear os pensamentos, tentando segurar o último resquício de poder que parece escorrer por entre seus dedos.</narration>
+
+  <music>last-duel</music>
+
+  <narration>Quando volta a raciocinar novamente, percebe que Elinora não teve mais sucesso em derrotar o monstro do que você.</narration>
+  <narration>Você a vê sendo arremessada para longe, seriamente ferida pelas garras da criatura.</narration>
+  <person>elinora</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>...</voice>
+  <narration>O demônio olha para ela por um instante, e ao ver que não se move, vira-se na sua direção.</narration>
+  <person>demonio</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Do que é feito esse filho da mãe?!</thought>
+  <narration>Se mover é impossível, seu corpo não mais lhe responde. As imagens de clarividência vão ficando cada vez mais escuras.</narration>
+  <narration>Em desespero, você vasculha os arredores em busca de algo... qualquer coisa...</narration>
+
+  <music>desert-squad</music>
+
+  <narration>Então você recebe uma imagem borrada de Sulana.</narration>
+  <person>sulana</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+
+  <do when="sulana_rage[5:]">
+    <narration>Ela está com as mãos enfiadas no corpo do amarelo, sugurando-o acima da cabeça.</narration>
+    <trophy>fatality</trophy>
+    <narration>Então ela parece soltar um grito gutural enquanto, literalmente, parte a criatura em duas!</narration>
+    <person>amarelo</person>
+    <bump />
+    <voice>...</voice>
+    <person>sulana</person>
+    <emotion>angry</emotion>
+    <voice>Aaaaaaaahhhhhhhh!!</voice>
+    <narration>Você não consegue ouvir nada, mas pode muito bem imaginar aquele grito pela expressão do rosto dela.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <thought>!!</thought>
+    <narration>Estranhamente, o monstro não se trasnforma em pó.</narration>
+    <narration>Sulana joga as duas metades da criatura no chão com força, antes de passar o antebraço pelo rosto, numa tentativa de limpar o sangue e... outras coisas que caíram sobre ela quando abriu as entranhas do monstro.</narration>
+    <narration>Então ela olha ao redor... e solta um novo grito, dessa vez, na direção do demônio.</narration>
+  </do>
+
+  <do when="sulana_rage[:4]">
+    <narration>Ela troca golpes com o amarelo, cujo escudo corporal está se exaurindo.</narration>
+    <narration>Então o primeiro golpe dela consegue atravessar o escudo, atingindo o monstro no peito.</narration>
+    <person>amarelo</person>
+    <bump />
+    <voice>...</voice>
+    <narration>Ela desfere um golpe, e outro, e mais outro, em uma velocidade impressionante.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <thought>!!</thought>
+    <narration>Por fim, o amarelo se desintegra.</narration>
+    <narration>Então ela olha ao redor... e parece soltar um grito gutural na direção do demônio.</narration>
+    <narration>Você não consegue ouvir nada, mas pode muito bem imaginar aquele grito pela expressão do rosto dela.</narration>
+  </do>
+
+  <person>sulana</person>
+  <emotion>angry</emotion>
+  <voice>Graaaaarrrrrghhhhh!!</voice>
+
+  <background>black</background>
+
+  <narration>É muito difícil dizer com certeza o que se passou depois, já que as imagens foram ficando cada vez mais escuras e borradas.</narration>
+  <narration>Teria Sulana resistido à explosão de uma daquelas bolas de energia azuis sem nem mesmo piscar?</narration>
+
+  <do when="sulana_rage[:4]">
+    <narration>E quanto àquele vislumbre da criatura tentando inutilmente atacá-la com suas garras, que pareciam resvalar nela sem causar nenhum dano?</narration>
+    <narration>Seria tudo aquilo apenas uma criação de sua mente, tentando se agarrar a um último fio de esperança?</narration>
+  </do>
+
+  <do when="sulana_rage[5:]">
+    <narration>E quanto àquele vislumbre da criatura tentando atacá-la com uma das garras apenas para ter a mão amputada?</narration>
+    <narration>Teria mesmo visto os membros do demônio sendo arrancados um a um?</narration>
+    <narration>Ou seria tudo aquilo apenas uma criação de sua mente, tentando se agarrar a um último fio de esperança?</narration>
+  </do>
+
+  <music>goodbye</music>
+
+  <protagonist />
+  <emotion>happy</emotion>
+  <thought>Que seja. São meus últimos momentos de vida mesmo.</thought>
+  <thought>Mereço ter pelo menos essa alegria, não é?</thought>
+  <narration>E então o último fluxo de energia que você ainda tinha finalmente se esgota e tudo desaparece.</narration>
+
+
+  <viewpoint>sulana</viewpoint>
+  <music>goodbye</music>
+  <background>sulana</background>
+  <tutorial>Você agora está controlando Sulana Lautine</tutorial>
+
+  <background>black</background>
+
+  <narration>O mundo está escuro e vazio. Tranquilo.</narration>
+  <narration>Então, de repente, você ouve uma trovoada.</narration>
+
+  <background>storm</background>
+
+  <narration>Abrindo os olhos, você percebe que está olhando uma tempestade através de uma janela.</narration>
+  <narration>A chuva cai, forte e pesada. Raios cortam o céu enquanto o barulho dos trovões ressoa pelo vale.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Hã? Onde estou?</voice>
+  <voice>Espere... esta é a cabana de Derione!</voice>
+
+  <background>shack_interior</background>
+
+  <narration>Você vira a cabeça e se surpreende ao vê-lo olhando pela janela logo a seu lado.</narration>
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <narration>Parecendo não se dar conta de sua presença, ele fecha a janela e se joga sobre a cama.</narration>
+  <person>derione</person>
+  <thought>Construir este lugar foi a primeira coisa que me senti compelido a fazer depois que decidi tomar atitudes drásticas, anos atrás.</thought>
+  <thought>Senti a necessidade de ter um espaço só meu, em local isolado onde ninguém pudesse me perturbar.</thought>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>O que está acontecendo? Eu... eu estou ouvindo os pensamentos dele?!</thought>
+  <person>derione</person>
+  <thought>Apenas uma outra pessoa além de mim conhece o caminho até aqui.</thought>
+  <thought>Só para uma pessoa eu confiei o segredo que permite passar pelo campo de ocultamento permanente.</thought>
+  <emotion>sad</emotion>
+  <thought>A pessoa que tantas vezes imaginei estar começando a retribuir meus sentimentos.</thought>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>!!</thought>
+  <choice>
+    <a>Chamar a atenção dele</a>
+    <b>Tocar em seu ombro</b>
+    <c>Aproximar seu rosto do dele</c>
+  </choice>
+  <thought>Eu vou...</thought>
+
+  <do when="a">
+    <narration>Você coloca as mãos na cintura.</narration>
+    <protagonist />
+    <thought>Qual é o seu problema? Não está me vendo, não?</thought>
+    <emotion>surprised</emotion>
+    <thought>Hã? Eu não consigo falar! Por que eu não consigo falar?</thought>
+    <emotion>angry</emotion>
+    <reward>+rage</reward>
+    <thought>Que raio?!</thought>
+    <narration>Você balança os braços freneticamente diante dele, mas ele não a vê.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Estou aqui, seu cretino! Por que não me enxerga?</thought>
+  </do>
+
+  <do when="b">
+    <narration>Você se aproxima e leva a mão em direção ao ombro dele.</narration>
+    <narration>Então, perplexa, vê sua mão atravessar o corpo dele.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <thought>Mas que raio?!</thought>
+    <person>derione</person>
+    <voice>Ela é forte. Não precisa mais que cuidem dela. Vai ficar melhor sem mim.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <reward>+hope</reward>
+    <thought>...</thought>
+    <emotion>normal</emotion>
+    <thought>Derione...</thought>
+    <emotion>surprised</emotion>
+    <thought>Hã? Eu não consigo falar! Por que eu não consigo falar?</thought>
+  </do>
+
+  <do when="c">
+    <narration>Você se aproxima dele até que seus narizes estejam quase se tocando.</narration>
+    <narration>Mesmo assim, ele não se dá conta de sua presença.</narration>
+    <narration>Olhando para aqueles olhos tristes, um sentimento completamente estranho toma conta de você.</narration>
+    <narration>Você sente uma vontade quase insuportável de confortá-lo, de lhe assegurar que está tudo bem.</narration>
+    <person>derione</person>
+    <thought>Ela vai se sentir solitária, não vai?</thought>
+    <thought>Do jeito que ela é, nunca vai permitir que ninguém se aproxime.</thought>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+fight</reward>
+    <thought>Isso não é problema seu, seu...</thought>
+    <narration>Ele suspira e balança a cabeça.</narration>
+    <person>derione</person>
+    <voice>Ela é forte. Não precisa mais que cuidem dela. Vai ficar melhor sem mim.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <thought>...</thought>
+    <emotion>normal</emotion>
+    <thought>Derione...</thought>
+    <emotion>surprised</emotion>
+    <thought>Hã? Eu não consigo falar! Por que eu não consigo falar?</thought>
+  </do>
+
+  <do when="imortalized">
+    <person>derione</person>
+    <thought>Qual será o significado daquela escultura?</thought>
+    <thought>Sulana nunca esculpiu a face de alguém que não fosse importante para ela.</thought>
+    <emotion>sad</emotion>
+    <thought>Serei eu o primeiro?</thought>
+    <thought>É doloroso pensar dessa forma, mas depois de tantos anos tentando despertar os sentimentos dela, concluí que é impossível reverter a maldição, que acreditar nessa remota possibilidade apenas serve para me trazer sofrimento.</thought>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <thought>Ele viu a escultura.</thought>
+    <emotion>normal</emotion>
+    <thought>...</thought>
+    <thought>Ora, mas é claro que viu. Era só questão de tempo.</thought>
+    <thought>Eu sabia disso quando comecei a trabalhar nela, nem sei por quê.</thought>
+    <emotion>angry</emotion>
+    <thought>"Se ela esculpiu alguém é porque é importante para ela", blá, blá, blá!</thought>
+    <thought>Eu faço aquelas coisas quando me dá vontade, apenas para passar o tempo.</thought>
+    <thought>É por isso que não gosto de mostrar para ninguém. Todos ficam procurando, sei lá, significados ocultos.</thought>
+    <emotion>normal</emotion>
+    <thought>Achava que Derione era diferente dos outros, mas, pelo visto, me enganei.</thought>
+  </do>
+
+  <music>enigma</music>
+
+  <narration>De repente, ele levanta o tronco e olha em sua direção.</narration>
+  <person>derione</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>!</voice>
+  <narration>Por um momento, você acha que ele finalmente a viu, no entanto, o olhar dele foca em algo que está atrás de você.</narration>
+  <person>derione</person>
+  <emotion>angry</emotion>
+  <voice>O que está fazendo aqui? Como me encontrou?</voice>
+  <narration>Você olha para trás e percebe alguém surgindo através da parede.</narration>
+  <person>elinora</person>
+  <emotion>angry</emotion>
+  <voice>É isso que você tem a dizer ao me ver nesse estado?</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Quem é essa?</thought>
+  <emotion>normal</emotion>
+  <thought>É da mesma raça dele, com certeza, só olhar a cor de pele e a postura arrogante. Isso sem falar dos poderes de invasão de domicílio.</thought>
+  <emotion>surprised</emotion>
+  <thought>E ela também olha através de mim como se não me visse.</thought>
+  <emotion>normal</emotion>
+  <thought>...</thought>
+  <thought>Parece que ela se machucou feio.</thought>
+  <narration>O rosto da mulher está inchado, um feio hematoma cobre boa parte da face direita.</narration>
+  <narration>Há sangue coagulado sob os olhos, o nariz e nas orelhas, e também em boa parte do tronco e membros.</narration>
+  <narration>A armadura que ela usa deve ter sido muito útil em combate algum dia, mas no momento apresenta danos irrecuperáveis.</narration>
+  <narration>Os trajes que ela usa por baixo dos protetores metálicos também estão rasgados, deixando aparentes inúmeros cortes e arranhões.</narration>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>O que houve com você?</voice>
+  <person>elinora</person>
+  <voice>Um dos demônios foi destruído hoje.</voice>
+  <voice>Concluí que você apreciaria receber a informação de que todo o seu trabalho foi recompensado.</voice>
+  <narration>Você percebe ele se encolher instintivamente.</narration>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>O que aconteceu?</voice>
+  <person>elinora</person>
+  <voice>Sulana Lautine se redimiu hoje de todos os seus crimes.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Eu o quê?!</thought>
+  <person>elinora</person>
+  <voice>Mesmo chegando ao estágio terminal, ela continuou lutando para proteger inocentes.</voice>
+  <voice>Quando o inimigo finalmente foi abatido, ela se recusou a se voltar contra aqueles que lutaram a seu lado, e escolheu cair silenciosamente no sono eterno.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>O quê?! Não! É mentira! Não me lembro de nada disso!</thought>
+  <emotion>angry</emotion>
+  <thought>Do que essa infeliz está falando?!</thought>
+  <thought>POR QUE NINGUÉM ME ESCUTA?!?</thought>
+  <narration>Perplexo, Derione cai sentado sobre a cama.</narration>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>!!</voice>
+  <person>elinora</person>
+  <voice>Ela está salva. Seu plano funcionou perfeitamente. Estou em dívida para com você.</voice>
+  <narration>Ele a encara, pasmo.</narration>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>“Plano”? A que plano se refere?</voice>
+  <person>elinora</person>
+  <emotion>surprised</emotion>
+  <voice>Me diga você.</voice>
+  <voice>Não foi você quem a enviou para a praia da Galena hoje? Achei que a redenção dela fosse o seu objetivo.</voice>
+  <narration>Ele se levanta devagar, várias emoções passando por seu rosto.</narration>
+  <narration>Primeiro a perplexidade dá lugar à confusão.</narration>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>Ela lutou contra um demônio.</voice>
+  <narration>Então, a confusão dá lugar à compreensão.</narration>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>Na praia da Galena.</voice>
+  <narration>E, finalmente, a compreensão dá lugar à fúria.</narration>
+  <person>derione</person>
+  <emotion>angry</emotion>
+  <voice>Como, em nome do Eterno, um demônio conseguiu entrar na praia da Galena, Elinora?</voice>
+  <narration>A fulana estreita os olhos.</narration>
+  <person>elinora</person>
+  <emotion>angry</emotion>
+  <voice>Era esperado que todos de nosso refúgio estivessem cientes.</voice>
+  <voice>Esteve negligenciando seus deveres, Derione? Há quanto tempo está escondido neste lugar?</voice>
+  <person>derione</person>
+  <emotion>angry</emotion>
+  <voice>Você… você desativou as defesas místicas do general? De propósito?!</voice>
+  <narration>A outra solta um suspiro dramático.</narration>
+  <narration>Você gosta cada vez menos dessa mulher.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Vaca!</thought>
+  <person>elinora</person>
+  <voice>Foi uma decisão acertada.</voice>
+  <voice>Um dos demônios se deslocou pessoalmente até lá para tentar destruir o general e foi devidamente erradicado.</voice>
+  <voice>E Sulana Lautine foi quem deu o golpe final.</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Não dei, porcaria nenhuma, sua gambá fedorenta!</thought>
+  <person>elinora</person>
+  <voice>Sempre considerei seu orgulho pelas ações dela grande demais, mas desta vez admito que ele é justificado.</voice>
+  <narration>Derione sacode a cabeça e leva uma mão à têmpora.</narration>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>Me é difícil acreditar que você colocou em risco o trabalho de anos para fazer algo assim!</voice>
+  <emotion>angry</emotion>
+  <voice>Que justificativa poderia existir para isso?</voice>
+  <voice>O que poderia levar qualquer criatura com um mínimo de inteligência a pensar que esse plano teria sucesso?</voice>
+  <narration>Ele sacode a cabeça e levanta uma mão, impedindo que a outra responda.</narration>
+  <person>derione</person>
+  <voice>O que aconteceu com o general?</voice>
+  <narration>A infeliz tenta torcer os lábios, e você sente um prazer inusitado ao ver que o inchaço causado por um golpe bem acertado na boca dela a impede.</narration>
+  <person>elinora</person>
+  <voice>Vai sobreviver.</voice>
+  <person>derione</person>
+  <emotion>angry</emotion>
+  <voice>Mas você queria que ele morresse.</voice>
+  <voice>Seu plano era jogar o demônio e o general um contra o outro e ceifar a vida do vencedor, se houvesse algum.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Mas que raio?!?</thought>
+  <emotion>angry</emotion>
+  <thought>Além de uma vadia, é uma covarde!</thought>
+  <person>elinora</person>
+  <voice>Você está deixando os sentimentos humanos comandarem o seu raciocínio. Por que permite isso?</voice>
+  <voice>Não entende? Ela está salva, isso significa que seu tormento chegou ao fim.</voice>
+  <voice>Desista desse flagelo auto imposto e volte para nós. Nossas fileiras precisam de você mais do que nunca.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>"Tormento"? "Flagelo auto imposto"?</thought>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>Precisam de mim?</voice>
+  <emotion>angry</emotion>
+  <voice>Isso quer dizer que houve baixas.</voice>
+  <person>elinora</person>
+  <emotion>sad</emotion>
+  <voice>Sim. Diversos de nossos aliados pereceram na luta contra os de pele amarela.</voice>
+  <voice>Eu fui a única que conseguiu prevalecer até a batalha final.</voice>
+  <person>derione</person>
+  <emotion>angry</emotion>
+  <voice>Esse relato se torna pior a cada palavra que sai de sua boca.</voice>
+  <voice>Você levou um grupo de abençoados para a morte?!</voice>
+  <person>elinora</person>
+  <emotion>angry</emotion>
+  <voice>Estavam dispostos a receber a dádiva da felicidade eterna de bom grado, assim como eu!</voice>
+  <person>derione</person>
+  <emotion>angry</emotion>
+  <voice>Pois poderia muito bem ter recebido essa “dádiva” sozinha!</voice>
+  <narration>Ele se vira e atravessa a parede da cabana.</narration>
+  <narration>Você olha para a mulher e vê que a cretina tem uma expressão perplexa no rosto, como se não entendesse por que Derione está tão fulo da vida com ela.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Se eu fosse ele, teria terminado o trabalho de quem quase te matou, sua covarde!</thought>
+  <narration>Você se vira e sai atrás de Derione, atravessando a mesma parede que ele sem nem perceber o que está fazendo.</narration>
+
+  <music>goodbye</music>
+  <background>storm</background>
+
+  <narration>Você o encontra parado no meio da chuva, imóvel, com olhar distante.</narration>
+  <person>derione</person>
+  <voice>...</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Ei! Estou aqui! Olhe para mim! Pode me ouvir?</thought>
+  <thought>Estou aqui! Aquela vaca está mentindo!</thought>
+  <thought>Eu não estive nessa praia!</thought>
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <narration>Ele está tremendo. Parece estar em choque.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Ele ficou assim por achar que eu morri?</thought>
+  <thought>Nunca achei que pudesse se preocupar tanto.</thought>
+  <narration>Então, sem falar nada, ele materializa suas asas e sai voando em meio ao aguaceiro, seu escudo místico desviando as gotas de chuva antes que o atinjam.</narration>
+  <narration>Perplexa, você percebe que está voando junto com ele.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>O que está acontecendo?</thought>
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <voice>Sulana... me perdoe.</voice>
+  <voice>Eu... falhei com você.</voice>
+  <voice>Só me resta uma única coisa a fazer agora.</voice>
+  <narration>Ele voa em silêncio por algum tempo, ignorando a chuva torrencial.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Não consigo ver nada além de água!</thought>
+  <thought>Como ele pode saber para onde está indo?</thought>
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <thought>O tempo limite do encanto de transporte já deve ter chegado ao fim.</thought>
+  <thought>Ela deve estar de volta ao ponto de partida nesse momento.</thought>
+  <narration>A chuva aos poucos começa a diminuir, até que acaba por completo.</narration>
+  <narration>Então você finalmente consegue reconhecer os arredores e descobrir para onde estão indo.</narration>
+
+  <background>shack</background>
+
+  <narration>Derione pousa suavemente nos arredores da cabana. Com um gesto de mão ele faz com que suas asas desapareçam.</narration>
+  <narration>Então marcha, determinado, até a estrutura e atravessa a parede.</narration>
+  <narration>Sem saber exatamente por que está fazendo isso, você o segue.</narration>
+
+  <background>shack_interior</background>
+
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <voice>Oh, não!</voice>
+  <voice>Não!</voice>
+  <emotion>angry</emotion>
+  <voice>NÃÃÃÃÃO!</voice>
+  <narration>Você para ao lado dele e percebe alguém deitado sobre o catre.</narration>
+
+  <music>sadistic-game</music>
+
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>O quê? Quem foi que invadiu minha...</thought>
+  <emotion>surprised</emotion>
+  <thought>!!!</thought>
+  <thought>Mas que raios?!</thought>
+
+  <narration>Incrédula, você percebe que está encarando a si mesma.</narration>
+  <narration>Você está deitada na cama, numa posição estranha, com manchas de sangue seco por toda parte.</narration>
+  <narration>Está usando as roupas que Derione lhe deu, que agora estão completamente arruinadas, cheias de rasgões e marcas de queimaduras.</narration>
+  <narration>A pele toda apresenta um tom arroxeado, sem elasticidade, sem vida.</narration>
+  <narration>Os olhos estão abertos, encarando o teto sem vê-lo, seu brilho já tendo se apagado há muito tempo.</narration>
+  <narration>Seu rosto apresenta uma expressão neutra, serena. E isso é o que lhe parece mais chocante.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Eu estou...</thought>
+  <thought>Mas isso é impossível!</thought>
+  <narration>Derione ajoelha ao lado do catre.</narration>
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <thought>Olhe para ela... tão bonita... tão... perfeita...</thought>
+  <thought>...</thought>
+  <thought>Elinora pode ser a pessoa mais desprezível do mundo, mas ela não mente.</thought>
+  <thought>Se Sulana conseguiu manter a coerência, mesmo no estágio final da fúria, algum de meus esforços realmente teve algum efeito.</thought>
+  <narration>Ele corre um dedo pelos cabelos ensanguentados.</narration>
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <thought>Ou talvez ela simplesmente era muito mais forte do que todos de seu clã.</thought>
+  <thought>Como eu sempre desconfiei que fosse.</thought>
+  <thought>De qualquer forma, ela era uma pessoa excepcional.</thought>
+  <thought>Muito melhor do que eu.</thought>
+  <protagonist />
+  <voice>...</voice>
+
+  <narration>Ele se empertiga e se coloca em pé, uma expressão determinada no rosto.</narration>
+  <person>derione</person>
+  <thought>Eu aceitei o fardo que foi colocado em minhas costas sem nunca reclamar, sem nunca me rebelar ou me abater.</thought>
+  <emotion>angry</emotion>
+  <thought>Mas, por tudo o que é mais sagrado, isso termina hoje!</thought>
+  <narration>Então, subitamente, você se sente sonolenta.</narration>
+
+  <background>black</background>
+
+  <narration>É impossível evitar que seus olhos se fechem. E assim, o mundo volta a ficar escuro e silencioso.</narration>
+
+
+  <do when="falcione_relationship[2:]">
+    <viewpoint>falcione</viewpoint>
+    <background>black</background>
+    <tutorial>Você conseguiu pontos de relacionamento com Falcione suficientes para desbloquear uma cena especial.</tutorial>
+
+    <background>transition</background>
+    <tutorial>Você agora está controlando Gerdênia Lumera (mais conhecida como Falcione)</tutorial>
+
+    <background>palmtree</background>
+
+    <narration>Você não está nada feliz.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Odeio ser carregada de um lado para o outro, como uma inútil.</thought>
+    <narration>A tenente Emelin, que caminha ao seu lado, percebe a sua insatisfação.</narration>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Desculpe, senhora, achei que essa liteira seria mais confortável...</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>O que não gosto é de não poder caminhar com minhas próprias pernas.</voice>
+    <narration>Os dois soldados que carregam a liteira permanecem impassíveis, caminhando com cuidado pela areia.</narration>
+    <person>soldado7</person>
+    <voice>...</voice>
+    <person>soldado8</person>
+    <voice>...</voice>
+    <narration>O balançar ritmado a está deixando sonolenta, e você também odeia isso.</narration>
+    <person>emelin</person>
+    <voice>De qualquer forma, estou contente por ver que a senhora está se recurando tão rápido.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Está demorando até demais. Já se passaram dois dias!</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Hã... a senhora sabe... nos tempos antigos... bem, se curar de ferimentos como os seus levava meses, talvez até anos.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Não estamos vivendo nos tempos antigos, garota!</voice>
+    <narration>Você balança a cabeça, inconformada.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Quando assumi o nome “Falcione” anos atrás, prometi a mim mesma que nunca mais fraquejaria, que enfrentaria a vida com coragem e derrotaria a todos que ameaçassem aqueles que me são caros.</thought>
+    <thought>E mesmo enquanto todos os meus amigos e aliados foram perecendo, com o passar dos anos, sempre mantive minha determinação firme.</thought>
+    <thought>Por que estou esmorecendo agora?</thought>
+    <narration>Na verdade, você sabe a razão.</narration>
+    <narration>A verdade é que a última pessoa com quem você se importa nesse mundo está entre a vida e a morte no momento.</narration>
+    <narration>Você não quer pensar nisso, mas teme que não consiga encontrar nenhum sentido em continuar vivendo se o general se for.</narration>
+    <person>soldado7</person>
+    <voice>Chegamos, senhora.</voice>
+    <narration>Com muito cuidado, os soldados depositam a liteira no chão.</narration>
+    <narration>Você olha para o lado e vê diversas tendas, pessoas de uniforme carmim saindo e entrando delas, apressadas.</narration>
+    <narration>O comando administrativo do exército havia formado uma base temporária no local, e ela parecia estar funcionando com força total.</narration>
+    <narration>Emelin lhe estende a mão e você, de má vontade, aceita a ajuda para se levantar. Então se vira para os dois soldados.</narration>
+    <protagonist />
+    <voice>Estão dispensados.</voice>
+    <person>soldado7</person>
+    <voice>Sim, senhora.</voice>
+    <narration>Você aguarda até que os dois se afastem antes de olhar para a tenente.</narration>
+    <protagonist />
+    <voice>Todos parecem ocupados, por aqui.</voice>
+    <person>emelin</person>
+    <voice>Sim, senhora, mobilizamos todos que conseguimos encontrar, e mesmo assim, não temos contingente suficiente para atender a todos os assuntos que precisam de atenção.</voice>
+    <voice>Criamos uma comissão de priorização e estamos resolvendo os problemas considerados mais urgentes primeiro, mas todos sabem que o tempo é crucial.</voice>
+    <narration>Você olha mais uma vez para a movimentação frenética dos oficiais.</narration>
+    <narration>Apesar dos movimentos apressados, era óbvio que existia uma ordem ali. Todos pareciam saber exatamente o que estavam fazendo.</narration>
+    <narration>Não era exatamente o que você esperava encontrar.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Mas que droga!</thought>
+    <thought>Organizar tudo isso deveria ser minha função!</thought>
+    <narration>Você solta um suspiro.</narration>
+
+    <music>goodbye</music>
+
+    <protagonist />
+    <voice>E quanto às nossas proteções místicas?</voice>
+    <person>emelin</person>
+    <voice>As torres foram restabelecidas pouco depois que a batalha acabou.</voice>
+    <voice>O senhor Norlando disse que as estruturas foram comprometidas dias antes. Elas foram perdendo energia devagar.</voice>
+    <voice>E os receptores que nos permitiriam detectar o problema também foram adulterados.</voice>
+    <protagonist />
+    <voice>Isso explica como os rebeldes conseguiram invadir nosso território.</voice>
+    <person>emelin</person>
+    <voice>Os sábios acham que a pessoa que sabotou aquele artefato foi a mesma que comprometeu nossas torres.</voice>
+    <voice>Estou aguardando um relatório com as conclusões da investigação que está em andamento.</voice>
+    <narration>Você assente.</narration>
+    <protagonist />
+    <voice>Depois que eu fui atingida ontem... o que houve?</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Eu... eu segui suas instruções e...</voice>
+    <narration>Ela se interrompe, corando violentamente.</narration>
+    <protagonist />
+    <voice>Você deu a poção à rebelde.</voice>
+    <person>emelin</person>
+    <voice>Sim. Ela... bem, ela pareceu se recuperar dos ferimentos e... ficou ainda mais estranha e violenta.</voice>
+    <voice>Ela... bem, não teve muita dificuldade para derrotar aquele amarelo.</voice>
+    <voice>Em seguida, atacou o demônio. Parecia imune a qualquer tipo de ataque dele.</voice>
+    <voice>Ele foi... neutralizado... em questão de instantes.</voice>
+    <narration>Você solta um suspiro.</narration>
+    <protagonist />
+    <voice>Essa mulher era muito mais forte do que qualquer um da raça dela.</voice>
+    <voice>Nem dez deles juntos à porta da morte conseguiriam fazer tanto estrago, com ou sem poção.</voice>
+    <voice>O que ela fez depois?</voice>
+    <person>emelin</person>
+    <voice>Ela andou ao redor da praia por algum tempo, procurando alguma coisa.</voice>
+    <voice>Ignorou a todos, se afastando de qualquer um que tentasse se aproximar.</voice>
+    <voice>Então, simplesmente desmaiou.</voice>
+    <voice>Antes que qualquer um de nós pudesse chegar perto, ela desapareceu.</voice>
+    <voice>A julgar pelas emanações místicas que captamos, ela estava presa a algum encanto do tipo âncora, que a puxou de volta.</voice>
+    <protagonist />
+    <voice>Alguém mandou ela para cá e depois a levou embora. Quero saber quem foi. E por quê.</voice>
+    <person>emelin</person>
+    <voice>Os sábios estão trabalhando nisso.</voice>
+    <protagonist />
+    <voice>Qual é o estado do general?</voice>
+    <person>emelin</person>
+    <voice>Está inconsciente, apresenta graves queimaduras por todo o corpo e está com o nível de cognação transcendente bastante instável, às vezes baixo, às vezes alto a ponto de exceder nossas escalas.</voice>
+    <voice>Acreditamos que isso seja causado pela ausência dos artefatos de contenção que ele usava e que, aparentemente, foram destruídos na batalha.</voice>
+    <voice>Tratamos os ferimentos mais graves, mas nem todo o tecido queimado vai poder ser regenerado.</voice>
+    <protagonist />
+    <voice>E quanto à esposa?</voice>
+
+    <do when="zelmira_relationship[4:]">
+      <person>emelin</person>
+      <voice>Sofreu ferimentos muito graves, não sabemos se vai resistir.</voice>
+      <voice>Está em coma e não reage a emanações regenerativas.</voice>
+      <voice>O corpo dela sofreu um trauma grande demais e não consegue se recuperar, mesmo com ajuda.</voice>
+    </do>
+
+    <do when="zelmira_relationship[:3]">
+      <narration>Emelin apenas balança a cabeça.</narration>
+      <person>emelin</person>
+      <emotion>sad</emotion>
+      <voice>...</voice>
+    </do>
+
+    <protagonist />
+    <voice>E as crianças?</voice>
+    <person>emelin</person>
+    <voice>O mais velho teve um ferimento feio, mas conseguimos estabilizar.</voice>
+    <voice>Os outros dois têm apenas alguns cortes e hematomas.</voice>
+    <voice>De qualquer forma, estão todos bem. Devem estar na tenda, com o pai, neste momento.</voice>
+    <narration>Você assente.</narration>
+    <protagonist />
+    <voice>Baixas?</voice>
+    <person>emelin</person>
+    <voice>Dos quarenta oficiais que lutaram, oito estão relativamente bem e dezenove em recuperação, quatro deles em estado grave.</voice>
+    <voice>Nossos mortos estão sendo levados para suas famílias.</voice>
+    <voice>Um grupo de protetores apareceu depois da batalha e levou os mortos deles.</voice>
+    <protagonist />
+    <voice>E quanto a Norlando e os outros sábios?</voice>
+    <person>emelin</person>
+    <voice>Um dos sábios foi ferido na batalha, mas Norlando e os demais estão bem.</voice>
+    <protagonist />
+    <voice>Mantenham o general próximo da praia e providenciem novos artefatos de contenção.</voice>
+    <voice>Isso tem que ser feito o mais rápido possível, ou todos os esforços para salvá-lo terão sido em vão.</voice>
+    <person>emelin</person>
+    <voice>Os sábios estão priorizando isso neste momento, senhora.</voice>
+    <protagonist />
+    <voice>Ótimo.</voice>
+    <voice>E o que aconteceu com Elinora? Ela sobreviveu, não?</voice>
+    <person>emelin</person>
+    <voice>Os outros protetores perguntaram por ela, aparentemente, está desaparecida.</voice>
+
+    <music>the-awakening</music>
+
+    <person>giarle</person>
+    <voice>Provavelmente voltou para o buraco de onde saiu.</voice>
+    <narration>Você se vira para o recém chegado, franzindo o cenho.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Giarle Miliens. O que está fazendo aqui?</voice>
+    <person>giarle</person>
+    <voice>Ouvi dizer que estão precisando de toda ajuda disponível.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Tenente, por que permitiu a entrada desse terrorista aqui?</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Desculpe, senhora, mas o próprio general considera ele um aliado.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>E o que me garante que não foi ele quem sabotou nossas torres?</voice>
+    <person>giarle</person>
+    <voice>Foi Elinora e os amigos dela quem comprometeram a defesa.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Isso... faz sentido. Os protetores podem mascarar sua presença. Conseguem entrar em qualquer lugar sem deixar vestígios.</voice>
+    <voice>Mas por que fariam isso?</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>E você vai acreditar em alguma coisa que esse terrorista diz?</voice>
+    <person>giarle</person>
+    <voice>Acabei de conversar com um dos alquimistas. A ruiva não foi muito cuidadosa e acabou deixando várias pistas comprometedoras.</voice>
+    <voice>Pode ir lá confirmar com o Norlando, se quiser. Ele não tem a menor dúvida de que foi ela.</voice>
+    <protagonist />
+    <voice>Pode contar com isso. Nunca vou confiar em alguém que levantou armas contra minha gente.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Espere! Aquele protetor que ajudou o general depois da batalha falou algo sobre "corrigir erros"! Será que era a isso que ele se referia?</voice>
+    <narration>Você e Giarle ignoram completamente a tenente enquanto se encaram, desafiadoramente.</narration>
+    <person>giarle</person>
+    <voice>Está se esquecendo de que foi uma de minhas aliadas quem encerrou essa batalha.</voice>
+    <protagonist />
+    <voice>E daí? Eu também não confiaria nela, se ainda estivesse viva.</voice>
+    <person>giarle</person>
+    <voice>Oh! Gosto de mulheres duronas.</voice>
+    <voice>A propósito, estou impressionado com você, tentente.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>E-eu?</voice>
+    <person>giarle</person>
+    <voice>Você assumiu o comando das coisas por aqui e vem organizando tudo de maneira admirável.</voice>
+    <voice>Ainda mais para alguém da sua idade.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>!!</voice>
+    <voice>Eu... bem, os outros tenentes estão todos em recuperação, então...</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>O que pensa que está fazendo, Miliens?</voice>
+    <person>giarle</person>
+    <emotion>surprised</emotion>
+    <voice>Eu?</voice>
+    <emotion>happy</emotion>
+    <voice>Nada demais.</voice>
+    <voice>Só o que VOCÊ deveria fazer, senhora "segundo em comando".</voice>
+    <emotion>normal</emotion>
+    <voice>Reconhecendo a competência de seus oficiais.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Você matou inúmeros de meus oficiais, não tem o direito de...</voice>
+    <person>giarle</person>
+    <emotion>angry</emotion>
+    <voice>De quê? De estar aqui? De ainda querer lutar depois de ter sido manipulado por tantos meses?</voice>
+    <voice>Você acha que eu deveria fazer o quê? Me enrolar na minha cama me lamentando por terem me usado para matar inocentes?</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Exatamente!</voice>
+    <person>giarle</person>
+    <emotion>angry</emotion>
+    <voice>Bom, então tenho más notícias para você, dona esquentadinha: não vou a lugar algum.</voice>
+    <voice>Não até acabar com os demônios que ainda restam.</voice>
+    <voice>E farei isso com ou sem a sua ajuda.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>E por que acha que alguém iria querer sua ajuda, seu idiota arrogante?</voice>
+    <voice>Suas táticas de batalha são patéticas! Praticamente nos deu Mercília de mão beijada!</voice>
+    <narration>Os soldados que montam guarda há pouca distância dali lançam olhares preocupados em sua direção.</narration>
+    <person>soldado4</person>
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <person>soldado5</person>
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <narration>Você os ignora, ocupada demais em lançar adagas pelo olhar contra aquele maldito rebelde.</narration>
+    <person>giarle</person>
+    <emotion>angry</emotion>
+    <voice>Eu não tinha oficiais como a tenente Emelin aqui, treinadas, diligentes e capazes de abrir geoportais!</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>!!</voice>
+    <narration>O leve rubor que surge nas faces da tenente deixa você ainda mais irritada.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <choice>
+      <a>Ah, então agora a culpa é dos seus aliados?</a>
+      <b>Você tinha Sulana Lautine!</b>
+      <c>Como você é lisonjeiro, não?</c>
+    </choice>
+    <voice>...</voice>
+
+    <do when="a">
+      <narration>Você cruza os braços, tentando ignorar o desconforto causado pelo movimento súbito.</narration>
+      <protagonist />
+      <emotion>angry</emotion>
+      <voice>Não estava se gabando até agora há pouco de um deles ter encerrado a batalha de ontem?</voice>
+      <person>giarle</person>
+      <emotion>angry</emotion>
+      <voice>Estou falando de táticas, não de força bruta! Sabe o que são táticas, não sabe?</voice>
+      <voice>Deveria saber, já que o general valoriza tanto se cercar de pessoas inteligentes como Norlando e Emelin.</voice>
+      <person>emelin</person>
+      <emotion>surprised</emotion>
+      <reward>++relationship</reward>
+      <voice>...</voice>
+      <protagonist />
+      <emotion>happy</emotion>
+      <voice>E de quem você acha que foi a ideia de fazer vocês de trouxa em Mercília?</voice>
+      <person>giarle</person>
+      <emotion>happy</emotion>
+      <voice>Com os recursos que o general tem até mesmo meu cachorro teria essa ideia!</voice>
+    </do>
+
+    <do when="b">
+      <person>giarle</person>
+      <emotion>surprised</emotion>
+      <voice>E o que tem ela?</voice>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <voice>Como assim, "o que tem ela"?!</voice>
+      <emotion>angry</emotion>
+      <voice>A mulher valia por quase um exército inteiro!</voice>
+      <voice>Matou metade dos monstros que apareceram aqui ontem!</voice>
+      <voice>Derrotou um amarelo na base da pancada e sozinha, sem nenhuma ajuda!</voice>
+      <person>giarle</person>
+      <emotion>angry</emotion>
+      <voice>É... depois de você quase ter matado a ela.</voice>
+      <protagonist />
+      <emotion>angry</emotion>
+      <voice>Você não sabe valorizar aliados!</voice>
+      <voice>Ela só veio lutar comigo para ganhar tempo para os amigos dela fugirem!</voice>
+      <person>giarle</person>
+      <emotion>surprised</emotion>
+      <voice>!!</voice>
+      <reward>++relationship</reward>
+      <voice>Isso... parece mesmo algo que ela faria.</voice>
+      <emotion>normal</emotion>
+      <voice>Bom ver que agora você enxerga o valor dela. Antes tarde do que nunca.</voice>
+      <protagonist />
+      <emotion>angry</emotion>
+      <voice>O que isso quer dizer?</voice>
+      <person>giarle</person>
+      <voice>Me refiro à obscessão que você tinha em querer matá-la.</voice>
+      <emotion>happy</emotion>
+      <voice>Os soldados comentam que você era bem cabeça dura a esse respeito.</voice>
+    </do>
+
+    <do when="c">
+      <narration>Você cruza os braços, tentando ignorar o desconforto causado pelo movimento súbito.</narration>
+      <protagonist />
+      <emotion>angry</emotion>
+      <voice>Tenho uma novidade para você: conversa mole não leva a lugar nenhum!</voice>
+      <person>giarle</person>
+      <voice>Você não sabe do que está falando.</voice>
+      <emotion>angry</emotion>
+      <voice>Eu não tenho vergonha de admitir que fui derrotado por um oponente superior.</voice>
+      <voice>Em Mercília eu não estava lutando contra você ou Emelin, estava lutando contra o general.</voice>
+      <voice>Eu não tinha a menor chance.</voice>
+      <emotion>normal</emotion>
+      <voice>Perguntei para ele o que faria se tivéssemos esperado na cidade ao invés de na fortaleza.</voice>
+      <voice>Você estava junto, Emelin, lembra do que ele disse?</voice>
+      <person>emelin</person>
+      <emotion>surprised</emotion>
+      <voice>Sim... ele... ele disse que a senhora tinha mais experiência nesse tipo de situação do que qualquer um, e que por isso a tinha encarregado do cerco à cidade.</voice>
+      <voice>Ele disse que a senhora tinha definido uma estratégia principal e várias medidas de contingência.</voice>
+      <person>giarle</person>
+      <voice>Está vendo? O homem sabe valorizar seus recursos.</voice>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <reward>++relationship</reward>
+      <voice>!!</voice>
+      <person>giarle</person>
+      <emotion>happy</emotion>
+      <voice>Viu só? Ficou até sem palavras.</voice>
+      <voice>A lisonja pode ser uma arma poderosa nas mãos certas.</voice>
+    </do>
+
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Você não vale o chão onde pisa, seu maldito terrorista!</voice>
+    <person>giarle</person>
+    <emotion>angry</emotion>
+    <voice>Ah é?</voice>
+    <voice>Pelo menos eu não saio por aí atacando pessoas primeiro e fazendo perguntas depois!</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Ora, seu...!</voice>
+    <narration>Você se adianta e estapeia o rosto dele com toda a força.</narration>
+    <narration>Ele não chega a mover nem um músculo sequer, mas o efeito em você é intenso e imediato</narration>
+    <narration>Uma onda de dor percorre seu corpo todo e você precisa morder o lábio para evitar soltar um gemido.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <bump />
+    <voice>...</voice>
+    <narration>Então, o infeliz olha para você e... sorri.</narration>
+    <person>giarle</person>
+    <emotion>happy</emotion>
+    <voice>Olha só... a gatinha tem garras!</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>...</voice>
+    <narration>Você não pode responder, pois está muito ocupada se segurando para evitar segurar o braço dolorido ou soltar um gemido de dor.</narration>
+    <person>giarle</person>
+    <emotion>happy</emotion>
+    <voice>Que bom ver que não perdeu seu espírito combatente, Gardênia. Vamos precisar dele.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Gar... dênia?</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Não me chame por esse nome! Você não tem o direito de me chamar por esse nome!</voice>
+    <voice>Eu poderia matar você agora mesmo por isso!</voice>
+    <person>giarle</person>
+    <emotion>happy</emotion>
+    <voice>Ótimo. Estarei esperando.</voice>
+    <voice>Mas já vou avisando: se quiser me matar, é melhor caprichar na primeira tentativa.</voice>
+    <voice>Senão, eu vou revidar.</voice>
+    <narration>Você esquece da dor e tenta levantar o braço para atingí-lo de novo, o que faz com que fortes pontadas atinjam seu ventre.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Aaaargh!</voice>
+    <person>giarle</person>
+    <voice>...</voice>
+    <emotion>happy</emotion>
+    <voice>Vejo você mais tarde, Gardênia.</voice>
+    <narration>Com isso, ele se dirige até uma das tendas e entra nela, com a maior naturalidade.</narration>
+    <trophy>threatened</trophy>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Ugh! Maldito seja!</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Senhora, talvez fosse melhor...</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Vou embora daqui!</voice>
+    <narration>A tenente pisca, confusa.</narration>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Como?</voice>
+    <protagonist />
+    <voice>Quero voltar para a minha tenda.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Achei que a senhora quisesse assumir o comando...</voice>
+    <narration>Você lança um olhar para a tenente. Tão jovem, tão dedicada.</narration>
+    <narration>Não é todo dia que se encontra um oficial tão promissor.</narration>
+    <protagonist />
+    <voice>Não vejo mais necessidade.</voice>
+    <voice>Você está com tudo sob controle por aqui.</voice>
+    <voice>Serei mais útil quanto estiver, pelo menos, conseguindo andar sem ajuda.</voice>
+    <person>emelin</person>
+    <emotion>happy</emotion>
+    <voice>Isso é ótimo, senhora.</voice>
+    <voice>Tenho certeza que o general também aprovaria essa decisão.</voice>
+    <voice>Os oficiais estão sendo muito amigáveis e o senhor Norlando disse que está a disposição para qualquer coisa que eu precisar.</voice>
+    <voice>Podemos cuidar de tudo aqui até que a senhora esteja se sentindo melhor.</voice>
+    <protagonist />
+    <voice>...</voice>
+    <voice>Você está diferente.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>C-como assim?</voice>
+    <protagonist />
+    <voice>Não está mais tagarelando usando palavras que ninguém entende.</voice>
+    <narration>A moça fica vermelha.</narration>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Eu... ah...</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Ei, soldados! Tenho que voltar para minha tenda.</voice>
+    <voice>Preciso de dois voluntários para me levarem.</voice>
+    <person>soldado5</person>
+    <emotion>surprised</emotion>
+    <voice>Sim, senhora!</voice>
+    <person>soldado4</person>
+    <emotion>surprised</emotion>
+    <voice>A caminho!</voice>
+    <protagonist />
+    <voice>E, tenente?</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Sim?</voice>
+    <protagonist />
+    <voice>Não é qualquer pessoa que teria coragem de se aproximar da rebelde para dar aquela poção a ela.</voice>
+    <voice>Ainda mais... daquela maneira.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <protagonist />
+    <voice>Continue assim.</voice>
+    <person>emelin</person>
+    <emotion>happy</emotion>
+    <voice>Sim, senhora!</voice>
+  </do>
+
+  
+  <viewpoint>sulana</viewpoint>
+  <music>open-sky</music>
+  <background>sulana</background>
+  <tutorial>Você agora está controlando Sulana Lautine</tutorial>
+
+  <background>shack_interior</background>
+
+  <narration>Você abre os olhos, prestando atenção aos ruídos da floresta e à fraca luminosidade que entra pelas frestas das paredes de madeira.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <thought>Já é de manhã!</thought>
+  <narration>Levantando do catre com agilidade, você alonga os braços, antes de abrir a janela.</narration>
+
+  <background>sun_rising</background>
+
+  <narration>Você está se sentindo particularmente bem hoje.</narration>
+  <narration>Olhando para fora, conclui que o clima está propício para alguns exercícios matinais.</narration>
+  <narration>Animada, você se dirige para a porta quando percebe que não está vestindo nada.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Estranho. Não gosto de tirar todas as roupas para dormir</thought>
+  <thought>Por que será que fiz isso? O que aconteceu ontem?</thought>
+  <narration>Você tenta forçar a memória, mas nada vem à sua mente.</narration>
+  <narration>Tem apenas uma vaga lembrança de ter saído numa missão com Ronam e Lura.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>O que será que aconteceu?</thought>
+  <emotion>normal</emotion>
+  <thought>Bom, não deve ter sido nada demais.</thought>
+  <thought>Conhecendo aquele bando, certeza que algum deles logo aparece por aqui.</thought>
+  <narration>Tratando de vestir calças e enrolar os seios com a última faixa ainda inteira que tinha no armário, você sai para fora para iniciar seu ritual de exercícios.</narration>
+
+  <background>shack</background>
+
+  <narration>Não demora muito para você perceber que sua resistência está bem maior do que o de costume.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Eu acabei de completar uma série de 50? Será que contei errado? Outro dia quase morri para chegar aos 40!</thought>
+  <thought>Estranho. Depois de uma batalha eu sempre fico acabada durante um tempo, mas dessa vez estou me sentindo mais forte. Não estou nem suando!</thought>
+  <emotion>normal</emotion>
+  <thought>Tenho que achar o Ronam e perguntar o que aconteceu ontem.</thought>
+  <thought>Se houve alguma luta, não deve ter sido nada muito relevante.</thought>
+  <narration>Você encerra a mais gratificante série de exercícios dos últimos meses e se refresca da maneira usual, jogando um balde de água fria sobre a cabeça.</narration>
+  <narration>Sem se preocupar em trocar as roupas molhadas, você pega um tufax na cabana e toma o caminho do abrigo, mordendo a fruta com prazer.</narration>
+  <narration>Por um momento você olha para o tufax, intrigada.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Esse aqui é dos bons!</thought>
+  <thought>De qual árvore será que eu colhi? Tenho que voltar ao bosque mais tarde para ver se encontro mais desses.</thought>
+  <emotion>normal</emotion>
+  <thought>Hummm... talvez eu deva guardar as sementes para plantar em algum lugar próximo da cabana.</thought>
+  <thought>Ou talvez então próximo ao abrigo. Comer mais frutas com certeza faria bem àquele pessoal.</thought>
+  <emotion>surprised</emotion>
+  <thought>Quantos anos será que leva para uma árvore dessas começar a dar frutos?</thought>
+  <emotion>normal</emotion>
+  <thought>...</thought>
+  <thought>Ah, quer saber? Para que esperar até mais tarde? Vou lá no bosque é agora mesmo!</thought>
+
+  <background>shelter</background>
+
+  <narration>Cerca de quarenta minutos depois, você chega ao abrigo com os braços carregados de frutas.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Esse lugar está diferente.</thought>
+  <thought>Parece que alguém andou consertado as paredes e os telhados.</thought>
+  <choice>
+    <a>Procurar por Riodes no refeitório</a>
+    <b>Ver como está Linete</b>
+  </choice>
+  <thought>Eu vou...</thought>
+
+  <do when="a">
+    <music>the-awakening</music>
+    <background>shelter_kitchen</background>
+
+    <narration>Você entra no refeitório onde Riodes está preparando o café da manhã.</narration>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Bom dia, Riodes.</voice>
+    <narration>O velho lhe lança um olhar surpreso enquanto você coloca sua carga sobre a mesa da cozinha.</narration>
+    <person>riodes</person>
+    <emotion>surprised</emotion>
+    <voice>!!</voice>
+    <voice>Já está de pé?</voice>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>E ainda está com cara de quem teve uma boa noitada.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Como é?</voice>
+    <person>riodes</person>
+    <voice>Seu namorado apareceu aqui ontem, antes da chuva. Ele deu uma ajuda no conserto das paredes e telhados.</voice>
+    <protagonist />
+    <voice>Quem seria esse “meu namorado”? E o que houve com o telhado?</voice>
+    <narration>Riodes franze o cenho.</narration>
+    <person>riodes</person>
+    <emotion>surprised</emotion>
+    <voice>Você está bem?</voice>
+    <narration>Você pega uma das frutas e dá uma grande mordida.</narration>
+    <protagonist />
+    <voice>Estou ótima. Falando nisso, tem algo para comer? Estou faminta.</voice>
+    <narration>Ele agora a está olhando de queixo caído.</narration>
+
+    <do when="sulana_javalihunter">
+      <protagonist />
+      <voice>O que foi? Sou eu quem traz boa parte da comida aqui para dentro, não sou?</voice>
+      <narration>Você se aproxima de um caldeirão que está sobre uma prateleira e levanta a tampa, sentindo o cheiro de carne salgada.</narration>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <voice>Ei, isso aqui está com cheiro bom. O que é?</voice>
+      <person>riodes</person>
+      <emotion>surprised</emotion>
+      <voice>Javali.</voice>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <voice>É mesmo? Quem caçou?</voice>
+      <person>riodes</person>
+      <voice>Você.</voice>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <voice>Como é que é?!</voice>
+    </do>
+
+    <do when="!sulana_javalihunter">
+      <protagonist />
+      <voice>O que foi?</voice>
+      <person>riodes</person>
+      <emotion>surprised</emotion>
+      <voice>Você não lembra da parede da Linete?</voice>
+      <protagonist />
+      <voice>A que ela vive dizendo que vai cair a qualquer momento? O que tem ela?</voice>
+      <person>riodes</person>
+      <emotion>surprised</emotion>
+      <voice>Também não se lembra da caçada aos javalis?</voice>
+      <voice>E quanto ao fato de ter desmaiado na frente de sua cabana?</voice>
+      <voice>Ou então de os rapazes terem trocado suas roupas e de você ter desaparecido na frente deles?</voice>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <voice>Hã?!</voice>
+      <emotion>angry</emotion>
+      <voice>Do que, raios, está falando?</voice>
+    </do>
+  </do>
+
+  <do when="b">
+    <music>free-mind</music>
+
+    <narration>Você encontra Linete tentando perseguir uma borboleta por entre os canteiros de verduras de Riodes.</narration>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Vem aqui, bonitinha! Deixa eu olhar para você!</voice>
+    <emotion>sad</emotion>
+    <voice>Não! Volte aqui!</voice>
+    <narration>Você deixa as frutas no chão e a segura pelo ombro quando ela faz menção de passar, com suas muletas, por sobre um canteiro para ir atrás do inseto.</narration>
+    <protagonist />
+    <voice>Ei, cuidado aí!</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Sulana!</voice>
+    <voice>Que bom ver você!</voice>
+    <protagonist />
+    <voice>Riodes vai gritar com você se estragar as verduras dele.</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Hã?</voice>
+    <emotion>happy</emotion>
+    <voice>Ah, é mesmo, não é?</voice>
+    <voice>Ele nunca gosta quando eu venho aqui.</voice>
+    <emotion>surprised</emotion>
+    <voice>Por que tem tanto tufax no chão?</voice>
+    <narration>Você se afasta dela e se abaixa para pegar as frutas.</narration>
+    <protagonist />
+    <voice>Eu trouxe do bosque perto da minha cabana.</voice>
+    <narration>Ao pegar uma das frutas, você não resiste a dar uma mordida.</narration>
+    <protagonist />
+    <voice>Humm... elas estão no ponto, fazia tempo que eu não provava algo tão bom.</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>!</voice>
+    <voice>E acho que eu nunca vi você tão feliz com alguma coisa antes.</voice>
+    <emotion>happy</emotion>
+    <voice>Fiquei curiosa! Posso experimentar uma?</voice>
+    <narration>Você passa uma fruta para Linete. Ela olha para a coloração avermelhada por um instante e arrisca uma mordida.</narration>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <bump />
+    <voice>Gaaaahhhh!</voice>
+    <narration>Ela mais do que depressa cospe o pedaço que mordeu, limpando a boca e fazendo uma careta.</narration>
+    <person>linete</person>
+    <emotion>angry</emotion>
+    <voice>Céus! Isso é horríííível!</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <emotion>normal</emotion>
+    <voice>...</voice>
+    <emotion>happy</emotion>
+    <voice>Ahahahahaha!</voice>
+    <person>linete</person>
+    <emotion>angry</emotion>
+    <voice>...</voice>
+    <narration>Ela faz um biquinho contrariado que faz com que você ria ainda mais.</narration>
+
+    <do when="worried_linete">
+      <person>linete</person>
+      <voice>...</voice>
+      <emotion>happy</emotion>
+      <voice>...</voice>
+      <reward>+relationship</reward>
+      <voice>Você usou meu unguento, não usou? Sabia que ele ia fazer bem a você.</voice>
+      <narration>Você solta um suspiro satisfeito. Não se lembra da última vez em que rira tanto. Não que isso importe muito.</narration>
+      <protagonist />
+      <voice>Unguento? Que unguento?</voice>
+    </do>
+
+    <do when="!worried_linete">
+      <person>linete</person>
+      <voice>...</voice>
+      <emotion>happy</emotion>
+      <voice>...</voice>
+      <reward>+relationship</reward>
+      <voice>Você parece bem melhor do que ontem.</voice>
+      <narration>Você solta um suspiro satisfeito. Não se lembra da última vez em que rira tanto. Não que isso importe muito.</narration>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <voice>Ontem?</voice>
+    </do>
+
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Você não lembra?</voice>
+    <emotion>sad</emotion>
+    <voice>Ontem você saiu para caçar javalis e voltou cansada. Parecia ferida.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Como é que é?!</voice>
+  </do>
+
+
+  <viewpoint>belisar</viewpoint>
+  <music>goodbye</music>
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <background>shack_interior2</background>
+
+  <narration>Você abre os olhos e pisca devagar várias vezes, tentando focalizar a visão.</narration>
+  <narration>Cada piscada lhe traz uma pontada de dor nas pálpebras.</narration>
+  <narration>Seu corpo inteiro dói. E aquilo só pode significar uma coisa.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Eu... estou vivo?</voice>
+  <voice>Mas como?</voice>
+  <person>curandeiro</person>
+  <emotion>surprised</emotion>
+  <voice>Oh, bem vindo de volta, general!</voice>
+  <narration>O curandeiro se ajoelha no chão para se aproximar de você o que o faz concluir que está deitado no chão.</narration>
+  <narration>Ele segura um cristal de luz contínua na sua frente, a súbita claridão fazendo-o instintivamente fechar os olhos.</narration>
+  <narration>Gentilmente, ele abre uma de suas pálpebras com um dedo, depois a outra, observando seus olhos com atenção.</narration>
+  <narration>Você sabe que ele o está apenas examinando, mas a dor que aquilo provoca faz com que você tente evitar o toque, obrigando o homem a segurar sua cabeça para poder concluir o que fazia.</narration>
+  <person>curandeiro</person>
+  <voice>Seus sinais vitais estão ótimos.</voice>
+  <voice>Como se sente? Consegue falar?</voice>
+  <protagonist />
+  <voice>...</voice>
+  <voice>Água...</voice>
+  <narration>O homem o ajuda a levantar o tronco. A mudança de posição causa dores em partes de seu corpo que você nem sabia que tinha.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Hummpf!</voice>
+  <person>curandeiro</person>
+  <voice>Isso, devagar, com calma.</voice>
+  <voice>Deve estar sentindo muita dor no momento, mas isso deve passar, conforme o nível de cognação transcendente se normaliza.</voice>
+  <narration>Ele leva uma caneca a seus lábios e você tenta ingerir o líquido, que tem um gosto estranho. Após alguns goles, você vira de leve o rosto e ele afasta a caneca.</narration>
+  <person>curandeiro</person>
+  <voice>Tudo bem, general? O senhor me reconhece?</voice>
+  <protagonist />
+  <voice>Sim. Onde... estamos?</voice>
+  <person>curandeiro</person>
+  <voice>Ainda na praia da Galena. O senhor esteve desacordado por dois dias.</voice>
+  <narration>Você tenta mover suas mãos e percebe que não consegue.</narration>
+  <protagonist />
+  <voice>Minhas... mãos?</voice>
+  <person>curandeiro</person>
+  <voice>Imobilizamos suas mãos para prevenir interrupções no processo regenerativo, senhor.</voice>
+  <voice>Vai levar um tempo ainda para que possamos remover as talas.</voice>
+  <narration>Você tenta olhar para baixo, mas não consegue ver suas mãos. Na verdade, não consegue ver quase nada do seu corpo, que está enrolado em uma espécie de cobertor com padrões estranhos.</narration>
+  <protagonist />
+  <voice>Por que... estou vivo?</voice>
+  <voice>Eu... não esperava...</voice>
+  <person>curandeiro</person>
+  <emotion>happy</emotion>
+  <voice>Ah, o senhor teve a ajuda dessa belezinha aqui.</voice>
+  <narration>O homem dá umas batidinhas de leve no cobertor, com um sorriso, como se aquilo explicasse alguma coisa.</narration>
+  <narration>O tecido o envolve como um casulo frouxo, aparentemente dando várias voltas ao redor de seu corpo.</narration>
+  <narration>O curandeiro coloca diversos travesseiros atrás de você e o ajuda a se recostar.</narration>
+  <narration>Você agradece, aliviado pela mudança de posição. Então ouve uma voz familiar.</narration>
+
+  <music>the-awakening</music>
+
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>General! O senhor acordou!</voice>
+  <voice>Graças aos céus! Estávamos tão preocupados!</voice>
+  <narration>A tenente surge em seu campo de visão, parecendo esbaforida e aliviada.</narration>
+  <narration>O rosto dela está um pouco pálido, a pele contrastando fortemente com as fundas olheiras.</narration>
+  <protagonist />
+  <voice>Você parece... cansada.</voice>
+  <person>emelin</person>
+  <voice>Sim, passamos a noite toda investigando...</voice>
+  <emotion>surprised</emotion>
+  <voice>Hã... Talvez seja melhor deixar para falar sobre isso mais tarde.</voice>
+  <voice>Como o senhor está?</voice>
+  <protagonist />
+  <voice>Dolorido.</voice>
+  <voice>E curioso. Eu...</voice>
+  <person>emelin</person>
+  <voice>O senhor deve ter uma porção de perguntas, não?</voice>
+  <narration>Ela olha para o curandeiro. Mais do que depressa, o homem se levanta.</narration>
+  <person>emelin</person>
+  <voice>Tudo bem eu conversar com ele?</voice>
+  <person>curandeiro</person>
+  <voice>Está tudo correndo de acordo com o previsto. Os sinais vitais estão fortes.</voice>
+  <emotion>happy</emotion>
+  <voice>O senhor está novo em folha, general. Está muito bem.</voice>
+  <emotion>normal</emotion>
+  <voice>Se me permite, tenente, vou deixar vocês conversarem sossegados.</voice>
+  <person>emelin</person>
+  <voice>Obrigada. Estamos em dívida para com o senhor.</voice>
+  <narration>O homem assente e sai de seu campo de visão.</narration>
+  <protagonist />
+  <voice>Estamos dentro de uma... tenda?</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Ah! Quero dizer, sim, estamos sim!</voice>
+  <voice>O senhor está com dificuldade para enxergar? Quer que chame o curandeiro de volta?</voice>
+  <protagonist />
+  <voice>Não, tudo bem. As imagens ainda estão borradas, mas está melhorando.</voice>
+  <narration>Você sente um calafrio. Imagens da batalha voltam à sua mente. O demônio. Sulana. Zelmira.</narration>
+  <narration>Sua decisão de sacrificar tudo para conseguir vingança.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Eu não entendo...</voice>
+  <narration>Ela se senta no chão ao seu lado.</narration>
+  <person>emelin</person>
+  <unset>bonus1</unset>
+  <unset>bonus2</unset>
+  <unset>bonus3</unset>
+  <voice>Pode perguntar o que quiser, senhor.</voice>
+
+  <tutorial>A seguir, você terá a chance de fazer diversas perguntas a Emelin.</tutorial>
+  <tutorial>Não é obrigatório ver todos os diálogos, você pode avançar diretamente para a próxima tela escolhendo a última opção.</tutorial>
+  <tutorial>Na última tela você terá a oportunidade de retornar ao início e refazer alguma pergunta, se assim o desejar.</tutorial>
+  <tutorial>Apesar de todas as perguntas serem opcionais, algumas delas lhe darão bônus de atributo ou de relacionamento.</tutorial>
+
+  <music>goodbye</music>
+
+  <do>
+    <do>
+      <protagonist />
+      <choice>
+        <a>Como a batalha terminou?</a>
+        <b>Como ainda estou vivo?</b>
+        <c>E minha família?</c>
+        <d>(Mais...)</d>
+      </choice>
+      <voice>...</voice>
+
+      <exit when="d" />
+
+      <do when="a">
+        <person>emelin</person>
+        <voice>Sulana Lautine derrotou o demônio e os protetores destruíram todos os amarelos.</voice>
+        <voice>Nossos soldados cuidaram dos monstros restantes com a ajuda dos sábios.</voice>
+        <protagonist />
+        <voice>Sulana estava perdendo a luta para um dos amarelos quando o demônio me atacou.</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Ah, sim... ela... quero dizer... nós demos uma poção a ela.</voice>
+        <emotion>normal</emotion>
+        <voice>Com isso, ela recobrou as forças e conseguiu derrotar o monstro com facilidade.</voice>
+        <voice>Depois disso ela pulou sobre o demônio e terminou o serviço que o senhor e Elinora tinham começado.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Que poção foi essa?</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Ah... Facione se lembrou de uma mistura de raízes que o clã das montanhas costumava usar.</voice>
+        <emotion>normal</emotion>
+        <voice>Parece que era algum tipo de ritual fúnebre ou algo assim.</voice>
+        <narration>Ela estremece ao se lembrar.</narration>
+        <person>emelin</person>
+        <voice>Quando alguém do clã recebia um golpe mortal e entrava no... o senhor sabe... último estágio...</voice>
+        <protagonist />
+        <voice>Quando eles se descontrolavam e passavam a atacar qualquer coisa que estivesse viva.</voice>
+        <person>emelin</person>
+        <voice>Sim, isso mesmo.</voice>
+        <voice>Quando algum deles entrava nesse estágio, os entes queridos lhe davam essa mistura para... beber.</voice>
+        <voice>Isso permitia que usassem todo o restante de sua força vital, tornando-se duas vezes mais fortes e violentos.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>E Falcione decidiu dar esse negócio para Sulana?!</voice>
+        <person>emelin</person>
+        <voice>Na verdade, ela mandou que eu desse.</voice>
+        <voice>O senhor estava ocupado com o demônio e o amarelo estava vencendo a batalha contra ela.</voice>
+        <voice>Se ela perdesse... o senhor não teria chance.</voice>
+        <protagonist />
+        <voice>...</voice>
+        <voice>Não entendo. Essa poção tem que ser ingerida?</voice>
+        <voice>Como foi que você conseguiu fazer com que Sulana bebesse?</voice>
+        <narration>Seus olhos ainda não estão muito bem, mas Emelin fica tão vermelha com a pergunta que você não tem dificuldade nenhuma para perceber o constrangimento dela.</narration>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Bem...</voice>
+        <voice>Falcione disse que... o costume do povo das montanhas era...</voice>
+        <voice>Colocar o líquido na própria boca e então... passá-lo para a boca de quem estivesse descontrolado.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>!!</voice>
+        <voice>Boca-a-boca?</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Bem... sim...</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Deixa eu ver se entendi. Você caminhou até Sulana e deu um beijo na boca dela?</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Hã... suponho que sim...</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>E ela não reagiu? Não tentou te atacar?</voice>
+        <person>emelin</person>
+        <voice>Falcione disse que essa era a única forma de se aproximar de alguém no último estágio.</voice>
+        <voice>Desde que a pessoa não considere você como uma ameaça, ela não reage.</voice>
+        <emotion>surprised</emotion>
+        <voice>Então, no momento em que o amarelo a arremessou para longe eu corri até ela e... consegui completar a tarefa...</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>...</voice>
+        <emotion>normal</emotion>
+        <voice>Tudo bem. E o que houve com Sulana depois que ela matou o demônio?</voice>
+        <person>emelin</person>
+        <voice>Ela caminhou sem rumo durante algum tempo, depois desmaiou e... desapareceu.</voice>
+        <voice>Achamos que o encanto de transporte que a trouxe para cá era ancorado. Ela deve ter sido transportada de volta ao ponto de origem quando o tempo acabou.</voice>
+      </do>
+
+      <do when="b">
+        <person>emelin</person>
+        <voice>Estávamos perdendo a esperança de salvá-lo. Todos os nossos esforços não tinham qualquer efeito.</voice>
+        <voice>Mas depois que a batalha terminou e Elinora desapareceu, um outro protetor surgiu. Um bem mais velho.</voice>
+        <voice>Ele nos deu isso.</voice>
+        <narration>Ela aponta para o cobertor em que você está enrolado.</narration>
+        <person>emelin</person>
+        <voice>Ele disse que erros foram cometidos e que o senhor não merecia esse fim.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Isso é... inesperado.</voice>
+        <person>emelin</person>
+        <voice>Não consegui entender muito bem, mas ele não parecia muito satisfeito com os atos de Elinora.</voice>
+        <voice>Tenho a impressão de que não a veremos mais por algum tempo. Ele parecia bastante... descontente com ela.</voice>
+        <protagonist />
+        <voice>O que é esse cobertor, afinal? Algum tipo de tecido regenerativo?</voice>
+        <person>emelin</person>
+        <voice>O protetor disse que é uma espécie de condensador.</voice>
+        <voice>Permite que energias místicas sejam concentradas em determinados padrões vibracionais, o que amplia as capacidades inatas de uma pessoa.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Como?</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Oh, me desculpe!</voice>
+        <voice>Ele revela poderes que a pessoa normalmente não consegue usar.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Como é? Está me dizendo que eu tenho poderes de regeneração?</voice>
+        <person>emelin</person>
+        <voice>Se eu entendi direito o que ele disse, o senhor tem muito mais do que isso.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>!!</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Oh, mas não tenho nenhuma informação confiável em relação a isso neste momento.</voice>
+        <voice>É o que estamos pesquisando agora. Assim que tivermos algo substancial, ficarei feliz em fazer um relatório completo.</voice>
+      </do>
+
+      <do when="c">
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Seus filhos estão todos bem, graças aos céus.</voice>
+        <emotion>normal</emotion>
+        <voice>Baliorge sofreu um ferimento feio nas costas, mas já foi tratado.</voice>
+        <voice>Eles foram atingidos por uma onda de choque do amarelo, mas Baliorge protegeu os mais novos com o corpo.</voice>
+        <voice>Vênega ficou desacordada por cerca de uma hora, mas não teve nada além de alguns arranhões devido à queda.</voice>
+        <voice>Sagante não foi atingido diretamente, mas ficou um tanto abalado porque ficou um bom tempo preso debaixo do irmão inconsciente.</voice>
+        <voice>Os três vieram ver o senhor várias vezes. Saíram daqui não faz nem uma hora.</voice>
+
+        <music>sad-story</music>
+
+        <protagonist />
+        <voice>...</voice>
+        <voice>E... Zelmira?</voice>
+        <do when="insight">
+          <person>emelin</person>
+          <emotion>sad</emotion>
+          <voice>Está em coma.</voice>
+
+          <music>goodbye</music>
+
+          <protagonist />
+          <emotion>surprised</emotion>
+          <voice>Ela está viva?!</voice>
+          <person>emelin</person>
+          <emotion>surprised</emotion>
+          <voice>Para falar a verdade, não sabemos como ela conseguiu sobreviver, seus ferimentos foram... bem...</voice>
+          <emotion>normal</emotion>
+          <voice>Ela está estável agora, mas não temos como saber quando vai acordar.</voice>
+          <voice>De qualquer forma, as marcas nas mãos e pés sugerem que ela lutou contra o demônio com todas as forças.</voice>
+          <protagonist />
+          <emotion>surprised</emotion>
+          <voice>Ela está viva!!</voice>
+          <person>emelin</person>
+          <emotion>surprised</emotion>
+          <voice>Sim, senhor!</voice>
+          <protagonist />
+          <emotion>happy</emotion>
+          <reward when="!emelin_bonus1">+control</reward>
+          <voice>Está viva!</voice>
+          <voice>Pelo criador! Estamos todos vivos!</voice>
+          <person>emelin</person>
+          <set when="!emelin_bonus1">bonus1</set>
+          <emotion>happy</emotion>
+          <voice>Sem dúvida, senhor!</voice>
+        </do>
+        <do when="!insight">
+          <person>emelin</person>
+          <emotion>sad</emotion>
+          <voice>...</voice>
+          <voice>Sinto muito, senhor. Ela... não resistiu.</voice>
+          <protagonist />
+          <emotion>sad</emotion>
+          <voice>...</voice>
+          <person>emelin</person>
+          <emotion>sad</emotion>
+          <voice>...</voice>
+          <protagonist />
+          <voice>Enfim, ela está livre.</voice>
+          <voice>Depois de tantos anos, finalmente ela conseguiu se libertar.</voice>
+          <voice>Não era o que eu tinha planejado, mas... ao menos...</voice>
+          <emotion>sad</emotion>
+          <voice>Ao menos ela está livre agora.</voice>
+          <person>emelin</person>
+          <emotion>surprised</emotion>
+          <voice>Perdão?</voice>
+
+          <music>goodbye</music>
+
+          <protagonist />
+          <voice>Não é nada, não se preocupe.</voice>
+          <emotion>angry</emotion>
+          <reward when="!emelin_bonus1">+power</reward>
+          <voice>Ainda existem mais dois demônios por aí, aguardando para receber toda a fúria da minha vingança.</voice>
+          <person>emelin</person>
+          <emotion>surprised</emotion>
+          <set when="!emelin_bonus1">bonus1</set>
+          <voice>...</voice>
+        </do>
+      </do>
+
+      <restart />
+    </do>
+
+    <do>
+      <protagonist />
+      <choice>
+        <a>E quanto a Falcione?</a>
+        <b>Como você veio a assumir o comando?</b>
+        <c>Como nossas defesas foram comprometidas?</c>
+        <d>(Mais...)</d>
+      </choice>
+      <voice>...</voice>
+
+      <exit when="d" />
+
+      <do when="a">
+        <person>emelin</person>
+        <voice>Nós duas fomos atingidas por uma das ondas de choque do amarelo.</voice>
+        <voice>Meu escudo corporal nos protegeu, mas ela estava fraca demais e acabou desmaiando.</voice>
+        <emotion>sad</emotion>
+        <voice>Todo o estresse de ser carregada para cima e para baixo... cobrou seu preço, eu diria.</voice>
+        <protagonist />
+        <voice>Você não devia tê-la trazido para cá.</voice>
+        <person>emelin</person>
+        <voice>Com todo o respeito, senhor, mas devo discordar.</voice>
+        <voice>Ela salvou sua vida.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Pelo que eu entendi, foi VOCÊ quem salvou minha vida dando aquela poção a Sulana.</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Sim, mas ela é quem me deu a poção e me explicou... o que fazer.</voice>
+        <voice>E ela só fez isso quando ficou convencida que era o momento certo.</voice>
+        <voice>Ela nunca usaria aquilo se não estivesse certa de que era a única alternativa.</voice>
+        <protagonist />
+        <voice>...</voice>
+        <voice>Creio que tem razão.</voice>
+        <voice>Ela estava se sentindo culpada por ter atacado Sulana.</voice>
+        <emotion>surprised</emotion>
+        <voice>Aliás, onde está ela?</voice>
+        <voice>Sem ofensa, tenente, mas eu esperava estar fazendo essas perguntas todas a ela, ao invés de você.</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Estou tão surpresa quanto o senhor.</voice>
+        <voice>Ela me deixou no comando e está se concentrando apenas em se recuperar.</voice>
+        <voice>No momento, está na tenda dela, tentando fazer alguns alongamentos para acelerar a regeneração.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Ela... preferiu uma atividade tediosa como essa ao invés de ficar no comando do exército?</voice>
+        <person>emelin</person>
+        <voice>O rebelde Giarle Miliens disse... bem, ele fez algumas colocações que a deixaram... desconfortável.</voice>
+        <protagonist />
+        <emotion>happy</emotion>
+        <voice>E ela está querendo provar para ele que é capaz de agir com responsabilidade?</voice>
+        <person>emelin</person>
+        <emotion>happy</emotion>
+        <voice>É o que parece, senhor.</voice>
+      </do>
+
+      <do when="b">
+        <person>emelin</person>
+        <voice>A maioria dos tenentes foi ferida durante a batalha.</voice>
+        <voice>E com Falcione em recuperação, a próxima opção lógica seria o sábio Norlando.</voice>
+        <voice>Mas as revelações daquele protetor mais velho o deixaram intrigado e ele decidiu investigar, me mandando para cá no lugar dele.</voice>
+        <voice>Estou ajudando no que posso na investigação quando me sobra um tempinho, mas...</voice>
+        <protagonist />
+        <voice>Você parece estar se saindo bem.</voice>
+        <voice>Sempre achei que você levava jeito para a coisa.</voice>
+        <person>emelin</person>
+        <reward when="!emelin_bonus2">+relationship</reward>
+        <set when="!emelin_bonus2">bonus2</set>
+        <emotion>happy</emotion>
+        <voice>Obrigada, senhor.</voice>
+        <protagonist />
+        <voice>Só não vá se esforçar demais. Você me parece cansada.</voice>
+        <voice>Exaurida, você não irá conseguir realizar nada e ainda poderá comprometer a ordem da tropa.</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Sim, senhor! Irei... me esforçar para evitar que isso ocorra, senhor!</voice>
+      </do>
+
+      <do when="c">
+        <person>emelin</person>
+        <emotion>angry</emotion>
+        <voice>Foi Elinora, senhor.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>O quê?!</voice>
+        <person>emelin</person>
+        <emotion>angry</emotion>
+        <voice>O sábio Norlando descobriu tudo ontem, pouco antes da invasão.</voice>
+        <voice>Ela vem enfraquecendo nossas torres já há algumas semanas, adulterando nossos receptores de forma a não percebermos nada de errado.</voice>
+        <voice>Mas o sábio Norlando começou a investigar quando soube que rebeldes tinham pulado a muralha e invadido nosso território.</voice>
+        <voice>E então conseguiu provas inequívocas da sabotagem.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Nunca entendi direito o objetivo dela, mas não imaginava que pudesse...</voice>
+        <person>emelin</person>
+        <voice>Ninguém imaginaria, senhor.</voice>
+        <emotion>angry</emotion>
+        <voice>Nem mesmo os outros protetores, aparentemente.</voice>
+        <voice>O ancião que veio até nós estava muito descontente com o que ele chamou de "imprudência" da parte dela.</voice>
+        <voice>E que levou à morte de nove dos deles.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Nove protetores morreram?</voice>
+        <person>emelin</person>
+        <voice>Sim. Entraram na batalha logo que os amarelos surgiram e os combateram.</voice>
+        <voice>No final, restou apenas um de cada lado.</voice>
+        <protagonist />
+        <voice>Elinora e o amarelo que lutou contra Sulana.</voice>
+        <person>emelin</person>
+        <voice>Exato, senhor.</voice>
+        <protagonist />
+        <voice>Norlando achava que os demônios não seriam capazes de conseguir mais amarelos tão cedo.</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Sim, senhor. Ele admite que cometeu um erro e pede desculpas.</voice>
+        <protagonist />
+        <voice>Não estou apontando o dedo, Emelin. Se ele tirou uma conclusão errada, pode ter tido um bom motivo.</voice>
+        <person>emelin</person>
+        <voice>Entendo, senhor.</voice>
+        <voice>Ele disse que iria rever a gravação para tentar descobrir se tem algo de errado com a tradução.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Espere!</voice>
+        <voice>Elinora sabotou nossas torres?</voice>
+        <voice>Será que também não foi ela quem...</voice>
+        <person>emelin</person>
+        <voice>Desativou o artefato que bloqueava os portais?</voice>
+        <voice>Sim, senhor, foi ela mesma.</voice>
+        <voice>Infelizmente, o protetor ancião disse que não consegue fazer nada em relação a ele.</voice>
+        <protagonist />
+        <emotion>angry</emotion>
+        <voice>Durante a batalha, creio que ela me disse algo como "esta luta não é sua".</voice>
+        <voice>Ela fez tudo isso para poder combater o demônio?</voice>
+        <emotion>surprised</emotion>
+        <voice>Não, isso não faz sentido. Ela sabe onde eles vivem, poderia tê-lo atacado quando quisesse.</voice>
+        <person>emelin</person>
+        <voice>Bem... ela, claramente, não tinha poder suficiente para derrotá-lo sozinha.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Ela queria que eu me descontrolasse.</voice>
+        <voice>Era a única forma de ferir seriamente aquela coisa.</voice>
+        <person>emelin</person>
+        <voice>É o que tudo indica, senhor.</voice>
+        <voice>Ela... ameaçou tudo o que mais prezamos apenas por uma chance de derrotar a criatura.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Eu venho ajudando a combater essas monstruosidades há meses!</voice>
+        <voice>Que tipo de mente insana poderia conceber...</voice>
+        <emotion>normal</emotion>
+        <voice>Ah, esqueça.</voice>
+        <voice>Protetores realizando atos que não fazem sentido parece ser regra, não exceção.</voice>
+      </do>
+
+      <restart />
+    </do>
+
+    <do>
+      <protagonist />
+      <choice>
+        <a>E nossos soldados?</a>
+        <b>Quão mal eu estou?</b>
+        <c>O que sabe sobre Sulana?</c>
+        <d>(Mais...)</d>
+      </choice>
+      <voice>...</voice>
+
+      <exit when="d" />
+
+      <do when="a">
+        <person>emelin</person>
+        <voice>Estão ansiosos para que o senhor se restabeleça.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>É mesmo?</voice>
+        <voice>Não estão assustados com tudo isso?</voice>
+        <person>emelin</person>
+        <voice>Lutar contra monstros não é novidade para eles.</voice>
+        <voice>Os inimigos fizeram o seu mais violento ataque contra nós e foram massacrados.</voice>
+        <voice>Um dos líderes inimigos foi morto. A meu ver essa foi a maior vitória que já tivemos desde o início da campanha.</voice>
+        <voice>Os soldados estão mais confiantes do que nunca.</voice>
+        <protagonist />
+        <voice>Essa vitória só foi possível devido a uma série bastante improvável de circunstâncias e alianças inesperadas.</voice>
+        <person>emelin</person>
+        <voice>Para nossa tropa, essa vitória foi possível graças ao senhor.</voice>
+        <voice>Todos viram o quanto o senhor está disposto a sacrificar por essa vitória.</voice>
+        <emotion>angry</emotion>
+        <voice>Estamos preparados para fazer a nossa parte também.</voice>
+        <voice>Estamos todos prontos para seguir a sua liderança e vencer esta guerra.</voice>
+        <protagonist />
+        <reward when="!emelin_bonus3">+fight</reward>
+        <voice>...</voice>
+        <voice>Esse foi um discurso surpreendentemente inspirador, tenente.</voice>
+        <voice>Você está se mostrando uma líder muito melhor do que eu antecipei.</voice>
+        <narration>Ela cora violentamente.</narration>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <reward when="!emelin_bonus3">+relationship</reward>
+        <set when="!emelin_bonus3">bonus3</set>
+        <voice>Obrigada, senhor!</voice>
+      </do>
+
+      <do when="b">
+        <person>emelin</person>
+        <voice>O seu corpo passou por um estresse extremo, muito maior do que qualquer pessoa normal suportaria.</voice>
+        <voice>Nenhum tipo de poção ou encantamento de cura ou regeneração surtia efeito.</voice>
+        <voice>Até que o protetor ancião nos deu isso.</voice>
+        <narration>Ela aponta para o cobertor.</narration>
+        <person>emelin</person>
+        <voice>Esse artefato ativou um poder latente que permiu que seu corpo reparasse sozinho o dano na conexão com o espírito.</voice>
+        <voice>Com isso, o fluxo vital voltou a fluir de forma estável e pudemos tratá-lo.</voice>
+        <voice>De qualquer forma, é possível que o senhor tenha muitas sequelas.</voice>
+        <protagonist />
+        <voice>Como o quê?</voice>
+        <person>emelin</person>
+        <emotion>sad</emotion>
+        <voice>Bom, suas mãos e seus dedos sofreram queimaduras muito intensas.</voice>
+        <voice>Não sabemos até que ponto vão se regenerar, mas é possível que nem tudo volte a funcionar como antes.</voice>
+        <voice>O mesmo aconteceu em grande parte do corpo, principalmente nas áreas que ficavam em contato com os estabilizadores.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Falando nisso, vou precisar de...</voice>
+        <person>emelin</person>
+        <voice>Sim, senhor, já providenciamos artefatos temporários para substituir os que foram destruídos.</voice>
+        <voice>O senhor os está usando neste momento, por baixo do cobertor.</voice>
+        <voice>Um dos sábios está trabalhando para tentar criar algo que seja mais... definitivo, enquanto o senhor se recupera.</voice>
+      </do>
+
+      <do when="c">
+        <person>emelin</person>
+        <voice>Além do que Falcione me contou, não muito.</voice>
+        <protagonist />
+        <voice>Acha que ela pode estar viva?</voice>
+        <person>emelin</person>
+        <voice>Não temos nenhuma evidência que comprove ou refute isso, mas o senhor a viu, não?</voice>
+        <narration>A tenente cruza os braços, aparentemente sentindo calafrios ao se lembrar da cena.</narration>
+        <person>emelin</person>
+        <emotion>sad</emotion>
+        <voice>Estava pálida demais, não respirava, o corpo estava frio, a boca seca. Parecia uma... morta-viva.</voice>
+        <protagonist />
+        <voice>Alguma ideia de como ela veio parar aqui?</voice>
+        <person>emelin</person>
+        <voice>Analisamos as emissões do local onde ela desapareceu e... bem...</voice>
+        <voice>São muito similares... idênticas eu diria... às dos protetores.</voice>
+        <protagonist />
+        <emotion>angry</emotion>
+        <voice>Elinora a mandou para cá.</voice>
+        <person>emelin</person>
+        <voice>É o que tudo indica, senhor.</voice>
+        <protagonist />
+        <voice>Humm...</voice>
+        <voice>Isso explica as roupas que ela usava.</voice>
+        <voice>Da primeira vez que ela apareceu nessa praia, achamos que ela era uma protetora.</voice>
+        <voice>Nem cheguei a comentar nada com vocês por causa disso.</voice>
+        <voice>Mas o comportamento dela era diferente do deles. Ela se mostrou reservada, mas não... arrogante.</voice>
+        <voice>E parecia deslocada, como se não soubesse direito onde estava ou por quê.</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Teria sido algum tipo de experimento, para ver como vocês dois iriam interagir um com o outro?</voice>
+        <protagonist />
+        <emotion>angry</emotion>
+        <voice>Provavelmente. Ser manipulado dessa forma é irritante.</voice>
+        <emotion>normal</emotion>
+        <voice>Conseguiram triangular o ponto de destino para onde a âncora a levou?</voice>
+        <person>emelin</person>
+        <voice>Assim como ocorre com Elinora e os outros protetores, a emissão é fraca demais para podermos determinar com precisão.</voice>
+        <voice>Mas temos uma ideia geral da distância e da direção. Tudo indica que o ponto fica em algum lugar próximo ao centro da província, não muito distante do início da área murada.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Não é de onde os protetores costumam vir.</voice>
+        <person>emelin</person>
+        <voice>Não, senhor.</voice>
+        <protagonist />
+        <voice>...</voice>
+        <voice>Falcione tem certeza de que pode rastrear a origem de Sulana até o clã das montanhas.</voice>
+        <voice>Os protetores eram inimigos mortais daquele povo, não?</voice>
+        <person>emelin</person>
+        <voice>Pelo que sabemos, os protetores eram muito numerosos antes da... chacina das montanhas.</voice>
+        <voice>Eles sofreram milhares de baixas naquela guerra, por isso precisaram pedir a ajuda a humanos para conseguir vencer.</voice>
+        <protagonist />
+        <voice>Sim, e foi então que recrutaram Falcione e a antiga tropa dela.</voice>
+        <voice>...</voice>
+        <voice>Não faz sentido, faz?</voice>
+        <voice>Se os protetores sabiam da existência de Sulana, por que deixariam ela livre por aí?</voice>
+        <person>emelin</person>
+        <voice>Quanto a isso, senhor...</voice>
+        <voice>Bem, os protetores também sabem sobre o senhor e sobre a... fonte dos seus poderes.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Tem razão.</voice>
+        <voice>Eles devem ter feito com ela a mesma coisa que tentaram fazer comigo.</voice>
+        <emotion>angry</emotion>
+        <voice>A mantiveram sob vigilância, sob controle, até encontrar uma utilidade para ela.</voice>
+      </do>
+
+      <restart />
+    </do>
+
+    <protagonist />
+    <choice>
+      <a>Quero perguntar algo novamente.</a>
+      <b>Não tenho mais perguntas.</b>
+    </choice>
+    <thought>...</thought>
+
+    <exit when="b" />
+
+    <restart />
+  </do>
+
+  <protagonist />
+  <thought>Tentar me sacrificar foi uma decisão idiota e precipitada.</thought>
+  <thought>Não cometerei mais esse erro.</thought>
+  <emotion>angry</emotion>
+  <thought>Agora que foi me dada uma segunda chance, não posso desperdiçá-la.</thought>
+
+  <music>the-awakening</music>
+
+  <person>venegasagante</person>
+  <emotion>surprised</emotion>
+  <voice>Papai!</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Oi, seus danadinhos!</voice>
+  <narration>Os dois correm e se lançam sobre você enquanto a tenente se levanta e começa a se afastar.</narration>
+  <person>emelin</person>
+  <voice>Se me permite, voltarei mais tarde para concluir meu relatório, senhor.</voice>
+  <protagonist />
+  <voice>Obrigado, tenente.</voice>
+  <person>baliorge</person>
+  <emotion>surprised</emotion>
+  <voice>Ei, vocês dois! Calma aí, deixem o papai respirar!</voice>
+  <person>venega</person>
+  <emotion>sad</emotion>
+  <voice>Papai! Snif!</voice>
+  <person>sagante</person>
+  <emotion>sad</emotion>
+  <voice>A mamãe! Ela...</voice>
+  <protagonist />
+  <voice>Psh! Calma, calma, eu sei!</voice>
+  <voice>Não se preocupem, já cuidamos do monstro malvado.</voice>
+  <voice>Ele não vai mais fazer maldade. Nunca mais.</voice>
+  <emotion>angry</emotion>
+  <voice>E assim que eu pegar os amigos dele, terei uma conversa séria com eles também.</voice>
+  <voice>Juro por tudo o que é mais sagrado.</voice>
+
+  <music>enigma</music>
+
+  <person>cantranis</person>
+  <voice>Já não era sem tempo.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>!!</voice>
+  <person>venega</person>
+  <emotion>surprised</emotion>
+  <voice>O que foi, papai?</voice>
+  <voice>O senhor está fazendo uma cara engraçada.</voice>
+  <person>baliorge</person>
+  <emotion>surprised</emotion>
+  <voice>Tudo bem, papai? Quer que chame alguém?</voice>
+  <protagonist />
+  <voice>Não, tudo bem.</voice>
+  <voice>Estou apenas me sentindo cansado. Acho que preciso dormir um pouco.</voice>
+  <person>baliorge</person>
+  <voice>Ei, vocês dois, vamos sair e deixar o papai descansar.</voice>
+  <person>venegasagante</person>
+  <voice>Ahhhhhh!</voice>
+  <protagonist />
+  <voice>Vejo vocês mais tarde, está bem?</voice>
+  <narration>Depois de algumas reclamações, os pequenos finalmente se despedem e seguem o mais velho para fora da tenda.</narration>
+  <person>cantranis</person>
+  <voice>Excelente. Não temos tempo a perder. É hora de planejar nossa vingança!</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>O quê está acontecendo? Por que estou ouvindo a voz dela em minha cabeça?</thought>
+  <person>cantranis</person>
+  <voice>Porque seu desempenho na batalha foi excepcional! Eu não poderia esperar algo melhor!</voice>
+  <voice>Você conseguiu quebrar todos os bloqueios que os protetores tinham colocado em você!</voice>
+  <voice>Com isso, fui libertada, e agora que estamos juntos de novo, somos invencíveis!</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Mas você está morta!</thought>
+  <person>cantranis</person>
+  <voice>Não. Apenas minha consciência estava selada, mas agora estou livre novamente.</voice>
+  <voice>Décadas atrás, quando você manifestou o desejo por poderes para mudar seu destino, eu os concedi.</voice>
+  <voice>Em troca, você se tornou meu receptáculo, meu veículo de vingança, minha ferramenta de destruição!</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>!!</thought>
+  <emotion>angry</emotion>
+  <thought>Eu não vou ser controlado por você!</thought>
+  <person>cantranis</person>
+  <voice>Você não tem escolha. Não se quiser salvar essas pessoas com as quais tanto se importa.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>!!</thought>
+  <emotion>angry</emotion>
+  <thought>O que quer dizer? Está me ameaçando?</thought>
+  <person>cantranis</person>
+  <voice>Ao invés de se preocupar comigo, deveria se focar nos demônios.</voice>
+  <voice>Você ajudou a matar um deles, e agora os outros anseiam por retribuição.</voice>
+  <voice>Eles estão vindo. E, sem mim, você não terá a mínima chance contra eles.</voice>
+
+  <background>carmim</background>
+</storyboard>

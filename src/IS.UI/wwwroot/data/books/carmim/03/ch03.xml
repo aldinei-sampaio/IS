@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<chapter>
+  <scene id="1" file="sc01.xml" name="Monstros em Revoada" />
+  <scene id="2" file="sc02.xml" name="Standby" />
+  <scene id="3" file="sc03.xml" name="Volta para casa" />
+  <scene id="4" file="sc04.xml" name="O encontro" />
+</chapter>

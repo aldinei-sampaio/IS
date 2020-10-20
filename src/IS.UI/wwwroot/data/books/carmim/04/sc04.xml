@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>sulana</viewpoint>
+  <music>open-sky</music>
+
+  <background>sulana</background>
+  <tutorial>Você agora está controlando Sulana Lautine</tutorial>
+
+  <background>forest</background>
+
+  <narration>Depois de uma semana trabalhando no abrigo, a euforia da batalha já está esfriando e você começa a sentir os primeiros sinais de impaciência.</narration>
+  <narration>A vontade de encontrar Derione e exigir dele algumas explicações sobre aquele “sonho” é grande, mas você não tem como contatá-lo.</narration>
+  <narration>Não que tenha grandes esperanças de conseguir intimidá-lo ou persuadi-lo a fazer o que quer que seja.</narration>
+  <narration>Durante todos aqueles anos em que ele a estivera atazanando, você perdeu a conta de quantas vezes tentou enfiar a mão na cara dele, sem nunca conseguir tocar em nenhum fio de cabelo do infeliz.</narration>
+  <narration>Ele sempre conseguia superá-la de alguma maneira bizarra e inesperada e aquilo sempre acabava de uma forma humilhante para você.</narration>
+  <narration>Já tinha sido deixada amarrada no meio da floresta, presa dentro de algum buraco, quase morrendo afogada no meio de um rio e, a pior alternativa de todas, completamente exaurida a ponto de não conseguir mover nenhum músculo.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Ele provavelmente pode me matar ou me levar presa até o tal “refúgio” dele quando quiser.</thought>
+  <thought>Eu nunca fui e provavelmente nunca serei um desafio para ele, em termos de poder ou força física.</thought>
+  <thought>O que eu não entendo é a insistência dele em tentar me persuadir a fazer qualquer coisa na base da conversa, sendo que ele podia muito bem me obrigar a fazer o que quisesse.</thought>
+
+  <do when="seductress">
+    <narration>Você sente um arrepio ao se lembrar da noite que passou com ele na cabana do vale.</narration>
+    <protagonist />
+    <emotion>sad</emotion>
+    <thought>Com toda a minha... falta de experiência, além do outro problema...</thought>
+    <thought>Bem, aquilo não foi nada... memorável.</thought>
+    <narration>Você se lembra das histórias românticas que vem ouvindo desde a adolescência.</narration>
+    <narration>Nunca tivera muito interesse naquilo, mas era impossível evitar aquele tipo de conversa entre garotas.</narration>
+    <narration>As histórias eram sempre tão cheias de floreios, como se união amorosa fosse a melhor coisa do mundo.</narration>
+    <narration>Como se qualquer problema pudesse ser resolvido através de um casamento com o parceiro perfeito.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Eu não quero isso para mim.</thought>
+    <thought>Não preciso de ninguém do meu lado me dizendo o que fazer de minha vida.</thought>
+    <emotion>surprised</emotion>
+    <thought>Mas e quanto a ele?</thought>
+  </do>
+
+  <narration>Você solta um suspiro.</narration>
+  <protagonist />
+  <thought>O que ele vê em mim, afinal?</thought>
+  <emotion>angry</emotion>
+  <thought>Ah! Não dá para entender aquele homem!</thought>
+  <emotion>normal</emotion>
+  <thought>Se é que posso chamar aquela criatura de “homem”...</thought>
+  <emotion>sad</emotion>
+  <thought>...</thought>
+  <thought>Será que é por isso que ele me jogou naquela praia? Para me punir por não ser... do jeito que ele quer que eu seja?</thought>
+  <narration>Um movimento entre as árvores chama a sua atenção e você se vira, para ver Ronam caminhando em sua direção com um sorriso.</narration>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Você parece bem. Conseguiu descansar? Como está o braço?</voice>
+  <narration>Com familiaridade, ele se aproxima, pega um dos baldes de água que você está carregando e começa a caminhar a seu lado, na direção do abrigo.</narration>
+  <protagonist />
+  <choice>
+    <a>Como sempre estive.</a>
+    <b>Bem melhor, graças a você.</b>
+  </choice>
+  <voice>Estou...</voice>
+
+  <do when="a">
+    <narration>Você dá de ombros e ele olha para você de cima a baixo, como se tentasse confirmar que está falando a verdade.</narration>
+    <person>ronam</person>
+    <voice>Quando disse que se curava rápido, você não estava mesmo brincando, hein?</voice>
+    <protagonist />
+    <voice>Não, mas você já sabia disso.</voice>
+    <reward>+hope</reward>
+    <voice>Não é qualquer arranhão que vai me tirar da luta. Ainda tenho muito o que fazer nessa vida.</voice>
+    <person>ronam</person>
+    <emotion>happy</emotion>
+    <voice>Com certeza.</voice>
+  </do>
+
+  <do when="b">
+    <narration>Você levanta o braço esquerdo e mostra a cicatriz no local da mordida que você tomou na última batalha.</narration>
+    <protagonist />
+    <voice>Por mais fedorento que aquele seu curativo seja, é bem eficaz.</voice>
+    <person>ronam</person>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>Que bom.</voice>
+    <voice>Mas se você acha aquele cheiro ruim, precisa ver os unguentos que minha irmã faz.</voice>
+  </do>
+
+  <protagonist />
+  <voice>Tem trabalho para mim?</voice>
+  <person>ronam</person>
+  <voice>Não, exatamente.</voice>
+  <protagonist />
+  <voice>O que isso quer dizer?</voice>
+  <narration>Ele olha para os próprios pés, demonstrando uma hesitação bastante incomum para ele.</narration>
+  <person>ronam</person>
+  <voice>Me diga, você não está preocupada com Giarle?</voice>
+  <protagonist />
+  <voice>Ele é um guerreiro como qualquer um de nós. Sabia no que estava se metendo quando entrou nessa briga.</voice>
+  <person>ronam</person>
+  <emotion>sad</emotion>
+  <voice>Sim, eu sei.</voice>
+  <emotion>normal</emotion>
+  <voice>Mas você não gostaria de resgatar o cara se tivesse uma chance?</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>É essa a missão que estão nos dando?</voice>
+  <person>ronam</person>
+  <emotion>sad</emotion>
+  <voice>Não.</voice>
+  <protagonist />
+  <voice>...?</voice>
+  <person>ronam</person>
+  <voice>...</voice>
+  <voice>Recebemos instruções há uns dois dias.</voice>
+  <voice>Devemos nos mudar para uma região mais ao sul para nos unir a um outro grupo.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Nos mudar? Quer dizer, ir embora daqui?</voice>
+  <person>ronam</person>
+  <voice>Sim.</voice>
+  <narration>Você franze o cenho e olha ao redor.</narration>
+  <narration>Não dá para ver muita coisa além de árvores, mas você sabe que o abrigo está logo adiante e sua cabana fica há meia hora de caminhada no sentido oposto.</narration>
+  <protagonist />
+  <voice>Pensando bem, não há nada que realmente me prenda a este lugar.</voice>
+  <emotion>angry</emotion>
+  <voice>Para falar a verdade, isso aqui está um tédio.</voice>
+  <voice>Nem lembro da última vez que apareceu algum monstro ou animal selvagem atrás de encrenca.</voice>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Para alguém como você isso deve ser frustrante.</voice>
+  <protagonist />
+  <voice>É. E o que tem de interessante ao sul?</voice>
+  <person>ronam</person>
+  <voice>Tem um outro grupo rebelde lá. Maior, mais forte... e mais agressivo, também...</voice>
+  <protagonist />
+  <voice>Parece interessante.</voice>
+  <person>ronam</person>
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <protagonist />
+  <voice>O que foi?</voice>
+  <person>ronam</person>
+  <emotion>sad</emotion>
+  <voice>Você não se preocupa com seus companheiros?</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Como assim?</voice>
+  <person>ronam</person>
+  <voice>Giarle era um ótimo líder, sempre tratou você tão bem. Não se preocupa com ele?</voice>
+  <narration>Você aperta os lábios, sabendo muito bem o motivo pelo qual Giarle a tolerava. </narration>
+  <narration>Se tivesse senso de humor, você provavelmente riria da ironia de ter ao seu redor tantos homens que a viam como mulher, quando era incapaz de retribuir os sentimentos de qualquer um deles.</narration>
+  <protagonist />
+  <voice>O que você está querendo?</voice>
+  <emotion>surprised</emotion>
+  <voice>Está pensando em ignorar as ordens da facção e invadir os domínios do general para resgatar Giarle sem a ajuda deles?</voice>
+  <person>ronam</person>
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <voice>Eu estou confuso, sabe?</voice>
+  <narration>Quando os portões do abrigo entram no campo de visão, ele para de caminhar e coloca o balde no chão.</narration>
+  <person>ronam</person>
+  <emotion>sad</emotion>
+  <voice>Não me parece que estejam dando a Giarle o devido valor.</voice>
+  <emotion>surprised</emotion>
+  <voice>Quero dizer, o cara sacrificou tudo que tinha pelos ideais dele: perdeu a família, a casa, o dinheiro, as terras, tudo mesmo.</voice>
+  <emotion>angry</emotion>
+  <voice>E então, quando ele mais precisa de ajuda, ninguém quer mover nenhuma palha por ele? Parece injusto.</voice>
+  <protagonist />
+  <voice>...</voice>
+  <voice>Sim, tem muita coisa estranha acontecendo.</voice>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Isso mesmo!</voice>
+  <emotion>normal</emotion>
+  <voice>E tem mais alguns de nosso grupo que pensam como nós.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Então você está mesmo pensando em invadir as terras do Exército Carmim.</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Bem... sim.</voice>
+  <emotion>normal</emotion>
+  <voice>Como nossa tropa não quer se envolver, não tem outra forma de descobrir onde Giarle está.</voice>
+  <voice>Vou entender se não estiver interessada, a maior parte do nosso grupo já partiu para se juntar com os outros no sul.</voice>
+  <emotion>sad</emotion>
+  <voice>Pode ir com eles, se quiser.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Invadir os domínios do general é, praticamente, uma missão suicida.</thought>
+  <emotion>normal</emotion>
+  <thought>Acabaremos nos metendo em batalhas contra incontáveis inimigos.</thought>
+  <thought>E ainda é bem possível que venhamos a descobrir outros segredos de Belísar, talvez até mesmo encontrar com ele pessoalmente de novo.</thought>
+  <narration>Resumindo: havia incentivos demais para que você sequer cogitasse a possibilidade de recusar.</narration>
+  <protagonist />
+  <voice>Vou com você. Quando partimos?</voice>
+</storyboard>

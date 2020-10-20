@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>belisar</viewpoint>
+  <music>open-sky</music>
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <background>beach</background>
+
+  <protagonist />
+  <emotion>sad</emotion>
+  <thought>De volta a esta maldita praia.</thought>
+  <narration>Você começa a soltar um suspiro desanimado, quando Sagante passa correndo a seu lado, tropeça em alguma coisa e cai de cara na areia.</narration>
+  <person>sagante</person>
+  <emotion>surprised</emotion>
+  <bump />
+  <voice>Ahhhh!</voice>
+  <narration>Levantando a cabeça, o garoto olha para você, com expressão de dor, e começa a chorar.</narration>
+  <person>sagante</person>
+  <emotion>sad</emotion>
+  <voice>Aaaaaaiiiii!!</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Ei! Calma! Machucou onde? O pé?</voice>
+  <person>sagante</person>
+  <emotion>sad</emotion>
+  <voice>Sim! Está doendo!</voice>
+  <protagonist />
+  <voice>Tudo bem, calma. Me deixe dar uma olhada.</voice>
+  <narration>Você examina o pé do garoto com atenção e não encontra nada muito grave.</narration>
+  <narration>Torcendo para que a exaustão não esteja nublando seus sentidos, você se levanta e estende a mão para ele.</narration>
+  <protagonist />
+  <voice>Aqui, experimente se levantar.</voice>
+  <voice>Isso! Está doendo ainda?</voice>
+  <person>sagante</person>
+  <emotion>sad</emotion>
+  <voice>Um pouco.</voice>
+  <protagonist />
+  <voice>Consegue andar?</voice>
+  <person>sagante</person>
+  <voice>Acho que sim.</voice>
+  <person>venega</person>
+  <emotion>surprised</emotion>
+  <voice>Sagante! Cadê você?</voice>
+  <person>sagante</person>
+  <emotion>surprised</emotion>
+  <voice>Já estou indo!</voice>
+  <narration>Esquecendo-se completamente do tombo, o garoto sai correndo por entre as palmeiras, na direção da voz da irmã.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <thought>...</thought>
+  <thought>Não seria bom se todos os problemas pudessem ser resolvidos tão fácil assim?</thought>
+
+  <music>the-awakening</music>
+
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Você leva tanto jeito com eles!</voice>
+  <narration>Você vira a cabeça para ver sua esposa se aproximando, com aquele sorriso amável no rosto.</narration>
+  <person>zelmira</person>
+  <voice>Mas precisa ser um pouco mais firme.</voice>
+  <voice>Deveria ter ralhado com ele para que não fique correndo por aí sem olhar para onde vai.</voice>
+  <protagonist />
+  <emotion>happy</emotion>
+  <voice>Não acredito que isso seja algo que possa ser aprendido dessa forma.</voice>
+  <voice>Algumas coisas na vida a gente só entende quando sente as consequências na pele.</voice>
+  <narration>Ela o abraça pela cintura, com um suspiro de contentamento, e vocês dois olham para Baliorge, que pratica artes marciais na areia.</narration>
+  <person>baliorge</person>
+  <emotion>angry</emotion>
+  <voice>Hiááá!!!</voice>
+  <narration when="karatekid">Ele parecia não se cansar de repetir os movimentos que Sulana havia ensinado. Com o passar das semanas, parecia dominar cada vez melhor aqueles golpes.</narration>
+  <narration>Atrás de vocês, Vênega e Sagante correm por entre as palmeiras perseguindo algum inimigo imaginário.</narration>
+  <person>sagante</person>
+  <emotion>surprised</emotion>
+  <voice>Ele está indo para o forte!</voice>
+  <person>venega</person>
+  <emotion>surprised</emotion>
+  <voice>Essa não!</voice>
+  <emotion>angry</emotion>
+  <voice>Temos que alcançar ele, senão o príncipe não vai ter nenhuma chance!</voice>
+  <narration>Você sorri ao ouvir as vozes animadas de seus filhos.</narration>
+  <narration>Tudo está tão calmo, tão pacífico. Nem parece que tem um exército inteiro de prontidão a pouca distância dali.</narration>
+  <narration>No horizonte, o sol nascente finalmente sai de trás das nuvens.</narration>
+  <narration>Os raios de luz refletem na superfície da água do mar, formando um lindo e multicolorido espetáculo.</narration>
+
+  <background>sunoversea</background>
+  
+  <person>baliorge</person>
+  <voice>Ei, seus pirralhos! Olhem para aquilo!</voice>
+  <person>venegasagante</person>
+  <emotion>surprised</emotion>
+  <voice>O quê??</voice>
+  <narration>Baliorge aponta para o mar.</narration>
+  <person>venegasagante</person>
+  <emotion>surprised</emotion>
+  <voice>Uaaaau!!</voice>
+  <narration>Os dois correm para a praia para apreciarem a cena junto ao irmão mais velho.</narration>
+  <person>venega</person>
+  <emotion>surprised</emotion>
+  <voice>Papai! Mamãe! Estão vendo aquilo?</voice>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Sim, querida. É lindo, não é?</voice>
+  <person>venega</person>
+  <emotion>happy</emotion>
+  <voice>Demais!</voice>
+  <narration>Enquanto os irmãos conversam, excitados, Zelmira se vira para você.</narration>
+  <person>zelmira</person>
+  <voice>Como está se sentindo?</voice>
+  <protagonist />
+  <choice>
+    <a>Melhor. Minhas forças estão voltando.</a>
+    <b>Preocupado com nossa segurança.</b>
+    <c>Você faz eu me sentir bem.</c>
+  </choice>
+  <voice>...</voice>
+
+  <do when="a">
+    <narration>Você corre os dedos pelos braços dela, que ainda o envolvem pela cintura.</narration>
+    <protagonist />
+    <reward>+control</reward>
+    <voice>Meus dedos já estão voltando a ficar sensíveis de novo.</voice>
+    <person>zelmira</person>
+    <voice>Deve ser horrível perder a capacidade de sentir as coisas pelo toque.</voice>
+    <protagonist />
+    <voice>Não é tão horrível quanto o zumbido no ouvido.</voice>
+    <voice>Felizmente, dessa vez não precisei gastar tanta energia, então não fiquei tão mal quanto antes.</voice>
+  </do>
+
+  <do when="b">
+    <narration>Você acaricia os antebraços dela, que ainda o envolvem pela cintura.</narration>
+    <protagonist />
+    <voice>Apesar de nossas precauções, é difícil prever o que pode acontecer.</voice>
+    <voice>Norlando está convencido de que o que houve com o artefato foi sabotagem.</voice>
+    <voice>Se ele estiver certo, estamos todos correndo perigo.</voice>
+    <person>zelmira</person>
+    <voice>Ficar se preocupando o tempo todo também não adianta.</voice>
+    <emotion>happy</emotion>
+    <voice>Vocês todos precisam relaxar um pouco. Olha o bem que isso fez a ele.</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Hehehe! Você não precisa me convencer disso.</voice>
+    <emotion>normal</emotion>
+    <reward>+fight</reward>
+    <voice>Eu pedi para os tenentes deixarem a tropa à disposição, mas não necessariamente para montarem guarda. Oficialmente, não estão de serviço hoje.</voice>
+    <voice>Provavelmente, depois de montarem as barracas, vão invadir esta praia como uma nuvem de gafanhotos.</voice>
+  </do>
+
+  <do when="c">
+    <narration>Você se vira para ela e a segura pelos ombros, dando-lhe um beijo na testa.</narration>
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>...</voice>
+    <narration>Parecendo muito satisfeita, ela o abraça apertado, enconstando a cabeça em seu ombro.</narration>
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <voice>Eu era tão boba quando jovem.</voice>
+    <voice>Se eu soubesse que homem maravilhoso você é, nunca o teria tratado daquele jeito.</voice>
+    <protagonist />
+    <emotion>sad</emotion>
+    <voice>...</voice>
+    <voice>Nunca saberemos se isso realmente é verdade.</voice>
+    <person>zelmira</person>
+    <voice>Tem razão. Aquela mulher não era eu.</voice>
+    <emotion>happy</emotion>
+    <voice>Esta aqui sou eu. E eu amo você. E nossos filhos. Amo essa nossa vida.</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>...</voice>
+    <narration>Você lhe dá um beijo rápido nos lábios antes de se afastar, para que possam assistir a mais alguns minutos do espetáculo.</narration>
+  </do>
+
+  <background>beach</background>
+
+  <narration>Os raios do sol aquecem o ar, trazendo a expectativa de um ótimo dia.</narration>
+  <narration>Baliorge retoma o exercício que havia interrompido, dando um soco no ar, antes de dar meia volta, projetando o cotovelo para acertar um inimigo imaginário do outro lado.</narration>
+  <person>baliorge</person>
+  <emotion>angry</emotion>
+  <voice>Hááá!!!</voice>
+  <narration>Zelmira se volta para você.</narration>
+  <person>zelmira</person>
+  <voice>Aquela protetora não deveria estar por aqui?</voice>
+  <voice>Quero dizer, uma delas sempre aparece quando a gente vem para cá.</voice>
+  <protagonist />
+  <voice>Nem sempre.</voice>
+  <voice>O objetivo de Elinora é destruir os responsáveis por todo esse caos no nosso país, então ela não fica me vigiando o tempo todo.</voice>
+  <voice>Na verdade, na maior parte do tempo ela está lutando.</voice>
+  <voice>Nossa campanha de expansão e a construção dos muros só teve sucesso até agora por causa dela.</voice>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Ótimo. Quanto menos mulheres bonitas se jogando contra você, melhor.</voice>
+  <narration>Você solta uma risada e aproxima o rosto do dela, beijando-lhe suavemente os lábios.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <voice>Eu nem sei o que eu seria capaz de fazer se aquela arrogante mandona ficasse me chateando o tempo todo.</voice>
+  <person>zelmira</person>
+  <voice>E quanto àquela outra? “Sulana” é o nome dela, não é?</voice>
+  <protagonist />
+  <choice>
+    <a>Contar a verdade a Zelmira.</a>
+    <b>Evitar preocupá-la sem necessidade.</b>
+  </choice>
+  <thought>Eu devo...</thought>
+  <narration>Você se desvencilha dela e se abaixa para pegar uma pequena concha no meio da areia.</narration>
+
+  <do when="a">
+    <protagonist />
+    <voice>Sulana não é uma protetora.</voice>
+    <person>zelmira</person>
+    <emotion>surprised</emotion>
+    <voice>O quê? Mas ela... quero dizer... as roupas que ela usava...</voice>
+    <protagonist />
+    <voice>Eu também achei que fosse.</voice>
+    <voice>Mas depois de conversar com Falcione ontem eu me dei conta de que já havia me encontrado com ela antes.</voice>
+    <voice>Ela faz parte da rebelião.</voice>
+    <person>zelmira</person>
+    <emotion>surprised</emotion>
+    <voice>Mas, como? Eles encontraram alguma forma de se infiltrar? Como ela chegou até aqui?</voice>
+    <protagonist />
+    <voice>Não sei. Norlando tem algumas teorias, mas nada que faça muito sentido.</voice>
+    <voice>Falcione a encontrou perambulando pelos campos do lado de dentro das muralhas.</voice>
+    <voice>Tentou atacá-la e acabou... daquele jeito.</voice>
+    <person>zelmira</person>
+    <emotion>surprised</emotion>
+    <voice>Criador supremo!</voice>
+    <voice>Então foi isso o que aconteceu com ela?</voice>
+    <protagonist />
+    <voice>Sim. Sulana demonstrou uma resiliência incomum na batalha.</voice>
+    <voice>Os soldados que se renderam, nada sofreram, mas você sabe como é Falcione.</voice>
+    <person>zelmira</person>
+    <emotion>sad</emotion>
+    <voice>Nunca desiste.</voice>
+    <protagonist />
+    <voice>Exato. Ela acabou tomando uma surra brutal.</voice>
+    <voice>Sulana desapareceu depois da luta. E sem deixar vestígios.</voice>
+    <voice>É bem possível que não tenha sobrevivido aos ferimentos que sofreu.</voice>
+    <voice>Não sabemos o que estava fazendo lá, mas aparentemente havia outros rebeldes com ela.</voice>
+    <voice>Parece que ela lutou contra Falcione para que os outros pudessem escapar.</voice>
+    <narration>Você solta um suspiro frustrado.</narration>
+    <protagonist />
+    <voice>Nada disso faz sentido, os rebeldes não deveriam ser capazes nem de se aproximar da muralha.</voice>
+    <person>zelmira</person>
+    <voice>...</voice>
+    <reward>+relationship</reward>
+    <voice>Tente não pensar muito nisso, querido.</voice>
+    <voice>Você precisa se concentrar em ficar melhor. Depois pode investigar essa história com calma.</voice>
+  </do>
+
+  <do when="b">
+    <protagonist />
+    <voice>Não sabemos muito sobre ela.</voice>
+    <voice>E a menos que volte a aparecer, provavelmente nunca saberemos.</voice>
+
+    <music>sad-story</music>
+
+    <person>zelmira</person>
+    <voice>...</voice>
+    <voice>Está escondendo algo de mim?</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>O quê? Por quê?</voice>
+    <person>zelmira</person>
+    <emotion>sad</emotion>
+    <voice>Você está interessado nela.</voice>
+    <narration>Você solta um suspiro.</narration>
+    <protagonist />
+    <voice>Zelmira, já conversamos sobre isso.</voice>
+    <voice>O fato de eu achar uma mulher atraente não significa que eu me interesse por ela.</voice>
+    <voice>Eu nunca faria isso com você.</voice>
+    <person>zelmira</person>
+    <emotion>sad</emotion>
+    <voice>...</voice>
+    <protagonist />
+    <voice>O que foi?</voice>
+    <person>zelmira</person>
+    <emotion>sad</emotion>
+    <voice>Você... você...</voice>
+    <narration>Sabendo o que está por vir, você se levanta, cruza os braços e tenta reunir paciência.</narration>
+    <protagonist />
+    <voice>Eu o quê?</voice>
+    <narration>Os olhos dela se enchem de lágrimas.</narration>
+    <person>zelmira</person>
+    <emotion>sad</emotion>
+    <voice>Você... pode ter... quem quiser... quando quiser...</voice>
+    <voice>Enquanto eu só quero você...</voice>
+    <protagonist />
+    <voice>Zelmira, olhe para mim. Aqui, olhe em meus olhos.</voice>
+    <narration>Relutante, ela encara você, com expressão entre triste e desesperada.</narration>
+    <narration>Pela experiência, você sabe que aquilo só tende a piorar, e muito, a tensão e a insegurança a lançando em uma espiral incontrolável capaz de chegar a níveis perigosos.</narration>
+    <narration>Você encontra com facilidade o gatilho mental que o faz se sentir mais desprezível a cada vez que precisa usá-lo.</narration>
+    <protagonist />
+    <reward>+power</reward>
+    <voice>Eu não quero outra pessoa além de você.</voice>
+    <voice>Enquanto tiver você, não preciso de mais ninguém.</voice>
+    <voice>Acredita em mim?</voice>
+    <person>zelmira</person>
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <emotion>normal</emotion>
+    <voice>Sim...</voice>
+    <emotion>happy</emotion>
+    <voice>Sim! Claro que sim!</voice>
+    <voice>Você me faz tão feliz!</voice>
+    <narration>Toda a depressão que ela demonstrava antes havia deixado o rosto dela, dando lugar a uma expressão radiante.</narration>
+    <narration>Ela se lança contra você, em um abraço apertado, e você solta um suspiro de alívio.</narration>
+    <protagonist />
+    <emotion>sad</emotion>
+    <thought>Detesto esse maldito poder.</thought>
+    <emotion>angry</emotion>
+    <set>hipnotist</set>
+    <thought>Até quando precisarei continuar com isso?</thought>
+  </do>
+
+  <music>never-look-back</music>
+
+  <person>venegasagante</person>
+  <emotion>surprised</emotion>
+  <voice>Mamãe! Mamãe!</voice>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>O que foi, meus queridos?</voice>
+  <person>sagante</person>
+  <emotion>happy</emotion>
+  <voice>Vem cá! Vem cá!</voice>
+  <person>venega</person>
+  <emotion>happy</emotion>
+  <voice>Vem ver, mamãe! Encontramos uma coisa sensacional!</voice>
+  <narration>Zelmira se adianta e dá um beijo carinhoso em seus lábios antes de se afastar na direção das crianças.</narration>
+  <narration>Você não consegue deixar de notar a provocante ondulação daqueles quadris, que sempre o afeta, até mesmo em momentos de grande exaustão.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <voice>...</voice>
+  <narration>O vestido de veludo cor de vinho que ela está usando tem um amplo decote e adere a suas curvas de maneira sutil, mas muito atraente.</narration>
+  <narration>Hoje em dia é muito raro mulheres usarem aquele tipo antiquado de traje, exceto quando queriam parecer bonitas.</narration>
+  <narration>E Zelmira era uma verdadeira especialista naquilo. Tem um corpo excepcional, apesar da idade, e sabe como valorizá-lo.</narration>
+  <narration>Aquela parte dela, ousada e provocante, existia desde sempre, era uma característica que apresentava desde a infância.</narration>
+  <narration>No entanto, após o... envolvimento com você, ela havia se tornado também uma pessoa atenciosa, dedicada e amorosa.</narration>
+  <narration>Ela é a esposa perfeita, a mulher dos sonhos de qualquer homem.</narration>
+
+  <music>sad-story</music>
+
+  <protagonist />
+  <emotion>sad</emotion>
+  <thought>Infelizmente, essa personalidade doce é uma mentira, já que ela não passa de uma escrava sem vontade própria.</thought>
+  <emotion>normal</emotion>
+  <thought>...</thought>
+  <thought>Melhor deixar isso para lá. Essa linha de raciocínio não serve para nada além de me deixar deprimido.</thought>
+  <thought>Preciso seguir em frente, ainda há muito a ser feito.</thought>
+  <thought>Quando minha cruzada estiver concluída, poderei me preocupar em me redimir de meus crimes, agora não é hora para isso.</thought>
+
+  <music>the-awakening</music>
+
+  <narration>Recostando-se a uma palmeira, você tenta relaxar, observando os dois pequenos envolverem a mãe em algum tipo de caça ao tesouro pela areia, o que os faz correrem para cima e para baixo, muito animados.</narration>
+  <narration>Você fecha os olhos e tenta controlar a respiração, uma técnica que sempre o ajuda a se recuperar dos excessos.</narration>
+  <protagonist />
+  <thought>A técnica que Elinora me ensinou.</thought>
+  <emotion>angry</emotion>
+  <thought>E de muita má vontade, diga-se de passagem.</thought>
+  <narration>Você se concentra e limpa a mente, sentindo os raios de sol sobre a pele.</narration>
+  <narration>Não saberia dizer quanto tempo havia se passado, quando sentiu uma presença atrás de si.</narration>
+
+  <music>goodbye</music>
+
+  <narration>Você sente o coração disparar e a respiração se tornar ofegante, uma emoção há muito tempo não sentida lhe percorrendo o corpo.</narration>
+  <narration>De alguma forma, você tem certeza de quem se trata muito antes de virar-se e vê-la com seus próprios olhos.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Mas o quê...?!</voice>
+</storyboard>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<books>
+    <carmim>
+        <name>Carmim</name>
+        <title>Carmim: Um Conto Imperial</title>
+        <synopsis>A última guerreira berserker decide se colocar no caminho do poderoso general que quer dominar o país. Com fortes sentimentos envolvidos e cercados por intrigas e seres superpoderosos de atitude suspeita, ambos precisarão de toda sua astúcia se quiserem sobreviver, não apenas um ao outro, mas também a todos os perigos que os rondam.</synopsis>
+        <author>Aldinei Sampaio</author>
+        <state>Pending</state>
+        <chapters>7</chapters>
+        <fullreleased>0</fullreleased>
+        <lastupdate>2019-03-30 18:22</lastupdate>
+    </carmim>
+    <test>
+        <name>Teste</name>
+        <title>Teste: A Missão</title>
+        <synopsis>Este é um livro de teste, apenas para homologar partes dos capítulos sendo desenvolvidos.</synopsis>
+        <author>Aldinei Sampaio</author>
+        <state>Completed</state>
+        <chapters>4</chapters>
+        <fullreleased>0</fullreleased>
+        <lastupdate>2019-03-04 16:25</lastupdate>
+    </test>
+    <test2>
+        <name>Outro Teste</name>
+        <title>Apenas mais um teste com título bem grande para ver como fica na tela</title>
+        <synopsis>Esta é uma descrição de teste que estamos colocando como sinopse do livro "Outro Teste". Este texto é apenas uma encheção de linguiça que estamos digitando para poder ver como fica a tela do jogo quando uma sinopse muito grande é informada. Com sorte, isso não vai transformar o layout tão cuidadosamente construído em uma bagunça enorme. Muito obrigado por sua atenção, e tenha um bom dia.</synopsis>
+        <author>Aldinei Sampaio</author>
+        <state>Completed</state>
+        <chapters>6</chapters>
+        <fullreleased>0</fullreleased>
+        <lastupdate>2019-03-04 16:25</lastupdate>
+    </test2>
+</books>

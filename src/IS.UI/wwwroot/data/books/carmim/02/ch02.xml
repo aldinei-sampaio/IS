@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<chapter>
+  <scene id="1" file="sc01.xml" name="Rotina de Sulana" />
+  <scene id="2" file="sc02.xml" name="Rotina de Belísar" />
+  <scene id="3" file="sc03.xml" name="Predador" />
+  <scene id="4" file="sc04.xml" name="Túneis" />
+  <scene id="5" file="sc05.xml" name="Revoada" />
+</chapter>

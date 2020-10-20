@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>sulana</viewpoint>
+  <music>never-look-back</music>
+  <background>carmim</background>
+  <observe />
+  <narration>Capítulo 6: Libertação</narration>
+
+  <background>sulana</background>
+  <tutorial>Você agora está controlando Sulana Lautine</tutorial>
+
+  <background>shack_interior</background>
+
+  <narration>Você acorda sentindo-se bem melhor.</narration>
+  <narration>Seu abdômen ainda lateja um pouco, mas você consegue ficar em pé e caminhar pelo quarto sem muitos problemas.</narration>
+  <narration>Você abre a janela e olha para fora. O sol ainda não nasceu, mas o dia já está clareando.</narration>
+  <narration>Com um suspiro, você olha para dentro e estaca, surpresa, ao ver algo sobre a cômoda.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Hã?!</thought>
+
+  <object>
+    <image>package</image>
+    <title>Pacote misterioso</title>
+    <prompt>Mas que raio é isso?!</prompt>
+  </object>
+
+  <narration>Você olha desconfiada para o volume envolvido em um tecido fino como seda e amarrado com uma fita vermelha.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Como isso veio parar aqui?</thought>
+  <thought>...</thought>
+  <thought>Espere... o que aconteceu ontem à noite?</thought>
+  <narration>Suas memórias estão confusas, como se tivesse uma névoa mantendo os acontecimentos além de seu alcance, mas não o suficiente para que você não pudesse ter vislumbres ocasionais.</narration>
+  <protagonist />
+  <thought>Derione me trouxe de volta. Ele cuidou do meu...</thought>
+  <narration>Você abaixa os olhos e percebe que está usando apenas a faixa de tecido que lhe envolve os seios e uma velha calça esgarçada e com diversos furos nas pernas.</narration>
+  <narration>O ferimento no ventre havia se fechado, deixando em seu lugar apenas uma pronunciada e avermelhada cicatriz.</narration>
+  <narration>Ao tentar tocar o local, você faz uma careta.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Argh!</voice>
+  <narration>A pele está muito mais sensível do que você imaginava.</narration>
+  <protagonist />
+  <thought>Certo. Derione derramou alguma coisa aqui para fechar o corte.</thought>
+  <thought>Aí eu reclamei com ele por ter me mandado para aquela praia.</thought>
+  <thought>Mandei que ele me deixasse em paz.</thought>
+  <narration>No entanto, por mais que você tente, não consegue se lembrar direito dos detalhes.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Mas que raios!</voice>
+  <narration>Você volta a olhar para o pacote. Tinha que ser coisa de Derione, ninguém mais vem até sua cabana além dele.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>O que pode ser isso? Algum tipo de presente? Desde quando aquele infeliz faz esse tipo de coisa?</thought>
+  <choice>
+    <a>Ignorar isso e procurar algo para comer.</a>
+    <b>Investigar o embrulho com cuidado.</b>
+    <c>Jogar essa porcaria pela janela.</c>
+  </choice>
+  <thought>Eu vou...</thought>
+
+  <do when="a">
+    <narration>Você dá as costas ao pacote e vai até a outra parede, enfiando a mão na bolsa que está pendurada ali.</narration>
+    <protagonist />
+    <emotion>sad</emotion>
+    <thought>Vazia.</thought>
+    <emotion>normal</emotion>
+    <reward>+hope</reward>
+    <thought>Mas não tem problema. Só ir na floresta e pegar mais.</thought>
+    <thought>Melhor ir agora, antes que os pássaros comecem a comer as frutas que amadureceram durante a noite.</thought>
+    <narration>Determinada, você caminha para fora da cabana.</narration>
+  </do>
+
+  <do when="b">
+    <narration>Você se aproxima da cômoda e apalpa o pacote com cuidado.</narration>
+    <protagonist />
+    <reward>+fight</reward>
+    <thought>Macio. O que será que tem dentro? Roupas?</thought>
+    <narration>Você pega o embrulho e constata, pelo peso, que deve mesmo haver tecidos ali dentro.</narration>
+    <protagonist />
+    <thought>Será que são as roupas que eu estava usando ontem?</thought>
+    <emotion>surprised</emotion>
+    <thought>Mas por que ele teria embrulhado assim, como se fosse um tipo de presente de aniversário?</thought>
+    <emotion>normal</emotion>
+    <thought>...</thought>
+    <thought>Melhor deixar isso para lá.</thought>
+    <narration>Você encara o pacote por mais um instante, antes de se virar e caminhar para fora da cabana.</narration>
+  </do>
+
+  <do when="c">
+    <narration>A impressão de que ele pode ter deixado aquilo ali para manipulá-la de alguma forma faz com que sua raiva retorne com força total.</narration>
+    <narration>Você agarra o pacote e o arremessa pela janela, com força.</narration>
+    <narration>O esforço lhe causa uma forte pontada no ventre.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Ai! Porcaria!</voice>
+    <voice>Que meleca!</voice>
+    <narration>Você leva a mão ao ventre, apenas para retirá-la de sopetão, ao sentir o desconforto causado pelo toque na pele sensível.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Ugh!</voice>
+    <reward>+rage</reward>
+    <thought>Maldito seja, Derione!</thought>
+    <thought>Ah, quer saber, esquece! Para o inferno com isso tudo!</thought>
+    <narration>Você caminha, irritada, para fora da cabana.</narration>
+  </do>
+
+  <music>open-sky</music>
+  <background>sun_rising</background>
+
+  <narration when="a">Os pássaros cantam, fazendo festa, no topo das árvores. Se você acreditasse nessas coisas, diria que aquilo era um bom presságio para o dia.</narration>
+  <narration when="b">Os pássaros cantam, fazendo festa, no topo das árvores. Você imagina se não seria hora de construir algumas armadilhas.</narration>
+  <narration when="b">Uma carne de passarinho bem passada cairia muito bem agora.</narration>
+  <narration when="c">Os pássaros cantam, fazendo festa, no topo das árvores, como que caçoando de seu desconforto.</narration>
+
+  <narration>Uma leve névoa cobre tudo, dando à paisagem um tom misterioso.</narration>
+  <narration>Você tenta fazer alguns alongamentos, mas desiste quando percebe que qualquer esforço mais intenso causa fisgadas no ferimento.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Aff... mas que inferno!</voice>
+  <narration when="!c">Então você agarra uma sacola e caminha até a floresta, respirando com certo prazer o ar frio da manhã.</narration>
+  <narration when="c">Então você agarra uma sacola e caminha até a floresta, o ar frio da manhã penetrando em seus pulmões de forma prazerosa, espantando sua irritação.</narration>
+
+  <background>forest2</background>
+  
+  <protagonist />
+  <emotion>happy</emotion>
+  <thought>Ah, aí estão vocês!</thought>
+  <narration>Você se aproxima de uma árvore e admira uma fruta de um galho baixo.</narration>
+
+  <object>
+    <image>tufax</image>
+    <title>Tufax</title>
+    <prompt>Colher e dar uma mordida</prompt>
+  </object>
+
+  <narration>A fruta ainda não está completamente madura, o gosto bem mais ácido do que o normal.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <voice>Hummm...</voice>
+  <narration>Você devora o tufax em menos de um minuto, um pouco surpresa com o próprio apetite.</narration>
+  <narration>Após colher frutas suficientes para encher a sacola, você olha ao redor, tentando decidir o que fazer a seguir.</narration>
+  <protagonist />
+  <thought>Eu devia ir para o abrigo.</thought>
+  <thought>Mas não estou com a mínima vontade.</thought>
+  <emotion>surprised</emotion>
+  <thought>O que há comigo hoje?</thought>
+  <thought>Já fui ferida antes várias vezes, nunca fiquei assim.</thought>
+  <narration>A luta contra a mulher de cabeça raspada, no dia anterior, volta à sua mente.</narration>
+  <narration>Você já tinha se perguntado várias vezes qual seria a sensação de se perder completamente para a fúria, como aconteceu com os outros de seu clã.</narration>
+  <narration>Como aconteceu com seus pais.</narration>
+  <narration>Você imaginava que, quando estivesse às portas da morte, perderia o controle sobre seu corpo e entraria em um frenesi assassino.</narration>
+  <narration>Mas, surpreendentemente, não foi isso que aconteceu no dia anterior.</narration>
+  <narration>A febre havia atingido níveis muito além do que experimentou antes, era verdade, mas não houve perda de consciência ou descontrole.</narration>
+  <protagonist />
+  <thought>Derione deve ter usado um daqueles truques dele, para garantir que eu não matasse os soldados.</thought>
+  <emotion>angry</emotion>
+  <thought>O filho da mãe!</thought>
+  <thought>Depois de tanto sermão sobre não querer que eu "suje minhas mãos de sangue", não podia esperar outra coisa dele.</thought>
+  <narration>Mas o que realmente a incomoda não é o que aconteceu depois daquela infeliz lhe trespassar com a espada, e sim, o que ocorreu antes.</narration>
+  <narration>Você ainda pode sentir as vibrações daquele maldito sino lhe percorrendo o corpo.</narration>
+  <narration>Não imaginava que existisse um artefato como aquele, capaz de afetá-la de forma tão intensa e imediata.</narration>
+  <narration>Já lutou contra inúmeros oponentes em sua vida e eles haviam tentado de tudo: fazê-la dormir, estourar seus tímpanos, envenená-la, afogá-la, asfixiá-la… a lista era grande.</narration>
+  <narration>Mas você havia herdado de seus pais uma resistência muito além do normal, e nenhum daqueles ataques havia lhe causado preocupações.</narration>
+  <narration>Até hoje.</narration>
+  <protagonist />
+  <choice>
+    <a>Eu podia ter morrido.</a>
+    <b>Não serei surpreendida dessa forma de novo.</b>
+    <c>Por que não matei aquela infeliz?</c>
+  </choice>
+  <thought>...</thought>
+
+  <do when="a">
+    <music>goodbye</music>
+    
+    <narration>A sacola de couro escapa das suas mãos enquanto você olha, sem ver, os arbustos à sua frente.</narration>
+    <protagonist />
+    <thought>...</thought>
+    <narration>Já havia sido ferida em batalha várias vezes, mas nunca chegara tão perto da morte.</narration>
+    <narration>A súbita realização de que não é tão invencível quanto imaginava é um pouco assustadora.</narration>
+    <protagonist />
+    <thought>Então... é isso? Esse é o meu limite?</thought>
+    <thought>Finalmente descobri até onde posso chegar?</thought>
+    <emotion>sad</emotion>
+    <thought>Não é o que eu esperava. Isso é...</thought>
+    <emotion>angry</emotion>
+    <thought>Frustrante!</thought>
+    <narration>Seu olhar é atraído para a sacola cheia de frutas no chão.</narration>
+    <narration>Abaixando-se, você a agarra e faz menção de arremessá-la com toda a força.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>...</voice>
+    <emotion>normal</emotion>
+    <voice>...</voice>
+    <emotion>sad</emotion>
+    <voice>...</voice>
+    <narration>O súbito latejar no ventre faz com que desista do movimento.</narration>
+    <narration>Respirando fundo, você fecha os olhos por um momento.</narration>
+    <protagonist />
+    <thought>Não, isso não é meu limite.</thought>
+    <emotion>angry</emotion>
+    <reward>+hope</reward>
+    <thought>Não vou parar. Isso não vai me impedir de seguir em frente.</thought>
+    <thought>Não vou deixar aquela maldita me intimidar desse jeito!</thought>
+  </do>
+
+  <do when="b">
+    <narration>Você cerra os dentes, enquanto se recorda da forma como se aproximou dos soldados na tarde anterior.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+fight</reward>
+    <thought>Não vou permitir que algo assim aconteça de novo.</thought>
+    <thought>Da próxima vez, as coisas serão muito diferentes.</thought>
+    <emotion>normal</emotion>
+    <thought>Mas que raio é aquele sino? Como vou me proteger daquilo?</thought>
+    <emotion>surprised</emotion>
+    <thought>Ah, a professora!</thought>
+    <thought>Ela deve saber o que é aquela coisa.</thought>
+    <emotion>normal</emotion>
+    <thought>Tenho que encontrá-la.</thought>
+    <emotion>surprised</emotion>
+    <thought>Será que ela e Ronam conseguiram escapar?</thought>
+    <emotion>normal</emotion>
+    <thought>Humm... Ronam está vivendo numa cidade a oeste daqui.</thought>
+    <thought>Vou até lá.</thought>
+    <narration>Apenas de pensar em encarar uma caminhada tão longa, seu ferimento volta a latejar.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Raios!</thought>
+    <emotion>sad</emotion>
+    <thought>Melhor descansar um pouco mais. Posso ir até lá amanhã.</thought>
+  </do>
+
+  <music>sad-story</music>
+  
+  <narration>Subitamente, a imagem de um rosto sorridente vem à sua mente.</narration>
+  <person>petroir</person>
+  <emotion>happy</emotion>
+  <voice>...</voice>
+  <narration>Você sacode a cabeça, tentando se livrar da sensação ruim que toma conta de seu peito.</narration>
+  <narration>É algo tão estranho à sua natureza que você não sabe muito bem como lidar com isso.</narration>
+  <protagonist />
+  <thought>O que estou fazendo?</thought>
+  <thought>Se eu continuar com essa vida, não encontrarei nada além do mesmo fim que ele.</thought>
+  <emotion>sad</emotion>
+  <thought>E por que isso, de repente, parece tão ruim?</thought>
+  <emotion>normal</emotion>
+  <thought>A sensação de vencer uma luta é tão gratificante que sempre me foi suficiente.</thought>
+  <thought>Eu vivo na expectativa de voltar a lutar de novo.</thought>
+  <thought>Enquanto tiver um bom desafio para enfrentar, não preciso me preocupar com mais nada.</thought>
+  <emotion>sad</emotion>
+  <thought>Mas por que nada disso me parece mais o bastante?</thought>
+  <thought>...</thought>
+  <emotion>angry</emotion>
+  <thought>Eu nem mesmo gostava daquele cara, porcaria!</thought>
+  <narration>Você respira fundo, tentando deixar aqueles pensamentos de lado, mas eles insistem em retornar.</narration>
+  <narration>Agora você se sente... incompleta.</narration>
+  <narration>Nem mesmo a possibilidade de vir a enfrentar alguém tão perigoso quanto o General Vermelho lhe parece atraente.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>E, ainda por cima, tem Derione.</thought>
+  <narration>Estivera tão furiosa com ele que, se não fosse pelo ferimento, teria o feito em pedaços.</narration>
+  <narration>Ou, pelo menos tentado.</narration>
+  <protagonist />
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <narration>Por alguma razão, pensar naquela possibilidade apenas faz com que se sinta pior ainda.</narration>
+  <protagonist />
+  <thought>Será que Derione está conseguindo o que queria?</thought>
+  <thought>Fazer com que eu amoleça? Perca meus instintos?</thought>
+  <emotion>angry</emotion>
+  <reward when="c">+rage</reward>
+  <thought>Será que é por isso que me esforcei tanto para poupar a vida daquela infeliz e dos soldados dela?</thought>
+  <thought>De onde veio essa... aversão pela morte? Como isso pode ser mais forte que os instintos da febre?</thought>
+  <narration>Você se recorda da noite anterior, quando disse a Derione que não queria tirar a vida de ninguém na frente dele.</narration>
+  <narration>Com uma careta, você se dá conta de que aquilo não foi uma mentira.</narration>
+  <narration>Se não fosse por essa maldita sensação na boca do estômago, você mataria primeiro e arcaria com as consequências depois, é assim que você é, e é assim que sempre foi.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <narration>No entanto, por alguma razão, aquilo não parece lhe servir mais.</narration>
+  <protagonist />
+  <thought>Tem algo errado. Algo está me faltando. Mas o que pode ser?</thought>
+  <narration>Tentando mais uma vez se livrar daqueles pensamentos, você sacode a cabeça e olha para a trilha à sua direita.</narration>
+  <protagonist />
+  <thought>Deveria estar a caminho do abrigo.</thought>
+  <emotion>surprised</emotion>
+  <thought>Não entendo essa vontade de não fazer nada! De onde é que veio isso?</thought>
+  <narration>Você colhe mais uma fruta e começa a comê-la enquanto pega novamente a sacola cheia e caminha de volta à cabana.</narration>
+  <narration>Para sua frustração, até o tufax parece estar com um sabor diferente agora.</narration>
+
+  <music>goodbye</music>
+  <background>shack</background>
+  
+  <narration>Quando você chega, o sol já está alto no céu, o clima, bem mais quente e o ferimento não incomoda mais tanto quanto antes.</narration>
+  <narration>Uma estranha curiosidade toma conta de você, fazendo-a procurar pelo "presente" de Derione.</narration>
+
+  <object>
+    <image>package</image>
+    <title>Pacote misterioso</title>
+    <prompt>O que eu faço com isso?!</prompt>
+  </object>
+
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Devia ter jogado essa coisa no rio.</thought>
+  <narration>Você olha fixamente para o embrulho por um instante e franze o cenho.</narration>
+  <protagonist />
+  <thought>Será que esse negócio tem algo a ver com o fato de eu estar tão estranha?</thought>
+  <thought>Derione pode muito bem ter lançado algum feitiço nisso, não é?</thought>
+  <emotion>angry</emotion>
+  <thought>Para me amolecer.</thought>
+  <thought>...</thought>
+  <thought>Tenho que me livrar disso!</thought>
+  <narration>Determinada, você agarra o pacote e sai caminhando, se afastando da cabana e tomando a direção do rio.</narration>
+  <narration>Mas então você estaca e olha para o objeto por um longo tempo.</narration>
+  <protagonist />
+  <thought>...</thought>
+  <narration>Finalmente, com impaciência, você agarra a fita e a puxa com força, fazendo-a rasgar-se.</narration>
+  <narration>Com gestos bruscos, puxa as pontas do tecido branco e o que vê faz seu coração dar um pulo.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>!!</voice>
+  <narration>Com o susto, o embrulho acaba escorregando de suas mãos e caindo sobre a grama verdejante.</narration>
+  <narration>Confusa, você se ajoelha e olha para o conteúdo do embrulho aberto, mal acreditando no que vê.</narration>
+  <narration>São as roupas que tinha usado durante aquele sonho, que depois descobrira que não tinha sido um sonho.</narration>
+  <narration>Hesitante, você acaricia aquele tecido com os dedos, sentindo a textura suave.</narration>
+  <protagonist />
+  <voice>...</voice>
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <narration>Percebendo, de repente, o que está fazendo, você se levanta de forma desajeitada.</narration>
+  <narration>Tentando se afastar o máximo possível daquelas coisas, você caminha de costas até chocar-se com uma árvore.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <bump />
+  <voice>Ugh!</voice>
+  <narration>Você volta a soltar um suspiro.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>O infeliz deve mesmo ter jogado algum feitiço em mim.</thought>
+  <thought>Não tem outra explicação para me sentir assim só por estar perto dessa coisa.</thought>
+  <emotion>surprised</emotion>
+  <thought>Tenho que sair daqui. Rápido.</thought>
+  <narration>Então, sem se importar com o fato de estar usando apenas a faixa que cobre os seios e a calça que normalmente veste apenas para dormir, você sai correndo, descalça, pela floresta.</narration>
+</storyboard>

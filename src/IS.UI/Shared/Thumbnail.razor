@@ -1,0 +1,23 @@
+﻿@inject IAssetManager assetManager
+
+@if (Book != null)
+{
+    <div class="thumbnail" style="background:url(@coverUrl)">
+
+    </div>
+}
+
+@code {
+    [Parameter]
+    public BookModel? Book { get; set; }
+
+    private string coverUrl = string.Empty;
+
+    protected override void OnParametersSet()
+    {
+        if (Book == null)
+            return;
+
+        coverUrl = assetManager.GetBookCoverUrl(Book.Name);
+    }
+}

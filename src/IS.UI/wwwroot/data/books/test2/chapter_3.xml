@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>sulana</viewpoint>
+  <music>goodbye</music>
+  <background>carmim</background>
+  <observe />
+  <narration>Capítulo 7: Sacrifício (cena 3)</narration>
+
+  <background>sulana</background>
+  <tutorial>Você agora está controlando Sulana Lautine</tutorial>
+
+  <do>
+    <protagonist />
+    <choice>
+      <a when="!imortalized" req="Imortalized não recebido">Imortalized</a>
+      <d>Prosseguir</d>
+    </choice>
+    <voice>...</voice>
+    <exit when="d" />
+    <do when="a">
+      <trophy>imortalized</trophy>
+      <protagonist />
+      <voice>...</voice>
+    </do>
+    <restart />
+  </do>
+
+  <background>black</background>
+
+  <narration>O mundo está escuro e vazio. Tranquilo.</narration>
+  <narration>Então, de repente, você ouve uma trovoada.</narration>
+  
+  <background>storm</background>
+
+  <narration>Abrindo os olhos, você percebe que está olhando uma tempestade através de uma janela.</narration>
+  <narration>A chuva cai, forte e pesada. Raios cortam o céu enquanto o barulho dos trovões ressoa pelo vale.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Hã? Onde estou?</voice>
+  <voice>Espere... esta é a cabana de Derione!</voice>
+
+  <background>shack_interior</background>
+  
+  <narration>Você vira a cabeça e se surpreende ao vê-lo olhando pela janela logo a seu lado.</narration>
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <narration>Parecendo não se dar conta de sua presença, ele fecha a janela e se joga sobre a cama.</narration>
+  <person>derione</person>
+  <thought>Construir este lugar foi a primeira coisa que me senti compelido a fazer depois que decidi tomar atitudes drásticas, anos atrás.</thought>
+  <thought>Senti a necessidade de ter um espaço só meu, em local isolado onde ninguém pudesse me perturbar.</thought>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>O que está acontecendo? Eu... eu estou ouvindo os pensamentos dele?!</thought>
+  <person>derione</person>
+  <thought>Apenas uma outra pessoa além de mim conhece o caminho até aqui.</thought>
+  <thought>Só para uma pessoa eu confiei o segredo que permite passar pelo campo de ocultamento permanente.</thought>
+  <emotion>sad</emotion>
+  <thought>A pessoa que tantas vezes imaginei estar começando a retribuir meus sentimentos.</thought>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>!!</thought>
+  <choice>
+    <a>Chamar a atenção dele</a>
+    <b>Tocar em seu ombro</b>
+    <c>Aproximar seu rosto do dele</c>
+  </choice>
+  <thought>Eu vou...</thought>
+
+  <do when="a">
+    <narration>Você coloca as mãos na cintura.</narration>
+    <protagonist />
+    <thought>Qual é o seu problema? Não está me vendo, não?</thought>
+    <emotion>surprised</emotion>
+    <thought>Hã? Eu não consigo falar! Por que eu não consigo falar?</thought>
+    <emotion>angry</emotion>
+    <reward>+rage</reward>
+    <thought>Que raio?!</thought>
+    <narration>Você balança os braços freneticamente diante dele, mas ele não a vê.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Estou aqui, seu cretino! Por que não me enxerga?</thought>
+  </do>
+
+  <do when="b">
+    <narration>Você se aproxima e leva a mão em direção ao ombro dele.</narration>
+    <narration>Então, perplexa, vê sua mão atravessar o corpo dele.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <thought>Mas que raio?!</thought>
+    <person>derione</person>
+    <voice>Ela é forte. Não precisa mais que cuidem dela. Vai ficar melhor sem mim.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <reward>+hope</reward>
+    <thought>...</thought>
+    <emotion>normal</emotion>
+    <thought>Derione...</thought>
+    <emotion>surprised</emotion>
+    <thought>Hã? Eu não consigo falar! Por que eu não consigo falar?</thought>
+  </do>
+
+  <do when="c">
+    <narration>Você se aproxima dele até que seus narizes estejam quase se tocando.</narration>
+    <narration>Mesmo assim, ele não se dá conta de sua presença.</narration>
+    <narration>Olhando para aqueles olhos tristes, um sentimento completamente estranho toma conta de você.</narration>
+    <narration>Você sente uma vontade quase insuportável de confortá-lo, de lhe assegurar que está tudo bem.</narration>
+    <person>derione</person>
+    <thought>Ela vai se sentir solitária, não vai?</thought>
+    <thought>Do jeito que ela é, nunca vai permitir que ninguém se aproxime.</thought>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+fight</reward>
+    <thought>Isso não é problema seu, seu...</thought>
+    <narration>Ele suspira e balança a cabeça.</narration>
+    <person>derione</person>
+    <voice>Ela é forte. Não precisa mais que cuidem dela. Vai ficar melhor sem mim.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <thought>...</thought>
+    <emotion>normal</emotion>
+    <thought>Derione...</thought>
+    <emotion>surprised</emotion>
+    <thought>Hã? Eu não consigo falar! Por que eu não consigo falar?</thought>
+  </do>
+
+  <do when="imortalized">
+    <person>derione</person>
+    <thought>Qual será o significado daquela escultura?</thought>
+    <thought>Sulana nunca esculpiu a face de alguém que não fosse importante para ela.</thought>
+    <emotion>sad</emotion>
+    <thought>Serei eu o primeiro?</thought>
+    <thought>É doloroso pensar dessa forma, mas depois de tantos anos tentando despertar os sentimentos dela, concluí que é impossível reverter a maldição, que acreditar nessa remota possibilidade apenas serve para me trazer sofrimento.</thought>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <thought>Ele viu a escultura.</thought>
+    <emotion>normal</emotion>
+    <thought>...</thought>
+    <thought>Ora, mas é claro que viu. Era só questão de tempo.</thought>
+    <thought>Eu sabia disso quando comecei a trabalhar nela, nem sei por quê.</thought>
+    <emotion>angry</emotion>
+    <thought>"Se ela esculpiu alguém é porque é importante para ela", blá, blá, blá!</thought>
+    <thought>Eu faço aquelas coisas quando me dá vontade, apenas para passar o tempo.</thought>
+    <thought>É por isso que não gosto de mostrar para ninguém. Todos ficam procurando, sei lá, significados ocultos.</thought>
+    <emotion>normal</emotion>
+    <thought>Achava que Derione era diferente dos outros, mas, pelo visto, me enganei.</thought>
+  </do>
+  
+  <music>enigma</music>
+  
+  <narration>De repente, ele levanta o tronco e olha em sua direção.</narration>
+  <person>derione</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>!</voice>
+  <narration>Por um momento, você acha que ele finalmente a viu, no entanto, o olhar dele foca em algo que está atrás de você.</narration>
+  <person>derione</person>
+  <emotion>angry</emotion>
+  <voice>O que está fazendo aqui? Como me encontrou?</voice>
+  <narration>Você olha para trás e percebe alguém surgindo através da parede.</narration>
+  <person>elinora</person>
+  <emotion>angry</emotion>
+  <voice>É isso que você tem a dizer ao me ver nesse estado?</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Quem é essa?</thought>
+  <emotion>normal</emotion>
+  <thought>É da mesma raça dele, com certeza, só olhar a cor de pele e a postura arrogante. Isso sem falar dos poderes de invasão de domicílio.</thought>
+  <emotion>surprised</emotion>
+  <thought>E ela também olha através de mim como se não me visse.</thought>
+  <emotion>normal</emotion>
+  <thought>...</thought>
+  <thought>Parece que ela se machucou feio.</thought>
+  <narration>O rosto da mulher está inchado, um feio hematoma cobre boa parte da face direita.</narration>
+  <narration>Há sangue coagulado sob os olhos, o nariz e nas orelhas, e também em boa parte do tronco e membros.</narration>
+  <narration>A armadura que ela usa deve ter sido muito útil em combate algum dia, mas no momento apresenta danos irrecuperáveis.</narration>
+  <narration>Os trajes que ela usa por baixo dos protetores metálicos também estão rasgados, deixando aparentes inúmeros cortes e arranhões.</narration>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>O que houve com você?</voice>
+  <person>elinora</person>
+  <voice>Um dos demônios foi destruído hoje.</voice>
+  <voice>Concluí que você apreciaria receber a informação de que todo o seu trabalho foi recompensado.</voice>
+  <narration>Você percebe ele se encolher instintivamente.</narration>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>O que aconteceu?</voice>
+  <person>elinora</person>
+  <voice>Sulana Lautine se redimiu hoje de todos os seus crimes.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Eu o quê?!</thought>
+  <person>elinora</person>
+  <voice>Mesmo chegando ao estágio terminal, ela continuou lutando para proteger inocentes.</voice>
+  <voice>Quando o inimigo finalmente foi abatido, ela se recusou a se voltar contra aqueles que lutaram a seu lado, e escolheu cair silenciosamente no sono eterno.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>O quê?! Não! É mentira! Não me lembro de nada disso!</thought>
+  <emotion>angry</emotion>
+  <thought>Do que essa infeliz está falando?!</thought>
+  <thought>POR QUE NINGUÉM ME ESCUTA?!?</thought>
+  <narration>Perplexo, Derione cai sentado sobre a cama.</narration>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>!!</voice>
+  <person>elinora</person>
+  <voice>Ela está salva. Seu plano funcionou perfeitamente. Estou em dívida para com você.</voice>
+  <narration>Ele a encara, pasmo.</narration>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>“Plano”? A que plano se refere?</voice>
+  <person>elinora</person>
+  <emotion>surprised</emotion>
+  <voice>Me diga você.</voice>
+  <voice>Não foi você quem a enviou para a praia da Galena hoje? Achei que a redenção dela fosse o seu objetivo.</voice>
+  <narration>Ele se levanta devagar, várias emoções passando por seu rosto.</narration>
+  <narration>Primeiro a perplexidade dá lugar à confusão.</narration>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>Ela lutou contra um demônio.</voice>
+  <narration>Então, a confusão dá lugar à compreensão.</narration>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>Na praia da Galena.</voice>
+  <narration>E, finalmente, a compreensão dá lugar à fúria.</narration>
+  <person>derione</person>
+  <emotion>angry</emotion>
+  <voice>Como, em nome do Eterno, um demônio conseguiu entrar na praia da Galena, Elinora?</voice>
+  <narration>A fulana estreita os olhos.</narration>
+  <person>elinora</person>
+  <emotion>angry</emotion>
+  <voice>Era esperado que todos de nosso refúgio estivessem cientes.</voice>
+  <voice>Esteve negligenciando seus deveres, Derione? Há quanto tempo está escondido neste lugar?</voice>
+  <person>derione</person>
+  <emotion>angry</emotion>
+  <voice>Você… você desativou as defesas místicas do general? De propósito?!</voice>
+  <narration>A outra solta um suspiro dramático.</narration>
+  <narration>Você gosta cada vez menos dessa mulher.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Vaca!</thought>
+  <person>elinora</person>
+  <voice>Foi uma decisão acertada.</voice>
+  <voice>Um dos demônios se deslocou pessoalmente até lá para tentar destruir o general e foi devidamente erradicado.</voice>
+  <voice>E Sulana Lautine foi quem deu o golpe final.</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Não dei, porcaria nenhuma, sua gambá fedorenta!</thought>
+  <person>elinora</person>
+  <voice>Sempre considerei seu orgulho pelas ações dela grande demais, mas desta vez admito que ele é justificado.</voice>
+  <narration>Derione sacode a cabeça e leva uma mão à têmpora.</narration>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>Me é difícil acreditar que você colocou em risco o trabalho de anos para fazer algo assim!</voice>
+  <emotion>angry</emotion>
+  <voice>Que justificativa poderia existir para isso?</voice>
+  <voice>O que poderia levar qualquer criatura com um mínimo de inteligência a pensar que esse plano teria sucesso?</voice>
+  <narration>Ele sacode a cabeça e levanta uma mão, impedindo que a outra responda.</narration>
+  <person>derione</person>
+  <voice>O que aconteceu com o general?</voice>
+  <narration>A infeliz tenta torcer os lábios, e você sente um prazer inusitado ao ver que o inchaço causado por um golpe bem acertado na boca dela a impede.</narration>
+  <person>elinora</person>
+  <voice>Vai sobreviver.</voice>
+  <person>derione</person>
+  <emotion>angry</emotion>
+  <voice>Mas você queria que ele morresse.</voice>
+  <voice>Seu plano era jogar o demônio e o general um contra o outro e ceifar a vida do vencedor, se houvesse algum.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Mas que raio?!?</thought>
+  <emotion>angry</emotion>
+  <thought>Além de uma vadia, é uma covarde!</thought>
+  <person>elinora</person>
+  <voice>Você está deixando os sentimentos humanos comandarem o seu raciocínio. Por que permite isso?</voice>
+  <voice>Não entende? Ela está salva, isso significa que seu tormento chegou ao fim.</voice>
+  <voice>Desista desse flagelo auto imposto e volte para nós. Nossas fileiras precisam de você mais do que nunca.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>"Tormento"? "Flagelo auto imposto"?</thought>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>Precisam de mim?</voice>
+  <emotion>angry</emotion>
+  <voice>Isso quer dizer que houve baixas.</voice>
+  <person>elinora</person>
+  <emotion>sad</emotion>
+  <voice>Sim. Diversos de nossos aliados pereceram na luta contra os de pele amarela.</voice>
+  <voice>Eu fui a única que conseguiu prevalecer até a batalha final.</voice>
+  <person>derione</person>
+  <emotion>angry</emotion>
+  <voice>Esse relato se torna pior a cada palavra que sai de sua boca.</voice>
+  <voice>Você levou um grupo de abençoados para a morte?!</voice>
+  <person>elinora</person>
+  <emotion>angry</emotion>
+  <voice>Estavam dispostos a receber a dádiva da felicidade eterna de bom grado, assim como eu!</voice>
+  <person>derione</person>
+  <emotion>angry</emotion>
+  <voice>Pois poderia muito bem ter recebido essa “dádiva” sozinha!</voice>
+  <narration>Ele se vira e atravessa a parede da cabana.</narration>
+  <narration>Você olha para a mulher e vê que a cretina tem uma expressão perplexa no rosto, como se não entendesse por que Derione está tão fulo da vida com ela.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Se eu fosse ele, teria terminado o trabalho de quem quase te matou, sua covarde!</thought>
+  <narration>Você se vira e sai atrás de Derione, atravessando a mesma parede que ele sem nem perceber o que está fazendo.</narration>
+
+  <music>goodbye</music>
+  <background>storm</background>
+  
+  <narration>Você o encontra parado no meio da chuva, imóvel, com olhar distante.</narration>
+  <person>derione</person>
+  <voice>...</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Ei! Estou aqui! Olhe para mim! Pode me ouvir?</thought>
+  <thought>Estou aqui! Aquela vaca está mentindo!</thought>
+  <thought>Eu não estive nessa praia!</thought>
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <narration>Ele está tremendo. Parece estar em choque.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Ele ficou assim por achar que eu morri?</thought>
+  <thought>Nunca achei que pudesse se preocupar tanto.</thought>
+  <narration>Então, sem falar nada, ele materializa suas asas e sai voando em meio ao aguaceiro, seu escudo místico desviando as gotas de chuva antes que o atinjam.</narration>
+  <narration>Perplexa, você percebe que está voando junto com ele.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>O que está acontecendo?</thought>
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <voice>Sulana... me perdoe.</voice>
+  <voice>Eu... falhei com você.</voice>
+  <voice>Só me resta uma única coisa a fazer agora.</voice>
+  <narration>Ele voa em silêncio por algum tempo, ignorando a chuva torrencial.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Não consigo ver nada além de água!</thought>
+  <thought>Como ele pode saber para onde está indo?</thought>
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <thought>O tempo limite do encanto de transporte já deve ter chegado ao fim.</thought>
+  <thought>Ela deve estar de volta ao ponto de partida nesse momento.</thought>
+  <narration>A chuva aos poucos começa a diminuir, até que acaba por completo.</narration>
+  <narration>Então você finalmente consegue reconhecer os arredores e descobrir para onde estão indo.</narration>
+
+  <background>shack</background>
+
+  <narration>Derione pousa suavemente nos arredores da cabana. Com um gesto de mão ele faz com que suas asas desapareçam.</narration>
+  <narration>Então marcha, determinado, até a estrutura e atravessa a parede.</narration>
+  <narration>Sem saber exatamente por que está fazendo isso, você o segue.</narration>
+
+  <background>shack_interior</background>
+  
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <voice>Oh, não!</voice>
+  <voice>Não!</voice>
+  <emotion>angry</emotion>
+  <voice>NÃÃÃÃÃO!</voice>
+  <narration>Você para ao lado dele e percebe alguém deitado sobre o catre.</narration>
+
+  <music>sadistic-game</music>
+
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>O quê? Quem foi que invadiu minha...</thought>
+  <emotion>surprised</emotion>
+  <thought>!!!</thought>
+  <thought>Mas que raios?!</thought>
+
+  <narration>Incrédula, você percebe que está encarando a si mesma.</narration>
+  <narration>Você está deitada na cama, numa posição estranha, com manchas de sangue seco por toda parte.</narration>
+  <narration>Está usando as roupas que Derione lhe deu, que agora estão completamente arruinadas, cheias de rasgões e marcas de queimaduras.</narration>
+  <narration>A pele toda apresenta um tom arroxeado, sem elasticidade, sem vida.</narration>
+  <narration>Os olhos estão abertos, encarando o teto sem vê-lo, seu brilho já tendo se apagado há muito tempo.</narration>
+  <narration>Seu rosto apresenta uma expressão neutra, serena. E isso é o que lhe parece mais chocante.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Eu estou...</thought>
+  <thought>Mas isso é impossível!</thought>
+  <narration>Derione ajoelha ao lado do catre.</narration>
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <thought>Olhe para ela... tão bonita... tão... perfeita...</thought>
+  <thought>...</thought>
+  <thought>Elinora pode ser a pessoa mais desprezível do mundo, mas ela não mente.</thought>
+  <thought>Se Sulana conseguiu manter a coerência, mesmo no estágio final da fúria, algum de meus esforços realmente teve algum efeito.</thought>
+  <narration>Ele corre um dedo pelos cabelos ensanguentados.</narration>
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <thought>Ou talvez ela simplesmente era muito mais forte do que todos de seu clã.</thought>
+  <thought>Como eu sempre desconfiei que fosse.</thought>
+  <thought>De qualquer forma, ela era uma pessoa excepcional.</thought>
+  <thought>Muito melhor do que eu.</thought>
+  <protagonist />
+  <voice>...</voice>
+
+  <narration>Ele se empertiga e se coloca em pé, uma expressão determinada no rosto.</narration>
+  <person>derione</person>
+  <thought>Eu aceitei o fardo que foi colocado em minhas costas sem nunca reclamar, sem nunca me rebelar ou me abater.</thought>
+  <emotion>angry</emotion>
+  <thought>Mas, por tudo o que é mais sagrado, isso termina hoje!</thought>
+  <narration>Então, subitamente, você se sente sonolenta.</narration>
+
+  <background>black</background>
+
+  <narration>É impossível evitar que seus olhos se fechem. E assim, o mundo volta a ficar escuro e silencioso.</narration>
+  
+
+  <background>carmim</background>
+</storyboard>

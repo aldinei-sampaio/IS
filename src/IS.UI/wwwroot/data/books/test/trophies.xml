@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<achievements>
+  <group chapter="1">
+    <coolheaded>
+      <title>CABEÇA FRIA</title>
+      <description>Você conseguiu controlar sua fúria e desbloqueou uma cena especial</description>
+      <requirement>Fúria menor que 3 no primeiro encontro com Giarle</requirement>
+    </coolheaded>
+    <heatheaded>
+      <title>CABEÇA QUENTE</title>
+      <description>Seu temperamento explosivo desbloqueou uma cena especial</description>
+      <requirement>Fúria maior que 2 no primeiro encontro com Derione</requirement>
+    </heatheaded>
+    <seductress>
+      <title>SEDUTORA</title>
+      <description>Você levou seu relacionamento com Derione para o próximo nível</description>
+      <requirement>Conseguir mais do que 3 pontos de relacionamento com Derione</requirement>
+    </seductress>
+    <responsible>
+      <title>RESPONSÁVEL</title>
+      <description>Você conseguiu sobreviver a mais um dia e retornar ileso para sua família</description>
+      <requirement>Conseguir mais do que 3 pontos em controle</requirement>
+    </responsible>
+    <violent>
+      <title>VIOLENTO</title>
+      <description>Sua esposa não está satisfeita com sua obsessão por poder</description>
+      <requirement>Conseguir mais do que 3 pontos em poder</requirement>
+    </violent>
+    <ambitious>
+      <title>AMBICIOSO</title>
+      <description>Você está determinado a melhorar a sua vida e de sua família</description>
+      <requirement>Conseguir mais do que 3 pontos em coragem</requirement>
+    </ambitious>
+  </group>
+
+  <group chapter="2">
+    <compassionate>
+      <title>COMPASSIVA</title>
+      <description>Você está se abrindo e se permitindo se preocupar com outras pessoas</description>
+      <requirement>Esperança maior do que 5 antes do encontro com Riodes</requirement>
+    </compassionate>
+    <huntress>
+      <title>DIA DO CAÇADOR</title>
+      <description>Você derrotou um animal selvagem sem sofrer nenhum arranhão</description>
+      <requirement>Não sofrer nenhum dano na batalha contra o tigre</requirement>
+    </huntress>
+    <defeated>
+      <title>DIA DA CAÇA</title>
+      <description>Você amargou a derrota nas mãos de um animal selvagem</description>
+      <requirement>Falhar em todas as suas escolhas na batalha contra o tigre</requirement>
+    </defeated>
+    <caveconqueror>
+      <title>CONQUISTADOR DAS CAVERNAS</title>
+      <description>Seu desempenho foi impecável na batalha subterrânea</description>
+      <requirement>Ter sucesso em todas as suas escolhas na batalha da caverna</requirement>
+    </caveconqueror>
+    <cavefail>
+      <title>FIASCO DAS CAVERNAS</title>
+      <description>Você quase leva suas tropas à derrota na batalha subterrânea</description>
+      <requirement>Falhar em todas as suas escolhas na batalha da caverna</requirement>
+    </cavefail>
+    <inspirer>
+      <title>LÍDER NATO</title>
+      <description>Você proporciona inspiração a seus súditos</description>
+      <requirement>Controle ou Coragem 6 no momento em que Belísar se despede da família</requirement>
+    </inspirer>
+  </group>
+
+  <group chapter="3">
+    <sniper>
+      <title>FRANCO-ATIRADOR</title>
+      <description>Ninguém é páreo para você no tiro ao alvo!</description>
+      <requirement>Acertar todos os ataques de longa distância</requirement>
+    </sniper>
+    <badsniper>
+      <title>FRANCO-ERRADOR</title>
+      <description>Talvez você esteja precisando de um pouco mais de treino</description>
+      <requirement>Errar todos os ataques de longa distância</requirement>
+    </badsniper>
+    <energyontheair>
+      <title>A ENERGIA ESTÁ NO AR</title>
+      <description>Belísar e Falcione voam juntos de volta para casa</description>
+      <requirement>Ter, ao menos, 3 pontos de relacionamento com Falcione</requirement>
+    </energyontheair>
+    <karatekid>
+      <title>KARATÊ KID</title>
+      <description>Sulana dá uma aula de artes marciais para o filho de Belísar</description>
+      <requirement>Ter, ao menos, 4 pontos de coragem ao encontrar Belísar na praia</requirement>
+    </karatekid>
+    <puzzled>
+      <title>ENIGMA</title>
+      <description>Quanto mais Sulana descobre sobre Belísar, menos sentido ele faz</description>
+      <requirement>Levantar ao menos 2 informações sobre Belísar na praia</requirement>
+    </puzzled>
+    <inquisitor>
+      <title>INQUISIDORA</title>
+      <description>Sulana demonstra afiados instintos investigativos</description>
+      <requirement>Deduzir corretamente 4 informações sobre Belísar na praia</requirement>
+    </inquisitor>
+  </group>
+
+  <group chapter="4">
+    <pastties>
+      <title>LAÇOS DO PASSADO</title>
+      <description>Belísar relembra a Falcione a razão de a ter acolhido como aliada</description>
+      <requirement>Conseguir, ao menos, 4 pontos de relacionamento com Falcione</requirement>
+    </pastties>
+    <troublemaker>
+      <title>CRIADOR DE CONFUSÃO</title>
+      <description>Belísar está disposto a desafiar as Grandes Entidades</description>
+      <requirement>Conseguir, ao menos, 3 pontos em coragem</requirement>
+    </troublemaker>
+    <overpowered>
+      <title>OP</title>
+      <description>Belísar mostra que é poderoso o suficiente para derrubar dois alvos ao mesmo tempo</description>
+      <requirement>Conseguir, ao menos, 3 pontos em poder</requirement>
+    </overpowered>
+    <climber>
+      <title>ALPINISTA</title>
+      <description>Sulana escala a muralha de forma impecável</description>
+      <requirement>Escalar a muralha sem ajuda e sem escorregar nem uma vez</requirement>
+    </climber>
+    <friendlyshoulder>
+      <title>OMBRO AMIGO</title>
+      <description>Sulana revela suas preocupações para Ronam</description>
+      <requirement>Ter, ao menos, 2 pontos de relacionamento com Ronam ao passar pela muralha</requirement>
+    </friendlyshoulder>
+    <peptalk>
+      <title>PAPO ENCORAJADOR</title>
+      <description>Sulana se abre com Lura sobre suas dúvidas</description>
+      <requirement>Conseguir, ao menos, 2 pontos de relacionamento com Lura até a passagem pela muralha</requirement>
+    </peptalk>
+  </group>
+  
+  <group chapter="5">
+    <motivator>
+      <title>INSPIRADOR</title>
+      <description>Belísar consegue inspirar e motivar Emelin a trabalhar pelo bem de todos</description>
+      <requirement>Dar a Emelin uma tarefa para fazer ao invés de tentar convencê-la de que está tudo bem</requirement>
+    </motivator>
+    <persuasive>
+      <title>PERSUASIVO</title>
+      <description>Falcione concorda em deixar de lado sua rixa com o clã das montanhas</description>
+      <requirement>Conseguir 5 ou mais pontos em controle com Belísar</requirement>
+    </persuasive>
+    <puzzle>
+      <title>QUEBRA-CABEÇAS</title>
+      <description>Belísar convence Falcione a tentar desvendar o mistério de Sulana</description>
+      <requirement>5 ou mais pontos de relacionamento com Falcione após convencê-la a esquecer a rixa com o clã das montanhas</requirement>
+    </puzzle>
+    <demolisher>
+      <title>DEMOLIDORA</title>
+      <description>Os monstros desconhecidos não tiveram a menor chance contra Sulana</description>
+      <requirement>Esquivar-se e atacar com sucesso em todas as oportunidades na batalha</requirement>
+    </demolisher>
+    <demolished>
+      <title>DEMOLIDA</title>
+      <description>Sulana não teve a menor chance contra os monstros desconhecidos</description>
+      <requirement>Falhar em todas as tentativas de esquiva e ataque durante a batalha</requirement>
+    </demolished>
+    <brave>
+      <title>VALENTE</title>
+      <description>Sulana decide enfrentar os soldados sozinha ao invés de tentar escapar</description>
+      <requirement>Conseguir 5 ou mais pontos de coragem com Sulana</requirement>
+    </brave>
+  </group>
+
+  <group chapter="6">
+    <pighunter>
+      <title>COSTELETAS PARA A JANTA</title>
+      <description>Sulana consegue caçar alguns javalis para alimentar o pessoal do abrigo</description>
+      <requirement>Conseguir uma perfeita performance na luta contra os javalis</requirement>
+    </pighunter>
+    <worried_riodes>
+      <title>RANZINZA PREOCUPADO</title>
+      <description>Riodes demonstra preocupação com o estado de saúde de Sulana</description>
+      <requirement>3 ou mais pontos de relacionamento com Riodes depois da luta contra os javalis</requirement>
+    </worried_riodes>
+    <worried_linete>
+      <title>DOIDA DE PREOCUPAÇÃO</title>
+      <description>Linete demonstra preocupação com o estado de saúde de Sulana</description>
+      <requirement>3 ou mais pontos de relacionamento com Linete depois da luta contra os javalis</requirement>
+    </worried_linete>
+    <insight>
+      <title>INSIGHT</title>
+      <description>Zelmira decide tomar uma atitude em relação a sua vida</description>
+      <requirement>4 ou mais pontos de relacionamento com Zelmira depois da conversa com o curandeiro</requirement>
+    </insight>
+    <destroyer>
+      <title>DESTRUIDOR</title>
+      <description>Mesmo exausto, Belísar consegue se virar muito bem no mano a mano</description>
+      <requirement>Conseguir performance perfeita na luta contra os monstros</requirement>
+    </destroyer>
+    <destroyed>
+      <title>DESTRUÍDO</title>
+      <description>Belísar teve sérias dificuldades para conseguir sobreviver à invasão</description>
+      <requirement>Falhar em todas as tentativas de ataque e esquiva durante a batalha</requirement>
+    </destroyed>
+  </group>
+</achievements>

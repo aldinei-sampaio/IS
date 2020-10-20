@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema 
+  id="storyboard"
+  targetNamespace="http://aldinei.com/is/storyboard.xsd"
+  elementFormDefault="qualified"
+  xmlns="http://aldinei.com/is/storyboard.xsd"
+  xmlns:mstns="http://aldinei.com/is/storyboard.xsd"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+
+  <xs:simpleType name="emotiontype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="angry"/>
+      <xs:enumeration value="happy"/>
+      <xs:enumeration value="normal"/>
+      <xs:enumeration value="sad"/>
+      <xs:enumeration value="surprised"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="emotion">
+    <xs:simpleContent>
+      <xs:extension base="emotiontype">
+        <xs:attribute name="when" type="xs:string" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="viewpointtype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="sulana"/>
+      <xs:enumeration value="belisar"/>
+      <xs:enumeration value="derione"/>
+      <xs:enumeration value="falcione"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="viewpoint">
+    <xs:simpleContent>
+      <xs:extension base="viewpointtype">
+        <xs:attribute name="when" type="xs:string" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="storyboard">
+    <xs:sequence>
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:element name="viewpoint" type="viewpoint" />
+        <xs:element name="background" type="conditionablevalue" />
+        <xs:element name="music" type="conditionablevalue" />
+        <xs:element name="observe" type="conditionable" />
+        <xs:element name="tutorial" type="conditionablevalue" />
+        <xs:element name="narration" type="conditionablevalue" />
+        <xs:element name="protagonist" type="conditionablevalue" />
+        <xs:element name="person" type="conditionablevalue" />
+        <xs:element name="emotion" type="emotion" />
+        <xs:element name="choice" type="choice" />
+        <xs:element name="voice" type="conditionablevalue" />
+        <xs:element name="thought" type="conditionablevalue" />
+        <xs:element name="bump" type="conditionable" />
+        <xs:element name="do" type="do" />
+        <xs:element name="object" type="object" />
+        <xs:element name="reward" type="conditionablevalue" />
+        <xs:element name="set" type="conditionablevalue" />
+        <xs:element name="unset" type="conditionablevalue" />
+        <xs:element name="trophy" type="conditionablevalue" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+    
+  <xs:complexType name="conditionable">
+    <xs:attribute name="when" type="xs:string" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="conditionablevalue">  
+   <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="when" type="xs:string" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="do">
+    <xs:sequence>
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:element name="viewpoint" type="viewpoint" />
+        <xs:element name="background" type="conditionablevalue" />
+        <xs:element name="music" type="conditionablevalue" />
+        <xs:element name="observe" type="conditionable" />
+        <xs:element name="tutorial" type="conditionablevalue" />
+        <xs:element name="narration" type="conditionablevalue" />
+        <xs:element name="protagonist" type="conditionablevalue" />
+        <xs:element name="person" type="conditionablevalue" />
+        <xs:element name="emotion" type="emotion" />
+        <xs:element name="choice" type="choice" />
+        <xs:element name="voice" type="conditionablevalue" />
+        <xs:element name="thought" type="conditionablevalue" />
+        <xs:element name="bump" type="conditionable" />
+        <xs:element name="do" type="do" />
+        <xs:element name="object" type="object" />
+        <xs:element name="reward" type="conditionablevalue" />
+        <xs:element name="set" type="conditionablevalue" />
+        <xs:element name="unset" type="conditionablevalue" />
+        <xs:element name="trophy" type="conditionablevalue" />
+        <xs:element name="restart" type="conditionablevalue" />
+        <xs:element name="exit" type="conditionablevalue" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="when" type="xs:string" use="optional" />
+    <xs:attribute name="while" type="xs:string" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="object">
+    <xs:sequence>
+      <xs:element name="image" type="xs:string" />
+      <xs:element name="title" type="xs:string" />
+      <xs:element name="prompt" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="choiceitem">
+    <xs:complexContent>
+      <xs:extension base="conditionablevalue">
+        <xs:attribute name="req" type="xs:string" use="optional" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="choice">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="a" type="choiceitem" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="b" type="choiceitem" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="c" type="choiceitem" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="d" type="choiceitem" minOccurs="0" maxOccurs="unbounded" />
+    </xs:choice>
+    <xs:attribute name="when" type="xs:string" use="optional" />
+    <xs:attribute name="time" type="xs:positiveInteger" use="optional" />
+    <xs:attribute name="timeout" type="xs:string" use="optional" />
+    <xs:attribute name="randomorder" type="xs:boolean" use="optional" />
+  </xs:complexType>
+
+  <xs:element name="storyboard" type="storyboard" />
+</xs:schema>

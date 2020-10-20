@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>belisar</viewpoint>
+  <music>the-awakening</music>
+  <background>carmim</background>
+  <observe />
+  <narration>Capítulo 4: Muralha</narration>
+
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <background>beach</background>
+
+  <person>venega</person>
+  <voice>Cadê a Sulana, papai?</voice>
+  <narration>Você termina de prender o cabelo de sua filha, que havia se desamarrado, e a vira para dar um beijo em sua testa.</narration>
+  <protagonist />
+  <voice>Acho que ela foi embora.</voice>
+  <person>venega</person>
+  <emotion>sad</emotion>
+  <voice>Sem se despedir? Ela ficou brava com a gente?</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>O quê? Não!</voice>
+  <emotion>normal</emotion>
+  <voice>Os protetores são muito ocupados, estão sempre patrulhando o país para... proteger as pessoas. É o trabalho deles.</voice>
+  <person>venega</person>
+  <voice>Mas a Sulana é diferente dos outros.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Você acha?</voice>
+  <voice>Mas ela nem chegou a conversar com você.</voice>
+  <person>venega</person>
+  <voice>Ela é bem mais legal que aquela de cabelo vermelho.</voice>
+  <narration>Não há como você conter um sorriso ao ouvir aquilo.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <voice>Nisso você tem toda razão.</voice>
+  <emotion>normal</emotion>
+  <choice>
+    <a>Mas isso não quer dizer que Elinora seja má pessoa.</a>
+    <b>Por que você acha que Sulana é “legal”?</b>
+  </choice>
+  <voice>...</voice>
+
+  <do when="a">
+    <narration>Você encara a menina nos olhos.</narration>
+    <protagonist />
+    <voice>Sabe, filha, os protetores pensam de uma forma diferente da gente.</voice>
+    <voice>Eles vivem uma vida perigosa e solitária, então o senso de prioridade deles às vezes parece estranho e misterioso para nós.</voice>
+    <voice>Mas é como eles são. Isso não é culpa de ninguém, a Elinora é assim, mesmo.</voice>
+    <person>venega</person>
+    <emotion>surprised</emotion>
+    <voice>Ah, é?</voice>
+    <protagonist />
+    <voice>Pode estar certa de que sim.</voice>
+    <person>venega</person>
+    <emotion>surprised</emotion>
+    <voice>Da outra vez parecia que ela tinha chupado um limão.</voice>
+    <narration>Você não consegue conter a risada. Elinora realmente estivera com o rosto contorcido pela fúria da última vez que apareceu em frente às crianças.</narration>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Hahaha! Ela estava bem brava, mesmo, não estava?</voice>
+    <person>venega</person>
+    <emotion>sad</emotion>
+    <voice>Eu fiquei com medo dela.</voice>
+    <protagonist />
+    <voice>Você já me viu bravo várias vezes, não viu? Acha que eu sou uma pessoa ruim por causa disso? Você tem medo de mim?</voice>
+    <person>venega</person>
+    <emotion>surprised</emotion>
+    <voice>Não!</voice>
+  </do>
+
+  <do when="b">
+    <person>venega</person>
+    <emotion>happy</emotion>
+    <voice>Porque eu sei, ué?</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Hahaha! Claro, e que bobo eu seria, se duvidasse de você.</voice>
+    <person>venega</person>
+    <voice>Ela parece com você.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Ela parece... comigo? Como assim?</voice>
+    <person>venega</person>
+    <emotion>sad</emotion>
+    <voice>É que ela é um pouco... triste.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Como é? Você acha que eu estou triste?</voice>
+    <person>venega</person>
+    <emotion>surprised</emotion>
+    <voice>Não! Você não está triste, você É triste!</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+  </do>
+
+  <person>sagante</person>
+  <emotion>surprised</emotion>
+  <voice>Vênega! Vem ver o que eu achei!</voice>
+  <protagonist />
+  <emotion>happy</emotion>
+  <voice>Vá lá brincar, filha, vá!</voice>
+  <narration>Sem perder tempo, a menina sai em disparada na direção do irmão.</narration>
+  <narration>Sua esposa se aproxima de você, com aquele sorriso amoroso no rosto.</narration>
+
+  <do when="a">
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <voice>Acho fantástico que, mesmo depois de tudo o que aqueles seres lhe fizeram, você esteja ensinando nossa filha a não os odiar.</voice>
+    <narration>Você se levanta e olha na direção da praia, onde as crianças corriam, animadas, procurando alguma coisa na areia.</narration>
+    <protagonist />
+    <voice>Nossos filhos não herdaram meus poderes, graças aos céus. Então eles não têm o que temer.</voice>
+    <voice>Os protetores podem ser irritantes e até um pouco sádicos, mas eles seguem um código de conduta.</voice>
+    <voice>Sempre existe uma boa razão para tudo o que eles fazem.</voice>
+    <emotion>angry</emotion>
+    <reward>+control</reward>
+    <voice>Mesmo que eu nem sempre concorde com eles.</voice>
+  </do>
+
+  <do when="b">
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <voice>Fiquei curiosa. Você estava fazendo uma cara engraçada. O que foi que a Vênega disse?</voice>
+    <protagonist />
+    <voice>Ela disse que eu sou... triste.</voice>
+    <person>zelmira</person>
+    <emotion>sad</emotion>
+    <voice>Oh, pobrezinha! Ela é tão sensível, não é?</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Espere! Você... concorda com ela?</voice>
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <voice>Claro! Você nunca conseguiu se perdoar pelo que me fez, vive remoendo isso.</voice>
+    <protagonist />
+    <emotion>sad</emotion>
+    <voice>...</voice>
+    <person>zelmira</person>
+    <voice>Eu sei que nada do que eu disser vai fazer você se sentir melhor.</voice>
+    <voice>Mas estou muito mais feliz agora do que eu jamais imaginei ser possível.</voice>
+    <protagonist />
+    <voice>Mas você não deveria estar aqui comigo. Essa... vida... não foi escolha sua.</voice>
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>Não, mas tem muita coisa na vida que a gente não escolhe, não acha?</voice>
+    <protagonist />
+    <voice>Talvez...</voice>
+  </do>
+
+  <person>zelmira</person>
+  <voice>E quanto a essa Sulana?</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>O que tem ela?</voice>
+  <person>zelmira</person>
+  <voice>Ela não é de muitas palavras, não é?</voice>
+  <protagonist />
+  <voice>Ah, sim. Também é muito mais tolerável do que Elinora.</voice>
+  <person>zelmira</person>
+  <voice>Parece mais forte também... e mais atraente.</voice>
+  <narration>Você desvia o olhar para o mar, tentando ocultar seu constrangimento.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Suponho que sim.</voice>
+  <emotion>normal</emotion>
+  <voice>Ela parecia um pouco deslocada, acredito que não esclareceram direito o que queriam que ela fizesse aqui.</voice>
+  <voice>Talvez tenha sido por isso que ela foi embora de repente.</voice>
+  <person>zelmira</person>
+  <emotion>surprised</emotion>
+  <voice>Elinora também não age de forma confusa, às vezes?</voice>
+  <protagonist />
+  <voice>...</voice>
+  <voice>Tem razão.</voice>
+  <voice>Mas Elinora ao menos sempre demonstra saber o que quer.</voice>
+  <emotion>angry</emotion>
+  <voice>Mesmo sendo grossa, arrogante, irritante, pedante e insuportavelmente cheia de si.</voice>
+
+  <do when="karatekid">
+    <person>zelmira</person>
+    <voice>Baliorge ficou encantado com Sulana.</voice>
+    <protagonist />
+    <voice>Sim. E eu não consigo entender qual o sentido disso.</voice>
+    <voice>Fico imaginando se a intenção da vinda dela era passar algum tipo de mensagem.</voice>
+    <person>zelmira</person>
+    <emotion>surprised</emotion>
+    <voice>Como assim?</voice>
+    <protagonist />
+    <voice>Não sei. Talvez ela tenha ensinado algumas coisas ao Baliorge para me mostrar que eu não estou me dedicando tanto à educação dos nossos filhos como deveria.</voice>
+    <person>zelmira</person>
+    <emotion>surprised</emotion>
+    <voice>Mas isso é bobagem! Não existe outro pai tão dedicado quanto você!</voice>
+    <narration>Você solta um suspiro.</narration>
+    <protagonist />
+    <voice>E, pensando bem, uma mensagem dessas também não faria muito sentido.</voice>
+    <voice>Os garotos são todos... normais. Não há razão para os protetores se preocuparem com eles. E nem com você.</voice>
+    <person>zelmira</person>
+    <voice>Talvez Sulana seja diferente dos outros.</voice>
+    <voice>Ela deu um sermão importante aos garotos sobre confiança. Me pareceu que ela realmente se importa com as pessoas.</voice>
+    <protagonist />
+    <voice>Com isso tenho que concordar. Ela realmente parece diferente.</voice>
+    <voice>Elinora provavelmente machucaria o garoto de propósito se fosse querer ensinar uma lição como aquela.</voice>
+    <emotion>angry</emotion>
+    <voice>Pensando melhor, acho que ela nem se daria ao trabalho de ensinar nada.</voice>
+    <voice>Por ela, o garoto poderia estar à beira da morte que não moveria um braço, a menos que isso servisse de alguma forma para coibir ou punir algum tipo de crime.</voice>
+    <voice>Ou, pelo menos, do que ela interpreta como um crime, já que as leis deles são muito diferentes das nossas.</voice>
+  </do>
+
+  <narration>Você se apoia em uma palmeira e lança um olhar à pequena ilha além das ondas.</narration>
+  <narration>Suas terminações nervosas já tinham voltado ao normal, pois você já consegue sentir a textura do tronco com total clareza com a palma de suas mãos, e aquilo era a primeira coisa que desaparecia quando usava seus poderes além do ridículo limite estabelecido por aqueles filhos da mãe.</narration>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Você está com um aspecto muito melhor. Como estão seus pulsos?</voice>
+  <protagonist />
+  <voice>Eu estou bem melhor, mas meus braços não podem ser curados tão rápido.</voice>
+  <voice>Foi a vibração dos estabilizadores que esfolou e queimou a pele. Ferimentos como esse não desaparecem quando reponho minhas energias.</voice>
+  <voice>Não é como o cansaço, a tontura e a privação sensorial, esses eu já nem sinto mais.</voice>
+  <narration>Zelmira olha na direção da ilha, ao longe.</narration>
+  <person>zelmira</person>
+  <voice>O que será que tem lá, para causar esse efeito em você?</voice>
+  <emotion>surprised</emotion>
+  <voice>Falando nisso, você foi até lá da outra vez, não foi? Não encontrou nada suspeito?</voice>
+  <narration>Você balança a cabeça.</narration>
+  <protagonist />
+  <voice>Só grama, palmeiras e insetos.</voice>
+  <voice>Parece que, eu estando na ilha, minhas energias se recuperam um pouco mais rápido do que aqui, mas além disso, não encontrei nada.</voice>
+  <person>sagante</person>
+  <emotion>surprised</emotion>
+  <voice>Mamããããããããe!</voice>
+  <person>zelmira</person>
+  <emotion>surprised</emotion>
+  <voice>O que foi, meu amor?</voice>
+  <person>sagante</person>
+  <emotion>sad</emotion>
+  <voice>Vem aqui!</voice>
+  <protagonist />
+  <voice>Melhor ir ver o que ele quer.</voice>
+  <narration>Após lançar um sorriso de desculpas a você, ela sai caminhando, apressada, na direção do garoto.</narration>
+  <narration>Você começa a considerar a ideia de dar um passeio pela praia agora que suas pernas já parecem firmes o suficiente para um pouco de exercício, quando ouve o som de passos atrás de você.</narration>
+  <narration>Virando-se, você se depara com...</narration>
+  <person>falcione</person>
+  <voice>...</voice>
+  <protagonist />
+  <choice>
+    <a>Problemas?</a>
+    <b when="falcione_relationship[4:]" req="Relacionamento +4">Trajes... interessantes.</b>
+  </choice>
+  <voice>...</voice>
+
+  <do when="b">
+    <narration>Você faz um gesto na direção do corpo dela, coberto por roupas curtas que deixavam os braços e boa parte das pernas musculosas à mostra.</narration>
+    <person>falcione</person>
+    <voice>Odeio o calor.</voice>
+    <narration>A cabeça raspada dela e o tapa-olho são características incomuns em uma mulher e com certeza não são coisas que você considera particularmente atraentes, mas se olhar todo o conjunto, Falcione podia ser considerada bastante desejável.</narration>
+    <narration>Zelmira tinha boas razões para implicar com ela e fazer todas aquelas brincadeiras sempre que tinha oportunidade.</narration>
+    <narration>Afinal, há certas coisas que um homem não pode controlar, e sua esposa sabe disso, assim como sabe que você nunca, em hipótese nenhuma, procuraria conforto nos braços de outra, por mais atraente que fosse.</narration>
+    <narration>E Falcione também sabia disso, você já havia deixado isso claro há bastante tempo.</narration>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>É o que você sempre diz, mas talvez mudasse de ideia se aproveitasse para dar um mergulho de vez em quando.</voice>
+    <voice>Afinal, você já está aqui mesmo, coisa que raramente acontece. E está até trajada a caráter para a ocasião.</voice>
+    <person>falcione</person>
+    <voice>...</voice>
+    <voice>Eu tenho outras...</voice>
+    <protagonist />
+    <voice>Prioridades, eu sei.</voice>
+    <voice>O que houve?</voice>
+  </do>
+
+  <music>enigma</music>
+
+  <person>falcione</person>
+  <voice>Uma nova incursão ocorreu nos arredores de Mercília.</voice>
+  <protagonist />
+  <voice>E quanto ao muro?</voice>
+  <person>falcione</person>
+  <voice>Os trabalhadores não foram atacados, mas ainda vão levar vários dias para concluir.</voice>
+  <voice>Nossos caçadores estão com a situação sob controle dentro de nossos domínios, mas alguns invasores escaparam pelo lado ainda não murado.</voice>
+  <narration>Você solta um suspiro.</narration>
+  <protagonist />
+  <emotion>sad</emotion>
+  <voice>O que quer dizer que temos uma nova caçada em nossas mãos.</voice>
+  <person>falcione</person>
+  <voice>O senhor sabe que só tem uma forma de acabar com isso de vez.</voice>
+  <protagonist />
+  <voice>E você sabe que não farei um ataque direto.</voice>
+  <voice>Isso é exatamente o que aqueles malditos esperam que eu faça. Se me capturarem, tudo o que fizemos até agora terá sido em vão.</voice>
+
+  <do when="a">
+    <person>falcione</person>
+    <voice>Não vai conseguir manter o povo em segurança dessa forma para sempre.</voice>
+    <protagonist />
+    <emotion>sad</emotion>
+    <voice>...</voice>
+    <emotion>angry</emotion>
+    <voice>Pois morrerei tentando.</voice>
+  </do>
+
+  <do when="b">
+    <music>sad-story</music>
+
+    <person>falcione</person>
+    <emotion>sad</emotion>
+    <voice>...</voice>
+    <protagonist />
+    <voice>O que foi?</voice>
+    <person>falcione</person>
+    <emotion>sad</emotion>
+    <voice>Com todo respeito, senhor, não consigo mais imaginar esse conflito terminando antes que alguma tragédia aconteça.</voice>
+    <protagonist />
+    <choice time="3" timeout="a">
+      <a>Ficar em silêncio.</a>
+      <b>Discordar.</b>
+    </choice>
+    <thought>Eu vou...</thought>
+
+    <do when="a">
+      <narration>Antes que você consiga pensar em uma resposta adequada, ela endireita os ombros e coloca de volta no rosto sua costumeira expressão impassível.</narration>
+      <person>falcione</person>
+      <voice>Por favor, perdoe meu descontrole.</voice>
+      <voice>Quando concordei em seguí-lo, eu disse que faria isso até o fim. E eu estava falando sério.</voice>
+      <protagonist />
+      <voice>Eu sei disso. E agradeço.</voice>
+      <emotion>angry</emotion>
+      <reward>+control</reward>
+      <voice>E prometo que trarei um fim a tudo isso.</voice>
+      <emotion>angry</emotion>
+      <voice>Não importa o que isso me custe.</voice>
+    </do>
+
+    <do when="b">
+      <narration>Você a encara, com determinação.</narration>
+      <protagonist />
+      <voice>Anos atrás eu conheci uma garota que tinha certeza de ter cumprido seu destino e de não ter mais razão para continuar entre os vivos.</voice>
+      <voice>Com apenas um empurrão na direção certa ela percebeu que ainda podia fazer toda a diferença.</voice>
+      <voice>Mesmo contra todas as evidências em contrário.</voice>
+      <person>falcione</person>
+      <emotion>surprised</emotion>
+      <voice>Eu não me esqueci de nada disso, e sou muito grata.</voice>
+      <emotion>normal</emotion>
+      <voice>Mas agora as coisas são diferentes.</voice>
+      <protagonist />
+      <voice>Por quê? Você acha que, por minha vida estar em jogo, eu não deva lutar?</voice>
+      <person>falcione</person>
+      <emotion>surprised</emotion>
+      <voice>Olhe para tudo o que o senhor conseguiu realizar em tão pouco tempo!</voice>
+      <voice>O senhor é a inspiração de milhares de pessoas.</voice>
+      <voice>Muitas vidas perderão o sentido se...</voice>
+      <protagonist />
+      <emotion>angry</emotion>
+      <voice>Não foi para isso que eu acolhi você.</voice>
+      <person>falcione</person>
+      <emotion>surprised</emotion>
+      <voice>C-como?</voice>
+      <protagonist />
+      <voice>Eu preciso de você.</voice>
+      <voice>Eu quis você do meu lado para ter alguém competente e confiável para tomar conta das coisas caso algo acontecesse comigo.</voice>
+      <voice>Tudo o que eu fiz por você até hoje sempre teve esse objetivo.</voice>
+      <voice>Não poderei lutar tranquilo se eu não tiver certeza de que está disposta a assumir essa responsabilidade.</voice>
+      <voice>Pois, se não se considera à altura desse desafio, isso significa que falhei com você.</voice>
+      <narration>Ela se empertiga e arregala de leve os olhos umedecidos.</narration>
+      <narration>Então ela respira fundo e volta a aprumar o corpo.</narration>
+      <person>falcione</person>
+      <trophy>pastties</trophy>
+      <voice>Se o senhor me considera digna, não tenho como argumentar contra isso.</voice>
+      <protagonist />
+      <reward>++control</reward>
+      <voice>Não, não tem.</voice>
+      <voice>E acho melhor esclarecer: não tenho a menor intenção de perder a vida.</voice>
+      <emotion>angry</emotion>
+      <voice>Lutarei essa guerra até o final, e não pretendo deixar que nada e nem ninguém me impeça.</voice>
+    </do>
+  </do>
+</storyboard>

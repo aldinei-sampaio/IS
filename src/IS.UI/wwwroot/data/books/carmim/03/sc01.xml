@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>belisar</viewpoint>
+  <music>last-duel</music>
+  <background>carmim</background>
+  <observe />
+  <narration>Capítulo 3: Sonho</narration>
+
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <background>oldroad</background>
+
+  <narration>Do topo do muro da cidade de Revoada, você observa atentamente a batalha que se desenrola no terreno acidentado das redondezas.</narration>
+  <narration>Os soldados carmim combatem bravamente os invasores.</narration>
+  <person>fox</person>
+  <emotion>angry</emotion>
+  <voice>Wrrraaaurrr!</voice>
+  <person>soldado7</person>
+  <emotion>surprised</emotion>
+  <bump />
+  <voice>Aaaauuuu!</voice>
+  <emotion>angry</emotion>
+  <voice>Preciso de ajuda aqui!</voice>
+  <person>soldado8</person>
+  <emotion>surprised</emotion>
+  <voice>A caminho!</voice>
+  <narration>Monstros. Hordas e mais hordas de monstros, pertencentes a uma espécie estranha.</narration>
+  <narration>São extremamente ferozes e agressivos e têm aparência similar à de cães ou raposas, mas com pelagem de coloração peculiar, num tom marrom esverdeado.</narration>
+  <narration>Apresentam sinais de inteligência e atacam em bandos, suas garras e dentes afiados sendo mortais para qualquer pessoa que não esteja devidamente preparada.</narration>
+  <narration>Alguns deles têm poderes místicos, podendo curar seus aliados, aumentar sua força e, em alguns casos, até mesmo realizar conjurações ofensivas, geralmente envolvendo fogo ou gelo.</narration>
+  <narration>Não sangram e nem morrem. Quando recebem dano suficiente, simplesmente se dissolvem em uma pilha de cinzas.</narration>
+  <person>fox</person>
+  <emotion>angry</emotion>
+  <voice>Wrrraaaurrr!</voice>
+  <person>soldado8</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>Argh!</voice>
+  <emotion>surprised</emotion>
+  <voice>Estou meio enrolada aqui! Você vai ter que esperar um pouco!</voice>
+  <person>soldado7</person>
+  <emotion>surprised</emotion>
+  <voice>Fala isso pra esse bicho aqui!</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Aqueles dois precisam de ajuda!</thought>
+  <thought>Posso usar meus poderes e atingir os montros daqui!</thought>
+
+  <tutorial>Algumas escolhas têm limite de tempo.</tutorial>
+  <tutorial>Fique atento também para o fato de que, em algumas batalhas, como esta, apenas uma das opções é a correta. Você precisa escolhê-la antes de o tempo acabar.</tutorial>
+
+  <protagonist />
+  <emotion>angry</emotion>
+  <unset>battle</unset>
+  <choice time="4" timeout="b" randomorder="1">
+    <a>Acertar o monstro!</a>
+    <b>Errar o monstro!</b>
+    <b>Errar o monstro!</b>
+  </choice>
+  <voice>...</voice>
+
+  <narration>Você segura o artefato em seu punho direito e o ativa.</narration>
+  <narration>Energias místicas fluem de seu corpo através do artefato, gerando uma descarga elétrica que corta o ar na direção da batalha.</narration>
+
+  <do when="a">
+    <narration>O monstro se contorce em agonia ao ser atingido em cheio!</narration>
+    <person>fox</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Craaaiiiin!</voice>
+    <narration>Mas, como você usou uma quantidade pequena de energia para não correr o risco de atingir os soldados, a criatura sobrevive e volta a se levantar, apesar de um pouco atordoada.</narration>
+    <narration>Nem um pouco surpreso por receber ajuda, uma vez que era comum isso ocorrer durante batalhas daquela magnitude, o soldado aproveita a oportunidade para atacar.</narration>
+    <person>soldado7</person>
+    <emotion>angry</emotion>
+    <voice>Hora da retribuição, monstro! Tome isto!</voice>
+    <person>fox</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>...</voice>
+    <narration>Mortalmente ferida, a criatura não emite nenhum som, enquanto começa a se desintegrar.</narration>
+    <narration>O soldado lança um breve sorriso em sua direção, antes de correr para ajudar um companheiro.</narration>
+    <protagonist />
+    <reward>+battle</reward>
+    <thought>Um a menos!</thought>
+  </do>
+
+  <do when="b">
+    <narration>O monstro percebe o ataque iminente e consegue se esquivar.</narration>
+    <narration>A descarga atinge o chão onde ele estava, abrindo uma pequena rachadura e lançando terra e pedaços de grama para todos os lados.</narration>
+    <person>soldado7</person>
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>-battle</reward>
+    <thought>...</thought>
+    <narration>O soldado se recupera rápido da surpresa e aproveita o fato de seu ataque ter afastado o monstro dele para fazer alguns gestos, obviamente ativando alguma habilidade mística.</narration>
+    <person>soldado7</person>
+    <emotion>angry</emotion>
+    <voice>Agora eu te pego, criatura maldita!</voice>
+  </do>
+
+  <narration>Você respira fundo e se prepara a atingir outro monstro.</narration>
+
+  <protagonist />
+  <emotion>angry</emotion>
+  <choice time="4" timeout="b" randomorder="1">
+    <a>Atingir o monstro!</a>
+    <b>Atingir o chão!</b>
+    <b>Errar o monstro!</b>
+    <c>Atingir a oficial!</c>
+  </choice>
+  <voice>...</voice>
+
+  <narration>Você dispara uma nova rajada elétrica.</narration>
+
+  <do when="a">
+    <narration>O monstro solta um grito agoniado quando a descarga o atinge!</narration>
+    <person>fox</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Graaaaa!</voice>
+    <narration>Incapaz de resistir aos ferimentos, ele desaba no chão, seu corpo se enrijecendo e lentamente se transformando em pó.</narration>
+    <narration>A oficial lança um olhar agradecido em sua direção e levanta o braço, tocando a têmpora com a ponta dos dedos.</narration>
+    <person>soldado8</person>
+    <emotion>happy</emotion>
+    <voice>...</voice>
+    <narration>Em seguida, ela se vira para ajudar os companheiros.</narration>
+    <protagonist />
+    <reward>+battle</reward>
+    <thought>Perfeito!</thought>
+  </do>
+
+  <do when="b">
+    <narration>Seu ataque passa por sobre a cabeça do monstro, atingindo o chão mais adiante.</narration>
+    <narration>Enquanto isso, a criatura salta sobre a oficial.</narration>
+  </do>
+
+  <do when="c">
+    <narration>Seu ataque atinge a oficial em cheio!</narration>
+    <narration>Felizmente, ela está usando o escudo corporal militar em potência plena.</narration>
+    <narration>O campo de força místico consegue absorver quase completamente a eletricidade, de forma que a oficial apenas sente um leve choque percorrer seu corpo.</narration>
+    <narration>Mas aquilo é suficiente para distraí-la do combate por tempo suficiente para o monstro atacá-la.</narration>
+  </do>
+
+  <do when="!a">
+    <person>fox</person>
+    <emotion>angry</emotion>
+    <voice>Grrraaauuu!</voice>
+    <person>soldado8</person>
+    <emotion>surprised</emotion>
+    <bump />
+    <voice>Ahhhhh!</voice>
+    <narration>Ela consegue evitar a mordida, mas é atingida pelas poderosas garras.</narration>
+    <narration>Nesse momento, o outro soldado consegue se livrar do monstro contra o qual estava lutando e corre para ajudar.</narration>
+    <person>soldado7</person>
+    <emotion>angry</emotion>
+    <voice>Caia, monstro!</voice>
+    <person>fox</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Graaaaain!</voice>
+    <narration>Juntos, os dois soldados conseguem derrubar a criatura, mas sofrem várias mordidas e arranhões no processo.</narration>
+    <narration>Felizmente, o escudo corporal militar consegue protegê-los o suficiente para não receberem nenhum ferimento muito sério.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>-battle</reward>
+    <thought>Maldição! Não posso me dar ao luxo de falhar dessa forma!</thought>
+  </do>
+
+  <narration>Neste momento, um grande grupo de monstros avança na direção dos soldados.</narration>
+  <person>soldado7</person>
+  <emotion>surprised</emotion>
+  <voice>Você tá de brincadeira comigo!</voice>
+  <person>soldado8</person>
+  <emotion>surprised</emotion>
+  <voice>Pela misericórdia!</voice>
+
+  <protagonist />
+  <thought>As criaturas estão longe o suficiente para eu poder usar um ataque de maior intensidade sem correr o risco de ferir os soldados.</thought>
+
+  <narration>Você se prepara para fazer um novo disparo.</narration>
+
+  <protagonist />
+  <choice time="4" timeout="b" randomorder="1">
+    <a>Liberar energia suficiente!</a>
+    <b>Liberar pouca energia!</b>
+    <b>Liberar energia insuficiente!</b>
+    <c>Liberar energia demais!</c>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <narration>Mais uma fez você canalisa suas energias místicas na direção da batalha.</narration>
+
+  <do when="a">
+    <narration>A poderosa rajada se ramifica no ar antes de atingir o grupo inteiro de monstros.</narration>
+    <narration>Eles não têm tempo nem mesmo para emitir qualquer ruído antes de serem completamente desintegrados.</narration>
+    <protagonist />
+    <reward>+battle</reward>
+    <thought>Excelente!</thought>
+    <narration>Os soldados olham em sua direção e prestam uma rápida continência.</narration>
+  </do>
+
+  <do when="b">
+    <narration>A rajada se ramifica no ar e atinge o grupo inteiro de monstros!</narration>
+    <narration>No entanto, a energia que você liberou não é suficiente para derrubá-los completamente.</narration>
+    <narration>Feridos, os monstros tentam se virar para fugir, mas os soldados conseguem facilmente alcança-los e terminar o serviço.</narration>
+    <narration>Quando o último dos oponentes é finalmente derrotado, os soldados se entreolham.</narration>
+    <person>soldado7</person>
+    <voice>Você está bem?</voice>
+    <person>soldado8</person>
+    <voice>Já estive... melhor.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>-battle</reward>
+    <thought>...</thought>
+  </do>
+
+  <do when="c">
+    <narration>A poderosa rajada se ramifica no ar antes de atingir o grupo inteiro de monstros!</narration>
+    <narration>Eles não têm tempo nem mesmo para emitir qualquer ruído antes de serem completamente desintegrados.</narration>
+    <narration>No entanto, a energia que você liberou foi intensa demais e os dois soldados acabaram sendo atingidos também.</narration>
+    <person>soldado7</person>
+    <emotion>surprised</emotion>
+    <bump />
+    <voice>Aaaaaaahhhh!</voice>
+    <person>soldado8</person>
+    <emotion>surprised</emotion>
+    <bump />
+    <voice>Uuuugh!</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <reward>-battle</reward>
+    <voice>Não!</voice>
+    <narration>O escudo corporal militar os protege do que seria a morte certa, mas não é forte o suficiente para que saiam ilesos.</narration>
+    <narration>Sangrando pelo nariz e ouvidos, os dois se afastam do combate para receberem cuidados, caminhando de forma cambaleante.</narration>
+  </do>
+
+  <do when="belisar_battle[3]">
+    <protagonist />
+    <emotion>happy</emotion>
+    <trophy>sniper</trophy>
+    <thought>Problema resolvido!</thought>
+    <emotion>normal</emotion>
+    <reward>++control</reward>
+    <thought>Humm... estou conseguindo controlar meus poderes de forma consideravelmente mais eficiente.</thought>
+    <emotion>sad</emotion>
+    <thought>Mas ainda há um longo caminho a percorrer. Até lá, estou fadado a ter que usar esses malditos aparatos presos a meu corpo.</thought>
+    <narration>Você pode sentir o peso dos braceletes, ombreiras e tornozeleiras, e uma onda de justificada raiva toma conta de você por ser obrigado a usar aqueles artefatos.</narration>
+  </do>
+
+  <do when="belisar_battle[1]">
+    <protagonist />
+    <reward>+control</reward>
+    <thought>Meu controle sobre esses poderes está maior do que antes, mas sinto que ainda posso melhorar.</thought>
+  </do>
+
+  <do when="belisar_battle[-1]">
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Não sei como vou arrumar tempo para isso, mas preciso treinar mais.</thought>
+  </do>
+
+  <do when="belisar_battle[-3]">
+    <protagonist />
+    <emotion>sad</emotion>
+    <trophy>badsniper</trophy>
+    <thought>...</thought>
+    <thought>Ao menos dessa vez ninguém precisou pagar com a vida por meus erros.</thought>
+    <emotion>normal</emotion>
+    <thought>Nossos esforços para preparar e equipar as tropas foram bem sucedidos.</thought>
+  </do>
+
+  <narration>Enquanto isso, o embate prossegue. Várias centenas de soldados estão espalhados pela planície, combatendo os monstros que tentam chegar à cidade por todas as direções.</narration>
+  <narration>Você olha de um lado para o outro e percebe que suas tropas estão conseguindo controlar a batalha.</narration>
+  <narration>Aliviado ao concluir que ninguém mais precisa de sua ajuda, você desativa o poder do bracelete e solta um suspiro.</narration>
+
+  <protagonist />
+  <thought>Isto é bem pior do que antecipamos.</thought>
+  <thought>Os soldados estão se saindo muito bem por enquanto, mas poderemos precisar de reforços para depois.</thought>
+  <narration>Você desvia o olhar para o pequeno grupo de rebeldes que havia se juntado à luta.</narration>
+  <protagonist />
+  <thought>Até que estão se mostrando úteis.</thought>
+  <thought>Ela, pelo menos.</thought>
+
+  <music>desert-squad</music>
+
+  <person>sulana</person>
+  <emotion>angry</emotion>
+  <voice>Aaaaaaaaaahhhhhh!!!</voice>
+  <person>fox</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>Crrrraaaaainnnnn!</voice>
+  <narration>Você levanta um dos punhos, ativando outro de seus poderes eletromagnéticos.</narration>
+  <narration>Sua visão fica desfocada por um momento, mas aos poucos aquilo dá lugar a imagens nítidas e claras, como se você estivesse em meio ao combate.</narration>
+  <narration>Até mesmo os sons e os cheiros chegam até você através do encantamento, o que sempre deixa seus sentidos um pouco confusos até se acostumarem com tantos estímulos.</narration>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Cuidado!</voice>
+  <person>rebelde1</person>
+  <voice>Hã?</voice>
+  <emotion>surprised</emotion>
+  <voice>Aaaaahhh!</voice>
+  <person>fox</person>
+  <emotion>angry</emotion>
+  <voice>Grrrr!</voice>
+  <person>sulana</person>
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <narration>Você vê a mulher jogar para longe a criatura que combatia e correr com inacreditável velocidade na direção do amigo em apuros, agarrando o monstro no ar, em pleno bote.</narration>
+  <person>fox</person>
+  <emotion>surprised</emotion>
+  <bump />
+  <voice>Aruf?</voice>
+  <narration>Ela gira o corpo e arremessa a criatura para longe, mas nesse momento um outro monstro salta sobre ela.</narration>
+  <person>fox</person>
+  <emotion>angry</emotion>
+  <voice>Grrrraaauuuu!</voice>
+  <person>sulana</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>Ugh!</voice>
+  <narration>Ao ver o monstro abocanhar o pulso da mulher, você franze o cenho e aperta os dentes de forma instintiva.</narration>
+  <narration>Um filete de sangue imediatamente começa a escorrer, indicando que o escudo corporal dela, apesar de incrivelmente forte, não foi suficiente para protegê-la dessa vez.</narration>
+  <narration>Aquilo deveria estar causando um inferno de dor.</narration>
+  <person>sulana</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>No entanto, ela não parece sentir nada. E o que faz a seguir é ainda mais impressionante.</narration>
+  <narration>Com o outro punho, ela golpeia o monstro, atingindo-lhe a cabeça com força suficiente para esmagá-la contra seu outro braço.</narration>
+  <narration>A criatura não tem tempo de emitir nenhum som, antes de se desintegrar, numa pequena nuvem de pó branco.</narration>
+  <narration>Então ela olha para o próprio braço, cujo ferimento tinha ficado muito mais grave devido à força com que ela tinha prensado os dentes da fera contra si.</narration>
+  <narration>O sangue escorria, abundante, em meio ao pó que cobria não só o braço como também boa parte do resto do corpo dela.</narration>
+  <person>sulana</person>
+  <emotion>angry</emotion>
+  <voice>Argh!</voice>
+  <person>ronam</person>
+  <voice>Aqui!</voice>
+  <narration>Ela se vira para o companheiro e ele rapidamente envolve o punho sujo e ferido dela com um pedaço de tecido embebido em alguma coisa.</narration>
+  <narration>Ela mal espera ele terminar de amarrar o curativo improvisado antes de sair correndo para atacar sua próxima vítima.</narration>
+  <person>rebelde1</person>
+  <emotion>surprised</emotion>
+  <voice>Caramba!</voice>
+  <voice>Eu tinha ouvido falar sobre a forma com que ela luta, mas sempre achei que estavam exagerando!</voice>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Ela é incrível, não é?</voice>
+  <narration>A mulher usa punhos e cotovelos para transformar mais dois monstros em pó, antes de dar uma olhada na direção de seus companheiros.</narration>
+  <narration>Aparentemente decidindo que não tinha mais nenhuma ameaça ali, ela se vira e dispara na direção de um grupo mais afastado de soldados que combatia outra leva de criaturas.</narration>
+  <person>ronam</person>
+  <voice>Vamos lá ajudar!</voice>
+  <narration>Por um momento, você imagina se a presença daqueles dois mais ajudava ou atrapalhava, uma vez que a mulher precisava ficar constantemente os protegendo.</narration>
+  <person>rebelde1</person>
+  <emotion>surprised</emotion>
+  <voice>Aqueles olhos dela, cara...</voice>
+  <person>ronam</person>
+  <voice>O que tem?</voice>
+  <person>rebelde1</person>
+  <emotion>surprised</emotion>
+  <voice>Não te dão medo?</voice>
+  <person>ronam</person>
+  <voice>Se você não for idiota o suficiente para tentar fazer um ataque contra ela, não tem perigo nenhum, muito pelo contrário, ela vai atacar qualquer coisa que tente fazer mal a você.</voice>
+  <person>rebelde1</person>
+  <voice>Ela parece, sei lá, um animal descontrolado.</voice>
+  <person>ronam</person>
+  <voice>Mas está muito longe disso.</voice>
+
+  <music>enigma</music>
+
+  <narration>Você sente uma presença se aproximando e desativa seu poder, antes de encarar a recém-chegada.</narration>
+  <person>falcione</person>
+  <voice>Recobrando as forças?</voice>
+  <narration>Você faz um gesto na direção da batalha.</narration>
+  <protagonist />
+  <voice>É o último grupo. Nosso pessoal está se saindo muito bem, não precisam mais da minha ajuda.</voice>
+  <person>falcione</person>
+  <voice>Viu o jeito que aquela rebelde luta?</voice>
+  <narration>Você olha na direção da batalha, mas a ação está longe demais para que você possa ver ou ouvir qualquer coisa sem o uso de seus poderes.</narration>
+  <protagonist />
+  <voice>Sim. Ela é uma força considerável em combate.</voice>
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Aquela mulher é a arma secreta dos terroristas, responsável pela morte de centenas de nossos soldados.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <voice>Tem certeza disso? Ela não parece nem um pouco relutante em lutar ao lado dos nossos.</voice>
+  <narration>Você volta a ativar o artefato em seu pulso e observa, por um momento, enquanto a rebelde luta ao lado de dois soldados.</narration>
+  <narration>Os três se moviam como um time, um cobrindo o outro, mas era evidente que a rebelde era a mais perigosa de todos.</narration>
+  <narration>A qualquer abertura que os oponentes dessem, ela desferia um golpe fulminante, geralmente mortal.</narration>
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Isso é mero instinto de sobrevivência.</voice>
+  <emotion>surprised</emotion>
+  <voice>O que ela está fazendo lá, afinal? O senhor autorizou isso?</voice>
+  <protagonist />
+  <voice>Não exatamente. Quando foi dado o alarme, ela e os companheiros simplesmente correram para fora dos portões.</voice>
+  <voice>Eu decidi não mandar ninguém atrás deles, em razão da batalha iminente.</voice>
+  <voice>Estou tão surpreso quanto você por ela ter se juntado ao combate.</voice>
+  <person>falcione</person>
+  <voice>Isso não vai acabar bem.</voice>
+  <emotion>angry</emotion>
+  <voice>Olhe para os olhos dela, para a postura corporal. Está completamente tomada pela febre da batalha.</voice>
+  <voice>Imagino o que fará quando não houver mais monstros para derrubar.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>“Febre da batalha”? Está dizendo que ela veio daquele clã das montanhas?</voice>
+  <person>falcione</person>
+  <voice>Sim.</voice>
+  <protagonist />
+  <voice>Como pode ter tanta certeza?</voice>
+  <person>falcione</person>
+  <voice>Porque eu os conheço muito bem. Lembre-se de que fui eu quem matou os últimos deles.</voice>
+  <emotion>angry</emotion>
+  <voice>Ou, pelo menos, pensei que tinha matado. Pelo visto, uma sobreviveu.</voice>
+  <voice>Temos que pará-la! Agora!</voice>
+  <protagonist />
+  <voice>...</voice>
+  <voice>Não.</voice>
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>Hã? Como não?! Nossos soldados estão em perigo perto dela!</voice>
+  <protagonist />
+  <voice>Eu confio em você, mas tem algo que não se encaixa.</voice>
+  <voice>Parece que está acabando. Vamos ver o que ela vai fazer.</voice>
+  <narration>Falcione sacode a cabeça, descontente, mas tira uma pequena luneta do bolso para olhar a ação à distância.</narration>
+  <narration>Vocês dois observam enquanto a rebelde salta sobre uma criatura que se preparava para atingir um dos soldados.</narration>
+  <narration>Derrubando o monstro no chão, ela desfere nele uma sequência de poderosos golpes até que restasse apenas uma pilha de cinzas.</narration>
+  <narration>Então ela se levanta e examina os arredores, obviamente procurando mais algum oponente a ser combatido.</narration>
+  <narration>Por um momento o olhar dela cruza com o dos soldados.</narration>
+  <person>soldado7</person>
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <person>soldado8</person>
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <person>sulana</person>
+  <voice>...</voice>
+  <narration>Ignorando completamente os soldados que a encaravam, apreensivos, ela dá uma volta completa ao redor de si mesma.</narration>
+  <narration>Então, fica parada por um momento, parecendo confusa, antes de se voltar na direção dos outros dois rebeldes, que se aproximavam dela, devagar.</narration>
+  <person>ronam</person>
+  <voice>Está tudo bem! A luta acabou!</voice>
+  <emotion>happy</emotion>
+  <voice>Você foi sensacional, como sempre!</voice>
+
+  <music>goodbye</music>
+
+  <narration>Surpreso, você vê a mulher se sentar no chão e abaixar a cabeça, numa postura de meditação.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>O que está acontecendo?</voice>
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>Não sei. Nunca tinha visto nenhum deles agir assim. Quando tomados pela fúria normalmente não escutam ninguém.</voice>
+  <protagonist />
+  <voice>Talvez o rapaz tenha algum poder sobre ela.</voice>
+  <person>falcione</person>
+  <voice>É impossível controlar essa gente. Acredite, eu sei do que estou falando.</voice>
+  <protagonist />
+  <voice>Me parece que ela está se acalmando, o ritmo da respiração está diferente.</voice>
+  <person>falcione</person>
+  <voice>...</voice>
+  <narration>Você volta a desativar seus poderes e abaixa o braço.</narration>
+  <protagonist />
+  <voice>Fique de olho nela. Vou reunir as tropas.</voice>
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Devíamos é aproveitar essa chance e nos livrar desse problema de uma vez por todas.</voice>
+  <protagonist />
+  <choice>
+    <a>Vamos dar a ela o benefício da dúvida.</a>
+    <b>Acha que devemos prendê-la?</b>
+  </choice>
+  <voice>...</voice>
+
+  <do when="a">
+    <protagonist />
+    <voice>Ela lutou para ajudar a proteger pessoas.</voice>
+    <person>falcione</person>
+    <emotion>angry</emotion>
+    <voice>Isso não significa nada.</voice>
+    <protagonist />
+    <reward>+control</reward>
+    <voice>Para mim, significa.</voice>
+    <voice>Apenas fique de olho. Se ela fizer qualquer movimento agressivo sem provocação, ela é toda sua, mas, do contrário, apenas observe.</voice>
+  </do>
+
+  <do when="b">
+    <person>falcione</person>
+    <voice>Não é qualquer prisão que consegue segurar alguém como ela.</voice>
+    <protagonist />
+    <voice>Então, o que você quer é terminar sua missão de tantos anos atrás, é isso?</voice>
+    <person>falcione</person>
+    <emotion>angry</emotion>
+    <voice>Eles deveriam estar todos mortos!</voice>
+    <voice>Eu jurei que acabaria com todos ou morreria tentando!</voice>
+    <protagonist />
+    <voice>...</voice>
+    <voice>Não estou convencido que ela realmente seja um deles, mas, se ela tentar qualquer coisa, você tem carta branca.</voice>
+    <person>falcione</person>
+    <reward>+relationship</reward>
+    <voice>...</voice>
+    <voice>Isso é melhor do que nada, eu suponho.</voice>
+  </do>
+</storyboard>

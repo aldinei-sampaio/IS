@@ -1,0 +1,428 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>belisar</viewpoint>
+  <music>desert-squad</music>
+  <background>carmim</background>
+  <observe />
+  <narration>Capítulo 5: Morte</narration>
+
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <background>oldroad</background>
+  
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>Cuidado, ele vai disparar de novo!</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Todos atrás de mim!</voice>
+  <narration>Você levanta a mão direita, ativando os estabilizadores de seus ombros.</narration>
+  <narration>Faíscas elétricas começam a sair de sua mão, cada vez mais rápido e em uma quantidade cada vez maior.</narration>
+  <narration>Em segundos, sua força se intensifica a ponto de formar uma espécie de escudo eletromagnético.</narration>
+  <person>amarelo</person>
+  <voice>...</voice>
+  <narration>A misteriosa criatura amarela levanta uma mão para o alto e uma onda de energia negra brota do chão, serpenteando pelo ar e atingindo seu escudo com violência.</narration>
+  <narration>As energias medem forças entre si durante algum tempo, nenhuma conseguindo superar a outra e logo ambas se dissipam no ar, como se nunca tivessem existido.</narration>
+  <person>amarelo</person>
+  <voice>...</voice>
+  <narration>Mesmo a criatura não possuindo olhos ou expressão facial, você não tem dificuldade em adivinhar-lhe as intenções.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Ele está juntando forças para atacar de novo!</voice>
+  <emotion>angry</emotion>
+  <voice>Quanto tempo mais, Norlando?</voice>
+  <person>norlando</person>
+  <emotion>angry</emotion>
+  <voice>Não tenho como prever uma coisa dessas, homem!</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Estamos recebendo leituras claras, senhor! O encanto está funcionando!</voice>
+  <person>norlando</person>
+  <emotion>angry</emotion>
+  <voice>Não conseguimos o que precisamos ainda! Foco, menina!</voice>
+  <person>emelin</person>
+  <emotion>sad</emotion>
+  <voice>Sim, senhor!</voice>
+  <narration>Falcione tenta acionar um artefato que está em suas mãos, e grunhe, frustrada, ao não conseguir.</narration>
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>Este bastão não funciona mais! A carga deve ter se esgotado!</voice>
+  <voice>Nossas opções defensivas estão se esgotando!</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Pela misericórdia!</voice>
+  <narration>Você sente a exaustão o afetando, tornando seus membros mais lentos.</narration>
+  <narration>Mas não há alternativa, você precisa usar seus poderes mais uma vez.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <choice time="3">
+    <a>Atacar com intensidade máxima.</a>
+    <b>Atingir pontos estratégicos da criatura.</b>
+    <c>Forçar o monstro a se afastar.</c>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <narration>Você reúne energia e libera o ataque mais intenso que pode nessa circunstância.</narration>
+    <narration>Um construto energético similar a um relâmpago surge de sua mão, ramificando-se cada vez mais conforme avança em alta velocidade na direção do monstro.</narration>
+    <narration>Quando a energia alcança seu alvo, o relâmpago já se tornou uma espécie de leque, com os ramos se dividindo e se afinando cada vez mais.</narration>
+    <narration>A criatura cruza seus braços diante de si, invocando uma aura negra em torno de si, que rapidamente é varrida pela onda energética.</narration>
+    <narration>O leque destrutivo continua a crescer, arrastando a criatura consigo e destruindo as poucas casas da vila que ainda estavam em pé.</narration>
+    <protagonist />
+    <emotion>sad</emotion>
+    <reward>+power</reward>
+    <voice>...</voice>
+    <narration>Você interrompe a onda de energia e tenta recobrar o fôlego, enquanto observa a criatura se levantar ao longe.</narration>
+    <narration>Como você previu, a intensidade daquele ataque foi suficiente para ferí-lo, mas não para matá-lo.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>É melhor se apressar, Norlando, porque ele não vai levar muito tempo para se recuperar!</voice>
+  </do>
+
+  <do when="b">
+    <narration>Você une suas mãos e uma pequena esfera energética azulada surge à sua frente.</narration>
+    <narration>Quando suas mãos se separam, a esfera explode gerando uma espécie de buraco no espaço do qual surgem oito diferentes descargas elétricas que se curvam no ar, tomando a direção da criatura.</narration>
+    <narration>O monstro abre os braços, invocando uma barreira de energia sombria que anula a maior parte dos raios, mas dois deles mudam de direção no último instante e contornam a barreira, curvando-se novamente pouco depois para atingi-lo pelos flancos.</narration>
+    <person>amarelo</person>
+    <bump />
+    <voice>Urlllrl!</voice>
+    <narration>Como a criatura estava com os braços abertos, os raios acertam primeiro em suas mãos, e ela solta um grunhido inteligível, coisa que nem deveria ser possível, uma vez que ela não tem boca.</narration>
+    <narration>Quando os raios finalmente se dissipam, o monstro se endireita devagar, olhando para as mãos, obviamente feridas.</narration>
+    <protagonist />
+    <reward>+control</reward>
+    <voice>Na mosca!</voice>
+    <emotion>angry</emotion>
+    <voice>Vai levar algum tempo até ele regenerar as mãos, melhor vocês aproveitarem aí atrás, porque da próxima ele não vai pegar leve.</voice>
+  </do>
+
+  <do when="c">
+    <narration>Você segura o bracelete direito com a mão esquerda e começa a disparar sucessivas descargas elétricas que percorrem uma certa distância antes de se curvarem para baixo e antigirem o solo.</narration>
+    <narration>Cada descarga é mais longa que a anterior, aproximando-se cada vez mais do monstro.</narration>
+    <narration>Cautelosa, a criatura vai se esquivando das descargas, o que a obriga a se afastar de você cada vez mais.</narration>
+    <narration>Por fim, você para de disparar, mas continua com o punho apontado na direção do monstro.</narration>
+    <narration>Vocês dois se encaram por um longo momento.</narration>
+    <protagonist />
+    <reward>+fight</reward>
+    <emotion>angry</emotion>
+    <voice>Melhor vocês se apressarem aí atrás!</voice>
+    <voice>Ele não vai ficar brincando de "quem pisca primeiro" para sempre!</voice>
+  </do>
+
+  <do when="!a,b,c">
+    <narration>Você hesita e o monstro ataca, invocando uma outra onda negra em sua direção.</narration>
+    <narration>Atrás de você, um dos assistentes de Norlando arremessa um bastão de madeira na direção de Falcione, que o agarra e, num movimento contínuo, finca sua ponta no chão.</narration>
+    <narration>Imediatamente, uma parede rochosa brota no chão à sua frente, um décimo de segundo antes da energia negra atingir você.</narration>
+    <narration>No entanto, a parede não é resistente o suficiente para conter a energia e se rompe.</narration>
+    <narration>Os destroços da parede mística se desintegram no ar, mas esse efeito acaba por absorver o restante da energia negra, que é completamente dissipada.</narration>
+    <person>falcione</person>
+    <emotion>angry</emotion>
+    <voice>Não vamos aguentar muito tempo desse jeito. Melhor se apressarem aí atrás!</voice>
+  </do>
+
+  <person>amarelo</person>
+  <voice>...</voice>
+  <narration>O monstro levanta a cabeça, como se olhasse para cima.</narration>
+  <narration>Imediatamente, uma parte do chão logo à frente dele começa a escurecer.</narration>
+
+  <music>last-duel</music>
+  
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Norlando! Ele vai abrir um portal!</voice>
+  <person>norlando</person>
+  <emotion>angry</emotion>
+  <voice>Deixa ele!</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Está louco? Ele pode trazer uma horda para cá, incluindo outros da raça dele!</voice>
+  <person>norlando</person>
+  <emotion>angry</emotion>
+  <voice>Só mais um minuto!</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Não temos um minuto!</voice>
+  <person>norlando</person>
+  <emotion>angry</emotion>
+  <voice>Quase lá… quase lá…</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Traduzindo as leituras!</voice>
+  <person>norlando</person>
+  <emotion>angry</emotion>
+  <voice>Vamos! Só mais um pouco…</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>...!</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Tradução confirmada!</voice>
+  <person>norlando</person>
+  <emotion>surprised</emotion>
+  <voice>Pronto, general! Pode dar cabo dele!</voice>
+  <narration>Você cruza os braços e levanta a cabeça, ativando simultaneamente todos os estabilizadores.</narration>
+  <narration>Uma descomunal onda de energia o envolve, fazendo-o flutuar e forçando Falcione e os outros a se afastarem.</narration>
+  <narration>Então você fecha os olhos e aciona o último gatilho mental, fazendo com que a energia o lance na direção do monstro com uma velocidade inimaginável.</narration>
+  <person>amarelo</person>
+  <bump />
+  <voice>Urlllrrr!</voice>
+
+  <music>goodbye</music>
+  <background>black</background>
+
+  <narration>Tudo escurece por um momento.</narration>
+  <narration>Seus sentidos estão tão sobrecarregados com o fluxo energético que você nem sente a colisão.</narration>
+
+  <background>oldroad</background>
+
+  <narration>Quando volta a abrir os olhos, você está deitado no chão em meio a uma pequena cratera.</narration>
+  <narration>Seu corpo está exaurido, sua visão borrada, seus ouvidos estão zunindo e você sente um cheiro quase insuportável de sangue.</narration>
+  <narration>Você se apoia nos braços e se senta, percebendo que sua pele perdeu completamente a sensibilidade. Você não consegue sentir a textura e nem a pressão do chão contra sua mão.</narration>
+  <narration>Não há como saber se sofreu algum ferimento mais sério na explosão, pois provavelmente sua capacidade de sentir dor também está comprometida.</narration>
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>O senhor está bem?</voice>
+  <narration>Você pisca um instante para tentar focalizar o rosto dela. Leva mais um momento para conseguir entender o que está dizendo.</narration>
+  <protagonist />
+  <voice>Isso foi... melhor do que eu imaginava.</voice>
+  <narration>Ela o ajuda a se levantar e você tem dificuldade para manter o equilíbrio, mas sabe que é melhor se manter em pé, pelo menos até que seus ouvidos parem de zunir.</narration>
+  <protagonist />
+  <voice>O ataque... foi efetivo?</voice>
+  <person>falcione</person>
+  <voice>Foi perfeitamente bem-sucedido.</voice>
+  <protagonist />
+  <voice>Feridos?</voice>
+  <person>falcione</person>
+  <voice>Apenas alguns arranhões.</voice>
+  <voice>Como evacuamos a vila antes da chegada dos monstros, os aldeões estão todos sãos e salvos.</voice>
+  <voice>E os soldados também estavam a uma distância segura, obedecendo à sua ordem para recuar logo depois que o amarelo apareceu.</voice>
+  <protagonist />
+  <voice>Nós destruímos completamente a vila.</voice>
+  <person>falcione</person>
+  <voice>Podia ter sido pior.</voice>
+  <narration>Você solta um suspiro.</narration>
+  <protagonist />
+  <voice>Não podemos continuar nesse ritmo. Já é o terceiro amarelo com o qual temos que lidar esta semana.</voice>
+  <person>falcione</person>
+  <voice>Sim, sem contar que, com o artefato do laboratório desativado, nada impede que os demônios invoquem monstros cada vez mais fortes.</voice>
+  <emotion>angry</emotion>
+  <voice>É bom que o plano de Norlando dê certo.</voice>
+
+  <music>the-awakening</music>
+
+  <person>norlando</person>
+  <emotion>happy</emotion>
+  <voice>Há! Conseguimos!</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Uau, isso foi incrível!</voice>
+  <narration>O zumbido no seu ouvido, pelo visto, já tinha diminuído, pois você consegue ouvir com clareza os gritos excitados à distância.</narration>
+  <protagonist />
+  <voice>Pelo visto, temos boas notícias.</voice>
+  <person>falcione</person>
+  <voice>Sim, uma coisa que parece em falta ultimamente.</voice>
+  <emotion>surprised</emotion>
+  <voice>O senhor acha que consegue andar?</voice>
+  <narration>Você se endireita, se afastando dela e dando alguns passos cuidadosos.</narration>
+  <protagonist />
+  <voice>Parece que sim.</voice>
+  <voice>Desta vez eu já conhecia bem as forças e fraquezas desse bicho, então não precisei me exaurir completamente.</voice>
+  <narration>Devagar, você caminha até onde Norlando comanda seus assistentes na construção de alguma bugiganga mística.</narration>
+  <person>norlando</person>
+  <voice>Ah, general! O senhor teve uma excelente performance, como sempre.</voice>
+  <narration>Você assente.</narration>
+  <protagonist />
+  <voice>O que conseguiu?</voice>
+  <person>norlando</person>
+  <emotion>happy</emotion>
+  <voice>Identifiquei a frequência mental dele. E com tudo o que gravei usando meu materializador telepático, posso dizer que consegui tudo o que eu queria!</voice>
+  <narration>Você troca um olhar com Falcione. Ela, obviamente, também não faz ideia do que o homem está falando.</narration>
+  <protagonist />
+  <voice>Parabéns, Norlando. Você é um sábio excepcional.</voice>
+  <voice>Poderia nos dizer, por favor, o que conseguiu descobrir?</voice>
+  <person>norlando</person>
+  <voice>Descobri que eles não esperavam encontrar o senhor aqui, e que foram pegos de surpresa.</voice>
+  <voice>Esse amarelo era o último na ativa no momento e vão levar um bom tempo até conseguirem invocar outro.</voice>
+  <emotion>happy</emotion>
+  <voice>Temos tempo mais do que suficiente para invocar a nova muralha se começarmos agora.</voice>
+  <voice>Por isso já iniciamos os procedimentos e...</voice>
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>Conseguiu tudo isso lendo a mente de um monstro?</voice>
+  <person>norlando</person>
+  <voice>Esses amarelos não são simples monstros. São mais como altos oficiais da horda de monstros.</voice>
+  <voice>Eles comandam os demais como se fossem tenentes.</voice>
+  <voice>São muito mais inteligentes do que pensávamos.</voice>
+  <protagonist />
+  <voice>E eles obedecem às ordens dos demônios?</voice>
+  <person>norlando</person>
+  <voice>Como cachorrinhos adestrados. Não questionam e nem hesitam.</voice>
+  <protagonist />
+  <voice>E não se importam de lutar até a morte, aparentemente.</voice>
+  <person>norlando</person>
+  <voice>Isso é porque são imortais.</voice>
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>O quê?</voice>
+  <person>norlando</person>
+  <voice>Quero dizer, todos eles são.</voice>
+  <voice>Quando sua energia vital é obliterada, eles são transportados de volta para seu mundo de origem.</voice>
+  <voice>É por isso que se transformam em poeira.</voice>
+  <emotion>surprised</emotion>
+  <voice>Eu já não tinha explicado isso para vocês antes?</voice>
+  <protagonist />
+  <voice>Antes você tinha dito que isso era uma teoria.</voice>
+  <person>norlando</person>
+  <emotion>surprised</emotion>
+  <voice>"Teoria" é o mais alto grau de confirmação de uma hipótese na física!</voice>
+  <voice>Para algo ser considerado "Teoria", é necessário que...</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Tudo bem, Norlando, nós entendemos. Obrigado por esclarecer.</voice>
+  <emotion>normal</emotion>
+  <voice>O que mais descobriu?</voice>
+  <person>norlando</person>
+  <voice>Nada. Não tenho tempo agora para decodificar toda a gravação.</voice>
+  <person>falcione</person>
+  <voice>Então o que seus assistentes estão fazendo?</voice>
+  <person>norlando</person>
+  <emotion>surprised</emotion>
+  <voice>Ora! Dando início à invocação da muralha, obviamente!</voice>
+  <emotion>normal</emotion>
+  <voice>Se não tiver mais nada, senhor, gostaria de voltar a supervisionar...</voice>
+  <protagonist />
+  <voice>Sim, claro, pode ir.</voice>
+  <narration>Norlando volta a passar instruções para os assistentes.</narration>
+  <person>falcione</person>
+  <voice>Parece que os dois dias de descanso fizeram muito bem para ele.</voice>
+  <protagonist />
+  <voice>É. Creio que eu nunca o tenha visto tão… motivado.</voice>
+  <narration>Nesse momento, Norlando se irrita com algo que Emelin fez e a enxota dali, argumentando que deixasse aquelas tarefas com mãos mais experientes.</narration>
+  <narration>Um pouco decepcionada, a tenente caminha até onde você e Falcione estão.</narration>
+  <person>emelin</person>
+  <voice>O... o senhor... tem mesmo certeza de que quer fazer isso, general?</voice>
+  <protagonist />
+  <voice>A muralha, você quer dizer? No momento, não temos alternativa.</voice>  
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Mas uma muralha cercando toda a província? E sem torres de controle?</voice>
+  <narration>Você balança a cabeça.</narration>
+  <protagonist />
+  <voice>Não temos como construir torres. Não para esse muro. Levaria meses, e não temos todo esse tempo.</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Mas isso quer dizer...</voice>
+  <person>falcione</person>
+  <voice>Quer dizer que, quando o muro estiver completamente construído, ele não vai permitir a passagem de nada e nem ninguém.</voice>
+  <voice>Ebora ficará isolada do resto do mundo. Permanentemente.</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Mas, isso é...</voice>
+  <protagonist />
+  <choice>
+    <a>Tranquilizar a tenente.</a>
+    <b>Enumerar as razões da decisão.</b>
+    <c>Mantê-la ocupada com alguma tarefa.</c>
+  </choice>
+  <thought>Eu devo...</thought>
+  
+  <do when="a">
+    <narration>Você encara a tenente.</narration>
+
+    <music>never-look-back</music>
+
+    <protagonist />
+    <voice>Relaxe. Nada é permanente. Não, na prática.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Mas...</voice>
+    <protagonist />
+    <voice>Eu sei que é uma decisão drástica, tenente, mas é a melhor alternativa.</voice>
+    <voice>Nosso povo é forte e temos muitos aliados qualificados para lidar com questões místicas.</voice>
+    <voice>Tenho certeza que nenhum de vocês jamais me decepcionaria.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <reward>++relationship</reward>
+    <voice>Puxa, senhor! Quero dizer, obrigada, senhor!</voice>
+  </do>
+  
+  <do when="b">
+    <narration>Você limpa a garganta, o que faz com que Emelin se interrompa.</narration>
+    <protagonist />
+    <voice>Isso é necessário, tenente.</voice>    
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Mas... os sábios estão todos de acordo com isso?</voice>
+    <voice>Precismos fazer alguns estudos para determinar se...</voice>
+    <protagonist />
+    <voice>Não há tempo.</voice>
+    <voice>Se hesitarmos, os demônios podem envolver milhões de pessoas na sua esfera de influência.</voice>
+    <voice>Sabe-se lá o que irão fazer com elas, já basta metade da população de Ebora estar à mercê deles.</voice>
+    <emotion>angry</emotion>
+    <voice>Temos que agir imediatamente para impedi-los.</voice>
+    <person>emelin</person>
+    <emotion>sad</emotion>
+    <voice>...</voice>
+    <protagonist />
+    <reward>++control</reward>
+    <voice>Nem sempre temos o luxo de poder escolher entre uma alternativa boa e uma ruim, tenente.</voice>
+    <voice>Muitas vezes não temos nada além da escolha ruim e da péssima.</voice>
+    <person>emelin</person>
+    <voice>Entendo.</voice>
+  </do>
+  
+  <do when="c">
+    <narration>Você levanta uma mão para interromper a tenente.</narration>
+    
+    <music>never-look-back</music>
+    
+    <protagonist />
+    <voice>Pense assim: qual é o limite de uma muralha? Até que altitude ela tem efeito?</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Entre um e dois quilômetros, eu suponho, mas...</voice>
+    <protagonist />
+    <voice>E o que tem acima disso?</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>O... campo místico?</voice>
+    <protagonist />
+    <voice>Exato. A muralha não consegue impedir o fluxo de energia do campo, não é?</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Não, claro que não! Nada pode!</voice>
+    <protagonist />
+    <voice>Isso quer dizer que não estaremos, exatamente, presos, não?</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <voice>O senhor quer dizer... o senhor se refere... às pontes de vento imperiais?</voice>
+    <protagonist />
+    <voice>Exato. Elas permitem transportar pessoas de um local a outro através do campo místico, se não estou enganado.</voice>
+    <person>emelin</person>
+    <voice>Sim, mas... as nossas pontes foram destruídas, e não temos nenhum sábio com treinamento para...</voice>
+    <protagonist />
+    <voice>O sábio que criou a primeira ponte também não tinha treinamento.</voice>
+    <voice>Só precisamos pesquisar para encontrar uma forma de fazer com que funcione.</voice>
+    <voice>E isso é o que você e os outros sábios foram treinados para fazer, não é? Pesquisar, eu quero dizer.</voice>
+    <person>emelin</person>
+    <emotion>happy</emotion>
+    <voice>Sim, senhor! Então o senhor quer que eu...</voice>
+    <protagonist />
+    <voice>Vá em frente. Os outros vão demorar um pouco para concluir essa invocação.</voice>
+    <person>emelin</person>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>Sim, senhor! Obrigada, senhor!</voice>
+    <narration>Ela sai correndo, toda animada, e pega um enorme livro de uma das bolsas que estão no chão por ali.</narration>
+    <narration>Em seguida, se senta de pernas cruzadas no solo arenoso e começa a procurar algo avidamente pelas páginas.</narration>
+    <trophy>motivator</trophy>
+    <person>falcione</person>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>    
+    <voice>O senhor conseguiu mesmo deixar a garota empolgada.</voice>
+    <voice>Acha que ela tem alguma chance de sucesso?</voice>
+    <protagonist />
+    <voice>Se tem uma coisa que eu aprendi nesses últimos meses é que não devo subestimar ninguém e nem duvidar de nada.</voice>
+  </do>
+</storyboard>

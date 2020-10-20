@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>belisar</viewpoint>
+  <music>open-sky</music>
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <do>
+    <protagonist />
+    <choice>
+      <d>Prosseguir</d>
+    </choice>
+    <voice>...</voice>
+    <exit when="d" />
+    <restart />
+  </do>
+
+  <background>sanctuary-ruins</background>
+
+  <narration>Após uma viagem difícil, você, Norlando e Giarle finalmente chegam até o vale do Santuário do Conhecimento.</narration>
+  <person>giarle</person>
+  <voice>Quando disseram que esse lugar era escondido, não estavam brincando, hein?</voice>
+  <person>norlando</person>
+  <voice>Isto é um espaço alternativo. Não estamos mais em nossa realidade.</voice>
+  <person>giarle</person>
+  <emotion>surprised</emotion>
+  <voice>É mesmo? Não lembro de termos passado por um portal nem nada assim.</voice>
+  <protagonist />
+  <voice>Segundo o guardião, este lugar já sofreu muitos ataques com o passar dos séculos.</voice>
+  <voice>A entidade que erigiu o santuário criou vários mecanismos de proteção, para manter pessoas mal intencionadas longe.</voice>
+  <person>giarle</person>
+  <emotion>surprised</emotion>
+  <voice>...</voice>
+  <voice>E é por isso que vocês me deixaram vir também?</voice>
+  <voice>Para saber se podem confiar em mim?</voice>
+  <person>norlando</person>
+  <voice>Claro que sim.</voice>
+  <voice>Talvez você não tenha nada a provar para nós dois, mas nossos soldados precisam de algum tipo de comprovação de sua lealdade.</voice>
+  <person>giarle</person>
+  <voice>...</voice>
+  <voice>Certo... isso faz sentido, eu acho.</voice>
+  <protagonist />
+  <voice>Você já esteve no comando, sabe como as coisas são.</voice>
+  <person>giarle</person>
+  <emotion>sad</emotion>
+  <voice>Infelizmente...</voice>
+  <emotion>normal</emotion>
+  <voice>Mas esse lugar é muito bonito. Gardênia já esteve aqui?</voice>
+  <protagonist />
+  <voice>Não.</voice>
+  <person>giarle</person>
+  <voice>...</voice>
+  <voice>Azar o dela, eu acho...</voice>
+
+  <music>enigma</music>
+
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Tem algo errado.</voice>
+  <person>norlando</person>
+  <emotion>surprised</emotion>
+  <voice>Senhor, por favor, para trás.</voice>
+  <voice>O senhor ainda não está em condições de lutar.</voice>
+  <narration>Giarle se adianta.</narration>
+  <person>giarle</person>
+  <voice>Deixa com a gente, general.</voice>
+  <voice>O que o senhor pressentiu?</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>As construções! Deveria existir uma grande ruína aqui!</voice>
+  <voice>Não há mais nada, a entrada para os túneis não existe mais, está tudo soterrado!</voice>
+
+  <music>sadistic-game</music>
+
+  <person>laina</person>
+  <voice>Pelo visto, faz tempo que não vem até aqui, não é, "General Vermelho"?</voice>
+  <narration>Você olha para o lado e encara por um momento a loira com uniforme de soldado imperial que havia surgido sobre uma rocha à distância.</narration>
+  <person>giarle</person>
+  <emotion>surprised</emotion>
+  <voice>Intrusos!</voice>
+  <narration>Quase que por instinto, você ativa sua clarividência e analisa os arredores.</narration>
+  <protagonist />
+  <voice>Estamos cercados!</voice>
+  <narration>A loira solta um suspiro.</narration>
+  <person>laina</person>
+  <voice>Lá se vai o elemento surpresa. Podem sair, pessoal!</voice>
+  <narration>Um outro soldado aparece ao lado dela, aparentemente saindo de algum tipo de campo de ocultamento.</narration>
+  <person>alvor</person>
+  <voice>...</voice>
+  <narration>Outros dois surgem do outro lado da trilha.</narration>
+  <person>loren</person>
+  <voice>...</voice>
+  <person>beni</person>
+  <voice>...</voice>
+  <narration>E mais dois aparecem no caminho por onde vocês vieram.</narration>
+  <person>iseo</person>
+  <voice>...</voice>
+  <person>erinia</person>
+  <voice>...</voice>
+  <protagonist />
+  <thought>Não sabemos o que eles querem ou do que são capazes.</thought>
+  <thought>O que faremos?</thought>
+  <choice>
+    <a>Preparar uma ofensiva</a>
+    <b>Ganhar tempo</b>
+    <c>Procurar uma rota de fuga</c>
+  </choice>
+  <thought>Devemos...</thought>
+
+  <do when="a">
+    <narration>Você sabe que, mesmo que você não esteja em condições, Norlando e Giarle juntos podem dar conta de quase qualquer oponente.</narration>
+    <narration>Quando se prepara para dar a ordem para se prepararem, um dos soldados, uma menina de não mais do que 16 anos, larga seu arco e levanta as mãos.</narration>
+    
+    <music>goodbye</music>
+
+    <person>erinia</person>
+    <voice>Espere, general! Viemos em paz!</voice>
+    <narration>Você hesita por um instante, a garota parece sincera.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+power</reward>
+    <voice>E por que eu deveria acreditar em vocês?</voice>
+    <voice>Ebora não faz mais parte do Império. Vocês não deveriam estar aqui.</voice>
+  </do>
+
+  <do when="b">
+    <narration>Você encara a loira por alguns instantes.</narration>
+    <protagonist />
+    <voice>Se são mesmo do Império, estão muito longe de casa.</voice>
+
+    <music>goodbye</music>
+
+    <person>laine</person>
+    <emotion>happy</emotion>
+    <voice>Nem me fale.</voice>
+    <narration>Alguns dos outros soldados soltam alguns resmungos bem humorados, como que concordando também.</narration>
+    <protagonist />
+    <reward>+control</reward>
+    <voice>Certo. Vocês parecem já saber quem eu sou, então estão em vantagem.</voice>
+  </do>
+  
+  <do when="c">
+    <narration>De forma discreta, você começa procurar, com a ajuda da clarividência, pela melhor rota de fuga.</narration>
+    <narration>Mas precisa manter os estranhos distraídos.</narration>
+    <protagonist />
+    <reward>+fight</reward>
+    <voice>O Império não tem mais jurisdição aqui.</voice>
+    <voice>Vocês estão invadindo meu território.</voice>
+    <voice>Quem são vocês e o que querem?</voice>
+
+    <music>goodbye</music>
+
+    <narration>A loira levanta as mãos.</narration>
+    <person>laina</person>
+    <voice>Que tal fazermos uma trégua onde ninguém ataca ou usa poderes místicos durante os próximos cinco minutos?</voice>
+    <narration>Você percebe que todos os soldados estão de prontidão, mas nenhum deles está fazendo nada, além de observar.</narration>
+    <narration>Então, desativando a clarividência, você encara a mulher.</narration>
+    <protagonist />
+    <voice>Muito bem. Fale.</voice>
+  </do>
+
+  <person>laina</person>
+  <voice>Eu sou a major Laina Imelde e nós somos a Guarda Imperial de Verídia.</voice>
+  <voice>Como toda a província de Ebora está isolada do resto do mundo por aquela muralha, a imperatriz nos mandou para verificar o que está acontecendo aqui.</voice>
+  <person>norlando</person>
+  <voice>E como tiveram acesso a este local?</voice>
+  <person>laina</person>
+  <voice>A imperatriz já esteve no santuário, antes de ele ser destruído.</voice>
+  <voice>Ela nos instruiu a verificar se esse espaço alternativo ainda existia.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>A imperatriz esteve aqui? Quando?</voice>
+  <person>laina</person>
+  <voice>A última vez que ela esteve aqui foi cerca de um ano atrás, logo depois que os mortos-vivos destruíram o santuário.</voice>
+  
+  <music>enigma</music>
+
+  <narration>Você franze o cenho ao ouvir aquilo.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Recomendo que se atenha a dizer a verdade, major, caso contrário essa conversa não vai chegar a lugar nenhum.</voice>
+  <person>laina</person>
+  <emotion>surprised</emotion>
+  <voice>Perdão...?</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Eu estive aqui duas semanas atrás, o santuário estava aqui.</voice>
+  <voice>Conversei com o guardião. Foi ele quem me forneceu informações para a invocação da muralha ao redor da província.</voice>
+  <narration>Os soldados se entreolham, nitidamente confusos.</narration>
+  <person>erinia</person>
+  <emotion>surprised</emotion>
+  <voice>Oh, não! As coisas são piores do que pensamos!</voice>
+  <voice>A muralha criou uma disfunção temporal!</voice>
+  <voice>Ebora foi removida do fluxo normal do tempo!</voice>
+  
+  
+  <person>norlando</person>
+  <emotion>surprised</emotion>
+  <voice>O quê?!</voice>
+  <person>alvor</person>
+  <emotion>surprised</emotion>
+  <voice>Mas isso quer dizer que nós...?</voice>
+  <person>laina</person>
+  <emotion>surprised</emotion>
+  <voice>Erínia, como você...?</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Podemos ter um pouco de ordem aqui, por um momento?</voice>
+  <narration>Todos se calam imediatamente e olham para você, apreensivos.</narration>
+  <narration>Você encara a garota.</narration>
+  <protagonist />
+  <voice></voice>
+</storyboard>

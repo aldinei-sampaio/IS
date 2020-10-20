@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>sulana</viewpoint>
+  <music>open-sky</music>
+  <background>sulana</background>
+  <tutorial>Você agora está controlando Sulana Lautine</tutorial>
+
+  <do>
+    <protagonist />
+    <choice>
+      <d>Prosseguir</d>
+    </choice>
+    <voice>...</voice>
+    <exit when="d" />
+    <restart />
+  </do>
+
+  <background>greatwall</background>
+
+  <narration>Ao chegarem à grande muralha, era notável a excitação dos rebeldes.</narration>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Ei, Sulana! Quer que eu leve isso para você?</voice>
+  <narration>Ele aponta para a mochila que você carrega nas costas.</narration>
+  <protagonist />
+  <voice>Por quê?</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Você sempre disse que luta melhor sem peso extra.</voice>
+  <narration>Você dá alguns puxões na mochila, sentindo o seu peso e concluindo que é irrelevante.</narration>
+  <protagonist />
+  <voice>Isso não vai me atrapalhar.</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Você está mesmo diferente, sabia?</voice>
+  <voice>Normalmente até o peso das roupas a incomoda.</voice>
+  <person>rebelde1</person>
+  <emotion>happy</emotion>
+  <voice>Dá-lhe Ronam!</voice>
+  <person>rebelde2</person>
+  <emotion>happy</emotion>
+  <voice>Esse tipo de cantada é mais eficiente depois da batalha ao invés de antes, amigo.</voice>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Ah, calem a boca!</voice>
+  <narration>Ignorando-os, você fica em silêncio, pensativa.</narration>
+  <narration>É verdade que está se sentindo bem mais cheia de energia do que de costume.</narration>
+  <narration>Seu corpo está leve, seus movimentos, precisos, os músculos, desejosos de esforço, de ação.</narration>
+  <narration>Se tivesse que passar o dia no abrigo, com certeza iniciaria uma nova escultura de madeira.</narration>
+  <narration>Talvez aquilo ainda seja efeito da euforia provocada pela batalha que diziam que ela tinha participado e da qual não se lembra.</narration>
+  <narration>De qualquer forma, não adianta ficar pensando nisso agora.</narration>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>Olha lá, os invocadores vão começar o trabalho de demolição!</voice>
+  <narration>Os conjuradores se organizaram em dois times e se concentraram em lançar projéteis místicos contra uma determinada parte da parede.</narration>
+  <narration>A muralha parecia nada sofrer, mas os rebeldes continuaram a atacar de novo e de novo, por vários minutos.</narration>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>É, Sulana estava certa numa coisa: isso está consumindo MUITA energia.</voice>
+  <voice>Nunca vi tanta explosão na minha vida. Como essa coisa pode continuar de pé?</voice>
+  <person>lura</person>
+  <voice>A muralha é um construto místico, ela não pode ser simplesmente explodida.</voice>
+  <voice>Eles têm que tentar sobrecarregar a capacidade de absorção de inércia dela até que...</voice>
+  <emotion>surprised</emotion>
+  <voice>Olha lá! Algo está acontecendo!</voice>
+  <narration>Através da fumaça das explosões, é possível ver que uma parte da parede começa a mudar de cor.</narration>
+  <narration>Então uma seção inteira da muralha cede, as pedras desabando como um castelo de cartas.</narration>
+  <narration>Um dos conjuradores invoca uma onda de choque que atinge as pedras e lança a maioria delas para os lados, abrindo um caminho.</narration>
+  <narration>Iraele desembainha sua espada e a levanta, apontando para o território inimigo.</narration>
+
+  <music>crime-fighter</music>
+  
+  <person>iraele</person>
+  <emotion>angry</emotion>
+  <voice>Vamos em frente!</voice>
+  <person>ronam</person>
+  <emotion>angry</emotion>
+  <voice>Por Ebora!</voice>
+  <person>lura</person>
+  <emotion>angry</emotion>
+  <voice>Pela liberdade!</voice>
+  <person>rebelde1</person>
+  <emotion>angry</emotion>
+  <voice>Vamos acabar com eles!</voice>
+  <person>rebelde2</person>
+  <emotion>angry</emotion>
+  <voice>Vamos tomar de volta o que é nosso!</voice>
+  <narration>Os conjuradores, exauridos, se deslocam para os lados enquanto você e seus amigos correm para a abertura, seguidos pelos demais rebeldes.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Você sente a animação e o ímpeto, a sede de batalha se formando dentro de você, e não gosta muito disso.</narration>
+  <narration>Não que não seja uma sensação familiar, pois você sempre se sentiu dessa forma em todas as batalhas das quais participou ao lado dos rebeldes.</narration>
+  <narration>Na verdade, você até aprecia isso, mas dessa vez um pensamento diferente cruza sua mente. </narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>De onde vem esse sentimento?</thought>
+  <thought>Eu não gosto de lutar, faço isso apenas por necessidade.</thought>
+  <thought>O impulso, a ânsia, a sede que precisa ser saciada são coisas ruins, que não me causam nenhum tipo de alegria ou prazer.</thought>
+  <emotion>normal</emotion>
+  <thought>Mas essa antecipação pela batalha que surge sempre que estou com eles é muito diferente.</thought>
+  <emotion>surprised</emotion>
+  <thought>Será que isso é causado pela... solidão?</thought>
+  <thought>Derione gosta de dizer que estive vivendo isolada por tempo demais.</thought>
+  <emotion>angry</emotion>
+  <voice>E por que, raios, estou pensando nisso quando estamos prestes a entrar em combate?</voice>
+  <narration>Você fecha os olhos com força por um segundo e sacode a cabeça, tentando se livrar daqueles pensamentos.</narration>
+  <narration>Definitivamente, tem algo muito estranho com você.</narration>
+
+  <background>oldroad</background>
+
+  <narration>Logo, a corrida se transforma em uma marcha quase militar enquanto avançam.</narration>
+  <narration>Quando vocês ultrapassam uma elevação no terreno acidentado, percebem que estão sendo esperados.</narration>
+  <narration>Um contingente enorme de soldados carmim está a postos, bandeiras tão vermelhas quanto os uniformes balançando ao vento.</narration>
+  <person>iraele</person>
+  <emotion>angry</emotion>
+  <voice>Parem!</voice>
+  <narration>Você e seus amigos param ao lado dela enquanto os rebeldes interrompem a marcha e ficam de prontidão mais atrás, ainda fora do campo de visão dos soldados.</narration>
+  <narration>Iraele tira uma luneta do bolso e começa a avaliar os inimigos.</narration>
+
+  <music>goodbye</music>
+
+  <narration>Nesse momento, você se recorda do Marcelius Belísar que viu na praia.</narration>
+  <narration>Da forma amorosa como ele trata a esposa e os filhos.</narration>
+  <narration>Raios, até mesmo aos soldados e servos ele dirige a palavra com educação e respeito.</narration>
+  <narration>Nenhuma daquelas pessoas parece servi-lo contra a vontade, parecem todos felizes e satisfeitos por estarem lá.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Será aquilo efeito do controle da mente que tanto falam?</thought>
+  <narration>Cedendo a um impulso, que você não sabe ao certo de onde vem, você se adianta e tira a luneta nas mãos da comandante.</narration>
+  <person>iraele</person>
+  <emotion>surprised</emotion>
+  <voice>Mas o quê...?</voice>
+  <narration>Você a ignora e aproxima o objeto do olho, tentando focar os soldados à distância.</narration>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Sulana, o que está fazendo?</voice>
+
+  <music>enigma</music>
+
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Furiosa, você abaixa a luneta e a aperta até entortar e inutilizar completamente o objeto.</narration>
+  <person>iraele</person>
+  <emotion>surprised</emotion>
+  <voice>Por que fez isso?</voice>
+  <emotion>angry</emotion>
+  <voice>O que há com você?</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Mantenham posição.</voice>
+  <person>iraele</person>
+  <emotion>surprised</emotion>
+  <voice>Como é que é?</voice>
+  <emotion>angry</emotion>
+  <voice>Sou eu quem...</voice>
+  <narration>Você sente os primeiros efeitos da febre de batalha ao virar o rosto para encarar a comandante.</narration>
+  <narration>É possível ver, no fundo dos olhos dela, o reflexo avermelhado de seu próprio olhar.</narration>
+  <person>iraele</person>
+  <emotion>surprised</emotion>
+  <voice>!!</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>...</voice>
+  <narration>A comandante, bem como todos os rebeldes próximos, dão um passo para trás, instintivamente.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Mantenham. Formação.</voice>
+  <narration>Com isso, você se vira e marcha, determinada, na direção dos soldados.</narration>
+  <narration>Seus sentidos ampliados pela febre conseguem captar a conversa sussurada dos rebeldes.</narration>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>O que ela está fazendo?</voice>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>Não sei. Nunca a vi agir dessa forma antes.</voice>
+  <emotion>normal</emotion>
+  <voice>Ela nunca toma atitudes imprudentes durante uma batalha, muito menos intimida pessoas de propósito…</voice>
+  <emotion>surprised</emotion>
+  <voice>Espere! Parece que alguns dos soldados vermelhos estão se adiantando também, indo na direção dela.</voice>
+  <person>iraele</person>
+  <emotion>angry</emotion>
+  <voice>Isso é um ultraje!</voice>
+  <voice>Se acabarmos perdendo essa batalha por causa dela, eu…</voice>
+  <person>ronam</person>
+  <voice>Vamos ver o que acontece. Talvez ela tenha um plano.</voice>
+  <narration>Você para no meio da planície e aguarda a aproximação do pequeno grupo de cavaleiros vermelhos, que galopam em sua direção.</narration>
+  <narration>Olhando para além deles, você avalia mais uma vez o exército inimigo.</narration>
+  <narration>Há muitos deles. A força rebelde estará em grande desvantagem nessa batalha.</narration>
+  <narration>Os cavaleiros de uniforme vermelho param de repente quando estão a uma distância de cerca de dez passos.</narration>
+  <narration>Quatro rostos familiares a encaram, parecendo apreensivos.</narration>
+  <person>soldado3</person>
+  <voice>...</voice>
+  <person>soldado4</person>
+  <voice>...</voice>
+  <person>soldado5</person>
+  <voice>...</voice>
+  <person>soldado8</person>
+  <voice>...</voice>
+  <narration>Então, o quinto deles desmonta do cavalo e corre em sua direção, arrancando o elmo da cabeça.</narration>
+  <narration>Aqueles cabelos curtos e espetados são inconfundíveis.</narration>
+  <person>giarle</person>
+  <emotion>surprised</emotion>
+  <voice>Sulana! Você está viva!</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Resolveu se unir aos inimigos agora, Giarle Miliens?</voice>
+</storyboard>

@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>derione</viewpoint>
+  <music>the-awakening</music>
+  <background>carmim</background>
+  <observe />
+  <narration>Capítulo 7: Sacrifício</narration>
+
+  <do>
+    <protagonist />
+    <choice>
+      <a when="derione_relationship[:1]" req="Derione &lt; 2">Derione+2</a>
+      <b when="sulana_javalihunter[:2]" req="sulana_javalihunter &lt; 3">sulana_javalihunter</b>
+      <c when="!worried_riodes" req="!worried_riodes">Ranzinza Preocupado</c>
+      <d>Prosseguir</d>
+    </choice>
+    <voice>...</voice>
+    <exit when="d" />
+    <do when="a">
+      <protagonist />
+      <reward>++relationship</reward>
+      <voice>...</voice>
+    </do>
+    <do when="b">
+      <person>sulana</person>
+      <set>+javalihunter</set>
+      <voice>sulana_javalihunter incrementado</voice>
+    </do>
+    <trophy when="c">worried_riodes</trophy>
+    <restart />
+  </do>
+
+  <do when="derione_relationship[2:]">
+    <background>black</background>
+    <tutorial>Você conseguiu pontos de relacionamento com Derione suficientes para desbloquear uma cena especial.</tutorial>
+    <tutorial>Em cenas como esta, você estará no comando de um personagem coadjuvante, revelando informações ou acontecimentos relevantes à trama principal.</tutorial>
+    <tutorial>Durante cenas especiais, você poderá adquirir pontos de relacionamento para serem utilizados posteriormente por Sulana ou Belísar.</tutorial>
+
+    <background>transition</background>
+    <tutorial>Você agora está controlando Derione de Dalins</tutorial>
+
+    <background>shelter</background>
+
+    <narration>Você levanta a incrivelmente pesada viga acima de sua cabeça e a posiciona no lugar.</narration>
+    <protagonist />
+    <voice>...</voice>
+    <narration>A garota que assiste à cena sentada a um tronco à distância bate palmas e solta exclamações empolgadas.</narration>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Aí! Muito bem! Você é demais!!</voice>
+    <narration>O senhor de cara amarrada faz um gesto de assentimento, o que você imagina que pode ser considerado como um elogio.</narration>
+    <person>riodes</person>
+    <voice>Muito bem, seus molengas, agora subam lá e façam a parte de vocês, pelo menos!</voice>
+    <narration>Obedecendo à ordem do mais velho, dois homens encostam uma escada na viga para poderem subir e prosseguir com o trabalho de reconstrução, cuja próxima etapa é refazer o telhado.</narration>
+    <narration>Você observa o trabalho por um minuto, em silêncio.</narration>
+    <protagonist />
+    <voice>...</voice>
+    <narration>Aquela forma de construção lhe parece muito antiquada e improdutiva. Com as ferramentas arcaicas que os humanos são obrigados a trabalhar, lhe parece incrível que consigam fazer qualquer coisa.</narration>
+    <protagonist />
+    <thought>Eu não deveria estar aqui.</thought>
+    <thought>Muito menos me mostrando para os humanos ou me passando por um deles.</thought>
+    <emotion>sad</emotion>
+    <thought>Mas esse é o trabalho que Sulana faria se estivesse por aqui.</thought>
+    <thought>Se eu não tivesse interferido da vida dela.</thought>
+    <thought>E se ela não tivesse se ferido tão gravemente por causa disso.</thought>
+    <narration>A imagem dela lutando contra os soldados vermelhos não sai de sua cabeça.</narration>
+    <narration>Vê-la poupando aquelas vidas o havia enchido de alegria e culpa ao mesmo tempo.</narration>
+    <narration>Ela deve estar com Belísar agora. Você sentiu quando o gatilho que pôs na túnica foi ativado.</narration>
+    <narration>E as pessoas daquele abrigo seriam prejudicadas pela ausência dela.</narration>
+    <narration>Você não queria mais um peso na consciência, então decidiu ajudar um pouco, pelo menos até pensar numa forma mais permanente de solucionar esse problema.</narration>
+    <person>riodes</person>
+    <voice>Obrigado pela ajuda, meu jovem.</voice>
+    <voice>Esses idiotas nunca conseguiriam terminar esse telhado antes da chuva se não fosse por você.</voice>
+    <narration>Não é difícil perceber que agradecimentos não fazem parte do comportamento normal desse homem.</narration>
+    <protagonist />    
+    <thought>Ele está desconfiado, provavelmente tentando descobrir mais informações sobre mim.</thought>
+    <narration>Olhando para o céu, que escurece a cada minuto, você imagina se realmente conseguirão terminar aquilo, com ou sem sua ajuda.</narration>
+    <protagonist />
+    <voice>As nuvens estão ficando carregadas.</voice>
+    <person>riodes</person>
+    <voice>Não se preocupe. Aqueles dois ali são uns fracotes, mas com as vigas no lugar, eles terminam isso rápido.</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Senhor Derione, você é tão forte!</voice>
+    <voice>Por acaso é um soldado? Está a serviço do império?</voice>
+    <emotion>surprised</emotion>
+    <voice>Espere! Não me diga que é alguém do alto escalão! Da Guarda Imperial, talvez?</voice>
+    <emotion>happy</emotion>
+    <voice>Minha mãe namorou um deles uma vez, sabe? Ela sempre dizia que os homens da guarda são tão... heróicos!</voice>
+    <protagonist />
+    <voice>Não, senhora. Sou apenas um viajante.</voice>
+    <voice>Agora, se não precisam de mais assistência, irei retomar meu caminho.</voice>
+    <person>riodes</person>
+    <voice>Fique um pouco mais, o guisado está quase pronto.</voice>
+    <voice when="sulana_javalihunter">Já comeu carne de javali com tempero de ervas brancas? Garanto que é uma experiência que não irá se esquecer.</voice>
+    <protagonist />
+    <voice>Fico grato pela oferta, mas devo declinar.</voice>
+    <person>riodes</person>
+    <voice>Sulana nunca falou de você.</voice>
+    <narration>Você já se virava com intenção de ir embora, mas estaca ao ouvir aquilo.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Como?</voice>
+    <person>riodes</person>
+    <voice>Vocês não se parecem em nada.</voice>
+    <voice>A princípio achei que fosse irmão ou primo dela, mas olhando para você agora isso não me parece possível.</voice>
+    <voice>Vocês estão juntos há quanto tempo?</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Por que acha que conheço essa mulher?</voice>
+    <person>riodes</person>
+    <voice>Você, eu não posso dizer nada, mas ela, com certeza, o conhece.</voice>
+    <protagonist />
+    <voice>Está falando em enigmas, caro senhor.</voice>
+    <person>riodes</person>
+    <emotion>happy</emotion>
+    <voice>Todos temos nossas pequenas distrações, não?</voice>
+    <emotion>normal</emotion>
+    <voice>Mas não se preocupe, não quero me intrometer, nem nada. Só estou realmente grato pela ajuda.</voice>
+    <voice>Sulana é quem normalmente faz o trabalho pesado por aqui, mas hoje de manhã ela não parecia muito bem.</voice>
+    <voice>Estava fraca e abatida.</voice>
+    <voice>Como você pode ver, tivemos uma infestação de cupins em algumas paredes, uma delas chegou a desabar, inclusive.</voice>
+    <narration>O homem lança um olhar torto na direção da garota, que responde com um sorriso inocente.</narration>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>...</voice>
+    <person>riodes</person>
+    <voice>De qualquer forma, para Sulana não ficar fazendo esse serviço pesado o dia todo, mandei ela arranjar alguma comida.</voice>
+    <voice>Mas você sabe como ela é.</voice>
+    <voice when="sulana_javalihunter[3]">Acabou achando uma manada de javalis na floresta e abateu vários deles.</voice>
+    <voice when="sulana_javalihunter[2]">Acabou achando uma manada de javalis na floresta e abateu dois deles.</voice>
+    <voice when="sulana_javalihunter[1]">Acabou achando uma manada de javalis na floresta e abateu um deles.</voice>
+    <voice when="!sulana_javalihunter">Acabou achando uma manada de javalis na floresta e tentou abatê-los.</voice>
+    <voice when="!sulana_javalihunter">Ela não teve sorte, mas depois encontramos umas batatas muito bonitas, que ficam ótimas com carne seca.</voice>
+    <voice when="sulana_javalihunter[2:]">Agora teremos que comer carne todos os dias se não quisermos deixar estragar.</voice>
+    <narration>O homem abre um sorriso, exibindo as falhas em seus dentes.</narration>
+    <person>riodes</person>
+    <emotion>happy</emotion>
+    <voice when="sulana_javalihunter[2:]">Por que não fica mais um pouco e nos ajuda com isso?</voice>
+    <voice when="sulana_javalihunter[:1]">Por que não fica mais um pouco e almoça conosco?</voice>
+    <voice>Ninguém reclama do gosto do meu tempero por aqui.</voice>
+    <narration>Você olha para ele, boquiaberto.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Ela saiu para caçar naquele estado?</voice>
+    <person>riodes</person>
+    <voice when="sulana_javalihunter">Sim, e trouxe tudo nos ombros numa viagem só.</voice>
+    <voice when="!sulana_javalihunter">Sim, e voltou parecendo muito frustrada.</voice>
+    <voice>Estava com aquela cara de quem não quer conversa, então achei melhor deixar ela ir embora sem falar nada.</voice>
+    <voice>Imaginei que você fosse namorado dela e poderia saber se ela está melhor ou se precisa de alguma coisa.</voice>
+    <voice when="worried_riodes">Mandei alguns desses inúteis para ver como ela estava, mas voltaram dizendo tanta bobagem que acho que se perderam no caminho e estão inventando história por vergonha de admitir.</voice>
+    <voice when="!worried_riodes">A maior parte dos moradores daqui é velho ou deficiente e o caminho até a cabana dela é difícil.</voice>
+    <protagonist />
+    <choice>
+      <a>Não tenho ligação amorosa com ela.</a>
+      <b>Ela não tem interesse em envolvimentos amorosos.</b>
+    </choice>
+    <voice>...</voice>
+
+    <do when="a">
+      <narration>Você sabe que aquilo é apenas uma meia verdade, mas não tem interesse em revelar mais detalhes.</narration>
+      <person>riodes</person>
+      <voice>Mas você já sabia que ela está machucada, não é?</voice>
+      <voice>Esteve cuidando dela, por acaso?</voice>
+      <person>linete</person>
+      <emotion>surprised</emotion>
+      <voice>Você está cuidando dela?</voice>
+      <emotion>happy</emotion>
+      <voice>Então você é, tipo, um cavaleiro errante salvando uma donzela em apuros?</voice>
+      <person>riodes</person>
+      <emotion>surprised</emotion>
+      <voice>Pare de falar tontice, sua doida!</voice>
+      <voice>Desde quando alguém seria idiota suficiente para pensar em Sulana como uma "donzela"?</voice>
+      <person>linete</person>
+      <reward>+relationship</reward>
+      <voice>Isso é tão romântico!</voice>
+      <emotion>surprised</emotion>
+      <voice>Quero dizer, você está interessado, não está? Devia se declarar logo para ela!</voice>
+      <emotion>happy</emotion>
+      <voice>Ela é sempre tão séria e sisuda! Está mesmo precisando de um pouco de romance.</voice>
+    </do>
+
+    <do when="b">
+      <person>riodes</person>
+      <reward>+relationship</reward>
+      <voice>Pela minha experiência, isso é o que as mulheres dizem quando não querem admitir que estão interessadas.</voice>
+      <narration>O homem parece muito satisfeito consigo mesmo por ter feito com que você admitisse que tem uma ligação com Sulana.</narration>
+      <person>linete</person>
+      <emotion>angry</emotion>
+      <voice>Ei! Eu nunca falei isso não!</voice>
+      <emotion>normal</emotion>
+      <voice>Está certo que eu nunca tive um admirador atraente assim...</voice>
+      <emotion>happy</emotion>
+      <voice>Mas minha mãe sempre disse que um dia alguém deslumbrante entraria em minha vida e me daria tudo o que eu mereço.</voice>
+      <person>riodes</person>
+      <emotion>angry</emotion>
+      <voice>Você merece é umas palmadas por ficar se intrometendo na conversa dos outros.</voice>
+      <person>linete</person>
+      <emotion>happy</emotion>
+      <voice>Não se preocupe, Riodes, tenho certeza que um dia uma princesa encantada irá entrar em sua vida, também.</voice>
+      <person>riodes</person>
+      <voice>Isso já aconteceu há décadas, pirralha, eu sou casado, já esqueceu?</voice>
+      <emotion>angry</emotion>
+      <voice>Agora feche essa matraca ou vá fazer algo de útil!</voice>
+      <narration>A garota abre a boca para retrucar, mas então uma borboleta passa em sua frente e ela mais do que depressa pega suas muletas e sai em uma perseguição desajeitada ao inseto.</narration>
+      <person>linete</person>
+      <emotion>surprised</emotion>
+      <voice>Vem aqui, coisinha linda!</voice>
+    </do>
+
+    <protagonist />
+    <voice>...</voice>
+    <narration>Riodes estuda você com atenção.</narration>
+    <person>riodes</person>
+    <voice>Sulana parece ter você em alta conta. Como a conheceu?</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Ela falou sobre mim?</voice>
+    <person>riodes</person>
+    <voice>Como eu disse antes, não, não falou.</voice>
+    <voice>Você sabe como ela é, não tem como arrancar informações daquela teimosa, ela é fechada, quase não conversa.</voice>
+    <narration>Você solta um suspiro.</narration>
+    <protagonist />
+    <voice>Fui eu quem sugeriu que ela viesse morar neste lugar.</voice>
+    <narration>O velho deu um sorriso satisfeito.</narration>
+    <person>riodes</person>
+    <emotion>happy</emotion>
+    <voice>É mesmo? Por quê?</voice>
+    <protagonist />
+    <voice>Porque imaginei que trabalhar com pessoas necessitadas pudesse torna-la um pouco mais…</voice>
+    <person>riodes</person>
+    <voice>Humana?</voice>
+    <protagonist />
+    <voice>Sociável.</voice>
+    <narration>O velho dá de ombros.</narration>
+    <person>riodes</person>
+    <voice>Pelo menos, ela trabalha. Se fosse depender só dos inúteis que moram aqui estaríamos todos mortos de fome.</voice>
+    <voice>De vez em quando começa a ficar inquieta, como se tivesse uma coceira que não consegue coçar e aí some por alguns dias, mas aí volta parecendo nova em folha e até trabalha um pouco naquele passatempo dela.</voice>
+    <narration>Nesse momento, um relâmpago corta os céus e Riodes se vira para apressar os homens que consertam o telhado.</narration>
+    <narration>Você o observa por um momento, desconfiado. O homem parece saber muito mais do que dá a entender.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Estará Sulana realmente segura com estas pessoas?</thought>
+    <emotion>sad</emotion>
+    <thought>Não que isso importe, já que jurei não mais interferir na vida dela, então o assunto não mais me diz respeito.</thought>
+    <thought>Não é?</thought>
+    <emotion>normal</emotion>
+    <thought>...</thought>
+    <thought>Mas como esse homem poderia saber de minha ligação com ela?</thought>
+    <thought>Estou certo de que Sulana nunca falaria sobre isso com ninguém, então como...?</thought>
+    <emotion>surprised</emotion>
+    <thought>Espere!</thought>
+    <thought>O “passatempo dela”. Seria possível…?</thought>
+    <narration>Quando Riodes volta a se virar, fica surpreso ao perceber que está sozinho.</narration>
+    <person>riodes</person>
+    <emotion>surprised</emotion>
+    <voice>Hã? Para onde ele foi?</voice>
+
+    <music>goodbye</music>
+
+    <narration>Envolto em seu campo de ocultamento, você voa até a velha cabana caindo aos pedaços onde Sulana guarda suas ferramentas.</narration>
+    <narration>A culpa não para de atormentá-lo.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Não devia tê-la deixado sozinha. Não naquele estado.</thought>
+    <thought when="sulana_javalihunter">Devia ter ficado por perto para impedir que fizesse alguma sandice, como lutar sozinha contra um bando de javalis, ou carregar animais abatidos nos ombros por sabe-se lá que distância.</thought>
+    <thought when="!sulana_javalihunter">Devia ter ficado por perto para impedir que fizesse alguma sandice, como tentar lutar sozinha contra um bando de javalis.</thought>
+    <narration>Ao chegar à velha construção, você se torna imaterial e caminha através da porta.</narration>
+
+    <background>woodworkshop</background>
+
+    <narration>A primeira coisa que percebe são as faces de Aliane e Rinaru Lautine, esculpidas em madeira.</narration>
+    <narration>Você tinha que admitir que eles haviam sido excelentes pais.</narration>
+    <narration>Claro que também são os mais impiedosos e cruéis assassinos que você já conheceu, mas no que dizia respeito a Sulana, cumpriram seus papéis de protetores e educadores de maneira invejável até o fim.</narration>
+    <protagonist />
+    <thought>Apesar de todas as atrocidades que cometeram, esta homenagem, vinda de sua filha, é deveras adequada.</thought>
+    <narration>Você olha ao redor, identificando outros rostos que ela esculpiu, em pedaços de madeira de tamanhos diferentes.</narration>
+    <narration>A única coisa que há em comum entre aqueles rostos é que todos pertencem a pessoas que ela havia considerado importantes em alguma parte de sua vida.</narration>
+    <narration>Familiares, antigos amigos e pessoas que a ajudaram de alguma forma. A maior parte dessa gente já faleceu há anos.</narration>
+    <narration>O tamanho das peças parece ser proporcional à importância que Sulana dá às pessoas retratadas, por isso não é surpresa para você ver a face da melhor amiga que ela já teve na maior peça.</narration>
+    <narration>Você suspira ao reconhecer um outro rosto.</narration>
+    <protagonist />
+    <thought>...</thought>
+    <emotion>angry</emotion>
+    <thought>Eu devia saber que ela faria uma estátua dele.</thought>
+    <narration>Você mesmo havia ceifado aquela vida durante o episódio que ficara conhecido entre os humanos como a “chacina de Lantena”.</narration>
+    <narration>Sentindo-se um intruso ali dentro, você dá uma volta em torno de si, olhando para todos aqueles trabalhos e admirando a forma como a técnica dela havia progredido com o passar do tempo.</narration>
+    <narration>Ela também havia esculpido algumas imagens de animais, mostrando-se mais talentosa e versátil naquele trabalho do que você jamais imaginara.</narration>
+    <narration>Então você levanta a cabeça ao perceber que há uma peça pendurada no teto.</narration>
+
+    <music>somewhere-sunny</music>
+
+    <narration>E toma um susto ao perceber que está encarando a si mesmo.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <thought>!!</thought>
+    <thought>Mas... como? Por quê...?</thought>
+    <narration>Quando Riodes tinha falado sobre o “passatempo” de Sulana, você havia considerado essa possibilidade, mas ver aquele trabalho com seus próprios olhos o deixa completamente estupefato.</narration>
+    <narration>Não se trata de uma escultura feita às pressas, muito pelo contrário, é algo muito bem trabalhado, com cuidado até para os mínimos detalhes.</narration>
+    <narration>Também não é algo feio ou odioso, como era de se pensar considerando o que ela pensa de você.</narration>
+    <narration>Ou, pelo menos, o que ela dá a entender que pensa de você.</narration>
+    <narration>Ela o havia retratado de asas abertas, como se estivesse planando no ar.</narration>
+    <narration>A expressão do rosto na madeira é de surpresa e contemplação, como se estivesse olhando para algo muito agradável, algo que excede expectativas.</narration>
+    <narration>O mesmo olhar que você, involuntariamente, lança a ela toda vez que a vê. E que sempre se esforçou para não deixar que ela percebesse.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <thought>...</thought>
+    <narration>Além de maior, aquela é, de longe, a melhor escultura de todas as que estão ali dentro.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <thought>Pelo Criador!</thought>
+    <thought>Ela deve ter trabalhado nisso por semanas...</thought>
+    <thought>Não! Não creio que em semanas seria possível! Deve ter levado meses, muitos meses!</thought>
+    <trophy>imortalized</trophy>
+    <thought>Ela... ela...</thought>
+    <narration>Você subitamente sente seus olhos se encherem de lágrimas.</narration>
+  </do>
+</storyboard>

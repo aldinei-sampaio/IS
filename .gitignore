@@ -1,0 +1,12 @@
+packages
+.vs
+*.user
+*.vbw
+*.obj
+*.log
+*.exp
+*.lib
+*.tmp
+bin
+obj
+_framework

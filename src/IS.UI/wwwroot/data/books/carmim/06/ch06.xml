@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<chapter>
+  <scene id="1" file="sc01.xml" name="O pacote" />
+  <scene id="2" file="sc02.xml" name="De volta à praia" />
+  <scene id="3" file="sc03.xml" name="A caçada" />
+  <scene id="4" file="sc04.xml" name="Zelmira insegura" />
+  <scene id="5" file="sc05.xml" name="Instinto de sobrevivência" />
+  <scene id="6" file="sc06.xml" name="Acuado" />
+</chapter>

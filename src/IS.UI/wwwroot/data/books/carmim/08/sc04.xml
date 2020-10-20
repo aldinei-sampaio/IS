@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>belisar</viewpoint>
+  <music>never-look-back</music>
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <do>
+    <protagonist />
+    <choice>
+      <d>Prosseguir</d>
+    </choice>
+    <voice>...</voice>
+    <exit when="d" />
+    <restart />
+  </do>
+
+  <background>palace_diningroom</background>
+
+  <person>laina</person>
+  <voice>De qualquer forma, estou muito impressionada com esses geoportais que vocês usam para viajar pela província.</voice>
+  <person>emelin</person>
+  <emotion>happy</emotion>
+  <voice>Nossos sábios vinham pesquisando isso há anos.</voice>
+  <emotion>normal</emotion>
+  <voice>Quando o conselheiro Raduar tentou tomar o comando da província, ele passou a monitorar as pontes de vento.</voice>
+  <voice>Para poder lutar contra ele, tivemos que priorizar esse projeto. Felizmente, deu certo.</voice>
+  <person>alvor</person>
+  <voice>Isso poderia facilitar a vida de muitas pessoas no Império.</voice>
+  <voice>Existem várias regiões onde o fluxo é conturbado demais para a criação de pontes de vento.</voice>
+  <narration>Norlando entra no salão, apressado.</narration>
+  <person>norlando</person>
+  <emotion>surprised</emotion>
+  <voice>Perdoem meu atraso. As deliberações levaram mais tempo do que o previsto.</voice>
+  <protagonist />
+  <voice>Muito bem, creio que já estão todos aqui. Podemos começar.</voice>
+  <voice>Para aqueles que ainda não estão cientes, às pessoas à minha direita são membros da Guarda Imperial de Verídia.</voice>
+  <voice>Poderiam se apresentar, por favor?</voice>
+  <person>laina</person>
+  <voice>Sim, senhor. Eu sou a major Laina Imelde, da Província Central.</voice>
+  <person>alvor</person>
+  <voice>Tenente Alvor Sigournei. Sou natural de Ebora. Nasci na cidade de Laguna e servi na guarda da antiga capital da província por dois anos.</voice>
+  <person>erinia</person>
+  <emotion>surprised</emotion>
+  <voice>Hã... meu nome é Erínia... eu acho...</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>"Você acha"?!</voice>
+  <person>laina</person>
+  <emotion>surprised</emotion>
+  <voice>Erínia sofreu um trauma sério e sofre de amnésia.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>E a imperatriz a mandou em missão mesmo assim?</voice>
+  <person>laina</person>
+  <voice>Ela se lembra bem de como usar seus poderes. Foi graças a ela que conseguimos passar pela muralha externa da província.</voice>
+  <person>erinia</person>
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <person>norlando</person>
+  <voice>O que é um feito deveras surpreendente, se suas alegações tiverem fundamento, major.</voice>
+  <person>laina</person>
+  <emotion>surprised</emotion>
+  <voice>Não sei como convencer vocês disso, sábio, mas é a verdade.</voice>
+  <voice>Já faz mais de um ano desde que descobrimos a existência da muralha na fronteira do Império com Ebora.</voice>
+  <voice>A própria imperatriz precisou escalar o muro para voltar para a casa, depois de ter visitado o santuário.</voice>
+  <protagonist />
+  <voice>Tudo bem. Continuando as apresentações, como vocês já sabem, eu sou Marcelius Belísar.</voice>
+  <person>norlando</person>
+  <voice>Norlando Aldenar. Físico especializado em artes místicas.</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>E... quero dizer, tenente Emelin Necravis.</voice>
+  <person>giarle</person>
+  <voice>Giarle Miliens. Minha história é um pouco complicada, acho que não vem ao caso no momento...</voice>
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Você é um intrometido que gosta de se meter em coisas que não são para o seu bico.</voice>
+  <person>giarle</person>
+  <emotion>happy</emotion>
+  <voice>Ah, é mesmo. Obrigado.</voice>
+  <emotion>normal</emotion>
+  <voice>E que é você, mesmo?</voice>
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Falcione.</voice>
+  <person>giarle</person>
+  <emotion>happy</emotion>
+  <voice>...</voice>
+  <protagonist />
+  <voice>Falcione e Giarle são pessoas de minha confiança.</voice>
+  <emotion>angry</emotion>
+  <voice>Ou, pelo menos, o são quando conseguem deixar suas diferenças de lado durante reuniões importantes.</voice>
+  <person>giarle</person>
+  <voice>...</voice>
+  <person>falcione</person>
+  <voice>...</voice>
+  <person>alvor</person>
+  <emotion>happy</emotion>
+  <voice>Não se preocupe, senhor, já estamos habituados a ter que lidar com uma boa dose de drama.</voice>
+  <protagonist />
+  <voice>Agora, voltando ao assunto principal...</voice>
+  <voice>O que descobriu, Norlando? Essa alegação da anomalia temporal pode ter algum fundo de verdade?</voice>
+  <person>norlando</person>
+  <voice>Como sabe, senhor, nada é impossível.</voice>
+  <voice>Existe uma possibilidade que poderia ser considerada plausível.</voice>
+  <protagonist />
+  <voice>Vamos ouvir.</voice>
+  <person>norlando</person>
+  <voice>Tenente, se puder fazer a gentileza de expôr sua teoria, eu agradeço.</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Eu?!</voice>
+  <voice>Quero dizer, quero dizer... claro! Digo, sim, senhor!</voice>
+  <person>alvor</person>
+  <emotion>happy</emotion>
+  <voice>Não se preocupe, tenente. Não iremos a lugar nenhum.</voice>
+  <voice>Pode ficar à vontade para respirar fundo e organizar seus pensamentos.</voice>
+  <voice>Estamos todos interessados em ouvir o que tem a dizer, mas não há pressa.</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>O-obrigada!</voice>
+  <narration>Emelin decide seguir a sugestão e solta um longo suspiro.</narration>
+
+  <music>goodbye</music>
+  
+  <person>emelin</person>
+  <voice>Como muitos de vocês devem saber, as muralhas são construtos místicos criados por poder divino.</voice>
+  <person>laina</person>
+  <emotion>surprised</emotion>
+  <voice>Como assim, "poder divino"?</voice>
+  <person>emelin</person>
+  <voice>Há vários séculos existiram duas entidades que viviam batalhando entre si: Cantranis e Galionte.</voice>
+  <voice>Muitos dizem que os dois eram irmãos, filhos de Dulgarir.</voice>
+  <person>cantranis</person>
+  <emotion>surprised</emotion>
+  <thought>Ora, isso é inesperado.</thought>
+  <thought>Então esses seres inferiores já ouviram falar sobre meus tempos de glória?</thought>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Silêncio!</thought>
+  <person>alvor</person>
+  <emotion>surprised</emotion>
+  <voice>Dulgarir? Ouvi dizer que essa a entidade foi morta por uma raça que ele (ou ela) mesmo criou, depois de ter feito sacaneado com eles.</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Sim, pelo que sabemos, Dulgarir era muito impulsiva e pouco... confiável.</voice>
+  <emotion>normal</emotion>
+  <voice>De qualquer forma, Cantranis e Galionte batalharam durante anos.</voice>
+  <voice>Cada um dos dois tinha um grande número de seguidores humanos. Tribos que foram extintas há muitos séculos.</voice>
+  <voice>As entidades foram se enfraquecendo com o tempo, pois em cada batalha se feriam um pouco mais e isso ia consumindo, aos poucos, sua vitalidade divina.</voice>
+  <voice>Por fim, ambas pararam de lutar pessoalmente e deixaram a batalha a cargo de seus seguidores.</voice>
+  <voice>Cantranis concedeu poderes ofensivos à sua tribo, enquanto Galione conferiu habilidades de proteção e cura.</voice>
+  <person>laina</person>
+  <voice>A espada contra o escudo.</voice>
+  <person>emelin</person>
+  <emotion>happy</emotion>
+  <voice>Isso mesmo!</voice>
+  <emotion>normal</emotion>
+  <voice>Mas a tribo de Galionte foi perdendo terreno e quando estava prestes a ser derrotada, a entidade usou suas últimas forças para criar o encanto de proteção mais forte e efetivo jamais visto.</voice>
+  <person>alvor</person>
+  <voice>Deixa eu adivinhar: uma enorme muralha mágica?</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Exatamente!</voice>
+  <emotion>normal</emotion>
+  <voice>Com isso, a tribo de Galione conseguiu sobreviver por séculos, isolada do restante do continente pela muralha.</voice>
+  <voice>Quando Cantranis foi destruída, sua tribo se dispersou.</voice>
+  <person>cantranis</person>
+  <emotion>angry</emotion>
+  <thought>Tolice! Eu sou imortal! Nunca fui e jamais serei destruída!</thought>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Isso nós veremos!</thought>
+  <person>emelin</person>
+  <voice>Não havendo mais nenhuma ameaça para seu povo, a muralha de Galionte desapareceu.</voice>
+  <voice>No entanto, aqueles eram tempos difíceis e a tribo precisou buscar o favor de outras entidades para conseguir sobreviver.</voice>
+  <voice>Assim, a tribo de Galionte também acabou se dispersando, da mesma forma que a de Cantranis.</voice>
+  <voice>Mas a essência de Galionte continua viva e forte, sua graça ainda pode ser obtida até hoje, se soubermos como pedir por ela.</voice>
+  <person>laina</person>
+  <emotion>surprised</emotion>
+  <voice>Vocês encontraram uma forma de usar os poderes de uma entidade?</voice>
+  <protagonist />
+  <voice>Não, exatamente. Acreditamos que Galionte não tenha sido destruída, mas apenas selada, aprisionada em um determinado espaço alternativo.</voice>
+  <voice>É possível utilizar energia mística para romper temporariamente a fronteira entre esse espaço e a nossa realidade.</voice>
+  <voice>E então, o conjurador pode ter um desejo atendido, desde que o mesmo seja do agrado de Galionte.</voice>
+  <person>laina</person>
+  <emotion>surprised</emotion>
+  <voice>Então é assim que a muralha foi invocada?</voice>
+  <person>emelin</person>
+  <voice>A princípio, criamos muralhas menores, no interior da província, apenas para proteger as pessoas de ataques de monstros.</voice>
+  <voice>Mas então, quando vimos que os monstros estavam tentando sair de Ebora para atacar os países vizinhos, utilizamos todos os recursos a nosso alcance para invocar algo maior, que os mantivessem presos aqui até que encontrássemos uma forma de erradicar a todos.</voice>
+  <person>erinia</person>
+  <voice>Então a intenção da muralha da fronteira não é evitar que alguém entre, mas sim impedir que essas coisas saiam?</voice>
+  <protagonist />
+  <voice>Isso mesmo.</voice>
+  <person>erinia</person>
+  <voice>Mas se a invocação é baseada em um desejo, isso pode explicar a anomalia temporal.</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Exatamente o que eu pensei!</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Como assim?</voice>
+  <person>emelin</person>
+  <voice>Quando a invocação foi efetuada, havia uma preocupação em não deixar que os demônios escapassem.</voice>
+  <voice>Talvez não houvesse essa possibilidade sem um fator temporal envolvido.</voice>
+  <voice>Algo que fosse perdendo a influência com o tempo. Talvez a fonte de energia que os demônios utilizam, não sei.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Isso tudo é bizarro demais.</voice>
+  <voice>Você está dizendo que Galionte pode ter criado uma anomalia, porque talvez exista uma vantagem para nós se o tempo passar mais rápido lá fora do que aqui?</voice>
+  <person>emelin</person>
+  <emotion>happy</emotion>
+  <voice>Precisamente!</voice>
+  <protagonist />
+  <voice>Norlando, você foi o conjurador principal, não foi? O que acha disso?</voice>
+  <person>norlando</person>
+  <voice>Como eu disse, isso é plausível. Encantamentos baseados em desejo são conhecidos por ter... efeitos colaterais.</voice>
+  <voice>O fator humano é sempre imprevisível, não dá para descartar a possibilidade de algum pensamento errante que tenha passado por minha cabeça não tenha gerado consequências.</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Ou que o desejo realmente não fosse possível de ser realizado sem esse adendo.</voice>
+  <protagonist />
+  <voice>Humm...</voice>
+
+  <music>enigma</music>
+  
+  <narration>Laina e Alvor se entreolham.</narration>
+  <person>alvor</person>
+  <voice>Isso pode ser uma péssima notícia para nós.</voice>
+  <person>laina</person>
+  <voice>Por quê?</voice>
+  <person>erinia</person>
+  <voice>Estamos aqui dentro há quase uma semana. Isso quer dizer que muitos meses já se passaram do lado de fora.</voice>
+  <person>laina</person>
+  <emotion>surprised</emotion>
+  <voice>!!</voice>
+  <voice>Se... se ficarmos aqui por muito mais tempo, não teremos mais uma casa para voltar!</voice>
+  <protagonist />
+  <voice>Sim. E Ebora também não pode continuar presa nessa suposta disfunção temporal por muito tempo.</voice>
+  <voice>Não temos como saber que tipo de mundo estará lá fora para nos receber quando o encanto se dissipar.</voice>
+  <person>cantranis</person>
+  <emotion>happy</emotion>
+  <thought>Você sabe que tem uma forma bastante rápida de resolver isso.</thought>
+  <narration>Você fecha os olhos com força e leva as mãos à cabeça.</narration>
+
+  <music>goodbye</music>
+  <background>black</background>
+  
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>General? Tudo bem com o senhor?</voice>
+  <protagonist />
+  <voice>Estou... cansado.</voice>
+  <person>norlando</person>
+  <emotion>surprised</emotion>
+  <voice>Creio que o dia foi muito cansativo para todos. Proponho continuarmos essa discussão amanhã de manhã.</voice>
+  <person>laina</person>
+  <emotion>surprised</emotion>
+  <voice>Sim, um dia a mais, um dia a menos, não vai fazer muita diferença a essa altura.</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Major, se a senhora e sua equipe fizerem o favor de me acompanhar, mostrarei onde ficam os quartos de hóspedes.</voice>
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>Tudo bem, general?</voice>
+  <protagonist />
+  <voice>Sim, não se preocupe. Vá descansar. Amanhã conversamos.</voice>
+
+  <music>never-look-back</music>
+  <background>palace_tower</background>
+
+  <narration>Na manhã seguinte, você sobe até uma das torres do palácio.</narration>
+  <narration>A garota que veio com a Guarda Imperial está ali, olhando o cenário por entre as ameias.</narration>
+  <protagonist />
+  <voice>Curioso encontrar você aqui.</voice>
+  <narration>Ela se vira para você.</narration>
+  <person>erinia</person>
+  <voice>Eu gosto de lugares altos. Me ajudam a pensar.</voice>
+  <protagonist />
+  <voice>Eu vi quando veio para cá. Fiquei com a impressão de que estava procurando se afastar um pouco da sua equipe.</voice>
+  <narration>Ela solta um suspiro.</narration>
+  <person>erinia</person>
+  <voice>Talvez.</voice>
+  <protagonist />
+  <voice>Por que deixa a major pensar que ela está no comando?</voice>
+  <person>erinia</person>
+  <emotion>surprised</emotion>
+  <voice>Como?</voice>
+  <protagonist />
+  <voice>Ora, vamos. Você parece ter mais experiência do que todos eles juntos.</voice>
+  <voice>Essa história de amnésia é só uma cobertura, não é?</voice>
+  <narration>Ela volta a se virar para as ameias. Sua expressão é séria demais para pertencer a alguém tão jovem.</narration>
+  <person>erinia</person>
+  <voice>Todos fazemos o que temos que fazer.</voice>
+  <protagonist />
+  <voice>A major disse que foi graças a você que atravessaram a muralha. Como fez isso?</voice>
+  <person>erinia</person>
+  <voice>Existe uma técnica de arqueria que pode ser utilizada para perfurar escudos místicos.</voice>
+  <voice>Quando você treina isso por tempo suficiente, consegue abrir um buraco em, praticamente, qualquer coisa.</voice>
+  <protagonist />
+  <voice>Até mesmo uma barreira com disfunção temporal?</voice>
+  <person>erinia</person>
+  <voice>No frigir dos ovos, as coisas não são tão diferentes, assim.</voice>
+  <protagonist />
+  <voice>Certo. Você abriu um buraco na muralha. E não notou diferença na passagem do tempo do lado de dentro?</voice>
+  <person>erinia</person>
+  <voice>Não é assim que isso funciona.</voice>
+  <voice>É impossível conectar dois espaços que não estejam cronologicamente sincronizados.</voice>
+  <voice>Quando o buraco se abriu, a disfunção parou de existir por um momento.</voice>
+  <voice>Mas, depois que atravessamos, o buraco se fechou e a barreira voltou a ficar como antes.</voice>
+  <protagonist />
+  <voice>...</voice>
+  <voice>Como pode ter tanta certeza?</voice>
+
+  <music>desert-squad</music>
+
+  <person>soldado7</person>
+  <emotion>surprised</emotion>
+  <voice>General!</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>O que houve, soldado?</voice>
+  <person>soldado7</person>
+  <emotion>surprised</emotion>
+  <voice>A muralhas a oeste de Laguna está sob ataque, senhor!</voice>
+</storyboard>

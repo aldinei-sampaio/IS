@@ -1,0 +1,820 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>sulana</viewpoint>
+  <music>never-look-back</music>
+
+  <background>sulana</background>
+  <tutorial>Você agora está controlando Sulana Lautine</tutorial>
+
+  <background>greatwall</background>
+
+  <narration>Uma enorme muralha foi erguida nos arredores de Mercília.</narration>
+  <narration>A enorme estrutura serpenteia pelos vales e montanhas, se estendendo para ambos os lados a perder de vista.</narration>
+  <person>alasdio</person>
+  <voice>Então essa é a muralha carmim?</voice>
+  <narration>Alasdio Cebine é um dos primeiros rebeldes que você conheceu.</narration>
+  <narration>Tem uma voz engraçada, anasalada, o que torna bastante difícil a tarefa de levar a sério o que ele fala.</narration>
+  <person>lura</person>
+  <voice>Levaria anos para construir uma coisa dessas.</voice>
+  <narration>Arluria Donatine atende pelo apelido de “Lura”, mas você prefere chamá-la de “professora”.</narration>
+  <narration>Estudantes de artes místicas não são muito comuns na rebelião, pois normalmente preferem perseguir sonhos de glória e grandeza no norte, onde a inteligência é muito valorizada.</narration>
+  <narration>Mas ela gosta de dizer que se importa mais com os amigos do que com sua própria carreira, por isso prefere permanecer entre eles.</narration>
+  <person>lura</person>
+  <voice>Só o trabalho de cortar e transportar todo esse granito seria uma tarefa hercúlea.</voice>
+  <narration>A muralha tem um inegável aspecto estético, com pouco mais de oito metros de altura e cheia de ameias em toda sua extensão.</narration>
+  <narration>Parece perfeita demais para ter sido construída por mãos humanas.</narration>
+  <person>ronam</person>
+  <voice>Dizem que o General Vermelho levantou esse muro em um dia.</voice>
+  <voice>Cercou toda a região de Mercília desde Tinamar até Bariale, que pelo que sabemos têm muros bem mais altos que esse.</voice>
+  <person>petroir</person>
+  <emotion>surprised</emotion>
+  <voice>Esse homem deve ser mesmo muito poderoso.</voice>
+  <narration>Petroir Gadama é um sujeito muito magro, mas possui uma agilidade fora do comum, sendo especialista em ataques furtivos.</narration>
+  <protagonist />
+  <voice>Não estou vendo guardas.</voice>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>A distração que nossos amigos fizeram deve ter funcionando.</voice>
+  <person>lura</person>
+  <voice>Espero que estejam bem.</voice>
+  <person>alasdio</person>
+  <voice>Como vamos fazer isso?</voice>
+  <voice>Não podemos simplesmente nos aproximar e…</voice>
+  <person>alasdio</person>
+  <emotion>surprised</emotion>
+  <voice>Ei, o que você está fazendo?</voice>
+  <narration>Você caminha, determinada, na direção da muralha, ignorando-o.</narration>
+  <narration>Sua audição aguçada, no entanto, consegue captar claramente a conversa sussurrada que eles têm a seguir.</narration>
+  <person>petroir</person>
+  <emotion>surprised</emotion>
+  <voice>Essa mulher é um perigo.</voice>
+  <emotion>angry</emotion>
+  <voice>Vai acabar nos matando.</voice>
+  <person>ronam</person>
+  <voice>Vamos.</voice>
+  <person>lura</person>
+  <voice>Você confia mesmo nela, não?</voice>
+  <person>ronam</person>
+  <voice>Claro. Os instintos dela são melhores que todos os nossos combinados.</voice>
+  <person>petroir</person>
+  <voice>Que eu saiba, os instintos da tribo dela foram concedidos por uma das Grandes Entidades com o único objetivo de matar seus oponentes.</voice>
+  <person>alasdio</person>
+  <emotion>happy</emotion>
+  <voice>O que é a vida sem um pouco de aventura?</voice>
+  <narration>Você não se importa com aquela desconfiança.</narration>
+  <narration>Aquilo acontece em qualquer lugar em que esteja desde a sua infância, por isso, você acabou aprendendo a não se deixar afetar.</narration>
+  <narration>Você está examinando com atenção as pedras da muralha quando eles a alcançam.</narration>
+
+  <background>greatwall_close</background>
+
+  <narration>Olhando de perto, a construção parece ainda mais impressionante e imponente, as pedras colocadas uma sobre a outra com perfeição, sem nenhuma fresta aparente.</narration>
+  <narration>A superfície da parede, apesar de um pouco irregular, é uniforme em toda a construção, como se todas as pedras tivessem sido cortadas com a mesma ferramenta a partir do mesmo bloco sólido de granito.</narration>
+  <narration>Um bloco que teria que ser impossivelmente grande.</narration>
+  <person>alasdio</person>
+  <voice>Será que encontraremos pessoas tentando fugir para o lado de cá?</voice>
+  <person>ronam</person>
+  <voice>É provável.</voice>
+  <voice>Por que razão alguém construiria um negócio como esse, se não fosse para manter as pessoas do lado de dentro?</voice>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>Para manter invasores do lado de fora, talvez?</voice>
+  <narration>Ronam se aproxima e encosta a mão na parede.</narration>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Olha só, é tão liso que é praticamente impossível de escalar.</voice>
+  <narration>Apesar da afirmação de Ronam, você consegue encontrar alguns pontos de apoio. Provavelmente será uma subida difícil, mas parece ser possível.</narration>
+  <protagonist />
+  <choice>
+    <a>Tentar escalar a muralha.</a>
+    <b>Pedir ajuda à professora.</b>
+    <c>Aguardar para ver o que os outros vão fazer.</c>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <person>ronam</person>
+    <emotion>normal</emotion>
+    <voice>Lura, vamos precisar daquele seu encanto que…</voice>
+    <narration>Ele se interrompe ao ver você se agarrando nas pedras e começando a escalar a parede.</narration>
+
+    <music>crime-fighter</music>
+
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Sulana, o que está fazendo? Vai acabar caindo! Desça daí!</voice>
+    <person>lura</person>
+    <emotion>surprised</emotion>
+    <voice>Como ela consegue...?</voice>
+    <narration>As paredes são muito lisas, mas com sua agilidade e seus dedos calejados você consegue encontrar apoio e começar a subir.</narration>
+    <protagonist />
+    <thought>Só preciso me apoiar nos lugares certos.</thought>
+    <narration>Você para e analisa as pedras por um momento...</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <choice time="4" timeout="b" randomorder="1">
+      <a>Agarrar o apoio certo</a>
+      <b>Agarrar o apoio errado</b>
+      <b>Agarrar o apoio errado</b>
+    </choice>
+    <thought>Eu devo...</thought>
+
+    <do when="a">
+      <narration>Você agarra o apoio correto e continua a subir.</narration>
+      <protagonist />
+      <reward>+climb</reward>
+      <thought>Vamos lá, vamos lá...</thought>
+    </do>
+
+    <do when="b">
+      <narration>Você erra o ponto de apoio e perde o equilíbrio por um breve instante, antes de conseguir voltar a se segurar.</narration>
+      <protagonist />
+      <emotion>angry</emotion>
+      <reward>-climb</reward>
+      <thought>Raios!</thought>
+    </do>
+
+    <narration>Depois de subir mais dois metros, você chega em outro ponto difícil.</narration>
+    <protagonist />
+    <choice time="4" timeout="b" randomorder="1">
+      <a>Escalar</a>
+      <b>Escorregar</b>
+      <b>Desequilibrar-se</b>
+      <b>Cair</b>
+    </choice>
+    <thought>Vou tentar...</thought>
+
+    <do when="a">
+      <narration>Você encontra o ponto de apoio e continua a subir com agilidade.</narration>
+      <protagonist />
+      <reward>+climb</reward>
+      <thought>Quase lá...</thought>
+    </do>
+
+    <do when="b">
+      <narration>Suas mãos não encontram apoio e você escorrega um pouco até conseguir vontar a se afirmar com os pés.</narration>
+      <protagonist />
+      <emotion>angry</emotion>
+      <reward>-climb</reward>
+      <thought>Ai, minhas unhas!</thought>
+    </do>
+
+    <narration>Você consegue escalar até perto da amurada.</narration>
+    <protagonist />
+    <choice time="4" timeout="b" randomorder="1">
+      <a>Terminar de subir</a>
+      <b>Errar o apoio</b>
+      <b>Machucar um dedo</b>
+      <b>Deslizar para baixo</b>
+    </choice>
+    <thought>Eu preciso...</thought>
+
+    <do when="a">
+      <narration>Se apoiando nas pedras certas, você consegue escalar o restante da parede.</narration>
+      <protagonist />
+      <reward>+climb</reward>
+      <thought>Bom.</thought>
+    </do>
+
+    <do when="b">
+      <narration>Você se atrapalha no final da subida e luta para se segurar.</narration>
+      <protagonist />
+      <emotion>angry</emotion>
+      <reward>-climb</reward>
+      <thought>Ai, não!</thought>
+    </do>
+
+    <do when="sulana_climb[3]">
+      <music>never-look-back</music>
+
+      <narration>Você chega ao topo da parede e salta sobre a amurada com elegância.</narration>
+      <trophy>climber</trophy>
+      <person>ronam</person>
+      <emotion>happy</emotion>
+      <reward>+relationship</reward>
+      <voice>Uau! Isso foi fantástico!</voice>
+      <person>lura</person>
+      <emotion>surprised</emotion>
+      <reward>+relationship</reward>
+      <voice>Impressionante!</voice>
+      <person>alasdio</person>
+      <emotion>surprised</emotion>
+      <voice>Misericórdia!</voice>
+      <person>petroir</person>
+      <emotion>happy</emotion>
+      <voice>Isso foi bastante... educativo.</voice>
+      <voice>Ei, Sulana, desce aqui e faz isso de novo!</voice>
+      <voice>Deixa eu te observar mais um pouco para aprender como se faz!</voice>
+      <person>alasdio</person>
+      <emotion>happy</emotion>
+      <voice>Você quer é ficar olhando para certas partes do corpo dela, seu tarado!</voice>
+      <person>petroir</person>
+      <emotion>happy</emotion>
+      <voice>Ei, todo homem merece sua diversão, não concordam?</voice>
+      <narration>Os outros soltam grunhidos de desagrado.</narration>
+      <do when="ronam_relationship[4:]">
+        <person>petroir</person>
+        <emotion>happy</emotion>
+        <voice>Ei, o que é isso, Ronam? Você está ficando vermelho por quê?</voice>
+        <person>ronam</person>
+        <voice>Ah, cala a boca!</voice>
+      </do>
+    </do>
+
+    <do when="sulana_climb[1]">
+      <music>never-look-back</music>
+
+      <narration>Você chega ao topo da parede e pula a amurada com dificuldade.</narration>
+      <person>ronam</person>
+      <emotion>surprised</emotion>
+      <reward>+relationship</reward>
+      <voice>Muito bom! Você conseguiu!</voice>
+      <narration>Você olha para seus dedos feridos durante a escalada e faz uma careta de dor.</narration>
+      <person>alasdio</person>
+      <voice>Por pouco!</voice>
+      <person>ronam</person>
+      <voice>Ah, vamos! Não foi tão ruim assim. Duvido você fazer igual!</voice>
+      <person>alasdio</person>
+      <voice>Eu também duvido! Nunca perderia tempo tentando fazer algo que claramente está além da minha habilidade.</voice>
+      <person>lura</person>
+      <voice>Ela está lá em cima, não está? Então você não pode dizer que está além da habilidade dela.</voice>
+      <person>alasdio</person>
+      <voice>Ah, que seja!</voice>
+    </do>
+
+    <do when="sulana_climb[-1]">
+      <music>never-look-back</music>
+
+      <narration>Suas mãos finalmente seguram a amurada e você suspira, aliviada.</narration>
+      <narration>Você ignora a dor nos dedos e se projeta para cima, caindo desajeitadamente sobre o chão de pedras do topo da muralha.</narration>
+      <person>ronam</person>
+      <emotion>surprised</emotion>
+      <voice>Sulana! Você está bem?</voice>
+      <person>lura</person>
+      <emotion>surprised</emotion>
+      <reward>+relationship</reward>
+      <voice>A tenacidade dela é admirável.</voice>
+      <person>petroir</person>
+      <emotion>happy</emotion>
+      <voice>Você quer dizer “teimosia”.</voice>
+      <person>lura</person>
+      <voice>Eu sou teimosa, mas provavelmente teria desistido da escalada no primeiro escorregão.</voice>
+    </do>
+
+    <do when="sulana_climb[-3]">
+      <narration>Infelizmente você não consegue mais encontrar apoio e começa a cair.</narration>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <voice>Ah!</voice>
+      <narration>Num piscar de olhos, a professora levanta uma das mãos e invoca uma de suas habilidades místicas.</narration>
+      <narration>Você cai de costas contra o chão pedregoso, e sente seu corpo afundando nele, como se fosse um tipo de geleia.</narration>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <bump />
+      <voice>Uff!</voice>
+
+      <music>never-look-back</music>
+
+      <narration>Depois de ter sua queda amortecida, você é empurrada gentilmente para cima quando o solo volta a assumir sua forma anterior e a recuperar sua rigidez natural.</narration>
+      <narration>Ronam estende uma mão para ajudá-la a se levantar.</narration>
+      <person>ronam</person>
+      <emotion>surprised</emotion>
+      <voice>Tudo bem?</voice>
+      <narration>Você olha para suas mãos machucadas e faz uma careta.</narration>
+      <protagonist />
+      <voice>Não muito.</voice>
+      <person>ronam</person>
+      <emotion>surprised</emotion>
+      <voice>Deixa eu ver esses machucados aí!</voice>
+      <person>lura</person>
+      <voice>Você nos deu um susto!</voice>
+      <narration>Você olha para ela.</narration>
+      <protagonist />
+      <voice>Sem sua ajuda isso poderia ter sido bem mais... dolorido, eu acho.</voice>
+      <person>lura</person>
+      <voice>Por nada. Mas não tente mais fazer coisas assim, pelo menos não se não tiver alguém como eu por perto.</voice>
+      <narration>Você apenas assente, fazendo uma careta quando Ronam começa a aplicar o unguento mal cheiroso nos seus cortes.</narration>
+      <person>ronam</person>
+      <voice>Lura, acho que essa seria a oportunidade perfeita para usar aquela sua habilidade.</voice>
+      <person>lura</person>
+      <voice>Pode ser. Quem quer subir primeiro?</voice>
+      <narration>Todos ficam em silêncio. Você sacode a cabeça e se levanta.</narration>
+      <protagonist />
+      <voice>Eu vou.</voice>
+      <person>lura</person>
+      <emotion>surprised</emotion>
+      <voice>Mas você acabou de cair! Está ferida!</voice>
+      <person>ronam</person>
+      <emotion>happy</emotion>
+      <voice>Ela é teimosa assim mesmo.</voice>
+      <emotion>normal</emotion>
+      <voice>Mas não precisa se preocupar, os ferimentos foram leves, ela pode subir na boa se você usar seus poderes nela.</voice>
+      <narration>A professora faz uma cara de quem não acredita muito, mas por fim acaba tocando em você e invocando uma habilidade que faz com que suas mãos e as solas de suas botas fiquem grudentos.</narration>
+      <narration>Já tendo passado por isso em missões anteriores, você já sabe o que fazer e começa a escalar a parede, dessa vez com extrema facilidade.</narration>
+      <narration>O encanto se dissolve assim que você termina a escalada, saltando por sobre a amurada.</narration>
+    </do>
+  </do>
+
+  <do when="b">
+    <narration>Você se vira para Lura.</narration>
+    <protagonist />
+    <voice>Professora, preciso daquele seu poder de escalar paredes.</voice>
+    <person>lura</person>
+    <emotion>surprised</emotion>
+    <voice>Claro! Mas tem certeza?</voice>
+    <voice>Não sabemos qual a natureza dessa muralha. Isso pode ser perigoso.</voice>
+    <protagonist />
+    <voice>Eu vou primeiro. Se eu cair, você pode amortecer minha queda.</voice>
+    <person>lura</person>
+    <emotion>surprised</emotion>
+    <reward>++relationship</reward>
+    <voice>Fico feliz que confie tanto em mim.</voice>
+    <emotion>normal</emotion>
+    <voice>Muito bem, aqui vai.</voice>
+  </do>
+
+  <do when="c">
+    <narration>Você se vira para os outros e cruza os braços.</narration>
+    <protagonist />
+    <voice>E agora?</voice>
+    <person>ronam</person>
+    <voice>Agora, nós saltamos esse muro.</voice>
+    <person>petroir</person>
+    <voice>Ah, é? Como?</voice>
+    <person>ronam</person>
+    <emotion>happy</emotion>
+    <voice>Com minha super sofisticada técnica de...</voice>
+    <protagonist />
+    <voice>Pedir ajuda para a professora.</voice>
+    <person>ronam</person>
+    <emotion>happy</emotion>
+    <reward>++relationship</reward>
+    <voice>Exato!</voice>
+    <voice>Lura, pode nos dar uma ajudinha?</voice>
+    <narration>Os quatro caem na risada enquanto você balança a cabeça e solta um suspiro.</narration>
+    <person>lura</person>
+    <emotion>happy</emotion>
+    <voice>Tudo bem, quem vai primeiro?</voice>
+    <protagonist />
+    <voice>Eu.</voice>
+    <person>lura</person>
+    <voice>Certo. Então, aqui vai.</voice>
+  </do>
+
+  <do when="b,c">
+    <narration>A professora toca em você e pronuncia algumas palavras estranhas.</narration>
+    <person>lura</person>
+    <voice>Inaride polengaendi teraasi!</voice>
+    <narration>Imediatamente, você sente uma aura de energia envolver suas mãos e seus pés.</narration>
+    <narration>Você encosta a palma na parede, sentindo-a aderir-se firmemente à rocha.</narration>
+    <narration>Tendo passado por situações como essa em missões anteriores, você já sabe o que fazer e começa a escalar a muralha, com extrema facilidade.</narration>
+    <narration>O encanto se dissolve assim que você termina a escalada, saltando por sobre a amurada.</narration>
+  </do>
+
+  <music>open-sky</music>
+  <background>greatwall_over</background>
+
+  <narration>Dali de cima é possível avistar dezenas de quilômetros em todas as direções.</narration>
+  <narration>Você não sabia exatamente o que esperar, mas o aspecto dos domínios do general é completamente... normal.</narration>
+  <narration>Se aproximando da outra amurada, você olha para baixo por entre as ameias e vê uma enorme escada encostada na parede, próximo de onde você está.</narration>
+  <narration>Um pouco mais para o lado havia outra, e depois outra.</narration>
+  <narration>Do outro lado também há escadas similares encostadas na muralha, em intervalos um tanto irregulares.</narration>
+  <protagonist />
+  <voice>Se o propósito desse muro é manter gente presa do lado de dentro, estão fazendo um péssimo trabalho.</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Por quê?</voice>
+  <narration>Ignorando a pergunta, você caminha até uma das escadas, que é longa o suficiente para chegar a um palmo da amurada.</narration>
+  <narration>Inclinando-se pela abertura, você segura a madeira e testa seu peso.</narration>
+  <narration>Vendo que não é tão pesada quanto parece, você respira fundo e a puxa para cima.</narration>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Sulana? O que está havendo?</voice>
+  <narration>Você segura a escada sobre sua cabeça por um momento antes de começar a baixá-la, devagar, para o outro lado.</narration>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <person>alasdio</person>
+  <emotion>surprised</emotion>
+  <voice>Mas o quê...?</voice>
+  <person>petroir</person>
+  <emotion>happy</emotion>
+  <voice>Ora, vejam só!</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Onde foi que você conseguiu isso?!</voice>
+  <narration>Com a ajuda de Ronam, você termina de descer a escada e a ajeita numa posição adequada para que eles possam subir.</narration>
+  <protagonist />
+  <voice>Tem um monte dessas apoiadas na parede do lado de dentro.</voice>
+  <voice>Se tivesse alguém querendo fugir, já teria saído daqui há muito tempo.</voice>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>Fascinante.</voice>
+  <protagonist />
+  <voice>Não é marcenaria normal.</voice>
+  <person>lura</person>
+  <voice>Tem razão. Isso foi construído por meios místicos.</voice>
+  <person>ronam</person>
+  <voice>Bem, já que estamos aqui, vamos em frente.</voice>
+  <narration>Enquanto seus amigos sobem, você se apoia na amurada do outro lado e observa a paisagem.</narration>
+  <narration>Tudo parece normal e tranquilo. Florestas, rios, montanhas, plantações, uma ou outra construção ocasional, como casas e moinhos de vento.</narration>
+  <narration>A única coisa realmente estranha ali é aquela muralha, bem como as centenas de escadas apoiadas na parede pelo lado de dentro.</narration>
+  <protagonist />
+  <thought>No que estamos nos metendo?</thought>
+  <thought>Quantas surpresas mais o General Vermelho pode ter para nós?</thought>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Uau! Olha que vista!</voice>
+  <person>lura</person>
+  <voice>Sim, é bonito. Também parece... absolutamente normal.</voice>
+  <person>petroir</person>
+  <voice>O que você esperava? Campos de trabalhos forçados?</voice>
+  <person>lura</person>
+  <voice>Eu não fazia ideia do que esperar. Mas isso? É até meio que...</voice>
+  <person>ronam</person>
+  <voice>Frustrante?</voice>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>Sim, um pouco.</voice>
+  <person>alasdio</person>
+  <emotion>happy</emotion>
+  <voice>Não sei quanto a vocês, mas essa vista está me dando fome.</voice>
+  <voice>Que tal pararmos para o almoço?</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Aqui em cima?</voice>
+  <person>alasdio</person>
+  <emotion>happy</emotion>
+  <voice>Por que não? Pode ser nossa última chance.</voice>
+  <voice>Vai saber o que vamos encontrar lá embaixo.</voice>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>Não seria mais prudente descer e fazer a refeição lá embaixo, do lado de fora?</voice>
+  <person>alasdio</person>
+  <emotion>happy</emotion>
+  <voice>Ah, mas a vista aqui é tão inspiradora. A carne seca vai ficar tão mais gostosa.</voice>
+  <person>petroir</person>
+  <voice>Eu topo.</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Sério que vocês querem fazer isso?</voice>
+  <protagonist />
+  <voice>Aqui de cima temos vista privilegiada.</voice>
+  <voice>Podemos ver qualquer coisa que se aproximar e as ameias dificultam a visão de quem estiver lá embaixo.</voice>
+  <person>lura</person>
+  <voice>Hummm...</voice>
+  <voice>Imagino que observar um pouco o território inimigo antes de invadi-lo não seja uma ideia tão ruim...</voice>
+  <person>ronam</person>
+  <voice>Tudo bem, vocês me convenceram.</voice>
+  <person>alasdio</person>
+  <emotion>happy</emotion>
+  <voice>Vamos lá, pessoal, hora do rango!</voice>
+  <person>petroir</person>
+  <voice>Mas evitem ficar todos juntos.</voice>
+  <voice>Assim, se formos pegos de surpresa por um ataque aéreo, teremos mais chance de sobreviver.</voice>
+  <person>lura</person>
+  <voice>E fiquem atentos para o caso de os vigias voltarem.</voice>
+
+  <music>goodbye</music>
+  <background>greatwall</background>
+
+  <narration>Os rebeldes se espalham pelo topo da muralha.</narration>
+  <narration>Você vê Ronam se apoiar a uma das amuradas, vigiando o território inimigo enquanto tira um pedaço de pão de sua mochila.</narration>
+  <narration>Do seu outro lado, Lura se aproxima da amurada oposta, observando a trilha na floresta pela qual vocês vieram.</narration>
+  <protagonist />
+  <choice>
+    <a>Fazer minha refeição sozinha.</a>
+    <b when="ronam_relationship[2:]" req="Relacionamento +2 com Ronam">Me aproximar de Ronam.</b>
+    <c when="lura_relationship[2:]" req="Relacionamento +2 com Lura">Me aproximar de Lura.</c>
+  </choice>
+  <thought>Eu vou...</thought>
+
+  <do when="a">
+    <narration>Você pega um tufax de sua mochila e dá uma mordida, enquanto observa os domínios do General Vermelho mais uma vez.</narration>
+    <protagonist />
+    <thought>Estranho.</thought>
+    <thought>Até uma semana atrás eu não teria nenhuma dúvida em invadir esse lugar e pôr para quebrar.</thought>
+    <emotion>angry</emotion>
+    <thought>Agora eu me sinto estranha até mesmo por estar aqui.</thought>
+    <narration>Você lança um olhar de relance a seus companheiros.</narration>
+    <protagonist />
+    <thought>Ninguém mais está agindo diferente de antes. Eles continuam como sempre foram.</thought>
+    <thought>Continuam querendo ver o general morto e essa guerra chegando ao fim.</thought>
+    <emotion>angry</emotion>
+    <thought>Por que eu tenho que ser diferente? Por que só eu sinto que tem algo errado?</thought>
+  </do>
+
+  <do when="b">
+    <narration>Você pega um tufax de sua mochila e dá uma mordida, se aproximando de Ronam devagar enquanto corre os olhos pelos domínios do general.</narration>
+    <person>ronam</person>
+    <emotion>happy</emotion>
+    <voice>Ei!</voice>
+    <protagonist />
+    <voice>...</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Isso aí é tudo o que você trouxe para comer?</voice>
+    <voice>Como consegue manter sua energia só com isso?</voice>
+    <emotion>normal</emotion>
+    <voice>Eu trouxe bastante carne seca aqui, quer um pouco?</voice>
+    <protagonist />
+    <voice>Estou bem.</voice>
+    <person>ronam</person>
+    <voice>...</voice>
+    <voice>Você parece preocupada ultimamente. Quer conversar?</voice>
+    <protagonist />
+    <voice>Eu... não sei.</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Deve ser algo importante, nunca tinha visto você parecendo indecisa antes.</voice>
+    <emotion>normal</emotion>
+    <voice>Dizem que a melhor forma de resolver problemas é conversando.</voice>
+    <voice>O que se passa por sua cabeça?</voice>
+    <protagonist />
+    <voice>...</voice>
+    <voice>Por que você luta?</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Nessa guerra, você diz?</voice>
+    <narration>Você assente.</narration>
+    <person>ronam</person>
+    <voice>Porque é a coisa certa a ser feita.</voice>
+    <emotion>angry</emotion>
+    <voice>Tem um tirano escravizando nosso povo e forçando as pessoas a fazerem coisas contra a vontade.</voice>
+    <voice>Alguém tem que dar um fim nisso.</voice>
+    <protagonist />
+    <voice>Como sabemos que ele faz isso?</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Como é?</voice>
+    <protagonist />
+    <voice>Alguém já viu o general controlar a mente de alguém?</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Não que eu saiba, mas você não se lembra de todos aqueles ex-companheiros contra os quais tivemos que lutar?</voice>
+    <voice>Que outra prova você precisa além dessa?</voice>
+    <protagonist />
+    <voice>...</voice>
+    <voice>Alguém tentou conversar com algum deles? Depois que foram... escravizados?</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Por que faríamos isso? Eles levantaram armas contra nós!</voice>
+    <protagonist />
+    <emotion>sad</emotion>
+    <voice>Sim, é assim que nós somos, não é?</voice>
+    <voice>Se alguém se coloca no nosso caminho, nós matamos.</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <voice>Como pode falar um negócio desse?</voice>
+    <voice>O que você tem? Aconteceu alguma coisa?</voice>
+    <protagonist />
+    <voice>É o que todos falam de mim, não é? Que eu não me importo com nada além de lutar?</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Mas isso não é verdade...</voice>
+    <protagonist />
+    <voice>E estão certos. Eu não me importo mesmo.</voice>
+    <voice>Eu quero lutar, eu preciso disso. Está no meu sangue. O resto não me importa.</voice>
+    <person>ronam</person>
+    <emotion>angry</emotion>
+    <voice>Que raio? Se não se importasse, você não estaria puxando esse assunto!</voice>
+    <protagonist />
+    <voice>Não me importo. Eu sou assim, mas...</voice>
+    <person>ronam</person>
+    <voice>Mas...?</voice>
+    <protagonist />
+    <emotion>sad</emotion>
+    <voice>Mas vocês, não.</voice>
+    <narration>Ele pisca, confuso.</narration>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>O quê? Do que está falando?</voice>
+    <protagonist />
+    <voice>Que provas nós temos de que o general é mau?</voice>
+    <person>ronam</person>
+    <emotion>angry</emotion>
+    <voice>Não pode estar falando sério!</voice>
+    <protagonist />
+    <voice>Quando encontramos ele em Revoada, o que ele fez de errado?</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Quer dizer, além de invadir a cidade, render todo mundo e levar um prisioneiro?</voice>
+    <protagonist />
+    <voice>Ele estava lá para enfrentar os monstros.</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <voice>Olha, eu não sei o que está acontecendo com você, mas estou ficando preocupado.</voice>
+    <emotion>angry</emotion>
+    <voice>Os monstros foram um contratempo! Ele decidiu aniquilar todos eles por terem interrompido os planos de conquista dele!</voice>
+    <narration>Você se lembra daquele primeiro encontro que teve com o general.</narration>
+
+    <music>sad-story</music>
+    <background>village</background>
+
+    <person>belisar</person>
+    <voice>Quanto a você, acalme-se, agora não é hora para isso.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Você não acha mesmo que vou deixar que faça o que quiser com essa cidade, não é?</voice>
+    <person>belisar</person>
+    <voice>Não, não acho, e no seu lugar eu faria a mesma coisa. Mas, se puder me ouvir por um momento…</voice>
+    <protagonist />
+    <voice>O que pretende fazer com toda essa gente?</voice>
+    <person>belisar</person>
+    <voice>...</voice>
+    <voice>Temos que tirar todos daqui. E rápido.</voice>
+    <protagonist />
+    <voice>Por quê?</voice>
+    <person>falcione</person>
+    <emotion>angry</emotion>
+    <voice>Estão aqui!</voice>
+
+    <background>greatwall</background>
+
+    <protagonist />
+    <voice>...</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Sulana, tem certeza que está bem?</voice>
+    <voice>Podemos voltar, se você quiser. Deixamos essa missão para outro dia.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Você faria isso?</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>Por você? Claro que sim, sem pensar duas vezes!</voice>
+    <protagonist />
+    <voice>Achei que estava preocupado com Giarle.</voice>
+    <person>ronam</person>
+    <voice>E estou, mas me preocupo com você também.</voice>
+    <voice>Venha, vamos chamar os outros.</voice>
+    <protagonist />
+    <voice>Espere!</voice>
+    <person>ronam</person>
+    <voice>O que foi?</voice>
+    <narration>Você o encara por um momento.</narration>
+    <protagonist />
+    <reward>++hope</reward>
+    <voice>...</voice>
+    <voice>Nada. Deixa para lá. Estou bem, vamos continuar.</voice>
+    <person>ronam</person>
+    <voice>Tem certeza?</voice>
+    <protagonist />
+    <voice>Sim. Vamos descobrir para onde levaram Giarle.</voice>
+    <narration>Você se volta para a amurada e dá outra mordida no tufax.</narration>
+    <protagonist />
+    <trophy>friendlyshoulder</trophy>
+    <thought>Não sei o que está acontecendo, mas as respostas podem estar lá.</thought>
+    <emotion>angry</emotion>
+    <thought>Então, é para lá que eu vou.</thought>
+  </do>
+
+  <do when="c">
+    <narration>Você se aproxima da professora enquanto tira um tufax de sua mochila.</narration>
+    <narration>Ela olha para você e depois para a fruta, antes de franzir o cenho.</narration>
+    <person>lura</person>
+    <voice>Onde conseguiu essa fruta? Parece gostosa.</voice>
+    <narration>Você estende o tufax para ela.</narration>
+    <narration>Um pouco surpresa por sua oferta silenciosa, ela pega a fruta e dá uma mordida.</narration>
+    <narration>Ao sentir o sabor ácido, ela faz uma leve careta, mas continua mastigando por um momento, antes de engolir.</narration>
+    <person>lura</person>
+    <voice>Tem um sabor marcante, não?</voice>
+    <narration>Você dá de ombros.</narration>
+    <protagonist />
+    <voice>Eu gosto.</voice>
+    <person>lura</person>
+    <voice>Posso ver porquê.</voice>
+    <narration>Ela dá uma outra mordida e mastiga, satisfeita, antes de encarar você.</narration>
+    <person>lura</person>
+    <voice>Você parece preocupada.</voice>
+    <emotion>surprised</emotion>
+    <voice>Acha que estamos correndo algum perigo aqui?</voice>
+    <protagonist />
+    <voice>Não, não é isso.</voice>
+    <narration>Você se recosta na amurada e olha para o céu.</narration>
+    <protagonist />
+    <voice>O que você faria se de repente o General Vermelho aparecesse na sua frente?</voice>
+    <person>lura</person>
+    <emotion>surprised</emotion>
+    <voice>Sinceramente? Acho que eu teria um treco.</voice>
+    <emotion>happy</emotion>
+    <voice>Mas não sei se isso aconteceria antes ou depois de eu molhar minhas calças.</voice>
+    <protagonist />
+    <voice>Ele não é nem um pouco parecido com o que falam dele.</voice>
+    <person>lura</person>
+    <emotion>surprised</emotion>
+    <voice>Do que você...? Ah, é mesmo, você e Ronam encontraram com ele em Revoada, não é?</voice>
+    <emotion>normal</emotion>
+    <voice>Deve ter sido uma barra.</voice>
+    <protagonist />
+    <voice>Ele não tentou fazer mal a ninguém.</voice>
+    <person>lura</person>
+    <emotion>surprised</emotion>
+    <voice>Hã? Mas ele não capturou Giarle?</voice>
+    <protagonist />
+    <voice>Giarle se rendeu, com a condição de que o general deixasse o resto de nós livre.</voice>
+    <person>lura</person>
+    <voice>Então isso explica porque ele não feriu ninguém.</voice>
+    <protagonist />
+    <voice>Se você fosse um tirano obcecado por poder, cumpriria uma promessa dessas depois de seu inimigo já estar acorrentado?</voice>
+    <narration>A professora abre e fecha a boca diversas vezes, como se não conseguisse articular um argumento.</narration>
+    <protagonist />
+    <voice>Ele tem família. Mulher e filhos.</voice>
+    <person>lura</person>
+    <emotion>surprised</emotion>
+    <voice>Quem? O general?</voice>
+    <protagonist />
+    <voice>Sim.</voice>
+    <person>lura</person>
+    <voice>E o que tem? A maioria de nós também tem família.</voice>
+    <emotion>surprised</emotion>
+    <voice>Mas como ficou sabendo disso? Eu nunca ouvi essa história antes.</voice>
+    <protagonist />
+    <voice>Um velho que trabalha comigo me contou. Ele conheceu o general antes da guerra.</voice>
+    <person>lura</person>
+    <voice>Mesmo que seja verdade, isso não muda nada.</voice>
+    <protagonist />
+    <voice>A esposa e os filhos gostam muito dele. E ele... trata a todos com... carinho.</voice>
+    <person>lura</person>
+    <emotion>surprised</emotion>
+    <voice>Ou esse seu amigo é preocupantemente bem informado ou está inventando tudo isso.</voice>
+    <emotion>normal</emotion>
+    <voice>Nem preciso dizer o que eu acho que seja mais provavel, não é?</voice>
+    <protagonist />
+    <voice>Você nunca teve dúvidas?</voice>
+    <person>lura</person>
+    <voice>Sobre a guerra, você quer dizer? Claro que não.</voice>
+    <emotion>angry</emotion>
+    <voice>Aquele homem é um vilão desprezível. As pessoas estão sofrendo sob o julgo dele.</voice>
+    <protagonist />
+    <voice>Como você sabe?</voice>
+    <narration>Novamente, Lura fica encarando você por um tempo, sem conseguir responder.</narration>
+    <narration>Por fim, ela solta um suspiro.</narration>
+    <person>lura</person>
+    <voice>Que motivo eu teria para duvidar de todos os meus amigos e familiares?</voice>
+    <protagonist />
+    <voice>Você odeia o homem só porque outras pessoas não gostam dele?</voice>
+    <person>lura</person>
+    <emotion>angry</emotion>
+    <voice>Por que essas perguntas, afinal? Você não está aqui pela mesma razão que eu?</voice>
+    <protagonist />
+    <voice>Não. Estou aqui para lutar.</voice>
+    <person>lura</person>
+    <voice>Então para que se preocupar com isso?</voice>
+    <protagonist />
+    <voice>Achei que você se preocupasse.</voice>
+    <person>lura</person>
+    <voice>...</voice>
+    <voice>Não sei... como responder a isso.</voice>
+    <narration>Você balança a cabeça e endireita o corpo, preparando-se para se afastar.</narration>
+    <narration>Ela se adianta e a segura pelo ombro.</narration>
+    <person>lura</person>
+    <voice>Escute...</voice>
+    <voice>Já participamos de várias batalhas juntas...</voice>
+    <voice>Eu... nunca engoli essa história de que você não liga para nada além de batalhas.</voice>
+    <protagonist />
+    <voice>Mas isso é verdade, eu não ligo mesmo.</voice>
+    <person>lura</person>
+    <voice>Você protege seus aliados, se importa com eles.</voice>
+    <voice>Se fosse para escolher lutar ao lado de alguém, eu preferia você ao invés de qualquer um daqueles panacas.</voice>
+    <narration>Ela faz um gesto de cabeça na direção de Petroir e Alasdio.</narration>
+    <narration>Você levanta a sobrancelha.</narration>
+    <person>lura</person>
+    <emotion>happy</emotion>
+    <voice>Eu sei, eu sei! Ser comparada àqueles dois não é lá um grande elogio, não é?</voice>
+    <narration>O sorriso brincalhão dela é contagiante. Mesmo contra sua vontade, você sente os cantos de sua boca se curvarem para cima.</narration>
+    <narration>Por um momento, ela parece muito satisfeita com a sua reação.</narration>
+    <narration>Então ela volta a ficar séria.</narration>
+    <person>lura</person>
+    <voice>Sulana, todos nós temos dúvidas às vezes, não há nada de errado nisso.</voice>
+    <narration>Ela se tira a mão de seu ombro e se coloca em sua frente, precisando inclinar a cabeça para cima para poder encarar seus olhos.</narration>
+    <person>lura</person>
+    <voice>Uau, nunca tinha me dado conta do quanto você é alta!</voice>
+    <emotion>surprised</emotion>
+    <voice>Quero dizer, quero dizer...</voice>
+    <narration>Ela leva a mão aos lábios, nervosamente e limpa a garganta.</narration>
+    <person>lura</person>
+    <voice>Se tem algo que posso dizer com toda a certeza é que nós vamos acabar com essa guerra.</voice>
+    <voice>Pode contar com isso. Prometo que logo isso tudo vai acabar e poderemos voltar a viver nossas vidas em paz.</voice>
+    <narration>Ela fala aquilo com tanta segurança que você não consegue deixar de se sentir tocada.</narration>
+    <protagonist />
+    <reward>++fight</reward>
+    <voice>...</voice>
+    <voice>Mas lutar é a minha vida.</voice>
+    <person>lura</person>
+    <voice>Existem várias formas de luta.</voice>
+    <voice>Escute, eu sei que você prefere ficar sozinha e não gosta muito de se misturar com as outras pessoas.</voice>
+    <voice>Respeito isso, mas saiba que, se precisar de qualquer coisa, seus amigos estarão sempre aqui por você.</voice>
+    <protagonist />
+    <trophy>peptalk</trophy>
+    <voice>...</voice>
+    <narration>Você assente e se aproxima da amurada oposta, olhando por entre as ameias.</narration>
+    <protagonist />
+    <voice>Vamos em frente. Eu quero respostas.</voice>
+    <emotion>angry</emotion>
+    <voice>A começar pelo paradeiro de Giarle.</voice>
+  </do>
+
+  <background>carmim</background>
+</storyboard>

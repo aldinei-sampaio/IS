@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>belisar</viewpoint>
+  <music>enigma</music>
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <background>cave</background>
+
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Adiante! Vamos!</voice>
+  <narration>A voz grave e imponente de Falcione ecoa pelos túneis subterrâneos nas proximidades da cidade de Revoada.</narration>
+  <person>soldado4</person>
+  <emotion>surprised</emotion>
+  <voice>Mas senhora, temos que cuidar dos feridos...</voice>
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Se não avançarmos agora, não teremos chance de cuidar de ninguém!</voice>
+  <person>soldado4</person>
+  <emotion>surprised</emotion>
+  <voice>Mas...</voice>
+  <protagonist />
+  <voice>Encontre outro voluntário para cuidar dos outros junto com você, soldado!</voice>
+  <person>soldado4</person>
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <emotion>normal</emotion>
+  <voice>Sim, senhor!</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>O restante de vocês, atrás de mim!</voice>
+  <person>falcione</person>
+  <voice>A maior leva deles deve estar logo à frente.</voice>
+
+  <narration>Como que em resposta àquela afirmação, um coro de urros e rosnados chega até vocês, vindo dos túneis mais adiante.</narration>
+  <person>soldado5</person>
+  <emotion>surprised</emotion>
+  <voice>Ahhhh!</voice>
+  <protagonist />
+  <choice>
+    <a>Fiquem juntos!</a>
+    <b>Se espalhem!</b>
+    <c>Protejam a passagem!</c>
+  </choice>
+  <unset>battle</unset>
+  <unset>choice1</unset>
+  <voice>Quero que vocês...</voice>
+
+  <do when="a">
+    <set>++choice1</set>
+    <voice>Protejam uns aos outros e não deixem que eles cheguem até onde estão os feridos!</voice>
+  </do>
+
+  <do when="b">
+    <voice>Não deixem que eles escapem!</voice>
+  </do>
+
+  <do when="c">
+    <set>+choice1</set>
+    <voice>Eu vou na frente, não deixem que eles cheguem até a superfície!</voice>
+  </do>
+
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Vocês ouviram, vamos!</voice>
+
+  <narration>Você se prepara para liberar seus poderes e segue com passos determinados pela passagem.</narration>
+
+  <music>last-duel</music>
+
+  <narration>Nesse momento, uma horda de monstruosidades sai das sombras e vem em sua direção, rosnando de forma ameaçadora.</narration>
+  <person>monster1</person>
+  <emotion>angry</emotion>
+  <voice>Urrrrrriiiiieeeeehhhhh!!!</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <choice>
+    <a>Usar um ataque de grande área de efeito.</a>
+    <b>Economizar energia usando ataques individuais.</b>
+    <c>Atacar as rochas do teto para causar um desmoronamento.</c>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <narration>Você libera seus poderes elétricos com força total!</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Brrruuuurrrlaaauuurr!</voice>
+    <narration>Os monstros são arremessados para trás e caem no chão, convulsionando por alguns instantes enquanto a vida se esvai de seus corpos.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Ugh! Meu peito...!</thought>
+    <thought>Raios, devo ter gasto energia demais!</thought>
+    <narration>Você olha ao redor e percebe que os soldados estão todos o encarando, impressionados com aquela demonstração de poder.</narration>
+    <protagonist />
+    <emotion>normal</emotion>
+    <reward>+battle</reward>
+    <thought>Ao menos consegui acabar com isso rápido, poupando meus aliados.</thought>
+  </do>
+
+  <do when="b">
+    <narration>Você aponta sua mão na direção do primeiro monstro e libera um choque mortal, fazendo com que ele imediatamente caia no chão convulsionando descontroladamente.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Brrruuuurrrlaaauuurr!</voice>
+    <narration>Então você levanta sua outra mão para derrubar o segundo.</narration>
+    <narration>Graças aos céus seus reflexos conseguem ser rápidos o suficiente para atingir o terceiro e o quarto antes que eles o acertassem com seus ferrões.</narration>
+    <narration>Falcione se coloca a seu lado e apara, com a espada, os ataques de outros dois que você nem mesmo tinha visto.</narration>
+    <person>falcione</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Urgh!</voice>
+    <narration>A manobra dela dá a você tempo suficiente para se recuperar e derrubar os monstros com uma nova descarga.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Glaaaauuurr!</voice>
+    <protagonist />
+    <reward>+battle</reward>
+    <voice>Obrigado pela ajuda. Tudo bem aí?</voice>
+    <person>falcione</person>
+    <reward>+relationship</reward>
+    <voice>Não precisa se preocupar comigo.</voice>
+  </do>
+
+  <do when="c">
+    <narration>Você dispara uma descarga elétrica no teto da caverna, o que faz com que uma chuva de estalactites caia sobre os monstros.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Glaaaauuurr!</voice>
+    <narration>No entanto, nem todos são atingidos e os sobreviventes se espalham, atacando Falcione e os soldados.</narration>
+    <narration>Você pensa em se virar para ajudá-los, mas outros monstros atacam você.</narration>
+    <narration>Quando você finalmente consegue derrubá-los com novas rajadas energéticas, os soldados já deram conta dos demais monstros.</narration>
+    <narration>Infelizmente, você constata que pelo menos dois dos soldados sofreram ferimentos graves.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>-battle</reward>
+    <voice>Maldição!</voice>
+  </do>
+
+  <narration>Ruídos de passos apressados na passagem mais adiante chamam sua atenção.</narration>
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Tem mais um monte deles na outra câmara! E parecem estar fugindo!</voice>
+  <narration>Você se vira para uma oficial.</narration>
+  <protagonist />
+  <voice>Existem mais túneis naquela direção?</voice>
+  <narration>A moça desenrola um pergaminho e o analisa com atenção por um rápido instante.</narration>
+  <person>emelin</person>
+  <voice>Não, senhor!</voice>
+  <protagonist />
+  <voice>Eles não têm outra saída!</voice>
+  <choice>
+    <a>Avançar e terminar o trabalho!</a>
+    <b>Ficar de prontidão e aguardar!</b>
+    <c>Recuar para a câmara anterior!</c>
+  </choice>
+  <voice>Nós devemos...</voice>
+
+  <do when="a">
+    <narration>Você corre na direção dos monstros, seguido pelos soldados.</narration>
+    <narration>Apenas para ser surpeendido quando uma verdadeira horda deles salta das sombras em sua direção!</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <voice>Rarrrrr!</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Essa não!</voice>
+    <narration>Você é obrigado a usar seus poderes de forma frenética para compensar a vantagem que os monstros tinham devido ao ataque surpresa.</narration>
+    <narration>A batalha é intensa e leva vários minutos até os intrusos finalmente serem erradicados.</narration>
+    <person>falcione</person>
+    <voice>Dessa vez eles quase nos pegaram de jeito.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>-battle</reward>
+    <voice>Talvez essa não tenha sido uma das minhas decisões mais brilhantes.</voice>
+    <person>falcione</person>
+    <voice>Estamos vivos, é o que importa.</voice>
+  </do>
+
+  <do when="b">
+    <narration>Você e os soldados se concentram, preparando suas habilidades e armas para uma possível batalha iminente.</narration>
+    <narration>Então, uma verdadeira horda de monstros surge pela passagem, num frenesi desenfreado.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <voice>Rarrrrr!</voice>
+    <narration>Você e os soldados utilizam seus ataques de longa distância contra eles!</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Urraaarrrrgggghhh!</voice>
+    <narration>Poucos monstros conseguem se aproximar o suficiente para conseguir atacar e a maioria dos que conseguem estão feridos demais para representar grandes problemas.</narration>
+    <narration>Você e os soldados conseguem dar conta deles rapidamente.</narration>
+    <protagonist />
+    <reward>+battle</reward>
+    <voice>Bom trabalho!</voice>
+    <narration>Os soldados comemoram a vitória com exclamações animadas.</narration>
+    <person>soldado4</person>
+    <emotion>happy</emotion>
+    <voice>Conseguimos!</voice>
+    <person>soldado5</person>
+    <emotion>happy</emotion>
+    <voice>Uuuufa!</voice>
+  </do>
+
+  <do when="c">
+    <narration>Você e os soldados recuam devagar na direção de onde vieram.</narration>
+    <narration>Logo, vocês ouvem o barulho de passos e rugidos, indicando que uma grande quantidade de monstros está vindo na direção de vocês.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <voice>Rarrrrr!</voice>
+    <narration>Vocês não têm muito tempo para se preparar para a batalha iminente, mas esta câmara tem muito mais espaço do que a outra e os soldados conseguem se colocar em posições mais estrategicamente vantajosas.</narration>
+    <narration>A maioria dos oponentes é derrotada antes de dar mais do que três passos depois de cruzar a passagem.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Urraaarrrrgggghhh!</voice>
+    <narration>Infelizmente, isso não é suficiente para evitar que alguns oponentes precisem ser combatidos no corpo a corpo, mas a batalha termina rápido, sem grandes incidentes.</narration>
+    <protagonist />
+    <emotion>happy</emotion>
+    <reward>+battle</reward>
+    <voice>Excelente trabalho, pessoal!</voice>
+    <person>falcione</person>
+    <voice>Realmente. Vocês excederam minhas expectativas.</voice>
+  </do>
+
+  <music>goodbye</music>
+
+  <protagonist />
+  <voice>Estão todos bem?</voice>
+
+  <do when="belisar_choice1[2]">
+    <person>soldado4</person>
+    <emotion>happy</emotion>
+    <voice>Ótimos, senhor!</voice>
+    <person>falcione</person>
+    <voice>Parece que manter os soldados juntos foi uma ótima decisão.</voice>
+    <protagonist />
+    <reward>+battle</reward>
+    <voice>Fico satisfeito por ver que vocês conseguem cuidar bem das costas um do outro.</voice>
+  </do>
+
+  <do when="belisar_choice1[1]">
+    <person>soldado4</person>
+    <voice>Alguns arranhões, mas nada muito grave, senhor!</voice>
+    <person>soldado5</person>
+    <voice>Ainda bem que priorizamos a proteção da passagem.</voice>
+    <voice>Se aquelas coisas tivessem passado por nós, nem quero pensar no que aconteceria aos outros.</voice>
+    <protagonist />
+    <reward>+battle</reward>
+    <voice>Sim, essa realmente se mostrou ser uma boa estratégia.</voice>
+  </do>
+
+  <do when="!belisar_choice1">
+    <person>soldado5</person>
+    <voice>Temos diversos feridos, senhor!</voice>
+    <person>emelin</person>
+    <voice>Estavam todos longe demais um do outro, fica muito difícil dar apoio desse jeito.</voice>
+    <protagonist />
+    <reward>-battle</reward>
+    <voice>Falcione, lembre-me de não tentar mais separar as tropas quando estivermos sob ataque iminente.</voice>
+    <person>falcione</person>
+    <voice>Com todo prazer, senhor.</voice>
+  </do>
+
+  <narration>Falcione se afasta dos outros, fazendo um discreto gesto para indicar que quer falar com você a sós. Você a segue até um canto.</narration>
+
+  <do when="belisar_battle[3]">
+    <person>falcione</person>
+    <emotion>happy</emotion>
+    <voice>Devo dizer que estou orgulhosa de lutar a seu lado.</voice>
+    <trophy>caveconqueror</trophy>
+    <voice>Essa foi uma batalha muito bem dirigida.</voice>
+    <protagonist />
+    <voice>Obrigado. Vindo de você isso significa muito.</voice>
+    <person>falcione</person>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>...</voice>
+    <emotion>normal</emotion>
+    <voice>Se continuarmos nesse ritmo, não deve demorar muito para conseguirmos cumprir nosso objetivo.</voice>
+    <protagonist />
+    <voice>Talvez.</voice>
+  </do>
+
+  <do when="belisar_battle[1]">
+    <person>falcione</person>
+    <voice>Essa foi uma grande vitória para nós.</voice>
+    <protagonist />
+    <voice>Poderia ter sido melhor.</voice>
+    <person>falcione</person>
+    <voice>Cumprimos a nossa missão e é isso o que importa.</voice>
+  </do>
+
+  <do when="belisar_battle[-1]">
+    <person>falcione</person>
+    <voice>Essa vitória teve um sabor amargo.</voice>
+    <protagonist />
+    <voice>Sim, não posso mais me dar ao luxo de cometer tantos erros desse jeito.</voice>
+    <emotion>sad</emotion>
+    <voice>Tem muitas vidas em jogo.</voice>
+    <person>falcione</person>
+    <voice>Sim. Mas não se esqueça de que tem aliados com os quais pode contar.</voice>
+    <voice>Ficaremos felizes em ajudar no que pudermos.</voice>
+    <protagonist />
+    <voice>Obrigado. Terei isso em mente.</voice>
+  </do>
+
+  <do when="belisar_battle[-3]">
+    <person>falcione</person>
+    <reward>-relationship</reward>
+    <voice>Creio que já tivemos desempenhos melhores antes.</voice>
+    <trophy>cavefail</trophy>
+    <protagonist />
+    <emotion>sad</emotion>
+    <voice>Toda a tensão dos últimos dias deve estar me afetando.</voice>
+    <person>falcione</person>
+    <voice>Talvez seja melhor o senhor ir um pouco mais devagar, talvez descansar mais.</voice>
+    <protagonist />
+    <voice>Vou considerar isso. Obrigado pela sinceridade.</voice>
+  </do>
+
+  <narration>Você olha ao redor, pensativo.</narration>
+  <protagonist />
+  <emotion>sad</emotion>
+  <voice>Por que me sinto como um amador impotente toda vez que enfrentamos esses invasores?</voice>
+  <person>falcione</person>
+  <voice>É compreensível. Esses seres são imprevisíveis demais.</voice>
+  <voice>Não há como planejar uma estratégia infalível contra eles.</voice>
+  <protagonist />
+  <voice>Essa situação não pode continuar. Tenho que acabar logo com isso.</voice>
+  <narration>Você percebe a oficial olhando em sua direção.</narration>
+  <person>emelin</person>
+  <voice>...</voice>
+  <narration>Você troca um olhar com Falcione, antes de se aproximar da moça.</narration>
+  <person>emelin</person>
+  <voice>Nenhuma leitura energética nos arredores, senhor.</voice>
+  <narration>Pode-se dizer que Emelin Necravis é a garota prodígio da tropa.</narration>
+  <narration>Conquistou a patente de tenente ainda muito jovem e hoje é uma das melhores aprendizes de artes místicas de seus domínios.</narration>
+  <narration>No entanto, como a grande maioria dos sábios, tem certa dificuldade para interagir com outras pessoas, sendo quieta e reservada.</narration>
+  <protagonist />
+  <voice>Excelente. Parece que esses eram os últimos.</voice>
+  <voice>Acha que este lugar é seguro, Falcione?</voice>
+  <person>falcione</person>
+  <voice>Se houvesse algum portal por aqui, já teríamos encontrado.</voice>
+  <voice>Nada no comportamento dessas criaturas sugere que possa existir alguma toca por aqui.</voice>
+  <voice>Além disso, os túneis são desolados demais, não há comida ou água suficiente para eles se sustentarem.</voice>
+  <voice>Tenente, estamos na área de alcance?</voice>
+  <person>emelin</person>
+  <voice>As leituras indicam que já ultrapassamos uma margem relativamente confortável além do limite mínimo.</voice>
+  <narration>Você e Falcione lançam um olhar confuso à moça.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Perdão?</voice>
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>O que você disse?</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Não... quero dizer, sim! Estamos dentro da área de alcance!</voice>
+  <person>falcione</person>
+  <voice>Ótimo. Mesmo que os túneis não terminassem ali na frente, não haveria necessidade de avançar mais.</voice>
+  <protagonist />
+  <voice>Tenente, dê o sinal para a base enviar as tropas e mande iniciar a abertura do geoportal.</voice>
+  <person>emelin</person>
+  <voice>Sim, senhor!</voice>
+  <person>falcione</person>
+  <emotion>happy</emotion>
+  <voice>Desta vez, aqueles terroristas nem vão ver o que os atingiu.</voice>
+</storyboard>

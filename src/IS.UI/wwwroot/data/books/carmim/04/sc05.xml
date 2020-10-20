@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>belisar</viewpoint>
+  <music>last-duel</music>
+
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <background>forest2</background>
+
+  <narration>Os sons da batalha ecoam pela floresta enquanto os soldados carmim tentam deter o avanço dos monstros.</narration>
+  <person>monster1</person>
+  <emotion>angry</emotion>
+  <voice>Graaaauuuurrrr!!</voice>
+  <person>soldado8</person>
+  <emotion>angry</emotion>
+  <voice>Tome isso, maldito!</voice>
+  <person>monster1</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>Grrraaa!!!</voice>
+  <person>soldado7</person>
+  <emotion>happy</emotion>
+  <voice>Boa!</voice>
+  <emotion>angry</emotion>
+  <voice>Agora eu acabo com a raça dele!</voice>
+  <person>soldado4</person>
+  <emotion>surprised</emotion>
+  <voice>Ei, cuidado aí, tem um atrás de vocês!</voice>
+
+  <do when="sulana_pious">
+    <person>soldado2</person>
+    <emotion>angry</emotion>
+    <voice>Deixa com a gente!</voice>
+    <person>soldado3</person>
+    <emotion>angry</emotion>
+    <voice>Por Ebora!</voice>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Grrr...</voice>
+    <person>soldado4</person>
+    <emotion>surprised</emotion>
+    <voice>Não sejam descuidados! Esses bichos são perigosos!</voice>
+    <person>soldado3</person>
+    <emotion>angry</emotion>
+    <voice>Se a batalha de Mercília não nos matou, nada mais consegue!</voice>
+    <person>soldado2</person>
+    <emotion>angry</emotion>
+    <voice>É isso aí, tome esta, monstro!</voice>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Grraaaarrr...</voice>
+    <person>soldado2</person>
+    <emotion>angry</emotion>
+    <voice>Esse já era!</voice>
+    <person>soldado4</person>
+    <voice>Exibidos!</voice>
+    <emotion>surprised</emotion>
+    <voice>Ei, cuidado, vem vindo mais um pelo outro lado!</voice>
+  </do>
+  
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Não se preocupem, esse é meu!</voice>
+  <narration>A criatura se vira para você e tenta atacar.</narration>
+  <narration>Você deflete o ferrão da criatura com seu bracelete e encosta a palma de sua outra mão no peito dela, antes de liberar uma carga mortal de eletricidade.</narration>
+  <person>monster1</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>Grrr...</voice>
+  <narration>Enquanto o monstro se desintegra, Você olha ao redor e vê um invasor prestes a saltar sobre as costas de Falcione, que está ocupada combatendo outro inimigo.</narration>
+  <narration>Um pouco mais adiante, Emelin tenta se concentrar para invocar algum encantamento enquanto um outro monstro corre na direção dela.</narration>
+  <protagonist />
+  <choice time="3">
+    <a>Ajudar Falcione</a>
+    <b>Salvar Emelin</b>
+    <c when="belisar_power[3:]" req="Poder +3">Proteger as duas</c>
+  </choice>
+  <thought>...</thought>
+
+  <do when="a">
+    <narration>Você dispara uma rajada elétrica que atinge o monstro em cheio.</narration>
+    <narration>Falcione se livra do oponente que combatia e se vira a tempo de ver o monstro abatido caindo a seus pés e se desintegrando.</narration>
+    <person>falcione</person>
+    <reward>+relationship</reward>
+    <voice>...</voice>
+    <narration>Enquanto isso, Emelin consegue terminar sua conjuração quando as garras do monstro já estavam quase em seu pescoço.</narration>
+    <narration>A onda de choque seletiva invocada por ela lança a criatura para trás, ao mesmo tempo em que derruba todos os monstros num raio de quase cem metros.</narration>
+    <narration>Aproveitando a oportunidade, os soldados carmim atacam, estando agora em clara vantagem.</narration>
+  </do>
+
+  <do when="b">
+    <narration>Você dispara uma rajada elétrica que atinge o monstro em cheio.</narration>
+    <narration>Emelin termina sua conjuração e invoca uma forte onda de choque seletiva.</narration>
+    <narration>Todos os monstros num raio de 100 metros são lançados para longe, incluindo o que estava para atacar Falcione.</narration>
+    <narration>Ela abre os olhos e vê o monstro que você acertou antes, se desintegrando não muito longe dela.</narration>
+    <person>emelin</person>
+    <reward>+relationship</reward>
+    <voice>...</voice>
+    <narration>Aproveitando que os invasores estão caídos, os soldados carmim atacam, estando agora em clara vantagem.</narration>
+  </do>
+
+  <do when="c">
+    <narration>Numa manobra arriscada, você ativa os estabilizadores dos dois pulsos, disparando duas rajadas simultâneas.</narration>
+    <trophy>overpowered</trophy>
+    <narration>Sua pontaria é impecável, e os dois monstros caem no chão, fulminados.</narration>
+    <narration>Emelin termina sua conjuração e invoca uma forte onda de choque seletiva.</narration>
+    <narration>Todos os monstros num raio de 100 metros são derrubados.</narration>
+    <person>falcione</person>
+    <emotion>angry</emotion>
+    <reward>+relationship</reward>
+    <voice>Avante! Ataquem agora!</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <reward>+relationship</reward>
+    <voice>É nossa chance!</voice>
+    <narration>Os soldados obedecem sem hesitar, atacando os oponentes caídos.</narration>
+  </do>
+
+  <do when="!a,b,c">
+    <narration>Você não consegue agir a tempo, quando pensa em lançar uma rajada, já é tarde demais.</narration>
+    <narration>Felizmente, Falcione consegue se virar a tempo de aparar com sua espada o ataque do monstro.</narration>
+    <narration>Enquanto isso, Emelin consegue terminar sua conjuração quando as garras do monstro já estavam quase em seu pescoço.</narration>
+    <narration>A onda de choque seletiva invocada por ela lança a criatura para trás, ao mesmo tempo em que derruba todos os monstros num raio de quase cem metros.</narration>
+    <narration>Aproveitando a oportunidade, os soldados carmim atacam, estando agora em clara vantagem.</narration>
+  </do>
+
+  <narration>Em poucos minutos, os monstros restantes são erradicados.</narration>
+
+  <music>goodbye</music>
+
+  <narration>Os soldados soltam brados de alegria.</narration>
+  <narration>Você luta para recobrar o fôlego, enquanto olha de um lado para o outro, mal acreditando na cena ao redor.</narration>
+  <narration>Assim como você, seus soldados estão exaustos, mas felizmente não houve baixas desta vez.</narration>
+  <narration>Falcione e Emelin se aproximam, ambas apresentando pequenos cortes e arranhões, mas fora isso, pareciam bem.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>O que significa isso? A mobilidade deles não deveria ser limitada?</voice>
+  <voice>As fronteiras com as outras províncias deveriam estar seguras, eles não deveriam ser capazes de se afastar tanto do ponto zero.</voice>
+  <voice>Como vieram parar aqui?</voice>
+  <person>falcione</person>
+  <voice>Com o artefato desativado, eles devem estar mais poderosos.</voice>
+  <person>emelin</person>
+  <voice>Não pode ser isso. O artefato apenas dificultava a abertura de portais para o mundo deles.</voice>
+  <protagonist />
+  <voice>Então, como explica o fato de essas aberrações terem chegado tão longe?</voice>
+  <person>emelin</person>
+  <voice>Talvez tenham... o senhor sabe... encontrado uma forma de... compensar.</voice>
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>Compensar? Como?</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Quando os pulsos atingem determinada frequência, é possível recondensar a transcendência.</voice>
+  <emotion>normal</emotion>
+  <voice>Usando esse artifício, a energia é transferida para o canal compatível de maior proximidade. As pontes de vento imperiais funcionam com um princípio similar.</voice>
+  <emotion>sad</emotion>
+  <voice>Ou funcionavam, antes do conselheiro Raduar destruir todas as que tinham em Ebora.</voice>
+  <emotion>normal</emotion>
+  <voice>Não sei qual é a natureza da energia usada pelos demônios, mas esse processo de recondensação pode perfeitamente viabilizar uma ruptura no...</voice>
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>Ah! Pare!</voice>
+  <emotion>angry</emotion>
+  <voice>Você está fazendo minha cabeça doer!</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Oh, desculpe! Eu...</voice>
+  <protagonist />
+  <voice>Não entendi tudo o que você disse, mas se nós conseguimos manipular energia desse modo que você explicou, faz todo sentido eles também poderem.</voice>
+  <voice>Resta saber por que mandariam essas monstruosidades para cá.</voice>
+  <voice>Quero dizer, estamos dentro da Província Central, não estamos?</voice>
+  <person>falcione</person>
+  <voice>Sim, estamos há pelo menos cinco quilômetros além da fronteira.</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Para onde esses filhos da mãe estão querendo ir, afinal?</voice>
+  <person>falcione</person>
+  <voice>Deve ter algo por aqui que eles querem.</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Só tem uma coisa que esses malditos querem! Nos esmagar! Eles mesmos fazem questão de dizer isso!</voice>
+  <person>falcione</person>
+  <voice>Podem estar querendo encontrar algo para usar contra nós.</voice>
+  <person>emelin</person>
+  <voice>Ou talvez isso seja... o senhor sabe... uma distração...</voice>
+  <protagonist />
+  <choice>
+    <a>Dar vazão à minha frustração.</a>
+    <b>Ponderar sobre a sugestão de Falcione.</b>
+    <c>Considerar o que Emelin disse.</c>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <narration>Você levanta sua mão direita e dispara uma descarga elétrica em uma árvore próxima.</narration>
+    <narration>O tronco é rachado ao meio, farpas e pedaços de madeira se espalhando por toda a parte.</narration>
+    <narration>A copa da árvore lentamente cai ao chão, conforme os cipós que a prendem às outras árvores vão arrebentando.</narration>
+    <narration>Todos os soldados olham para você, de olhos arregalados.</narration>
+    <narration>Falcione não esboça nenhuma emoção, mas Emelin se encolhe toda, levando uma das mãos à boca.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+power</reward>
+    <voice>Que raios está acontecendo?!</voice>
+    <voice>Por que esses infelizes precisam envolver mais inocentes nessa porcaria de guerra?!</voice>
+    <narration>Os soldados lançam olhares de respeito para você, muitos expressando sua concordância.</narration>
+    <narration>Você inspira fundo e fecha os olhos por um momento, até conseguir se acalmar.</narration>
+  </do>
+
+  <do when="b">
+    <narration>Você olha para Falcione.</narration>
+    <protagonist />
+    <voice>Alguma ideia do que pode ser o alvo deles? O que tem nessa direção?</voice>
+    <person>falcione</person>
+    <reward>+relationship</reward>
+    <voice>Não acho que o alvo possa ser aqui por perto. Adiante só existem algumas comunidades rurais.</voice>
+  </do>
+
+  <do when="c">
+    <narration>Você olha para Emelin.</narration>
+    <protagonist />
+    <voice>Isso faz sentido. Esse grupo era barulhento e se movia devagar.</voice>
+    <person>emelin</person>
+    <reward>+relationship</reward>
+    <voice>Sim, senhor. Vou contatar a base e verificar se eles detectaram mais alguma incursão desde que partimos para cá.</voice>
+  </do>
+
+  <protagonist />
+  <voice>Onde estão os guardas do império, afinal?</voice>
+  <voice>Não deveríamos ser capazes de entrar nos domínios deles assim tão fácil.</voice>
+  <person>falcione</person>
+  <voice>Pelo que sabemos, houve um outro ataque mais ao leste. Acredito que as tropas que deveriam guardar essa região foram mobilizadas para lá para ajudar.</voice>
+  <voice>A nova imperatriz ainda não estabeleceu completamente sua autoridade.</voice>
+  <voice>Não acredito que tenham contingente o suficiente para reforçar essa fronteira.</voice>
+  <protagonist />
+  <voice>O que sabemos sobre essa imperatriz?</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Temos... quero dizer... os sábios possuem vários arquivos sobre ela.</voice>
+  <voice>O que o senhor gostaria de saber?</voice>
+
+  <do>
+    <protagonist />
+    <choice>
+      <a>Qual a origem dela?</a>
+      <b>Como ela chegou ao poder?</b>
+      <c>Ela tem o apoio das outras províncias?</c>
+      <d>Isso é tudo, obrigado</d>
+    </choice>
+    <voice>...</voice>
+
+    <do when="a">
+      <person>emelin</person>
+      <voice>Valena Delafortuna ela era uma órfã lutando para sobreviver nas ruas da capital.</voice>
+      <voice>Recebeu a marca da Fênix com 15 anos. Isso ocorreu três anos atrás.</voice>
+      <voice>Desde então ela vem sendo treinada pela Guarda Imperial para assumir o trono.</voice>
+      <voice>Quando o imperador morreu, ela inda não tinha atingido a maioridade, então não pôde assumir o trono imediatamente.</voice>
+      <voice>Ela desapareceu quando o palácio imperial sofreu um ataque, supostamente dirigido a ela.</voice>
+      <voice>Durante sua ausência, ocorreu o golpe de estado onde os conselheiros imperiais assumiram o poder e dividiram o país.</voice>
+      <protagonist />
+      <emotion>angry</emotion>
+      <voice>O que trouxe Raduar para cá.</voice>
+      <person>falcione</person>
+      <voice>Felizmente, o senhor conseguiu se livrar dele antes que pusesse seus planos em prática.</voice>
+      <protagonist />
+      <emotion>angry</emotion>
+      <voice>Fico imaginando se não era melhor ter Raduar comandando a província do que ver nosso povo lutando por suas vidas dessa forma.</voice>
+      <person>falcione</person>
+      <voice>Os demônios teriam aparecido, não importa quem estivesse no comando.</voice>
+      <emotion>angry</emotion>
+      <voice>E pelo que sabemos de Raduar, o maldito seria bem capaz de se unir a eles ao invés de combatê-los, como o senhor fez.</voice>
+    </do>
+
+    <do when="b">
+      <person>emelin</person>
+      <voice>Valena estava foragida na época do golpe de estado.</voice>
+      <voice>Ela reapareceu quando o homem que aparentemente liderava os golpistas foi morto.</voice>
+      <voice>Como ela já tinha a marca da Fênix, era a escolha perfeita para assumir o trono, principalmente depois de todo o terror e confusão causados pelo golpe.</voice>
+      <voice>O povo aceitou a liderança dela de imediato, aparentemente ela é muito popular.</voice>
+      <voice>Apesar de ser jovem e inexperiente.</voice>
+      <person>falcione</person>
+      <voice>Ou seja, ela recebeu tudo de mão beijada.</voice>
+      <person>emelin</person>
+      <voice>Sim, ela não precisou lutar para chegar ao poder, nem nada do gênero.</voice>
+      <voice>Mas, supostamente, a Grande Fênix apenas concede sua marca à pessoa mais digna de assumir o trono.</voice>
+      <protagonist />
+      <emotion>angry</emotion>
+      <voice>A Fênix também não deveria permitir que demônios invadissem Ebora, portanto ela não me parece muito confiável, no momento.</voice>
+      <person>emelin</person>
+      <emotion>surprised</emotion>
+      <voice>Senhor! Falando dessa forma, o senhor corre o risco de atrair a ira dela!</voice>
+      <person>falcione</person>
+      <emotion>happy</emotion>
+      <voice>Pfff!</voice>
+      <person>emelin</person>
+      <voice>De qualquer forma, pelo que sabemos, Valena não é negligente.</voice>
+      <voice>Ela vem trabalhando com afinco na reconstrução da província desde sua aclamação.</voice>
+    </do>
+
+    <do when="c">
+      <person>emelin</person>
+      <voice>Não até onde sabemos.</voice>
+      <voice>A Sidéria e as Rochosas são reconhecidamente hostis e já tentaram invadir a Província Central.</voice>
+      <voice>Lemoran e Halias se mantém distantes, não temos muita informação sobre o que ocorre por lá.</voice>
+      <voice>Mesembria parece ser neutra, pois é a única província além de Ebora não dominada pelos golpistas.</voice>
+      <person>falcione</person>
+      <voice>Quem diria que as pessoas de lá deixariam seus preciosos livros de lado e teriam culhão para lutar contra um déspota.</voice>
+      <person>emelin</person>
+      <emotion>angry</emotion>
+      <voice>Ei! Ser um sábio não significa ser covarde!</voice>
+      <person>falcione</person>
+      <emotion>happy</emotion>
+      <voice>Estou vendo. Não imaginava que você pudesse ter culhão para responder alguém desse jeito.</voice>
+      <person>emelin</person>
+      <emotion>surprised</emotion>
+      <voice>Oh! Eu... eu...</voice>
+      <person>falcione</person>
+      <voice>Relaxe.</voice>
+      <protagonist />
+      <voice>Então, a imperatriz não tem muitos aliados?</voice>
+      <person>emelin</person>
+      <voice>Bem... ela tem os recursos da Província Central à disposição. Era a província mais rica e desenvolvida do império antes do golpe.</voice>
+      <voice>Dizem que o exército deles tem heróis poderosos, além de artefatos místicos muito raros.</voice>
+    </do>
+
+    <restart when="!d" />
+  </do>
+
+  <person>falcione</person>
+  <voice>Você está surpreendentemente bem informada sobre o assunto.</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Isso é ruim? Quero dizer... aqueles documentos não eram confidenciais, eram?</voice>
+  <voice>As ordens eram para organizarmos as anotações do sábio Norlando e eu ajudei a...</voice>
+  <protagonist />
+  <voice>Está tudo bem, tenente. Falcione disse aquilo como um elogio.</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>É mesmo?</voice>
+  <emotion>happy</emotion>
+  <voice>Puxa! Quero dizer, obrigada!</voice>
+  <narration>Falcione aperta os lábios e balança a cabeça, desviando o olhar.</narration>
+  <protagonist />
+  <voice>Alguma possibilidade de a imperatriz estar envolvida com os demônios?</voice>
+  <person>emelin</person>
+  <voice>Existem relatos de pessoas que avistaram um homem com aparência demoníaca nas masmorras da capital do império.</voice>
+  <voice>Dizem que Valena capturou o monstro quando ele tentou matá-la na Sidéria.</voice>
+  <voice>Mas não há nenhuma evidência conclusiva de que Valena tenha qualquer interesse em Ebora.</voice>
+  <person>falcione</person>
+  <voice>Ela provavelmente tem interesse em unificar o império, de forma que possa governar todo o continente.</voice>
+  <person>emelin</person>
+  <voice>Creio que, no momento, os ataques das outras províncias são uma preocupação maior.</voice>
+  <protagonist />
+  <voice>De qualquer forma, não poderemos contar com a ajuda da imperatriz.</voice>
+  <voice>Temos que impedir que os demônios voltem a mandar monstros para fora de Ebora.</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Mas... como?</voice>
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>O senhor está considerando aquela ideia dos protetores?</voice>
+  <protagonist />
+  <voice>Parece ser a única alternativa.</voice>
+  <voice>Não temos como monitorar tantas centenas de quilômetros e combater os invasores ao mesmo tempo.</voice>
+  <person>falcione</person>
+  <voice>O senhor acha que podemos confiar neles?</voice>
+  <protagonist />
+  <voice>Não, não acho.</voice>
+  <voice>Mas nossas escolhas estão ficando limitadas.</voice>
+  <emotion>angry</emotion>
+  <voice>Se os demônios aumentarem ainda mais sua área de influência, será um caos.</voice>
+  <voice>Já basta eles controlarem metade de Ebora. Não podemos permitir que expandam seus domínios.</voice>
+</storyboard>

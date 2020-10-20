@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>belisar</viewpoint>
+  <music>open-sky</music>
+
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <background>shack_interior2</background>
+
+  <protagonist />
+  <voice>Como está Falcione?</voice>
+  <person>soldado4</person>
+  <voice>Não recebemos mais nenhum sinal do emissor da curandeira de Mercília, senhor, então concluímos que não deve ter havido nenhuma mudança.</voice>
+  <narration>Você aponta para a figura desacordada sobre uma pilha de tapetes no chão.</narration>
+  <person>sulana</person>
+  <voice>...</voice>
+  <protagonist />
+  <voice>Falcione disse que havia trespassado essa mulher com a espada.</voice>
+  <person>soldado4</person>
+  <emotion>surprised</emotion>
+  <voice>Isso é verdade, senhor, eu estava lá.</voice>
+  <person>curandeiro</person>
+  <voice>Humm...</voice>
+  <voice>A pele do ventre dela está arroxeada, indicando que ocorreu algum trauma sério.</voice>
+  <voice>Eu diria que alguém tentou curar o ferimento de uma maneira bastante... peculiar.</voice>
+  <protagonist />
+  <voice>O que podemos fazer por ela?</voice>
+  <person>curandeiro</person>
+  <voice>No momento, nada.</voice>
+  <voice>Ela não parece estar correndo nenhum risco e está sob o efeito de alguma poção, então é mais seguro esperar que ela acorde, antes de tentarmos fazer qualquer coisa.</voice>
+  <protagonist />
+  <voice>Entendo.</voice>
+  <person>curandeiro</person>
+  <voice>...</voice>
+  <voice>É estranho, senhor...</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>O quê?</voice>
+  <person>curandeiro</person>
+  <voice>As leituras místicas não fazem muito sentido.</voice>
+  <voice>É como se o corpo dela reagisse de forma diferente a certos tipos de estímulo.</voice>
+  <protagonist />
+  <voice>Na verdade, eu acho que faz sentido, sim.</voice>
+  <voice>De acordo com Falcione, ela é uma descendente do clã das montanhas.</voice>
+  <person>curandeiro</person>
+  <voice>Sim, eu sei.</voice>
+  <voice>Mas o que eu acho curioso é que já vi leituras bastante similares antes.</voice>
+  <protagonist />
+  <voice>É mesmo? Quando?</voice>
+  <person>curandeiro</person>
+  <voice>Naquela vez em que... eu examinei o senhor.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>O quê?! Ela tem leituras parecidas com as minhas?!</voice>
+  <voice>O que isso quer dizer?</voice>
+  <narration>O curandeiro pensa um pouco e sacode a cabeça.</narration>
+  <person>curandeiro</person>
+  <voice>Talvez não seja nada.</voice>
+  <voice>Se ela sobreviveu a um ferimento como o que o senhor descreveu, é porque tem um potencial energético muito forte.</voice>
+  <voice>Talvez essa seja a semelhança: o nível de poder.</voice>
+  <protagonist />
+  <voice>Interessante.</voice>
+  <person>curandeiro</person>
+  <voice>O senhor sugere algum curso de ação em relação a ela?</voice>
+  <protagonist />
+  <choice>
+    <a>Pergunte a Falcione.</a>
+    <b>Interrogue Giarle Miliens.</b>
+    <c>Espere ela acordar.</c>
+  </choice>
+  <voice>Sugiro que você...</voice>
+
+  <do when="a">
+    <person>curandeiro</person>
+    <emotion>surprised</emotion>
+    <voice>Mas ela não está convalescente?</voice>
+    <protagonist />
+    <voice>Ela vai apreciar se dermos a ela a chance de participar de qualquer discussão que envolva essa rebelde.</voice>
+    <voice>Falcione já deve saber que ela está aqui, mandei um mensageiro a Mercília mais cedo.</voice>
+    <reward>+control</reward>
+    <voice>Soldado, veja se encontra alguém capaz de abrir um geoportal para lá. Melhor vocês conversarem com ela pessoalmente.</voice>
+    <person>soldado4</person>
+    <voice>Sim, senhor.</voice>
+    <narration>Enquanto o soldado sai da tenda, você encara o curandeiro.</narration>
+    <protagonist />
+    <voice>Já é a segunda vez que essa mulher aparece aqui sem explicação.</voice>
+    <voice>Isso é muito preocupante.</voice>
+    <voice>Quero saber como ela faz isso e o que está querendo.</voice>
+    <voice>E creio que a maneira mais rápida de conseguir essas informações seja fazer com que ela acorde.</voice>
+    <voice>Converse com Falcione. Se chegarem a alguma conclusão, me avisem.</voice>
+    <person>curandeiro</person>
+    <voice>Como quiser, senhor.</voice>
+  </do>
+
+  <do when="b">
+    <person>curandeiro</person>
+    <emotion>surprised</emotion>
+    <voice>O líder rebelde?</voice>
+    <protagonist />
+    <voice>Sim. Ele a conhece.</voice>
+    <reward>+fight</reward>
+    <voice>E talvez conversando sobre isso ele revele alguma informação nova.</voice>
+    <emotion>angry</emotion>
+    <voice>Ele é um homem bastante... determinado.</voice>
+    <person>curandeiro</person>
+    <emotion>surprised</emotion>
+    <voice>Não sei se eu seria a pessoa mais indicada para...</voice>
+    <protagonist />
+    <voice>Não se preocupe.</voice>
+    <voice>Estou sugerindo que você converse apenas sobre assuntos que você domina.</voice>
+    <voice>Veja se ele tem qualquer informação que ajude a lançar uma luz sobre o estado dela.</voice>
+    <person>curandeiro</person>
+    <voice>Sim, senhor! Isso eu posso fazer.</voice>
+  </do>
+
+  <do when="c">
+    <person>curandeiro</person>
+    <voice>Se prefere assim, senhor.</voice>
+    <protagonist />
+    <voice>Tenho outros assuntos para tratar no momento.</voice>
+    <voice>Se tiver alguma mudança no quadro dela, me avise.</voice>
+    <person>curandeiro</person>
+    <voice>Sim, senhor!</voice>
+  </do>
+
+  <narration>Com um gesto de assentimento, você se vira e sai da tenda.</narration>
+
+  <background>palmtree</background>
+
+  <narration>Zelmira o está esperando do lado de fora.</narration>
+  <person>zelmira</person>
+  <voice>...</voice>
+
+  <do when="c">
+    <protagonist />
+    <voice>Desculpe deixá-la esperando.</voice>
+    <voice>Tentei resolver isso o mais rápido possível.</voice>
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>Eu sei.</voice>
+    <narration>Você a pega pela mão e a conduz na direção da praia.</narration>
+  </do>
+
+  <narration when="!c">Sem dizer nada, você a pega pela mão e a conduz na direção da praia.</narration>
+
+  <background>beach</background>
+  
+  <person>zelmira</person>
+  <voice>Como ela está?</voice>
+  <protagonist />
+  <voice>Há indícios de um ferimento, mas parece ser interno.</voice>
+  <person>zelmira</person>
+  <emotion>surprised</emotion>
+  <voice>Pobrezinha. Baliorge está preocupado com ela.</voice>
+
+  <music>sad-story</music>
+
+  <do when="zelmira_relationship[4:]">
+    <narration>Você examina a expressão do rosto de sua esposa com atenção.</narration>
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <voice>O que foi?</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Imaginei que você fosse ficar descontente por ela ter aparecido de novo.</voice>
+    <person>zelmira</person>
+    <emotion>sad</emotion>
+    <voice>...</voice>
+    <voice>Eu tenho deixado você frustrado, não tenho?</voice>
+    <protagonist />
+    <voice>...</voice>
+    <person>zelmira</person>
+    <emotion>sad</emotion>
+    <voice>Sei que sou muito ciumenta...</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Isso não é culpa sua.</voice>
+    <person>zelmira</person>
+    <emotion>sad</emotion>
+    <voice>Mas você já tem tanta coisa para se preocupar.</voice>
+    <voice>Não é justo você ter que ficar lidando com meus... descontroles.</voice>
+
+    <do when="belisar_hipnotist">
+      <narration>Ela abaixa os olhos, parecendo envergonhada, algo bastante incomum para ela.</narration>
+      <person>zelmira</person>
+      <emotion>normal</emotion>
+      <voice>Me desculpe... por antes...</voice>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <voice>...</voice>
+      <emotion>normal</emotion>
+      <voice>Não se preocupe com isso. Como eu disse, não é culpa sua.</voice>
+    </do>
+
+    <do when="!belisar_hipnotist">
+      <protagonist />
+      <voice>Não se preocupe com isso. Como eu disse, não é culpa sua.</voice>
+    </do>
+
+    <narration>Você percebe que ela está trêmula.</narration>
+    <narration>Não deve estar sendo nem um pouco fácil para ela lutar contra os próprios impulsos.</narration>
+    <trophy>insight</trophy>
+    <person>zelmira</person>
+    <emotion>sad</emotion>
+    <voice>Essa mulher... Sulana... ela nunca desiste, não é?</voice>
+    <voice>Vocês a cercaram junto com outros rebeldes em Revoada. Ela nunca se rendeu, não foi? E quando os monstros atacaram, ela lutou ao lado de vocês.</voice>
+    <voice>Agora, ela lutou sozinha contra Falcione para ganhar tempo para seus amigos fugirem.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Zelmira...</voice>
+    <person>zelmira</person>
+    <voice>Esse é o tipo de pessoa que eu gostaria de ser.</voice>
+    <voice>Alguém capaz de fazer qualquer coisa para proteger aqueles a quem ama.</voice>
+    <emotion>angry</emotion>
+    <voice>Eu percebi que eu me acomodei muito nesses últimos anos.</voice>
+    <emotion>normal</emotion>
+    <voice>Me contentei com o fato de estar sentindo toda essa felicidade por viver com você.</voice>
+    <voice>E deixei que a inveja me consumisse. Inveja de outras mulheres... que são tão mais fortes do que eu.</voice>
+    <emotion>angry</emotion>
+    <voice>Mulheres tão mais dignas dessa felicidade do que eu.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <voice>Mas isso é injusto. Você não tem controle sobre...</voice>
+    <person>zelmira</person>
+    <emotion>angry</emotion>
+    <voice>Eu já me apoiei nessa muleta por tempo demais!</voice>
+    <voice>Passei tantos anos conformada com o fato de não ter controle sobre minha vida e me frustrando por não ser quem eu gostaria de ser.</voice>
+    <emotion>sad</emotion>
+    <voice>Eu sou uma pessoa horrível, Marcelius. Se tem alguém que merece ser privada de sua liberdade, sou eu.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Mas...</voice>
+    <person>zelmira</person>
+    <emotion>surprised</emotion>
+    <voice>Não! Me deixe terminar.</voice>
+    <emotion>normal</emotion>
+    <voice>Você pode ter cometido um erro. Mas equívocos não definem quem somos. O que nos define é como lidamos com eles.</voice>
+    <voice>Você decidiu arcar com as consequências e se tornar uma pessoa melhor.</voice>
+    <emotion>sad</emotion>
+    <voice>Não sei até onde minha condição me permite tomar decisões, mas...</voice>
+    <emotion>angry</emotion>
+    <voice>Eu sei que meu ciúme não é involuntário. É apenas a manifestação da minha insatisfação. Do quão... ruim eu sou.</voice>
+    <emotion>sad</emotion>
+    <voice>Você vem lutando há anos, sacrificou quase tudo para tentar me libertar.</voice>
+    <voice>E eu... eu apenas me acomodei.</voice>
+    <emotion>angry</emotion>
+    <voice>Não quero mais isso!</voice>
+    <voice>Não quero mais me sentir ameaçada por toda mulher corajosa que aparece na minha frente.</voice>
+    <voice>Eu quero ser corajosa também!</voice>
+    <narration>Você a puxa contra si e cola os lábios ao dela, obrigando-a a interromper a frase.</narration>
+    <person>zelmira</person>
+    <emotion>surprised</emotion>
+    <voice>Humpf...</voice>
+  </do>
+
+  <do when="zelmira_relationship[:3]">
+    <narration>Conhecendo bem aquele tom de voz, você a encara, franzindo o cenho.</narration>
+    <protagonist />
+    <voice>E você está com ciúmes de novo.</voice>
+    <person>zelmira</person>
+    <emotion>sad</emotion>
+    <voice>Me perdoe.</voice>
+    <narration>Você solta um suspiro.</narration>
+    <protagonist />
+    <voice>Eu sei que você não consegue evitar.</voice>
+    <voice>Mas eu já disse: não há razão para se preocupar, ela não representa ameaça nenhuma.</voice>
+    <person>zelmira</person>
+    <emotion>sad</emotion>
+    <voice>Você a acha atraente.</voice>
+    <narration>Você fecha os olhos, tentando reunir paciência.</narration>
+    <protagonist />
+    <voice>Sim, Zelmira, eu a acho atraente.</voice>
+    <voice>Eu considero muitas mulheres atraentes. Nós, homens, somos assim e não podemos fazer absolutamente nada quanto a isso.</voice>
+    <voice>Mas o fato de eu admirar a beleza exterior de uma mulher não quer dizer que eu vá querer trocar você por ela.</voice>
+    <person>zelmira</person>
+    <emotion>surprised</emotion>
+    <voice>Mas por que não?</voice>
+    <emotion>normal</emotion>
+    <voice>Não entendo... afinal, eu já estou velha e não sou mais tão atraente quanto antes.</voice>
+    <emotion>sad</emotion>
+    <voice>E, se isso o fizer se sentir feliz…</voice>
+    <protagonist />
+    <voice>Você se sentiria feliz se eu fizesse isso?</voice>
+    <person>zelmira</person>
+    <emotion>surprised</emotion>
+    <voice>Não, mas…</voice>
+    <narration>Ela se cala, sem saber como terminar a frase.</narration>
+    <narration>Por mais que você tente, nunca consegue convencê-la.</narration>
+    <narration>Ela é incapaz de colocar as próprias necessidades antes das suas e faz qualquer coisa que ache que vá beneficiá-lo.</narration>
+    <narration>E o fato de saber que você não tem essa mesma compulsão em relação a ela a deixa insegura.</narration>
+    <narration>Perigosamente insegura.</narration>
+    <protagonist />
+    <voice>Zelmira, eu já lhe disse antes: ver você infeliz me deixa infeliz também.</voice>
+    <narration>Lágrimas começam a escorrer dos olhos dela.</narration>
+    <person>zelmira</person>
+    <emotion>sad</emotion>
+    <voice>Sim, eu sei que você disse isso.</voice>
+    <voice>Mas eu não entendo, afinal, eu sou apenas uma…</voice>
+    <narration>Você a puxa contra si e cola os lábios ao dela, obrigando-a a interromper a frase.</narration>
+    <person>zelmira</person>
+    <emotion>surprised</emotion>
+    <voice>Humpf...</voice>
+
+    <do when="belisar_hipnotist">
+      <narration>Era muito raro ela ter duas crises crônicas de depressão no mesmo dia.</narration>
+      <narration>Aparentemente ela considerava Sulana como um perigo muito maior do que todas as outras mulheres das quais sentira ciúme até hoje.</narration>
+      <narration>Você prolonga o carinho, torcendo para que dessa vez aquilo seja suficiente.</narration>
+      <narration>Não teria estômago para usar aquele maldito poder mais uma vez hoje.</narration>
+    </do>
+  </do>
+
+  <music>somewhere-sunny</music>
+
+  <narration>Depois de se recuperar da surpresa, ela se entrega ao momento.</narration>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Humm...</voice>
+  <narration>Em pouco tempo, ela se esquece completamente de tudo, praticamente derretendo-se em seus braços.</narration>
+  <narration>O tempo deixa de existir, enquanto suas almas feridas buscam conforto e alento uma na outra.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <voice>...</voice>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>...</voice>
+
+  <music>enigma</music>
+
+  <narration>E então os gritos e sons de batalha começam.</narration>
+</storyboard>

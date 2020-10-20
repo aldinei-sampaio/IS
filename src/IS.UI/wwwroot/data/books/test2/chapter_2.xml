@@ -1,0 +1,516 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>belisar</viewpoint>
+  <music>last-duel</music>
+  <background>carmim</background>
+  <observe />
+  <narration>Capítulo 7: Sacrifício (cena 2)</narration>
+
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <do>
+    <protagonist />
+    <choice>
+      <a when="sulana_rage[:4]" req="Fúria &lt; 5">Fúria+1</a>
+      <d>Prosseguir</d>
+    </choice>
+    <voice>...</voice>
+    <exit when="d" />
+    <do when="a">
+      <person>sulana</person>
+      <reward>+rage</reward>
+      <voice>...</voice>
+    </do>
+    <restart />
+  </do>
+
+  <background>beach</background>
+
+  <narration>Você está de joelhos sobre a areia da praia.</narration>
+  <protagonist />
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <narration>O desespero e a desolação tomam conta de você enquanto olha para o corpo de Zelmira no chão, aos pés do demônio.</narration>
+  <narration>Levantando os olhos devagar, você encara o rosto da criatura, contorcido em um sorriso grotesco.</narration>
+  <person>demonio</person>
+  <emotion>happy</emotion>
+  <voice>...</voice>
+  <narration>Diversos pensamentos passam por sua mente atordoada.</narration>
+  <narration>Entre eles, vem a lembrança de uma revelação da entidade que lhe concedeu seus poderes, tantos anos atrás.</narration>
+
+  <background>white</background>
+
+  <person>cantranis</person>
+  <voice>As criaturas negras pisarão sobre essa terra e trarão dor, morte e desespero.</voice>
+  <voice>Você será meu vingador. Lançará sobre eles a minha fúria e mostrará aos renegados o poder da União.</voice>
+  <voice>Não deverá deixar pedra sobre pedra, não irá descansar enquanto cada seguidor do abismo respirar.</voice>
+  <voice>Vá e traga a fúria da tempestade até a terra, expurgando a escória contaminada para que a vida possa renascer das cinzas.</voice>
+  <narration>Você teve pesadelos com aquelas palavras por meses.</narration>
+
+  <background>beach</background>
+  
+  <protagonist />
+  <emotion>sad</emotion>
+  <thought>Tentei apagar isso da memória, tomar o controle de meu destino, construir uma vida diferente.</thought>
+  <thought>E de que isso adiantou?</thought>
+  <narration>Então um choro de criança chega ao seu ouvido.</narration>
+  <person>sagante</person>
+  <emotion>sad</emotion>
+  <voice>Buááááááááá!</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>!!</voice>
+  <narration>Seu peito arde com o sentimento amargo da derrota. O que você pode fazer? Nada!</narration>
+  <narration>Está fraco, suas energias quase esgotadas e o demônio levanta uma das mãos, preparando-se para lançar o ataque final.</narration>
+  <protagonist />
+  <thought>Perdoe-me, filho. Não posso salvá-lo.</thought>
+  <narration>Você volta a olhar para o corpo de Zelmira e sente o peito se apertar mais ainda.</narration>
+  <narration>Você fracassou de forma espetacular com ela. Havia prometido amá-la e protegê-la, e no fim, permitiu que isso acontecesse.</narration>
+  <narration>Ao menos ela finalmente está livre.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Sim. Ela está livre.</thought>
+  <narration>Aquele pensamento subitamente lhe tira um peso das costas.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Ela não vai mais sofrer por minha causa.</thought>
+  <thought>Está... livre.</thought>
+  <emotion>angry</emotion>
+  <thought>Livre!</thought>
+
+  <music>desert-squad</music>
+
+  <narration>Você volta a se colocar de pé, ainda encarando o demônio.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Não preciso mais protegê-la!</thought>
+  <thought>Posso ter falhado com ela, mas ainda tem uma coisa que posso fazer!</thought>
+  <person>demonio</person>
+  <emotion>happy</emotion>
+  <voice>Persistente até o fim, não é, general?</voice>
+  <voice>Pois vou acabar com essa teimosia agora!</voice>
+  <narration>Você cerra os punhos. O momento de trazer a tempestade à terra chegou.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Se eu não vou sobreviver ao dia de hoje, você também não vai, maldito!</thought>
+  <narration>Ele então lança uma enorme bola de energia azulada em sua direção.</narration>
+  <narration>Por experiência própria, você sabe que aquele ataque tem mais poder de destruição do que duas dezenas de bolas de fogo combinadas.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <unset>battle</unset>
+  <unset>trials</unset>
+  <voice>...</voice>
+  <narration>Você fecha os olhos e ativa seu poder de clarividência eletromagnética.</narration>
+  <narration>Imediatamente, ganha consciência de tudo o que está acontecendo ao seu redor.</narration>
+  <narration>Sulana sendo violentamente arremessada para trás pelo monstro amarelo.</narration>
+  <narration>Emelin chegando até a praia carregando Falcione.</narration>
+  <narration>Norlando ativando um de seus bastões místicos e fazendo com que a areia prenda os pés do amarelo e o puxem para dentro da água.</narration>
+  <narration>E a enorme bola de energia azulada voando na sua direção.</narration>
+
+  <tutorial>Ajude Belísar a canalisar energia suficiente para lutar.</tutorial>
+  <tutorial>Para avançar esta cena, você precisará escolher a opção correta antes do tempo acabar, repetindo o processo até reunir a energia necessária.</tutorial>
+  <tutorial>Preste atenção, pois você deverá escolher a opção mais condizente com o que Belísar está tentando fazer no momento.</tutorial>
+
+  <do>
+    <protagonist />
+    <emotion>angry</emotion>
+    <set>trials</set>
+    <thought>Tenho que me concentrar...</thought>
+    <choice time="3" timeout="b" randomorder="1">
+      <a>Concentrar</a>
+      <b>Desconcentrar</b>
+      <b>Fraquejar</b>
+      <b>Desanimar</b>
+    </choice>
+    <thought>...</thought>
+
+    <do when="a">
+      <protagonist />
+      <emotion>angry</emotion>
+      <reward>+battle</reward>
+      <thought>Isso!</thought>
+    </do>
+
+    <exit when="belisar_battle[3]" />
+
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Devo canalisar a energia...</thought>
+    <choice time="3" timeout="b" randomorder="1">
+      <a>Canalisar</a>
+      <b>Dissipar</b>
+      <b>Amplificar</b>
+      <b>Neutralizar</b>
+    </choice>
+    <thought>...</thought>
+
+    <do when="a">
+      <protagonist />
+      <emotion>angry</emotion>
+      <reward>+battle</reward>
+      <thought>Bom!</thought>
+    </do>
+
+    <exit when="belisar_battle[3]" />
+
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Agora preciso fazer com que o poder se manifeste...</thought>
+    <choice time="3" timeout="b" randomorder="1">
+      <a>Manifestar</a>
+      <b>Destruir</b>
+      <b>Assolar</b>
+      <b>Proteger</b>
+    </choice>
+    <thought>...</thought>
+
+    <do when="a">
+      <protagonist />
+      <emotion>angry</emotion>
+      <reward>+battle</reward>
+      <thought>Perfeito!</thought>
+    </do>
+
+    <exit when="belisar_battle[3]" />
+
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought when="belisar_trials[1]">Isso ainda não é suficiente! Vamos tentar de novo, do início!</thought>
+    <thought when="belisar_trials[2]">Preciso de mais! Vamos lá, foco!</thought>
+    <thought when="belisar_trials[3]">Não acredito que não estou conseguindo! O que há comigo?</thought>
+    <thought when="belisar_trials[4]">Mais uma última tentativa, vamos lá!</thought>
+    <thought when="belisar_trials[5]">Não consigo!</thought>
+    <thought when="belisar_trials[5]">A energia que reuni até agora vai ter que ser suficiente!</thought>
+
+    <restart when="belisar_trials[:4]" />
+  </do>
+
+  <trophy when="belisar_trials[1]">zen</trophy>
+
+  <narration>Você levanta suas mãos, concentrando toda a energia que reuniu em seus punhos.</narration>
+  <narration>Os estabilizadores começam a brilhar intensamente, faíscas elétricas surgindo por todos os lados.</narration>
+  <narration>Você utiliza seu poder de clarividência para prever o exato momento de liberar a energia.</narration>
+  <narration>O processo todo ocorre rápido demais para que olhos humanos consigam acompanhar.</narration>
+  <narration>E, no final, ocorre uma violenta explosão.</narration>
+
+  <background>white</background>
+
+  <narration>KA-BOOM!</narration>
+
+  <background>beach</background>
+
+  <protagonist />
+  <emotion>angry</emotion>
+  <bump />
+  <voice>Ufff!!</voice>
+  <narration>Você é lançado dezenas de metros para trás, quicando e rolando pela areia no processo.</narration>
+  <narration>Seu escudo corporal entra em colapso e não consegue absorver todo o impacto, mas, como já imaginava que aconteceria, você não sente nada: o uso excessivo de poder cobrava seu preço.</narration>
+  <narration>É como se sua pele estivesse amortecida, incapaz de perceber toque, atrito, calor ou qualquer outra coisa.</narration>
+  <narration>Você também não sente dor, apesar de ter certeza de que se machucou consideravelmente.</narration>
+  <narration>Seus ouvidos captam apenas um zumbido alto e constante.</narration>
+  <narration>Provavelmente sua visão está comprometida também, então você nem tenta abrir os olhos e reativa a clarividência.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Observando a si mesmo através da habilidade mística, percebe que seus braceletes e ombreiras se desintegraram completamente na explosão.</narration>
+  <narration>Tendo sido construídos especialmente para conter seu poder e evitar que ele causasse estragos de forma involuntária, aqueles artefatos se mostraram perfeitos para absorver o ataque energético do demônio.</narration>
+  <narration>No entanto, como você atacou ao mesmo tempo, eles não suportaram a tensão e foram destruídos, o que apenas serviu para intensificar a onda de choque que você liberou na direção de seu oponente.</narration>
+  <narration>A clarividência lhe mostra que a onda de choque atingiu o demônio em cheio e o lançou a centenas de metros de distância.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Não esperava por essa, não é, maldito?</thought>
+  <narration>Analisando seus arredores, você percebe Norlando sendo atingido por um ataque do amarelo enquanto Emelin corre na direção de Sulana, que está se levantando.</narration>
+  <narration>Soldados se aproximam correndo, mas param e desviam o rosto, levantando a mão para tentar se proteger de algo que vem da sua direção.</narration>
+  <person>soldado7</person>
+  <emotion>surprised</emotion>
+  <voice>!!</voice>
+  <narration>Você percebe então que o poder flui de seu corpo, descontrolado, gerando descargas elétricas ocasionais em direções aleatórias.</narration>
+  <narration>A energia mística praticamente banha você, palpável, viva, como que implorando para ser utilizada.</narration>
+  <narration>Então sua clarividência capta um movimento à distância. O demônio usou poder místico para se lançar para cima, num salto gigantesco, em sua direção.</narration>
+  <protagonist />
+  <unset>battle</unset>
+  <unset>trials</unset>
+  <emotion>happy</emotion>
+  <thought>Ótimo! Eu não podia pedir por uma oportunidade melhor!</thought>
+  <narration>Você não sente seus membros. Para falar a verdade, nem tem certeza se eles ainda existem.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <thought>Mas, com tanto poder à disposição, quem precisa de braços ou pernas?</thought>
+  <narration>Você então se prepara para liberar o que sabe que será seu último ataque, provavelmente seu último ato nesta vida.</narration>
+  
+  <do>
+    <protagonist />
+    <emotion>angry</emotion>
+    <set>+trials</set>
+    <thought>Tenho que guiar o fluxo!</thought>
+    <choice time="3" timeout="b" randomorder="1">
+      <a>Guiar</a>
+      <b>Dirigir</b>
+      <b>Apontar</b>
+      <b>Se distrair com a imagem de Sulana e suas roupas rasgadas</b>
+    </choice>
+    <thought>...</thought>
+
+    <do when="a">
+      <protagonist />
+      <emotion>angry</emotion>
+      <reward>+battle</reward>
+      <thought>...</thought>
+    </do>
+
+    <exit when="belisar_battle[3]" />
+
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Agora, abrir uma ruptura no espaço!</thought>
+    <choice time="3" timeout="b" randomorder="1">
+      <a>Abrir</a>
+      <b>Fechar</b>
+      <b>Abanar</b>
+      <b>Fazer... o quê, mesmo?</b>
+    </choice>
+    <thought>...</thought>
+
+    <do when="a">
+      <protagonist />
+      <emotion>angry</emotion>
+      <reward>+battle</reward>
+      <thought>Canais abertos!</thought>
+    </do>
+
+    <exit when="belisar_battle[3]" />
+
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>E vamos gerar propulsão...</thought>
+    <choice time="3" timeout="b" randomorder="1">
+      <a>Gerar propulsão</a>
+      <b>Iniciar combustão</b>
+      <b>Canalizar exaustão</b>
+      <b>Não aguento toda essa tensão!</b>
+    </choice>
+    <thought>...</thought>
+
+    <do when="a">
+      <protagonist />
+      <emotion>angry</emotion>
+      <reward>+battle</reward>
+      <thought>Ignição bem sucedida!</thought>
+    </do>
+
+    <exit when="belisar_battle[3]" />
+
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought when="belisar_trials[1]">Raios, ainda não deu!</thought>
+    <thought when="belisar_trials[1]">Tenho que me concentrar e tentar de novo!</thought>
+    <thought when="belisar_trials[2]">Raios! Vamos tentar outra vez!</thought>
+    <thought when="belisar_trials[3]">Eu consigo! Vamos lá!</thought>
+    <thought when="belisar_trials[4]">Essa não! O tempo está acabando!</thought>
+    <thought when="belisar_trials[5]">Raios, não há mais tempo!</thought>
+    <thought when="belisar_trials[5]">Vou ter que acionar essa coisa de qualquer jeito mesmo!</thought>
+
+    <restart when="belisar_trials[:4]" />
+  </do>
+
+  <trophy when="belisar_trials[1]">eletrocrusher</trophy>
+
+  <narration>Você ativa a habilidade eletromagnética que normalmente utiliza para voar, mas com força total.</narration>
+  <narration>A energia o envolve e o lança pelo espaço a uma velocidade incalculável.</narration>
+  <narration>Você não sente nada. O colchão energético criado a seu redor anula toda a inércia, impedindo que você seja esmagado pela aceleração súbita.</narration>
+  <narration>A última coisa que sua clarividência consegue captar são os olhos arregalados do demônio, ao verem você vindo na direção dele.</narration>
+  <person>demonio</person>
+  <emotion>surprised</emotion>
+  <voice>!!</voice>
+  <narration>Tudo ocorre rápido demais para que seu oponente consiga sequer ter tempo de pensar em reagir.</narration>
+
+  <background>white</background>
+
+  <narration>BADA-BOOM!</narration>
+
+  <music>enigma</music>
+  <background>black</background>
+
+  <narration>Tudo volta a ficar escuro.</narration>
+  <narration>Você usou mais poder nesse último ataque do que em toda sua vida.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Eu ainda... estou consciente?</thought>
+  <thought>Espero que tenha conseguido canalisar toda a força da explosão para cima.</thought>
+  <thought>Seria irônico se meu último ato neste mundo tenha sido abrir uma cratera gigantesca, encerrando não apenas a minha vida, mas a de todos os meus aliados também.</thought>
+
+  <background>beach</background>
+
+  <narration>Você consegue encontrar uma reserva de energia para reativar a clarividência.</narration>
+  <narration>Seu corpo está caído sobre a areia, pequenos pontos de luz caindo do céu sobre ele, como uma chuva de fagulhas.</narration>
+  <narration>Uma nuvem escura surgiu no local onde deve ter ocorrido o impacto. A força da explosão realmente parece ter excedito todas as escalas.</narration>
+  <narration>Você varre a região ao redor com seus sentidos místicos e encontra Sulana, se levantando.</narration>
+  <person>sulana</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Na frente dela, o amarelo faz o mesmo.</narration>
+  <person>amarelo</person>
+  <voice>...</voice>
+  <narration>Tudo indica que a explosão foi forte o suficiente para derrubá-los, interrompendo sua luta.</narration>
+  <narration>Ali perto, Emelin e Norlando também estão se levantando, parecendo ilesos.</narration>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>...</voice>
+  <person>norlando</person>
+  <emotion>surprised</emotion>
+  <voice>...</voice>
+  <narration>Sulana encara o monstro por um momento antes de saltar sobre ele, atacando-o com poderosos socos e chutes.</narration>
+  <person>sulana</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>O amarelo não consegue fazer nada além de conjurar um escudo místico para se proteger.</narration>
+  <person>amarelo</person>
+  <bump />
+  <voice>...</voice>
+  <narration>Você direciona a clarividência para o outro lado da praia, encontrando o demônio.</narration>
+  <narration>Para sua surpresa, ele também está se levantando.</narration>
+  <person>demonio</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Ele está sangrando e respirando pesadamente.</narration>
+  <narration>Seus sentidos não captam mais nenhuma emanação mística vinda dele. Nenhum escudo corporal.</narration>
+  <narration>A explosão obviamente o exauriu, mas não o matou.</narration>
+
+  <music>crime-fighter</music>
+
+  <narration>Então uma bola de fogo corta o ar sobre você, deixando um rastro luminoso pelo céu enquanto voa na direção do demônio.</narration>
+  <person>demonio</person>
+  <emotion>surprised</emotion>
+  <voice>!!</voice>
+  <narration>Você não consegue ouvir o barulho da explosão que ocorre a seguir, mas a julgar por toda a fumaça e pela quantidade de areia lançada pelos ares, ela teve uma força considerável.</narration>
+  <narration>No entanto, o demônio continua em pé, apesar de ter sido lançado vários metros para trás.</narration>
+  <person>demonio</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Você vasculha o ar acima de você em busca da origem da bola de fogo e a vê.</narration>
+  <person>elinora</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Elinora, em sua forma alada, levanta sua lança prateada, cuja ponta começa a brilhar.</narration>
+  <narration>Então, com um movimento ágil, ela corta o ar com a lança. O brilho se desprende da arma, transformando-se em uma nova bola de fogo, que voa na direção do demônio.</narration>
+  <narration>O monstro reage, levantando uma das mãos e fechando o punho.</narration>
+  <narration>A bola de fogo então explode em pleno ar, muito antes de chegar até ele.</narration>
+  <narration>Em seguida ele levanta a outra mão, fazendo alguma invocação que você não compreende imediatamente.</narration>
+  <narration>Mas então você capta uma emanação próxima a seu corpo. Não é nada difícil reconhecer as emissões de um empuxo gravitacional.</narration>
+  <narration>Elinora bate as asas, tentando escapar, mas não consegue. Por fim, a energia mística a puxa na direção do chão com violência.</narration>
+  <person>elinora</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>...</voice>
+  <narration>Ela atinge o solo não muito longe de você.</narration>
+  <narration>Enquanto isso, o demonio começa a se aproximar, caminhando devagar.</narration>
+  <person>demonio</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Você se move, na tentativa de voltar a entrar em contato com seus poderes.</narration>
+  <narration>Então nota Elinora, que já havia se levantado, lança um breve olhar na sua direção.</narration>
+  <person>elinora</person>
+  <emotion>angry</emotion>
+  <voice>Descanse em paz, humano, esta luta não é mais sua!</voice>
+  <narration>Você não consegue ouvir nada do que ela diz, mas é perfeitamente possível adivinhar a partir do movimento de seus lábios e de seu olhar, que esbanja arrogância.</narration>
+  <narration>Com um gesto, ela desmaterializa as próprias asas e depois levanta uma das mãos, chamando a lança prateada que tinha caído a alguma distância.</narration>
+  <narration>Obedientemente, a arma começa a levitar e flutua na direção dela.</narration>
+  <narration>Elinora então a agarra e esbraveja algo, provavelmente aquele grito de guerra favorito dela que você ouviu várias vezes no passado, de forma tão intensa que dá a impressão de que o chão treme.</narration>
+  <person>elinora</person>
+  <emotion>angry</emotion>
+  <voice>Pela glória do criador!!</voice>
+  <narration>Aquilo costumava aterrorizar seus oponentes, mas não teve muito efeito contra o demônio.</narration>
+  <narration>Você não consegue mais reunir seu poder, por mais que tente. A sensação parecida com calor que a presença da energia lhe causa está desaparecendo aos poucos, deixando você frio, vazio.</narration>
+  <narration>A desorientação o atinge, as imagens geradas pela clarividência se tornando confusas, embaralhadas.</narration>
+  <narration>Não é possível saber por quanto tempo permaneceu ali, buscando clarear os pensamentos, tentando segurar o último resquício de poder que parece escorrer por entre seus dedos.</narration>
+
+  <music>last-duel</music>
+
+  <narration>Quando volta a raciocinar novamente, percebe que Elinora não teve mais sucesso em derrotar o monstro do que você.</narration>
+  <narration>Você a vê sendo arremessada para longe, seriamente ferida pelas garras da criatura.</narration>
+  <person>elinora</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>...</voice>
+  <narration>O demônio olha para ela por um instante, e ao ver que não se move, vira-se na sua direção.</narration>
+  <person>demonio</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Do que é feito esse filho da mãe?!</thought>
+  <narration>Se mover é impossível, seu corpo não mais lhe responde. As imagens de clarividência vão ficando cada vez mais escuras.</narration>
+  <narration>Em desespero, você vasculha os arredores em busca de algo... qualquer coisa...</narration>
+
+  <music>desert-squad</music>
+
+  <narration>Então você recebe uma imagem borrada de Sulana.</narration>
+  <person>sulana</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+
+  <do when="sulana_rage[5:]">
+    <narration>Ela está com as mãos enfiadas no corpo do amarelo, sugurando-o acima da cabeça.</narration>
+    <trophy>fatality</trophy>
+    <narration>Então ela parece soltar um grito gutural enquanto, literalmente, parte a criatura em duas!</narration>
+    <person>amarelo</person>
+    <bump />
+    <voice>...</voice>
+    <person>sulana</person>
+    <emotion>angry</emotion>
+    <voice>Aaaaaaaahhhhhhhh!!</voice>
+    <narration>Você não consegue ouvir nada, mas pode muito bem imaginar aquele grito pela expressão do rosto dela.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <thought>!!</thought>
+    <narration>Estranhamente, o monstro não se trasnforma em pó.</narration>
+    <narration>Sulana joga as duas metades da criatura no chão com força, antes de passar o antebraço pelo rosto, numa tentativa de limpar o sangue e... outras coisas que caíram sobre ela quando abriu as entranhas do monstro.</narration>
+    <narration>Então ela olha ao redor... e solta um novo grito, dessa vez, na direção do demônio.</narration>
+  </do>
+
+  <do when="sulana_rage[:4]">
+    <narration>Ela troca golpes com o amarelo, cujo escudo corporal está se exaurindo.</narration>
+    <narration>Então o primeiro golpe dela consegue atravessar o escudo, atingindo o monstro no peito.</narration>
+    <person>amarelo</person>
+    <bump />
+    <voice>...</voice>
+    <narration>Ela desfere um golpe, e outro, e mais outro, em uma velocidade impressionante.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <thought>!!</thought>
+    <narration>Por fim, o amarelo se desintegra.</narration>
+    <narration>Então ela olha ao redor... e parece soltar um grito gutural na direção do demônio.</narration>
+    <narration>Você não consegue ouvir nada, mas pode muito bem imaginar aquele grito pela expressão do rosto dela.</narration>
+  </do>
+
+  <person>sulana</person>
+  <emotion>angry</emotion>
+  <voice>Graaaaarrrrrghhhhh!!</voice>
+
+  <background>black</background>
+
+  <narration>É muito difícil dizer com certeza o que se passou depois, já que as imagens foram ficando cada vez mais escuras e borradas.</narration>
+  <narration>Teria Sulana resistido à explosão de uma daquelas bolas de energia azuis sem nem mesmo piscar?</narration>
+
+  <do when="sulana_rage[:4]">
+    <narration>E quanto àquele vislumbre da criatura tentando inutilmente atacá-la com suas garras, que pareciam resvalar nela sem causar nenhum dano?</narration>
+    <narration>Seria tudo aquilo apenas uma criação de sua mente, tentando se agarrar a um último fio de esperança?</narration>
+  </do>
+    
+  <do when="sulana_rage[5:]">
+    <narration>E quanto àquele vislumbre da criatura tentando atacá-la com uma das garras apenas para ter a mão amputada?</narration>
+    <narration>Teria mesmo visto os membros do demônio sendo arrancados um a um?</narration>
+    <narration>Ou seria tudo aquilo apenas uma criação de sua mente, tentando se agarrar a um último fio de esperança?</narration>
+  </do>
+
+  <music>goodbye</music>
+  
+  <protagonist />
+  <emotion>happy</emotion>
+  <thought>Que seja. São meus últimos momentos de vida mesmo.</thought>
+  <thought>Mereço ter pelo menos essa alegria, não é?</thought>
+  <narration>E então o último fluxo de energia que você ainda tinha finalmente se esgota e tudo desaparece.</narration>
+
+  <background>carmim</background>
+</storyboard>

@@ -1,0 +1,942 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>sulana</viewpoint>
+  <music>goodbye</music>
+  <background>sulana</background>
+  <tutorial>Você agora está controlando Sulana Lautine</tutorial>
+
+  <background>shack</background>
+
+  <narration>Dessa vez, Derione não lhe deu nenhuma bronca. Simplesmente a transportou de volta para sua cabana, sem fazer nem mesmo um único comentário.</narration>
+  <narration>Ao vê-lo se virar para ir embora, você o segura pelo ombro.</narration>
+  <protagonist />
+  <voice>Ei, o que é isso? Vai embora assim, sem dizer nada?</voice>
+  <narration>Ele a encara por sobre o ombro, parecendo irritado.</narration>
+  <person>derione</person>
+  <emotion>angry</emotion>
+  <voice>E de que adiantaria eu falar qualquer coisa?</voice>
+  <protagonist />
+  <voice>Se pensa assim, por que foi atrás de mim?</voice>
+  <narration>Ele se vira para você e cruza os braços.</narration>
+  <person>derione</person>
+  <voice>Só queria tirar você de lá antes que algo ruim acontecesse.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Como assim? A cidade está em perigo?</voice>
+  <emotion>angry</emotion>
+  <voice>Se for isso, quero que me leve de volta.</voice>
+  <narration>Ele a olha de cima a baixo, estreitando os olhos ao ver o curativo improvisado em seu braço.</narration>
+  <person>derione</person>
+  <emotion>angry</emotion>
+  <voice>Você está exausta. Quanto tempo ficou lutando? Quantos oponentes enfrentou?</voice>
+  <protagonist />
+  <voice>Nem faço ideia.</voice>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>Quanto mais cansada, mais suscetível você fica a perder o controle. Precisa descansar.</voice>
+  <voice>E não, a cidade não está em perigo.</voice>
+  <narration>Você solta um suspiro.</narration>
+  <protagonist />
+  <choice>
+    <a>Agradecer.</a>
+    <b>Reclamar.</b>
+    <c>Me afastar em silêncio.</c>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <protagonist />
+    <voice>Certo. Nesse caso, acho que eu devo agradecer por me trazer de volta.</voice>
+    <person>derione</person>
+    <voice>Não quero agradecimentos!</voice>
+  </do>
+
+  <do when="b">
+    <protagonist />
+    <voice>Sim, eu preciso descansar. Que tal você deixar o sermão para outro dia?</voice>
+    <person>derione</person>
+    <voice>O que você parece não entender é que, nesse ritmo, pode não haver um "outro dia".</voice>
+  </do>
+
+  <do when="c">
+    <narration>Sem nada para dizer, você dá as costas a ele e começa a caminhar na direção da cabana.</narration>
+    <narration>Dessa vez ele é quem vai atrás de você e a segura pelo ombro.</narration>
+    <person>derione</person>
+    <emotion>surprised</emotion>
+    <voice>Ei! Espere!</voice>
+    <narration>Você o encara por sobre o ombro.</narration>
+    <protagonist />
+    <voice>...</voice>
+    <person>derione</person>
+    <emotion>surprised</emotion>
+    <reward>+relationship</reward>
+    <voice>Eu só estou preocupado com você, está bem?</voice>
+  </do>
+
+  <narration>Ele balança a cabeça e olha ao redor, como que procurando pelas palavras corretas.</narration>
+  <person>derione</person>
+  <emotion>angry</emotion>
+  <voice>Você continua se envolvendo em batalhas que não deveria lutar.</voice>
+  <voice>Dessa vez não há sangue em suas mãos, mas essa sua atitude é irresponsável.</voice>
+  <protagonist />
+  <voice>Eu não sirvo para nada além de lutar.</voice>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>Isso é um absurdo!</voice>
+  <voice>Tem dezenas de pessoas que dependem de você. Aquele abrigo não duraria uma semana sem o trabalho que você faz lá.</voice>
+  <emotion>normal</emotion>
+  <voice>Além disso, você tem sua arte…</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Isso não é suficiente!</voice>
+  <person>derione</person>
+  <emotion>angry</emotion>
+  <voice>O que mais você quer?</voice>
+  <protagonist />
+  <voice>Eu preciso de mais. Preciso de algo que faça eu me sentir… completa.</voice>
+  <narration>Ele descruza os braços e a olha com uma expressão terna.</narration>
+  <person>derione</person>
+  <voice>É aquilo, não é?</voice>
+  <narration>Você desvia o olhar. Sabia ao que ele se referia, mas não tinha a menor ideia de como responder.</narration>
+  <narration>Depois de procurar, sem sucesso, palavras para expressar o que sentia, você perde a paciência e o encara com raiva.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Não sei! Como poderia saber?</voice>
+  <voice>Como alguém saberia que sente falta de algo que nunca experimentou?</voice>
+  <person>derione</person>
+  <voice>Existe uma pessoa que pode ajudar você.</voice>
+  <narration>Uma sensação desconfortável a envolve e você dá um passo para trás.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Não preciso de ajuda! Não para isso!</voice>
+  <emotion>angry</emotion>
+  <voice>Maldição, você mesmo disse na cabana que…</voice>
+  <person>derione</person>
+  <emotion>angry</emotion>
+  <voice>Estamos falando sobre você!</voice>
+  <emotion>normal</emotion>
+  <voice>Das SUAS necessidades.</voice>
+  <protagonist />
+  <emotion>sad</emotion>
+  <voice>Eu não quero falar sobre isso.</voice>
+  <person>derione</person>
+  <voice>Vou ajudar você, mas só posso mostrar o caminho.</voice>
+  <voice>Para isso funcionar, terá que caminhar por conta própria.</voice>
+  <narration>Sem nada além daquelas palavras misteriosas, ele lhe dá as costas.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Ei! Eu não concordei com nada…</voice>
+  <emotion>surprised</emotion>
+  <voice>Espere! Onde está indo?</voice>
+  <narration>Ele se afasta alguns passos e assume o que você imagina que seja sua verdadeira forma.</narration>
+  <narration>Sua pele se torna branca como as nuvens e um par de grandes asas emplumadas surgem em suas costas.</narration>
+  <narration>Seus trajes também se modificam para uma túnica branca simples, que deixa à mostra seus braços, as costas e boa parte das pernas.</narration>
+  <narration>Não dá para negar que ele é um exemplar muito atraente do sexo masculino.</narration>
+  <narration>Por um momento, você não consegue fazer nada além de olhar para ele.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>...</voice>
+  <narration>Então ele abre as asas e começa a flutuar, seu corpo se afastando lentamente do chão como se uma força invisível o puxasse para cima.</narration>
+  <person>derione</person>
+  <voice>Apenas lembre-se de que a sentença imposta pela Fênix ao seu clã não é a infelicidade.</voice>
+  <narration>Aquelas palavras imediatamente a tiram do transe contemplativo.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Não, imagina!</voice>
+  <voice>Lógico que ela não me quer infeliz! Ela me quer é morta!</voice>
+  <person>derione</person>
+  <voice>Se esse fosse o desejo dela, não estaríamos tendo esta conversa.</voice>
+  <narration>Então ele bate as asas com força, projetando-se para cima e ganhando cada vez mais velocidade enquanto se afasta.</narration>
+  <narration>Você o observa por algum tempo até ele desaparecer à distância.</narration>
+  <protagonist />
+  <thought>Pelo visto, ele está de bom humor hoje, já que se contentou em apenas me chamar de “irresponsável” ao invés de ficar ameaçando me mandar para algum tipo de prisão.</thought>
+  <emotion>angry</emotion>
+  <thought>Mesmo assim, por que ele não pode falar como uma pessoa normal, de forma que a gente entenda o que está dizendo, pra variar?</thought>
+  <thought>Esse mistério todo é irritante!</thought>
+  <narration>A exaustão que você sente parece ficar maior a cada segundo.</narration>
+  <narration>Seus músculos estão levemente doloridos, mas a sensação era boa, muito boa.</narration>
+  <narration>Fazia tanto tempo que você não se soltava daquela forma durante uma batalha que nem mesmo o comportamento enigmático de Derione era capaz de lhe deixar desanimada.</narration>
+  <narration>Entrando na cabana, você trata de se livrar das roupas velhas e se joga sobre o catre, fechando os olhos e imediatamente mergulhando em um sono profundo e reparador.</narration>
+
+
+  <music>open-sky</music>
+  <background>beach</background>
+
+  <narration>Ao acordar, você se sente muito melhor.</narration>
+  <narration>Sentando-se, você alonga os músculos dos braços, sentindo-se viva, cheia de energia.</narration>
+  <narration>Então, abre os olhos e pisca, confusa.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Mas o quê...?</thought>
+  <narration>Você não está mais em sua cabana. Ao invés disso, a paisagem à sua frente é...</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Uma praia?</thought>
+  <narration>Você se vê sentada em uma longa faixa de areia que é lavada pelas ondas, que chegam até bem próximo de seus pés.</narration>
+  <narration>Em toda sua vida, apenas uma vez você esteve no litoral, há alguns anos, ao norte da província. E, definitivamente, este não é o mesmo lugar.</narration>
+  <narration>O sol começa a nascer no horizonte, formando um espetáculo multicolorido por sobre as águas.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Onde...? Quando...?</thought>
+  <narration>Você se levanta com agilidade. Não há mais nenhum sinal de cansaço em seus músculos. Até mesmo o ferimento no braço parece ter se curado enquanto dormia.</narration>
+  <narration>Então você percebe que está usando roupas estranhas: uma espécie de túnica longa e branca que a cobria do pescoço aos tornozelos, e cujas mangas largas chegavam até seus pulsos.</narration>
+  <narration>O tecido era fino, macio e confortável. Você não se lembra de algum dia ter vestido algo de tão boa qualidade.</narration>
+  <narration>Você aproxima um dos pulsos do rosto e inspira, sentindo um perfume nem um pouco familiar, mas bastante agradável.</narration>
+  <narration>Nunca havia se sentido tão… limpa.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Mas que raios...?</thought>
+  <narration>Para aumentar ainda mais sua perplexidade, seus cabelos estão amarrados na nuca, numa espécie de coque, algo que também não se lembrava de já ter feito alguma vez em sua vida.</narration>
+  <protagonist />
+  <thought>O que é isso? Algum tipo de sonho?</thought>
+  <emotion>surprised</emotion>
+  <thought>Mas por que eu sonharia com algo assim?</thought>
+
+  <tutorial>Escolha as opções corretas para descobrir pistas sobre onde Sulana está e o que está acontecendo.</tutorial>
+
+  <protagonist />
+  <choice>
+    <a>Os arredores</a>
+    <b>As roupas que estou vestindo</b>
+    <c>A areia e o mar</c>
+  </choice>
+  <thought>Eu devo analisar...</thought>
+
+  <do when="a">
+    <narration>Você olha ao redor, percebendo que não há ninguém por perto, com exceção de um homem a uma certa distância, sentado na areia e com as costas apoiadas em uma palmeira.</narration>
+  </do>
+
+  <do when="b">
+    <narration>Você olha com mais atenção para sua túnica, notando que o tecido é tão bem feito que é quase impossível avistar o traçado dos fios.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <reward>+investigation</reward>
+    <thought>Espere! Eu já vi esse tipo de pano antes.</thought>
+    <thought>Derione! Esse é o tipo de roupa que ele usa!</thought>
+    <thought>Mas por que eu...</thought>
+    <narration>Neste momento, um movimento à sua direita chama sua atenção.</narration>
+    <narration>A certa distância, há um homem sentado na areia e com as costas apoiadas a uma palmeira.</narration>
+  </do>
+
+  <do when="c">
+    <narration>Você corre os dos pés por sobre a areia molhada, não percebendo nada incomum.</narration>
+    <narration>O barulho das ondas era relaxante, quase hipnótico, mas ver a água quebrando na areia não lhe ajuda em nada a entender o que está acontecendo.</narration>
+    <narration>Então um movimento à sua direita chama a sua atenção.</narration>
+    <narration>A certa distância, há um homem sentado na areia e com as costas apoiadas a uma palmeira.</narration>
+  </do>
+
+  <narration>Ele está segurando a ponta do que parece ser uma fina faixa de tecido, que balança ao sabor da brisa.</narration>
+  <narration>Ansiosa por algumas respostas, você caminha, determinada, na direção dele.</narration>
+  <narration>O estranho usa roupas de boa qualidade, na cor vermelho escuro.</narration>
+  <narration>Sua camisa não tem mangas, expondo braços fortes, mas não musculosos demais.</narration>
+  <narration>Seus pulsos estão envolvidos com faixas de tecido similares àquela que ele segura com uma das mãos.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Aquilo são ataduras? Será que está ferido?</thought>
+  <narration>Ele está com os olhos fechados e respira devagar. No entanto, aquela posição parece desconfortável demais para alguém conseguir dormir.</narration>
+  <narration>O sujeito parece estar com trinta e poucos anos, tem o queixo quadrado e maçãs do rosto proeminentes, além de muitas linhas na testa, dando a impressão de que passava muito tempo franzindo o cenho.</narration>
+  <narration>Os cabelos estão cortados bem curtos e sua cor predominantemente negra parece estar começando a perder terreno para os fios grisalhos.</narration>
+
+  <music>enigma</music>
+
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>...!</thought>
+  <thought>Eu conheço esse rosto!</thought>
+  <emotion>normal</emotion>
+  <thought>Mas... não pode ser!</thought>
+  <narration>De repente, o homem abre os olhos e vira a cabeça em sua direção.</narration>
+  <narration>Ao vê-la, ele estreita os olhos.</narration>
+  <person>belisar</person>
+  <emotion>angry</emotion>
+  <voice>O que foi dessa vez?</voice>
+  <narration>Você está surpresa demais para sequer se preocupar em tentar entender a pergunta.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Você é o General Vermelho!</voice>
+  <narration>Ele franze o cenho e a encara com atenção, antes de responder, por entre os dentes.</narration>
+  <person>belisar</person>
+  <emotion>angry</emotion>
+  <voice>Sim.</voice>
+  <voice>Qual é o problema?</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>O que eu faço? Devo atacar?</thought>
+  <thought>A guerra termina se ele morrer, e provavelmente todos os rebeldes dominados por ele serão libertados.</thought>
+  <narration>Mas, para sua surpresa, seu corpo não parece interessado em se meter em uma briga.</narration>
+  <narration>Você não sente nenhum tipo de perigo, nenhuma animosidade, nada que aguce seus sentidos e lhe alimente a fúria.</narration>
+  <narration>Pela segunda vez, estava diante daquele homem e sem a menor vontade de voar na garganta dele, como pensara em fazer tantas vezes nos últimos meses.</narration>
+  <person>belisar</person>
+  <voice>...</voice>
+  <narration>Notando sua indecisão, ele se levanta e coloca as mãos nos quadris, a ruga em sua testa se aprofundando.</narration>
+  <narration>Você percebe que ambos tinham quase a mesma altura, a sua excedendo a dele por apenas alguns poucos centímetros.</narration>
+  <narration>Percebe também que ele não parece nem um pouco intimidado, como a maioria dos homens ficava ao se deparar tão de perto com seu porte físico pela primeira vez.</narration>
+  <narration>De repente, a expressão dele muda, agora parecendo preocupado.</narration>
+  <person>belisar</person>
+  <emotion>surprised</emotion>
+  <voice>O que está havendo? Está tudo bem com você?</voice>
+  <narration>Você nota um certo brilho nos olhos dele enquanto a fita de cima a baixo.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Ah, não, por favor, não!</thought>
+  <thought>Toda vez que um homem me olha assim, eu acabo metida em alguma confusão.</thought>
+  <emotion>angry</emotion>
+  <thought>E na maioria das vezes, sem contribuição nenhuma da minha parte.</thought>
+  <narration>Engolindo em seco, você tenta imaginar o que fazer a seguir.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Ah, sim, Giarle! Preciso descobrir o que aconteceu com ele!</thought>
+
+  <music>open-sky</music>
+
+  <narration>Você abre a boca para fazer uma pergunta ao general, mas se interrompe ao ouvir o som de conversas, risos e gritos infantis.</narration>
+  <narration>Você se vira bem a tempo de ver uma família surgir pela trilha entre as palmeiras.</narration>
+  <person>venega</person>
+  <emotion>happy</emotion>
+  <voice>Quem chegar por último é um bobão!</voice>
+  <person>sagante</person>
+  <emotion>surprised</emotion>
+  <voice>Ei! Você saiu correndo primeiro! Isso não vale!</voice>
+  <person>zelmira</person>
+  <voice>Crianças, não corram! Vocês podem tropeçar em alguma coisa e se machucar!</voice>
+  <person>baliorge</person>
+  <emotion>happy</emotion>
+  <voice>Relaxa, mamãe. Se caírem, do chão não passam!</voice>
+  <person>zelmira</person>
+  <emotion>surprised</emotion>
+  <voice>Baliorge!</voice>
+  <emotion>angry</emotion>
+  <voice>Você fala isso porque não é você quem tem que cuidar dos machucados deles depois!</voice>
+  <narration>Todos os recém chegados estacam no lugar, surpresos, ao notarem a sua presença.</narration>
+  <person>venegasagante</person>
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <person>baliorge</person>
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <person>zelmira</person>
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <emotion>happy</emotion>
+  <voice>Oh!</voice>
+  <narration>Para sua surpresa, a mulher mais velha, que carregava uma enorme cesta, abre um sorriso cordial enquanto começa a se aproximar.</narration>
+  <narration>As crianças menores, depois de encarar você por um instante, parecem ver algo muito mais interessante de repente e passam por você correndo.</narration>
+  <person>venegasagante</person>
+  <emotion>happy</emotion>
+  <voice>Papai!!</voice>
+  <narration>Os dois pequenos se lançam contra Belísar, cada um deles abraçando uma de suas pernas.</narration>
+  <person>belisar</person>
+  <emotion>happy</emotion>
+  <voice>O que foi, que alegria toda é essa?</voice>
+  <narration>Você mal pode acreditar em seus olhos ao ver o sorriso tranquilo que ele dirige às crianças, a ruga em sua testa desaparecendo completamente.</narration>
+  <narration>De repente, ele parece uma pessoa completamente diferente, toda a semelhança com o General Vermelho se esvaindo.</narration>
+  <person>venega</person>
+  <emotion>happy</emotion>
+  <voice>A mamãe disse que podemos brincar na água!</voice>
+  <person>sagante</person>
+  <emotion>happy</emotion>
+  <voice>Vem nadar com a gente, papai!</voice>
+  <person>belisar</person>
+  <voice>Talvez mais tarde.</voice>
+  <voice>Podem ir brincar, mas não vão muito longe.</voice>
+  <person>venegasagante</person>
+  <emotion>happy</emotion>
+  <voice>Êba!!</voice>
+  <narration>As crianças correm para a água, enquanto a mulher e o rapaz se aproximam.</narration>
+  <narration>De perto, a fulana parecia mais jovem. Era muito bonita, com uma farta cabeleira negra e com um corpo cheio de curvas, que as roupas leves não conseguiam ocultar.</narration>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Bom dia!</voice>
+  <narration>Por alguma razão, você sente uma antipatia imediata por ela. Aquele sorriso tranquilo não lhe parece muito autêntico.</narration>
+  <narration>Já o rapaz não suscita nenhuma impressão negativa em seus instintos. Ele encara você, esbanjando entusiasmo.</narration>
+  <person>baliorge</person>
+  <emotion>surprised</emotion>
+  <voice>Você é uma protetora!</voice>
+  <emotion>happy</emotion>
+  <voice>Faz tempo que não vemos uma!</voice>
+  <emotion>surprised</emotion>
+  <voice>Mas por que você não tem asas?</voice>
+
+  <do when="sulana_investigation">
+    <protagonist />
+    <emotion>surprised</emotion>
+    <thought>Protetora?</thought>
+    <thought>Pensam que eu sou da raça de Derione por eu estar usando roupas iguais às dele? Por isso não estranham minha presença?</thought>
+  </do>
+
+  <do when="!sulana_investigation">
+    <protagonist />
+    <emotion>surprised</emotion>
+    <thought>Protetora?</thought>
+    <narration>Subitamente, você se lembra das roupas que está vestindo e recorda que Derione costumava usar trajes parecidos.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <thought>Então é isso? Todos pensam que eu sou da raça dele? Por isso não estranham minha presença?</thought>
+  </do>
+
+  <narration>Você olha de um para o outro com expressão impassível, tentando detectar qualquer sinal de animosidade.</narration>
+  <narration>Mas não encontra nenhuma, exceto pela desconfiança de Belísar.</narration>
+  <protagonist />
+  <thought>Por que essas pessoas conheceriam protetores? O bando de Derione não costuma se mostrar para ninguém, exceto aqueles que consideram perigosos.</thought>
+  <choice>
+    <a>Belísar é um aliado dos protetores?</a>
+    <b>Sabem da minha ligação com Derione?</b>
+    <c>Tem algum protetor vigiando o General Vermelho?</c>
+  </choice>
+  <thought>Será que...</thought>
+
+  <do when="a">
+    <narration>Você desconsidera aquela possibilidade quase que imediatamente, pois se lembra que o general não pareceu nem um pouco satisfeito ao ver você.</narration>
+  </do>
+
+  <do when="b">
+    <narration>Você desconsidera aquela possibilidade quase que imediatamente, pois se fosse esse o caso, não acreditariam que você fosse da raça dele.</narration>
+  </do>
+
+  <do when="c">
+    <narration>Você olha para o general, pensativa.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <reward>+investigation</reward>
+    <thought>É claro! Faz todo sentido!</thought>
+    <thought>Esse homem é mais perigoso do que eu. Se estão de olho em mim, devem estar vigiando ele também.</thought>
+  </do>
+
+  <do when="!c">
+    <narration>Então você se dá conta de que essa, aparentemente, é a família de Belísar.</narration>
+    <protagonist />
+    <thought>Os protetores devem estar de olho nele.</thought>
+  </do>
+
+  <narration>Belísar desvia o olhar das crianças e volta sua atenção para você, com uma expressão cautelosa no rosto.</narration>
+  <person>belisar</person>
+  <voice>...</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Pensando bem, com todos os crimes de guerra que esse homem cometeu, os protetores já deviam tê-lo prendido há muito tempo, não?</thought>
+  <person>zelmira</person>
+  <emotion>surprised</emotion>
+  <voice>Baliorge, não seja inconveniente!</voice>
+  <voice>Você não deve sair enchendo as pessoas de perguntas na primeira vez que as vê!</voice>
+  <narration>O rapaz fica em silêncio, apesar de não parecer nem um pouco arrependido.</narration>
+  <narration>A mulher deixa a cesta no chão ao lado da palmeira e lança a você um sorriso de desculpas que, novamente, não lhe parece totalmente sincero.</narration>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Não me lembro de já ter conhecido você. Eu sou Zelmira. Seja bem-vinda!</voice>
+  <person>belisar</person>
+  <voice>Também é a primeira vez que a vejo.</voice>
+  <voice>Qual é mesmo o seu nome?</voice>
+  <narration>Sem saber direito o que fazer naquela situação absurda, você decide responder.</narration>
+  <protagonist />
+  <voice>Sulana.</voice>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Que nome lindo!</voice>
+  <person>belisar</person>
+  <voice>Baliorge, vá cuidar de seus irmãos, não deixe que eles entrem em águas muito fundas.</voice>
+  <person>baliorge</person>
+  <emotion>happy</emotion>
+  <voice>Sim, senhor!</voice>
+  <narration>O rapaz lança a você um último sorriso jovial, antes de se afastar, na direção dos menores.</narration>
+  <narration>Enquanto isso, a mãe dele continua encarando você com aquele sorriso.</narration>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>O que podemos fazer por você? Não está com calor? Quer tomar alguma coisa?</voice>
+  <person>belisar</person>
+  <voice>Zelmira, você sabe que os protetores não apreciam ser tratados com familiaridade.</voice>
+  <narration>A mulher leva a mão aos lábios</narration>
+  <person>zelmira</person>
+  <emotion>surprised</emotion>
+  <voice>Oh, tem razão, Marcelius, sinto muito!</voice>
+  <narration>Ela olha para você com uma expressão mortificada.</narration>
+  <person>zelmira</person>
+  <emotion>surprised</emotion>
+  <voice>Por favor me perdoe. Estou sendo inconveniente, não estou? Você deve estar querendo tratar de negócios com meu marido, então pode ficar à vontade.</voice>
+  <voice>Se precisar de alguma coisa é só me chamar. Foi um prazer conhecê-la.</voice>
+  <narration>Sem esperar uma resposta, Zelmira vai atrás do filho mais velho, deixando você e o general sozinhos, num silêncio incômodo.</narration>
+  <protagonist   />
+  <thought>Então, o primeiro nome do general é “Marcelius”? Até que é um nome bonito, combina com ele.</thought>
+  <emotion>angry</emotion>
+  <thought>Com esta versão dele, pelo menos.</thought>
+  <narration>De repente, você percebe que o está encarando e desvia o olhar.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>O que há de errado comigo, afinal?</thought>
+  <person>belisar</person>
+  <voice>Por que você está aqui?</voice>
+  <protagonist />
+  <choice time="4" timeout="c">
+    <a>Vim para vigiar você.</a>
+    <b>O que você fez com Giarle?</b>
+    <c>...</c>
+  </choice>
+  <voice>...</voice>
+
+  <do when="b">
+    <person>belisar</person>
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <narration>Muito surpreso, ele pensa por um instante, antes de responder.</narration>
+    <person>belisar</person>
+    <voice>O coronel da resistência? Está sendo interrogado.</voice>
+    <voice>Está vivo e muito bem, se é isso o que você quer saber.</voice>
+    <protagonist />
+    <reward>+investigation</reward>
+    <voice>Vai subjugar a vontade dele, como fez com os outros?</voice>
+    <person>belisar</person>
+    <emotion>angry</emotion>
+    <voice>Não sei do que está falando!</voice>
+    <voice>O que aconteceu agora? Vocês encontraram algum novo crime para me acusar?</voice>
+    <narration>Ele coloca as mãos na cintura enquanto lhe dirige um olhar frio.</narration>
+  </do>
+
+  <person>belisar</person>
+  <emotion>angry</emotion>
+  <voice>Quem é você, afinal? Onde está Elinora?</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Não é de sua conta!</voice>
+  <narration>Na verdade, você não tinha resposta para nenhuma daquelas perguntas, mas também não estava gostando nada do tom de acusação na voz dele.</narration>
+  <person>belisar</person>
+  <emotion>angry</emotion>
+  <voice>O que veio fazer aqui?</voice>
+  <protagonist />
+  <voice>Pensa que eu vim por sua causa?</voice>
+  <person>belisar</person>
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <emotion>angry</emotion>
+  <voice>Vocês sempre vêm por minha causa. Se o problema dessa vez não é comigo, então é com quem?</voice>
+  <protagonist />
+  <voice>E desde quando protetores dão satisfações a alguém?</voice>
+  <narration>Você cruza os braços, em postura desafiadora, enquanto ele estreita ainda mais os olhos, claramente irritado com sua pergunta.</narration>
+  <protagonist />
+  <thought>Se isso é um sonho, não há problema nenhum em provocar um pouco o homem, não é?</thought>
+  <thought>Nunca me imaginei fazendo esse tipo de coisa, mas com certeza é divertido ver ele fechar a cara desse jeito.</thought>
+  <narration>Para sua decepção, o general respira fundo, recuperando a compostura.</narration>
+  <person>belisar</person>
+  <voice>Então é isso. Vai ficar por perto para me monitorar e garantir que eu não me esqueça de que vocês existem.</voice>
+  <narration>Ele aperta os punhos, sua musculatura impressionante forçando o tecido das ataduras.</narration>
+  <protagonist />
+  <choice>
+    <a>Os ferimentos dele</a>
+    <b>Este lugar</b>
+    <c>O que ele está fazendo aqui</c>
+  </choice>
+  <thought>Devo perguntar sobre...</thought>
+
+  <do when="a">
+    <protagonist />
+    <voice>O que houve com seus pulsos?</voice>
+    <person>belisar</person>
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <narration>Surpreso, ele olha por um momento para as faixas firmemente atadas no fim de seus antebraços.</narration>
+    <person>belisar</person>
+    <emotion>sad</emotion>
+    <voice>Como se você não soubesse que tivemos uma batalha ontem.</voice>
+    <narration>Você se lembra do dia anterior, do pequeno discurso do general antes de ele bater em retirada.</narration>
+    <narration>Ele não parecia estar ferido ou sentindo dor naquele momento.</narration>
+    <protagonist />
+    <reward>+investigation</reward>
+    <voice>E você lutou ao lado dos seus soldados?</voice>
+    <person>belisar</person>
+    <emotion>surprised</emotion>
+    <voice>Claro que sim, não deixo ninguém lutar minhas batalhas por mim!</voice>
+    <protagonist />
+    <voice>Mas agora está aqui, na praia, com a família.</voice>
+    <narration>Ele volta a ficar nervoso, o olhar dele praticamente lançando adagas em sua direção.</narration>
+    <protagonist />
+    <emotion>happy</emotion>
+    <thought>Eu poderia facilmente me acostumar com isso. Nunca imaginei que provocar alguém pudesse ser tão divertido.</thought>
+    <thought>Essa expressão furiosa no rosto dele é impagável.</thought>
+  </do>
+
+  <do when="b">
+    <protagonist />
+    <voice>Você não parece o tipo de pessoa que viaja até um lugar como esse apenas por descanso ou diversão.</voice>
+    <person>belisar</person>
+    <voice>Qual o problema? Ainda não contaram a você a sórdida história da minha vida?</voice>
+    <protagonist />
+    <voice>Eu não acredito em tudo o que me falam. E você?</voice>
+    <narration>Ele a encara com uma expressão estranha.</narration>
+    <person>belisar</person>
+    <voice>O que quer saber?</voice>
+    <protagonist />
+    <voice>O que há de especial neste lugar?</voice>
+    <narration>Ele solta um riso nervoso.</narration>
+    <person>belisar</person>
+    <voice>Me diga você. Porque eu nunca entendi.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Você viajou até aqui sem saber por o por quê?</voice>
+    <narration>Ao ouvir aquilo ele volta a se enfurecer.</narration>
+  </do>
+
+  <do when="c">
+    <protagonist />
+    <voice>Você está longe do seu palácio, não?</voice>
+    <person>belisar</person>
+    <emotion>angry</emotion>
+    <voice>Onde você esperava que eu estivesse?</voice>
+    <voice>Sem recuperar minhas energias depois de uma batalha como aquela eu não sobrevivo por mais do que algumas horas.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <narration>Ele percebe a expressão surpresa no seu rosto e aquilo parece deixá-lo ainda mais nervoso.</narration>
+  </do>
+
+  <person>belisar</person>
+  <emotion>angry</emotion>
+  <voice>Vocês sabem muito bem o quanto essas batalhas exigem de mim! Foram vocês que fizeram isso comigo!</voice>
+  <narration>Ele aponta para uma ilha que podia ser avistada por sobre as ondas.</narration>
+  <person>belisar</person>
+  <emotion>angry</emotion>
+  <voice>Graças a vocês eu não posso mais usar meus poderes sem ter que passar dias perto de uma fonte de energia para me recuperar!</voice>
+  <voice when="a">Você pode pensar que sabe quem eu sou, mas não me conhece! Não tem o direito de me acusar de negligência!</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Não é possível que esse seja o general verdadeiro. Nada disso combina com o que sei sobre ele.</thought>
+  <thought>Este homem à minha frente parece... vulnerável. Eu diria até... infeliz.</thought>
+  <thought>Muito diferente do megalomaníaco que eu esperava encontrar.</thought>
+  <narration>Um barulho à distância chama a sua atenção e você vira a cabeça para o mar.</narration>
+  <narration>Entre as ondas, a esposa dele e as crianças estavam se divertindo, gritando e rindo enquanto pulavam de um lado para o outro. Aquilo tudo era surreal demais.</narration>
+
+  <music>enigma</music>
+
+  <narration>Então, de repente, a menina solta um grito e começa a chorar.</narration>
+  <person>belisar</person>
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <narration>Sem hesitar, Belísar sai correndo na direção da filha, deixando você sozinha.</narration>
+  <narration>De longe, você observa enquanto ele pega a menina no colo e a traz de volta para a areia.</narration>
+  <narration>A julgar pelo pouco que você consegue ouvir da conversa, parece que a pequena havia pisado em alguma criatura venenosa.</narration>
+  <narration>O general então lava cuidadosamente o pé da garota com água de um cantil que Zelmira lhe entrega.</narration>
+
+  <music>free-mind</music>
+
+  <narration>Depois daquilo, ocorre uma breve discussão e todos decidem ficar longe da água.</narration>
+  <narration>Enquanto o pai, a mãe e o irmão mais novo conversam com a garotinha ferida, o irmão mais velho se afasta um pouco e começa a praticar movimentos de luta corporal na areia.</narration>
+  <person>baliorge</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>Há!!</voice>
+  <narration>Notando que você o observava, ele começa a treinar com mais empolgação, desferindo socos e chutes no ar com muito mais força do que deveria.</narration>
+  <protagonist />
+  <choice>
+    <a>Ignorar o garoto e vasculhar os arredores</a>
+    <b when="sulana_fight[4:]" req="Coragem +4">Ensinar ao garoto como se faz</b>
+  </choice>
+  <thought>Eu vou...</thought>
+
+  <do when="a">
+    <narration>Você se afasta da família e caminha durante um bom tempo pela praia deserta.</narration>
+    <narration>A faixa de areia parece se estender indefinidamente, quase sem sinais de presença humana.</narration>
+    <narration>Desistindo de caminhar nessa direção, você se embrenha pela "floresta", composta quase que exclusivamente por palmeiras e vegetação rasteira.</narration>
+
+    <music>enigma</music>
+
+    <narration>Então você para, de repente, e, seguindo seus instintos, se esconde atrás de um tronco e espia com cuidado para uma trilha há certa distância.</narration>
+    <narration>Pouco tempo depois, duas figuras familiares passam pela trilha, caminhando lado a lado em silêncio.</narration>
+    <person>soldado5</person>
+    <voice>...</voice>
+    <person>soldado4</person>
+    <voice>...</voice>
+    <narration>Os rostos deles estão levemente inchados e apresentam hematomas. Provavelmente consequências dos golpes que você infligiu neles.</narration>
+    <protagonist />
+    <thought>Não sei se isso é um sonho ou não, mas seguindo por esse caminho vou acabar encontrando confusão.</thought>
+    <emotion>surprised</emotion>
+    <thought>E não sei o que é mais estranho: topar com o general numa praia deserta ou essa vontade que me deu de repente de não arranjar briga.</thought>
+    <narration>Tentando fazer o mínimo possível de ruído, você retorna à praia e toma o caminho de volta.</narration>
+    <narration>O sol já está quase no ápice do céu quando você avista o general e seus filhos, que estavam sentados na areia, à sombra de uma palmeira.</narration>
+    <narration>Belísar olha para você, desconfiado, ao vê-la se aproximando.</narration>
+    <person>belisar</person>
+    <voice>...</voice>
+  </do>
+
+  <do when="b">
+    <narration>Você imediatamente caminha na direção dele.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Ei, pare!</voice>
+    <narration>Ele imediatamente se imobiliza.</narration>
+    <person>baliorge</person>
+    <emotion>surprised</emotion>
+    <voice>O que foi?</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Não está sentindo nada no ombro?</voice>
+    <narration>Ele fez uma careta ao levar a mão ao ombro direito.</narration>
+    <person>baliorge</person>
+    <emotion>angry</emotion>
+    <voice>Hum… está doendo um pouco.</voice>
+    <protagonist />
+    <voice>Melhor ir com calma.</voice>
+    <person>baliorge</person>
+    <voice>Isso não foi nada. Eu treino assim desde criança.</voice>
+    <protagonist />
+    <voice>Não quero que seu pai me culpe por deixar você se machucar.</voice>
+    <narration>Você não fazia a menor ideia de porque tinha falado aquilo, mas o garoto pareceu gostar de ouvir.</narration>
+    <protagonist />
+    <thought>Ah, que se dane, esse sonho já está tão doido mesmo, vou fazer umas maluquices para ver até onde isso chega.</thought>
+    <narration>Você para ao lado do garoto e se vira, de forma a ficar ombro a ombro com ele.</narration>
+    <protagonist />
+    <voice>Aqui, deixa eu mostrar o que você fez de errado.</voice>
+    <narration>Você passa os minutos seguintes mostrando ao rapaz a postura correta para desferir certos golpes sem se machucar no processo.</narration>
+    <narration>Mas, querendo ou não, parte de sua atenção continua focada no general.</narration>
+    <narration>Você percebe o momento exato em que ele a vê ao lado de Baliorge.</narration>
+    <person>belisar</person>
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <narration>Ele parece desconfiado, mas, por alguma razão, prefere não interferir.</narration>
+    <person>baliorge</person>
+    <emotion>surprised</emotion>
+    <voice>Você é boa nisso!</voice>
+    <protagonist />
+    <voice>Não tenho muita escolha.</voice>
+    <voice>Vamos tentar uma sequencia. Veja se consegue me acompanhar.</voice>
+    <narration>Você nunca havia se imaginado na posição de instrutora.</narration>
+    <narration>Também não tinha um repertório muito grande de coisas que podia ensinar.</narration>
+    <narration>Afinal, você não passava de uma criança na última vez que alguém tentou lhe ensinar algo daquela forma.</narration>
+    <narration>As lições que recebeu de seus pais ficaram gravadas em sua memória para sempre, mas o tempo que você passou com eles foi muito curto.</narration>
+    <protagonist />
+    <voice>Flexione mais os joelhos.</voice>
+    <person>baliorge</person>
+    <emotion>surprised</emotion>
+    <voice>Assim?</voice>
+    <narration>Você assente, um pouco surpresa ao ver o quão rápido ele aprendia.</narration>
+    <narration>Os minutos vão se passando enquanto você demonstra que tipo de exercícios ele deve fazer para fortalecer os músculos de forma a potencializar seus golpes.</narration>
+    <narration>Sulana quase tinha perdido a noção do tempo quando o irmão mais novo chega correndo do lado vocês.</narration>    
+    <person>sagante</person>
+    <emotion>surprised</emotion>
+    <voice>Que legal! Quero brincar também!</voice>
+    <narration>O menino se aproxima do irmão e começa a tentar imitar os movimentos, sem muito sucesso.</narration>
+    <narration>O mais velho ri e repete o golpe, devagar, enquanto o mais novo tenta repetir o que ele faz.</narration>
+    <narration>Logo, os dois irmãos estão entretidos com o treinamento, rindo e provocando um ao outro o tempo todo.</narration>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>...</voice>
+    <narration>Você respira fundo.</narration>
+    <narration>O barulho das ondas, o calor do sol em sua pele e a tranquilidade daquele lugar são agradavelmente relaxantes.</narration>
+    <narration>Você não conseguiria pensar num dia e local mais propícios para uma boa sessão de treinamento.</narration>
+    <narration>Então, quase sem perceber, você inicia uma das sequências que aperfeiçoou durante os anos.</narration>
+    <narration>Logo os garotos param o que estão fazendo para observá-la, fascinados.</narration>
+    <person>sagante</person>
+    <emotion>surprised</emotion>
+    <voice>Uau!</voice>
+    <person>baliorge</person>
+    <emotion>happy</emotion>
+    <voice>Ela é demais, não é?</voice>
+    <narration>Sem estar acostumada a ser o centro das atenções daquela forma, você decide ignorá-los e continuar com seu treinamento, pois seus músculos estavam praticamente gritando por alguma atividade.</narration>
+    <narration>Sua sequência está quase terminando quando Belísar se aproxima.</narration>
+    <person>belisar</person>
+    <voice>Vamos fazer uma pausa, meninos.</voice>
+    <person>sagante</person>
+    <emotion>sad</emotion>
+    <voice>Ahhhhhhhh, pai!</voice>
+    <person>baliorge</person>
+    <emotion>surprised</emotion>
+    <voice>Mas agora que estava ficando interessante!</voice>
+    <narration>O general cruza os braços.</narration>
+    <person>belisar</person>
+    <emotion>happy</emotion>
+    <voice>Olhe para vocês dois, mal se aguentam em pé.</voice>
+    <emotion>normal</emotion>
+    <voice>Além disso, se ficarem mais tempo debaixo desse sol vão acabar torrados.</voice>
+    <voice>Venham, vamos comer alguma coisa.</voice>
+    <narration>Baliorge lança um olhar de admiração a você.</narration>
+    <person>baliorge</person>
+    <emotion>happy</emotion>
+    <voice>Esses movimentos são demais! Você é a professora mais legal do mundo!</voice>
+    <narration>Você troca um rápido olhar com o general, antes de responder.</narration>
+    <protagonist />
+    <voice>Ah, é mesmo?</voice>
+
+    <music>crime-fighter</music>
+
+    <narration>Você não saberia dizer de onde aquele impulso veio, só sabia que estava cheia de energia e não queria que aquele treinamento improvisado acabasse daquela forma.</narration>
+    <narration>Então, num movimento extremamente rápido, você se aproxima do rapaz, segura ambas as mãos dele atrás das costas e o agarra pelo pescoço com a outra mão, colocando-o diante de si como se o fosse usar como um escudo humano.</narration>
+    <person>baliorge</person>
+    <emotion>surprised</emotion>
+    <bump />
+    <voice>Ahh!!</voice>
+    <person>sagante</person>
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <person>belisar</person>
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <narration>O general começa a se mover instintivamente para proteger o filho, mas então o olhar dele cruza com o seu e ele se interrompe.</narration>
+    <narration>Você então dirige sua atenção ao rapaz.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>E se eu disser que meu objetivo era só obter a sua confiança para poder te sequestrar?</voice>
+    <voice>O que acha que seu pai estaria disposto a fazer para ter você ou qualquer um de seus irmãos de volta?</voice>
+    <person>baliorge</person>
+    <emotion>surprised</emotion>
+    <voice>Eu… não sei…</voice>
+
+    <music>sad-story</music>
+
+    <person>sagante</person>
+    <emotion>surprised</emotion>
+    <voice>Papai!</voice>
+    <narration>Ao ver o irmão mais novo correndo para abraçar as pernas do pai, ameaçando chorar, você solta Baliorge e lhe dá um empurrão com o pé, o que faz com que ele precise dar vários passos para a frente antes de recuperar o equilíbrio.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Você nunca me viu antes, garoto. Seu pai nunca te ensinou que não deve confiar em ninguém assim tão fácil?</voice>
+    <person>baliorge</person>
+    <emotion>surprised</emotion>
+    <voice>Sim, mas…</voice>
+    <protagonist />
+    <voice>Lembre-se de uma coisa: as únicas pessoas que têm a obrigação de nunca te trair são as da sua família.</voice>
+    <voice>Ninguém mais é obrigado a isso. Se decidirem ser leais a você, o fazem por escolha própria. E nem todos fazem essa escolha.</voice>
+    <person>baliorge</person>
+    <emotion>surprised</emotion>
+    <voice>Acho que entendi.</voice>
+    <emotion>sad</emotion>
+    <voice>Mas como a gente pode saber em quem confiar?</voice>
+    <protagonist />
+    <voice>Quem é a pessoa em quem você mais confia?</voice>
+    <person>baliorge</person>
+    <voice>Meu pai!</voice>
+    <protagonist />
+    <voice>E acha que seu pai confia em mim?</voice>
+    <narration>O rapaz pensa um pouco e umedece os lábios antes de responder.</narration>
+    <person>baliorge</person>
+    <voice>Sim.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>É mesmo? Por quê?</voice>
+    <person>baliorge</person>
+    <voice>Porque, quando você me… segurou, ele ficou só olhando e não fez nada.</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <thought>Ora, vejam só! Parece que ele é bem mais esperto do que aparenta.</thought>
+    <narration>Você nota o olhar de aprovação que o general lança a você enquanto acaricia os cabelos do filho mais novo.</narration>
+    <person>belisar</person>
+    <emotion>happy</emotion>
+    <voice>...</voice>
+    <protagonist />
+    <trophy>karatekid</trophy>
+    <voice>Isso mesmo. Quando estiver em dúvida ou em apuros, procure sempre a orientação daqueles que você sabe que pode confiar.</voice>
+    <narration>Foi estranho ouvir aquelas palavras saindo de sua própria boca. Afinal, você mesma não tinha em quem confiar há duas décadas.</narration>
+    <narration>Mas algo naquele garoto fazia com que você se lembrasse de sua própria infância e das lições que seus pais tanto se esforçaram para que você aprendesse.</narration>
+    <narration>Não que seus progenitores tivessem boas intenções quando a ensinaram tudo aquilo, mas os pais deste rapaz não eram assassinos ensandecidos.</narration>
+    <narration>De alguma forma, você tinha certeza daquilo.</narration>
+    <narration>Apesar de tudo o que o General Vermelho tinha feito no mundo real, este Marcelius Belísar era diferente.</narration>
+  </do>
+
+  <music>never-look-back</music>
+
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Ei, vocês! A comida está pronta! Venham!</voice>
+  
+  <do when="a">
+    <narration>As crianças soltam gritos de alegria e saem correndo na direção da mãe.</narration>
+    <narration>Belísar se aproxima de você.</narration>
+    <person>belisar</person>
+    <voice>Você não sabe realmente por que está aqui, sabe?</voice>
+    <narration>Você o encara por alguns instantes antes de resolver responder com franqueza.</narration>
+    <voice>Não, não sei.</voice>
+  </do>
+  
+  <do when="b">
+    <narration>Os garotos soltam gritos de alegria e saem correndo na frente. Você lança um olhar a Belísar.</narration>
+    <protagonist />
+    <voice>O conselho vale para você também. Eu poderia muito bem estar aqui para matar você. Ou coisa pior.</voice>
+    <person>belisar</person>
+    <voice>Eu sei reconhecer uma ameaça quando vejo uma.</voice>
+    <voice>Você não sabe realmente por que está aqui, sabe?</voice>
+    <narration>Você o encara por alguns instantes antes de resolver responder com franqueza.</narration>
+    <voice>Não, não sei.</voice>
+    <voice>Mas a primeira coisa em que pensei ao reconhecer você foi em pôr um fim à sua vida.</voice>
+    <person>belisar</person>
+    <voice>Eu percebi algo assim, mas…</voice>
+  </do>
+  
+  <person>zelmira</person>
+  <voice>Ei, vocês dois! Por que estão demorando?</voice>
+  <person>belisar</person>
+  <voice>Já estamos indo!</voice>
+  <narration>Ele se vira para você.</narration>
+  <person>belisar</person>
+  <voice>Vamos comer. Podemos conversar depois.</voice>
+  
+  <narration>Você não consegue encontrar nenhuma razão para recusar o convite.</narration>
+  <narration>Enquanto caminham, Belísar continua a vigiando com o olhar, mas a raiva inicial parece ter sido substituída por outra coisa, que você não consegue discernir o que é.</narration>
+
+  <do when="sulana_investigation[2:]">
+    <narration>Você lança um olhar para a ilha à distância, tentando processar tudo o que tinha ocorrido hoje.</narration>
+    <protagonist />
+    <trophy>puzzled</trophy>
+    <thought>O que está acontecendo, afinal? Nada disso aqui faz sentido.</thought>
+    <thought>Nunca tive um sonho que parecesse tão real.</thought>
+    <thought>E por que eu sonharia com o General Vermelho?</thought>
+    <narration>Você olha para ele e vê que ele ainda a está encarando, mas dessa vez com uma expressão curiosa.</narration>
+    <person>belisar</person>
+    <voice>...</voice>
+    <protagonist />
+    <voice>...</voice>
+    <narration>Você o encara de volta por um instante e ele desvia o olhar.</narration>
+    <narration>A emanação mística que vem do corpo dele é forte o suficiente para você perceber, mesmo sem a ampliação de sentidos concedida pela febre da batalha.</narration>
+    <protagonist />
+    <trophy when="sulana_investigation[4]">inquisitor</trophy>
+    <emotion>surprised</emotion>
+    <thought>Como alguém pode parecer tão perigoso e tão inofensivo ao mesmo tempo?</thought>
+    <emotion>angry</emotion>
+    <reward>fight+2</reward>
+    <thought>Quem é esse homem, afinal?</thought>
+  </do>
+
+  <do when="sulana_investigation[:1]">
+    <narration>Você lança um olhar para a ilha à distância, imaginando o que os protetores tinham feito ao general, e por quê.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Ora, como assim, “por quê”?</thought>
+    <thought>O homem é o General Vermelho, ora bolas!</thought>
+    <emotion>normal</emotion>
+    <thought>...</thought>
+    <emotion>sad</emotion>
+    <thought>Não é?</thought>
+  </do>
+
+  <narration>Você sacode a cabeça, tentando afastar aqueles pensamentos.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Argh! Melhor esquecer tudo isso e tratar de encher logo a barriga!</thought>
+  <narration>Depois de vocês terem comido tudo o que Zelmira havia trazido na cesta, as crianças voltam a brincar na areia, demonstrando possuírem uma reserva impressionante de energia.</narration>
+  <narration>Você prefere se deitar sob uma palmeira, satisfeita com a refeição improvisada.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <thought>Que dia maluco!</thought>
+  <narration>O sono vem rápido enquanto você recapitula os acontecimentos, tentando encontrar algum sentido em tudo aquilo.</narration>
+  <narration>Assim, pela primeira vez em mais de vinte anos, você adormece tranquila, completamente esquecida de onde está e com quem.</narration>
+
+  <music>open-sky</music>
+  <background>shack_interior</background>
+
+  <narration>Você acorda e se espreguiça, sentindo-se animada e cheia de energia.</narration>
+  <narration>Então abre os olhos e percebe que está de volta à sua cabana, despida sobre o catre, exatamente do mesmo jeito que pegara no sono na noite anterior.</narration>
+  <narration>Levantando-se, você abre a janela e olha para fora.</narration>
+
+  <background>sun_rising</background>
+
+  <narration>A posição das sombras indica que já é início da tarde.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Eu dormi mesmo tanto assim?</thought>
+  <emotion>normal</emotion>
+  <thought>Bom, não deixa de ser um alívio saber que aquilo tudo foi mesmo só um sonho.</thought>
+  <emotion>surprised</emotion>
+  <thought>Não que uma situação tão bizarra pudesse ser qualquer outra coisa.</thought>
+  <thought>...</thought>
+  <thought>Devo ter gastado energia demais na batalha de ontem. Essa é a única explicação para eu ter dormido tanto tempo e tido um sonho tão idiota.</thought>
+  <emotion>happy</emotion>
+  <thought>Bem, não importa.</thought>
+  <thought>O céu está limpo, meu braço não está mais doendo e me sinto cheia de energia.</thought>
+  <thought>Hora de trabalhar um pouco!</thought>
+
+  <background>carmim</background>
+</storyboard>

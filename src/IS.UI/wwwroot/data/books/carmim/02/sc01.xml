@@ -1,0 +1,673 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>sulana</viewpoint>
+  <music>open-sky</music>
+  <background>carmim</background>
+  <observe />
+  <narration>Capítulo 2: Rotina</narration>
+
+  <background>sulana</background>
+
+  <tutorial>Você agora está controlando Sulana Lautine</tutorial>
+
+  <background>shack_interior</background>
+
+  <do when="seductress">
+    <narration>Você acorda, sozinha, em sua própria cama.</narration>
+    <protagonist />
+    <voice>...</voice>
+    <narration>Sentando-se, você alonga os músculos.</narration>
+    <narration>Aparentemente, Derione tinha usado os poderes dele para transportar você de volta à cabana em algum momento no meio da noite.</narration>
+    <narration>Se não fosse pelo fato de estar sem roupas e pelo leve desconforto que sentia em algumas partes do corpo, não teria problemas em acreditar que a noite passada era apenas fruto de sua imaginação.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <thought>Eu passei mesmo a noite com um cara?</thought>
+    <thought>E com Derione, ainda por cima?</thought>
+    <narration>Você não costuma se aproximar de outras pessoas, principalmente daquela forma.</narration>
+    <narration>Então, a única explicação em que consegue pensar para seu comportamento era a euforia que sempre sente após uma batalha.</narration>
+    <narration>Euforia essa que agora a impulsionava a se levantar e encarar o dia.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Não vou mesmo conseguir entender o que aconteceu ontem, então, dane-se. Tenho coisas demais para fazer, para ficar me preocupando com isso.</thought>
+    <narration>Você empurra para o fundo da mente os sentimentos desconfortáveis causados pela lembrança da noite anterior e se levanta.</narration>
+    <narration>Seu corpo está cheio de energia, pronto para encarar qualquer desafio.</narration>
+  </do>
+
+  <do when="!seductress">
+    <narration>Você abre os olhos e encara, por um instante, as paredes de madeira sua cabana.</narration>
+    <protagonist />
+    <voice>...</voice>
+    <narration>Os acontecimentos do dia anterior retornam à sua mente, especialmente a batalha na velha fortaleza.</narration>
+    <narration>A euforia que você sempre sente após uma boa luta percorre seu corpo, numa sensação quente, elétrica, deixando-a alerta e cheia de disposição.</narration>
+    <narration>Você se senta e alonga os músculos, preparando-se para encarar o dia.</narration>
+    <narration>O fato de Derione tê-la transportado da fortaleza de Mercília para cá poupara você de uma longa caminhada.</narration>
+    <narration>No entanto, em seu atual estado de espírito, nem fazia muita diferença, pois sentia-se cheia de energia, pronta para encarar qualquer desafio.</narration>
+  </do>
+
+  <narration>Até mesmo a ideia de ajudar na lavanderia do abrigo lhe parece atraente.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <thought>Humm... que fome!</thought>
+  <narration>Você salta da cama e veste as primeiras peças que encontra na pilha de roupas velhas e gastas sobre a mesa.</narration>
+  <narration>Há uma sacola de couro pendurada numa das paredes. Você enfia a mão dentro dela e retira uma fruta.</narration>
+  <object>
+    <image>tufax</image>
+    <title>Tufax</title>
+    <prompt>Dar uma mordida</prompt>
+  </object>
+  <narration>Trata-se de um tufax, uma espécie de maçã gigante, pouco maior que um abacate, que é cultivada em climas frios.</narration>
+  <narration>Tem uma coloração vermelho amarronzada e um sabor que é considerado ácido demais pela maioria das pessoas.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <voice>Hummmm... Bem do jeito que eu gosto.</voice>
+
+  <background>shack</background>
+
+  <narration>Você devora a fruta em questão de instantes enquanto sai da cabana e aprecia a quietude dos arredores.</narration>
+  <protagonist />
+  <choice>
+    <a>É perfeito.</a>
+    <b>É melhor do que nada, eu suponho.</b>
+    <c>É um tédio.</c>
+  </choice>
+  <thought>Este lugar...</thought>
+
+  <do when="a">
+    <reward>+hope</reward>
+    <thought>Tranquilo, longe de tudo e de todos, comida e água abundantes...</thought>
+    <thought>E de vez em quando ainda aparecem alguns predadores que chegam a representar algum desafio.</thought>
+    <emotion>happy</emotion>
+    <thought>É a imagem da perfeição.</thought>
+  </do>
+
+  <do when="b">
+    <reward>+fight</reward>
+    <thought>Essa cabana está me servindo bem, por enquanto.</thought>
+    <thought>Mas talvez já esteja na hora de procurar algo melhor.</thought>
+    <thought>Aquela fortaleza de Mercília tinha umas camas bem confortáveis.</thought>
+    <thought>Talvez esteja na hora de andar por aí para ver se encontro algum lugar interessante dando sopa.</thought>
+  </do>
+
+  <do when="c">
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+rage</reward>
+    <thought>Há meses não aparece nenhum monstro ou animal feroz por aqui.</thought>
+    <emotion>normal</emotion>
+    <thought>Talvez eu devesse esquecer aquele abrigo e procurar algum lugar mais interessante ao sul.</thought>
+    <emotion>happy</emotion>
+    <thought>Derione, com certeza, ficaria mordido de raiva se eu me mudasse para o meio de uma zona de guerra.</thought>
+  </do>
+
+  <narration>Você pega dois baldes e percorre o curto trajeto até o córrego próximo.</narration>
+  <narration>Depois de enchê-los com água, você retorna à cabana e os deixa de lado.</narration>
+  <narration>Com uma empolgação que não sente há semanas, você inicia seus exercícios matinais.</narration>
+  <narration>Mais de meia hora depois, os primeiros raios do sol a atingem enquanto você treina equilíbrio, sustentando-se com apenas um braço enquanto mantinha as pernas para o ar.</narration>
+
+  <background>sun_rising</background>
+
+  <narration>Voltando a pôr os pés no chão, você vira o rosto suado para o horizonte e aprecia a paisagem por algum tempo, enquanto sua respiração volta ao normal.</narration>
+  <narration>Então, voltando até onde tinha deixado os baldes, você rapidamente se livra das roupas, atirando-as dentro de um deles enquanto pega o outro e vira sobre sua cabeça.</narration>
+  <narration>A sensação da água gelada sobre sua pele quente devido ao esforço físico é bastante agradável.</narration>
+  <protagonist />
+  <thought>Hora de começar o dia.</thought>
+
+  <background>shelter</background>
+
+  <narration>O abrigo onde você trabalha fica há pouco menos de uma hora de caminhada da sua cabana.</narration>
+  <narration>Aliás, a cabana não é exatamente “sua”.</narration>
+  <narration>Trata-se apenas de uma velha construção abandonada para a qual você se mudou quando os alojamentos do abrigo haviam se tornado escassos.</narration>
+  <narration>O número de necessitados havia aumentado devido aos diversos ataques de monstros ocorridos na região nos últimos meses.</narration>
+
+  <music>free-mind</music>
+
+  <person>linete</person>
+  <emotion>happy</emotion>
+  <voice>Sulana! Estava imaginando quando você apareceria!</voice>
+  <narration>Você se vira para olhar para a jovem que se aproxima caminhando com dificuldade, com o auxílio de muletas.</narration>
+  <protagonist />
+  <voice>...</voice>
+  <narration>Este lugar havia se tornado a última esperança de sobrevivência de dezenas de pessoas.</narration>
+  <narration>Muitos haviam perdido quase todas as suas posses, outros haviam perdido parte da saúde. Outros ainda, sua sanidade.</narration>
+  <narration>Linete era uma das que haviam perdido as três coisas.</narration>
+  <person>linete</person>
+  <voice>Você tem que consertar a parede do meu quarto! Ela vai cair, qualquer hora dessas!</voice>
+  <protagonist />
+  <voice>...</voice>
+  <voice>Eu sou boa em derrubar paredes, não em consertá-las.</voice>
+  <person>linete</person>
+  <emotion>surprised</emotion>
+  <voice>Não sei como vocês deixaram esses prédios ficarem nesse estado!</voice>
+  <emotion>normal</emotion>
+  <voice>Quero dizer, eles são sólidos. Foram erguidos pelo exército imperial, antes do golpe de estado.</voice>
+  <emotion>surprised</emotion>
+  <voice>Você sabe, não é? Aquele que dividiu o império e lançou Ebora no completo caos em que vivemos hoje.</voice>
+  <narration>Como sempre, ela falava rápido, pulando de um assunto para outro de forma súbita e confusa.</narration>
+  <protagonist />
+  <choice>
+    <a>Você parece saber muito sobre esse assunto.</a>
+    <b>Por que não fala com Riodes sobre sua parede?</b>
+    <c>Falo com você depois, está bem?</c>
+  </choice>
+  <voice>...</voice>
+
+  <do when="a">
+    <narration>Um enorme sorriso se forma no rosto dela.</narration>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Eu sei tudo sobre o assunto, sou muito bem informada, você sabe. Minha família era uma das mais influentes da província.</voice>
+    <emotion>sad</emotion>
+    <voice>A verdade é que um dos coronéis da Província Central enlouqueceu e assassinou o imperador, com a intenção de tomar o lugar dele.</voice>
+    <emotion>normal</emotion>
+    <voice>Mas aí ele foi derrotado pelo filho do general.</voice>
+    <protagonist />
+    <voice>Linete...</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Então, os conselheiros imperiais decidiram tomar o poder para eles e dividiram o império entre si.</voice>
+    <emotion>normal</emotion>
+    <voice>Ainda não se sabe direito como eles conseguiram fazer com que o povo aceitasse o golpe.</voice>
+    <emotion>surprised</emotion>
+    <voice>Mas algumas pessoas não gostaram disso, como o General Vermelho, que se rebelou e derrotou o conselheiro imperial que tentou tomar o poder em Ebora.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Linete!</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Sim?</voice>
+    <protagonist />
+    <voice>Falo com você depois, está bem?</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Claro!</voice>
+    <voice>Sabe, Sulana, eu adoro você!</voice>
+    <protagonist />
+    <voice>...</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>É sério! Você é a única daqui que tem paciência para conversar comigo!</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <narration>Você a encara, incrédula por algum instantes.</narration>
+    <narration>O absurdo da situação é tão grande que você não consegue se conter e acaba caindo na risada.</narration>
+    <protagonist />
+    <emotion>happy</emotion>
+    <reward>+hope</reward>
+    <voice>Hahahaha!</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>O que foi?</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Nada. Deixa pra lá.</voice>
+  </do>
+
+  <do when="b">
+    <person>linete</person>
+    <emotion>sad</emotion>
+    <voice>Está brincando?</voice>
+    <emotion>angry</emotion>
+    <voice>Aquele velhote não tem forças nem para tirar água do poço, o que dirá para consertar uma parede!</voice>
+    <emotion>normal</emotion>
+    <voice>E os outros não são muito melhores do que ele.</voice>
+    <emotion>surprised</emotion>
+    <voice>Quero dizer, olhe ao redor! O mato está tomando conta de tudo!</voice>
+    <protagonist />
+    <voice>...</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>É um trabalho muito grande manter esse lugar funcionando.</voice>
+    <emotion>angry</emotion>
+    <voice>Trabalho demais para esse bando de preguiçosos!</voice>
+    <protagonist />
+    <voice>Linete...</voice>
+    <person>linete</person>
+    <voice>Quero dizer, isso aqui era um abrigo mantido pela comunidade e pelo governo, mas quando foi a última vez que recebemos doações?</voice>
+    <emotion>angry</emotion>
+    <voice>Só recebemos alguma coisa quando algum viajante se mostra corajoso o suficiente para se aventurar a vir até aqui para entregar!</voice>
+    <emotion>normal</emotion>
+    <voice>A maior parte dos suprimentos precisam ser cultivados, caçados ou coletados aqui mesmo!</voice>
+    <emotion>surprised</emotion>
+    <voice>Isso não é um absurdo?</voice>
+    <protagonist />
+    <voice>Linete, podemos conversar depois?</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Claro! Eu adoro conversar com você!</voice>
+    <voice>Você é a pessoa mais bacana desse lugar!</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Obrigada... Eu acho.</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Nós é quem temos que agradecer! Este lugar não existiria sem você!</voice>
+    <voice>Sei que você se esforça muito por nós.</voice>
+    <voice>Nunca desista, está bem? Continue sendo sempre essa pessoa maravilhosa que você é!</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <reward>+fight</reward>
+    <voice>...</voice>
+  </do>
+
+  <do when="c">
+    <person>linete</person>
+    <emotion>sad</emotion>
+    <voice>Não posso esperar até mais tarde! Quero falar agora!</voice>
+    <protagonist />
+    <voice>Linete...</voice>
+    <person>linete</person>
+    <emotion>sad</emotion>
+    <voice>Eu tive um sonho essa noite!</voice>
+    <emotion>surprised</emotion>
+    <voice>Um sonho horrível!</voice>
+    <emotion>sad</emotion>
+    <voice>Sonhei que aqueles trolls voltavam a nos atacar, e dessa vez vinham acompanhados por um montão de harpias!</voice>
+    <emotion>surprised</emotion>
+    <voice>Eles pilhavam toda a nossa cozinha e botavam fogo nas nossas camas!</voice>
+    <emotion>angry</emotion>
+    <voice>E aí eles queimavam os meus preciosos livros, acredita nisso?!</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+rage</reward>
+    <thought>Sim, acredito! Tanto que estou tentada a fazer a mesma coisa, neste momento!</thought>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Mas aí você aparecia e matava eles um por um!</voice>
+    <emotion>surprised</emotion>
+    <voice>Cada soco ou chute que você dava transformava um deles em pó!</voice>
+    <emotion>happy</emotion>
+    <voice>Eu e as crianças fazíamos torcida por você.</voice>
+    <emotion>normal</emotion>
+    <voice>No fim, até o Riodes abriu um sorriso para agradecer pelo salvamento!</voice>
+    <protagonist />
+    <voice>Linete, eu tenho que...</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Todos nós somos muito gratos.</voice>
+    <emotion>sad</emotion>
+    <voice>Quero dizer, nem sempre lembramos de dizer isso...</voice>
+    <voice>Mas só estamos vivos hoje graças a você.</voice>
+    <emotion>normal</emotion>
+    <voice>Obrigada, Sulana.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+  </do>
+
+  <narration>Uma borboleta passa voando entre vocês e Linete a encara com olhar sonhador por um momento.</narration>
+  <person>linete</person>
+  <emotion>surprised</emotion>
+  <voice>Que coisinha mais linda! Vem aqui, bonitinha! Vem com a mamãe...</voice>
+  <narration>Ela esquece de sua deficiência e tenta dar um passo na direção da borboleta, perdendo o equilíbrio.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <narration>Por puro reflexo, você se adianta e a segura antes que se esborrache no chão.</narration>
+  <person>linete</person>
+  <emotion>sad</emotion>
+  <voice>Ah... ela foi embora!</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Tenha um pouco mais de cuidado, sim?</voice>
+  <person>linete</person>
+  <emotion>surprised</emotion>
+  <voice>Com o quê?</voice>
+  <narration>A pergunta dela é completamente inocente.</narration>
+  <narration>Como alguém obviamente tão inteligente pôde ficar com as faculdades mentais tão seriamente comprometidas era um mistério para você.</narration>
+  <protagonist />
+  <voice>Com nada. Esqueça.</voice>
+  <person>linete</person>
+  <emotion>happy</emotion>
+  <voice>Está bem.</voice>
+  <emotion>normal</emotion>
+  <voice>Sabe, tem uma coisa que eu queria te perguntar.</voice>
+  <narration>Você solta um suspiro.</narration>
+  <protagonist />
+  <voice>O que é?</voice>
+  <person>linete</person>
+  <emotion>surprised</emotion>
+  <voice>Você é tão forte, tão independente...</voice>
+  <emotion>normal</emotion>
+  <voice>Por que cuida de nós?</voice>
+  <emotion>surprised</emotion>
+  <voice>Quero dizer, você poderia morar em qualquer lugar do mundo!</voice>
+  <emotion>normal</emotion>
+  <voice>Por que aqui?</voice>
+  <narration>Aquela era uma boa pergunta. Você já tinha pensado muito sobre isso.</narration>
+  <protagonist />
+  <voice>...</voice>
+  <voice>Eu não vim para cá para cuidar de vocês, Linete.</voice>
+  <voice>Eu não sou uma pessoa altruísta ou idealista.</voice>
+  <narration>Você reflete por um instante.</narration>
+  <protagonist />
+  <thought>Nesse ponto, Derione está completamente certo a meu respeito.</thought>
+  <thought>Nunca viria para cá se fosse só para arranjar comida e limpar a bagunça de um monte de desabrigados cheios de... problemas.</thought>
+  <person>linete</person>
+  <emotion>surprised</emotion>
+  <voice>Então por que está aqui?</voice>
+  <protagonist />
+  <choice>
+    <a>Para lutar.</a>
+    <b>Para encontrar meu lugar nesse mundo.</b>
+    <c>Para procurar respostas.</c>
+  </choice>
+  <thought>Eu vim aqui...</thought>
+
+  <do when="a">
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Contra os monstros, você quer dizer?</voice>
+    <voice>Foi nessa época que você veio, não foi? Quando os portais dimensionais surgiram?</voice>
+    <narration>Você suspira novamente e olha para o céu.</narration>
+    <protagonist />
+    <voice>Estamos bem no centro da província. Esta foi a região mais afetada pelos ataques.</voice>
+    <voice>Vim para cá em busca de ação. Sou uma guerreira, vivo para lutar.</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Nesse caso, imagino que tenha se divertido muito naquela época...</voice>
+    <emotion>normal</emotion>
+    <voice>Pelo menos até os portais pararem de se abrir.</voice>
+    <protagonist />
+    <voice>Sim.</voice>
+    <person>linete</person>
+    <voice>Mas então você resolveu ficar. Quero dizer, por que você não foi procurar... ação em outro lugar?</voice>
+    <protagonist />
+    <voice>Fiquei aqui porque achei que esse aglomerado de gente no meio do nada pudesse atrair mais confusão.</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Você foi resolvendo as confusões tão rápido que logo elas pararam de acontecer.</voice>
+    <emotion>normal</emotion>
+    <voice>Não sente falta da ação?</voice>
+    <protagonist />
+    <voice>Sim.</voice>
+    <narration>Você desvia o olhar.</narration>
+    <protagonist />
+    <thought>Sinto tanta falta que comecei a procurar outros tipos de... entretenimento.</thought>
+    <thought>Como, por exemplo, me envolver nessa guerra civil.</thought>
+    <emotion>angry</emotion>
+    <reward>+rage</reward>
+    <thought>Mas aí o nó cego do Derione tinha que aparecer de novo.</thought>
+    <thought>Será que ele não tem mais o que fazer além de ficar se metendo em minha vida?</thought>
+  </do>
+
+  <do when="b">
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Como assim?</voice>
+    <narration>Você dá de ombros.</narration>
+    <protagonist />
+    <voice>Eu morei em um monte de lugares, às vezes com famílias, às vezes sozinha.</voice>
+    <voice>Depois que meus pais morreram, nunca tive um lugar para chamar de lar.</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Deve ter sido difícil, não? Quero dizer, você sendo descendente do povo das montanhas e tal...</voice>
+    <narration>Você dá de ombros, novamente.</narration>
+    <protagonist />
+    <voice>Eu sempre era obrigada a ir embora depois de um tempo.</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Por quê?</voice>
+    <protagonist />
+    <voice>Ou as pessoas descobriam quem eu era ou eu... arrumava confusão.</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Bom, pode ter certeza de que, aqui, ninguém liga para quem eram seus pais!</voice>
+    <voice>Todos nós gostamos de você do jeito que é!</voice>
+    <protagonist />
+    <reward>+hope</reward>
+    <thought>Talvez, desde que eu continue os protegendo e providenciando comida.</thought>
+  </do>
+
+  <do when="c">
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Respostas?</voice>
+    <narration>Você dá de ombros.</narration>
+    <protagonist />
+    <voice>A vida aqui é difícil e perigosa.</voice>
+    <voice>Eu gosto disso, porque desde criança a febre da batalha me compele a buscar ação.</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>E nunca encontrou uma luta que não pudesse vencer?</voice>
+    <protagonist />
+    <voice>Não. Pelo menos não até chegar aqui.</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Então você decidiu vir para cá para desafiar a si mesma, para testar seus limites?</voice>
+    <protagonist />
+    <reward>+fight</reward>
+    <voice>Sim.</voice>
+    <emotion>angry</emotion>
+    <voice>E tentar descobrir o quão diferente de meus pais eu sou.</voice>
+    <thought>E por quê.</thought>
+  </do>
+
+  <person>linete</person>
+  <emotion>happy</emotion>
+  <voice>...</voice>
+  <voice>Foi muito bom conversar com você Sulana!</voice>
+  <voice>Você é minha heroína!</voice>
+  <protagonist />
+  <voice>...</voice>
+  <person>linete</person>
+  <emotion>normal</emotion>
+  <voice>Que tal vermos o que o velho Riodes fez para o desjejum?</voice>
+
+  <narration>Vocês se dirigem para a construção maior.</narration>
+  <narration>Exceto pela tagarelice de Linete, o lugar estava calmo.</narration>
+  <narration>A maioria dos habitantes do abrigo devia ainda estar dormindo.</narration>
+  <narration>Linete seguia atrás de você devagar, manejando as muletas com cuidado por entre as ervas daninhas.</narration>
+  <protagonist />
+  <choice>
+    <b>Não falar nada e poupar meus ouvidos de mais falatório.</b>
+    <a when="sulana_hope[6:]" req="Esperança +6">Perguntar sobre o ferimento dela.</a>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <narration>Você pára a um passo da porta da cozinha e se volta para ela.</narration>
+    <protagonist />
+    <trophy>compassionate</trophy>
+    <voice>Como está seu pé?</voice>
+    <person>linete</person>
+    <voice>Como sempre.</voice>
+    <emotion>surprised</emotion>
+    <voice>Dá para acreditar que eu quase perdi uma perna por causa de um arranhão?</voice>
+    <protagonist />
+    <voice>Achei que sua perna quase tinha sido devorada por um troll.</voice>
+    <person>linete</person>
+    <emotion>angry</emotion>
+    <voice>Sim, mas eu escapei do bicho.</voice>
+    <emotion>sad</emotion>
+    <voice>Só que, enquanto fugia, eu tropecei num espinheiro.</voice>
+    <emotion>surprised</emotion>
+    <voice>Dá para acreditar que um arranhãozinho poderia deixar alguém assim?</voice>
+    <protagonist />
+    <voice>...</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Se aquilo acontecesse hoje, não teria problema nenhum, pois vocês todos estariam aqui para me ajudar.</voice>
+    <emotion>surprised</emotion>
+    <voice>Mas, na época, eu estava sozinha.</voice>
+    <emotion>sad</emotion>
+    <voice>E agora, meu pé vai ficar assim para sempre!</voice>
+    <protagonist />
+    <voice>Tudo bem, Linete, calma.</voice>
+    <voice>Vamos procurar algo para comer, está bem?</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Você é a minha pessoa favorita no mundo inteiro!</voice>
+    <protagonist />
+    <reward>+hope</reward>
+    <voice>...</voice>
+    <narration>Você solta um suspiro exasperado e se vira para a construção, escancarando a porta.</narration>
+  </do>
+
+  <narration when="b">Chegando até a construção onde ficava a cozinha e o refeitório, você não se faz de rogada e vai logo escancarando a porta.</narration>
+
+  <music>never-look-back</music>
+  <background>shelter_kitchen</background>
+
+  <protagonist />
+  <voice>Bom dia, Riodes.</voice>
+  <narration>O velho senhor de barba branca e cara amarrada a olha por sobre o ombro enquanto mexe algo num grande caldeirão ao fogo.</narration>
+  <person>riodes</person>
+  <voice>Sulana.</voice>
+  <voice>Chegou bem na hora, estou precisando de lenha.</voice>
+  <protagonist />
+  <choice>
+    <a>Atender ao pedido sem dizer nada.</a>
+    <b>Perguntar se não tem algo para comer primeiro.</b>
+    <c>Me sentir insultada.</c>
+  </choice>
+  <thought>Eu vou...</thought>
+
+  <do when="a">
+    <person>linete</person>
+    <emotion>angry</emotion>
+    <voice>Puxa, Riodes! Está cada vez mais ranzinza! Nem para retribuir um “bom dia”?</voice>
+    <narration>Você agarra um velho machado que estava pendurado na parede e era tão velho e tinha sido afiado tantas vezes que a lâmina devia estar com menos da metade do tamanho original.</narration>
+    <protagonist />
+    <voice>...</voice>
+    <person>riodes</person>
+    <emotion>angry</emotion>
+    <voice>Não estou aqui para bater papo ou fazer amigos, Linete.</voice>
+    <narration>Ele aponta para você.</narration>
+    <person>riodes</person>
+    <voice>E nem ela.</voice>
+    <protagonist />
+    <voice>Já volto.</voice>
+  </do>
+
+  <do when="b">
+    <voice>Tem algo para mastigar por aí?</voice>
+    <narration>Riodes pega um pedaço de pão de um cesto ao lado do fogão e arremessa na sua direção.</narration>
+    <narration>Você o agarra no ar e dá uma satisfatória mordida, antes de pegar um velho machado que estava pendurado na parede.</narration>
+    <narration>Enquanto se dirige para a porta, ouve a reclamação de Linete.</narration>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Vocês dois poderiam ter um pouco mais de modos!</voice>
+    <emotion>normal</emotion>
+    <voice>Sabe como é... se cumprimentarem direito e terem uma conversa civilizada antes de saírem exigindo coisas um do outro.</voice>
+    <person>riodes</person>
+    <voice>Bah! Isso é perda de tempo.</voice>
+  </do>
+
+  <do when="a,b">
+    <background>shelter</background>
+
+    <narration>Você se dirige à pilha de madeira que havia trazido e serrado em pequenas toras, dias atrás.</narration>
+    <protagonist />
+    <reward>+fight</reward>
+    <thought>Hummm... a madeira está acabando. Talvez seja hora de providenciar mais.</thought>
+    <thought>Aquele carvalho gigante que derrubei mês passado já deve estar seco o suficiente para a madeira ficar um pouco mais leve.</thought>
+    <narration>Quando não estava sob o efeito da febre, você não era muito mais forte que uma pessoa normal e tinha muitas limitações, o que, às vezes, era frustrante.</narration>
+    <protagonist />
+    <thought>Com a febre, eu poderia rachar essas toras com as mãos nuas.</thought>
+    <thought>Mas suponho que seja melhor ser uma fracote de vez em quando do que uma monstrenga truculenta incontrolável o tempo todo.</thought>
+    <narration>Depois de passar algum tempo trabalhando com o machado, você recolhe um razoável volume da lenha que tinha rachado e volta para o refeitório.</narration>
+
+    <background>shelter_kitchen</background>
+
+    <narration>Você empilha a lenha próximo ao fogão.</narration>
+    <narration>Riodes, como sempre, não fez nenhum comentário ou gesto de agradecimento. Ao invés disso, pergunta:</narration>
+    <person>riodes</person>
+    <voice>Como está a guerra?</voice>
+    <narration>Você se senta à mesa ao lado de Linete, que está mastigando um pedaço de pão enquanto canta baixinho uma melodia antiga, ignorando completamente o que se passa ao seu redor.</narration>
+  </do>
+
+  <do when="c">
+    <narration>Você encara o velho.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+rage</reward>
+    <voice>...</voice>
+    <narration>Ele a encara de volta por um instante mas, por fim, desiste e balança a cabeça.</narration>
+    <person>riodes</person>
+    <emotion>angry</emotion>
+    <voice>Esqueça! Depois que aqueles energúmenos acordarem, eu peço para algum deles.</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Misericórdia! O que há com vocês dois hoje?</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Por quê? Não somos sempre assim?</voice>
+    <person>linete</person>
+    <voice>Sim, mas olha que manhã mais linda lá fora!</voice>
+    <emotion>surprised</emotion>
+    <voice>Não acham que é um dia perfeito para sorrir, cantar e espalhar o amor pelos quatro cantos do mundo?</voice>
+    <protagonist />
+    <voice>...</voice>
+    <person>riodes</person>
+    <voice>...</voice>
+    <protagonist />
+    <voice>Imagino que, se alguém entende desse assunto, Linete, é você.</voice>
+    <person>riodes</person>
+    <voice>Não dê trela para ela, Sulana, senão não vamos ter silêncio ou sossego a manhã toda.</voice>
+    <person>linete</person>
+    <emotion>angry</emotion>
+    <voice>Ei!</voice>
+    <narration>Você pega um pedaço de pão do cesto que Riodes coloca sobre a mesa e se senta ao lado de Linete, mastigando, satisfeita.</narration>
+    <person>riodes</person>
+    <voice>Como está a guerra?</voice>
+  </do>
+
+  <protagonist />
+  <voice>Perdemos Mercília.</voice>
+  <person>riodes</person>
+  <emotion>angry</emotion>
+  <voice>Que filhos de uma nuti!</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Não se preocupe, podemos ter perdido a batalha, mas essa guerra está muito longe de terminar.</voice>
+  <voice>Aquele infeliz ainda vai sentir o gostinho da derrota.</voice>
+  <narration>Linete olha para você, surpresa.</narration>
+  <person>linete</person>
+  <emotion>surprised</emotion>
+  <voice>Qual infeliz?</voice>
+  <narration>Riodes revira os olhos e volta a seus afazeres.</narration>
+  <protagonist />
+  <voice>O General Vermelho, Linete. O líder do exército Carmim.</voice>
+  <person>linete</person>
+  <emotion>surprised</emotion>
+  <voice>Você conhece ele?</voice>
+  <protagonist />
+  <voice>...</voice>
+  <voice>Não pessoalmente.</voice>
+  <person>linete</person>
+  <emotion>surprised</emotion>
+  <voice>Então por que não gosta dele?</voice>
+  <person>riodes</person>
+  <emotion>angry</emotion>
+  <voice>Linete, o general é mau, lembra? Muita gente foi ferida por causa dele.</voice>
+  <voice>Tonien, Irassar, Manesta, todos eles estão aqui hoje porque quase morreram na guerra.</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Sim, decidir a qual lado me juntar foi bastante fácil.</voice>
+  <voice>Aquele tirano não pode vencer.</voice>
+  <person>linete</person>
+  <emotion>sad</emotion>
+  <voice>Não é educado falar mal dos outros pelas costas, vocês sabem.</voice>
+  <narration>Riodes chega a abrir a boca para retrucar, mas acaba decidindo que não valia a pena e apenas balança a cabeça, voltando a encarar você.</narration>
+  <person>riodes</person>
+  <voice>E ainda tem o problema da escravidão. Se ele...</voice>
+  <person>linete</person>
+  <emotion>surprised</emotion>
+  <voice>Escravidão?!</voice>
+  <emotion>angry</emotion>
+  <voice>Escravidão é proibida no mundo todo há séculos!</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Sim, Linete, mas aquele homem a pratica sem arrependimentos.</voice>
+  <voice>Mais de uma vez tive que lutar contra antigos companheiros, que tinham sido capturados e escravizados.</voice>
+  <voice>Um dia desses ainda vou encarar esse general frente a frente.</voice>
+  <narration>Você bate o punho de uma mão contra a palma da outra.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>E vou colocar o miserável no seu devido lugar.</voice>
+  <person>riodes</person>
+  <voice>Não alimente esperanças.</voice>
+  <emotion>angry</emotion>
+  <voice>Guerras são criadas por homens que ficam protegidos atrás de suas mesas e nunca pisam no campo de batalha.</voice>
+</storyboard>

@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>belisar</viewpoint>
+  <music>last-duel</music>
+  <background>carmim</background>
+  <observe />
+  <narration>Capítulo 4: Muralha (cena 7)</narration>
+
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <protagonist />
+  <choice>
+    <a>Incluir bônus</a>
+    <b>Sem bônus</b>
+  </choice>
+  <voice>...</voice>
+  <reward when="a">power+5</reward>
+  <voice when="a">...</voice>
+  
+  <background>forest2</background>
+
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Mas... onde vamos conseguir energia suficiente... quero dizer... a distância é muito grande...</voice>
+  <protagonist />
+  <voice>Uma fonte de energia nos foi oferecida.</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Mas, senhor... e quanto às torres de controle?</voice>
+  <narration>Você balança a cabeça.</narration>
+  <protagonist />
+  <voice>Não temos como construir torres. Não para esse muro. Levaria meses, e não temos todo esse tempo.</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Mas isso quer dizer...</voice>
+  <person>falcione</person>
+  <voice>Quer dizer que, quando o muro estiver completamente construído, ele não vai permitir a passagem de nada e nem ninguém.</voice>
+  <voice>Ebora ficará isolada do resto do mundo. Permanentemente.</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Mas, isso é...</voice>
+  <protagonist />
+  <voice>Relaxe. Nada é permanente. Não, na prática.</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Mas... os sábios estão sabendo disso?</voice>
+  <voice>Precismos fazer alguns estudos para determinar se...</voice>
+  <protagonist />
+  <voice>Não há tempo.</voice>
+  <voice>Se hesitarmos, eles podem envolver milhões de pessoas na sua esfera de influência.</voice>
+  <voice>Sabe-se lá o que irão fazer com elas, já basta metade da população de Ebora estar à mercê deles.</voice>
+  <emotion>angry</emotion>
+  <voice>Temos que agir imediatamente para impedi-los.</voice>
+  <person>falcione</person>
+  <voice>Elinora nos deixou instruções específicas sobre como contatá-los. Devo fazer isso agora?</voice>
+  <protagonist />
+  <choice>
+    <a>Deixar Falcione conversar com os protetores.</a>
+    <b when="belisar_power[5:]" req="Poder +5">Resolver isso eu mesmo</b>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <narration>Você pondera por um momento, mas acaba assentindo.</narration>
+    <protagonist />
+    <voice>Vamos fazer o jogo deles. Acredito que essa seja a forma mais rápida de resolver isso.</voice>
+    <voice>Emelin, volte para o palácio. Quando Falcione voltar com a fonte de energia, os sábios precisarão estar prontos para lidar com ela.</voice>
+    <person>emelin</person>
+    <voice>Sim, senhor.</voice>
+    <protagonist />
+    <thought>Vamos torcer para que essa decisão não venha a se transformar em algum tipo de tragédia.</thought>
+  </do>
+
+  <do when="b">
+    <narration>Você pondera por um instante, antes de lançar um olhar determinado para as duas.</narration>
+
+    <music>crime-fighter</music>
+
+    <protagonist />
+    <voice>Eu cuidarei disso.</voice>
+    <voice>Reúnam as tropas e voltem ao palácio, os sábios precisarão estar prontos quando eu voltar com a fonte de energia.</voice>
+    <narration>As duas concordam e se afastam. Você então invoca seus poderes e se lança pelos céus da província.</narration>
+
+    <background>mountain_peak</background>
+
+    <narration>Não muito tempo depois, você pousa sobre o pico de uma das montanhas mais altas de Ebora.</narration>
+    <narration>As pedras ao redor vibram com energia, reagindo à sua proximidade.</narration>
+    <narration>Você levanta uma das mãos e, como se o obedecesse, uma enorme rocha começa a flutuar.</narration>
+    <narration>Com um gesto brusco, você comanda a rocha a voar pelo ar a uma velocidade inacreditável, descrevendo um grande arco até se chocar contra o pico da montanha mais próxima, muito longe dali.</narration>
+    <narration>Logo, meia dúzia de homens e mulheres alados portando lanças surgem de todos os lados.</narration>
+    <person>elinora</person>
+    <emotion>angry</emotion>
+    <voice>Alto! O que pensa que está fazendo?</voice>
+    <protagonist />
+    <voice>Chamando a atenção de vocês, obviamente.</voice>
+    <person>elinora</person>
+    <emotion>angry</emotion>
+    <voice>Este local sagrado está fora dos limites e você sabe disso!</voice>
+    <protagonist />
+    <voice>Era a maneira mais rápida de conseguir falar com você.</voice>
+    <person>elinora</person>
+    <emotion>angry</emotion>
+    <voice>Eu deixei instruções explícitas para...</voice>
+    <protagonist />
+    <voice>Escute, vamos parar com esse drama.</voice>
+    <voice>Você me quer longe daqui? É só me dar o cinturão da criação que vou embora.</voice>
+    <person>elinora</person>
+    <emotion>angry</emotion>
+    <voice>...</voice>
+    <voice>Como ousa se dirigir a nós desta forma?</voice>
+    <voice>Essa insolência não será tolerada!</voice>
+    <protagonist />
+    <voice>E você vai fazer o quê? Me matar?</voice>
+    <voice>Não acho que vá conseguir.</voice>
+    <voice>No momento, vocês estão em desvantagem.</voice>
+    <narration>Como que para ilustrar o que disse, você levanta uma das mãos e faz com que uma rocha de várias toneladas comece a flutuar.</narration>
+    <narration>Então, você fecha o punho e a pedra imediatamente é pulverizada, se tranformando em uma nuvem de areia que se espalha em todas as direções.</narration>
+    <narration>A visão de todos é obstruída temporariamente, mas o seu escudo corporal impede que a areia atinja seu corpo.</narration>
+    <narration>Os protetores, como você já esperava, estão usando escudos corporais similares</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>O cinturão. Agora!</voice>
+    <narration>Assim que a areia se dispersa, Elinora tira um pacote de algum bolso escondido de seu traje e o lança em sua direção.</narration>
+    <narration>Você agarra o embrulho no ar, imediatamente sentindo a poderosa emanação mística vinda dele.</narration>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Não foi tão difícil, foi?</voice>
+    <person>elinora</person>
+    <voice>Se pensa que está nos coagindo a algo, humano, apenas demonstra sua ignorância.</voice>
+    <voice>Não se esqueça que fui eu mesma quem sugeriu a você o uso desse artefato.</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <trophy>playingwithfire</trophy>
+    <voice>Ah, eu sei.</voice>
+    <emotion>normal</emotion>
+    <voice>Mas um de meus sábios detectou uma falha no escudo que vocês colocaram em torno deste pico.</voice>
+    <voice>Imaginei que você iria me ignorar, como sempre faz, caso eu tentasse lhe dizer que tinha algo errado.</voice>
+    <voice>Então decidi lhe mostrar pessoalmente.</voice>
+    <emotion>happy</emotion>
+    <voice>Considere isso um favor, uma cortesia, em troca do artefato.</voice>
+    <narration>Você ativa seus poderes e alça vôo, tomando a direção de casa.</narration>
+    <narration>Nenhum dos protetores tenta impedi-lo.</narration>
+  </do>
+
+  <background>carmim</background>
+</storyboard>

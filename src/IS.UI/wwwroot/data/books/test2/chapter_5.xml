@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>sulana</viewpoint>
+  <music>open-sky</music>
+  <background>carmim</background>
+  <observe />
+  <narration>Capítulo 7: Sacrifício (cena 5)</narration>
+
+  <background>sulana</background>
+  <tutorial>Você agora está controlando Sulana Lautine</tutorial>
+
+  <do>
+    <protagonist />
+    <choice>
+      <a when="!worried_linete" req="!worried_linete">worried_linete</a>
+      <c when="!sulana_javalihunter" req="!sulana_javalihunter">sulana_javalihunter</c>
+      <d>Prosseguir</d>
+    </choice>
+    <voice>...</voice>
+    <exit when="d" />
+    <trophy when="a">worried_linete</trophy>
+    <do when="c">
+      <protagonist />
+      <set>javalihunter</set>
+      <thought>Bônus sulana_javalihunter recebido.</thought>
+    </do>
+    <restart />
+  </do>
+
+  <background>shack_interior</background>
+
+  <narration>Você abre os olhos, prestando atenção aos ruídos da floresta e à fraca luminosidade que entra pelas frestas das paredes de madeira.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <thought>Já é de manhã!</thought>
+  <narration>Levantando do catre com agilidade, você alonga os braços, antes de abrir a janela.</narration>
+
+  <background>sun_rising</background>
+
+  <narration>Você está se sentindo particularmente bem hoje.</narration>
+  <narration>Olhando para fora, conclui que o clima está propício para alguns exercícios matinais.</narration>
+  <narration>Animada, você se dirige para a porta quando percebe que não está vestindo nada.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Estranho. Não gosto de tirar todas as roupas para dormir</thought>
+  <thought>Por que será que fiz isso? O que aconteceu ontem?</thought>
+  <narration>Você tenta forçar a memória, mas nada vem à sua mente.</narration>
+  <narration>Tem apenas uma vaga lembrança de ter saído numa missão com Ronam e Lura.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>O que será que aconteceu?</thought>
+  <emotion>normal</emotion>
+  <thought>Bom, não deve ter sido nada demais.</thought>
+  <thought>Conhecendo aquele bando, certeza que algum deles logo aparece por aqui.</thought>
+  <narration>Tratando de vestir calças e enrolar os seios com a última faixa ainda inteira que tinha no armário, você sai para fora para iniciar seu ritual de exercícios.</narration>
+
+  <background>shack</background>
+
+  <narration>Não demora muito para você perceber que sua resistência está bem maior do que o de costume.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Eu acabei de completar uma série de 50? Será que contei errado? Outro dia quase morri para chegar aos 40!</thought>
+  <thought>Estranho. Depois de uma batalha eu sempre fico acabada durante um tempo, mas dessa vez estou me sentindo mais forte. Não estou nem suando!</thought>
+  <emotion>normal</emotion>
+  <thought>Tenho que achar o Ronam e perguntar o que aconteceu ontem.</thought>
+  <thought>Se houve alguma luta, não deve ter sido nada muito relevante.</thought>
+  <narration>Você encerra a mais gratificante série de exercícios dos últimos meses e se refresca da maneira usual, jogando um balde de água fria sobre a cabeça.</narration>
+  <narration>Sem se preocupar em trocar as roupas molhadas, você pega um tufax na cabana e toma o caminho do abrigo, mordendo a fruta com prazer.</narration>
+  <narration>Por um momento você olha para o tufax, intrigada.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Esse aqui é dos bons!</thought>
+  <thought>De qual árvore será que eu colhi? Tenho que voltar ao bosque mais tarde para ver se encontro mais desses.</thought>
+  <emotion>normal</emotion>
+  <thought>Hummm... talvez eu deva guardar as sementes para plantar em algum lugar próximo da cabana.</thought>
+  <thought>Ou talvez então próximo ao abrigo. Comer mais frutas com certeza faria bem àquele pessoal.</thought>
+  <emotion>surprised</emotion>
+  <thought>Quantos anos será que leva para uma árvore dessas começar a dar frutos?</thought>
+  <emotion>normal</emotion>
+  <thought>...</thought>
+  <thought>Ah, quer saber? Para que esperar até mais tarde? Vou lá no bosque é agora mesmo!</thought>
+
+  <background>shelter</background>
+  
+  <narration>Cerca de quarenta minutos depois, você chega ao abrigo com os braços carregados de frutas.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Esse lugar está diferente.</thought>
+  <thought>Parece que alguém andou consertado as paredes e os telhados.</thought>
+  <choice>
+    <a>Procurar por Riodes no refeitório</a>
+    <b>Ver como está Linete</b>
+  </choice>
+  <thought>Eu vou...</thought>
+
+  <do when="a">
+    <music>the-awakening</music>
+    <background>shelter_kitchen</background>
+
+    <narration>Você entra no refeitório onde Riodes está preparando o café da manhã.</narration>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Bom dia, Riodes.</voice>
+    <narration>O velho lhe lança um olhar surpreso enquanto você coloca sua carga sobre a mesa da cozinha.</narration>
+    <person>riodes</person>
+    <emotion>surprised</emotion>
+    <voice>!!</voice>
+    <voice>Já está de pé?</voice>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>E ainda está com cara de quem teve uma boa noitada.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Como é?</voice>
+    <person>riodes</person>
+    <voice>Seu namorado apareceu aqui ontem, antes da chuva. Ele deu uma ajuda no conserto das paredes e telhados.</voice>
+    <protagonist />
+    <voice>Quem seria esse “meu namorado”? E o que houve com o telhado?</voice>
+    <narration>Riodes franze o cenho.</narration>
+    <person>riodes</person>
+    <emotion>surprised</emotion>
+    <voice>Você está bem?</voice>
+    <narration>Você pega uma das frutas e dá uma grande mordida.</narration>
+    <protagonist />
+    <voice>Estou ótima. Falando nisso, tem algo para comer? Estou faminta.</voice>
+    <narration>Ele agora a está olhando de queixo caído.</narration>
+
+    <do when="sulana_javalihunter">
+      <protagonist />
+      <voice>O que foi? Sou eu quem traz boa parte da comida aqui para dentro, não sou?</voice>
+      <narration>Você se aproxima de um caldeirão que está sobre uma prateleira e levanta a tampa, sentindo o cheiro de carne salgada.</narration>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <voice>Ei, isso aqui está com cheiro bom. O que é?</voice>
+      <person>riodes</person>
+      <emotion>surprised</emotion>
+      <voice>Javali.</voice>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <voice>É mesmo? Quem caçou?</voice>
+      <person>riodes</person>
+      <voice>Você.</voice>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <voice>Como é que é?!</voice>
+    </do>
+
+    <do when="!sulana_javalihunter">
+      <protagonist />
+      <voice>O que foi?</voice>
+      <person>riodes</person>
+      <emotion>surprised</emotion>
+      <voice>Você não lembra da parede da Linete?</voice>
+      <protagonist />
+      <voice>A que ela vive dizendo que vai cair a qualquer momento? O que tem ela?</voice>
+      <person>riodes</person>
+      <emotion>surprised</emotion>
+      <voice>Também não se lembra da caçada aos javalis?</voice>
+      <voice>E quanto ao fato de ter desmaiado na frente de sua cabana?</voice>
+      <voice>Ou então de os rapazes terem trocado suas roupas e de você ter desaparecido na frente deles?</voice>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <voice>Hã?!</voice>
+      <emotion>angry</emotion>
+      <voice>Do que, raios, está falando?</voice>
+    </do>
+  </do>
+
+  <do when="b">
+    <music>free-mind</music>
+    
+    <narration>Você encontra Linete tentando perseguir uma borboleta por entre os canteiros de verduras de Riodes.</narration>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Vem aqui, bonitinha! Deixa eu olhar para você!</voice>
+    <emotion>sad</emotion>
+    <voice>Não! Volte aqui!</voice>
+    <narration>Você deixa as frutas no chão e a segura pelo ombro quando ela faz menção de passar, com suas muletas, por sobre um canteiro para ir atrás do inseto.</narration>
+    <protagonist />
+    <voice>Ei, cuidado aí!</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Sulana!</voice>
+    <voice>Que bom ver você!</voice>
+    <protagonist />
+    <voice>Riodes vai gritar com você se estragar as verduras dele.</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Hã?</voice>
+    <emotion>happy</emotion>
+    <voice>Ah, é mesmo, não é?</voice>
+    <voice>Ele nunca gosta quando eu venho aqui.</voice>
+    <emotion>surprised</emotion>
+    <voice>Por que tem tanto tufax no chão?</voice>
+    <narration>Você se afasta dela e se abaixa para pegar as frutas.</narration>
+    <protagonist />
+    <voice>Eu trouxe do bosque perto da minha cabana.</voice>
+    <narration>Ao pegar uma das frutas, você não resiste a dar uma mordida.</narration>
+    <protagonist />
+    <voice>Humm... elas estão no ponto, fazia tempo que eu não provava algo tão bom.</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>!</voice>
+    <voice>E acho que eu nunca vi você tão feliz com alguma coisa antes.</voice>
+    <emotion>happy</emotion>
+    <voice>Fiquei curiosa! Posso experimentar uma?</voice>
+    <narration>Você passa uma fruta para Linete. Ela olha para a coloração avermelhada por um instante e arrisca uma mordida.</narration>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <bump />
+    <voice>Gaaaahhhh!</voice>
+    <narration>Ela mais do que depressa cospe o pedaço que mordeu, limpando a boca e fazendo uma careta.</narration>
+    <person>linete</person>
+    <emotion>angry</emotion>
+    <voice>Céus! Isso é horríííível!</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <emotion>normal</emotion>
+    <voice>...</voice>
+    <emotion>happy</emotion>
+    <voice>Ahahahahaha!</voice>
+    <person>linete</person>
+    <emotion>angry</emotion>
+    <voice>...</voice>
+    <narration>Ela faz um biquinho contrariado que faz com que você ria ainda mais.</narration>
+    
+    <do when="worried_linete">
+      <person>linete</person>
+      <voice>...</voice>
+      <emotion>happy</emotion>
+      <voice>...</voice>
+      <reward>+relationship</reward>
+      <voice>Você usou meu unguento, não usou? Sabia que ele ia fazer bem a você.</voice>
+      <narration>Você solta um suspiro satisfeito. Não se lembra da última vez em que rira tanto. Não que isso importe muito.</narration>
+      <protagonist />
+      <voice>Unguento? Que unguento?</voice>
+    </do>
+  
+    <do when="!worried_linete">
+      <person>linete</person>
+      <voice>...</voice>
+      <emotion>happy</emotion>
+      <voice>...</voice>
+      <reward>+relationship</reward>
+      <voice>Você parece bem melhor do que ontem.</voice>
+      <narration>Você solta um suspiro satisfeito. Não se lembra da última vez em que rira tanto. Não que isso importe muito.</narration>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <voice>Ontem?</voice>
+    </do>
+
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Você não lembra?</voice>
+    <emotion>sad</emotion>
+    <voice>Ontem você saiu para caçar javalis e voltou cansada. Parecia ferida.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Como é que é?!</voice>
+  </do>
+  
+  <background>carmim</background>
+</storyboard>

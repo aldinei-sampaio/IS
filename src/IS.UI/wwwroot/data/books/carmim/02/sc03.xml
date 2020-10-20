@@ -1,0 +1,525 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>sulana</viewpoint>
+  <music>never-look-back</music>
+  <background>sulana</background>
+  <tutorial>Você agora está controlando Sulana Lautine</tutorial>
+
+  <background>shelter</background>
+  <person>riodes</person>
+  <emotion>angry</emotion>
+  <voice>Sulana, já não era sem tempo! Onde você estava?</voice>
+  <narration>Você limpa o suor da testa e encara o velho com irritação.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <choice>
+    <a>Evitando que os animais morram de fome.</a>
+    <b>Tirando uma soneca.</b>
+  </choice>
+  <voice>...</voice>
+
+  <do when="a">
+    <person>riodes</person>
+    <emotion>angry</emotion>
+    <voice>...</voice>
+    <voice>E você quer o quê? Um prêmio? Por fazer sua obrigação?</voice>
+    <narration>Aquilo não fazia nenhum sentido e ambos sabiam disso, já que você era voluntária ali e não recebia absolutamente nada por aquele trabalho, bem como Riodes.</narration>
+    <narration>Você leva as mãos à cintura e franze o cenho.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>O que quer?</voice>
+    <person>riodes</person>
+    <reward>+relationship</reward>
+    <voice>Temos que consertar a goteira do alojamento das crianças.</voice>
+    <voice>Veja se encontra algo que preste na pilha de sapê para colocar no lugar da palha podre.</voice>
+    <narration>Você lança um olhar para o telhado da construção em questão, notando a mancha escura no lugar onde uma depressão havia se formado e a água se acumulava sempre que chovia.</narration>
+    <protagonist />
+    <voice>...</voice>
+    <person>riodes</person>
+    <voice>O que foi?</voice>
+    <emotion>surprised</emotion>
+    <voice>Vai dizer que já está cansada? Ainda não é nem meio dia.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Estou cansada é desse seu falatório.</voice>
+    <emotion>normal</emotion>
+    <voice>Este lugar está um tédio.</voice>
+    <person>riodes</person>
+    <voice>...</voice>
+    <voice>Por que não vai no vale depois de consertar o telhado? Precisamos de mais sapê.</voice>
+    <narration>Você imediatamente se sente mais animada ante à perspectiva de um longo passeio pela floresta.</narration>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Pode ser.</voice>
+    <narration>Você começa a se afastar para pôr as mãos à obra, quase não ouvindo o resmungo baixinho dele.</narration>
+    <person>riodes</person>
+    <voice>Só você mesma para ficar alegre ao pensar em pôr os pés naquele lugar...</voice>
+  </do>
+
+  <do when="b">
+    <person>riodes</person>
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <narration>Ele a olha de cima a baixo, notando o suor e a sujeira gerados pelo trabalho duro que andou executando durante toda a manhã.</narration>
+    <person>riodes</person>
+    <voice>Se você diz...</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+rage</reward>
+    <voice>O que quer?</voice>
+    <person>riodes</person>
+    <voice>...</voice>
+    <voice>Vá comer alguma coisa. Se quiser se lavar, pode pegar uns trapos na lavanderia, acabei de recolher as roupas do varal.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>O que há com você? Por que essa gentileza toda, de repente?</voice>
+    <person>riodes</person>
+    <voice>Porque, quando você começa a usar ironia, significa que está muito entediada ou aborrecida.</voice>
+    <voice>Geralmente você fica calma por semanas depois de uma batalha.</voice>
+    <protagonist />
+    <voice>Essa última foi meio... frustrante.</voice>
+    <person>riodes</person>
+    <voice>Tem guisado na cozinha.</voice>
+    <voice>E estamos precisando de mais sapê para consertar os telhados.</voice>
+    <narration>Imediatamente você se anima ante à perspectiva de um passeio pela floresta.</narration>
+    <protagonist />
+    <voice>Tudo bem, depois eu vou buscar mais.</voice>
+  </do>
+
+  <music>open-sky</music>
+  <background>forest2</background>
+
+  <narration>Uma hora depois, você está andando pela parte da floresta que todos costumam evitar.</narration>
+  <narration>Não que existam muitas pessoas nessa região que tenham vontade ou capacidade para isso.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <thought>Parece que faz anos desde que vim aqui pela última vez.</thought>
+  <thought>Estava mesmo precisando disso.</thought>
+
+  <music>enigma</music>
+
+  <emotion>surprised</emotion>
+  <thought>...?!</thought>
+  <narration>De repente, as árvores ficam silenciosas.</narration>
+  <narration>Você pode sentir uma presença próxima. Algo grande, forte, perigoso.</narration>
+  <protagonist />
+  <thought>Um predador.</thought>
+  <emotion>happy</emotion>
+  <thought>Bem o que eu estava esperando.</thought>
+  <choice>
+    <a>Ir à caça.</a>
+    <b>Evitar o animal.</b>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <music>crime-fighter</music>
+    <background>forest</background>
+
+    <narration>Você caminha entre as árvores com cuidado, com seus sentidos em alerta.</narration>
+    <narration>Depois de alguns minutos, como você esperava, o predador se convence de que você é um alvo fácil e se revela, pulando das sombras sobre você.</narration>
+    <person>tiger</person>
+    <emotion>angry</emotion>
+    <voice>Graaauuuurrrr!!</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <choice>
+      <a>Esquivar</a>
+      <b>Atacar</b>
+      <c>Bloquear</c>
+    </choice>
+    <thought>Eu irei...</thought>
+
+    <do when="a">
+      <narration>Tendo antecipado o ataque, você se move agilmente para o lado, evitando as garras que passam a poucos centímetos de sua pele.</narration>
+      <protagonist />
+      <emotion>angry</emotion>
+      <reward>+hunt</reward>
+      <voice>Ooaa!</voice>
+    </do>
+
+    <do when="b">
+      <narration>Você desfere um soco na direção da cabeça do animal.</narration>
+      <narration>Infelizmente, não houve tempo suficiente para os efeitos da febre da batalha fortalecerem seu corpo completamente.</narration>
+      <narration>O golpe não sai forte o suficiente para parar o animal, e ele consegue atingí-la com as garras.</narration>
+      <person>tiger</person>
+      <emotion>angry</emotion>
+      <bump />
+      <voice>Grrrr!</voice>
+      <protagonist />
+      <emotion>angry</emotion>
+      <bump />
+      <voice>Ugh!</voice>
+      <narration>Ambos caem rolando pelo chão, num confuso emaranhamento, até que você consegue reunir energia o suficiente para empurrar o animal para longe.</narration>
+      <protagonist />
+      <emotion>angry</emotion>
+      <reward>-hunt</reward>
+      <voice>...</voice>
+    </do>
+
+    <do when="c">
+      <narration>Sentindo a febre da batalha aflorar aos poucos, você consegue se mover com agilidade suficiente para agarrar as patas do animal antes que elas a atinjam.</narration>
+      <narration>Seus pés se afundam no solo enquanto você absorve o impacto e vira o corpo levemente, arremessando o tigre para o lado.</narration>
+      <narration>As costas do animal se chocam com força contra o chão.</narration>
+      <person>tiger</person>
+      <emotion>angry</emotion>
+      <bump />
+      <voice>Grrrr!</voice>
+      <protagonist />
+      <emotion>angry</emotion>
+      <reward>+hunt</reward>
+      <voice>Desculpe o mau jeito!</voice>
+    </do>
+  </do>
+
+  <do when="b">
+    <narration>Você caminha de forma furtiva entre as árvores, tentando colocar distância entre você e a presença que está sentindo.</narration>
+    <narration>A perseguição continua por longos minutos, até ficar óbvio que o predador não está interessado em deixar que você vá embora.</narration>
+
+    <background>forest</background>
+
+    <narration>Da forma mais silenciona que consegue, você se embrenha entre a vegetação do topo de um barranco e aguarda.</narration>
+    <narration>Depois de algum tempo, seu perseguidor aparece na trilha abaixo de você.</narration>
+    <person>tiger</person>
+    <voice>...</voice>
+
+    <music>crime-fighter</music>
+
+    <narration>Aproveitando o elemento surpresa, você sai de seu esconderijo e se lança sobre a fera.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Haaaaaahhhhhh!!</voice>
+    <person>tiger</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Grrrauuu!</voice>
+    <narration>Você consegue atingir a lateral do animal com um golpe de joelho que o faz cair rolando pelo chão.</narration>
+    <protagonist />
+    <emotion>happy</emotion>
+    <reward>+hunt</reward>
+    <voice>Se é briga que está procurando, você encontrou!</voice>
+  </do>
+
+  <narration>O animal se recupera e encara você, soltando um forte rugido.</narration>
+  <person>tiger</person>
+  <emotion>angry</emotion>
+  <voice>Grrrraaaaaaauuuuuuuuurrrrr!!</voice>
+  <narration>Sem se intimidar, você o encara de volta.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Venha me pegar!</voice>
+  <narration>A névoa vermelha da febre de batalha cai sobre seus olhos, ocultando tudo ao seu redor, exceto por seu oponente.</narration>
+  <narration>Focados exclusivamente no animal, seus sentidos conseguem captar uma leve concentração de energia mística se formando nele.</narration>
+  <protagonist />
+  <thought>Como eu imaginava, não é uma criatura normal.</thought>
+  <person>tiger</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Um leve brilho se forma em suas garras enquanto ele se prepara para atacar novamente.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <choice>
+    <a>Atacar as garras</a>
+    <b>Atacar o corpo</b>
+    <c>Esquivar-me</c>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <narration>O tigre salta e você golpeia com toda força na direção das garras que vem em sua direção.</narration>
+    <narration>As energias místicas da febre da batalha se chocam contra as da criatura.</narration>
+    <narration>Ambas são incrivelmente fortes, mas incapazes de sobrepujar uma à outra.</narration>
+    <narration>Como resultado, uma força repulsiva é gerada, jogando vocês dois para bem longe um do outro.</narration>
+    <person>tiger</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Graauuurr!</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <bump />
+    <reward>-hunt</reward>
+    <voice>Uuuuufff!</voice>
+    <narration>Você se coloca em pé novamente e vê que o tigre está levemente atordoado com o choque que recebeu.</narration>
+  </do>
+
+  <do when="b">
+    <narration>Você usa sua incrível velocidade para avançar e, antes que tigre complete o salto, você o atinge com um violento golpe no flanco.</narration>
+    <person>tiger</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Graaarrrggg!</voice>
+    <narration>O animal cai rolando, parecendo sentir muita dor.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+hunt</reward>
+    <thought>Que tal essa?</thought>
+  </do>
+
+  <do when="c">
+    <narration>Você usa sua velocidade misticamente ampliada pela febre para escapar do ataque.</narration>
+    <narration>O animal acaba caindo entre alguns arbustos.</narration>
+    <narration>Confuso, tanto pelo fato de sua presa ter conseguido sair da frente dele como por se ver inesperadamente no meio daqueles ramos, o animal leva algum tempo para se recuperar.</narration>
+    <person>tiger</person>
+    <emotion>surprised</emotion>
+    <voice>Grr...?!</voice>
+    <protagonist />
+    <emotion>happy</emotion>
+    <reward>+hunt</reward>
+    <voice>Agora eu te peguei!</voice>
+  </do>
+
+  <narration>A confusão de seu oponente lhe dá tempo suficiente para planejar seu próximo movimento.</narration>
+  <protagonist />
+  <choice>
+    <a>Atacar antes que ele se recupere</a>
+    <b>Reunir minhas energias para realizar um ataque fulminante</b>
+    <c>Recuar</c>
+  </choice>
+  <thought>Eu vou...</thought>
+
+  <do when="a">
+    <narration>Você desfere um chute com toda sua força contra o ventre do animal.</narration>
+    <person>tiger</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Grruuuufff!</voice>
+    <do when="sulana_hunt[-2]">
+      <narration>O tigre, no entanto, parece ter conseguido reunir energia mística suficiente para criar uma espécie de escudo rudimentar, que o protege de parte do impacto.</narration>
+      <narration>Ele se levanta e encara você por um instante, antes de dar-lhe as costas e sair correndo por entre os arbustos.</narration>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <voice>...!</voice>
+      <narration>Você começa a se mover para ir atrás dele, mas seu corpo está lento e dolorido devido aos golpes que recebeu.</narration>
+      <protagonist />
+      <emotion>angry</emotion>
+      <voice>Ainda vou te pegar, seu covarde!</voice>
+    </do>
+    <do when="sulana_hunt[0:2]">
+      <narration>O tigre se convulsiona por alguns instantes, dando a você tempo suficiente para se aproximar e golpeá-lo no pescoço, acabando de vez com seu sofrimento.</narration>
+      <protagonist />
+      <set>huntsuccess</set>
+      <trophy when="sulana_hunt[2]">huntress</trophy>
+      <reward>+fight</reward>
+      <voice>Por um momento, você quase conseguiu me deixar preocupada.</voice>
+    </do>
+  </do>
+
+  <do when="b">
+    <narration>A sua visão fica ainda mais avermelhada enquanto você se entrega completamente à febre.</narration>
+    <narration>Os movimentos do tigre agora parecem extremamente lentos em comparação a você.</narration>
+    <narration>Você não consegue discernir muito bem o que a criatura tentou fazer a seguir, e nem se importa.</narration>
+    <narration>Tudo o que lhe interessa agora é destruir seu oponente.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Aaaahhhhhh!!</voice>
+    <do when="sulana_hunt[-2]">
+      <narration>Quando você volta a si, sabe-se lá quanto tempo depois, você está sozinha no meio da clareira.</narration>
+      <narration>A floresta continua silenciosa, mas não há nenhum sinal do tigre em parte alguma.</narration>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <thought>O quê?! Ele fugiu?!</thought>
+      <emotion>angry</emotion>
+      <thought>Maldição!</thought>
+    </do>
+    <do when="sulana_hunt[0:2]">
+      <narration>Quando você volta a si, sabe-se lá quanto tempo depois, você está de joelhos com o animal dilacerado à sua frente.</narration>
+      <protagonist />
+      <set>huntsuccess</set>
+      <trophy when="sulana_hunt[2]">huntress</trophy>
+      <reward>+rage</reward>
+      <thought>Um monstro a menos para ficar solto por aí.</thought>
+    </do>
+  </do>
+
+  <do when="c">
+    <narration>Você se afasta do animal e começa a correr pela floresta.</narration>
+    <narration>Depois de algum tempo, você chega a uma grande árvore e começa a escalar seus galhos recurvados.</narration>
+    <narration>Quando chega quase ao topo, você olha ao redor, notando a trilha por onde veio.</narration>
+    <narration>Uma figura está lá parada, olhando em sua direção.</narration>
+    <person>tiger</person>
+    <voice>...</voice>
+    <narration>Lentamente, o animal dá meia volta e começa a se afastar.</narration>
+    <do when="sulana_hunt[-2]">
+      <narration>Você suspira, aliviada.</narration>
+      <protagonist />
+      <emotion>sad</emotion>
+      <trophy>defeated</trophy>
+      <thought>O que há comigo hoje?</thought>
+      <emotion>angry</emotion>
+      <thought>Sei que posso fazer melhor do que isso!</thought>
+    </do>
+    <do when="sulana_hunt[0:2]">
+      <protagonist />
+      <reward>+hope</reward>
+      <thought>Não se preocupe, amigo.</thought>
+      <thought>Volto para brincar com você de novo outro dia.</thought>
+      <emotion>happy</emotion>
+      <thought>Nada como um bom "pega" para espantar o tédio.</thought>
+    </do>
+  </do>
+
+  <music>free-mind</music>
+  <background>shelter</background>
+
+  <narration>Ao fim da tarde, você está em meio ao pasto das cabras, ao lado de uma velha cabana de paredes de barro, colocando a tampa em um grande barril de madeira, quando sente a aproximação de alguém.</narration>
+  <narration>Uma animação quase eufórica toma conta de você ao reconhecer o homem através da cadência de suas passadas decididas.</narration>
+  <person>giarle</person>
+  <voice>Vejo que está bem ocupada, como sempre.</voice>
+  <narration>Você se vira para ele, com um sorriso cheio de expectativa.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <voice>Por favor, me diga que temos uma missão!</voice>
+  <person>giarle</person>
+  <emotion>happy</emotion>
+  <voice>Nós temos uma missão.</voice>
+  <protagonist />
+  <emotion>happy</emotion>
+  <voice>Que alívio! Já estava começando a ficar louca sem algo para fazer.</voice>
+  <person>giarle</person>
+  <emotion>surprised</emotion>
+  <voice>Pelo que ouvi por aí, coisa para fazer é o que não falta neste lugar.</voice>
+  <emotion>normal</emotion>
+  <voice>A propósito, o que está fazendo?</voice>
+  <narration>Você olha para o barril.</narration>
+
+  <do when="sulana_huntsuccess">
+    <protagonist />
+    <voice>Ah, isso? Nada, só estou colocando um pedaço de couro para curtir.</voice>
+    <narration>Ele tapa o nariz enquanto levanta a tampa, sabendo que alguns ingredientes usados naquele processo tinham odores bastante… característicos.</narration>
+    <person>giarle</person>
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <narration>Franzindo o cenho, ele pega a colher de pau que está em sua mão e a introduz no líquido, levantando um pequeno pedaço do couro submerso, de forma que pudesse vê-lo melhor.</narration>
+    <person>giarle</person>
+    <emotion>surprised</emotion>
+    <voice>Onde conseguiu isso?</voice>
+    <protagonist />
+    <voice>Estava rondando a região, provavelmente atrás de algo mais suculento que um coelho.</voice>
+    <person>giarle</person>
+    <emotion>surprised</emotion>
+    <voice>Você matou um tigre?</voice>
+    <narration>Ele olha na direção das construções à distância. Conhecia o lugar bem o suficiente para saber que nenhuma das pessoas que viviam ali tinham qualquer habilidade de caça.</narration>
+    <person>giarle</person>
+    <emotion>surprised</emotion>
+    <voice>E sozinha?</voice>
+    <narration>Você recupera a colher e volta a ajeitar o couro no barril.</narration>
+    <protagonist />
+    <voice>Já matei muitas coisas.</voice>
+    <person>giarle</person>
+    <emotion>surprised</emotion>
+    <voice>Pelo tom do pelo, me parece que era um daqueles que dão bastante trabalho.</voice>
+    <narration>Você volta a tampar o barril.</narration>
+    <protagonist />
+    <voice>Ah, ele só usava aumento místico de força e um escudo mequetrefe.</voice>
+    <voice>Nada muito preocupante.</voice>
+    <person>giarle</person>
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>Só você mesma para fazer pouco caso de uma criatura dessas.</voice>
+  </do>
+
+  <do when="!sulana_huntsuccess">
+    <protagonist />
+    <voice>Esse negócio estava começando a cheirar mal, por isso eu dei uma lavada nele mais cedo e agora estava colocando de volta no lugar.</voice>
+    <person>giarle</person>
+    <voice>Não tem outros voluntários para ajudar nessas tarefas?</voice>
+    <narration>Você dá de ombros.</narration>
+    <protagonist />
+    <voice>Todos os que não eram doentes e que estavam com todas as partes do corpo intactas foram embora.</voice>
+    <person>giarle</person>
+    <emotion>sad</emotion>
+    <voice>Oh...</voice>
+    <voice>Isso é... triste.</voice>
+    <protagonist />
+    <voice>Isso são consequências dessa guerra.</voice>
+    <person>giarle</person>
+    <emotion>angry</emotion>
+    <voice>Tem razão! Temos que acabar logo com isso!</voice>
+  </do>
+
+  <narration>Você pega uma bacia cheia de ferramentas de carpintaria e entra na cabana.</narration>
+
+  <background>woodworkshop</background>
+
+  <narration>Enquanto começa a guardar cada coisa em seu lugar, Giarle se encosta no batente da porta e dá uma olhada no interior.</narration>
+  <protagonist />
+  <voice>Você disse que temos uma missão.</voice>
+  <voice>Para onde vamos?</voice>
+  <person>giarle</person>
+  <voice>Parece que os carmins não estão satisfeitos com Mercília, estão se preparando para avançar de novo.</voice>
+  <voice>Querem agora tomar a próxima cidade do vale: Revoada.</voice>
+  <narration>Você solta um suspiro, desapontada.</narration>
+  <protagonist />
+  <emotion>sad</emotion>
+  <voice>Temos que proteger outra cidade?</voice>
+  <voice>Quando é que vamos sair da defensiva e começar a atacar?</voice>
+  <person>giarle</person>
+  <voice>Se vencermos ali, será muito mais fácil retomar Mercília depois.</voice>
+  <narration>Ele volta a correr o olhar pelo interior da minúscula cabana que, assim como das outras vezes em que esteve ali, estava cheia de figuras entalhadas na madeira.</narration>
+  <narration>A maioria era de animais de diversos tipos, mas havia algumas que representavam pessoas.</narration>
+  <person>giarle</person>
+  <emotion>surprised</emotion>
+  <voice>Puxa!</voice>
+  <narration>Ele se adianta e toca em uma escultura nova, cuja madeira ainda não estava completamente seca.</narration>
+  <person>giarle</person>
+  <emotion>surprised</emotion>
+  <voice>Não sei como acha tempo para esculpir essas coisas, considerando todo o trabalho que faz por aqui.</voice>
+  <narration>Você dá de ombros.</narration>
+  <protagonist />
+  <voice>As tarefas que me dão não podem ser feitas à noite.</voice>
+  <person>giarle</person>
+  <voice>E por que traz as esculturas para cá? Não seria melhor guardar em sua cabana?</voice>
+  <protagonist />
+  <voice>Não tenho espaço para mais nada lá.</voice>
+  <narration>Ele dirige a atenção para duas peças maiores e mais antigas, num canto.</narration>
+  <person>giarle</person>
+  <voice>Você disse que aqueles dois ali são seus pais, não é?</voice>
+  <narration>Você olha para as esculturas, avaliando criticamente seu trabalho e concluindo que já fez coisas muito melhores.</narration>
+  <protagonist />
+  <voice>Têm uma vaga semelhança.</voice>
+  <person>giarle</person>
+  <voice>Me parecem perfeitas.</voice>
+  <protagonist />
+  <voice>É porque não conheceu minha família.</voice>
+  <person>giarle</person>
+  <voice>Hummm...</voice>
+  <protagonist />
+  <voice>O quê?</voice>
+  <person>giarle</person>
+  <voice>Me parece que, quanto maior a escultura, maior o significado que ela tem para você.</voice>
+  <narration>Você volta a dar de ombros.</narration>
+  <protagonist />
+  <voice>Sei lá. Não costumo pensar muito nisso.</voice>
+  <voice>Só uso o cinzel quando me dá vontade e não tenho nada melhor para fazer.</voice>
+  <person>giarle</person>
+  <voice>Bom, aquelas duas no canto ali, com certeza, são as maiores...</voice>
+  <emotion>surprised</emotion>
+  <voice>Ei! Exceto por aquela ali!</voice>
+  <narration>Ele aponta para um busto esculpido em madeira, que está pendurando por um fio amarrado à viga que sustenta o teto de palha.</narration>
+  <person>giarle</person>
+  <emotion>surprised</emotion>
+  <voice>Essa também é nova, não é? Não tinha visto ela antes.</voice>
+  <emotion>normal</emotion>
+  <voice>É um trabalho sensacional!</voice>
+  <emotion>surprised</emotion>
+  <voice>Quero dizer, não que os outros não sejam também.</voice>
+  <emotion>normal</emotion>
+  <voice>Mas olha para os detalhes desse rosto... parece tão real...</voice>
+  <narration>Você muda o peso de um pé para o outro, incomodada.</narration>
+  <protagonist />
+  <voice>Como eu disse, estava entediada. Podemos ir agora?</voice>
+  <narration>Ele a ignora e continua estudando a figura.</narration>
+  <person>giarle</person>
+  <voice>Isso não parece ser uma pessoa.</voice>
+  <voice>O que é? Algum tipo de monstro com feições humanas?</voice>
+  <protagonist />
+  <voice>Não sei. Não me importo.</voice>
+  <person>giarle</person>
+  <voice>Você não costuma entalhar coisas que não tenham importância.</voice>
+  <voice>Ainda mais num trabalho tão grande e detalhado como esse.</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Para tudo tem uma primeira vez. Podemos ir logo?</voice>
+</storyboard>

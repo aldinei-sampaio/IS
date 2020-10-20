@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>sulana</viewpoint>
+  <music>open-sky</music>
+
+  <background>sulana</background>
+  <tutorial>Você agora está controlando Sulana Lautine</tutorial>
+
+  <background>shack</background>
+
+  <narration>Os pássaros cantam alegremente nos galhos das árvores enquanto o sol desaparece lentamente atrás das montanhas ao longe.</narration>
+  <narration>A temperatura está amena, agradável. Estrelas surgem no céu limpo, sem nuvens.</narration>
+  <narration>É um fim de tarde tranquilo, que normalmente prenuncia uma ótima noite de sono.</narration>
+  <narration>Mas para você, no momento, nada daquilo significa nada.</narration>
+
+  <background>shack_interior</background>
+
+  <narration>Você cerra os dentes com força para conter um grito de dor enquanto Derione derrama um líquido esverdeado sobre seu ventre, no local onde a espada daquela mulher a tinha trespassado.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Quanto tempo mais isso vai levar?</voice>
+  <person>derione</person>
+  <voice>Aguente um pouco mais.</voice>
+  <voice>Não fui agraciado com o dom da cura, por isso necessito recorrer a outros métodos.</voice>
+  <narration>Tentando se controlar, você olha para o teto da cabana, imaginando vagamente que já está na hora de substituir parte daquela cobertura, já bem danificada por pássaros e insetos.</narration>
+  <narration>Depois de mais alguns instantes, Derione finalmente guarda o frasco com o misterioso líquido verde.</narration>
+  <person>derione</person>
+  <voice>Estou orgulhoso de você.</voice>
+  <protagonist />
+  <voice>Por quê?</voice>
+  <person>derione</person>
+  <voice>Poderia ter tirado a vida de todos aqueles soldados, mas não fez isso.</voice>
+  <voice>E não tomou nenhuma atitude agressiva antes de ser atacada.</voice>
+  <narration>É tão raro ele se mostrar satisfeito com qualquer coisa que você faça que aquilo a deixa sem saber direito como reagir.</narration>
+  <protagonist />
+  <choice>
+    <a>Ficar em silêncio.</a>
+    <b>Tentar me justificar.</b>
+    <c>Tentar mudar de assunto.</c>
+  </choice>
+  <thought>...</thought>
+
+  <do when="a">
+    <narration>Você aperta os lábios e fica quieta.</narration>
+    <person>derione</person>
+    <emotion>surprised</emotion>
+    <voice>O que foi? A dor está piorando?</voice>
+    <narration>Você volta a olhar para ele.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>O quê? Não!</voice>
+    <person>derione</person>
+    <voice>...</voice>
+    <voice>Bom. Se sentir algo estranho me avise.</voice>
+    <protagonist />
+    <voice>Mais estranho do que você me elogiando?</voice>
+    <person>derione</person>
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <emotion>normal</emotion>
+    <voice>Minha função aqui é orientar você, para que não se machuque e também para que não machuque ninguém.</voice>
+    <voice>Se fosse para eu elogiar cada decisão acertada que você toma, eu não faria outra coisa.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <person>derione</person>
+    <emotion>happy</emotion>
+    <voice>O que foi? Pensou que eu vinha aqui só para irritar você?</voice>
+    <protagonist />
+    <reward>+hope</reward>
+    <voice>É... isso passou pela minha cabeça...</voice>
+    <person>derione</person>
+    <voice>Se eu achasse que você não vale a pena, eu nunca teria aceitado a missão de ser seu protetor.</voice>
+    <voice>Você tem grande potencial. Veja essa batalha de hoje, por exemplo.</voice>
+    <protagonist />
+    <voice>...</voice>
+  </do>
+
+  <do when="b">
+    <narration>Você volta a olhar para cima.</narration>
+    <protagonist />
+    <voice>Eu precisava ganhar tempo para os outros escaparem.</voice>
+    <person>derione</person>
+    <voice>Isso também é louvável.</voice>
+    <voice>Proteger seus aliados, mesmo se colocando em risco.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Vai mesmo ficar procurando razão para tudo o que eu fiz?</voice>
+    <person>derione</person>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>...</voice>
+    <voice>Só estou feliz que esteja viva.</voice>
+    <protagonist />
+    <voice>Seus chefes realmente exigem que você fique me seguindo para onde quer que eu vá?</voice>
+    <person>derione</person>
+    <voice>Não é bem assim que as coisas funcionam, mas acredito que essa seja uma maneira de interpretar o que ocorre.</voice>
+    <protagonist />
+    <voice>Você não costumava ficar aparecendo com tanta frequência, antes.</voice>
+    <person>derione</person>
+    <voice>Porque nunca houve necessidade.</voice>
+    <voice>Mas hoje estou aqui apenas para ajudar.</voice>
+    <voice>E seu desempenho na batalha de hoje foi bastante recompensador.</voice>
+    <narration>Você lança a ele um olhar de descrédito. Ele a encara, sério.</narration>
+  </do>
+
+  <do when="c">
+    <protagonist />
+    <reward>+fight</reward>
+    <voice>Se está tentando arrancar algum favor de mim, saiba que não vai funcionar.</voice>
+    <voice>Eu continuo não gostando de você.</voice>
+    <narration>Para sua surpresa, ele solta uma risada.</narration>
+    <person>derione</person>
+    <emotion>happy</emotion>
+    <voice>Hahaha!</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <person>derione</person>
+    <voice>O que foi?</voice>
+    <protagonist />
+    <voice>Não lembro de já ter visto você dando risada antes.</voice>
+    <person>derione</person>
+    <voice>Isso não me surpreende. Não é um comportamento típico de minha estirpe.</voice>
+    <protagonist />
+    <voice>E por que você é diferente dos outros?</voice>
+    <person>derione</person>
+    <voice>Eu tomei algumas decisões.</voice>
+    <voice>Mas isso não vem ao caso. O fato é que hoje você fez enormes progressos.</voice>
+    <narration>Ele examina seu curativo mais uma vez, antes de voltar a encará-la.</narration>
+  </do>
+
+  <person>derione</person>
+  <voice>Você tinha o elemento surpresa a seu favor.</voice>
+  <voice>Sem tempo para se prepararem, aqueles soldados não teriam como se defender de você, o que ficou bem claro depois que eu neutralizei aquele dispositivo hipnótico em forma de sino.</voice>
+  <voice>Mesmo com você gravemente ferida eles não tiveram a menor chance.</voice>
+  <voice>Se atacasse de surpresa, poderia ter eliminado a todos, o que garantiria a seus amigos todo o tempo que precisassem.</voice>
+  <voice>Você poderia até mesmo ter ido junto com eles.</voice>
+  <protagonist />
+  <voice>Talvez eu devesse mesmo ter feito isso.</voice>
+  <emotion>angry</emotion>
+  <voice>Aparentemente, é o tipo de coisa que todos esperam que eu faça.</voice>
+  <narration>Você aperta os lábios, desgostosa consigo mesma.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Eu sei lá por que eu fiz aquilo!</thought>
+  <emotion>sad</emotion>
+  <thought>Parece que, depois que aquele infeliz morreu, tudo ficou diferente.</thought>
+  <emotion>angry</emotion>
+  <thought>Não entendo mais nada!</thought>
+  <thought>E de que adianta ficar pensando nisso?</thought>
+  <narration>Você volta a encarar Derione.</narration>
+  <protagonist />
+  <choice>
+    <a>Perguntar por que ele está aqui.</a>
+    <b>Perguntar se ele fez algo comigo.</b>
+    <c>Mandar ele ir embora.</c>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <narration>Você o encara, com raiva.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+rage</reward>
+    <voice>E por que você está aqui cuidando de mim, afinal?</voice>
+    <voice>Aquela infeliz está em estado muito pior do que o meu.</voice>
+    <voice>Tive que quebrar diversos ossos dela até que ficasse quieta, já que aquela cabeça é dura demais para perder a consciência só com pancada.</voice>
+    <voice>Ela não tem a mesma resistência que eu, por que não está lá cuidando dela ao invés de mim?</voice>
+    <person>derione</person>
+    <voice>Também estou orgulhoso de você por tê-la deixado viver.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Ora, cale a boca!</voice>
+    <voice>Você estava lá. O que faria se eu matasse alguém na sua frente?</voice>
+    <narration>Ele pensa por um momento, antes de balançar a cabeça.</narration>
+    <person>derione</person>
+    <voice>Sinceramente, não sei.</voice>
+  </do>
+
+  <do when="b">
+    <narration>Você o olha, desconfiada.</narration>
+    <protagonist />
+    <reward>+fight</reward>
+    <voice>Você fez algo comigo?</voice>
+    <person>derione</person>
+    <emotion>surprised</emotion>
+    <voice>Por que pergunta?</voice>
+    <protagonist />
+    <voice>Porque tem algo errado.</voice>
+    <emotion>angry</emotion>
+    <voice>Não tive vontade de voar no pescoço do general quando tive oportunidade.</voice>
+    <voice>Estou ficando irritada cada vez que alguém fala que eu sou perigosa e incontrolável.</voice>
+    <voice>Não estou mais conseguindo entender por que esses rebeldes lutam.</voice>
+    <voice>E não consigo esquecer do rosto daquele infeliz que eu enterrei hoje.</voice>
+    <person>derione</person>
+    <emotion>happy</emotion>
+    <voice>Isso é ótimo.</voice>
+    <emotion>normal</emotion>
+    <voice>Mas não devo receber crédito por nada disso. Você está se libertando sozinha.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Me libertando?</voice>
+    <person>derione</person>
+    <voice>Sim. De sua forma de pensar.</voice>
+    <voice>Você sempre foi muito centrada em si mesma, não se importava muito com o mundo à sua volta.</voice>
+    <voice>Aos poucos, sua humanidade está aflorando, como eu sabia que aconteceria.</voice>
+  </do>
+
+  <do when="c">
+    <narration>Você o olha, com raiva.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Por que não vai embora?</voice>
+    <person>derione</person>
+    <voice>Preciso ter certeza de que sua situação tenha se estabilizado.</voice>
+    <protagonist />
+    <voice>Eu não vou morrer tão fácil.</voice>
+    <person>derione</person>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>Eu sei.</voice>
+    <emotion>surprised</emotion>
+    <voice>Mas você tem noção do quão perto da morte esteve hoje?</voice>
+  </do>
+
+  <narration>Você tenta se mexer, mas uma pontada de dor a faz desistir da ideia.</narration>
+  <protagonist />
+  <voice>Por que não deixou que a vadia me matasse?</voice>
+  <voice>Assim, eu deixaria de ser um incômodo para você.</voice>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>Como pode dizer uma coisa dessas depois de tudo o que vivemos juntos?</voice>
+
+  <music>enigma</music>
+
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Se pensa assim, por que me jogou no colo do General Vermelho?</voice>
+  <narration>Ele desvia o olhar.</narration>
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <voice>Marcelius Belísar é um homem atormentado, que carrega nos ombros um peso grande demais para qualquer um suportar sozinho.</voice>
+  <voice>Você e ele têm muito em comum.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Eu?!</voice>
+  <voice>Você acha que eu tenho algo em comum com aquele ditador?</voice>
+  <person>derione</person>
+  <voice>Muito mais do que imagina. E ele pode ajudar você.</voice>
+  <narration>De repente, toda a estranheza e frustração que vem sentindo ultimamente vêm à tona.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Ah, sim, você acha que ele pode me ajudar com aquele problema, não é?</voice>
+  <voice>Aquele que me torna incapaz de retribuir essa… essa afeição estranha que você parece sentir por mim.</voice>
+  <narration>Você está tomada demais pela raiva para medir suas palavras.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Me diga, quando um homem se interessa por uma mulher, ele não se incomoda por ter outros homens olhando para ela?</voice>
+  <voice>Sabia que o general se interessa por mim da mesma forma que você, talvez até mais?</voice>
+  <voice>Por acaso já sabia disso antes de me colocar naquela praia ao lado dele?</voice>
+  <voice>Acha que passar algum tempo com ele iria me “curar” desse problema e que eu iria retornar cheia de vontade de rolar no chão com você?</voice>
+  <narration>Ele dá um passo para trás, sobressaltado com aquelas palavras, mas então respira fundo e balança a cabeça.</narration>
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <voice>Sulana…</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Estou cansada disso tudo! Por que não vai embora e me deixa em paz?</voice>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>Sulana, você é importante para mim, não entende? E eu sei que, no fundo…</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>No fundo, nada!</voice>
+  <voice>Eu não gosto de você! Não tenho desejo nenhum que permaneça ao meu lado!</voice>
+  <voice>Não quero você me ajudando!</voice>
+  <voice>Tudo o que eu sinto por você é uma vontade enorme de quebrar essa sua cara!</voice>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>Isso não é verdade.</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Então desative esse escudo protetor para ver o que eu faço!</voice>
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <voice>Não fale assim, por favor.</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Eu não precisaria falar assim se você entendesse quando eu digo que eu não gosto de você!</voice>
+
+  <do when="seductress">
+    <person>derione</person>
+    <emotion>angry</emotion>
+    <voice>Então o que foi tudo aquilo depois da batalha de Mercília? Você veio até mim!</voice>
+    <emotion>sad</emotion>
+    <voice>E fez… aquilo tudo…</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Eu fiz tudo aquilo porque você parecia querer tanto que estava até sentindo dor, e eu estava embriagada pela batalha, a ponto de qualquer atividade física me parecer atraente.</voice>
+    <narration>Ele a olha com uma expressão estranha, sombria.</narration>
+    <person>derione</person>
+    <emotion>sad</emotion>
+    <voice>Você não pode estar falando sério.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Será que finalmente está entendendo que está perdendo seu tempo comigo?</voice>
+  </do>
+
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Nunca vou gostar, nem de você e nem de ninguém, assim como nunca vou deixar de ser uma assassina.</voice>
+  <voice>Eu não vou mudar, não deixarei de ser o que eu sou!</voice>
+  <voice>Se não concorda com isso, me mate, ou me jogue numa prisão ou o que quiser, mas pare de me atormentar!</voice>
+  <narration>Você faz uma careta quando uma dor excruciante a atinge e o ferimento em seu ventre volta a sangrar abundantemente.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <bump />
+  <voice>Aaaahh!!!</voice>
+
+  <music>goodbye</music>
+
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>Acalme-se!</voice>
+  <narration>Ele cobre o ferimento com um pano e volta a despejar algo em cima, o que arde tanto que a faz ter um espasmo.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <bump />
+  <voice>Aaaargh!</voice>
+  <person>derione</person>
+  <emotion>surprised</emotion>
+  <voice>Fique calma, está bem?</voice>
+  <voice>Se é isso o que quer, eu vou embora, não vou mais incomodar você.</voice>
+  <emotion>normal</emotion>
+  <voice>Mas por favor se acalme. Relaxe.</voice>
+  <narration>Você começa a sentir um abençoado alívio quando a região externa do ferimento subitamente para de latejar.</narration>
+  <narration>A dor vai aos poucos sendo substituída por uma leve sensação de formigamento que vai se espalhando por todo o seu corpo.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Por que… não fez isso… antes?</voice>
+  <narration>Sua voz sai um tanto grogue, sua língua subitamente parecendo inchada.</narration>
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <voice>Porque não achei que precisaria chegar até esse ponto.</voice>
+  <protagonist />
+  <voice>...</voice>
+  <narration>Você não consegue mais responder.</narration>
+  <narration>Na verdade, não consegue nem mesmo manter mais os olhos abertos.</narration>
+  <narration>Derione continua falando. Você mal discerne as palavras, mas parece que ele fala mais consigo mesmo do que com você.</narration>
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <voice>Com sorte, você vai dormir por tempo suficiente para a poção de regeneração fazer seu trabalho.</voice>
+  <voice>Com você acordada, isso seria difícil, já que você se recusa a ficar parada.</voice>
+  <narration>Você está entrando naquele estado entre a vigília e o sono do qual as pessoas não se recordam de nada no dia seguinte.</narration>
+  <narration>Algo toca a sua cabeça. Ele está correndo os dedos por seu cabelo, com carinho.</narration>
+
+  <music>sad-story</music>
+
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <voice>Então... ele se interessou por você? Isso é bom.</voice>
+  <voice>Você seria a melhor companheira que qualquer um poderia desejar, principalmente alguém como ele.</voice>
+  <voice>Se ficarem juntos, talvez não seja mais necessário monitorarmos nenhum de vocês dois.</voice>
+  <emotion>angry</emotion>
+  <voice>E ficaríamos livres para ir atrás de criminosos de verdade.</voice>
+  <narration>De olhos fechados, você não vê o que está ocorrendo, mas pode sentir o olhar dele em seu rosto por um longo tempo.</narration>
+  <narration>Você ouve barulhos que a levam a concluir que ele está colocando alguma coisa sobre a velha cômoda caindo aos pedaços.</narration>
+  <person>derione</person>
+  <emotion>sad</emotion>
+  <voice>Já que é isso o que deseja, não voltarei mais.</voice>
+  <emotion>normal</emotion>
+  <voice>Mesmo que eu tenha que arcar com as consequências.</voice>
+  <voice>...</voice>
+  <emotion>sad</emotion>
+  <voice>Adeus.</voice>
+  <narration>Você não ouve mais nada e conclui que ele foi embora. Então a escuridão finalmente a envolve e você mergulha em um sono profundo.</narration>
+  
+  <background>carmim</background>
+</storyboard>

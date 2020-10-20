@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<chapters>
+  <chapter id="1" file="01/ch01.xml" name="Fúria" />
+  <chapter id="2" file="02/ch02.xml" name="Rotina" />
+  <chapter id="3" file="03/ch03.xml" name="Sonho" />
+</chapters>

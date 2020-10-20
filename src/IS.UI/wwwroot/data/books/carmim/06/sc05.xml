@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>sulana</viewpoint>
+
+  <background>sulana</background>
+  <tutorial>Você agora está controlando Sulana Lautine</tutorial>
+
+  <background>shack_interior2</background>
+
+  <narration>Você é acordada por seu instinto de sobrevivência.</narration>
+  <protagonist />
+  <voice>...</voice>
+  <narration>Imediatamente alerta, você permanece imóvel e de olhos fechados enquanto aguça os sentidos.</narration>
+  <narration>Não sabe onde está, mas obviamente aquela não é sua cabana.</narration>
+  <narration>Há alguém ali a seu lado, mas essa pessoa não é a fonte do perigo que sente.</narration>
+  <narration>O que quer seja que a acordou tem uma presença sinistra, emitindo sons e cheiros singulares, animalescos e familiares.</narration>
+  <narration>Monstros. E de uma espécie que você tinha combatido recentemente.</narration>
+  <person>curandeiro</person>
+  <voice>O que está havendo lá fora?</voice>
+  <narration>Você ouve os passos do homem se afastando.</narration>
+
+  <music>desert-squad</music>
+
+  <narration>E imediatamente conclui que ele está indo para a morte certa!</narration>
+  <protagonist />
+  <unset>battle</unset>
+  <choice time="4" timeout="a" randomorder="1">
+    <a>Salvar a vida dele.</a>
+    <b>Continuar escondida.</b>
+    <b>Demorar a reagir.</b>
+    <b>Levantar devagar.</b>
+  </choice>
+  <thought>Eu vou...</thought>
+
+  <do when="a">
+    <narration>Você se levanta, apressada, sentindo a febre da batalha tomar seu corpo, espantando completamente o sono e a letargia.</narration>
+    <narration>O homem se volta e a encara de olhos arregalados.</narration>
+    <person>curandeiro</person>
+    <emotion>surprised</emotion>
+    <voice>Você...?</voice>
+    <narration>Sem hesitar, você corre na direção dele e o puxa para trás com força.</narration>
+    <person>curandeiro</person>
+    <emotion>surprised</emotion>
+    <bump />
+    <voice>Ufff!</voice>
+    <narration>Pelo barulho, o homem deve ter caído sobre os panos no chão, onde você estivera antes, mas não há tempo de olhar para conferir.</narration>
+    <narration>Pois nesse momento uma criatura monstruosa invade a tenda.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <voice>Urrraaaaahhhh!</voice>
+  </do>
+
+  <do when="b">
+    <narration>O corpo do homem é arremessado para o lado com força e uma criatura invade o lugar.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <voice>Urrraaaaahhhh!</voice>
+    <person>curandeiro</person>
+    <emotion>surprised</emotion>
+    <bump />
+    <voice>Ahhh!</voice>
+    <protagonist />
+    <reward>-battle</reward>
+    <voice>...</voice>
+    <narration>Você se levanta, deixando que a febre da batalha tome conta de seu corpo, espantando completamente o sono e a letargia.</narration>
+  </do>
+
+  <narration>A criatura é do mesmo tipo das que você enfrentou dentro das muralhas.</narration>
+  <narration>Ronam não estava ali para dissipar aquela pele acinzentada que funciona como um escudo corporal, mas não importa.</narration>
+  <protagonist />
+  <reward when="a">+battle</reward>
+  <emotion>angry</emotion>
+  <thought>Isso só vai prolongar sua agonia.</thought>
+  <narration>O monstro ataca com o ferrão, com o objetivo claro de separar sua cabeça do corpo.</narration>
+  <person>monster1</person>
+  <emotion>angry</emotion>
+  <voice>Graaarrr!</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <choice time="4" timeout="b" randomorder="1">
+    <a>Esquivar</a>
+    <b>Hesitar</b>
+    <c>Hesitar</c>
+    <d>Hesitar</d>
+  </choice>
+  <thought>...</thought>
+
+  <do when="a">
+    <narration>Você rola no chão, esquivando-se do golpe e se aproximando do corpo da criatura no mesmo movimento.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+battle</reward>
+    <voice>Iaahhhh!</voice>
+    <narration>Levantando-se com agilidade, você desfere diversos socos na cabeça do monstro, fazendo-o balançar de um lado para o outro.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Uggggaaahhh!</voice>
+    <narration>Ele tenta revidar, mas tudo o que consegue é enroscar seus ferrões no tecido da tenda, que acaba por vir abaixo.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <voice>Arrrrrhhhh!</voice>
+  </do>
+
+  <do when="b">
+    <narration>Você não consegue esquivar-se e levanta os braços, na tentativa de se proteger.</narration>
+    <narration>O ferrão atinge sua pele, mas felizmente seu escudo corporal já está completamente ativo e impede que a lâmina penetre.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <reward>-battle</reward>
+    <bump />
+    <voice>...</voice>
+    <narration>O monstro tenta atacar com o outro ferrão, mas tudo o que consegue é se enroscar no tecido da tenda, que acaba por vir abaixo.</narration>
+  </do>
+
+  <narration>Com facilidade, você rasga o tecido que cai sobre você e olha ao redor.</narration>
+
+  <background>palmtree</background>
+
+  <narration>Há soldados combatendo monstros por toda parte.</narration>
+  <person>soldado7</person>
+  <emotion>angry</emotion>
+  <voice>Há!</voice>
+  <person>monster1</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>Grr!</voice>
+  <person>soldado5</person>
+  <emotion>surprised</emotion>
+  <voice>Tem mais deles chegando pelo sul!</voice>
+  <person>soldado8</person>
+  <emotion>angry</emotion>
+  <voice>Esquadrão 2, venham comigo!</voice>
+
+  <do when="sulana_pious">
+    <person>soldado2</person>
+    <emotion>angry</emotion>
+    <voice>Vamos, vamos, vamos!</voice>
+    <person>soldado3</person>
+    <emotion>angry</emotion>
+    <voice>Por Ebora!</voice>
+  </do>
+
+  <narration>Você percebe que o monstro que a atacou está tendo dificuldade para se desenroscar do tecido da tenda.</narration>
+  <person>monster1</person>
+  <voice>Grrarrr?</voice>
+  <narration>Você canaliza toda a sua fúria, o que faz com que sua visão se torne rubra.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Então pula sobre ele, agarrando um de seus ferrões pelo lado cego.</narration>
+  <narration>Apoiando um pé sobre o peito do monstro, você puxa com toda força.</narration>
+  <narration>Não leva mais do que alguns segundos para as proteções místicas cederem e o braço da criatura se separar do corpo.</narration>
+  <person>monster1</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>Grrriiiaaaaahhhhhh!</voice>
+  <narration>Num movimento contínuo, você gira o corpo, agarrando o ferrão com as duas mãos e golpeando o monstro com ele.</narration>
+  <person>monster1</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>...</voice>
+  <narration>Ao ter o peito trespassado por sua própria arma natural, a criatura se imobiliza, começando imediatamente a se desintegrar.</narration>
+  <narration>Nesse momento, os soldados parecem finalmente perceber sua presença.</narration>
+  <person>soldado5</person>
+  <emotion>surprised</emotion>
+  <voice>Ela de novo?! Como veio parar aqui?!</voice>
+  <person>soldado4</person>
+  <emotion>surprised</emotion>
+  <voice>Não sei, o general disse que ela surgiu do nada.</voice>
+  <voice>Mas estava inconsciente até agora há pouco!</voice>
+  <person>soldado7</person>
+  <emotion>angry</emotion>
+  <voice>Ei! Precisamos de apoio aqui!</voice>
+  <narration>Você olha na direção do soldado que pedia ajuda e vê que ele e alguns companheiros enfrentam um grupo de monstros em séria desvantagem numérica.</narration>
+  <protagonist />
+  <emotion>happy</emotion>
+  <voice>...</voice>
+  <narration>Você sorri, preparando-se para correr na direção da peleja, mas percebe que seu corpo não está respondendo direito.</narration>
+  <narration>Está fraca, com reflexos mais lentos, como se tivesse algo a prendendo no lugar.</narration>
+  <narration>Aquilo a irrita sobremaneira e você levanta a cabeça, soltando um grito gutural.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Aaaaaaaaaahhhhhhhh!!!</voice>
+  <person>soldado5</person>
+  <emotion>surprised</emotion>
+  <voice>!!</voice>
+  <person>soldado4</person>
+  <emotion>surprised</emotion>
+  <voice>Essa, não! Protejam-se!</voice>
+  <narration>O grito tem o efeito que você esperava: a fúria se amplia em seu peito, a febre da batalha se tornando mais intensa.</narration>
+  <narration>A sensação de fraqueza subitamente desaparece e você se sente leve e pronta para qualquer coisa.</narration>
+  <narration>Então sai em disparada, ignorando os perplexos soldados e se lançando sobre o monstro mais próximo.</narration>
+  <protagonist />
+  <choice time="4" timeout="b" randomorder="1">
+    <a>Perfeito</a>
+    <b>Ótimo</b>
+    <b>Bom</b>
+    <b>Regular</b>
+  </choice>
+  <thought>Farei um ataque...</thought>
+
+  <narration when="a">Você desfere uma sequência implacável de golpes, sem dar a menor chance para a criatura reagir.</narration>
+  <narration when="b">Seus membros parecem não obedecer direito e você leva algum tempo até conseguir entrar em um ritmo eficiente de ataque.</narration>
+  <narration>A carapaça vai enfraquecendo, cada novo ataque seu se mostrando mais eficiente que o anterior.</narration>
+  <person>monster1</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>Arrrrhhhh!</voice>
+  <narration>Logo as proteções do monstro deixam de funcionar e você consegue aplicar um golpe mortal.</narration>
+  <narration>A criatura desaba no chão, começando a se desmaterializar.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <reward when="a">+battle</reward>
+  <reward when="b">-battle</reward>
+  <voice>...</voice>
+
+  <person>soldado5</person>
+  <emotion>surprised</emotion>
+  <voice>Caraca!</voice>
+  <person>soldado4</person>
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+
+  <do when="sulana_pious">
+    <person>soldado3</person>
+    <emotion>angry</emotion>
+    <voice>Vocês estão parados aí por quê?</voice>
+    <person>soldado2</person>
+    <emotion>angry</emotion>
+    <voice>É! Ela está fazendo nosso trabalho por nós!</voice>
+    <voice>Vamos ajudar!</voice>
+  </do>
+
+  <narration>Você se move de um adversário para o outro, numa euforia assassina sem igual.</narration>
+  <narration>O mundo, para você, havia se resumido a duas coisas: os irrelevantes e os inimigos.</narration>
+  <narration>Os irrelevantes se movem a seu redor mantendo uma certa distância. Como não atrapalham, você os ignora.</narration>
+  <narration>Mas de certa forma são úteis, pois atraem mais inimigos. Às vezes também interceptam oponentes que tentam atacar você pelas costas.</narration>
+  <narration>Você não entende direito porque fazem isso, mas também não se importa.</narration>
+  <narration>Tudo o que quer é matar, destruir, erradicar os inimigos da existência.</narration>
+
+  <do when="sulana_battle[3]">
+    <person>soldado4</person>
+    <emotion>surprised</emotion>
+    <voice>Elá está demolindo os invasores!</voice>
+    <person>soldado5</person>
+    <emotion>surprised</emotion>
+    <voice>E salvando a nossa pele no processo.</voice>
+    <voice>Nunca vi ninguém lutar assim!</voice>
+  </do>
+
+  <protagonist />
+  <emotion>happy</emotion>
+  <reward when="sulana_battle[3]">++fight</reward>
+  <reward when="sulana_battle[1]">+fight</reward>
+  <voice>...</voice>
+  <person>soldado7</person>
+  <emotion>surprised</emotion>
+  <voice>Cara, aquele sorriso dela está me dando arrepios!</voice>
+
+  <do when="sulana_pious">
+    <person>soldado3</person>
+    <emotion>happy</emotion>
+    <voice>Hahaha! Larga a mão de ser franguinho e ajuda a segurar a retaguarda!</voice>
+    <person>soldado2</person>
+    <emotion>happy</emotion>
+    <voice>É! Olha o estrago que ela está fazendo!</voice>
+    <voice>Vamos acabar com essa invasão rapidinho!</voice>
+  </do>
+
+  <person>soldado5</person>
+  <voice>Mantenham formação! Vamos continuar dando apoio!</voice>
+  <person>soldado4</person>
+  <voice>Isso aí! Se ela não nos matou ontem, quando nós éramos o inimigo, hoje não vai dar nada!</voice>
+  <person>soldado7</person>
+  <emotion>surprised</emotion>
+  <voice>Que os céus te ouçam!</voice>
+  <narration>Você ouve o que os irrelevantes dizem, mas não se importa o suficiente para tentar entender.</narration>
+  <narration>Essa luta é um verdadeiro deleite. Muito melhor que a última.</narration>
+  <narration>Os monstros lhe parecem mais fortes e são muito mais numerosos.</narration>
+  <narration>A ação nunca acaba, após derrubar um deles, outro toma o seu lugar.</narration>
+  <narration>E quando isso não ocorre, basta apurar os ouvidos e seguir os gritos dos irrelevantes nas redondezas para saber onde encontrar mais inimigos.</narration>
+  <narration>Nunca se sentiu tão satisfeita, tão poderosa, tão viva!</narration>
+</storyboard>

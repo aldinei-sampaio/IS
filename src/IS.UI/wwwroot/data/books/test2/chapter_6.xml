@@ -1,0 +1,756 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>belisar</viewpoint>
+  <music>goodbye</music>
+  <background>carmim</background>
+  <observe />
+  <narration>Capítulo 7: Sacrifício (cena 6)</narration>
+
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <do>
+    <protagonist />
+    <choice>
+      <a when="!insight" req="!insight">insight</a>
+      <d>Prosseguir</d>
+    </choice>
+    <voice>...</voice>
+    <exit when="d" />
+    <trophy when="a">insight</trophy>
+    <restart />
+  </do>
+
+  <background>shack_interior2</background>
+
+  <narration>Você abre os olhos e pisca devagar várias vezes, tentando focalizar a visão.</narration>
+  <narration>Cada piscada lhe traz uma pontada de dor nas pálpebras.</narration>
+  <narration>Seu corpo inteiro dói. E aquilo só pode significar uma coisa.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Eu... estou vivo?</voice>
+  <voice>Mas como?</voice>
+  <person>curandeiro</person>
+  <emotion>surprised</emotion>
+  <voice>Oh, bem vindo de volta, general!</voice>
+  <narration>O curandeiro se ajoelha no chão para se aproximar de você o que o faz concluir que está deitado no chão.</narration>
+  <narration>Ele segura um cristal de luz contínua na sua frente, a súbita claridão fazendo-o instintivamente fechar os olhos.</narration>
+  <narration>Gentilmente, ele abre uma de suas pálpebras com um dedo, depois a outra, observando seus olhos com atenção.</narration>
+  <narration>Você sabe que ele o está apenas examinando, mas a dor que aquilo provoca faz com que você tente evitar o toque, obrigando o homem a segurar sua cabeça para poder concluir o que fazia.</narration>
+  <person>curandeiro</person>
+  <voice>Seus sinais vitais estão ótimos.</voice>
+  <voice>Como se sente? Consegue falar?</voice>
+  <protagonist />
+  <voice>...</voice>
+  <voice>Água...</voice>
+  <narration>O homem o ajuda a levantar o tronco. A mudança de posição causa dores em partes de seu corpo que você nem sabia que tinha.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Hummpf!</voice>
+  <person>curandeiro</person>
+  <voice>Isso, devagar, com calma.</voice>
+  <voice>Deve estar sentindo muita dor no momento, mas isso deve passar, conforme o nível de cognação transcendente se normaliza.</voice>
+  <narration>Ele leva uma caneca a seus lábios e você tenta ingerir o líquido, que tem um gosto estranho. Após alguns goles, você vira de leve o rosto e ele afasta a caneca.</narration>
+  <person>curandeiro</person>
+  <voice>Tudo bem, general? O senhor me reconhece?</voice>
+  <protagonist />
+  <voice>Sim. Onde... estamos?</voice>
+  <person>curandeiro</person>
+  <voice>Ainda na praia da Galena. O senhor esteve desacordado por dois dias.</voice>
+  <narration>Você tenta mover suas mãos e percebe que não consegue.</narration>
+  <protagonist />
+  <voice>Minhas... mãos?</voice>
+  <person>curandeiro</person>
+  <voice>Imobilizamos suas mãos para prevenir interrupções no processo regenerativo, senhor.</voice>
+  <voice>Vai levar um tempo ainda para que possamos remover as talas.</voice>
+  <narration>Você tenta olhar para baixo, mas não consegue ver suas mãos. Na verdade, não consegue ver quase nada do seu corpo, que está enrolado em uma espécie de cobertor com padrões estranhos.</narration>
+  <protagonist />
+  <voice>Por que... estou vivo?</voice>
+  <voice>Eu... não esperava...</voice>
+  <person>curandeiro</person>
+  <emotion>happy</emotion>
+  <voice>Ah, o senhor teve a ajuda dessa belezinha aqui.</voice>
+  <narration>O homem dá umas batidinhas de leve no cobertor, com um sorriso, como se aquilo explicasse alguma coisa.</narration>
+  <narration>O tecido o envolve como um casulo frouxo, aparentemente dando várias voltas ao redor de seu corpo.</narration>
+  <narration>O curandeiro coloca diversos travesseiros atrás de você e o ajuda a se recostar.</narration>
+  <narration>Você agradece, aliviado pela mudança de posição. Então ouve uma voz familiar.</narration>
+
+  <music>the-awakening</music>
+  
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>General! O senhor acordou!</voice>
+  <voice>Graças aos céus! Estávamos tão preocupados!</voice>
+  <narration>A tenente surge em seu campo de visão, parecendo esbaforida e aliviada.</narration>
+  <narration>O rosto dela está um pouco pálido, a pele contrastando fortemente com as fundas olheiras.</narration>
+  <protagonist />
+  <voice>Você parece... cansada.</voice>
+  <person>emelin</person>
+  <voice>Sim, passamos a noite toda investigando...</voice>
+  <emotion>surprised</emotion>
+  <voice>Hã... Talvez seja melhor deixar para falar sobre isso mais tarde.</voice>
+  <voice>Como o senhor está?</voice>
+  <protagonist />
+  <voice>Dolorido.</voice>
+  <voice>E curioso. Eu...</voice>
+  <person>emelin</person>
+  <voice>O senhor deve ter uma porção de perguntas, não?</voice>
+  <narration>Ela olha para o curandeiro. Mais do que depressa, o homem se levanta.</narration>
+  <person>emelin</person>
+  <voice>Tudo bem eu conversar com ele?</voice>
+  <person>curandeiro</person>
+  <voice>Está tudo correndo de acordo com o previsto. Os sinais vitais estão fortes.</voice>
+  <emotion>happy</emotion>
+  <voice>O senhor está novo em folha, general. Está muito bem.</voice>
+  <emotion>normal</emotion>
+  <voice>Se me permite, tenente, vou deixar vocês conversarem sossegados.</voice>
+  <person>emelin</person>
+  <voice>Obrigada. Estamos em dívida para com o senhor.</voice>
+  <narration>O homem assente e sai de seu campo de visão.</narration>
+  <protagonist />
+  <voice>Estamos dentro de uma... tenda?</voice>
+  <person>emelin</person>
+  <emotion>surprised</emotion>
+  <voice>Ah! Quero dizer, sim, estamos sim!</voice>
+  <voice>O senhor está com dificuldade para enxergar? Quer que chame o curandeiro de volta?</voice>
+  <protagonist />
+  <voice>Não, tudo bem. As imagens ainda estão borradas, mas está melhorando.</voice>
+  <narration>Você sente um calafrio. Imagens da batalha voltam à sua mente. O demônio. Sulana. Zelmira.</narration>
+  <narration>Sua decisão de sacrificar tudo para conseguir vingança.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Eu não entendo...</voice>
+  <narration>Ela se senta no chão ao seu lado.</narration>
+  <person>emelin</person>
+  <unset>bonus1</unset>
+  <unset>bonus2</unset>
+  <unset>bonus3</unset>
+  <voice>Pode perguntar o que quiser, senhor.</voice>
+
+  <tutorial>A seguir, você terá a chance de fazer diversas perguntas a Emelin.</tutorial>
+  <tutorial>Não é obrigatório ver todos os diálogos, você pode avançar diretamente para a próxima tela escolhendo a última opção.</tutorial>
+  <tutorial>Na última tela você terá a oportunidade de retornar ao início e refazer alguma pergunta, se assim o desejar.</tutorial>
+  <tutorial>Apesar de todas as perguntas serem opcionais, algumas delas lhe darão bônus de atributo ou de relacionamento.</tutorial>
+
+  <music>goodbye</music>
+  
+  <do>
+    <do>
+      <protagonist />
+      <choice>
+        <a>Como a batalha terminou?</a>
+        <b>Como ainda estou vivo?</b>
+        <c>E minha família?</c>
+        <d>(Mais...)</d>
+      </choice>
+      <voice>...</voice>
+
+      <exit when="d" />
+
+      <do when="a">
+        <person>emelin</person>
+        <voice>Sulana Lautine derrotou o demônio e os protetores destruíram todos os amarelos.</voice>
+        <voice>Nossos soldados cuidaram dos monstros restantes com a ajuda dos sábios.</voice>
+        <protagonist />
+        <voice>Sulana estava perdendo a luta para um dos amarelos quando o demônio me atacou.</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Ah, sim... ela... quero dizer... nós demos uma poção a ela.</voice>
+        <emotion>normal</emotion>
+        <voice>Com isso, ela recobrou as forças e conseguiu derrotar o monstro com facilidade.</voice>
+        <voice>Depois disso ela pulou sobre o demônio e terminou o serviço que o senhor e Elinora tinham começado.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Que poção foi essa?</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Ah... Facione se lembrou de uma mistura de raízes que o clã das montanhas costumava usar.</voice>
+        <emotion>normal</emotion>
+        <voice>Parece que era algum tipo de ritual fúnebre ou algo assim.</voice>
+        <narration>Ela estremece ao se lembrar.</narration>
+        <person>emelin</person>
+        <voice>Quando alguém do clã recebia um golpe mortal e entrava no... o senhor sabe... último estágio...</voice>
+        <protagonist />
+        <voice>Quando eles se descontrolavam e passavam a atacar qualquer coisa que estivesse viva.</voice>
+        <person>emelin</person>
+        <voice>Sim, isso mesmo.</voice>
+        <voice>Quando algum deles entrava nesse estágio, os entes queridos lhe davam essa mistura para... beber.</voice>
+        <voice>Isso permitia que usassem todo o restante de sua força vital, tornando-se duas vezes mais fortes e violentos.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>E Falcione decidiu dar esse negócio para Sulana?!</voice>
+        <person>emelin</person>
+        <voice>Na verdade, ela mandou que eu desse.</voice>
+        <voice>O senhor estava ocupado com o demônio e o amarelo estava vencendo a batalha contra ela.</voice>
+        <voice>Se ela perdesse... o senhor não teria chance.</voice>
+        <protagonist />
+        <voice>...</voice>
+        <voice>Não entendo. Essa poção tem que ser ingerida?</voice>
+        <voice>Como foi que você conseguiu fazer com que Sulana bebesse?</voice>
+        <narration>Seus olhos ainda não estão muito bem, mas Emelin fica tão vermelha com a pergunta que você não tem dificuldade nenhuma para perceber o constrangimento dela.</narration>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Bem...</voice>
+        <voice>Falcione disse que... o costume do povo das montanhas era...</voice>
+        <voice>Colocar o líquido na própria boca e então... passá-lo para a boca de quem estivesse descontrolado.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>!!</voice>
+        <voice>Boca-a-boca?</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Bem... sim...</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Deixa eu ver se entendi. Você caminhou até Sulana e deu um beijo na boca dela?</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Hã... suponho que sim...</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>E ela não reagiu? Não tentou te atacar?</voice>
+        <person>emelin</person>
+        <voice>Falcione disse que essa era a única forma de se aproximar de alguém no último estágio.</voice>
+        <voice>Desde que a pessoa não considere você como uma ameaça, ela não reage.</voice>
+        <emotion>surprised</emotion>
+        <voice>Então, no momento em que o amarelo a arremessou para longe eu corri até ela e... consegui completar a tarefa...</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>...</voice>
+        <emotion>normal</emotion>
+        <voice>Tudo bem. E o que houve com Sulana depois que ela matou o demônio?</voice>
+        <person>emelin</person>
+        <voice>Ela caminhou sem rumo durante algum tempo, depois desmaiou e... desapareceu.</voice>
+        <voice>Achamos que o encanto de transporte que a trouxe para cá era ancorado. Ela deve ter sido transportada de volta ao ponto de origem quando o tempo acabou.</voice>
+      </do>
+
+      <do when="b">
+        <person>emelin</person>
+        <voice>Estávamos perdendo a esperança de salvá-lo. Todos os nossos esforços não tinham qualquer efeito.</voice>
+        <voice>Mas depois que a batalha terminou e Elinora desapareceu, um outro protetor surgiu. Um bem mais velho.</voice>
+        <voice>Ele nos deu isso.</voice>
+        <narration>Ela aponta para o cobertor em que você está enrolado.</narration>
+        <person>emelin</person>
+        <voice>Ele disse que erros foram cometidos e que o senhor não merecia esse fim.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Isso é... inesperado.</voice>
+        <person>emelin</person>
+        <voice>Não consegui entender muito bem, mas ele não parecia muito satisfeito com os atos de Elinora.</voice>
+        <voice>Tenho a impressão de que não a veremos mais por algum tempo. Ele parecia bastante... descontente com ela.</voice>
+        <protagonist />
+        <voice>O que é esse cobertor, afinal? Algum tipo de tecido regenerativo?</voice>
+        <person>emelin</person>
+        <voice>O protetor disse que é uma espécie de condensador.</voice>
+        <voice>Permite que energias místicas sejam concentradas em determinados padrões vibracionais, o que amplia as capacidades inatas de uma pessoa.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Como?</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Oh, me desculpe!</voice>
+        <voice>Ele revela poderes que a pessoa normalmente não consegue usar.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Como é? Está me dizendo que eu tenho poderes de regeneração?</voice>
+        <person>emelin</person>
+        <voice>Se eu entendi direito o que ele disse, o senhor tem muito mais do que isso.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>!!</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Oh, mas não tenho nenhuma informação confiável em relação a isso neste momento.</voice>
+        <voice>É o que estamos pesquisando agora. Assim que tivermos algo substancial, ficarei feliz em fazer um relatório completo.</voice>
+      </do>
+
+      <do when="c">
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Seus filhos estão todos bem, graças aos céus.</voice>
+        <emotion>normal</emotion>
+        <voice>Baliorge sofreu um ferimento feio nas costas, mas já foi tratado.</voice>
+        <voice>Eles foram atingidos por uma onda de choque do amarelo, mas Baliorge protegeu os mais novos com o corpo.</voice>
+        <voice>Vênega ficou desacordada por cerca de uma hora, mas não teve nada além de alguns arranhões devido à queda.</voice>
+        <voice>Sagante não foi atingido diretamente, mas ficou um tanto abalado porque ficou um bom tempo preso debaixo do irmão inconsciente.</voice>
+        <voice>Os três vieram ver o senhor várias vezes. Saíram daqui não faz nem uma hora.</voice>
+
+        <music>sad-story</music>
+        
+        <protagonist />
+        <voice>...</voice>
+        <voice>E... Zelmira?</voice>
+        <do when="insight">
+          <person>emelin</person>
+          <emotion>sad</emotion>
+          <voice>Está em coma.</voice>
+
+          <music>goodbye</music>
+          
+          <protagonist />
+          <emotion>surprised</emotion>
+          <voice>Ela está viva?!</voice>
+          <person>emelin</person>
+          <emotion>surprised</emotion>
+          <voice>Para falar a verdade, não sabemos como ela conseguiu sobreviver, seus ferimentos foram... bem...</voice>
+          <emotion>normal</emotion>
+          <voice>Ela está estável agora, mas não temos como saber quando vai acordar.</voice>
+          <voice>De qualquer forma, as marcas nas mãos e pés sugerem que ela lutou contra o demônio com todas as forças.</voice>
+          <protagonist />
+          <emotion>surprised</emotion>
+          <voice>Ela está viva!!</voice>
+          <person>emelin</person>
+          <emotion>surprised</emotion>
+          <voice>Sim, senhor!</voice>
+          <protagonist />
+          <emotion>happy</emotion>
+          <reward when="!emelin_bonus1">+control</reward>
+          <voice>Está viva!</voice>
+          <voice>Pelo criador! Estamos todos vivos!</voice>
+          <person>emelin</person>
+          <set when="!emelin_bonus1">bonus1</set>
+          <emotion>happy</emotion>
+          <voice>Sem dúvida, senhor!</voice>
+        </do>
+        <do when="!insight">
+          <person>emelin</person>
+          <emotion>sad</emotion>
+          <voice>...</voice>
+          <voice>Sinto muito, senhor. Ela... não resistiu.</voice>
+          <protagonist />
+          <emotion>sad</emotion>
+          <voice>...</voice>
+          <person>emelin</person>
+          <emotion>sad</emotion>
+          <voice>...</voice>
+          <protagonist />
+          <voice>Enfim, ela está livre.</voice>
+          <voice>Depois de tantos anos, finalmente ela conseguiu se libertar.</voice>
+          <voice>Não era o que eu tinha planejado, mas... ao menos...</voice>
+          <emotion>sad</emotion>
+          <voice>Ao menos ela está livre agora.</voice>
+          <person>emelin</person>
+          <emotion>surprised</emotion>
+          <voice>Perdão?</voice>
+
+          <music>goodbye</music>
+          
+          <protagonist />
+          <voice>Não é nada, não se preocupe.</voice>
+          <emotion>angry</emotion>
+          <reward when="!emelin_bonus1">+power</reward>
+          <voice>Ainda existem mais dois demônios por aí, aguardando para receber toda a fúria da minha vingança.</voice>
+          <person>emelin</person>
+          <emotion>surprised</emotion>
+          <set when="!emelin_bonus1">bonus1</set>
+          <voice>...</voice>
+        </do>
+      </do>
+
+      <restart />
+    </do>
+
+    <do>
+      <protagonist />
+      <choice>
+        <a>E quanto a Falcione?</a>
+        <b>Como você veio a assumir o comando?</b>
+        <c>Como nossas defesas foram comprometidas?</c>
+        <d>(Mais...)</d>
+      </choice>
+      <voice>...</voice>
+
+      <exit when="d" />
+
+      <do when="a">
+        <person>emelin</person>
+        <voice>Nós duas fomos atingidas por uma das ondas de choque do amarelo.</voice>
+        <voice>Meu escudo corporal nos protegeu, mas ela estava fraca demais e acabou desmaiando.</voice>
+        <emotion>sad</emotion>
+        <voice>Todo o estresse de ser carregada para cima e para baixo... cobrou seu preço, eu diria.</voice>
+        <protagonist />
+        <voice>Você não devia tê-la trazido para cá.</voice>
+        <person>emelin</person>
+        <voice>Com todo o respeito, senhor, mas devo discordar.</voice>
+        <voice>Ela salvou sua vida.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Pelo que eu entendi, foi VOCÊ quem salvou minha vida dando aquela poção a Sulana.</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Sim, mas ela é quem me deu a poção e me explicou... o que fazer.</voice>
+        <voice>E ela só fez isso quando ficou convencida que era o momento certo.</voice>
+        <voice>Ela nunca usaria aquilo se não estivesse certa de que era a única alternativa.</voice>
+        <protagonist />
+        <voice>...</voice>
+        <voice>Creio que tem razão.</voice>
+        <voice>Ela estava se sentindo culpada por ter atacado Sulana.</voice>
+        <emotion>surprised</emotion>
+        <voice>Aliás, onde está ela?</voice>
+        <voice>Sem ofensa, tenente, mas eu esperava estar fazendo essas perguntas todas a ela, ao invés de você.</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Estou tão surpresa quanto o senhor.</voice>
+        <voice>Ela me deixou no comando e está se concentrando apenas em se recuperar.</voice>
+        <voice>No momento, está na tenda dela, tentando fazer alguns alongamentos para acelerar a regeneração.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Ela... preferiu uma atividade tediosa como essa ao invés de ficar no comando do exército?</voice>
+        <person>emelin</person>
+        <voice>O rebelde Giarle Miliens disse... bem, ele fez algumas colocações que a deixaram... desconfortável.</voice>
+        <protagonist />
+        <emotion>happy</emotion>
+        <voice>E ela está querendo provar para ele que é capaz de agir com responsabilidade?</voice>
+        <person>emelin</person>
+        <emotion>happy</emotion>
+        <voice>É o que parece, senhor.</voice>
+      </do>
+
+      <do when="b">
+        <person>emelin</person>
+        <voice>A maioria dos tenentes foi ferida durante a batalha.</voice>
+        <voice>E com Falcione em recuperação, a próxima opção lógica seria o sábio Norlando.</voice>
+        <voice>Mas as revelações daquele protetor mais velho o deixaram intrigado e ele decidiu investigar, me mandando para cá no lugar dele.</voice>
+        <voice>Estou ajudando no que posso na investigação quando me sobra um tempinho, mas...</voice>
+        <protagonist />
+        <voice>Você parece estar se saindo bem.</voice>
+        <voice>Sempre achei que você levava jeito para a coisa.</voice>
+        <person>emelin</person>
+        <reward when="!emelin_bonus2">+relationship</reward>
+        <set when="!emelin_bonus2">bonus2</set>
+        <emotion>happy</emotion>
+        <voice>Obrigada, senhor.</voice>
+        <protagonist />
+        <voice>Só não vá se esforçar demais. Você me parece cansada.</voice>
+        <voice>Exaurida, você não irá conseguir realizar nada e ainda poderá comprometer a ordem da tropa.</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Sim, senhor! Irei... me esforçar para evitar que isso ocorra, senhor!</voice>
+      </do>
+
+      <do when="c">
+        <person>emelin</person>
+        <emotion>angry</emotion>
+        <voice>Foi Elinora, senhor.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>O quê?!</voice>
+        <person>emelin</person>
+        <emotion>angry</emotion>
+        <voice>O sábio Norlando descobriu tudo ontem, pouco antes da invasão.</voice>
+        <voice>Ela vem enfraquecendo nossas torres já há algumas semanas, adulterando nossos receptores de forma a não percebermos nada de errado.</voice>
+        <voice>Mas o sábio Norlando começou a investigar quando soube que rebeldes tinham pulado a muralha e invadido nosso território.</voice>
+        <voice>E então conseguiu provas inequívocas da sabotagem.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Nunca entendi direito o objetivo dela, mas não imaginava que pudesse...</voice>
+        <person>emelin</person>
+        <voice>Ninguém imaginaria, senhor.</voice>
+        <emotion>angry</emotion>
+        <voice>Nem mesmo os outros protetores, aparentemente.</voice>
+        <voice>O ancião que veio até nós estava muito descontente com o que ele chamou de "imprudência" da parte dela.</voice>
+        <voice>E que levou à morte de nove dos deles.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Nove protetores morreram?</voice>
+        <person>emelin</person>
+        <voice>Sim. Entraram na batalha logo que os amarelos surgiram e os combateram.</voice>
+        <voice>No final, restou apenas um de cada lado.</voice>
+        <protagonist />
+        <voice>Elinora e o amarelo que lutou contra Sulana.</voice>
+        <person>emelin</person>
+        <voice>Exato, senhor.</voice>
+        <protagonist />
+        <voice>Norlando achava que os demônios não seriam capazes de conseguir mais amarelos tão cedo.</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Sim, senhor. Ele admite que cometeu um erro e pede desculpas.</voice>
+        <protagonist />
+        <voice>Não estou apontando o dedo, Emelin. Se ele tirou uma conclusão errada, pode ter tido um bom motivo.</voice>
+        <person>emelin</person>
+        <voice>Entendo, senhor.</voice>
+        <voice>Ele disse que iria rever a gravação para tentar descobrir se tem algo de errado com a tradução.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Espere!</voice>
+        <voice>Elinora sabotou nossas torres?</voice>
+        <voice>Será que também não foi ela quem...</voice>
+        <person>emelin</person>
+        <voice>Desativou o artefato que bloqueava os portais?</voice>
+        <voice>Sim, senhor, foi ela mesma.</voice>
+        <voice>Infelizmente, o protetor ancião disse que não consegue fazer nada em relação a ele.</voice>
+        <protagonist />
+        <emotion>angry</emotion>
+        <voice>Durante a batalha, creio que ela me disse algo como "esta luta não é sua".</voice>
+        <voice>Ela fez tudo isso para poder combater o demônio?</voice>
+        <emotion>surprised</emotion>
+        <voice>Não, isso não faz sentido. Ela sabe onde eles vivem, poderia tê-lo atacado quando quisesse.</voice>
+        <person>emelin</person>
+        <voice>Bem... ela, claramente, não tinha poder suficiente para derrotá-lo sozinha.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Ela queria que eu me descontrolasse.</voice>
+        <voice>Era a única forma de ferir seriamente aquela coisa.</voice>
+        <person>emelin</person>
+        <voice>É o que tudo indica, senhor.</voice>
+        <voice>Ela... ameaçou tudo o que mais prezamos apenas por uma chance de derrotar a criatura.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Eu venho ajudando a combater essas monstruosidades há meses!</voice>
+        <voice>Que tipo de mente insana poderia conceber...</voice>
+        <emotion>normal</emotion>
+        <voice>Ah, esqueça.</voice>
+        <voice>Protetores realizando atos que não fazem sentido parece ser regra, não exceção.</voice>
+      </do>
+      
+      <restart />
+    </do>
+
+    <do>
+      <protagonist />
+      <choice>
+        <a>E nossos soldados?</a>
+        <b>Quão mal eu estou?</b>
+        <c>O que sabe sobre Sulana?</c>
+        <d>(Mais...)</d>
+      </choice>
+      <voice>...</voice>
+
+      <exit when="d" />
+
+      <do when="a">
+        <person>emelin</person>
+        <voice>Estão ansiosos para que o senhor se restabeleça.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>É mesmo?</voice>
+        <voice>Não estão assustados com tudo isso?</voice>
+        <person>emelin</person>
+        <voice>Lutar contra monstros não é novidade para eles.</voice>
+        <voice>Os inimigos fizeram o seu mais violento ataque contra nós e foram massacrados.</voice>
+        <voice>Um dos líderes inimigos foi morto. A meu ver essa foi a maior vitória que já tivemos desde o início da campanha.</voice>
+        <voice>Os soldados estão mais confiantes do que nunca.</voice>
+        <protagonist />
+        <voice>Essa vitória só foi possível devido a uma série bastante improvável de circunstâncias e alianças inesperadas.</voice>
+        <person>emelin</person>
+        <voice>Para nossa tropa, essa vitória foi possível graças ao senhor.</voice>
+        <voice>Todos viram o quanto o senhor está disposto a sacrificar por essa vitória.</voice>
+        <emotion>angry</emotion>
+        <voice>Estamos preparados para fazer a nossa parte também.</voice>
+        <voice>Estamos todos prontos para seguir a sua liderança e vencer esta guerra.</voice>
+        <protagonist />
+        <reward when="!emelin_bonus3">+fight</reward>
+        <voice>...</voice>
+        <voice>Esse foi um discurso surpreendentemente inspirador, tenente.</voice>
+        <voice>Você está se mostrando uma líder muito melhor do que eu antecipei.</voice>
+        <narration>Ela cora violentamente.</narration>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <reward when="!emelin_bonus3">+relationship</reward>
+        <set when="!emelin_bonus3">bonus3</set>
+        <voice>Obrigada, senhor!</voice>
+      </do>
+
+      <do when="b">
+        <person>emelin</person>
+        <voice>O seu corpo passou por um estresse extremo, muito maior do que qualquer pessoa normal suportaria.</voice>
+        <voice>Nenhum tipo de poção ou encantamento de cura ou regeneração surtia efeito.</voice>
+        <voice>Até que o protetor ancião nos deu isso.</voice>
+        <narration>Ela aponta para o cobertor.</narration>
+        <person>emelin</person>
+        <voice>Esse artefato ativou um poder latente que permiu que seu corpo reparasse sozinho o dano na conexão com o espírito.</voice>
+        <voice>Com isso, o fluxo vital voltou a fluir de forma estável e pudemos tratá-lo.</voice>
+        <voice>De qualquer forma, é possível que o senhor tenha muitas sequelas.</voice>
+        <protagonist />
+        <voice>Como o quê?</voice>
+        <person>emelin</person>
+        <emotion>sad</emotion>
+        <voice>Bom, suas mãos e seus dedos sofreram queimaduras muito intensas.</voice>
+        <voice>Não sabemos até que ponto vão se regenerar, mas é possível que nem tudo volte a funcionar como antes.</voice>
+        <voice>O mesmo aconteceu em grande parte do corpo, principalmente nas áreas que ficavam em contato com os estabilizadores.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Falando nisso, vou precisar de...</voice>
+        <person>emelin</person>
+        <voice>Sim, senhor, já providenciamos artefatos temporários para substituir os que foram destruídos.</voice>
+        <voice>O senhor os está usando neste momento, por baixo do cobertor.</voice>
+        <voice>Um dos sábios está trabalhando para tentar criar algo que seja mais... definitivo, enquanto o senhor se recupera.</voice>
+      </do>
+
+      <do when="c">
+        <person>emelin</person>
+        <voice>Além do que Falcione me contou, não muito.</voice>
+        <protagonist />
+        <voice>Acha que ela pode estar viva?</voice>
+        <person>emelin</person>
+        <voice>Não temos nenhuma evidência que comprove ou refute isso, mas o senhor a viu, não?</voice>
+        <narration>A tenente cruza os braços, aparentemente sentindo calafrios ao se lembrar da cena.</narration>
+        <person>emelin</person>
+        <emotion>sad</emotion>
+        <voice>Estava pálida demais, não respirava, o corpo estava frio, a boca seca. Parecia uma... morta-viva.</voice>
+        <protagonist />
+        <voice>Alguma ideia de como ela veio parar aqui?</voice>
+        <person>emelin</person>
+        <voice>Analisamos as emissões do local onde ela desapareceu e... bem...</voice>
+        <voice>São muito similares... idênticas eu diria... às dos protetores.</voice>
+        <protagonist />
+        <emotion>angry</emotion>
+        <voice>Elinora a mandou para cá.</voice>
+        <person>emelin</person>
+        <voice>É o que tudo indica, senhor.</voice>
+        <protagonist />
+        <voice>Humm...</voice>
+        <voice>Isso explica as roupas que ela usava.</voice>
+        <voice>Da primeira vez que ela apareceu nessa praia, achamos que ela era uma protetora.</voice>
+        <voice>Nem cheguei a comentar nada com vocês por causa disso.</voice>
+        <voice>Mas o comportamento dela era diferente do deles. Ela se mostrou reservada, mas não... arrogante.</voice>
+        <voice>E parecia deslocada, como se não soubesse direito onde estava ou por quê.</voice>
+        <person>emelin</person>
+        <emotion>surprised</emotion>
+        <voice>Teria sido algum tipo de experimento, para ver como vocês dois iriam interagir um com o outro?</voice>
+        <protagonist />
+        <emotion>angry</emotion>
+        <voice>Provavelmente. Ser manipulado dessa forma é irritante.</voice>
+        <emotion>normal</emotion>
+        <voice>Conseguiram triangular o ponto de destino para onde a âncora a levou?</voice>
+        <person>emelin</person>
+        <voice>Assim como ocorre com Elinora e os outros protetores, a emissão é fraca demais para podermos determinar com precisão.</voice>
+        <voice>Mas temos uma ideia geral da distância e da direção. Tudo indica que o ponto fica em algum lugar próximo ao centro da província, não muito distante do início da área murada.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Não é de onde os protetores costumam vir.</voice>
+        <person>emelin</person>
+        <voice>Não, senhor.</voice>
+        <protagonist />
+        <voice>...</voice>
+        <voice>Falcione tem certeza de que pode rastrear a origem de Sulana até o clã das montanhas.</voice>
+        <voice>Os protetores eram inimigos mortais daquele povo, não?</voice>
+        <person>emelin</person>
+        <voice>Pelo que sabemos, os protetores eram muito numerosos antes da... chacina das montanhas.</voice>
+        <voice>Eles sofreram milhares de baixas naquela guerra, por isso precisaram pedir a ajuda a humanos para conseguir vencer.</voice>
+        <protagonist />
+        <voice>Sim, e foi então que recrutaram Falcione e a antiga tropa dela.</voice>
+        <voice>...</voice>
+        <voice>Não faz sentido, faz?</voice>
+        <voice>Se os protetores sabiam da existência de Sulana, por que deixariam ela livre por aí?</voice>
+        <person>emelin</person>
+        <voice>Quanto a isso, senhor...</voice>
+        <voice>Bem, os protetores também sabem sobre o senhor e sobre a... fonte dos seus poderes.</voice>
+        <protagonist />
+        <emotion>surprised</emotion>
+        <voice>Tem razão.</voice>
+        <voice>Eles devem ter feito com ela a mesma coisa que tentaram fazer comigo.</voice>
+        <emotion>angry</emotion>
+        <voice>A mantiveram sob vigilância, sob controle, até encontrar uma utilidade para ela.</voice>
+      </do>
+      
+      <restart />
+    </do>
+
+    <protagonist />
+    <choice>
+      <a>Quero perguntar algo novamente.</a>
+      <b>Não tenho mais perguntas.</b>
+    </choice>
+    <thought>...</thought>
+
+    <exit when="b" />
+    
+    <restart />
+  </do>
+
+  <protagonist />
+  <thought>Tentar me sacrificar foi uma decisão idiota e precipitada.</thought>
+  <thought>Não cometerei mais esse erro.</thought>
+  <emotion>angry</emotion>
+  <thought>Agora que foi me dada uma segunda chance, não posso desperdiçá-la.</thought>
+
+  <music>the-awakening</music>
+  
+  <person>venegasagante</person>
+  <emotion>surprised</emotion>
+  <voice>Papai!</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Oi, seus danadinhos!</voice>
+  <narration>Os dois correm e se lançam sobre você enquanto a tenente se levanta e começa a se afastar.</narration>
+  <person>emelin</person>
+  <voice>Se me permite, voltarei mais tarde para concluir meu relatório, senhor.</voice>
+  <protagonist />
+  <voice>Obrigado, tenente.</voice>
+  <person>baliorge</person>
+  <emotion>surprised</emotion>
+  <voice>Ei, vocês dois! Calma aí, deixem o papai respirar!</voice>
+  <person>venega</person>
+  <emotion>sad</emotion>
+  <voice>Papai! Snif!</voice>
+  <person>sagante</person>
+  <emotion>sad</emotion>
+  <voice>A mamãe! Ela...</voice>
+  <protagonist />
+  <voice>Psh! Calma, calma, eu sei!</voice>
+  <voice>Não se preocupem, já cuidamos do monstro malvado.</voice>
+  <voice>Ele não vai mais fazer maldade. Nunca mais.</voice>
+  <emotion>angry</emotion>
+  <voice>E assim que eu pegar os amigos dele, terei uma conversa séria com eles também.</voice>
+  <voice>Juro por tudo o que é mais sagrado.</voice>
+
+  <music>enigma</music>
+
+  <person>cantranis</person>
+  <voice>Já não era sem tempo.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>!!</voice>
+  <person>venega</person>
+  <emotion>surprised</emotion>
+  <voice>O que foi, papai?</voice>
+  <voice>O senhor está fazendo uma cara engraçada.</voice>
+  <person>baliorge</person>
+  <emotion>surprised</emotion>
+  <voice>Tudo bem, papai? Quer que chame alguém?</voice>
+  <protagonist />
+  <voice>Não, tudo bem.</voice>
+  <voice>Estou apenas me sentindo cansado. Acho que preciso dormir um pouco.</voice>
+  <person>baliorge</person>
+  <voice>Ei, vocês dois, vamos sair e deixar o papai descansar.</voice>
+  <person>venegasagante</person>
+  <voice>Ahhhhhh!</voice>
+  <protagonist />
+  <voice>Vejo vocês mais tarde, está bem?</voice>
+  <narration>Depois de algumas reclamações, os pequenos finalmente se despedem e seguem o mais velho para fora da tenda.</narration>
+  <person>cantranis</person>
+  <voice>Excelente. Não temos tempo a perder. É hora de planejar nossa vingança!</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>O quê está acontecendo? Por que estou ouvindo a voz dela em minha cabeça?</thought>
+  <person>cantranis</person>
+  <voice>Porque seu desempenho na batalha foi excepcional! Eu não poderia esperar algo melhor!</voice>
+  <voice>Você conseguiu quebrar todos os bloqueios que os protetores tinham colocado em você!</voice>
+  <voice>Com isso, fui libertada, e agora que estamos juntos de novo, somos invencíveis!</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Mas você está morta!</thought>
+  <person>cantranis</person>
+  <voice>Não. Apenas minha consciência estava selada, mas agora estou livre novamente.</voice>
+  <voice>Décadas atrás, quando você manifestou o desejo por poderes para mudar seu destino, eu os concedi.</voice>
+  <voice>Em troca, você se tornou meu receptáculo, meu veículo de vingança, minha ferramenta de destruição!</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>!!</thought>
+  <emotion>angry</emotion>
+  <thought>Eu não vou ser controlado por você!</thought>
+  <person>cantranis</person>
+  <voice>Você não tem escolha. Não se quiser salvar essas pessoas com as quais tanto se importa.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>!!</thought>
+  <emotion>angry</emotion>
+  <thought>O que quer dizer? Está me ameaçando?</thought>
+  <person>cantranis</person>
+  <voice>Ao invés de se preocupar comigo, deveria se focar nos demônios.</voice>
+  <voice>Você ajudou a matar um deles, e agora os outros anseiam por retribuição.</voice>
+  <voice>Eles estão vindo. E, sem mim, você não terá a mínima chance contra eles.</voice>
+
+  <background>carmim</background>
+</storyboard>

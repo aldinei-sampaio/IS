@@ -1,0 +1,754 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>sulana</viewpoint>
+  <music>never-look-back</music>
+
+  <background>sulana</background>
+  <tutorial>Você agora está controlando Sulana Lautine</tutorial>
+
+  <background>oldfields</background>
+
+  <narration>Você caminha em silêncio pelos campos, os quatro rebeldes vindo logo atrás de você.</narration>
+  <person>alasdio</person>
+  <voice>Tem certeza que é para sudeste mesmo?</voice>
+  <person>petroir</person>
+  <voice>Sim, devemos estar chegando.</voice>
+  <person>alasdio</person>
+  <voice>Não estou gostando disso, esse lugar está muito estranho.</voice>
+  <person>petroir</person>
+  <voice>Óbvio que é estranho. Você, por acaso, já se esqueceu de onde estamos?</voice>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>Parece que está tudo abandonado.</voice>
+  <voice>Mato tomando conta das plantações, animais soltos perambulando por aí...</voice>
+  <voice>Será que ainda existe mesmo uma cidade nessa direção?</voice>
+  <person>petroir</person>
+  <emotion>surprised</emotion>
+  <voice>Claro que sim!</voice>
+  <emotion>sad</emotion>
+  <voice>Ou, pelo menos existia, até um ano atrás.</voice>
+  <narration>Um cheiro desagradável e familiar vindo da direita subitamente chama a sua atenção.</narration>
+
+  <music>enigma</music>
+
+  <protagonist />
+  <voice>...</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>O que foi?</voice>
+  <protagonist />
+  <voice>Silêncio!</voice>
+  <narration>Com cuidado, você caminha na direção de um agrupamento de árvores.</narration>
+
+  <background>forest</background>
+
+  <narration>Desconfortáveis, os outros se entreolharam por um momento, antes de segui-la.</narration>
+  <narration>Conseguem alcançá-la minutos depois, no meio de numa plantação destroçada do outro lado do pequeno bosque.</narration>
+
+  <background>black</background>
+
+  <person>alasdio</person>
+  <emotion>surprised</emotion>
+  <voice>Ca...ra...ca...!</voice>
+  <person>petroir</person>
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Pela... misericórdia...</voice>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>Oh!</voice>
+  <emotion>sad</emotion>
+  <voice>Pela grandiosa graça!</voice>
+  <narration>Você desvia o olhar da carnificina à sua frente e observa a reação de cada um de seus amigos.</narration>
+  <narration>Ronam empalidece e fica imóvel, com a boca entreaberta, como se tivesse entrando em um tipo de transe.</narration>
+  <narration>Lura cobre a boca com uma mão, mortificada, lágrimas vindo a seus olhos.</narration>
+  <narration>Alasdio olha ao redor com olhos arregalados e leva ambas as mãos à cabeça, chocado.</narration>
+  <narration>Petroir se vira e corre para o meio das árvores, antes de se ajoelhar e esvaziar o estômago.</narration>
+  <protagonist />
+  <voice>...</voice>
+  <narration>Você volta a olhar para a frente.</narration>
+
+  <music>sad-story</music>
+
+  <narration>Quando se luta em uma guerra, desenvolve-se uma certa resistência a cenas de morte e destruição, de forma que vocês não se impressionam facilmente.</narration>
+  <narration>Mas, mesmo tendo participado de batalhas sangrentas por tanto tempo, nenhum de vocês está preparado para isso.</narration>
+  <narration>O que está à sua frente não é um campo de batalha, é uma cena grotesca, perpetrada com um grau de crueldade muito acima do que qualquer um de vocês imaginava existir.</narration>
+  <narration>Você não está acostumada com as emoções que a envolvem e isso a deixa inquieta, desconfortável.</narration>
+  <narration>Para tentar se livrar da sensação, você engole em seco e avança, caminhando com cuidado pelo meio dos corpos mutilados.</narration>
+  <narration>Há uma grande variedade deles: homens, mulheres, velhos, jovens, crianças e até bebês.</narration>
+  <narration>A violência da qual foram vítimas havia sido tão grande que é difícil até mesmo contar quantos eram, tendo em vista que vários corpos estavam, literalmente, em pedaços.</narration>
+  <person>alasdio</person>
+  <emotion>surprised</emotion>
+  <voice>Mas... o quê...?</voice>
+
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>O… o sangue ainda está fresco.</voice>
+  <person>lura</person>
+  <emotion>sad</emotion>
+  <voice>Que tipo de carniceiro faria uma coisa dessas?</voice>
+
+  <music>enigma</music>
+
+  <protagonist />
+  <voice>Carniceiros. Foram vários. E tinham armas muito afiadas.</voice>
+  <person>alasdio</person>
+  <emotion>sad</emotion>
+  <voice>Misericórdia!</voice>
+  <narration>Você nota um padrão nas marcas no solo e começa a caminhar, determinada, numa certa direção.</narration>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Onde você vai?</voice>
+  <narration>Você para e olha para ele por sobre o ombro.</narration>
+  <protagonist />
+  <voice>Estão perto.</voice>
+  <person>alasdio</person>
+  <emotion>sad</emotion>
+  <voice>Misericórdia...</voice>
+  <narration>Ronam olha para Alasdio, preocupado.</narration>
+  <person>ronam</person>
+  <voice>Cara, você não parece bem.</voice>
+  <voice>Vá ver como está o Petroir. É melhor ninguém ficar sozinho.</voice>
+  <narration>O homem balança a cabeça algumas vezes e sai quase correndo na direção das árvores.</narration>
+  <narration>Sem dizer nada, você volta a caminhar para a frente.</narration>
+  <narration>Ronam e Lura se encaram.</narration>
+  <person>ronam</person>
+  <voice>...</voice>
+  <person>lura</person>
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <narration>Então, num acordo tácito, ambos cobrem os narizes e saem andando, atrás de você.</narration>
+
+  <background>windmill</background>
+
+  <narration>Na meia hora seguinte, vocês atravessam um vale e chegam até um moinho de vento em meio a um grande campo de trigo.</narration>
+  <person>ronam</person>
+  <voice>Cadê aqueles dois? Já deviam ter nos alcançado.</voice>
+  <person>lura</person>
+  <voice>Talvez tenham decidido voltar.</voice>
+  <emotion>sad</emotion>
+  <voice>Eu não poderia culpá-los.</voice>
+
+  <music>crime-fighter</music>
+
+  <protagonist />
+  <voice>(Escutem!)</voice>
+  <narration>Todos ficam em silêncio e ouvem o barulho de conversas abafadas do outro lado da construção.</narration>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <unset>ability</unset>
+  <voice>...?</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>(Tem alguém atrás do moinho!)</voice>
+  <narration>Você respira fundo e aperta os punhos, seus sentidos identificando imediatamente o perigo. Os sons e cheiros são inegáveis.</narration>
+  <narration>Há inimigos perigosos ali. E possivelmente em número maior do que vocês três podem dar conta.</narration>
+  <protagonist />
+  <unset>battle</unset>
+  <choice>
+    <a>Aproveitar o elemento surpresa e atacar!</a>
+    <b>Aproximar-se devagar para observar melhor.</b>
+    <c>Recuar e tentar encontrar os outros.</c>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <music>desert-squad</music>
+
+    <narration>Você sai correndo pela pequena trilha que contorna o moinho.</narration>
+    <person>lura</person>
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <person>ronam</person>
+    <emotion>angry</emotion>
+    <voice>(Vamos!)</voice>
+    <narration>Ronam e Lura a seguem apenas para estacarem, estarrecidos, ao verem você segurando uma menina pelo pescoço, as pequenas pernas balançando no ar.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+rage</reward>
+    <voice>...</voice>
+    <narration>Ao redor, há meia dúzia de pessoas, que parecem uma família de refugiados, vestidos em trajes sujos e rasgados.</narration>
+    <narration>Todos encaram os recém-chegados com perplexidade. Parecem assustados e indefesos.</narration>
+    <person>lura</person>
+    <emotion>surprised</emotion>
+    <voice>Sulana, o quê...</voice>
+    <narration>Ela se interrompe quando vê você apertar com toda a força.</narration>
+    <narration>O terrível som de ossos se quebrando reverbera pelo local, sobressaltando seus amigos.</narration>
+    <person>lura</person>
+    <emotion>surprised</emotion>
+    <voice>Ah, meu pai celestial!</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <narration>No entanto, eles se surpreendem ainda mais com o que acontece a seguir.</narration>
+    <narration>A menina se desintegra no ar. Tudo o que resta dela é um pó que escorre pelas suas mãos e forma uma pilha esbranquiçada no chão.</narration>
+    <person>sulana</person>
+    <reward>+battle</reward>
+    <voice>...</voice>
+
+    <music>last-duel</music>
+
+    <narration>Os refugiados então reagem, avançando em sua direção enquanto suas peles se tornam cada vez mais escuras e suas mãos se transformam em apêndices que lembram ferrões, pontudos e afiados.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <voice>Graaaurrr!!</voice>
+  </do>
+
+  <do when="b">
+    <narration>Sem dizer nada, você se aproxima da parede da velha construção e começa a caminhar com cuidado na direção das vozes.</narration>
+    <person>lura</person>
+    <voice>...</voice>
+    <person>ronam</person>
+    <voice>...</voice>
+    <narration>Lura e Ronam se entreolham, assentem um para o outro e começam a seguí-la, em silêncio.</narration>
+    <narration>Logo se torna claro que as pessoas que estão ali falam uma língua estranha, entremeada por resmungos e... rosnados?</narration>
+    <narration>Chegando a um canto da construção, você arrisca um olhar e vê o que parece ser uma família de trabalhadores... ou de mendigos a julgar pela sujeira das roupas e pelo característico odor de falta de banho prolongada.</narration>
+    <narration>Mas existem outros odores, alguns nem um pouco familiares, mas um em especial que você odeia.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+fight</reward>
+    <thought>Sangue.</thought>
+    <narration>Você respira fundo e permite que a fúria a envolva. O familiar calor da febre da batalha começa a tomar conta de seu corpo.</narration>
+
+    <music>desert-squad</music>
+
+    <narration>Subitamente, uma sensação estranha lhe chama a atenção.</narration>
+    <narration>É como se o próprio espaço a seu redor subitamente começasse a se ondular, como a superfície de um lago ao ser atingida por uma pedra.</narration>
+    <narration>Você se vira para sua direita e vê um brilho surgindo no ar há uns cinco metros de distância.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <person>lura</person>
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <narration>Antes que vocês possam fazer qualquer coisa, o brilho começa a crescer, abrindo uma espécie de passagem em pleno ar.</narration>
+    <narration>Um tipo de porta flutuante que dava acesso ao que parecia ser um outro lugar, onde uma névoa amarelada parecia tomar conta de tudo.</narration>
+    <narration>E havia uma figura saindo do meio da névoa. Algo perigoso, hostil.</narration>
+
+    <music>last-duel</music>
+
+    <person>monster1</person>
+    <voice>...</voice>
+    <emotion>angry</emotion>
+    <voice>Grrrrrraaaaaaarrrrrrr!!</voice>
+    <narration>Assim que vê você, a criatura solta um rugido e sai do portal, correndo na sua direção brandindo no ar os ferrões afiados que se projetam de seu corpo no lugar onde deveriam estar seus braços.</narration>
+    <narration>Como que atendendo ao chamado da primeira, outras criaturas surgem do portal, e o barulho de passos à sua esquerda lhe diz que outros monstros vêm vindo da direção onde estavam os "mendigos".</narration>
+  </do>
+
+  <do when="c">
+    <narration>Você se vira para os outros.</narration>
+    <protagonist />
+    <reward>+hope</reward>
+    <voice>(São muitos.)</voice>
+    <person>lura</person>
+    <voice>(Isso pode ser perigoso.)</voice>
+    <person>ronam</person>
+    <voice>(Vamos voltar até os outros.)</voice>
+    <narration>Relutante, você concorda e começa a caminhar atrás dos dois, na direção de onde vocês vieram.</narration>
+  </do>
+
+  <do when="b,c">
+    <narration>Subitamente, uma sensação estranha lhe chama a atenção.</narration>
+    <narration>É como se o próprio espaço a seu redor subitamente começasse a se ondular, como a superfície de um lago ao ser atingida por uma pedra.</narration>
+    <narration>Você se vira para sua direita e vê um brilho surgindo no ar há uns cinco metros de distância.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <person>lura</person>
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>...!</voice>
+    <narration>Antes que vocês possam fazer qualquer coisa, o brilho começa a crescer, abrindo uma espécie de passagem em pleno ar.</narration>
+    <narration>Um tipo de porta flutuante que dava acesso ao que parecia ser um outro lugar, onde uma névoa amarelada parecia tomar conta de tudo.</narration>
+    <narration>E havia uma figura saindo do meio da névoa. Algo perigoso, hostil.</narration>
+
+    <music>last-duel</music>
+
+    <person>monster1</person>
+    <voice>...</voice>
+    <emotion>angry</emotion>
+    <voice>Grrrrrraaaaaaarrrrrrr!!</voice>
+    <narration>Assim que vê você, a criatura solta um rugido e sai do portal, correndo na sua direção brandindo no ar os ferrões afiados que se projetam de seu corpo no lugar onde deveriam estar seus braços.</narration>
+    <narration when="b">Como que atendendo ao chamado da primeira, outras criaturas surgem do portal, e o barulho de passos à sua esquerda lhe diz que outros monstros vêm vindo da direção onde estavam os "mendigos".</narration>
+    <narration when="c">Como que atendendo ao chamado da primeira, outras criaturas surgem do portal, e o barulho de passos à sua esquerda lhe diz que outros monstros vêm vindo de trás do moinho.</narration>
+  </do>
+
+  <person>ronam</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Por puro reflexo, Ronam imediatamente junta as mãos e se concentra, tentando ativar sua habilidade especial.</narration>
+  <narration>Você sente a febre da batalha tomar conta de seu corpo.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>O primeiro monstro tenta atingir você com um golpe de ferrão!</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <choice time="3" randomorder="1" timeout="b">
+    <a>Esquivar</a>
+    <b>Hesitar</b>
+    <b>Escorregar</b>
+  </choice>
+  <thought>...</thought>
+
+  <do when="a">
+    <narration>Usando a agilidade concedida pela febre, você rola pelo chão, esquivando-se por pouco do golpe.</narration>
+    <narration>Em um movimento contínuo, você se levanta e gira no ar, atingindo o monstro no flanco com um forte chute que o lança para longe.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Kieurrrr!!</voice>
+    <protagonist />
+    <reward>+battle</reward>
+    <voice>...</voice>
+  </do>
+
+  <do when="b">
+    <narration>Você não consegue reagir a tempo de evitar o golpe, que a atinge de lado, logo abaixo das costelas.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <bump />
+    <voice>Ufff!!</voice>
+    <narration>Seu escudo corporal impede que a lâmina afiada penetre em sua pele, mas não consegue absorver todo o impacto.</narration>
+    <narration>Uma onda de dor a envolve, fazendo-a apertar os dentes.</narration>
+    <person>lura</person>
+    <emotion>angry</emotion>
+    <voice>Elatis... coronea!</voice>
+    <set>hability</set>
+    <narration>As palavras da professora, juntamente com seus gestos de mão, geram uma força repulsiva que lança o inimigo para longe.</narration>
+  </do>
+
+  <narration>O segundo monstro aproveita que você ainda está se recuperando para atacar.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <choice time="3" randomorder="1" timeout="b">
+    <a>Proteger-me do golpe</a>
+    <b>Congelar no lugar</b>
+    <b>Demorar para reagir</b>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <narration>Você consegue segurar o ferrão no ar, espalmando a afiada lâmina de ambos os lados.</narration>
+    <narration>Forçando o "braço" do monstro para cima, você faz com que ele perca momentaneamente o equilíbrio.</narration>
+    <narration>Você então respira fundo e retesa o corpo, preparando um movimento de arrancada.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+battle</reward>
+    <voice>...</voice>
+    <narration>A fúria confere uma força sobre-humana a seus músculos e você se lança contra a criatura, atingindo-a no peito com o ombro com violência.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Kieurrrr!!</voice>
+    <narration>O monstro não parece sofrer danos, mas é arremessado para trás, derrubando também os outros dois que vinham atrás dele.</narration>
+  </do>
+
+  <do when="b">
+    <narration>O ataque vem rápido demais e você não tem tempo de se proteger.</narration>
+    <narration>A lâmina a atinge no ombro. Seu escudo corporal absorve boa parte do impacto, mas não o suficiente para impedir que você seja arremessada para o lado.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <bump />
+    <voice>Argh!</voice>
+    <narration>Enquanto você cai de cara no chão, ouve a professora proferindo algumas palavras estranhas.</narration>
+    <person>lura</person>
+    <emotion>angry</emotion>
+    <voice>Largera demeris calenda!</voice>
+    <set>hability</set>
+    <narration>Você se levanta e percebe que Lura lançou algum encantamento no chão, fazendo com que os monstros afundassem ligeiramente, perdendo momentaneamente o movimento das pernas.</narration>
+  </do>
+
+  <narration>Nesse momento, seus sentidos captam uma mudança sutil na atmosfera, o que a faz concluir que Ronan concluiu o processo de quebra de fase.</narration>
+  <narration>A pele dos monstros subitamente muda de coloração, tornando-se mais acinzentada e parecendo ficar mais fina.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <choice time="3" randomorder="1" timeout="b">
+    <a>Atacar com tudo</a>
+    <b>Hesitar</b>
+    <b>Hesitar</b>
+    <b>Demorar demais</b>
+  </choice>
+  <thought>...</thought>
+
+  <do when="a">
+    <narration>Você aproveita que a quebra de fase de Ronam desativou as proteções místicas das criaturas e corre na direção delas.</narration>
+    <narration>Seu punho atravessa o ventre de um monstro em sua primeira arrancada.</narration>
+    <person>monster1</person>
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Gaaa...</voice>
+    <narration>Enquanto ele cai, começando a se desintegrar, você gira o corpo e atinge o segundo na cabeça, com força suficiente para os ossos do pescoço não resistirem ao impacto e se partirem com um estalo.</narration>
+    <person>monster1</person>
+    <bump />
+    <voice>...</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+battle</reward>
+    <voice>...</voice>
+    <narration>Outros dois monstros se adiantam, mas você se esquiva de seus ataques e praticamente repete os movimentos anteriores, eliminando-os da mesma forma como fez com os primeiros.</narration>
+    <narration>As demais criaturas observam a uma certa distância, parecendo não ter certeza se devem entrar na batalha.</narration>
+    <narration when="lura_ability">Neste momento, Lura usa outra de suas habilidades.</narration>
+    <narration when="!lura_ability">Neste momento, Lura uma de suas habilidades.</narration>
+  </do>
+
+  <do when="b">
+    <narration>Você hesita e dá aos monstros a chance de se recuperarem.</narration>
+    <narration when="lura_ability">Eles estão prestes a voltar ao ataque quando Lura usa outra de suas habilidades.</narration>
+    <narration when="!lura_ability">Eles estão prestes a voltar ao ataque quando Lura usa uma de suas habilidades.</narration>
+  </do>
+
+  <person>lura</person>
+  <emotion>angry</emotion>
+  <voice>Vostoaki nebareos!</voice>
+  <narration>Uma espécie de lança energética se materializa no ar acima dela e voa à toda velocidade para a frente, transpassando o monstro mais próximo.</narration>
+  <person>monster1</person>
+  <bump />
+  <voice>Rourrr!</voice>
+
+  <trophy when="sulana_battle[4]">demolisher</trophy>
+  <trophy when="!sulana_battle">demolished</trophy>
+
+  <music>crime-fighter</music>
+
+  <narration when="!a">O monstro atingido por Lura cai no chão e começa a se desintegrar.</narration>
+  <narration when="a">O monstro atingido por Lura cai no chão e começa a se desintegrar, assim como os que você neutralizou.</narration>
+  <narration>Os demais viram-se e começam a se afastar, correndo por entre os campos.</narration>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>Misericórdia! Nunca tinha visto monstros como esses antes!</voice>
+  <narration>Ainda tomada pela fúria, você olha para todos os lados, avaliando os arredores, e depois sai em disparada atrás dos fugitivos.</narration>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>Céus! Por que ela não deixa aquelas coisas para lá?</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Os outros! Petroir e Alasdio! Os monstros estão indo na direção deles!</voice>
+
+  <music>sad-story</music>
+  <background>oldfields</background>
+
+  <narration>Quando a professora e Ronam a alcançam, um bom tempo depois, você já deu cabo dos monstros.</narration>
+  <narration>Infelizmente, você tinha chegado tarde demais, pois seus amigos já tinham sofrido feios ferimentos.</narration>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>Pelo criador! Alasdio, aguente firme!</voice>
+  <person>alasdio</person>
+  <emotion>sad</emotion>
+  <voice>Fácil... falar...</voice>
+  <narration>Ela fecha os olhos e se concentra.</narration>
+  <person>lura</person>
+  <voice>Pariantes donatenai igarealia!</voice>
+  <narration>O encanto estanca o sangramento e Alasdio respira, aliviado.</narration>
+  <person>alasdio</person>
+  <emotion>sad</emotion>
+  <voice>Ah... bem melhor... valeu!</voice>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>E quanto a Petroir?</voice>
+  <narration>Após examinar o corpo do amigo por um instante, Ronam se levanta e balança a cabeça.</narration>
+  <person>ronam</person>
+  <emotion>sad</emotion>
+  <voice>Não há mais o que fazer.</voice>
+  <person>lura</person>
+  <emotion>sad</emotion>
+  <voice>Oh, não!</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Tentando dissipar os efeitos da fúria, você anda de um lado para o outro e dá alguns socos no chão.</narration>
+  <narration>O fato de ter não ter conseguido salvar um amigo tornava muito mais difícil recuperar o controle.</narration>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>Calma, Sulana! Não foi culpa sua!</voice>
+  <voice>Não tínhamos como prever...</voice>
+  <narration>Você levanta uma mão e sacode a cabeça, ainda incapaz de falar.</narration>
+  <narration>Então, você se embrenha por entre as árvores, retornando minutos depois com alguns galhos e bastante cipó.</narration>
+  <narration>Ronam lhe lança um olhar confuso.</narration>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>...?</voice>
+  <narration>Pegando um dos galhos mais resistentes e pontudos, você o finca no chão, usando o restante da sua fúria para abrir uma cova improvisada ao lado da trilha.</narration>
+  <protagonist />
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <person>lura</person>
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <person>ronam</person>
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <person>alasdio</person>
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <narration>Quando a fúria finalmente se dissipa, você para de cavar e se aproxima do corpo ensanguentado de Petroir, em silêncio.</narration>
+  <narration>Pegando-o nos braços com cuidado, você o leva até a cova improvisada, onde o deposita com cuidado.</narration>
+  <narration>Ronam se adianta e começa a ajudá-la a cobri-lo.</narration>
+  <protagonist />
+  <voice>Ele lutou bem.</voice>
+  <narration>Você lança um olhar para Alasdio, ainda sob os cuidados de Lura.</narration>
+  <protagonist />
+  <voice>Os dois lutaram.</voice>
+  <voice>Não tive dificuldade em acabar com os monstros porque já estavam bastante feridos.</voice>
+  <person>alasdio</person>
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <person>ronam</person>
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <person>lura</person>
+  <emotion>sad</emotion>
+  <voice>...</voice>
+  <protagonist />
+  <emotion>sad</emotion>
+  <thought>O que mais pode ser dito numa situação como essa?</thought>
+  <thought>Ter que lidar com a morte é algo comum para quem vive uma vida como a nossa.</thought>
+  <thought>Todos sabiam dos riscos quando decidiram invadir o território do Exército Carmim.</thought>
+  <emotion>angry</emotion>
+  <thought>Então por que estou perdendo tempo pensando nisso?</thought>
+  <thought>Nunca tive problema para enterrar amigos antes, por que isso está acontecendo agora?</thought>
+  <emotion>sad</emotion>
+  <thought>E eu nem mesmo conhecia esse cara direito.</thought>
+
+  <music>goodbye</music>
+
+  <narration>Depois de depositar algumas pedras sobre o buraco coberto, você se levanta e começa a amarrar os galhos com os cipós.</narration>
+  <person>ronam</person>
+  <voice>O que está fazendo?</voice>
+  <protagonist />
+  <voice>Temos que sair daqui.</voice>
+  <narration>Você faz um gesto de cabeça na direção de Alasdio.</narration>
+  <protagonist />
+  <voice>E duvido que ele consiga andar. Precisamos de uma maca.</voice>
+  <person>alasdio</person>
+  <emotion>surprised</emotion>
+  <voice>Vou ficar... bem. Só preciso... descansar.</voice>
+  <person>lura</person>
+  <voice>Pshhh! Feche os olhos e não tente falar.</voice>
+  <narration>Vários minutos se passam até que você termina de confeccionar uma maca improvisada.</narration>
+  <narration>Você e Ronam estão terminando de ajeitar Alasdio sobre ela quando Lura chama a atenção de vocês com um sussurro.</narration>
+
+  <music>enigma</music>
+
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>(Vem vindo alguém!)</voice>
+  <narration>Você se vira e olha para a trilha ao longe, vendo cerca de uma dúzia de cavaleiros vestidos com trajes vermelhos.</narration>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>(É o Exército Carmim!)</voice>
+  <voice>(O que faremos?)</voice>
+  <person>lura</person>
+  <emotion>surprised</emotion>
+  <voice>(Ainda não nos avistaram, as árvores devem estar bloqueando a visão deles.)</voice>
+  <protagonist />
+  <choice>
+    <a>Sugerir que se escondam entre as árvores.</a>
+    <b>Sugerir que fujam para o moinho.</b>
+    <c when="sulana_fight[5:]" req="Coragem +5">Ganhar tempo para os outros escaparem.</c>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <narration>Você olha ao redor.</narration>
+    <protagonist />
+    <voice>(Temos que sair daqui. Vamos para as árvores.)</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>(Eles verão nossos rastros!)</voice>
+    <protagonist />
+    <voice>(A professora pode dar um jeito nisso.)</voice>
+    <person>lura</person>
+    <emotion>surprised</emotion>
+    <reward>+relationship</reward>
+    <voice>(Posso tentar.)</voice>
+    <narration>Você e Ronam levantam a maca e se afastam enquanto Lura invoca uma lufada de vento para varrer os vestígios da presença de vocês na trilha.</narration>
+
+    <background>forest</background>
+
+    <narration>Vocês entram pelo bosque, movendo-se o mais rápido que podem, para tentar contornar os soldados e assim retornar à muralha.</narration>
+    <narration>Cerca de 15 minutos depois vocês chegam ao limite das árvores. O grande muro pode ser avistado à distância.</narration>
+    <narration>Você baixa a maca e caminha com cuidado até a trilha que haviam tomado antes.</narration>
+    <protagonist />
+    <voice>Os soldados estão voltando para cá.</voice>
+    <person>lura</person>
+    <emotion>surprised</emotion>
+    <voice>Oh não!</voice>
+    <protagonist />
+    <voice>Peguem a maca e saiam daqui.</voice>
+  </do>
+
+  <do when="b">
+    <narration>Você olha ao redor.</narration>
+    <protagonist />
+    <voice>(Vamos sair daqui.)</voice>
+    <person>lura</person>
+    <emotion>surprised</emotion>
+    <voice>(Mas para onde podemos ir?)</voice>
+    <protagonist />
+    <voice>(Para o moinho. Vai ser mais fácil chegar até a muralha de lá do que se dermos a volta para contornar os soldados.)</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <reward>+relationship</reward>
+    <voice>(Tem razão!)</voice>
+    <narration>Vocês pegam a maca e começam a caminhar, apressados, na direção do moinho.</narration>
+
+    <background>forest</background>
+
+    <narration>Como a trilha principal não oferecia muita cobertura, vocês optam por um outro caminho próximo às àrvores, que segue na mesma direção.</narration>
+    <narration>Não leva muito tempo para perceberem que os soldados também abandonam a trilha principal para vir na direção de vocês.</narration>
+    <protagonist />
+    <voice>Vocês dois, peguem a maca e continuem.</voice>
+  </do>
+
+  <do when="a,b">
+    <person>lura</person>
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>O que vai fazer?</voice>
+    <protagonist />
+    <voice>Uma distração.</voice>
+    <emotion>angry</emotion>
+    <voice>Vão! Agora!</voice>
+  </do>
+
+  <do when="c">
+    <narration>Você aponta para Alasdio, que está adormecido sobre a maca.</narration>
+    <protagonist />
+    <voice>(Peguem ele e saiam daqui.)</voice>
+    <person>ronam</person>
+    <emotion>surprised</emotion>
+    <voice>(Não podemos deixar você sozinha.)</voice>
+    <trophy>brave</trophy>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>(Saiam agora e vocês três têm uma chance.)</voice>
+    <voice>(Se demorarem, nenhum de nós volta para casa.)</voice>
+    <narration>Sem esperar pela resposta, você se adianta pela trilha, saindo de trás das árvores e seguindo na direção dos soldados.</narration>
+    <protagonist />
+    <thought>Já lutei em desvantagem numérica maior antes e continuo viva.</thought>
+    <thought>Se estiver sozinha, tenho boas chances.</thought>
+    <thought>...</thought>
+    <thought>É melhor mesmo eu ficar por conta própria.</thought>
+    <emotion>angry</emotion>
+    <reward>+rage</reward>
+    <thought>Se eu tivesse vindo sozinha hoje, ninguém teria morrido.</thought>
+  </do>
+
+  <background>oldroad</background>
+
+  <narration>Os soldados esporeiam seus cavalos ao vê-la, partindo a galope em sua direção.</narration>
+  <narration>Então você reconhece a figura que lidera os cavaleiros e percebe que pode ter cometido um erro.</narration>
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Alto! Parada aí!</voice>
+  <narration>Você ignora a ordem e continua avançando.</narration>
+  <narration>A mulher para sua montaria a alguns metros de distância de você enquanto os demais cavaleiros formam um círculo ao seu redor.</narration>
+  <narration>Olhando para os lados e vendo-se cercada, você para e respira fundo, antes de voltar a encarar a líder daquele grupo.</narration>
+  <person>falcione</person>
+  <emotion>surprised</emotion>
+  <voice>Ora, vejam, se não é Sulana Lautine.</voice>
+  <emotion>angry</emotion>
+  <voice>Além de invadir o território Carmim, ainda massacra dezenas de inocentes.</voice>
+  <voice>Pelo visto, já está saindo de controle, assim como seus pais.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Você me conhece?</voice>
+  <emotion>angry</emotion>
+  <voice>O que sabe sobre meus pais?</voice>
+  <narration>A mulher apeia do cavalo e desembainha uma espada.</narration>
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Eu sei muitas coisas. Como eles morreram, por exemplo.</voice>
+  <narration>Você olha para os soldados, que a encaram de volta de forma ameaçadora.</narration>
+  <person>soldado7</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <person>soldado8</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <protagonist />
+  <thought>Tenho que ganhar tempo.</thought>
+  <narration>Você leva as mãos à cintura.</narration>
+  <protagonist />
+  <voice>Todos sabem como meu clã morreu.</voice>
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Os que espalharam essa história não estavam lá, como eu.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Sei que seu povo assassinou centenas, talvez milhares de pessoas à sangue frio.</voice>
+  <voice>Sem nenhum motivo ou provocação.</voice>
+  <voice>Eu entendo que queira seguir os passos deles, já que tem o mesmo sangue amaldiçoado nas veias.</voice>
+  <voice>Mas por que vir matar pessoas aqui? Para que se dar ao trabalho de se infiltrar nas muralhas?</voice>
+  <voice>Quer se juntar a seus pais na morte?</voice>
+  <protagonist />
+  <emotion>angry</emotion>
+  <voice>Acredita mesmo que eu matei alguém? Olhe para minhas roupas. Está vendo algum sangue aqui?</voice>
+  <narration>Ela olha para você de cima a baixo.</narration>
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <voice>Vai inventar alguma história dizendo que foram monstros que fizeram aquilo e que você foi atrás deles para fazer justiça?</voice>
+  <narration>Você inclina a cabeça para o lado, intrigada.</narration>
+  <protagonist />
+  <voice>Por que essa raiva toda? O que eu fiz para você?</voice>
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Você matou muitos dos meus soldados.</voice>
+
+  <do when="sulana_pious">
+    <narration>Você vira a cabeça e olha para dois dos soldados, dois quais, por alguma razão, você se recorda muito bem.</narration>
+    <person>soldado2</person>
+    <voice>...</voice>
+    <person>soldado3</person>
+    <voice>...</voice>
+    <narration>Você tenta se recordar de por que poupou a vida daqueles dois na fortaleza de Mercília, mas não consegue.</narration>
+    <narration>Virando-se para trás, você vê outras duas figuras igualmente familiares.</narration>
+  </do>
+
+  <do when="!sulana_pious">
+    <narration>Você dá uma volta ao redor de si mesma, encarando os cavaleiros.</narration>
+    <narration>Entre eles há duas faces familiares.</narration>
+  </do>
+
+  <person>soldado4</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <person>soldado5</person>
+  <emotion>angry</emotion>
+  <voice>...</voice>
+  <narration>Você volta a encarar a mulher.</narration>
+  <protagonist />
+  <voice>É mesmo?</voice>
+  <voice>Acontece que seus soldados atacaram nossas cidades e mataram muitos dos meus amigos.</voice>
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Sim, e agora eu vou matar você.</voice>
+
+  <music>last-duel</music>
+
+  <narration>A mulher faz um sinal para uma cavaleira, que imediatamente bate com um pedaço de metal em um pequeno sino ornamentado que carregava em suas mãos.</narration>
+  <narration>Nenhum som sai do objeto, mas você sente seu corpo reagir como se tivesse ouvido um enorme estrondo.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <bump />
+  <voice>Argh!</voice>
+  <narration>De repente, você está desorientada, sem escutar direito e tendo dificuldade para manter o equilíbrio.</narration>
+  <person>falcione</person>
+  <emotion>angry</emotion>
+  <voice>Morra!</voice>
+  <narration>A mulher corre na sua direção, preparando-se para aplicar um golpe mortal.</narration>
+</storyboard>

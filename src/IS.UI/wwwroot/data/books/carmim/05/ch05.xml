@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<chapter>
+  <scene id="1" file="sc01.xml" name="Murando a província" />
+  <scene id="2" file="sc02.xml" name="Apuros dentro das muralhas" />
+  <scene id="3" file="sc03.xml" name="Falcione incapacitada" />
+  <scene id="4" file="sc04.xml" name="De volta para casa" />
+</chapter>

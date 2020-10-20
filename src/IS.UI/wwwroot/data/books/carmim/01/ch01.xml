@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<chapter>
+  <scene id="1" file="sc01.xml" name="Fortaleza" />
+  <scene id="2" file="sc02.xml" name="Mercília" />
+  <scene id="3" file="sc03.xml" name="Cabana" />
+  <scene id="4" file="sc04.xml" name="Túneis" />
+  <scene id="5" file="sc05.xml" name="Vale" />
+  <scene id="6" file="sc06.xml" name="Palácio" />
+</chapter>

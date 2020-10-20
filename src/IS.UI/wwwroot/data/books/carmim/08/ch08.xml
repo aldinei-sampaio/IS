@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<chapter>
+  <scene id="1" file="sc01.xml" name="A Escultura" />
+  <scene id="2" file="sc02.xml" name="Arranca-Rabo" />
+  <scene id="3" file="sc03.xml" name="Derione e Elinora" />
+  <scene id="4" file="sc04.xml" name="Falcione e Giarle" />
+  <scene id="5" file="sc05.xml" name="Despertar de Sulana" />
+  <scene id="6" file="sc06.xml" name="Despertar de Belísar" />
+</chapter>

@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>belisar</viewpoint>
+  <music>goodbye</music>
+  <background>belisar</background>
+  <tutorial>Você agora está controlando Marcelius Belísar</tutorial>
+
+  <background>palace_bedroom</background>
+
+  <narration>Você entra no quarto devagar, tentando não fazer barulho.</narration>
+  <narration>Infelizmente, não é muito bem-sucedido, pois não consegue conter um gemido quando uma pontada de dor corta seu peito.</narration>
+  <protagonist />
+  <emotion>sad</emotion>
+  <voice>Ugh!</voice>
+  <narration>A mulher que dormia placidamente na cama se senta abruptamente e leva a mão ao peito.</narration>
+  <person>zelmira</person>
+  <emotion>surprised</emotion>
+  <voice>...!</voice>
+  <protagonist />
+  <voice>Calma, sou eu.</voice>
+  <narration>Ao ouvir sua voz, ela imediatamente relaxa.</narration>
+  <person>zelmira</person>
+  <emotion>surprised</emotion>
+  <voice>Oh, que susto você me deu.</voice>
+  <narration>Você se senta na cama, ao lado dela, para tentar remover as botas.</narration>
+  <protagonist />
+  <choice>
+    <a>Me desculpe.</a>
+    <b>Quem você imaginou que pudesse ser?</b>
+  </choice>
+  <voice>...</voice>
+
+  <do when="a">
+    <person>zelmira</person>
+    <reward>relationship+1</reward>
+    <emotion>happy</emotion>
+    <voice>Não há o que desculpar. Esse é o seu quarto e esta é a sua cama.</voice>
+    <protagonist />
+    <voice>Gostaria de ter voltado antes, mas fomos surpreendidos por um vasto número de invasores.</voice>
+    <person>zelmira</person>
+    <emotion>surprised</emotion>
+    <voice>Conseguiram salvar a cidade?</voice>
+    <protagonist />
+    <voice>Sim, Mercília está segura.</voice>
+    <emotion>sad</emotion>
+    <voice>Por enquanto, pelo menos.</voice>
+  </do>
+
+  <do when="b">
+    <person>zelmira</person>
+    <emotion>sad</emotion>
+    <voice>Eu estava tendo um daqueles sonhos...</voice>
+    <voice>Sabe... daqueles onde você sai para cuidar de um assunto e... não volta mais.</voice>
+    <narration>Você solta um suspiro frustrado.</narration>
+    <protagonist />
+    <voice>Zelmira...</voice>
+    <person>zelmira</person>
+    <emotion>sad</emotion>
+    <voice>Eu sei que você acha exagero... mas não consigo evitar.</voice>
+    <protagonist />
+    <voice>...</voice>
+    <voice>Eu sei.</voice>
+  </do>
+
+  <narration>Ela se levanta e coloca-se à sua frente.</narration>
+  <narration>A luz da lua, entrando pela janela, evidencia a silhueta do corpo dela, envolto pela camisola semitransparente.</narration>
+  <narration>Zelmira era uma mulher deslumbrante e possuía um corpo curvilíneo e muito desejável, mesmo estando próxima dos 40 anos.</narration>
+  <narration>Aquilo eram frutos muito bem-sucedidos de todo o esforço que ela fazia para parecer feminina e, segundo ela própria, “digna” de você.</narration>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Deixe-me ajudar.</voice>
+  <narration>Aquilo era outra característica dela: queria sempre ajudar, ser útil, não importava a situação, sempre com entusiasmo.</narration>
+  <narration>Nem mesmo você, sendo vários anos mais jovem, possui tanta energia quanto ela.</narration>
+  <protagonist />
+  <voice>Não é necessário, pode voltar a dormir… Ugh!</voice>
+  <narration>Você é obrigado a interromper o que dizia, quando uma nova pontada, dessa vez no ventre, o faz prender a respiração.</narration>
+  <narration>Aquilo era mais um sinal inequívoco de que você havia se excedido.</narration>
+  <narration>Zelmira leva a mão aos lábios.</narration>
+  <person>zelmira</person>
+  <emotion>surprised</emotion>
+  <voice>Você está ferido!</voice>
+  <protagonist />
+  <emotion>sad</emotion>
+  <voice>Não, não estou. É apenas cansaço, não se preocupe.</voice>
+  <person>zelmira</person>
+  <voice>Deite-se.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Não é necessário, pode voltar a dormir.</voice>
+  <person>zelmira</person>
+  <voice>Você precisará de todo o sono que puder ter, se quiser continuar com essa cruzada.</voice>
+  <voice>Deite-se e relaxe, me deixe cuidar de você.</voice>
+  <voice>É bem mais rápido eu tirar essas coisas do que você quando está sentindo dor, sabe bem disso.</voice>
+  <narration>Você pensa em todas as vidas que tirou naquele dia e imagina que sentir um pouco de dor era o mínimo que se podia esperar.</narration>
+  <narration>Mas, ao olhar mais uma vez para aqueles olhos preocupados, você decide aceitar a oferta.</narration>
+  <narration>Com todo o cuidado de uma esposa zelosa e preocupada, ela o ajuda a se acomodar sobre os lençóis.</narration>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Pronto, agora, relaxe.</voice>
+  <narration>Com precisão adquirida com a prática, ela remove, devagar, os acessórios do seu traje, antes de despi-lo completamente.</narration>
+  <narration>Em seguida, ela vai até o reservado, de onde volta com uma bacia com um pouco d’água e um pano que usa para começar a banhar sua pele quase febril.</narration>
+  <narration>Você solta um suspiro, sentindo seus músculos relaxarem.</narration>
+  <protagonist />
+  <voice>Não preciso de tudo isso.</voice>
+  <person>zelmira</person>
+  <voice>Shhh! Apenas feche os olhos, está bem?</voice>
+  <voice>Me deixe cuidar de você.</voice>
+  <narration>Você suspira novamente, resignado, sentindo o suave toque dela, que logo se transforma em uma suave e relaxante carícia, percorrendo toda a extensão do seu corpo.</narration>
+  <narration>Depois de longos minutos, ela lhe dirige um sorriso.</narration>
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Você já está me parecendo bem melhor.</voice>
+  <protagonist />
+  <voice>Você sabe como cuidar de mim.</voice>
+  <person>zelmira</person>
+  <voice>Isso é bobagem.</voice>
+  <narration>Ela aponta para o cinturão metálico que estava pendurado em uma cadeira.</narration>
+  <person>zelmira</person>
+  <voice>O que traz alívio a você é se livrar daquelas coisas.</voice>
+  <protagonist />
+  <voice>Eu preciso usar esses artefatos, Zelmira, você sabe disso.</voice>
+
+  <music>sad-story</music>
+
+  <person>zelmira</person>
+  <emotion>sad</emotion>
+  <voice>Eles o estão matando, Marcelius.</voice>
+  <protagonist />
+  <emotion>sad</emotion>
+  <voice>Eles são a única coisa que pode proteger a você e a todos os outros de... mim.</voice>
+  <person>zelmira</person>
+  <voice>Você não precisa de nada disso. Basta fugir comigo para algum lugar bem longe daqui.</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>Sabe que não posso fazer isso. Nem mesmo por você.</voice>
+  <emotion>angry</emotion>
+  <voice>Irei dominar este país, e se necessário o continente inteiro.</voice>
+  <emotion>sad</emotion>
+  <voice>E preciso dessas coisas para poder manter você em segurança, se não de meus inimigos, pelo menos de mim.</voice>
+  <person>zelmira</person>
+  <voice>Você se preocupa demais.</voice>
+  <narration>Ela se coloca sobre você na cama, com uma perna de cada lado, enquanto o encara com aquele sorriso terno tão característico dela.</narration>
+
+  <person>zelmira</person>
+  <emotion>happy</emotion>
+  <voice>Eu não preciso ser protegida de você, aceito qualquer coisa que quiser fazer comigo.</voice>
+  <protagonist />
+  <choice>
+    <d>Descansar, para repôr minhas energias.</d>
+    <a when="belisar_control[3:]" req="Controle +3">Aceitar as atenções dela.</a>
+    <b when="belisar_power[3:]" req="Poder +3">Contar a ela sobre os acontecimentos do dia.</b>
+    <c when="belisar_fight[3:]" req="Coragem +3">Comentar sobre meus planos para o futuro.</c>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <music>somewhere-sunny</music>
+    
+    <narration>Você levanta a mão e ela se inclina de leve, fechando os olhos e permitindo que a toque no rosto.</narration>
+    <protagonist />
+    <voice>Não sei se posso dar tudo o que você precisa.</voice>
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <reward>relationship+2</reward>
+    <voice>Bobagem.</voice>
+    <narration>Ela se reclina mais para beijá-lo nos lábios.</narration>
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <trophy>responsible</trophy>
+    <voice>Você já me deu tudo o que eu sonharia em querer nessa vida.</voice>
+    <narration>Vocês voltam a se beijar, envolvidos no calor do momento.</narration>
+    <narration>O desejo por descanso é esquecido enquanto outras necessidades se tornam mais urgentes.</narration>
+    <narration>Horas se passam até que o cansaço finalmente se torna grande demais e você finalmente cai num sono sem sonhos.</narration>
+  </do>
+
+  <do when="b">
+    <music>goodbye</music>
+    
+    <narration>Você olha para ela com um sorriso.</narration>
+    <protagonist />
+    <emotion>happy</emotion>
+    <voice>Hoje foi um dia e tanto.</voice>
+    <voice>Estamos um passo mais perto de erradicar os invasores, e também essa rebelião.</voice>
+    <narration>Zelmira olha com atenção para a expressão de seu rosto por alguns instantes.</narration>
+    <person>zelmira</person>
+    <emotion>sad</emotion>
+    <voice>...</voice>
+    <narration>Em silêncio, ela deita na cama a seu lado.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>O que foi?</voice>
+    <person>zelmira</person>
+    <emotion>sad</emotion>
+    <voice>Eu... não gosto quando você fala dessa forma.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>De que forma?</voice>
+    <person>zelmira</person>
+    <emotion>sad</emotion>
+    <voice>Como se tudo o que importasse fosse vencer.</voice>
+    <voice>Como se estivesse... inebriado pelo poder.</voice>
+    <trophy>violent</trophy>
+    <protagonist />
+    <voice>...</voice>
+    <voice>O poder é apenas uma ferramenta para conseguir meus objetivos, você sabe disso.</voice>
+    <person>zelmira</person>
+    <emotion>sad</emotion>
+    <voice>...</voice>
+    <emotion>normal</emotion>
+    <voice>Sim, claro.</voice>
+    <narration>Ela se aconchega a você e fecha os olhos.</narration>
+    <narration>Você tenta tirar os acontecimentos do dia da mente para poder relaxar.</narration>
+    <narration>Afinal, ainda há muito o que fazer e você precisará estar descansado amanhã.</narration>
+  </do>
+
+  <do when="c">
+    <music>goodbye</music>
+    
+    <narration>Você suspira e a encara nos olhos.</narration>
+    <protagonist />
+    <voice>Nossos planos estão se realizando.</voice>
+    <voice>Se continuarmos nesse ritmo, logo conseguiremos libertar nosso povo desse pesadelo.</voice>
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <reward>relationship+1</reward>
+    <voice>Estou orgulhosa de você.</voice>
+    <protagonist />
+    <voice>Você está fazendo sua parte também.</voice>
+    <narration>Ela deita na cama a seu lado e se aconchega a seu corpo.</narration>
+    <trophy>ambitious</trophy>
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <voice>Você sabe que meu único objetivo é fazer você feliz.</voice>
+    <protagonist />
+    <voice>...</voice>
+    <voice>Eu sei.</voice>
+    <voice>E prometo que vou encontrar uma forma de libertar você também.</voice>
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <voice>Eu não quero liberdade. Estou muito feliz aqui.</voice>
+    <protagonist />
+    <voice>Eu nunca poderia ser realmente feliz enquanto você estiver... desse jeito.</voice>
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <voice>Não sabe o quanto ouvir você dizer isso me faz feliz.</voice>
+    <voice>Eu amo saber o quanto se preocupa comigo, apesar de não ter necessidade.</voice>
+    <protagonist />
+    <voice>...</voice>
+    <narration>Vocês se aconchegam um ao outro e fecham os olhos, logo caindo em um sono abençoado.</narration>
+  </do>
+
+  <do when="d">    
+    <narration>Você acaricia as mãos dela.</narration>
+    <protagonist />
+    <voice>Deite-se aqui comigo.</voice>
+    <narration>Com um suspiro de satisfação, ela se deita na cama a seu lado, antes de se aconchegar a seu corpo.</narration>
+    <person>zelmira</person>
+    <emotion>happy</emotion>
+    <voice>Estou feliz que esteja bem.</voice>
+    <voice>Você está fazendo um ótimo trabalho.</voice>
+    <protagonist />
+    <voice>Você também.</voice>
+    <person>zelmira</person>
+    <voice>Resolver assuntos administrativos e resolver disputas não é, nem de longe, tão importante quanto o que você está fazendo.</voice>
+    <protagonist />
+    <voice>Para mim é, porque essa deveria ser minha função e, por causa da guerra, não posso exercê-la.</voice>
+    <voice>Além disso, é bom ter uma casa para a qual voltar.</voice>
+    <narration>Assim que as palavras escapam de sua boca, no entanto, você se arrepende.</narration>
+    <protagonist />
+    <emotion>sad</emotion>
+    <voice>...</voice>
+    <narration>Não é como se Zelmira tivesse qualquer escolha, além de cuidar de você.</narration>
+    <narration>Fechando os olhos, você tenta relaxar.</narration>
+    <narration>E deseja, desesperadamente, que algum dia consiga compensar ao menos parte de seus erros.</narration>
+    <narration>Mesmo que aquele seja um desejo impossível.</narration>
+  </do>
+
+  <background>carmim</background>
+</storyboard>

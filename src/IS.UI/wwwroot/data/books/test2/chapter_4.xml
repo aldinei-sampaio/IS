@@ -1,0 +1,510 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>falcione</viewpoint>
+  <music>never-look-back</music>
+  <background>carmim</background>
+  <observe />
+  <narration>Capítulo 7: Sacrifício (cena 4)</narration>
+
+  <do>
+    <protagonist />
+    <choice>
+      <a when="falcione_relationship[:1]" req="Falcione &lt; 2">Falcione+2</a>
+      <b when="zelmira_relationship[:3]" req="Zelmira &lt; 4">Zelmira+4</b>
+      <d>Prosseguir</d>
+    </choice>
+    <voice>...</voice>
+    <exit when="d" />
+    <do when="a">
+      <protagonist />
+      <reward>++relationship</reward>
+      <voice>...</voice>
+    </do>
+    <do when="b">
+      <person>zelmira</person>
+      <reward>relationship+4</reward>
+      <voice>...</voice>
+    </do>
+    <restart />
+  </do>
+
+  <do when="falcione_relationship[2:]">
+    <background>black</background>
+    <tutorial>Você conseguiu pontos de relacionamento com Falcione suficientes para desbloquear uma cena especial.</tutorial>
+    
+    <background>transition</background>
+    <tutorial>Você agora está controlando Gerdênia Lumera (mais conhecida como Falcione)</tutorial>
+
+    <background>palmtree</background>
+
+    <narration>Você não está nada feliz.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Odeio ser carregada de um lado para o outro, como uma inútil.</thought>
+    <narration>A tenente Emelin, que caminha ao seu lado, percebe a sua insatisfação.</narration>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Desculpe, senhora, achei que essa liteira seria mais confortável...</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>O que não gosto é de não poder caminhar com minhas próprias pernas.</voice>
+    <narration>Os dois soldados que carregam a liteira permanecem impassíveis, caminhando com cuidado pela areia.</narration>
+    <person>soldado7</person>
+    <voice>...</voice>
+    <person>soldado8</person>
+    <voice>...</voice>
+    <narration>O balançar ritmado a está deixando sonolenta, e você também odeia isso.</narration>
+    <person>emelin</person>
+    <voice>De qualquer forma, estou contente por ver que a senhora está se recurando tão rápido.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Está demorando até demais. Já se passaram dois dias!</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Hã... a senhora sabe... nos tempos antigos... bem, se curar de ferimentos como os seus levava meses, talvez até anos.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Não estamos vivendo nos tempos antigos, garota!</voice>
+    <narration>Você balança a cabeça, inconformada.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Quando assumi o nome “Falcione” anos atrás, prometi a mim mesma que nunca mais fraquejaria, que enfrentaria a vida com coragem e derrotaria a todos que ameaçassem aqueles que me são caros.</thought>
+    <thought>E mesmo enquanto todos os meus amigos e aliados foram perecendo, com o passar dos anos, sempre mantive minha determinação firme.</thought>
+    <thought>Por que estou esmorecendo agora?</thought>
+    <narration>Na verdade, você sabe a razão.</narration>
+    <narration>A verdade é que a última pessoa com quem você se importa nesse mundo está entre a vida e a morte no momento.</narration>
+    <narration>Você não quer pensar nisso, mas teme que não consiga encontrar nenhum sentido em continuar vivendo se o general se for.</narration>
+    <person>soldado7</person>
+    <voice>Chegamos, senhora.</voice>
+    <narration>Com muito cuidado, os soldados depositam a liteira no chão.</narration>
+    <narration>Você olha para o lado e vê diversas tendas, pessoas de uniforme carmim saindo e entrando delas, apressadas.</narration>
+    <narration>O comando administrativo do exército havia formado uma base temporária no local, e ela parecia estar funcionando com força total.</narration>
+    <narration>Emelin lhe estende a mão e você, de má vontade, aceita a ajuda para se levantar. Então se vira para os dois soldados.</narration>
+    <protagonist />
+    <voice>Estão dispensados.</voice>
+    <person>soldado7</person>
+    <voice>Sim, senhora.</voice>
+    <narration>Você aguarda até que os dois se afastem antes de olhar para a tenente.</narration>
+    <protagonist />
+    <voice>Todos parecem ocupados, por aqui.</voice>
+    <person>emelin</person>
+    <voice>Sim, senhora, mobilizamos todos que conseguimos encontrar, e mesmo assim, não temos contingente suficiente para atender a todos os assuntos que precisam de atenção.</voice>
+    <voice>Criamos uma comissão de priorização e estamos resolvendo os problemas considerados mais urgentes primeiro, mas todos sabem que o tempo é crucial.</voice>
+    <narration>Você olha mais uma vez para a movimentação frenética dos oficiais.</narration>
+    <narration>Apesar dos movimentos apressados, era óbvio que existia uma ordem ali. Todos pareciam saber exatamente o que estavam fazendo.</narration>
+    <narration>Não era exatamente o que você esperava encontrar.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <thought>Mas que droga!</thought>
+    <thought>Organizar tudo isso deveria ser minha função!</thought>
+    <narration>Você solta um suspiro.</narration>
+
+    <music>goodbye</music>
+
+    <protagonist />
+    <voice>E quanto às nossas proteções místicas?</voice>
+    <person>emelin</person>
+    <voice>As torres foram restabelecidas pouco depois que a batalha acabou.</voice>
+    <voice>O senhor Norlando disse que as estruturas foram comprometidas dias antes. Elas foram perdendo energia devagar.</voice>
+    <voice>E os receptores que nos permitiriam detectar o problema também foram adulterados.</voice>
+    <protagonist />
+    <voice>Isso explica como os rebeldes conseguiram invadir nosso território.</voice>
+    <person>emelin</person>
+    <voice>Os sábios acham que a pessoa que sabotou aquele artefato foi a mesma que comprometeu nossas torres.</voice>
+    <voice>Estou aguardando um relatório com as conclusões da investigação que está em andamento.</voice>
+    <narration>Você assente.</narration>
+    <protagonist />
+    <voice>Depois que eu fui atingida ontem... o que houve?</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Eu... eu segui suas instruções e...</voice>
+    <narration>Ela se interrompe, corando violentamente.</narration>
+    <protagonist />
+    <voice>Você deu a poção à rebelde.</voice>
+    <person>emelin</person>
+    <voice>Sim. Ela... bem, ela pareceu se recuperar dos ferimentos e... ficou ainda mais estranha e violenta.</voice>
+    <voice>Ela... bem, não teve muita dificuldade para derrotar aquele amarelo.</voice>
+    <voice>Em seguida, atacou o demônio. Parecia imune a qualquer tipo de ataque dele.</voice>
+    <voice>Ele foi... neutralizado... em questão de instantes.</voice>
+    <narration>Você solta um suspiro.</narration>
+    <protagonist />
+    <voice>Essa mulher era muito mais forte do que qualquer um da raça dela.</voice>
+    <voice>Nem dez deles juntos à porta da morte conseguiriam fazer tanto estrago, com ou sem poção.</voice>
+    <voice>O que ela fez depois?</voice>
+    <person>emelin</person>
+    <voice>Ela andou ao redor da praia por algum tempo, procurando alguma coisa.</voice>
+    <voice>Ignorou a todos, se afastando de qualquer um que tentasse se aproximar.</voice>
+    <voice>Então, simplesmente desmaiou.</voice>
+    <voice>Antes que qualquer um de nós pudesse chegar perto, ela desapareceu.</voice>
+    <voice>A julgar pelas emanações místicas que captamos, ela estava presa a algum encanto do tipo âncora, que a puxou de volta.</voice>
+    <protagonist />
+    <voice>Alguém mandou ela para cá e depois a levou embora. Quero saber quem foi. E por quê.</voice>
+    <person>emelin</person>
+    <voice>Os sábios estão trabalhando nisso.</voice>
+    <protagonist />
+    <voice>Qual é o estado do general?</voice>
+    <person>emelin</person>
+    <voice>Está inconsciente, apresenta graves queimaduras por todo o corpo e está com o nível de cognação transcendente bastante instável, às vezes baixo, às vezes alto a ponto de exceder nossas escalas.</voice>
+    <voice>Acreditamos que isso seja causado pela ausência dos artefatos de contenção que ele usava e que, aparentemente, foram destruídos na batalha.</voice>
+    <voice>Tratamos os ferimentos mais graves, mas nem todo o tecido queimado vai poder ser regenerado.</voice>
+    <protagonist />
+    <voice>E quanto à esposa?</voice>
+
+    <do when="zelmira_relationship[4:]">
+      <person>emelin</person>
+      <voice>Sofreu ferimentos muito graves, não sabemos se vai resistir.</voice>
+      <voice>Está em coma e não reage a emanações regenerativas.</voice>
+      <voice>O corpo dela sofreu um trauma grande demais e não consegue se recuperar, mesmo com ajuda.</voice>
+    </do>
+
+    <do when="zelmira_relationship[:3]">
+      <narration>Emelin apenas balança a cabeça.</narration>
+      <person>emelin</person>
+      <emotion>sad</emotion>
+      <voice>...</voice>
+    </do>
+    
+    <protagonist />
+    <voice>E as crianças?</voice>
+    <person>emelin</person>
+    <voice>O mais velho teve um ferimento feio, mas conseguimos estabilizar.</voice>
+    <voice>Os outros dois têm apenas alguns cortes e hematomas.</voice>
+    <voice>De qualquer forma, estão todos bem. Devem estar na tenda, com o pai, neste momento.</voice>
+    <narration>Você assente.</narration>
+    <protagonist />
+    <voice>Baixas?</voice>
+    <person>emelin</person>
+    <voice>Dos quarenta oficiais que lutaram, oito estão relativamente bem e dezenove em recuperação, quatro deles em estado grave.</voice>
+    <voice>Nossos mortos estão sendo levados para suas famílias.</voice>
+    <voice>Um grupo de protetores apareceu depois da batalha e levou os mortos deles.</voice>
+    <protagonist />
+    <voice>E quanto a Norlando e os outros sábios?</voice>
+    <person>emelin</person>
+    <voice>Um dos sábios foi ferido na batalha, mas Norlando e os demais estão bem.</voice>
+    <protagonist />
+    <voice>Mantenham o general próximo da praia e providenciem novos artefatos de contenção.</voice>
+    <voice>Isso tem que ser feito o mais rápido possível, ou todos os esforços para salvá-lo terão sido em vão.</voice>
+    <person>emelin</person>
+    <voice>Os sábios estão priorizando isso neste momento, senhora.</voice>
+    <protagonist />
+    <voice>Ótimo.</voice>
+    <voice>E o que aconteceu com Elinora? Ela sobreviveu, não?</voice>
+    <person>emelin</person>
+    <voice>Os outros protetores perguntaram por ela, aparentemente, está desaparecida.</voice>
+
+    <music>the-awakening</music>
+    
+    <person>giarle</person>
+    <voice>Provavelmente voltou para o buraco de onde saiu.</voice>
+    <narration>Você se vira para o recém chegado, franzindo o cenho.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Giarle Miliens. O que está fazendo aqui?</voice>
+    <person>giarle</person>
+    <voice>Ouvi dizer que estão precisando de toda ajuda disponível.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Tenente, por que permitiu a entrada desse terrorista aqui?</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Desculpe, senhora, mas o próprio general considera ele um aliado.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>E o que me garante que não foi ele quem sabotou nossas torres?</voice>
+    <person>giarle</person>
+    <voice>Foi Elinora e os amigos dela quem comprometeram a defesa.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Isso... faz sentido. Os protetores podem mascarar sua presença. Conseguem entrar em qualquer lugar sem deixar vestígios.</voice>
+    <voice>Mas por que fariam isso?</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>E você vai acreditar em alguma coisa que esse terrorista diz?</voice>
+    <person>giarle</person>
+    <voice>Acabei de conversar com um dos alquimistas. A ruiva não foi muito cuidadosa e acabou deixando várias pistas comprometedoras.</voice>
+    <voice>Pode ir lá confirmar com o Norlando, se quiser. Ele não tem a menor dúvida de que foi ela.</voice>
+    <protagonist />
+    <voice>Pode contar com isso. Nunca vou confiar em alguém que levantou armas contra minha gente.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Espere! Aquele protetor que ajudou o general depois da batalha falou algo sobre "corrigir erros"! Será que era a isso que ele se referia?</voice>
+    <narration>Você e Giarle ignoram completamente a tenente enquanto se encaram, desafiadoramente.</narration>
+    <person>giarle</person>
+    <voice>Está se esquecendo de que foi uma de minhas aliadas quem encerrou essa batalha.</voice>
+    <protagonist />
+    <voice>E daí? Eu também não confiaria nela, se ainda estivesse viva.</voice>
+    <person>giarle</person>
+    <voice>Oh! Gosto de mulheres duronas.</voice>
+    <voice>A propósito, estou impressionado com você, tentente.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>E-eu?</voice>
+    <person>giarle</person>
+    <voice>Você assumiu o comando das coisas por aqui e vem organizando tudo de maneira admirável.</voice>
+    <voice>Ainda mais para alguém da sua idade.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>!!</voice>
+    <voice>Eu... bem, os outros tenentes estão todos em recuperação, então...</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>O que pensa que está fazendo, Miliens?</voice>
+    <person>giarle</person>
+    <emotion>surprised</emotion>
+    <voice>Eu?</voice>
+    <emotion>happy</emotion>
+    <voice>Nada demais.</voice>
+    <voice>Só o que VOCÊ deveria fazer, senhora "segundo em comando".</voice>
+    <emotion>normal</emotion>
+    <voice>Reconhecendo a competência de seus oficiais.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Você matou inúmeros de meus oficiais, não tem o direito de...</voice>
+    <person>giarle</person>
+    <emotion>angry</emotion>
+    <voice>De quê? De estar aqui? De ainda querer lutar depois de ter sido manipulado por tantos meses?</voice>
+    <voice>Você acha que eu deveria fazer o quê? Me enrolar na minha cama me lamentando por terem me usado para matar inocentes?</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Exatamente!</voice>
+    <person>giarle</person>
+    <emotion>angry</emotion>
+    <voice>Bom, então tenho más notícias para você, dona esquentadinha: não vou a lugar algum.</voice>
+    <voice>Não até acabar com os demônios que ainda restam.</voice>
+    <voice>E farei isso com ou sem a sua ajuda.</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>E por que acha que alguém iria querer sua ajuda, seu idiota arrogante?</voice>
+    <voice>Suas táticas de batalha são patéticas! Praticamente nos deu Mercília de mão beijada!</voice>
+    <narration>Os soldados que montam guarda há pouca distância dali lançam olhares preocupados em sua direção.</narration>
+    <person>soldado4</person>
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <person>soldado5</person>
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <narration>Você os ignora, ocupada demais em lançar adagas pelo olhar contra aquele maldito rebelde.</narration>
+    <person>giarle</person>
+    <emotion>angry</emotion>
+    <voice>Eu não tinha oficiais como a tenente Emelin aqui, treinadas, diligentes e capazes de abrir geoportais!</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>!!</voice>
+    <narration>O leve rubor que surge nas faces da tenente deixa você ainda mais irritada.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <choice>
+      <a>Ah, então agora a culpa é dos seus aliados?</a>
+      <b>Você tinha Sulana Lautine!</b>
+      <c>Como você é lisonjeiro, não?</c>
+    </choice>
+    <voice>...</voice>
+
+    <do when="a">
+      <narration>Você cruza os braços, tentando ignorar o desconforto causado pelo movimento súbito.</narration>
+      <protagonist />
+      <emotion>angry</emotion>
+      <voice>Não estava se gabando até agora há pouco de um deles ter encerrado a batalha de ontem?</voice>
+      <person>giarle</person>
+      <emotion>angry</emotion>
+      <voice>Estou falando de táticas, não de força bruta! Sabe o que são táticas, não sabe?</voice>
+      <voice>Deveria saber, já que o general valoriza tanto se cercar de pessoas inteligentes como Norlando e Emelin.</voice>
+      <person>emelin</person>
+      <emotion>surprised</emotion>
+      <reward>++relationship</reward>
+      <voice>...</voice>
+      <protagonist />
+      <emotion>happy</emotion>
+      <voice>E de quem você acha que foi a ideia de fazer vocês de trouxa em Mercília?</voice>
+      <person>giarle</person>
+      <emotion>happy</emotion>
+      <voice>Com os recursos que o general tem até mesmo meu cachorro teria essa ideia!</voice>
+    </do>
+
+    <do when="b">
+      <person>giarle</person>
+      <emotion>surprised</emotion>
+      <voice>E o que tem ela?</voice>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <voice>Como assim, "o que tem ela"?!</voice>
+      <emotion>angry</emotion>
+      <voice>A mulher valia por quase um exército inteiro!</voice>
+      <voice>Matou metade dos monstros que apareceram aqui ontem!</voice>
+      <voice>Derrotou um amarelo na base da pancada e sozinha, sem nenhuma ajuda!</voice>
+      <person>giarle</person>
+      <emotion>angry</emotion>
+      <voice>É... depois de você quase ter matado a ela.</voice>
+      <protagonist />
+      <emotion>angry</emotion>
+      <voice>Você não sabe valorizar aliados!</voice>
+      <voice>Ela só veio lutar comigo para ganhar tempo para os amigos dela fugirem!</voice>
+      <person>giarle</person>
+      <emotion>surprised</emotion>
+      <voice>!!</voice>
+      <reward>++relationship</reward>
+      <voice>Isso... parece mesmo algo que ela faria.</voice>
+      <emotion>normal</emotion>
+      <voice>Bom ver que agora você enxerga o valor dela. Antes tarde do que nunca.</voice>
+      <protagonist />
+      <emotion>angry</emotion>
+      <voice>O que isso quer dizer?</voice>
+      <person>giarle</person>
+      <voice>Me refiro à obscessão que você tinha em querer matá-la.</voice>
+      <emotion>happy</emotion>
+      <voice>Os soldados comentam que você era bem cabeça dura a esse respeito.</voice>
+    </do>
+
+    <do when="c">
+      <narration>Você cruza os braços, tentando ignorar o desconforto causado pelo movimento súbito.</narration>
+      <protagonist />
+      <emotion>angry</emotion>
+      <voice>Tenho uma novidade para você: conversa mole não leva a lugar nenhum!</voice>
+      <person>giarle</person>
+      <voice>Você não sabe do que está falando.</voice>
+      <emotion>angry</emotion>
+      <voice>Eu não tenho vergonha de admitir que fui derrotado por um oponente superior.</voice>
+      <voice>Em Mercília eu não estava lutando contra você ou Emelin, estava lutando contra o general.</voice>
+      <voice>Eu não tinha a menor chance.</voice>
+      <emotion>normal</emotion>
+      <voice>Perguntei para ele o que faria se tivéssemos esperado na cidade ao invés de na fortaleza.</voice>
+      <voice>Você estava junto, Emelin, lembra do que ele disse?</voice>
+      <person>emelin</person>
+      <emotion>surprised</emotion>
+      <voice>Sim... ele... ele disse que a senhora tinha mais experiência nesse tipo de situação do que qualquer um, e que por isso a tinha encarregado do cerco à cidade.</voice>
+      <voice>Ele disse que a senhora tinha definido uma estratégia principal e várias medidas de contingência.</voice>
+      <person>giarle</person>
+      <voice>Está vendo? O homem sabe valorizar seus recursos.</voice>
+      <protagonist />
+      <emotion>surprised</emotion>
+      <reward>++relationship</reward>
+      <voice>!!</voice>
+      <person>giarle</person>
+      <emotion>happy</emotion>
+      <voice>Viu só? Ficou até sem palavras.</voice>
+      <voice>A lisonja pode ser uma arma poderosa nas mãos certas.</voice>
+    </do>
+    
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Você não vale o chão onde pisa, seu maldito terrorista!</voice>
+    <person>giarle</person>
+    <emotion>angry</emotion>
+    <voice>Ah é?</voice>
+    <voice>Pelo menos eu não saio por aí atacando pessoas primeiro e fazendo perguntas depois!</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Ora, seu...!</voice>
+    <narration>Você se adianta e estapeia o rosto dele com toda a força.</narration>
+    <narration>Ele não chega a mover nem um músculo sequer, mas o efeito em você é intenso e imediato</narration>
+    <narration>Uma onda de dor percorre seu corpo todo e você precisa morder o lábio para evitar soltar um gemido.</narration>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <bump />
+    <voice>...</voice>
+    <narration>Então, o infeliz olha para você e... sorri.</narration>
+    <person>giarle</person>
+    <emotion>happy</emotion>
+    <voice>Olha só... a gatinha tem garras!</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>...</voice>
+    <narration>Você não pode responder, pois está muito ocupada se segurando para evitar segurar o braço dolorido ou soltar um gemido de dor.</narration>
+    <person>giarle</person>
+    <emotion>happy</emotion>
+    <voice>Que bom ver que não perdeu seu espírito combatente, Gardênia. Vamos precisar dele.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Gar... dênia?</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Não me chame por esse nome! Você não tem o direito de me chamar por esse nome!</voice>
+    <voice>Eu poderia matar você agora mesmo por isso!</voice>
+    <person>giarle</person>
+    <emotion>happy</emotion>
+    <voice>Ótimo. Estarei esperando.</voice>
+    <voice>Mas já vou avisando: se quiser me matar, é melhor caprichar na primeira tentativa.</voice>
+    <voice>Senão, eu vou revidar.</voice>
+    <narration>Você esquece da dor e tenta levantar o braço para atingí-lo de novo, o que faz com que fortes pontadas atinjam seu ventre.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <bump />
+    <voice>Aaaargh!</voice>
+    <person>giarle</person>
+    <voice>...</voice>
+    <emotion>happy</emotion>
+    <voice>Vejo você mais tarde, Gardênia.</voice>
+    <narration>Com isso, ele se dirige até uma das tendas e entra nela, com a maior naturalidade.</narration>
+    <trophy>threatened</trophy>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Ugh! Maldito seja!</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Senhora, talvez fosse melhor...</voice>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Vou embora daqui!</voice>
+    <narration>A tenente pisca, confusa.</narration>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Como?</voice>
+    <protagonist />
+    <voice>Quero voltar para a minha tenda.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Achei que a senhora quisesse assumir o comando...</voice>
+    <narration>Você lança um olhar para a tenente. Tão jovem, tão dedicada.</narration>
+    <narration>Não é todo dia que se encontra um oficial tão promissor.</narration>
+    <protagonist />
+    <voice>Não vejo mais necessidade.</voice>
+    <voice>Você está com tudo sob controle por aqui.</voice>
+    <voice>Serei mais útil quanto estiver, pelo menos, conseguindo andar sem ajuda.</voice>
+    <person>emelin</person>
+    <emotion>happy</emotion>
+    <voice>Isso é ótimo, senhora.</voice>
+    <voice>Tenho certeza que o general também aprovaria essa decisão.</voice>
+    <voice>Os oficiais estão sendo muito amigáveis e o senhor Norlando disse que está a disposição para qualquer coisa que eu precisar.</voice>
+    <voice>Podemos cuidar de tudo aqui até que a senhora esteja se sentindo melhor.</voice>
+    <protagonist />
+    <voice>...</voice>
+    <voice>Você está diferente.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>C-como assim?</voice>
+    <protagonist />
+    <voice>Não está mais tagarelando usando palavras que ninguém entende.</voice>
+    <narration>A moça fica vermelha.</narration>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Eu... ah...</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Ei, soldados! Tenho que voltar para minha tenda.</voice>
+    <voice>Preciso de dois voluntários para me levarem.</voice>
+    <person>soldado5</person>
+    <emotion>surprised</emotion>
+    <voice>Sim, senhora!</voice>
+    <person>soldado4</person>
+    <emotion>surprised</emotion>
+    <voice>A caminho!</voice>
+    <protagonist />
+    <voice>E, tenente?</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>Sim?</voice>
+    <protagonist />
+    <voice>Não é qualquer pessoa que teria coragem de se aproximar da rebelde para dar aquela poção a ela.</voice>
+    <voice>Ainda mais... daquela maneira.</voice>
+    <person>emelin</person>
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <protagonist />
+    <voice>Continue assim.</voice>
+    <person>emelin</person>
+    <emotion>happy</emotion>
+    <voice>Sim, senhora!</voice>
+  </do>
+    
+  <background>carmim</background>
+</storyboard>

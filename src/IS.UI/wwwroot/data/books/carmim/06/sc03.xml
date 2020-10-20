@@ -1,0 +1,509 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+  <viewpoint>sulana</viewpoint>
+  <music>free-mind</music>
+
+  <background>sulana</background>
+  <tutorial>Você agora está controlando Sulana Lautine</tutorial>
+
+  <background>shelter</background>
+
+  <person>linete</person>
+  <emotion>surprised</emotion>
+  <voice>Eu avisei para vocês que isso ia acontecer!</voice>
+  <voice>Era óbvio que essa parede iria desabar. Os sons não mentem!</voice>
+  <person>riodes</person>
+  <emotion>angry</emotion>
+  <voice>É, mas você só esqueceu de nos avisar que estava ouvindo o barulho dos cupins, senão teríamos dado um jeito neles antes de acabarem com a porcaria da parede!</voice>
+  <person>linete</person>
+  <emotion>surprised</emotion>
+  <voice>Mas eu disse que tinha algo errado!</voice>
+  <person>riodes</person>
+  <voice>Para você, sempre tem algo errado. Com tudo.</voice>
+  <protagonist />
+  <voice>...</voice>
+  <narration>Você olha ao redor, surpresa com o pequeno caos que reina por ali.</narration>
+  <narration>Metade dos moradores do abrigo anda de um lado para o outro, tentando ajudar como podia no conserto de uma parede desabada.</narration>
+  <narration>No entanto, aquele povo parecia mais interessado em discutir entre si do que em terminar o serviço.</narration>
+  <narration>Então eles percebem a sua presença.</narration>
+  <person>linete</person>
+  <emotion>happy</emotion>
+  <voice>Sulana! Você voltou! Que bom te ver!</voice>
+  <person>riodes</person>
+  <emotion>surprised</emotion>
+  <voice>Ah, já não era sem tempo!</voice>
+  <protagonist />
+  <choice>
+    <a>Ralhar com Linete.</a>
+    <b>Perguntar o que Riodes quer.</b>
+    <c>Ajudar na construção.</c>
+  </choice>
+  <thought>Eu vou...</thought>
+
+  <do when="a">
+    <narration>Você encara Linete.</narration>
+    <protagonist />
+    <voice>É por isso que você dizia que essa parede ia cair? Por que você ouvia ruídos de cupins?</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <reward>+relationship</reward>
+    <voice>Eu disse que ela ia cair e ela caiu, mesmo, não foi?</voice>
+    <voice>Riodes tomou o maior susto quando quando ouviu o barulho do telhado vindo abaixo!</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>Você podia ter dito que estava ouvindo alguma coisa!</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Eu ouço coisas o tempo todo.</voice>
+    <emotion>normal</emotion>
+    <voice>É uma herança de família, você sabe... minha bisavó fazia augúrios que nunca falhavam!</voice>
+    <person>riodes</person>
+    <emotion>angry</emotion>
+    <voice>Esqueça, Sulana.</voice>
+    <voice>Não dê mais corda para essa aí, senão ela fica enchendo nossos ouvidos o dia inteiro.</voice>
+    <emotion>normal</emotion>
+    <voice>Se quer fazer algo de útil, providencie alguma carne, a nossa está acabando.</voice>
+  </do>
+
+  <do when="b">
+    <narration>Você encara Riodes.</narration>
+    <protagonist />
+    <voice>O que foi?</voice>
+    <person>riodes</person>
+    <reward>+relationship</reward>
+    <voice>Nossa carne está acabando.</voice>
+    <protagonist />
+    <emotion>surprised</emotion>
+    <voice>O quê? Mas eu deixei carne seca na despensa suficiente para durar um mês!</voice>
+    <narration>Ele dá de ombros.</narration>
+    <person>riodes</person>
+    <voice>Os dias por aqui têm sido frios desde que você saiu.</voice>
+    <emotion>angry</emotion>
+    <voice>E esse pessoal aí está comendo muito mais do que devia.</voice>
+    <narration>Uma onda de murmúrios e protestos vêm dos outros moradores.</narration>
+  </do>
+
+  <do when="c">
+    <narration>Incapaz de ficar parada vendo algo para ser feito, você caminha, determinada, na direção de um dos moradores, e toma o martelo de suas mãos.</narration>
+    <narration>Com a experiência nascida da prática, você trabalha ao lado deles, logo transformando aquela bagunça toda em uma operação com boas chances de sucesso.</narration>
+    <narration>Quando os alicerces já estão todos de pé e os trabalhadores estão pregando as últimas tábuas no lugar e terminando de colocar a palha no novo telhado, você se afasta para avaliar o resultado.</narration>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Você é demais, Sulana!</voice>
+    <person>riodes</person>
+    <voice>Esses inúteis nunca conseguiriam consertar isso sozinhos.</voice>
+    <narration>Ao ouvir aquilo os moradores protestam, indignados. Você os ignora.</narration>
+    <protagonist />
+    <voice>...</voice>
+    <reward>+hope</reward>
+    <voice>Acho que vai aguentar.</voice>
+    <narration>Você se vira para Linete.</narration>
+    <protagonist />
+    <voice>Vai nos contar agora se ouvir mais algum barulho vindo das paredes?</voice>
+    <person>linete</person>
+    <emotion>happy</emotion>
+    <voice>Claro! Vou contar tudinho!</voice>
+    <voice>O tempo todo!</voice>
+    <voice>Outro dia, teve um piado na floresta que...</voice>
+    <person>riodes</person>
+    <emotion>angry</emotion>
+    <voice>Olha o que você fez, Sulana, agora vou ter que aguentar isso até sabe-se lá quando!</voice>
+    <emotion>normal</emotion>
+    <voice>Por que não faz algo de útil e providencia um pouco de carne para nós?</voice>
+  </do>
+
+  <narration>O pensamento de sair para caçar não lhe incomoda. Na verdade, parece uma ótima ideia.</narration>
+  <narration>Tudo o que quer no momento é ficar longe daquele maldito embrulho, bem como das emoções descontroladas que ele a faz sentir.</narration>
+  <narration>E nada melhor para tirar tudo aquilo da cabeça do que um pouco de ação.</narration>
+  <person>linete</person>
+  <emotion>surprised</emotion>
+  <voice>Sulana! Você sabe cozinhar cupins, não sabe?</voice>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <voice>O quê?!?</voice>
+  <narration>Alguns dos residentes caem na gargalhada. Riodes solta um suspiro.</narration>
+  <person>riodes</person>
+  <voice>Esqueça. Essa maluca está insistindo há horas que não precisamos de carne porque temos cupins.</voice>
+  <person>linete</person>
+  <emotion>happy</emotion>
+  <voice>Eles são tão fofinhos! Tão amarelinhos e cabeçudinhos!</voice>
+  <voice>Devem ser tão gostosos!</voice>
+  <narration>Nova onda de gargalhadas. Boquiaberta, você encara a garota.</narration>
+  <narration>Ela encara você de volta com um sorriso conspiratório.</narration>
+  <narration>Se você não soubesse de longa data que ela não bate muito bem das ideias, concluiria que está apenas se divertindo às custas de Riodes.</narration>
+  <person>riodes</person>
+  <emotion>angry</emotion>
+  <voice>Deixe de falar besteira e vá buscar meu formão, Linete. Está na primeira gaveta do armário da cozinha.</voice>
+  <person>linete</person>
+  <emotion>happy</emotion>
+  <voice>Sabiam que na época do império eles grudavam pedrinhas em um pedaço de pano e depois esfregavam nas vigas até elas ficarem lisinhas?</voice>
+  <narration>A garota pega suas muletas e sai andando devagar na direção da cozinha, continuando a descrever os benefícios daquela técnica para ninguém em particular.</narration>
+  <narration>Riodes solta um suspiro aliviado enquanto alguns dos moradores continuam rindo e fazendo comentários sobre o comportamento da outra.</narration>
+  <protagonist />
+  <voice>...</voice>
+  <voice>Verei se encontro algo para caçar.</voice>
+  <person>riodes</person>
+  <voice>...</voice>
+  <narration>Você sente o olhar dele sobre si e vira-se para encará-lo.</narration>
+  <protagonist />
+  <voice>O que foi?</voice>
+  <narration>Ele faz um gesto de cabeça na direção do seu ventre exposto, onde a cicatriz levemente avermelhada é visível.</narration>
+  <person>riodes</person>
+  <voice>Isso aí não parece muito bem.</voice>
+  <voice>Se cuide.</voice>
+  <voice>Se você bater as botas, sabe-se lá quando vamos conseguir encontrar outro cretino capaz de arranjar comida para esses inúteis.</voice>
+  <narration>Sem esperar resposta ele se vira e vai para junto dos residentes.</narration>
+
+  <music>open-sky</music>
+  <background>forest2</background>
+
+  <narration>Você se embrenha pela floresta, em busca de algum animal selvagem.</narration>
+  <narration>Não importa que bicho seja, você matará qualquer coisa que encontrar.</narration>
+  <narration>Sua vontade de extravasar a frustração é grande demais para ser contida.</narration>
+  <narration>A impaciência está chegando a seu limite quando finalmente encontra uma família de javalis fuçando a terra em meio a arbustos cerrados.</narration>
+  <person>javali</person>
+  <voice>...</voice>
+
+  <music>crime-fighter</music>
+
+  <narration>Sem pensar duas vezes, você deixa a febre da batalha dominá-la e parte para cima dos animais.</narration>
+  <person>javali</person>
+  <emotion>surprised</emotion>
+  <voice>Ahú!</voice>
+  <narration>Os javalis adultos parecem se dar conta de que não conseguiriam escapar de você e decidem atacar enquanto os filhotes fogem.</narration>
+  <protagonist />
+  <unset>hunt</unset>
+  <choice time="4" randomorder="1" timeout="b">
+    <a>Agarrar</a>
+    <b>Hesitar</b>
+    <b>Errar</b>
+  </choice>
+  <thought>Eu vou...</thought>
+
+  <do when="a">
+    <narration>Você se esquiva facilmente das investidas e agarra um deles pela orelha.</narration>
+    <person>javali</person>
+    <emotion>surprised</emotion>
+    <bump />
+    <voice>Weeeeeeeeee!</voice>
+    <narration>Usando a força sobrehumana concedida pela febre, você levanta o animal do chão com uma mão.</narration>
+    <narration>Então o envolve pelo pescoço com o outro braço e puxa-lhe a cabeça para o lado.</narration>
+    <narration>O osso do pescoço do javali não resiste e você o solta, deixando-o terminar de morrer no chão.</narration>
+    <protagonist />
+    <reward>+hunt</reward>
+    <voice>...</voice>
+  </do>
+
+  <do when="b">
+    <narration>Você se esquiva facilmente das investidas e tenta agarrar um deles pela orelha.</narration>
+    <narration>No entanto, você demora um pouco demais para completar o movimento e o animal acaba escapando.</narration>
+    <narration>Como que pressentindo que quase tinha encontrado seu destino, o javali abandona os outros dois e sai correndo por entre as árvores.</narration>
+  </do>
+
+  <narration>Os outros dois voltam a avançar contra você com as bocas abertas.</narration>
+
+  <person>javali</person>
+  <voice>Ahú! Ahú! Ahú! Ahú! Ahú!</voice>
+  <protagonist />
+  <choice time="4" timeout="b" randomorder="1">
+    <a>Acertar</a>
+    <b>Errar</b>
+    <b>Errar</b>
+    <b>Errar</b>
+  </choice>
+  <thought>Eu vou...</thought>
+
+  <do when="a">
+    <narration>O primeiro javali passa reto quando você dá um passo para o lado.</narration>
+    <narration>O segundo pula sobre você com a boca aberta tentando mordê-la.</narration>
+    <narration>Você então o agarra pelas mandíbulas abertas e o levanta do chão.</narration>
+    <person>javali</person>
+    <emotion>surprised</emotion>
+    <bump />
+    <voice>Weeeeeeeeee!</voice>
+    <narration>Sua força se mostra mais do que suficiente para vencer o poder da mordida do animal.</narration>
+    <narration>Você então gira o corpo e o arremessa contra uma árvore.</narration>
+    <person>javali</person>
+    <emotion>surprised</emotion>
+    <bump />
+    <voice>Grrrraaaaarrr!</voice>
+    <narration>Antes que ele consiga se recuperar, você avança e desfere um poderoso chute, esmagando-lhe o tórax contra o tronco.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <reward>+hunt</reward>
+    <voice>...</voice>
+  </do>
+
+  <do when="b">
+    <narration>Você se esquiva das investidas, mas não consegue contra-atacar.</narration>
+    <narration>O segundo animal lhe dá as costas e sai correndo por entre os arbustos, desaparecendo de vista.</narration>
+  </do>
+
+  <narration>Para sua surpresa, uma onda de cansaço a atinge enquanto encara o último javali.</narration>
+  <narration>Ele abre a boca e solta roncos raivosos, como se quisesse provocá-la.</narration>
+  <person>javali</person>
+  <voice>Wahuwahuahu!</voice>
+  <protagonist />
+  <choice time="4" timeout="b" randomorder="1">
+    <a>Ludibriá-lo</a>
+    <b>Afastar-me</b>
+    <b>Assustá-lo</b>
+    <b>Afastá-lo</b>
+  </choice>
+  <thought>Eu devo...</thought>
+
+  <do when="a">
+    <narration>Você leva um punho na direção do javali e ele imediatamente tenta dar o bote para morder sua mão.</narration>
+    <narration>Recolhendo o braço com agilidade, você usa a outra mão para agarrá-lo pela orelha e levantá-lo do chão.</narration>
+    <person>javali</person>
+    <emotion>surprised</emotion>
+    <bump />
+    <voice>Weeeeeeeeee!</voice>
+    <narration>Girando o corpo, você dá uma volta inteira ao redor de si mesma antes de bater a cabeça do animal com toda força contra um tronco.</narration>
+    <narration>O javali cai no chão se contorcendo em seus últimos instantes de vida.</narration>
+    <protagonist />
+    <reward>+hunt</reward>
+    <voice>...</voice>
+  </do>
+
+  <do when="b">
+    <narration>Você dá um passo para trás e solta um grito na direção dele.</narration>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Aaaaaahhhh!</voice>
+    <narration>O bicho se assusta e desiste de atacar, virando as costas e saindo correndo.</narration>
+  </do>
+
+  <music>goodbye</music>
+  <background>transition</background>
+
+  <narration>Algum tempo depois...</narration>
+
+  <background>shelter</background>
+
+  <do when="sulana_hunt[1:3]">
+    <person>riodes</person>
+    <emotion>surprised</emotion>
+    <voice>Mas que, demônios...?</voice>
+    <narration>Ele a encara, abismado, ao vê-la se aproximar.</narration>
+    <narration>Você sente que os efeitos da febre ainda não passaram. Provavelmente suas íris ainda estão levemente avermelhadas.</narration>
+    <narration when="sulana_hunt[1]">Além disso, você está coberta de sangue, carregando nas costas um javali morto.</narration>
+    <narration when="sulana_hunt[2]">Além disso, você está coberta de sangue, carregando nas costas um animal morto em cada ombro.</narration>
+    <narration when="sulana_hunt[3]">Além disso, você está coberta de sangue, carregando nas costas uma pilha de animais mortos, amarrados com cipó.</narration>
+    <trophy when="sulana_hunt[3]">pighunter</trophy>
+    <protagonist />
+    <set when="sulana_hunt[3]">javalihunter+3</set>
+    <set when="sulana_hunt[2]">javalihunter+2</set>
+    <set when="sulana_hunt[1]">javalihunter+1</set>
+    <voice>Tome!</voice>
+    <narration>Sem nenhuma cerimônia, você joga sua carga aos pés dele, respingos vermelhos voando para todos os lados.</narration>
+    <person>riodes</person>
+    <emotion>angry</emotion>
+    <voice>Ei! Cuidado com isso aí!</voice>
+    <narration>Ignorando-o, você dá meia volta e toma a direção do rio.</narration>
+    <person>riodes</person>
+    <emotion>surprised</emotion>
+    <voice>...</voice>
+    <emotion>normal</emotion>
+    <voice>E é melhor se lavar muito bem mesmo, se quiser entrar na minha cozinha.</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>O que foi, Riodes? Com quem você está...</voice>
+    <voice>Uau! Quanta carne!</voice>
+    <person>riodes</person>
+    <voice>É...</voice>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>Aquela é a Sulana? O que ela tem?</voice>
+    <person>riodes</person>
+    <voice>...</voice>
+    <voice>Vá chamar alguém, vou precisar de ajuda para limpar tudo isso aqui.</voice>
+    <narration>Você não se vira para trás, mas pode sentir os olhos dos dois em suas costas o tempo todo, até sumir de vista.</narration>
+  </do>
+
+  <do when="!sulana_hunt">
+    <person>riodes</person>
+    <emotion>surprised</emotion>
+    <voice>Mas o quê...?</voice>
+    <narration>Ele a encara, perplexo, ao vê-la se aproximar.</narration>
+    <narration>Você sente que os efeitos da febre ainda não passaram. Provavelmente suas íris ainda estão levemente avermelhadas.</narration>
+    <protagonist />
+    <voice>Não consegui nada.</voice>
+    <person>riodes</person>
+    <voice>...</voice>
+    <voice>Podemos nos virar por mais um ou dois dias.</voice>
+    <narration>Sentindo-se suja, você dá meia volta e começa a caminhar na direção do rio.</narration>
+    <person>linete</person>
+    <emotion>surprised</emotion>
+    <voice>O que foi, Riodes? Com quem você está...</voice>
+    <voice>Aquela é a Sulana? O que ela tem?</voice>
+    <person>riodes</person>
+    <voice>...</voice>
+    <voice>Vá chamar alguém, vou precisar de ajuda para buscar frutas na floresta.</voice>
+    <narration>Você não se vira para trás, mas pode sentir os olhos de Riodes em suas costas o tempo todo, até você sumir de vista.</narration>
+  </do>
+
+  <background>lagoon</background>
+
+  <narration>Já está quase chegando ao riacho quando percebe que está mancando.</narration>
+  <narration>Conforme a febre da batalha se dissipa, a dor do lado direito do ventre fica mais intensa, e você automaticamente começa a favorecer aquele lado ao caminhar.</narration>
+  <narration>Não que aquilo esteja ajudando muito.</narration>
+  <protagonist />
+  <thought>As poções de Derione não foram tão boas quanto eu pensava.</thought>
+  <thought>Pegar um javali ou dois nem é tanto esforço assim...</thought>
+  <narration>Chegando a uma pequena lagoa no riacho, você se lança para dentro da água fria, nadando de um lado para o outro, na tentativa de limpar o corpo.</narration>
+  <narration>O latejar do ferimento vai se intensificando, dificultando cada vez mais a tarefa.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Ugh!</thought>
+  <narration>Você desiste de nadar e apenas deixa o corpo boiar na superfície da água por um longo tempo.</narration>
+  <narration>Esse tipo de atividade normalmente a relaxa e ajuda seu corpo a se recuperar de ferimentos e do cansaço.</narration>
+  <narration>Infelizmente, hoje, não ajuda em nada.</narration>
+  <narration>Além do desconforto físico, ainda havia o incômodo de seus pensamentos ficarem voltando à cabana e àquele maldito embrulho.</narration>
+  <narration>E a água esfriava rapidamente o seu corpo, causando ainda mais desconforto. O ferimento não dá nenhum sinal de que possa vir a parar de doer.</narration>
+  <narration>Com muito mais esforço do que gostaria de admitir, você consegue retornar à margem.</narration>
+  <protagonist />
+  <emotion>angry</emotion>
+  <thought>Argh!</thought>
+  <thought>Por que estou tão molóide hoje?</thought>
+  <narration>Sair da água e se colocar em pé se mostra um verdadeiro martírio, mas pelo menos o frio diminui consideravelmente, com os raios de sol incidindo sobre sua pele.</narration>
+  <narration>Você se senta em uma pedra e tenta relaxar, mas não consegue encontrar nenhuma posição confortável.</narration>
+  <narration>Por fim, se levanta e sai caminhando sem rumo, a mente em turbilhão, pensamentos confusos indo e vindo, sem parar.</narration>
+
+  <background>shack</background>
+
+  <narration>Você se surpreende ao ver as paredes dos fundos de sua cabana à sua frente.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Hã? Como vim parar aqui?</thought>
+  <thought>Não posso ter andado tanto assim, posso?</thought>
+  <narration>Envolta numa espécie de transe provocado pela dor, você tenta caminhar na direção da cabana, mas se interrompe ao perceber algo brilhando no chão a certa distância.</narration>
+  <protagonist />
+  <emotion>sad</emotion>
+  <thought>Estou alucinando agora?</thought>
+  <narration>Sem saber exatamente por que está fazendo isso, você dá alguns passos naquela direção.</narration>
+  <narration>Percebe então que se trata apenas do bendito embrulho de Derione, caído no mesmo lugar onde você o deixou antes.</narration>
+  <narration>O brilho nada mais era do que um raio de sol refletido no tecido branco.</narration>
+  <protagonist />
+  <emotion>sad</emotion>
+  <voice>Essa porcaria ainda está aqui?</voice>
+  <narration>O brilho do sol faz com que você perceba alguma coisa entre os tecidos.</narration>
+  <narration>Você se abaixa e desdobra a túnica, revelando alguns frascos de vidro.</narration>
+  <narration>Foi fácil reconhecer o líquido esverdeado que Derione tinha usado na tarde anterior para neutralizar a dor e fazê-la dormir.</narration>
+  <narration>A ideia de cair num sono abençoado lhe parecia a melhor coisa do mundo no momento.</narration>
+  <narration>Então você pega o embrulho e tenta se levantar. Mas percebe que tem algo errado.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Mas o quê...?</thought>
+  <narration>A floresta subitamente começa a girar ao seu redor.</narration>
+  <narration>Depois de um confuso instante, você sente suas costas e sua nuca se chocarem contra a grama.</narration>
+  <protagonist />
+  <emotion>surprised</emotion>
+  <thought>Eu... caí?</thought>
+  <narration>Você tenta se mexer, mas seus esforços se mostram em vão.</narration>
+  <narration>Seu corpo está pesado, muito pesado.</narration>
+
+  <background>black</background>
+
+  <narration>Seus olhos de repente ficam pesados demais para você mantê-los abertos.</narration>
+  <narration>Então você ouve o som de conversas e passos se aproximando, mas está cansada demais para se importar.</narration>
+  <person>estranho1</person>
+  <voice>Encontrei! Ela está aqui, venham!</voice>
+  <person>estranho2</person>
+  <voice>É ela mesmo!</voice>
+
+  <do when="riodes_relationship[3:]">
+    <trophy>worried_riodes</trophy>
+    <voice>Riodes tinha razão, ela está mesmo doente.</voice>
+
+    <do when="linete_relationship[3:]">
+      <person>estranho2</person>
+      <voice>É... quando você vê Riodes e Linete concordando em alguma coisa, pode saber que deve ser sério.</voice>
+      <person>estranho1</person>
+      <voice>Ela não parece machucada.</voice>
+      <voice>Mas está pálida. E a barriga dela está arroxeada ao redor daquela cicatriz.</voice>
+      <person>estranho2</person>
+      <voice>Acha que esse unguento que a Linete passou vai servir para alguma coisa?</voice>
+      <trophy>worried_linete</trophy>
+      <person>estranho1</person>
+      <voice>Vai dar ouvidos àquela doida? Já devia ter jogado esse negócio fora!</voice>
+    </do>
+  </do>
+
+  <do when="riodes_relationship[:2]">
+    <do when="linete_relationship[3:]">
+      <trophy>worried_linete</trophy>
+      <voice>Linete tinha razão, ela está mesmo doente.</voice>
+    </do>
+    <voice when="linete_relationship[:2]">Eu sabia que ela estava doente! Riodes não quis me dar ouvidos, mas eu vi que ela não parecia normal.</voice>
+  </do>
+
+  <person>estranho2</person>
+  <voice>O que é isso que ela está segurando?</voice>
+  <voice>Parecem roupas e... poções?</voice>
+  <person>estranho3</person>
+  <voice>Saiam da frente!</voice>
+  <voice>Céus, ela está pior do que pensei!</voice>
+  <voice>O que ela tem na cabeça, saindo para caçar nessas condições?!</voice>
+  <person>estranho2</person>
+  <voice>Aquele frasco ali parece ser um bálsamo regenerativo.</voice>
+  <person>estranho1</person>
+  <voice>Onde será que ela conseguiu essas coisas? Olha só essa túnica!</voice>
+  <person>estranho3</person>
+  <voice>Ela luta com a rebelião, deve ter recebido deles.</voice>
+  <person>estranho1</person>
+  <voice>O que faremos?</voice>
+  <person>estranho3</person>
+  <voice>Levem ela para dentro.</voice>
+  <voice>Tirem essas roupas molhadas e depois a coloquem na cama.</voice>
+  <voice>Vamos esperar que essa poção não seja velha demais a ponto de ter perdido o efeito.</voice>
+  <narration>Você solta um gemido involuntário quando aquelas pessoas a levantam do chão, a dor se tornando cada vez mais intensa.</narration>
+  <narration>Os sons ao seu redor se transformam em um borrão na sua mente.</narration>
+  <narration>Você está sendo carregada, no momento seguinte sendo despida e depois sendo vestida de novo, numa sequência que não faz muito sentido para sua mente confusa.</narration>
+  <narration>Você não faz ideia de quem sejam essas pessoas, mas também não se importa.</narration>
+  <narration>Tudo o que deseja é ser deixada em paz.</narration>
+  <narration>No instante seguinte você é deitada sobre algo confortável e alguém volta a abrir suas vestes.</narration>
+  <narration>Então algo é derramado sobre seu ventre e uma abençoada sensação de amortecimento envolve o ferimento, levando a dor embora.</narration>
+  <person>estranho3</person>
+  <voice>Está fazendo efeito. Ela deve dormir por algumas horas.</voice>
+  <person>estranho1</person>
+  <voice>Não devíamos, sei lá, chamar alguém?</voice>
+  <person>estranho3</person>
+  <voice>Chamar quem? Ninguém mais mora por aqui, foram todos embora.</voice>
+  <person>estranho2</person>
+  <voice>Ei! O que está acontecendo com ela?</voice>
+  <person>estranho1</person>
+  <voice>Ela está desaparecendo!</voice>
+  <person>estranho3</person>
+  <voice>Que raio?!</voice>
+  <narration>As vozes vão ficando cada vez mais distantes até sumirem por completo.</narration>
+
+  <background>white</background>
+
+  <narration>Você agora se sente bem. A dor finalmente foi embora.</narration>
+  <narration>O alívio é tão grande que você nem questiona o fato de subitamente estar em pé, seus dedos se afundando de leve na areia quente.</narration>
+  <narration>Você abre os olhos, piscando por causa da súbita claridade e tentando se equilibrar sobre pernas fracas demais para suportar seu peso.</narration>
+
+  <background>beach</background>
+
+  <narration>Seus olhos se focam devagar. E você percebe que está encarando o rosto atraente de Marcelius Belísar.</narration>
+  <person>belisar</person>
+  <emotion>surprised</emotion>
+  <voice>Mas o quê?!</voice>
+  <protagonist />
+  <voice>...</voice>
+  <narration>Você mergulha naqueles olhos preocupados e sente um frio na barriga, uma sensação difícil de descrever, mas muito intensa.</narration>
+  <narration>Ele se adianta e a segura pelos ombros, evitando que você desabe no chão.</narration>
+  <person>belisar</person>
+  <emotion>surprised</emotion>
+  <voice>Sulana? Sulana!</voice>
+
+  <background>black</background>
+
+  <narration>Você tenta responder, mas tudo o que consegue é pender para a frente e se chocar contra o corpo dele.</narration>
+  <narration>A sensação de seu rosto contra aquele ombro e daqueles braços a seu redor é tão boa...</narration>
+  <narration>Os pensamentos se dispersam quando você começa a perder a consciência.</narration>
+  <person>belisar</person>
+  <emotion>surprised</emotion>
+  <voice>Zelmira! Me ajude aqui!</voice>
+</storyboard>
