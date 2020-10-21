@@ -1,0 +1,10 @@
+{
+  "name": "test2",
+  "title": "Apenas mais um teste com t\u00EDtulo bem grande para ver como fica na tela",
+  "synopsis": "Esta \u00E9 uma descri\u00E7\u00E3o de teste que estamos colocando como sinopse do livro \"Outro Teste\". Este texto \u00E9 apenas uma enche\u00E7\u00E3o de lingui\u00E7a que estamos digitando para poder ver como fica a tela do jogo quando uma sinopse muito grande \u00E9 informada. Com sorte, isso n\u00E3o vai transformar o layout t\u00E3o cuidadosamente constru\u00EDdo em uma bagun\u00E7a enorme. Muito obrigado por sua aten\u00E7\u00E3o, e tenha um bom dia.",
+  "author": "Aldinei Sampaio",
+  "state": "Pending",
+  "chapters": 7,
+  "fullReleased": false,
+  "lastUpdate": "2019-03-30T18:22:00"
+}

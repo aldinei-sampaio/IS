@@ -1,0 +1,10 @@
+{
+  "name": "test",
+  "title": "Teste: A Miss\u00E3o",
+  "synopsis": "Este \u00E9 um livro de teste, apenas para homologar partes dos cap\u00EDtulos sendo desenvolvidos.",
+  "author": "Aldinei Sampaio",
+  "state": "Pending",
+  "chapters": 7,
+  "fullReleased": false,
+  "lastUpdate": "2019-03-30T18:22:00"
+}

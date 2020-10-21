@@ -1,0 +1,24 @@
+﻿@inject IAssetManager assetManager
+
+<button @onclick="RefreshAsync">Atualizar</button>
+
+@if(books != null)
+{
+    <div class="booklist">
+        @foreach(var book in books)
+        {
+            <Thumbnail Book="@book" />
+        }
+    </div>
+}
+
+@code {
+    private IReadOnlyCollection<BookModel>? books;
+
+    private async Task RefreshAsync()
+    {
+        books = await assetManager.GetBooksAsync();
+    }
+
+    protected async override Task OnInitializedAsync() => await RefreshAsync();
+}

@@ -8,6 +8,7 @@ namespace IS.UI.Services
 {
     public interface IAssetManager
     {
+        Task<BookModel> GetBookAsync(string name);
         string GetBookCoverUrl(string bookName);
         Task<IReadOnlyList<BookModel>> GetBooksAsync();
     }

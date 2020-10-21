@@ -1,4 +1,5 @@
 ﻿using IS.UI.Models;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -16,9 +17,12 @@ namespace IS.UI.Services
         }
 
         public async Task<IReadOnlyList<BookModel>> GetBooksAsync()
-            => await httpClient.GetFromJsonAsync<BookModel[]>("data/books/books.json");
+            => await httpClient.GetFromJsonAsync<BookModel[]>($"data/books/books.json?{DateTime.Now:yyyyMMddHHmmss}");
 
         public string GetBookCoverUrl(string bookName)
             => $"data/books/{bookName}/cover.jpg";
+
+        public async Task<BookModel> GetBookAsync(string name)
+            => await httpClient.GetFromJsonAsync<BookModel>($"data/books/{name}/book.json?{DateTime.Now:yyyyMMddHHmmss}");
     }
 }

@@ -1,4 +1,21 @@
-﻿.thumbnail {
-    width : 300px;
-    height : 200px;
+﻿.contentarea {
+    
+}
+
+.thumbnail {
+    width : 400px;
+    height : 224px;
+    background-size : 400px 224px;
+}
+
+.booklist {
+    padding : 10px;
+}
+
+.booklist .thumbnail {
+    margin : 10px;
+}
+
+.book {
+    padding : 20px;
 }

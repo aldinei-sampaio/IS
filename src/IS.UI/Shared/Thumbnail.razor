@@ -2,9 +2,11 @@
 
 @if (Book != null)
 {
-    <div class="thumbnail" style="background:url(@coverUrl)">
+    <a href="book/@Book.Name">
+        <div class="thumbnail" style="background-image:url(@coverUrl)">
 
-    </div>
+        </div>
+    </a>
 }
 
 @code {

@@ -1,0 +1,43 @@
+﻿@page "/book/{name}"
+@inject IAssetManager assetManager
+
+<div class="book">
+    @if (book != null)
+    {
+        <a href="/">Voltar</a>
+
+        <h3>@book.Title</h3>
+
+        <div class="thumbnail" style="background-image:url(@coverUrl)">
+
+        </div>
+
+        <p>
+            @book.Synopsis
+        </p>
+
+        <p>Autor: @book.Author</p>
+        <p>Capítulos: @book.Chapters</p>
+        <p>Status: @(book.FullReleased ? "Todos os capítulos liberados" : "Em andamento")</p>
+        <p>Última atualização: @book.LastUpdate</p>
+
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string Name { get; set; } = string.Empty;
+
+    private BookModel? book;
+
+    private string coverUrl = string.Empty;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Name != null)
+        {
+            book = await assetManager.GetBookAsync(Name);
+            coverUrl = assetManager.GetBookCoverUrl(Name);
+        }
+    }
+}
