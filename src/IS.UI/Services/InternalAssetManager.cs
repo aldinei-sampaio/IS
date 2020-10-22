@@ -24,5 +24,8 @@ namespace IS.UI.Services
 
         public async Task<BookModel> GetBookAsync(string name)
             => await httpClient.GetFromJsonAsync<BookModel>($"data/books/{name}/book.json?{DateTime.Now:yyyyMMddHHmmss}");
+
+        public async Task<string> GetChapterData(string name, int chapter)
+            => await (await httpClient.GetAsync($"/data/books/{name}/{chapter:000}/sc01.xml")).Content.ReadAsStringAsync();
     }
 }

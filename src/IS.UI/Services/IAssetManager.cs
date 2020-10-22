@@ -11,5 +11,6 @@ namespace IS.UI.Services
         Task<BookModel> GetBookAsync(string name);
         string GetBookCoverUrl(string bookName);
         Task<IReadOnlyList<BookModel>> GetBooksAsync();
+        Task<string> GetChapterData(string name, int chapter);
     }
 }
