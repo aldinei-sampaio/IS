@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard>
+  <normal>
+    <viewpoint>ava</viewpoint>
+    <tutorial>Instrução1</tutorial>
+    <tutorial>Instrução2</tutorial>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Fala1</voice>
+    <voice>Fala2</voice>
+    <tutorial>Instrução 3</tutorial>
+    <protagonist />
+    <emotion>normal</emotion>
+    <voice>Fala3</voice>
+  </normal>
+  <backwards>
+    <viewpoint>ava</viewpoint>
+    <protagonist />
+    <emotion>normal</emotion>
+    <voice>Fala3</voice>
+    <tutorial>Instrução 3</tutorial>
+    <protagonist />
+    <emotion>angry</emotion>
+    <voice>Fala2</voice>
+    <voice>Fala1</voice>
+    <tutorial>Instrução2</tutorial>
+    <tutorial>Instrução1</tutorial>
+  </backwards>
+</storyboard>

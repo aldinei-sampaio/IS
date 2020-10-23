@@ -2,7 +2,7 @@
 using FluentAssertions;
 using Xunit;
 
-namespace IS.Reading.StoryEvents
+namespace IS.Reading.StoryboardItems
 {
     public class BackgroundStoryEventTests
     {
@@ -10,26 +10,26 @@ namespace IS.Reading.StoryEvents
         public void Execute()
         {
             var context = new StoryContext();
-            var target = new BackgroundStoryEvent("Alpha");
+            var target = new BackgroundItem("Alpha");
 
-            context.Values.ContainsKey(BackgroundStoryEvent.ValueKey).Should().BeFalse();
-            var rollbackEvent = target.Execute(context);
+            context.Values.ContainsKey(Keys.BackgroundImage).Should().BeFalse();
+            var rollbackEvent = target.Enter(context);
             rollbackEvent.Should().NotBeNull();
-            context.Values[BackgroundStoryEvent.ValueKey].Should().Be("Alpha");
-            target.Execute(context).Should().BeNull();
+            context.Values[Keys.BackgroundImage].Should().Be("Alpha");
+            target.Enter(context).Should().BeNull();
 
-            rollbackEvent.Should().BeOfType<BackgroundStoryEvent>();
-            rollbackEvent = rollbackEvent.Execute(context);
-            context.Values[BackgroundStoryEvent.ValueKey].Should().Be(string.Empty);
-            rollbackEvent.Execute(context);
-            context.Values[BackgroundStoryEvent.ValueKey].Should().Be("Alpha");
+            rollbackEvent.Should().BeOfType<BackgroundItem>();
+            rollbackEvent = rollbackEvent.Enter(context);
+            context.Values[Keys.BackgroundImage].Should().Be(string.Empty);
+            rollbackEvent.Enter(context);
+            context.Values[Keys.BackgroundImage].Should().Be("Alpha");
         }
 
         [Fact]
         public void CallEvent()
         {
             var context = new StoryContext();
-            var target = new BackgroundStoryEvent("Alpha");
+            var target = new BackgroundItem("Alpha");
 
             var check = false;
             context.OnBackgroundChange += (s, e) =>
@@ -38,11 +38,11 @@ namespace IS.Reading.StoryEvents
                 check = true;
             };
 
-            target.Execute(context).Should().NotBeNull();
+            target.Enter(context).Should().NotBeNull();
             check.Should().BeTrue();
 
             check = false;
-            target.Execute(context).Should().BeNull();
+            target.Enter(context).Should().BeNull();
             check.Should().BeFalse();
         }
 

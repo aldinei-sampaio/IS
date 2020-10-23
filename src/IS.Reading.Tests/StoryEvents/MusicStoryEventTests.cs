@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using Xunit;
 
-namespace IS.Reading.StoryEvents
+namespace IS.Reading.StoryboardItems
 {
     public class MusicStoryEventTests
     {
@@ -9,26 +9,26 @@ namespace IS.Reading.StoryEvents
         public void Execute()
         {
             var context = new StoryContext();
-            var target = new MusicStoryEvent("Alpha");
+            var target = new MusicItem("Alpha");
 
-            context.Values.ContainsKey(MusicStoryEvent.ValueKey).Should().BeFalse();
-            var rollbackEvent = target.Execute(context);
+            context.Values.ContainsKey(Keys.Music).Should().BeFalse();
+            var rollbackEvent = target.Enter(context);
             rollbackEvent.Should().NotBeNull();
-            context.Values[MusicStoryEvent.ValueKey].Should().Be("Alpha");
-            target.Execute(context).Should().BeNull();
+            context.Values[Keys.Music].Should().Be("Alpha");
+            target.Enter(context).Should().BeNull();
 
-            rollbackEvent.Should().BeOfType<MusicStoryEvent>();
-            rollbackEvent = rollbackEvent.Execute(context);
-            context.Values[MusicStoryEvent.ValueKey].Should().Be(string.Empty);
-            rollbackEvent.Execute(context);
-            context.Values[MusicStoryEvent.ValueKey].Should().Be("Alpha");
+            rollbackEvent.Should().BeOfType<MusicItem>();
+            rollbackEvent = rollbackEvent.Enter(context);
+            context.Values[Keys.Music].Should().Be(string.Empty);
+            rollbackEvent.Enter(context);
+            context.Values[Keys.Music].Should().Be("Alpha");
         }
 
         [Fact]
         public void CallEvent()
         {
             var context = new StoryContext();
-            var target = new MusicStoryEvent("Alpha");
+            var target = new MusicItem("Alpha");
 
             var check = false;
             context.OnMusicChange += (s, e) =>
@@ -37,11 +37,11 @@ namespace IS.Reading.StoryEvents
                 check = true;
             };
 
-            target.Execute(context).Should().NotBeNull();
+            target.Enter(context).Should().NotBeNull();
             check.Should().BeTrue();
 
             check = false;
-            target.Execute(context).Should().BeNull();
+            target.Enter(context).Should().BeNull();
             check.Should().BeFalse();
         }
     }

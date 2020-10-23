@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using Xunit;
 
-namespace IS.Reading.StoryEvents
+namespace IS.Reading.StoryboardItems
 {
-    public class OnNarrationStoryEventTests
+    public class NarrationStoryEventTests
     {
         [Fact]
         public void Execute()
         {
             var context = new StoryContext();
-            var target = new OnNarrationStoryEvent("Zulu");
+            var target = new NarrationStoryEvent("Zulu");
 
             var events = new List<string>();
 
