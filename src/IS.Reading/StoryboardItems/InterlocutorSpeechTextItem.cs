@@ -1,15 +1,15 @@
 ﻿namespace IS.Reading.StoryboardItems
 {
-    public struct NarrationTextItem : IStoryboardItem
+    public struct InterlocutorSpeechTextItem : IStoryboardItem
     {
         public string Text { get; }
 
-        public NarrationTextItem(string text, ICondition? condition)
+        public InterlocutorSpeechTextItem(string text, ICondition? condition)
             => (Text, Condition) = (text, condition);
 
         public IStoryboardItem Enter(IStoryContextEventCaller context)
         {
-            context.Narration.Change(Text);
+            context.Interlocutor.Speech.Change(Text);
             return this;
         }
 

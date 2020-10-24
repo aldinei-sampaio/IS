@@ -1,21 +1,26 @@
 ﻿namespace IS.Reading.StoryboardItems
 {
-    public class ProtagonistItem : IStoryboardItem
+    public struct ProtagonistItem : IStoryboardItem
     {
         public string Name { get; }
 
         public ProtagonistItem(string name, ICondition? condition)
-            => (Name, Condition) = (name, condition);
-
-        public IStoryboardItem Enter(IStoryContextUpdater context)
         {
-            context.CallOnProtagonistArrive(Name);
+            Name = name;
+            Condition = condition;
+            Block = new StoryboardBlock();
+        }
+
+        public IStoryboardItem Enter(IStoryContextEventCaller context)
+        {
+            context.Protagonist.Enter(Name);
             return this;
         }
 
-        public void Leave(IStoryContextUpdater context) => context.CallOnProtagonistLeave();
+        public void Leave(IStoryContextEventCaller context) 
+            => context.Protagonist.Leave();
 
-        public StoryboardBlock Block { get; } = new StoryboardBlock();
+        public StoryboardBlock Block { get; }
 
         public bool IsPause => false;
 

@@ -1,8 +1,8 @@
 ﻿namespace IS.Reading.StoryboardItems
 {
-    public struct NarrationItem : IStoryboardItem
+    public struct ProtagonistSpeechItem : IStoryboardItem
     {
-        public NarrationItem(ICondition? condition)
+        public ProtagonistSpeechItem(ICondition? condition)
         {
             Condition = condition;
             Block = new StoryboardBlock();
@@ -10,12 +10,12 @@
 
         public IStoryboardItem Enter(IStoryContextEventCaller context)
         {
-            context.Narration.Open();
+            context.Protagonist.Speech.Open();
             return this;
         }
 
-        public void Leave(IStoryContextEventCaller context) 
-            => context.Narration.Close();
+        public void Leave(IStoryContextEventCaller context)
+            => context.Protagonist.Speech.Close();
 
         public StoryboardBlock Block { get; }
 

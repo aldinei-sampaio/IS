@@ -1,18 +1,23 @@
 ﻿namespace IS.Reading.StoryboardItems
 {
-    public class ProtagonistThoughtItem : IStoryboardItem
+    public struct ProtagonistThoughtItem : IStoryboardItem
     {
-        public ProtagonistThoughtItem(ICondition? condition) => Condition = condition;
-
-        public IStoryboardItem Enter(IStoryContextUpdater context)
+        public ProtagonistThoughtItem(ICondition? condition)
         {
-            context.CallOnProtagonistThoughtOpen();
+            Condition = condition;
+            Block = new StoryboardBlock();
+        }
+
+        public IStoryboardItem Enter(IStoryContextEventCaller context)
+        {
+            context.Protagonist.Thought.Open();
             return this;
         }
 
-        public void Leave(IStoryContextUpdater context) => context.CallOnProtagonistThoughtClose();
+        public void Leave(IStoryContextEventCaller context)
+            => context.Protagonist.Thought.Close();
 
-        public StoryboardBlock Block { get; } = new StoryboardBlock();
+        public StoryboardBlock Block { get; }
 
         public bool IsPause => false;
 

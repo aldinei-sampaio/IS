@@ -1,19 +1,19 @@
 ﻿namespace IS.Reading.StoryboardItems
 {
-    public class TutorialTextItem : IStoryboardItem
+    public struct TutorialTextItem : IStoryboardItem
     {
         public string Text { get; }
 
         public TutorialTextItem(string text, ICondition? condition)
             => (Text, Condition) = (text, condition);
 
-        public IStoryboardItem Enter(IStoryContextUpdater context)
+        public IStoryboardItem Enter(IStoryContextEventCaller context)
         {
-            context.CallOnTutorialChange(Text);
+            context.Tutorial.Change(Text);
             return this;
         }
 
-        public void Leave(IStoryContextUpdater context) { }
+        public void Leave(IStoryContextEventCaller context) { }
 
         public StoryboardBlock? Block => null;
 

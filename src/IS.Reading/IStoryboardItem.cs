@@ -2,9 +2,9 @@
 {
     public interface IStoryboardItem
     {
-        IStoryboardItem Enter(IStoryContextUpdater context);
+        IStoryboardItem Enter(IStoryContextEventCaller context);
         StoryboardBlock? Block { get; }
-        void Leave(IStoryContextUpdater context);
+        void Leave(IStoryContextEventCaller context);
         bool IsPause { get; }
         bool AllowBackwardsBlockEntry { get; }
         ICondition? Condition { get; }

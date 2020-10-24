@@ -1,18 +1,23 @@
 ﻿namespace IS.Reading.StoryboardItems
 {
-    public class TutorialItem : IStoryboardItem
+    public struct TutorialItem : IStoryboardItem
     {
-        public TutorialItem(ICondition? condition) => Condition = condition;        
-
-        public IStoryboardItem Enter(IStoryContextUpdater context)
+        public TutorialItem(ICondition? condition)
         {
-            context.CallOnTutorialOpen();
+            Condition = condition;
+            Block = new StoryboardBlock();
+        }
+
+        public IStoryboardItem Enter(IStoryContextEventCaller context)
+        {
+            context.Tutorial.Open();
             return this;
         }
 
-        public void Leave(IStoryContextUpdater context) => context.CallOnTutorialClose();
+        public void Leave(IStoryContextEventCaller context)
+            => context.Tutorial.Close();
 
-        public StoryboardBlock Block { get; } = new StoryboardBlock();
+        public StoryboardBlock Block { get; }
 
         public bool IsPause => false;
 

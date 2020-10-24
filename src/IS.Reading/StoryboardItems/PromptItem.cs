@@ -1,23 +1,27 @@
 ﻿namespace IS.Reading.StoryboardItems
 {
-    public class PromptItem : IStoryboardItem
+    public struct PromptItem : IStoryboardItem
     {
         public Prompt Prompt { get; }
 
         public PromptItem(Prompt prompt, ICondition? condition)
-            => (Prompt, Condition) = (prompt, condition);
+        {
+            Prompt = prompt;
+            Condition = condition;
+            Block = new StoryboardBlock();
+        }            
 
-        public StoryboardBlock Block { get; } = new StoryboardBlock();
+        public StoryboardBlock Block { get; }
 
         public bool IsPause => false;
 
-        public IStoryboardItem Enter(IStoryContextUpdater context)
+        public IStoryboardItem Enter(IStoryContextEventCaller context)
         {
-            context.CallOnPromptOpen(Prompt);
+            context.Prompt.Open(Prompt);
             return this;
         }
 
-        public void Leave(IStoryContextUpdater context) { }
+        public void Leave(IStoryContextEventCaller context) { }
 
         public bool AllowBackwardsBlockEntry => true;
 

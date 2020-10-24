@@ -1,17 +1,18 @@
 ﻿namespace IS.Reading.StoryboardItems
 {
-    public struct MusicItem : IStoryboardItem
+    public struct VarSetItem : IStoryboardItem
     {
-        public string MusicName { get; }
+        public string Name { get; }
 
-        public MusicItem(string musicName, ICondition? condition)
-            => (MusicName, Condition) = (musicName, condition);
+        public int Value { get; }
+
+        public VarSetItem(string name, int value, ICondition? condition)
+            => (Name, Value, Condition) = (name, value, condition);
 
         public IStoryboardItem Enter(IStoryContextEventCaller context)
         {
-            var oldValue = context.State.Set(Keys.Music, MusicName);
-            context.Music.Change(MusicName);
-            return new MusicItem(oldValue, Condition);
+            var oldValue = context.Variables.Set(Name, Value);
+            return new VarSetItem(Name, oldValue, Condition);
         }
 
         public void Leave(IStoryContextEventCaller context) { }

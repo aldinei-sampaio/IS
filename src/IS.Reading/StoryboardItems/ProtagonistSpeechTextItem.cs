@@ -1,19 +1,19 @@
 ﻿namespace IS.Reading.StoryboardItems
 {
-    public class ProtagonistVoiceTextItem : IStoryboardItem
+    public struct ProtagonistSpeechTextItem : IStoryboardItem
     {
         public string Text { get; }
 
-        public ProtagonistVoiceTextItem(string text, ICondition? condition)
+        public ProtagonistSpeechTextItem(string text, ICondition? condition)
             => (Text, Condition) = (text, condition);
 
-        public IStoryboardItem Enter(IStoryContextUpdater context)
+        public IStoryboardItem Enter(IStoryContextEventCaller context)
         {
-            context.CallOnProtagonistSpeakChange(Text);
+            context.Protagonist.Speech.Change(Text);
             return this;
         }
 
-        public void Leave(IStoryContextUpdater context) { }
+        public void Leave(IStoryContextEventCaller context) { }
 
         public StoryboardBlock? Block => null;
 

@@ -1,20 +1,20 @@
 ﻿namespace IS.Reading.StoryboardItems
 {
-    public class BackgroundItem : IStoryboardItem
+    public struct BackgroundItem : IStoryboardItem
     {
         public string ImageName { get; }
 
         public BackgroundItem(string imageName, ICondition? condition)
             => (ImageName, Condition) = (imageName, condition);
 
-        public IStoryboardItem Enter(IStoryContextUpdater context)
+        public IStoryboardItem Enter(IStoryContextEventCaller context)
         {
-            var oldValue = context.SetValue(Keys.BackgroundImage, ImageName);
-            context.CallOnBackgroundChange(ImageName);
+            var oldValue = context.State.Set(Keys.BackgroundImage, ImageName);
+            context.Background.Change(ImageName);
             return new BackgroundItem(oldValue, Condition);
         }
 
-        public void Leave(IStoryContextUpdater context) { }
+        public void Leave(IStoryContextEventCaller context) { }
 
         public StoryboardBlock? Block => null;
 

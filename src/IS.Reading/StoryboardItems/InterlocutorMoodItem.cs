@@ -1,21 +1,23 @@
 ﻿namespace IS.Reading.StoryboardItems
 {
-    public struct NarrationItem : IStoryboardItem
+    public struct InterlocutorMoodItem : IStoryboardItem
     {
-        public NarrationItem(ICondition? condition)
+        public string Name { get; }
+
+        public InterlocutorMoodItem(string name, ICondition? condition)
         {
+            Name = name;
             Condition = condition;
             Block = new StoryboardBlock();
         }
 
         public IStoryboardItem Enter(IStoryContextEventCaller context)
         {
-            context.Narration.Open();
+            context.Interlocutor.Mood.Change(Name);
             return this;
         }
 
-        public void Leave(IStoryContextEventCaller context) 
-            => context.Narration.Close();
+        public void Leave(IStoryContextEventCaller context) { }
 
         public StoryboardBlock Block { get; }
 

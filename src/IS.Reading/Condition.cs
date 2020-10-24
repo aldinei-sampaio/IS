@@ -2,6 +2,6 @@
 {
     public interface ICondition
     {
-        bool Evaluate(IStoryContextUpdater context);
+        bool Evaluate(IStoryContextEventCaller context);
     }
 }
