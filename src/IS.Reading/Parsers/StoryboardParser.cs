@@ -9,7 +9,7 @@ namespace IS.Reading.Parsers
 {
     public class StoryboardParser
     {
-        private const string varNamePattern = @"^[a-z0-9_]+$";
+        private const string varNamePattern = @"^[a-z0-9_]{2,}$";
 
         private readonly Storyboard storyboard;
         private readonly Stack<StoryboardBlock> blocks;
@@ -30,6 +30,11 @@ namespace IS.Reading.Parsers
             using var reader = XmlReader.Create(new StringReader(content));
             var parser = new StoryboardParser(reader);
 
+            reader.MoveToContent();
+
+            if (reader.LocalName != "storyboard")
+                throw new StoryboardParsingException(reader, "Elemento 'storyboard' não encontrado.");
+
             while (reader.Read())
             {
                 if (reader.NodeType == XmlNodeType.Element)
@@ -43,6 +48,22 @@ namespace IS.Reading.Parsers
 
         private void HandleStartElement()
         {
+            if (Is<ProtagonistSpeechItem>(currentBlock))
+                if (HandleProtagonistSpeechStartElement())
+                    return;
+
+            if (Is<ProtagonistThoughtItem>(currentBlock))
+                if (HandleProtagonistThoughtStartElement())
+                    return;
+
+            if (Is<ProtagonistMoodItem>(currentBlock))
+                if (HandleProtagonistStartElement(true))
+                    return;
+
+            if (Is<ProtagonistItem>(currentBlock))
+                if (HandleProtagonistStartElement(false))
+                    return;
+
             switch (reader.LocalName)
             {
                 case "viewpoint":
@@ -59,7 +80,7 @@ namespace IS.Reading.Parsers
                     break;
                 case "unset":
                     CloseBlockIfNecessary();
-                    Add(new VarSetItem(GetVariableName(), 0, null));
+                    HandleUnset(null);
                     break;
                 case "set":
                     CloseBlockIfNecessary();
@@ -71,10 +92,92 @@ namespace IS.Reading.Parsers
                     Add(new PauseItem(null));
                     break;
                 case "narration":
-                    CloseBlockIfNecessary(typeof(NarrationItem));
                     HandleNarration(null);
                     break;
+                case "tutorial":
+                    HandleTutorial(null);
+                    break;
+                case "protagonist":
+                    CloseBlockIfNecessary();
+                    EnsureEmpty();
+                    OpenBlock(new ProtagonistItem(null));
+                    break;
+                default:
+                    throw new StoryboardParsingException(reader, $"O elemento '{reader.LocalName}' não é suportado.");
             }
+        }
+
+        private static bool Is<T>(StoryboardBlock block)
+            => block.Parent?.GetType() == typeof(T);
+
+        private bool HandleProtagonistStartElement(bool isMood)
+        {
+            switch (reader.LocalName)
+            {
+                case "emotion":
+                    if (isMood)
+                        CloseBlock();
+                    OpenBlock(new ProtagonistMoodItem(GetVariableName(), null));
+                    return true;
+                case "voice":
+                    if (!Is<ProtagonistSpeechItem>(currentBlock))
+                    {
+                        if (Is<ProtagonistThoughtItem>(currentBlock))
+                            CloseBlock();
+                        OpenBlock(new ProtagonistSpeechItem(null));
+                    }
+                    Add(new ProtagonistSpeechTextItem(GetContent(), null));
+                    return true;
+                case "thought":
+                    if (!Is<ProtagonistThoughtItem>(currentBlock))
+                    {
+                        if (Is<ProtagonistSpeechItem>(currentBlock))
+                            CloseBlock();
+                        OpenBlock(new ProtagonistThoughtItem(null));
+                    }
+                    Add(new ProtagonistThoughtTextItem(GetContent(), null));
+                    return true;
+                case "prompt":
+                    return true;
+                case "reward":
+                    return true;
+                case "set":
+                    HandleSet(null);
+                    return true;
+                case "unset":
+                    HandleUnset(null);
+                    return true;
+                case "bump":
+                    EnsureEmpty();
+                    Add(new ProtagonistBumpItem(null));
+                    return true;
+            }
+            CloseBlock();
+            return false;
+        }
+
+        private bool HandleProtagonistSpeechStartElement()
+        {
+            switch (reader.LocalName)
+            {
+                case "voice":
+                    Add(new ProtagonistSpeechTextItem(GetContent(), null));
+                    return true;
+            }
+            CloseBlock();
+            return false;
+        }
+
+        private bool HandleProtagonistThoughtStartElement()
+        {
+            switch (reader.LocalName)
+            {
+                case "thought":
+                    Add(new ProtagonistThoughtTextItem(GetContent(), null));
+                    return true;
+            }
+            CloseBlock();
+            return false;
         }
 
         private void Add(IStoryboardItem item) => currentBlock.ForwardQueue.Enqueue(item);
@@ -119,18 +222,40 @@ namespace IS.Reading.Parsers
             Add(new VarSetItem(value, 1, condition));
         }
 
+        private void HandleUnset(ICondition? condition)
+            => Add(new VarSetItem(GetVariableName(), 0, condition));
+
         private void HandleNarration(ICondition? condition)
         {
             var value = GetContent();
-            if (currentBlock.Parent == null || currentBlock.Parent.GetType() != typeof(NarrationItem))
-            {
-                blocks.Push(currentBlock);
-                var narration = new NarrationItem(null);
-                Add(narration);
-                currentBlock = narration.Block;
-            }
+            OpenBlockIfNecessary(() => new NarrationItem(null));
             Add(new NarrationTextItem(value, condition));
         }
+
+        private void HandleTutorial(ICondition? condition)
+        {
+            var value = GetContent();
+            OpenBlockIfNecessary(() => new TutorialItem(null));
+            Add(new TutorialTextItem(value, condition));
+        }
+
+        private void OpenBlockIfNecessary<T>(Func<T> creator) where T : IStoryboardItem
+        {
+            CloseBlockIfNecessary(typeof(T));
+            if (currentBlock.Parent == null || currentBlock.Parent.GetType() != typeof(T))
+                OpenBlock(creator.Invoke());
+        }
+
+        private void OpenBlock(IStoryboardItem item)
+        {
+            blocks.Push(currentBlock);
+            if (item.Block == null)
+                throw new InvalidOperationException();
+            Add(item);
+            currentBlock = item.Block;
+        }
+
+        private void CloseBlock() => currentBlock = blocks.Pop();
 
         private void CloseBlockIfNecessary(Type? ignore = null)
         {
@@ -149,7 +274,7 @@ namespace IS.Reading.Parsers
                 || type == typeof(InterlocutorThoughtItem)
                 || type == typeof(ProtagonistThoughtItem))
             {
-                currentBlock = blocks.Pop();
+                CloseBlock();
             }
         }
 

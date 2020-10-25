@@ -2,18 +2,15 @@
 {
     public class ProtagonistItem : IStoryboardItem
     {
-        public string Name { get; }
-
-        public ProtagonistItem(string name, ICondition? condition)
+        public ProtagonistItem(ICondition? condition)
         {
-            Name = name;
             Condition = condition;
             Block = new StoryboardBlock(this);
         }
 
         public IStoryboardItem Enter(IStoryContextEventCaller context)
         {
-            context.Protagonist.Enter(Name);
+            context.Protagonist.Enter(context.State[Keys.Protagonist]);
             return this;
         }
 

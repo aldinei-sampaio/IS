@@ -43,6 +43,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Parsers\SimpleTutorial.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Parsers\SimpleNarration.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

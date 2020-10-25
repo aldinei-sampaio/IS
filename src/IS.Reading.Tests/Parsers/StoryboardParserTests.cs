@@ -13,22 +13,22 @@ namespace IS.Reading.Parsers
 
             target.Root.ForwardQueue.Count.Should().Be(7);
 
-            Get<ProtagonistChangeItem>(target).Name.Should().Be("sulana");
-            Get<MusicItem>(target).MusicName.Should().Be("never_look_back");
-            Get<BackgroundItem>(target).ImageName.Should().Be("carmim");
+            target.Get<ProtagonistChangeItem>().Name.Should().Be("sulana");
+            target.Get<MusicItem>().MusicName.Should().Be("never_look_back");
+            target.Get<BackgroundItem>().ImageName.Should().Be("carmim");
             {
-                var item = Get<VarSetItem>(target);
+                var item = target.Get<VarSetItem>();
                 item.Name.Should().Be("var1");
                 item.Value.Should().Be(0);
             }
             {
-                var item = Get<VarSetItem>(target);
+                var item = target.Get<VarSetItem>();
                 item.Name.Should().Be("var2");
                 item.Value.Should().Be(1);
             }
-            Get<PauseItem>(target);
+            target.Get<PauseItem>();
             {
-                var item = Get<VarIncrementItem>(target);
+                var item = target.Get<VarIncrementItem>();
                 item.Name.Should().Be("var3");
                 item.Increment.Should().Be(2);
             }
@@ -41,28 +41,69 @@ namespace IS.Reading.Parsers
 
             target.Root.ForwardQueue.Count.Should().Be(3);
 
-            Get<BackgroundItem>(target).ImageName.Should().Be("imagem");
+            target.Get<BackgroundItem>().ImageName.Should().Be("imagem");
 
-            var narration = Get<NarrationItem>(target);
+            var narration = target.Get<NarrationItem>();
             narration.Block.ForwardQueue.Count.Should().Be(3);
-            Get<NarrationTextItem>(narration).Text.Should().Be("Primeira fala");
-            Get<NarrationTextItem>(narration).Text.Should().Be("Segunda fala");
-            Get<NarrationTextItem>(narration).Text.Should().Be("Terceira fala");
+            narration.Get<NarrationTextItem>().Text.Should().Be("Primeira fala");
+            narration.Get<NarrationTextItem>().Text.Should().Be("Segunda fala");
+            narration.Get<NarrationTextItem>().Text.Should().Be("Terceira fala");
 
-            Get<MusicItem>(target).MusicName.Should().Be("musica");
+            target.Get<MusicItem>().MusicName.Should().Be("musica");
         }
 
-        private T Get<T>(Storyboard storyboard) where T : IStoryboardItem
-            => Get<T>(storyboard.Root);
-
-        private T Get<T>(IStoryboardItem item) where T : IStoryboardItem
-            => Get<T>(item.Block);
-
-        private T Get<T>(StoryboardBlock block) where T : IStoryboardItem
+        [Fact]
+        public void SimpleTutorial()
         {
-            var item = block.ForwardQueue.Dequeue();
-            item.Should().BeOfType<T>();
-            return (T)item;
+            var target = StoryboardParser.Load(Resources.SimpleTutorial);
+
+            target.Root.ForwardQueue.Count.Should().Be(3);
+
+            target.Get<BackgroundItem>().ImageName.Should().Be("imagem");
+
+            var narration = target.Get<TutorialItem>();
+            narration.Block.ForwardQueue.Count.Should().Be(3);
+            narration.Get<TutorialTextItem>().Text.Should().Be("Primeira fala");
+            narration.Get<TutorialTextItem>().Text.Should().Be("Segunda fala");
+            narration.Get<TutorialTextItem>().Text.Should().Be("Terceira fala");
+
+            target.Get<MusicItem>().MusicName.Should().Be("musica");
         }
+
+        [Fact]
+        public void SimpleProtagonist()
+        {
+            var target = StoryboardParser.Load(Resources.SimpleProtagonist);
+
+            target.Root.ForwardQueue.Count.Should().Be(3);
+
+            target.Get<BackgroundItem>().ImageName.Should().Be("imagem");
+
+            var protagonist = target.Get<ProtagonistItem>();
+            protagonist.Block.ForwardQueue.Count.Should().Be(5);
+            protagonist.Get<ProtagonistBumpItem>();
+            protagonist.Get<VarSetItem>().Name.Should().Be("var1");
+            protagonist.Get<VarSetItem>().Name.Should().Be("var2");
+            {
+                var thought = protagonist.Get<ProtagonistThoughtItem>();
+                thought.Block.ForwardQueue.Count.Should().Be(2);
+                thought.Get<ProtagonistThoughtTextItem>().Text.Should().Be("Pensamento 1");
+                thought.Get<ProtagonistThoughtTextItem>().Text.Should().Be("Pensamento 2");
+            }
+            {
+                var emotion = protagonist.Get<ProtagonistMoodItem>();
+                emotion.Block.ForwardQueue.Count.Should().Be(4);
+                emotion.Get<ProtagonistBumpItem>();
+                emotion.Get<VarSetItem>().Name.Should().Be("var3");
+                emotion.Get<VarSetItem>().Name.Should().Be("var4");
+                var speech = emotion.Get<ProtagonistSpeechItem>();
+                speech.Block.ForwardQueue.Count.Should().Be(2);
+                speech.Get<ProtagonistSpeechTextItem>().Text.Should().Be("Fala 1");
+                speech.Get<ProtagonistSpeechTextItem>().Text.Should().Be("Fala 2");
+            }
+
+            target.Get<MusicItem>().MusicName.Should().Be("musica");
+        }
+
     }
 }
