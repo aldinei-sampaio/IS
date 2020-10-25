@@ -8,6 +8,7 @@ namespace IS.Reading.EventObjects
     {
         public event EventHandler<string>? OnArrive;
         public event EventHandler? OnLeave;
+        public event EventHandler? OnBump;
 
         public SimpleEventObject Mood { get; } = new SimpleEventObject();
         public OpenCloseEventObject Thought { get; } = new OpenCloseEventObject();
@@ -29,5 +30,8 @@ namespace IS.Reading.EventObjects
 
         void IPersonEventCaller.Leave() 
             => OnLeave?.Invoke(this, EventArgs.Empty);
+
+        void IPersonEventCaller.Bump()
+            => OnBump?.Invoke(this, EventArgs.Empty);
     }
 }

@@ -55,7 +55,6 @@
         <xs:element name="protagonist" type="conditionablevalue" />
         <xs:element name="person" type="conditionablevalue" />
         <xs:element name="emotion" type="emotion" />
-        <xs:element name="choice" type="choice" />
         <xs:element name="voice" type="conditionablevalue" />
         <xs:element name="thought" type="conditionablevalue" />
         <xs:element name="bump" type="conditionable" />
@@ -65,10 +64,34 @@
         <xs:element name="set" type="conditionablevalue" />
         <xs:element name="unset" type="conditionablevalue" />
         <xs:element name="trophy" type="conditionablevalue" />
+        <xs:element name="prompt" type="prompt" />
+        <xs:element name="minigame" type="minigame" />
       </xs:choice>
     </xs:sequence>
   </xs:complexType>
-    
+
+  <xs:complexType name="minigame">
+    <xs:sequence>
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:element name="observe" type="conditionable" />
+        <xs:element name="tutorial" type="conditionablevalue" />
+        <xs:element name="narration" type="conditionablevalue" />
+        <xs:element name="protagonist" type="conditionablevalue" />
+        <xs:element name="person" type="conditionablevalue" />
+        <xs:element name="emotion" type="emotion" />
+        <xs:element name="voice" type="conditionablevalue" />
+        <xs:element name="thought" type="conditionablevalue" />
+        <xs:element name="bump" type="conditionable" />
+        <xs:element name="do" type="do" />
+        <xs:element name="object" type="object" />
+        <xs:element name="reward" type="conditionablevalue" />
+        <xs:element name="set" type="conditionablevalue" />
+        <xs:element name="unset" type="conditionablevalue" />
+        <xs:element name="prompt" type="prompt" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="conditionable">
     <xs:attribute name="when" type="xs:string" use="optional" />
   </xs:complexType>
@@ -81,6 +104,21 @@
     </xs:simpleContent>
   </xs:complexType>
 
+  <xs:complexType name="prompt">
+    <xs:sequence>
+      <xs:element name="choice" type="choice" />
+      <xs:choice minOccurs="1" maxOccurs="1">
+        <xs:element name="observe" type="conditionable" />
+        <xs:element name="tutorial" type="conditionablevalue" />
+        <xs:element name="narration" type="conditionablevalue" />
+        <xs:element name="voice" type="conditionablevalue" />
+        <xs:element name="thought" type="conditionablevalue" />
+        <xs:element name="object" type="object" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="when" type="xs:string" use="optional" />
+  </xs:complexType>
+  
   <xs:complexType name="do">
     <xs:sequence>
       <xs:choice minOccurs="1" maxOccurs="unbounded">
@@ -105,6 +143,8 @@
         <xs:element name="trophy" type="conditionablevalue" />
         <xs:element name="restart" type="conditionablevalue" />
         <xs:element name="exit" type="conditionablevalue" />
+        <xs:element name="prompt" type="prompt" />
+        <xs:element name="minigame" type="minigame" />
       </xs:choice>
     </xs:sequence>
     <xs:attribute name="when" type="xs:string" use="optional" />

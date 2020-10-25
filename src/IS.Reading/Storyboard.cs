@@ -12,7 +12,7 @@ namespace IS.Reading
 
         public Storyboard()
         {
-            Root = new StoryboardBlock();
+            Root = new StoryboardBlock(null);
             current = Root;
             forwardStack = new Stack<StoryboardBlock>();
             backwardStack = new Stack<StoryboardBlock>();
@@ -94,6 +94,10 @@ namespace IS.Reading
                 {
                     forwardStack.Push(block);
                     current = item.Block;
+                }
+                else
+                {
+
                 }
 
                 return true;

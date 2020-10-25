@@ -1,20 +1,18 @@
 ﻿namespace IS.Reading.StoryboardItems
 {
-    public class ProtagonistAntiRewardItem : IStoryboardItem
+    public struct PauseItem : IStoryboardItem
     {
-        public string Text { get; }
-
-        public ProtagonistAntiRewardItem(string text, ICondition? condition)
-            => (Text, Condition) = (text, condition);
+        public PauseItem(ICondition? condition)
+            => Condition = condition;
 
         public IStoryboardItem Enter(IStoryContextEventCaller context)
-            => new ProtagonistRewardItem(Text, Condition);
+            => this;
 
         public void Leave(IStoryContextEventCaller context) { }
 
         public StoryboardBlock? Block => null;
 
-        public bool IsPause => false;
+        public bool IsPause => true;
 
         public bool AllowBackwardsBlockEntry => true;
 

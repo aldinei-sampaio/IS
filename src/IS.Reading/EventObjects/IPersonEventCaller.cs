@@ -4,6 +4,7 @@
     {
         void Enter(string value);
         void Leave();
+        void Bump();
         ISimpleEventCaller Mood { get; }
         IOpenCloseEventCaller Thought { get; }
         IOpenCloseEventCaller Speech { get; }

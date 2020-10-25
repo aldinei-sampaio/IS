@@ -4,6 +4,7 @@
     {
         StringDictionary State { get; }
         IntDictionary Variables { get; }
+        StringDictionary Names { get; }
         string LastChoice { get; set; }
     }
 }

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard>
+  <viewpoint>sulana</viewpoint>
+  <music>never_look_back</music>
+  <background>carmim</background>
+  <unset>var1</unset>
+  <set>var2</set>
+  <observe />
+  <set>++var3</set>
+</storyboard>

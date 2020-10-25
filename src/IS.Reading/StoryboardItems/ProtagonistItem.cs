@@ -1,6 +1,6 @@
 ﻿namespace IS.Reading.StoryboardItems
 {
-    public struct ProtagonistItem : IStoryboardItem
+    public class ProtagonistItem : IStoryboardItem
     {
         public string Name { get; }
 
@@ -8,7 +8,7 @@
         {
             Name = name;
             Condition = condition;
-            Block = new StoryboardBlock();
+            Block = new StoryboardBlock(this);
         }
 
         public IStoryboardItem Enter(IStoryContextEventCaller context)

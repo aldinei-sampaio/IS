@@ -2,20 +2,24 @@
 {
     public class ProtagonistRewardItem : IStoryboardItem
     {
-        public string Text { get; }
+        public string Name { get; }
 
-        public ProtagonistRewardItem(string text, ICondition? condition)
-            => (Text, Condition) = (text, condition);
+        public ProtagonistRewardItem(string name, ICondition? condition)
+        {
+            Name = name;
+            Condition = condition;
+            Block = new StoryboardBlock(this);
+        }
 
         public IStoryboardItem Enter(IStoryContextEventCaller context)
         {
-            context.Protagonist.Reward.Open(Text);
-            return new ProtagonistAntiRewardItem(Text, Condition);
+            context.Protagonist.Reward.Open(Name);
+            return this;
         }
 
         public void Leave(IStoryContextEventCaller context) { }
 
-        public StoryboardBlock? Block => null;
+        public StoryboardBlock Block { get; }
 
         public bool IsPause => false;
 

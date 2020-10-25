@@ -1,14 +1,18 @@
 ﻿namespace IS.Reading.StoryboardItems
 {
-    public class ConditionItem : IStoryboardItem
+    public class ProtagonistBumpItem : IStoryboardItem
     {
-        public ConditionItem(ICondition? condition)
-        {
+        public ProtagonistBumpItem(ICondition? condition)
+        { 
             Condition = condition;
             Block = new StoryboardBlock(this);
         }
 
-        public IStoryboardItem Enter(IStoryContextEventCaller context) => this;
+        public IStoryboardItem Enter(IStoryContextEventCaller context)
+        {
+            context.Protagonist.Bump();
+            return this;
+        }
 
         public void Leave(IStoryContextEventCaller context) { }
 

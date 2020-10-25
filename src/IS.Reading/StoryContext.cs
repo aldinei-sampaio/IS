@@ -6,6 +6,7 @@ namespace IS.Reading
     {
         public StringDictionary State { get; } = new StringDictionary();
         public IntDictionary Variables { get; } = new IntDictionary();
+        public StringDictionary Names { get; } = new StringDictionary();
         public string LastChoice { get; set; } = string.Empty;
 
         public SimpleEventObject Music { get; } = new SimpleEventObject();

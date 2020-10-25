@@ -4,6 +4,9 @@ namespace IS.Reading
 {
     public class StoryboardBlock
     {
+        public StoryboardBlock(IStoryboardItem? parent) => Parent = parent;        
+
+        public IStoryboardItem? Parent { get; }
         public Queue<IStoryboardItem> ForwardQueue { get; } = new Queue<IStoryboardItem>();
         public Stack<IStoryboardItem> ForwardStack { get; } = new Stack<IStoryboardItem>();
         public Stack<IStoryboardItem> BackwardStack { get; } = new Stack<IStoryboardItem>();

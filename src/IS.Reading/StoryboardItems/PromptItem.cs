@@ -1,6 +1,6 @@
 ﻿namespace IS.Reading.StoryboardItems
 {
-    public struct PromptItem : IStoryboardItem
+    public class PromptItem : IStoryboardItem
     {
         public Prompt Prompt { get; }
 
@@ -8,7 +8,7 @@
         {
             Prompt = prompt;
             Condition = condition;
-            Block = new StoryboardBlock();
+            Block = new StoryboardBlock(this);
         }            
 
         public StoryboardBlock Block { get; }

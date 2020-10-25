@@ -4,6 +4,7 @@ using Xunit;
 
 namespace IS.Reading.StoryboardNavigatorTests
 {
+    /*
     public class GenericTests
     {
         [Fact]
@@ -94,4 +95,5 @@ namespace IS.Reading.StoryboardNavigatorTests
             target.ForwardQueue.Enqueue(new TutorialItem("tutorial2"));
         }
     }
+    */
 }

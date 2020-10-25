@@ -1,11 +1,11 @@
 ﻿namespace IS.Reading.StoryboardItems
 {
-    public struct InterlocutorThoughtItem : IStoryboardItem
+    public class InterlocutorThoughtItem : IStoryboardItem
     {
         public InterlocutorThoughtItem(ICondition? condition)
         {
             Condition = condition;
-            Block = new StoryboardBlock();
+            Block = new StoryboardBlock(this);
         }
 
         public IStoryboardItem Enter(IStoryContextEventCaller context)

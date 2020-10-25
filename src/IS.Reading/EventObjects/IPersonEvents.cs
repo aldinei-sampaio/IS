@@ -6,6 +6,7 @@ namespace IS.Reading.EventObjects
     {
         event EventHandler<string>? OnArrive;
         event EventHandler? OnLeave;
+        event EventHandler? OnBump;
 
         ISimpleEvents Mood { get; }
         IOpenCloseEvents Thought { get; }
