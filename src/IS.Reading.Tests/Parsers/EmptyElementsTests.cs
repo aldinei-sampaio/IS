@@ -19,9 +19,28 @@ namespace IS.Reading.Parsers
         [InlineData("protagonist", "bump")]
         public void InsideElements(string parentNode, string nodeName)
         {
-            var data = $"<storyboard><{parentNode}><{nodeName}>abcde</{nodeName}</{parentNode}></storyboard>";
+            var data = $"<storyboard><{parentNode} /><{nodeName}>abcde</{nodeName}></storyboard>";
             var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Load(data));
             ex.Message.Should().Be($"O element '{nodeName}' não pode ter conteúdo.\r\nLinha 1");
         }
+
+        [Fact]
+        public void NoWhen()
+        {
+            var data = "<storyboard><protagonist when=\"a\" /></storyboard>";
+            var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Load(data));
+            ex.Message.Should().Be("O elemento 'protagonist' não suporta condições 'when'.\r\nLinha 1");
+        }
+
+        [Theory]
+        [InlineData("observe")]
+        [InlineData("protagonist")]
+        public void NoRandomAttribute(string elementName)
+        {
+            var data = $"<storyboard><{elementName} teste=\"abc\" /></storyboard>";
+            var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Load(data));
+            ex.Message.Should().Be($"O atributo 'teste' não é suportado para o elemento '{elementName}'.\r\nLinha 1");
+        }
+
     }
 }

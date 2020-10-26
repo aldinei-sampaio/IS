@@ -105,5 +105,40 @@ namespace IS.Reading.Parsers
             target.Get<MusicItem>().MusicName.Should().Be("musica");
         }
 
+        [Fact]
+        public void SimpleProtagonist2()
+        {
+            var target = StoryboardParser.Load(Resources.SimpleProtagonist2);
+
+            target.Root.ForwardQueue.Count.Should().Be(3);
+
+            target.Get<MusicItem>().MusicName.Should().Be("musica");
+
+            var protagonist = target.Get<ProtagonistItem>();
+            protagonist.Block.ForwardQueue.Count.Should().Be(5);
+            protagonist.Get<ProtagonistBumpItem>();
+            protagonist.Get<VarSetItem>().Name.Should().Be("var1");
+            protagonist.Get<VarSetItem>().Name.Should().Be("var2");
+            {
+                var block = protagonist.Get<ProtagonistSpeechItem>();
+                block.Block.ForwardQueue.Count.Should().Be(2);
+                block.Get<ProtagonistSpeechTextItem>().Text.Should().Be("Fala 1");
+                block.Get<ProtagonistSpeechTextItem>().Text.Should().Be("Fala 2");
+            }
+            {
+                var emotion = protagonist.Get<ProtagonistMoodItem>();
+                emotion.Block.ForwardQueue.Count.Should().Be(4);
+                emotion.Get<ProtagonistBumpItem>();
+                emotion.Get<VarSetItem>().Name.Should().Be("var3");
+                emotion.Get<VarSetItem>().Name.Should().Be("var4");
+                var block = emotion.Get<ProtagonistThoughtItem>();
+                block.Block.ForwardQueue.Count.Should().Be(2);
+                block.Get<ProtagonistThoughtTextItem>().Text.Should().Be("Pensamento 1");
+                block.Get<ProtagonistThoughtTextItem>().Text.Should().Be("Pensamento 2");
+            }
+
+            target.Get<BackgroundItem>().ImageName.Should().Be("imagem");
+        }
+
     }
 }

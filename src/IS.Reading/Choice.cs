@@ -2,11 +2,15 @@
 {
     public struct Choice
     {
-        public string Caption { get; }
-        public string? Condition { get; }
-        public Choice(string caption, string condition)
+        public string Text { get; }
+        public string Tip { get; }
+        public string Value { get; }
+        public ICondition? Condition { get; }
+        public Choice(string value, string text, string tip, ICondition? condition)
         {
-            Caption = caption;
+            Value = value;
+            Text = text;
+            Tip = tip;
             Condition = condition;
         }
     }
