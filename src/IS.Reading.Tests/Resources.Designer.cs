@@ -99,6 +99,82 @@ namespace IS.Reading {
         ///&lt;storyboard&gt;
         ///  &lt;background&gt;imagem&lt;/background&gt;
         ///  &lt;protagonist /&gt;
+        ///  &lt;voice&gt;Fala 1&lt;/voice&gt;
+        ///  &lt;prompt&gt;
+        ///    &lt;a&gt;Opção 1&lt;/a&gt;
+        ///    &lt;b&gt;Opção 2&lt;/b&gt;
+        ///    &lt;c&gt;Opção 3&lt;/c&gt;
+        ///    &lt;voice&gt;Fala 2&lt;/voice&gt;
+        ///  &lt;/prompt&gt;
+        ///  &lt;voice&gt;Fala 3&lt;/voice&gt;
+        ///  &lt;music&gt;musica&lt;/music&gt;
+        ///&lt;/storyboard&gt;.
+        /// </summary>
+        internal static string SimplePrompt {
+            get {
+                return ResourceManager.GetString("SimplePrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;storyboard&gt;
+        ///  &lt;background&gt;imagem&lt;/background&gt;
+        ///  &lt;prompt&gt;
+        ///    &lt;a&gt;Opção A&lt;/a&gt;
+        ///    &lt;b&gt;Opção B&lt;/b&gt;
+        ///    &lt;narration&gt;Narração&lt;/narration&gt;
+        ///  &lt;/prompt&gt;
+        ///  &lt;music&gt;musica&lt;/music&gt;
+        ///&lt;/storyboard&gt;.
+        /// </summary>
+        internal static string SimplePrompt2 {
+            get {
+                return ResourceManager.GetString("SimplePrompt2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;storyboard&gt;
+        ///  &lt;tutorial&gt;Tutorial 1&lt;/tutorial&gt;
+        ///  &lt;prompt when=&quot;condicao1&quot;&gt;
+        ///    &lt;a when=&quot;condicao2&quot;&gt;Opção A&lt;/a&gt;
+        ///    &lt;b when=&quot;condicao3&quot;&gt;Opção B&lt;/b&gt;
+        ///    &lt;tutorial&gt;Tutorial 2&lt;/tutorial&gt;
+        ///  &lt;/prompt&gt;
+        ///  &lt;tutorial&gt;Tutorial 3&lt;/tutorial&gt;
+        ///&lt;/storyboard&gt;.
+        /// </summary>
+        internal static string SimplePrompt3 {
+            get {
+                return ResourceManager.GetString("SimplePrompt3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;storyboard&gt;
+        ///  &lt;narration&gt;Narração 1&lt;/narration&gt;
+        ///  &lt;prompt time=&quot;5&quot; default=&quot;b&quot; randomorder=&quot;1&quot;&gt;
+        ///    &lt;a req=&quot;Coragem 1&quot;&gt;Opção A&lt;/a&gt;
+        ///    &lt;b req=&quot;Força 2&quot;&gt;Opção B&lt;/b&gt;
+        ///    &lt;narration&gt;Narração 2&lt;/narration&gt;
+        ///  &lt;/prompt&gt;
+        ///  &lt;narration&gt;Narração 3&lt;/narration&gt;
+        ///&lt;/storyboard&gt;.
+        /// </summary>
+        internal static string SimplePrompt4 {
+            get {
+                return ResourceManager.GetString("SimplePrompt4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;storyboard&gt;
+        ///  &lt;background&gt;imagem&lt;/background&gt;
+        ///  &lt;protagonist /&gt;
         ///  &lt;bump /&gt;
         ///  &lt;set&gt;var1&lt;/set&gt;
         ///  &lt;unset&gt;var2&lt;/unset&gt;

@@ -1,5 +1,7 @@
 ﻿using FluentAssertions;
 using IS.Reading.StoryboardItems;
+using System;
+using System.Linq;
 using Xunit;
 
 namespace IS.Reading.Parsers
@@ -138,6 +140,86 @@ namespace IS.Reading.Parsers
             }
 
             target.Get<BackgroundItem>().ImageName.Should().Be("imagem");
+        }
+
+        [Fact]
+        public void SimplePrompt()
+        {
+            var target = StoryboardParser.Load(Resources.SimplePrompt);
+
+            target.Root.ForwardQueue.Count.Should().Be(3);
+
+            target.Get<BackgroundItem>().ImageName.Should().Be("imagem");
+
+            var protagonist = target.Get<ProtagonistItem>();
+            protagonist.Block.ForwardQueue.Count.Should().Be(3);
+            protagonist.Get<ProtagonistSpeechItem>().GetSingle<ProtagonistSpeechTextItem>().Text.Should().Be("Fala 1");
+
+            var prompt = protagonist.Get<PromptItem>();
+            prompt.Prompt.Choices.Select(i => i.Value).Should().BeEquivalentTo("a", "b", "c");
+            prompt.Prompt.Choices.Select(i => i.Text).Should().BeEquivalentTo("Opção 1", "Opção 2", "Opção 3");
+            prompt.GetSingle<ProtagonistSpeechItem>().GetSingle<ProtagonistSpeechTextItem>().Text.Should().Be("Fala 2");
+
+            protagonist.Get<ProtagonistSpeechItem>().GetSingle<ProtagonistSpeechTextItem>().Text.Should().Be("Fala 3");
+
+            target.Get<MusicItem>().MusicName.Should().Be("musica");
+        }
+
+        [Fact]
+        public void SimplePrompt2()
+        {
+            var target = StoryboardParser.Load(Resources.SimplePrompt2);
+
+            target.Root.ForwardQueue.Count.Should().Be(3);
+
+            target.Get<BackgroundItem>().ImageName.Should().Be("imagem");
+
+            var prompt = target.Get<PromptItem>();
+            prompt.Prompt.Choices.Select(i => i.Value).Should().BeEquivalentTo("a", "b");
+            prompt.Prompt.Choices.Select(i => i.Text).Should().BeEquivalentTo("Opção A", "Opção B");
+            prompt.GetSingle<NarrationItem>().GetSingle<NarrationTextItem>().Text.Should().Be("Narração");
+
+            target.Get<MusicItem>().MusicName.Should().Be("musica");
+        }
+
+        [Fact]
+        public void SimplePrompt3()
+        {
+            var target = StoryboardParser.Load(Resources.SimplePrompt3);
+
+            target.Root.ForwardQueue.Count.Should().Be(3);
+
+            target.Get<TutorialItem>().GetSingle<TutorialTextItem>().Text.Should().Be("Tutorial 1");
+
+            var prompt = target.Get<PromptItem>();
+            prompt.Condition.ToString().Should().Be("condicao1[1:]");
+            prompt.Prompt.Choices.Select(i => i.Value).Should().BeEquivalentTo("a", "b");
+            prompt.Prompt.Choices.Select(i => i.Text).Should().BeEquivalentTo("Opção A", "Opção B");
+            prompt.Prompt.Choices.Select(i => i.Condition.ToString()).Should().BeEquivalentTo("condicao2[1:]", "condicao3[1:]");
+            prompt.GetSingle<TutorialItem>().GetSingle<TutorialTextItem>().Text.Should().Be("Tutorial 2");
+
+            target.Get<TutorialItem>().GetSingle<TutorialTextItem>().Text.Should().Be("Tutorial 3");
+        }
+
+        [Fact]
+        public void SimplePrompt4()
+        {
+            var target = StoryboardParser.Load(Resources.SimplePrompt4);
+
+            target.Root.ForwardQueue.Count.Should().Be(3);
+
+            target.Get<NarrationItem>().GetSingle<NarrationTextItem>().Text.Should().Be("Narração 1");
+
+            var prompt = target.Get<PromptItem>();
+            prompt.Prompt.TimeLimit.Should().Be(TimeSpan.FromSeconds(5));
+            prompt.Prompt.RandomOrder.Should().BeTrue();
+            prompt.Prompt.DefaultChoice.Should().Be("b");
+            prompt.Prompt.Choices.Select(i => i.Value).Should().BeEquivalentTo("a", "b");
+            prompt.Prompt.Choices.Select(i => i.Text).Should().BeEquivalentTo("Opção A", "Opção B");
+            prompt.Prompt.Choices.Select(i => i.Tip.ToString()).Should().BeEquivalentTo("Coragem 1", "Força 2");
+            prompt.GetSingle<NarrationItem>().GetSingle<NarrationTextItem>().Text.Should().Be("Narração 2");
+
+            target.Get<NarrationItem>().GetSingle<NarrationTextItem>().Text.Should().Be("Narração 3");
         }
 
     }

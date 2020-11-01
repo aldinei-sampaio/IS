@@ -28,11 +28,9 @@
 
   <protagonist />
   <prompt>
-    <choice>
-      <a>Uma bênção</a>
-      <b>Um tormento</b>
-      <c>Uma maldição</c>
-    </choice>
+    <a>Uma bênção</a>
+    <b>Um tormento</b>
+    <c>Uma maldição</c>
     <thought>Essa minha sede por combate é...</thought>
   </prompt>
 
@@ -126,11 +124,9 @@
   <protagonist />
   <emotion>angry</emotion>
   <prompt>
-    <choice>
-      <a>Atacar com força total!</a>
-      <b>Tentar economizar minhas forças</b>
-      <c>Adotar postura defensiva</c>
-    </choice>
+    <a>Atacar com força total!</a>
+    <b>Tentar economizar minhas forças</b>
+    <c>Adotar postura defensiva</c>
     <thought>Eu vou...</thought>
   </prompt>
 
@@ -236,10 +232,8 @@
 
   <protagonist />
   <prompt>
-    <choice>
-      <a>Tudo bem por aí?</a>
-      <b>Você ainda está vivo?</b>
-    </choice>
+    <a>Tudo bem por aí?</a>
+    <b>Você ainda está vivo?</b>
     <voice>Claro que sim!</voice>
   </prompt>
 
@@ -343,12 +337,12 @@
   <person>rebelde2</person>
   <voice>Graças aos céus!</voice>
   <protagonist />
-  <choice>
+  <prompt>
     <a>E vocês ainda estão vivos.</a>
     <b>Cadê todo mundo?</b>
     <c>Ronam precisa de ajuda.</c>
-  </choice>
-  <voice>Sim, estou bem.</voice>
+    <voice>Sim, estou bem.</voice>
+  </prompt>
 
   <do when="a">
     <person>rebelde2</person>
@@ -428,12 +422,12 @@
   <voice>Não sabemos, mas isso foi um desastre. Não temos mais mantimentos e nem equipamentos de reserva. Mercília agora é deles, assim como tudo o que deixamos lá.</voice>
 
   <protagonist />
-  <choice>
+  <prompt>
     <a>O que faremos agora?</a>
     <b>Isso não pode acabar assim!</b>
     <c>Então vamos tomar a cidade de volta!</c>
-  </choice>
-  <voice>...</voice>
+    <voice>...</voice>
+  </prompt>
 
   <do when="a">
     <person>giarle</person>
@@ -512,11 +506,11 @@
     <narration>Então, sua audição aguçada capta a voz de Giarle vindo do final do corredor. Ele está conversando com os outros rebeldes.</narration>
     <protagonist />
     <thought>Parece que falam sobre mim.</thought>
-    <choice>
+    <prompt>
       <a>Me aproximar um pouco mais para ouvir melhor.</a>
       <b>Deixar isso pra lá e cuidar dos meus assuntos.</b>
-    </choice>
-    <thought>Eu vou...</thought>
+      <thought>Eu vou...</thought>
+    </prompt>
 
     <do when="a">
       <narration>Você se esgueira pelo corredor devagar, se aproximando da entrada do salão e cola suas costas à parede, ao lado da porta.</narration>
@@ -757,15 +751,20 @@
   </do>
 
   <protagonist />
-  <choice>
+  <prompt when="sulana_rampage">
     <a>E por que eu iria com você?</a>
     <b>Prefiro ir embora sozinha, obrigada.</b>
     <c>Ótimo, não aguento mais este lugar.</c>
-    <d when="sulana_rampage">Tudo bem.</d>
-    <d when="!sulana_rampage">Se você insiste...</d>
-  </choice>
-  <voice when="sulana_rampage">...</voice>
-  <voice when="!sulana_rampage">É mesmo?</voice>
+    <d>Tudo bem.</d>
+    <voice>...</voice>
+  </prompt>
+  <prompt when="!sulana_rampage">
+    <a>E por que eu iria com você?</a>
+    <b>Prefiro ir embora sozinha, obrigada.</b>
+    <c>Ótimo, não aguento mais este lugar.</c>
+    <d>Se você insiste...</d>
+    <voice>É mesmo?</voice>
+  </prompt>
 
   <do when="a">
     <emotion>angry</emotion>

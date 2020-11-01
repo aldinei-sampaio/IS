@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Xml;
 
 namespace IS.Reading.Parsers
@@ -51,9 +50,6 @@ namespace IS.Reading.Parsers
 
         private void HandleStartElement()
         {
-            if (currentPrompt != null)
-                HandlePromptStartElement();
-
             if (Is<ProtagonistSpeechItem>(currentBlock))
                 if (HandleProtagonistSpeechStartElement())
                     return;
@@ -134,6 +130,9 @@ namespace IS.Reading.Parsers
                         OpenBlock(new ProtagonistItem(null));
                         break;
                     }
+                case "prompt":
+                    HandlePrompt();
+                    break;
                 default:
                     throw new StoryboardParsingException(reader, $"O elemento '{reader.LocalName}' não é suportado.");
             }
@@ -148,51 +147,6 @@ namespace IS.Reading.Parsers
                 CloseBlock();
         }
 
-        private void HandlePromptStartElement()
-        {
-            var condition = LookForCondition();
-            if (condition != null)
-                throw new StoryboardParsingException(reader, "Não é permitido incluir condição 'when' no elemento seguinte a 'choice'.");
-
-            switch (reader.LocalName)
-            {
-                case "narration":
-                    {
-                        CloseToRootOrDo();
-                        var item = new NarrationItem(null);
-                        item.Block.ForwardQueue.Enqueue(new NarrationTextItem(GetContent(), null));
-                        CompletePrompt(item);
-                        break;
-                    }
-                case "tutorial":
-                    {
-                        CloseToRootOrDo();
-                        var item = new TutorialItem(null);
-                        item.Block.ForwardQueue.Enqueue(new TutorialTextItem(GetContent(), null));
-                        CompletePrompt(item);
-                        break;
-                    }
-                case "voice":
-                    {
-                        var item = new ProtagonistSpeechItem(null);
-                        item.Block.ForwardQueue.Enqueue(new ProtagonistSpeechTextItem(GetContent(), null));
-                        CompletePrompt(item);
-                        break;
-                    }
-                case "thought":
-                    {
-                        var item = new ProtagonistThoughtItem(null);
-                        item.Block.ForwardQueue.Enqueue(new ProtagonistThoughtTextItem(GetContent(), null));
-                        CompletePrompt(item);
-                        break;
-                    }
-                case "observe":
-                    CompletePrompt(new PauseItem(null));
-                    break;
-                default:
-                    throw new StoryboardParsingException(reader, $"O elemento '{reader.LocalName}' não pode vir depois de um elemento 'choice'.");
-            }
-        }
 
         private bool HandleProtagonistStartElement(bool isMood)
         {
@@ -220,8 +174,8 @@ namespace IS.Reading.Parsers
                         Add(new ProtagonistThoughtTextItem(GetContent(), condition));
                         return true;
                     }
-                case "choice":
-                    HandleChoice();
+                case "prompt":
+                    HandlePrompt();
                     return true;
                 case "reward":
                     return true;
@@ -271,29 +225,22 @@ namespace IS.Reading.Parsers
 
         private void Add(IStoryboardItem item) => currentBlock.ForwardQueue.Enqueue(item);
 
-        private void CompletePrompt(IStoryboardItem item)
-        {
-            if (currentPrompt == null)
-                throw new InvalidOperationException();
-
-            currentPrompt.Block.ForwardQueue.Enqueue(item);
-            Add(currentPrompt);
-            currentPrompt = null;
-        }
-
         private string GetVariableName() => GetContent(varNamePattern);
 
         private void EnsureEmpty()
         {
             var elementName = reader.LocalName;
             if (!reader.IsEmptyElement)
-                throw new StoryboardParsingException(reader, $"O element '{elementName}' não pode ter conteúdo.");
+                throw new StoryboardParsingException(reader, $"O elemento '{elementName}' não pode ter conteúdo.");
         }
 
         private string GetContent(string? pattern = null)
         {
             var elementName = reader.LocalName;
-            var value = reader.ReadElementContentAsString();
+            reader.Read();
+            if (reader.NodeType != XmlNodeType.Text)
+                throw new StoryboardParsingException(reader, $"Conteúdo é requerido para o elemento '{elementName}'.");
+            var value = reader.ReadContentAsString();
             if (string.IsNullOrEmpty(value))
                 throw new StoryboardParsingException(reader, $"Conteúdo é requerido para o elemento '{elementName}'.");
             if (pattern != null && !Regex.IsMatch(value, pattern))
@@ -321,7 +268,7 @@ namespace IS.Reading.Parsers
             Add(new VarSetItem(value, 1, condition));
         }
 
-        private void HandleChoice()
+        private void HandlePrompt()
         {
             ICondition? condition = null;
             TimeSpan? timeLimit = null;
@@ -329,7 +276,7 @@ namespace IS.Reading.Parsers
             var randomOrder = false;
 
             if (reader.IsEmptyElement)
-                throw new StoryboardParsingException(reader, $"O elemento 'choice' não pode estar vazio.");
+                throw new StoryboardParsingException(reader, $"O elemento 'prompt' não pode estar vazio.");
 
             while (reader.MoveToNextAttribute())
             {
@@ -340,12 +287,12 @@ namespace IS.Reading.Parsers
                         break;
                     case "time":
                         if (!int.TryParse(reader.Value, out var seconds))
-                            throw new StoryboardParsingException(reader, $"O valor '{reader.Value}' não é válido para o atributo 'time'.");
+                            throw new StoryboardParsingException(reader, $"O valor '{reader.Value}' não é válido para o atributo 'time'. É esperado um número inteiro.");
                         timeLimit = TimeSpan.FromSeconds(seconds);
                         break;
-                    case "timeout":
-                        if (!Regex.IsMatch(reader.Value, @"^[a-e]$"))
-                            throw new StoryboardParsingException(reader, $"O valor '{reader.Value}' não é válido para o atributo 'timeout'.");
+                    case "default":
+                        if (!Regex.IsMatch(reader.Value, @"^[a-z]$"))
+                            throw new StoryboardParsingException(reader, $"O valor '{reader.Value}' não é válido para o atributo 'default'. É esperada uma opção de 'a' a 'z'.");
                         defaultChoice = reader.Value;
                         break;
                     case "randomorder":
@@ -360,7 +307,7 @@ namespace IS.Reading.Parsers
                                 randomOrder = false;
                                 break;
                             default:
-                                throw new StoryboardParsingException(reader, $"O valor '{reader.Value}' não é válido para o atributo 'randomorder'.");
+                                throw new StoryboardParsingException(reader, $"O valor '{reader.Value}' não é válido para o atributo 'randomorder'. É esperado '1' ou '0'.");
                         }
                         break;
                     default:
@@ -369,29 +316,109 @@ namespace IS.Reading.Parsers
             }
 
             var choices = new List<Choice>();
+            var triggerFound = false;
+            IStoryboardItem trigger = null;
 
             while (reader.Read())
             {
                 if (reader.NodeType == XmlNodeType.Element)
                 {
                     if (Regex.IsMatch(reader.LocalName, @"^[a-z]$"))
+                    {
                         choices.Add(LoadChoice());
+                    }
                     else
-                        throw new StoryboardParsingException(reader, $"O elemento filho '{reader.LocalName}' não é suportado no elemento 'choice'.");
+                    {
+                        trigger = HandlePromptTriggerElement(triggerFound);
+                        triggerFound = true;
+                    }
                 }
                 else if (reader.NodeType == XmlNodeType.EndElement)
                 {
-                    if (reader.LocalName == "choice")
+                    if (reader.LocalName == "prompt")
                     {
                         if (choices.Count == 0)
-                            throw new StoryboardParsingException(reader, $"Nenhuma opção definida no elemento 'choice'. Favor definir um ou mais elementos de 'a' a 'z'.");
+                            throw new StoryboardParsingException(reader, $"Nenhuma escolha definida no elemento 'prompt'. Favor definir um ou mais elementos de 'a' a 'z'.");
                         break;
                     }
                 }
             }
 
+            if (trigger == null)
+                throw new StoryboardParsingException(reader, $"O elemento 'prompt' precisa conter um elemento 'narration', 'tutorial', 'voice' ou 'thought'.");
+
             var prompt = new Prompt(choices, timeLimit, defaultChoice, randomOrder);
-            currentPrompt = new PromptItem(prompt, condition);
+            var promptItem = new PromptItem(prompt, condition);
+            promptItem.Block.ForwardQueue.Enqueue(trigger);
+            Add(promptItem);
+        }
+
+        private IStoryboardItem HandlePromptTriggerElement(bool triggerFound)
+        {
+            void Validate()
+            {
+                var elementName = reader.LocalName;
+                if (triggerFound)
+                    throw new StoryboardParsingException(reader, $"O elemento '{elementName}' é inválido porque existe outro elemento de pausa dentro do 'prompt'.");
+                if (reader.MoveToNextAttribute())
+                    throw new StoryboardParsingException(reader, $"Não são permitidos atributos no elemento '{elementName}' dentro de um elemento 'prompt'.");
+            }
+
+            void CloseToProtagonist()
+            {
+                for(; ; )
+                {
+                    if (Is<ProtagonistItem>(currentBlock))
+                        return;
+
+                    if (blocks.Count == 0)
+                        throw new StoryboardParsingException(reader, $"O elemento '{reader.LocalName}' só pode ser usado em um 'prompt' quando o mesmo estiver ligado a um 'protagonist'.");
+
+                    CloseBlock();
+                }
+            }
+
+            switch (reader.LocalName)
+            {
+                case "narration":
+                    {
+                        CloseToRootOrDo();
+                        Validate();
+                        var item = new NarrationItem(null);
+                        item.Block.ForwardQueue.Enqueue(new NarrationTextItem(GetContent(), null));
+                        return item;
+                    }
+                case "tutorial":
+                    {
+                        CloseToRootOrDo();
+                        Validate();
+                        var item = new TutorialItem(null);
+                        item.Block.ForwardQueue.Enqueue(new TutorialTextItem(GetContent(), null));
+                        return item;
+                    }
+                case "voice":
+                    {
+                        CloseToProtagonist();
+                        Validate();
+                        var item = new ProtagonistSpeechItem(null);
+                        item.Block.ForwardQueue.Enqueue(new ProtagonistSpeechTextItem(GetContent(), null));
+                        return item;
+                    }
+                case "thought":
+                    {
+                        CloseToProtagonist();
+                        Validate();
+                        var item = new ProtagonistThoughtItem(null);
+                        item.Block.ForwardQueue.Enqueue(new ProtagonistThoughtTextItem(GetContent(), null));
+                        return item;
+                    }
+                case "observe":
+                    CloseToRootOrDo();
+                    Validate();
+                    return new PauseItem(null);
+                default:
+                    throw new StoryboardParsingException(reader, $"O elemento '{reader.LocalName}' não é suportado dentro de um elemento 'prompt'.");
+            }
         }
 
         private Choice LoadChoice()
@@ -421,7 +448,7 @@ namespace IS.Reading.Parsers
                 else if (reader.NodeType == XmlNodeType.EndElement)
                     break;
                 else if (reader.NodeType == XmlNodeType.Element)
-                    throw new StoryboardParsingException(reader, $"O elemento filho '{reader.LocalName}' não é suportado para o elemento '{value}'.");
+                    throw new StoryboardParsingException(reader, $"O elemento '{reader.LocalName}' não é suportado como filho do elemento '{value}'.");
             }
 
             if (string.IsNullOrEmpty(text))
@@ -438,7 +465,7 @@ namespace IS.Reading.Parsers
             if (reader.MoveToNextAttribute())
             {
                 if (reader.LocalName == "when")
-                    condition = ConditionParser.Parse(reader.Value);
+                    condition = GetCondition(reader.Value);
                 else
                     throw new StoryboardParsingException(reader, $"O atributo '{reader.LocalName}' não é suportado para o elemento '{elementName}'.");
 
