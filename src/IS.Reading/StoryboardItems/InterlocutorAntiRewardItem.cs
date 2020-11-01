@@ -2,13 +2,16 @@
 {
     public class InterlocutorAntiRewardItem : IStoryboardItem
     {
-        public string Text { get; }
+        public VarIncrement Increment { get; }
 
-        public InterlocutorAntiRewardItem(string text, ICondition? condition)
-            => (Text, Condition) = (text, condition);
+        public InterlocutorAntiRewardItem(VarIncrement increment, ICondition? condition)
+            => (Increment, Condition) = (increment, condition);
 
         public IStoryboardItem Enter(IStoryContextEventCaller context)
-            => new InterlocutorRewardItem(Text, Condition);
+        {
+            context.Variables[Increment.Name] = context.Variables[Increment.Name] - Increment.Value;
+            return new InterlocutorRewardItem(Increment, Condition);
+        }
 
         public void Leave(IStoryContextEventCaller context) { }
 

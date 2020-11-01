@@ -34,6 +34,7 @@ namespace IS.Reading.Parsers
                     HandlePrompt();
                     return true;
                 case Reward:
+                    HandleProtagonistReward();
                     return true;
                 case Set:
                     HandleSet();
@@ -53,6 +54,13 @@ namespace IS.Reading.Parsers
             return false;
         }
 
+        private void HandleProtagonistReward()
+        {
+            var condition = LookForCondition();
+            var increment = LoadIncrement();
+            Add(new ProtagonistRewardItem(increment, condition));
+        }
+
         private bool HandleProtagonistSpeechStartElement()
         {
             switch (reader.LocalName)
@@ -60,6 +68,9 @@ namespace IS.Reading.Parsers
                 case Speech:
                     var condition = LookForCondition();
                     Add(new ProtagonistSpeechTextItem(GetContent(), condition));
+                    return true;
+                case Reward:
+                    HandleProtagonistReward();
                     return true;
             }
             CloseBlock();
@@ -74,10 +85,12 @@ namespace IS.Reading.Parsers
                     var condition = LookForCondition();
                     Add(new ProtagonistThoughtTextItem(GetContent(), condition));
                     return true;
+                case Reward:
+                    HandleProtagonistReward();
+                    return true;
             }
             CloseBlock();
             return false;
         }
-
     }
 }

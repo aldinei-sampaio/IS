@@ -101,6 +101,7 @@ namespace IS.Reading.Parsers
         [InlineData("voice")]
         [InlineData("thought")]
         [InlineData("person")]
+        [InlineData("reward")]
         public void ElementMustHaveContent(string elementName)
         {
             var data = $"<storyboard><protagonist /><{elementName} /></storyboard>";

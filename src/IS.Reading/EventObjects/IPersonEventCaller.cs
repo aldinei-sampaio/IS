@@ -8,6 +8,6 @@
         ISimpleEventCaller Mood { get; }
         IOpenCloseEventCaller Thought { get; }
         IOpenCloseEventCaller Speech { get; }
-        IPromptEventCaller<string> Reward { get; }
+        IPromptEventCaller<VarIncrement> Reward { get; }
     }
 }

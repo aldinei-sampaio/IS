@@ -265,5 +265,49 @@ namespace IS.Reading.Parsers
             target.GetSingle<NarrationItem>().GetSingle<NarrationTextItem>().Text.Should().Be("Narração 3");
         }
 
+        [Fact]
+        public void ProtagonistReward()
+        {
+            var target = StoryboardParser.Load(Resources.ProtagonistReward);
+
+            var protagonist = target.GetSingle<ProtagonistItem>();
+            protagonist.Get<ProtagonistRewardItem>().Increment.ToString().Should().Be("v1+1");
+            
+            var speech = protagonist.Get<ProtagonistSpeechItem>();
+            speech.Get<ProtagonistSpeechTextItem>().Text.Should().Be("Fala 1");
+            speech.Get<ProtagonistRewardItem>().Increment.ToString().Should().Be("v2-1");
+            speech.GetSingle<ProtagonistSpeechTextItem>().Text.Should().Be("Fala 2");
+
+            var mood = protagonist.GetSingle<ProtagonistMoodItem>();
+            mood.Get<ProtagonistRewardItem>().Increment.ToString().Should().Be("v3+2");
+
+            var thought = mood.GetSingle<ProtagonistThoughtItem>();
+            thought.Get<ProtagonistThoughtTextItem>().Text.Should().Be("Pensamento 1");
+            thought.Get<ProtagonistRewardItem>().Increment.ToString().Should().Be("v4-2");
+            thought.GetSingle<ProtagonistThoughtTextItem>().Text.Should().Be("Pensamento 2");
+        }
+
+        [Fact]
+        public void InterlocutorReward()
+        {
+            var target = StoryboardParser.Load(Resources.InterlocutorReward);
+
+            var interlocutor = target.GetSingle<InterlocutorItem>();
+            interlocutor.Name.Should().Be("sulana");
+            interlocutor.Get<InterlocutorRewardItem>().Increment.ToString().Should().Be("v1+1");
+
+            var speech = interlocutor.Get<InterlocutorSpeechItem>();
+            speech.Get<InterlocutorSpeechTextItem>().Text.Should().Be("Fala 1");
+            speech.Get<InterlocutorRewardItem>().Increment.ToString().Should().Be("v2-1");
+            speech.GetSingle<InterlocutorSpeechTextItem>().Text.Should().Be("Fala 2");
+
+            var mood = interlocutor.GetSingle<InterlocutorMoodItem>();
+            mood.Get<InterlocutorRewardItem>().Increment.ToString().Should().Be("v3+2");
+
+            var thought = mood.GetSingle<InterlocutorThoughtItem>();
+            thought.Get<InterlocutorThoughtTextItem>().Text.Should().Be("Pensamento 1");
+            thought.Get<InterlocutorRewardItem>().Increment.ToString().Should().Be("v4-2");
+            thought.GetSingle<InterlocutorThoughtTextItem>().Text.Should().Be("Pensamento 2");
+        }
     }
 }

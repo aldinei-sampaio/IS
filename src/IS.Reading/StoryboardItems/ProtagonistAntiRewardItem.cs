@@ -1,17 +1,16 @@
 ﻿namespace IS.Reading.StoryboardItems
 {
-    public class InterlocutorRewardItem : IStoryboardItem
+    public class ProtagonistAntiRewardItem : IStoryboardItem
     {
         public VarIncrement Increment { get; }
 
-        public InterlocutorRewardItem(VarIncrement increment, ICondition? condition)
+        public ProtagonistAntiRewardItem(VarIncrement increment, ICondition? condition)
             => (Increment, Condition) = (increment, condition);
 
         public IStoryboardItem Enter(IStoryContextEventCaller context)
         {
-            context.Variables[Increment.Name] = context.Variables[Increment.Name] + Increment.Value;
-            context.Interlocutor.Reward.Open(Increment);
-            return new InterlocutorAntiRewardItem(Increment, Condition);
+            context.Variables[Increment.Name] = context.Variables[Increment.Name] - Increment.Value;
+            return new ProtagonistRewardItem(Increment, Condition);
         }
 
         public void Leave(IStoryContextEventCaller context) { }

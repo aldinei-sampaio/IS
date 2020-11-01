@@ -63,6 +63,48 @@ namespace IS.Reading {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///&lt;storyboard&gt;
+        ///  &lt;person&gt;sulana&lt;/person&gt;
+        ///  &lt;reward&gt;+v1&lt;/reward&gt;
+        ///  &lt;voice&gt;Fala 1&lt;/voice&gt;
+        ///  &lt;reward&gt;-v2&lt;/reward&gt;
+        ///  &lt;voice&gt;Fala 2&lt;/voice&gt;
+        ///  &lt;emotion&gt;surprised&lt;/emotion&gt;
+        ///  &lt;reward&gt;++v3&lt;/reward&gt;
+        ///  &lt;thought&gt;Pensamento 1&lt;/thought&gt;
+        ///  &lt;reward&gt;--v4&lt;/reward&gt;
+        ///  &lt;thought&gt;Pensamento 2&lt;/thought&gt;
+        ///&lt;/storyboard&gt;.
+        /// </summary>
+        internal static string InterlocutorReward {
+            get {
+                return ResourceManager.GetString("InterlocutorReward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;storyboard&gt;
+        ///  &lt;protagonist /&gt;
+        ///  &lt;reward&gt;+v1&lt;/reward&gt;
+        ///  &lt;voice&gt;Fala 1&lt;/voice&gt;
+        ///  &lt;reward&gt;-v2&lt;/reward&gt;
+        ///  &lt;voice&gt;Fala 2&lt;/voice&gt;
+        ///  &lt;emotion&gt;surprised&lt;/emotion&gt;
+        ///  &lt;reward&gt;++v3&lt;/reward&gt;
+        ///  &lt;thought&gt;Pensamento 1&lt;/thought&gt;
+        ///  &lt;reward&gt;--v4&lt;/reward&gt;
+        ///  &lt;thought&gt;Pensamento 2&lt;/thought&gt;
+        ///&lt;/storyboard&gt;.
+        /// </summary>
+        internal static string ProtagonistReward {
+            get {
+                return ResourceManager.GetString("ProtagonistReward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;storyboard&gt;
         ///  &lt;viewpoint&gt;sulana&lt;/viewpoint&gt;
         ///  &lt;music&gt;never_look_back&lt;/music&gt;
         ///  &lt;background&gt;carmim&lt;/background&gt;
@@ -107,7 +149,7 @@ namespace IS.Reading {
         ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///&lt;storyboard&gt;
         ///  &lt;music&gt;musica&lt;/music&gt;
-        ///  &lt;protagonist /&gt;
+        ///  &lt;person&gt;belisar&lt;/person&gt;
         ///  &lt;bump /&gt;
         ///  &lt;set&gt;var1&lt;/set&gt;
         ///  &lt;unset&gt;var2&lt;/unset&gt;

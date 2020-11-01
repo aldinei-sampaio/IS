@@ -11,6 +11,6 @@ namespace IS.Reading.EventObjects
         ISimpleEvents Mood { get; }
         IOpenCloseEvents Thought { get; }
         IOpenCloseEvents Speech { get; }
-        IPromptEvents<string> Reward { get; }
+        IPromptEvents<VarIncrement> Reward { get; }
     }
 }

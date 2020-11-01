@@ -204,7 +204,7 @@ namespace IS.Reading.Parsers
                 var increment = VarIncrement.Parse(value);
                 if (!increment.HasValue)
                     throw new StoryboardParsingException(reader, elementName, value);
-                Add(new VarIncrementItem(increment.Value.Key, increment.Value.Increment, condition));
+                Add(new VarIncrementItem(increment.Value.Name, increment.Value.Value, condition));
                 return;
             }
             
@@ -212,6 +212,20 @@ namespace IS.Reading.Parsers
                 throw new StoryboardParsingException(reader, elementName, value);
 
             Add(new VarSetItem(value, 1, condition));
+        }
+
+        private VarIncrement LoadIncrement()
+        {
+            var elementName = reader.LocalName;
+            var value = GetContent();
+            if (!Regex.IsMatch(value, VarIncrement.Pattern))
+                throw new StoryboardParsingException(reader, elementName, value);
+
+            var increment = VarIncrement.Parse(value);
+            if (!increment.HasValue)
+                throw new StoryboardParsingException(reader, elementName, value);
+
+            return increment.Value;
         }
 
         private ICondition? LookForCondition()

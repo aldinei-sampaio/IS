@@ -31,6 +31,7 @@ namespace IS.Reading.Parsers
                         return true;
                     }
                 case Reward:
+                    HandleInterlocutorReward();
                     return true;
                 case Set:
                     HandleSet();
@@ -58,6 +59,9 @@ namespace IS.Reading.Parsers
                     var condition = LookForCondition();
                     Add(new InterlocutorSpeechTextItem(GetContent(), condition));
                     return true;
+                case Reward:
+                    HandleInterlocutorReward();
+                    return true;
             }
             CloseBlock();
             return false;
@@ -71,10 +75,21 @@ namespace IS.Reading.Parsers
                     var condition = LookForCondition();
                     Add(new InterlocutorThoughtTextItem(GetContent(), condition));
                     return true;
+                case Reward:
+                    HandleInterlocutorReward();
+                    return true;
             }
             CloseBlock();
             return false;
         }
+
+        private void HandleInterlocutorReward()
+        {
+            var condition = LookForCondition();
+            var increment = LoadIncrement();
+            Add(new InterlocutorRewardItem(increment, condition));
+        }
+
 
     }
 }

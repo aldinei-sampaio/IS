@@ -2,24 +2,21 @@
 {
     public class ProtagonistRewardItem : IStoryboardItem
     {
-        public string Name { get; }
+        public VarIncrement Increment { get; }
 
-        public ProtagonistRewardItem(string name, ICondition? condition)
-        {
-            Name = name;
-            Condition = condition;
-            Block = new StoryboardBlock(this);
-        }
+        public ProtagonistRewardItem(VarIncrement increment, ICondition? condition)
+            => (Increment, Condition) = (increment, condition);
 
         public IStoryboardItem Enter(IStoryContextEventCaller context)
         {
-            context.Protagonist.Reward.Open(Name);
-            return this;
+            context.Variables[Increment.Name] = context.Variables[Increment.Name] + Increment.Value;
+            context.Protagonist.Reward.Open(Increment);
+            return new ProtagonistAntiRewardItem(Increment, Condition);
         }
 
         public void Leave(IStoryContextEventCaller context) { }
 
-        public StoryboardBlock Block { get; }
+        public StoryboardBlock? Block => null;
 
         public bool IsPause => false;
 

@@ -2,14 +2,16 @@
 {
     public struct VarIncrement
     {
-        public string Key { get; }
-        public int Increment { get; }
+        public string Name { get; }
+        public int Value { get; }
 
         public VarIncrement(string key, int increment)
         {
-            Key = key;
-            Increment = increment;
+            Name = key;
+            Value = increment;
         }
+
+        public override string ToString() => $"{Name}{Value:+0;-0}";
 
         public static VarIncrement? Parse(string text)
         {
