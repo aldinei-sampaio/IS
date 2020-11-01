@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<storyboard>
+  <music>musica</music>
+  <person>belisar</person>
+  <bump />
+  <set>var1</set>
+  <unset>var2</unset>
+  <voice>Fala 1</voice>
+  <voice>Fala 2</voice>
+  <emotion>surprised</emotion>
+  <bump />
+  <set>var3</set>
+  <unset>var4</unset>
+  <thought>Pensamento 1</thought>
+  <thought>Pensamento 2</thought>
+  <background>imagem</background>
+</storyboard>

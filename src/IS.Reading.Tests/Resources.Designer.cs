@@ -82,6 +82,56 @@ namespace IS.Reading {
         ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///&lt;storyboard&gt;
         ///  &lt;background&gt;imagem&lt;/background&gt;
+        ///  &lt;person&gt;sulana&lt;/person&gt;
+        ///  &lt;bump /&gt;
+        ///  &lt;set&gt;var1&lt;/set&gt;
+        ///  &lt;unset&gt;var2&lt;/unset&gt;
+        ///  &lt;thought&gt;Pensamento 1&lt;/thought&gt;
+        ///  &lt;thought&gt;Pensamento 2&lt;/thought&gt;
+        ///  &lt;emotion&gt;surprised&lt;/emotion&gt;
+        ///  &lt;bump /&gt;
+        ///  &lt;set&gt;var3&lt;/set&gt;
+        ///  &lt;unset&gt;var4&lt;/unset&gt;
+        ///  &lt;voice&gt;Fala 1&lt;/voice&gt;
+        ///  &lt;voice&gt;Fala 2&lt;/voice&gt;
+        ///  &lt;music&gt;musica&lt;/music&gt;
+        ///&lt;/storyboard&gt;.
+        /// </summary>
+        internal static string SimpleInterlocutor {
+            get {
+                return ResourceManager.GetString("SimpleInterlocutor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;storyboard&gt;
+        ///  &lt;music&gt;musica&lt;/music&gt;
+        ///  &lt;protagonist /&gt;
+        ///  &lt;bump /&gt;
+        ///  &lt;set&gt;var1&lt;/set&gt;
+        ///  &lt;unset&gt;var2&lt;/unset&gt;
+        ///  &lt;voice&gt;Fala 1&lt;/voice&gt;
+        ///  &lt;voice&gt;Fala 2&lt;/voice&gt;
+        ///  &lt;emotion&gt;surprised&lt;/emotion&gt;
+        ///  &lt;bump /&gt;
+        ///  &lt;set&gt;var3&lt;/set&gt;
+        ///  &lt;unset&gt;var4&lt;/unset&gt;
+        ///  &lt;thought&gt;Pensamento 1&lt;/thought&gt;
+        ///  &lt;thought&gt;Pensamento 2&lt;/thought&gt;
+        ///  &lt;background&gt;imagem&lt;/background&gt;
+        ///&lt;/storyboard&gt;.
+        /// </summary>
+        internal static string SimpleInterlocutor2 {
+            get {
+                return ResourceManager.GetString("SimpleInterlocutor2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;storyboard&gt;
+        ///  &lt;background&gt;imagem&lt;/background&gt;
         ///  &lt;narration&gt;Primeira fala&lt;/narration&gt;
         ///  &lt;narration&gt;Segunda fala&lt;/narration&gt;
         ///  &lt;narration&gt;Terceira fala&lt;/narration&gt;

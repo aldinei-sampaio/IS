@@ -8,16 +8,14 @@ using System.Xml;
 
 namespace IS.Reading.Parsers
 {
-    public class StoryboardParser
+    public partial class StoryboardParser
     {
         private const string varNamePattern = @"^[a-z0-9_]{2,}$";
-
         private readonly Storyboard storyboard;
         private readonly Stack<StoryboardBlock> blocks;
         private readonly XmlReader reader;
 
         private StoryboardBlock currentBlock;
-        private PromptItem? currentPrompt;
 
         private StoryboardParser(XmlReader reader)
         { 
@@ -34,8 +32,8 @@ namespace IS.Reading.Parsers
 
             reader.MoveToContent();
 
-            if (reader.LocalName != "storyboard")
-                throw new StoryboardParsingException(reader, "Elemento 'storyboard' não encontrado.");
+            if (reader.LocalName != Storyboard)
+                throw new StoryboardParsingException(reader, $"Elemento '{Storyboard}' não encontrado.");
 
             while (reader.Read())
             {
@@ -50,62 +48,78 @@ namespace IS.Reading.Parsers
 
         private void HandleStartElement()
         {
-            if (Is<ProtagonistSpeechItem>(currentBlock))
+            if (Is<InterlocutorSpeechItem>())
+                if (HandleInterlocutorSpeechStartElement())
+                    return;
+
+            if (Is<InterlocutorThoughtItem>())
+                if (HandleInterlocutorThoughtStartElement())
+                    return;
+
+            if (Is<InterlocutorMoodItem>())
+                if (HandleInterlocutorStartElement(true))
+                    return;
+
+            if (Is<InterlocutorItem>())
+                if (HandleInterlocutorStartElement(false))
+                    return;
+
+            if (Is<ProtagonistSpeechItem>())
                 if (HandleProtagonistSpeechStartElement())
                     return;
 
-            if (Is<ProtagonistThoughtItem>(currentBlock))
+            if (Is<ProtagonistThoughtItem>())
                 if (HandleProtagonistThoughtStartElement())
                     return;
 
-            if (Is<ProtagonistMoodItem>(currentBlock))
+            if (Is<ProtagonistMoodItem>())
                 if (HandleProtagonistStartElement(true))
                     return;
 
-            if (Is<ProtagonistItem>(currentBlock))
+            if (Is<ProtagonistItem>())
                 if (HandleProtagonistStartElement(false))
                     return;
 
             switch (reader.LocalName)
             {
-                case "viewpoint":
+                case ViewPoint:
                     {
-                        CloseBlockIfNecessary();
+                        CloseTalkBlockIfNecessary();
                         var condition = LookForCondition();
                         Add(new ProtagonistChangeItem(GetVariableName(), condition));
                         break;
                     }
-                case "background":
+                case Background:
                     {
-                        CloseBlockIfNecessary();
+                        CloseTalkBlockIfNecessary();
                         var condition = LookForCondition();
                         Add(new BackgroundItem(GetVariableName(), condition));
                         break;
                     }
-                case "music":
+                case Music:
                     {
-                        CloseBlockIfNecessary();
+                        CloseTalkBlockIfNecessary();
                         var condition = LookForCondition();
                         Add(new MusicItem(GetVariableName(), condition));
                         break;
                     }
-                case "unset":
+                case Unset:
                     {
-                        CloseBlockIfNecessary();
+                        CloseTalkBlockIfNecessary();
                         var condition = LookForCondition();
                         Add(new VarSetItem(GetVariableName(), 0, condition));
                         break;
                     }
-                case "set":
-                    CloseBlockIfNecessary();
+                case Set:
+                    CloseTalkBlockIfNecessary();
                     HandleSet();
                     break;
-                case "observe":
-                    CloseBlockIfNecessary();
+                case Observe:
+                    CloseTalkBlockIfNecessary();
                     EnsureEmpty();
                     Add(new PauseItem(LookForCondition()));
                     break;
-                case "narration":
+                case Narration:
                     {
                         var condition = LookForCondition();
                         var value = GetContent();
@@ -113,7 +127,7 @@ namespace IS.Reading.Parsers
                         Add(new NarrationTextItem(value, condition));
                         break;
                     }
-                case "tutorial":
+                case Tutorial:
                     {
                         var condition = LookForCondition();
                         var value = GetContent();
@@ -121,13 +135,21 @@ namespace IS.Reading.Parsers
                         Add(new TutorialTextItem(value, condition));
                         break;
                     }
-                case "protagonist":
+                case Protagonist:
                     {
-                        CloseBlockIfNecessary();
+                        CloseTalkBlockIfNecessary();
                         EnsureEmpty();
                         if (LookForCondition() != null)
-                            throw new StoryboardParsingException(reader, "O elemento 'protagonist' não suporta condições 'when'.");
+                            throw new StoryboardParsingException(reader, $"O elemento 'protagonist' não suporta condições '{When}'.");
                         OpenBlock(new ProtagonistItem(null));
+                        break;
+                    }
+                case Interlocutor:
+                    {
+                        CloseTalkBlockIfNecessary();
+                        if (LookForCondition() != null)
+                            throw new StoryboardParsingException(reader, $"O elemento 'person' não suporta condições '{When}'.");
+                        OpenBlock(new InterlocutorItem(GetContent(), null));
                         break;
                     }
                 case "prompt":
@@ -138,89 +160,13 @@ namespace IS.Reading.Parsers
             }
         }
 
-        private static bool Is<T>(StoryboardBlock block)
-            => block.Parent?.GetType() == typeof(T);
+        private bool Is<T>()
+            => currentBlock.Parent?.GetType() == typeof(T);
 
         private void CloseToRootOrDo()
         {
             while (currentBlock.Parent != null)
                 CloseBlock();
-        }
-
-
-        private bool HandleProtagonistStartElement(bool isMood)
-        {
-            switch (reader.LocalName)
-            {
-                case "emotion":
-                    {
-                        if (isMood)
-                            CloseBlock();
-                        var condition = LookForCondition();
-                        OpenBlock(new ProtagonistMoodItem(GetVariableName(), condition));
-                        return true;
-                    }
-                case "voice":
-                    {
-                        var condition = LookForCondition();
-                        OpenBlock(new ProtagonistSpeechItem(null));
-                        Add(new ProtagonistSpeechTextItem(GetContent(), condition));
-                        return true;
-                    }
-                case "thought":
-                    {
-                        var condition = LookForCondition();
-                        OpenBlock(new ProtagonistThoughtItem(null));
-                        Add(new ProtagonistThoughtTextItem(GetContent(), condition));
-                        return true;
-                    }
-                case "prompt":
-                    HandlePrompt();
-                    return true;
-                case "reward":
-                    return true;
-                case "set":
-                    HandleSet();
-                    return true;
-                case "unset":
-                    {
-                        var condition = LookForCondition();
-                        Add(new VarSetItem(GetVariableName(), 0, condition));
-                        return true;
-                    }
-                case "bump":
-                    EnsureEmpty();
-                    Add(new ProtagonistBumpItem(LookForCondition()));
-                    return true;
-            }
-            CloseBlock();
-            return false;
-        }
-
-        private bool HandleProtagonistSpeechStartElement()
-        {
-            switch (reader.LocalName)
-            {
-                case "voice":
-                    var condition = LookForCondition();
-                    Add(new ProtagonistSpeechTextItem(GetContent(), condition));
-                    return true;
-            }
-            CloseBlock();
-            return false;
-        }
-
-        private bool HandleProtagonistThoughtStartElement()
-        {
-            switch (reader.LocalName)
-            {
-                case "thought":
-                    var condition = LookForCondition();
-                    Add(new ProtagonistThoughtTextItem(GetContent(), condition));
-                    return true;
-            }
-            CloseBlock();
-            return false;
         }
 
         private void Add(IStoryboardItem item) => currentBlock.ForwardQueue.Enqueue(item);
@@ -268,195 +214,6 @@ namespace IS.Reading.Parsers
             Add(new VarSetItem(value, 1, condition));
         }
 
-        private void HandlePrompt()
-        {
-            ICondition? condition = null;
-            TimeSpan? timeLimit = null;
-            string? defaultChoice = null;
-            var randomOrder = false;
-
-            if (reader.IsEmptyElement)
-                throw new StoryboardParsingException(reader, $"O elemento 'prompt' não pode estar vazio.");
-
-            while (reader.MoveToNextAttribute())
-            {
-                switch (reader.LocalName)
-                {
-                    case "when":
-                        condition = GetCondition(reader.Value);
-                        break;
-                    case "time":
-                        if (!int.TryParse(reader.Value, out var seconds))
-                            throw new StoryboardParsingException(reader, $"O valor '{reader.Value}' não é válido para o atributo 'time'. É esperado um número inteiro.");
-                        timeLimit = TimeSpan.FromSeconds(seconds);
-                        break;
-                    case "default":
-                        if (!Regex.IsMatch(reader.Value, @"^[a-z]$"))
-                            throw new StoryboardParsingException(reader, $"O valor '{reader.Value}' não é válido para o atributo 'default'. É esperada uma opção de 'a' a 'z'.");
-                        defaultChoice = reader.Value;
-                        break;
-                    case "randomorder":
-                        switch (reader.Value)
-                        {
-                            case "true":
-                            case "1":
-                                randomOrder = true;
-                                break;
-                            case "false":
-                            case "0":
-                                randomOrder = false;
-                                break;
-                            default:
-                                throw new StoryboardParsingException(reader, $"O valor '{reader.Value}' não é válido para o atributo 'randomorder'. É esperado '1' ou '0'.");
-                        }
-                        break;
-                    default:
-                        throw new StoryboardParsingException(reader, $"O atributo '{reader.LocalName}' não é suportado para o elemento 'choice'.");
-                }
-            }
-
-            var choices = new List<Choice>();
-            var triggerFound = false;
-            IStoryboardItem trigger = null;
-
-            while (reader.Read())
-            {
-                if (reader.NodeType == XmlNodeType.Element)
-                {
-                    if (Regex.IsMatch(reader.LocalName, @"^[a-z]$"))
-                    {
-                        choices.Add(LoadChoice());
-                    }
-                    else
-                    {
-                        trigger = HandlePromptTriggerElement(triggerFound);
-                        triggerFound = true;
-                    }
-                }
-                else if (reader.NodeType == XmlNodeType.EndElement)
-                {
-                    if (reader.LocalName == "prompt")
-                    {
-                        if (choices.Count == 0)
-                            throw new StoryboardParsingException(reader, $"Nenhuma escolha definida no elemento 'prompt'. Favor definir um ou mais elementos de 'a' a 'z'.");
-                        break;
-                    }
-                }
-            }
-
-            if (trigger == null)
-                throw new StoryboardParsingException(reader, $"O elemento 'prompt' precisa conter um elemento 'narration', 'tutorial', 'voice' ou 'thought'.");
-
-            var prompt = new Prompt(choices, timeLimit, defaultChoice, randomOrder);
-            var promptItem = new PromptItem(prompt, condition);
-            promptItem.Block.ForwardQueue.Enqueue(trigger);
-            Add(promptItem);
-        }
-
-        private IStoryboardItem HandlePromptTriggerElement(bool triggerFound)
-        {
-            void Validate()
-            {
-                var elementName = reader.LocalName;
-                if (triggerFound)
-                    throw new StoryboardParsingException(reader, $"O elemento '{elementName}' é inválido porque existe outro elemento de pausa dentro do 'prompt'.");
-                if (reader.MoveToNextAttribute())
-                    throw new StoryboardParsingException(reader, $"Não são permitidos atributos no elemento '{elementName}' dentro de um elemento 'prompt'.");
-            }
-
-            void CloseToProtagonist()
-            {
-                for(; ; )
-                {
-                    if (Is<ProtagonistItem>(currentBlock))
-                        return;
-
-                    if (blocks.Count == 0)
-                        throw new StoryboardParsingException(reader, $"O elemento '{reader.LocalName}' só pode ser usado em um 'prompt' quando o mesmo estiver ligado a um 'protagonist'.");
-
-                    CloseBlock();
-                }
-            }
-
-            switch (reader.LocalName)
-            {
-                case "narration":
-                    {
-                        CloseToRootOrDo();
-                        Validate();
-                        var item = new NarrationItem(null);
-                        item.Block.ForwardQueue.Enqueue(new NarrationTextItem(GetContent(), null));
-                        return item;
-                    }
-                case "tutorial":
-                    {
-                        CloseToRootOrDo();
-                        Validate();
-                        var item = new TutorialItem(null);
-                        item.Block.ForwardQueue.Enqueue(new TutorialTextItem(GetContent(), null));
-                        return item;
-                    }
-                case "voice":
-                    {
-                        CloseToProtagonist();
-                        Validate();
-                        var item = new ProtagonistSpeechItem(null);
-                        item.Block.ForwardQueue.Enqueue(new ProtagonistSpeechTextItem(GetContent(), null));
-                        return item;
-                    }
-                case "thought":
-                    {
-                        CloseToProtagonist();
-                        Validate();
-                        var item = new ProtagonistThoughtItem(null);
-                        item.Block.ForwardQueue.Enqueue(new ProtagonistThoughtTextItem(GetContent(), null));
-                        return item;
-                    }
-                case "observe":
-                    CloseToRootOrDo();
-                    Validate();
-                    return new PauseItem(null);
-                default:
-                    throw new StoryboardParsingException(reader, $"O elemento '{reader.LocalName}' não é suportado dentro de um elemento 'prompt'.");
-            }
-        }
-
-        private Choice LoadChoice()
-        {
-            var value = reader.LocalName;
-
-            if (reader.IsEmptyElement)
-                throw new StoryboardParsingException(reader, $"O elemento '{value}' precisa possuir conteúdo.");
-
-            ICondition? condition = null;
-            var tip = string.Empty;
-            while (reader.MoveToNextAttribute())
-            {
-                if (reader.LocalName == "when")
-                    condition = ConditionParser.Parse(reader.Value);
-                else if (reader.LocalName == "req")
-                    tip = reader.Value;
-                else
-                    throw new StoryboardParsingException(reader, $"O atributo '{reader.LocalName}' não é suportado para o elemento '{value}'.");
-            }
-
-            var text = string.Empty;
-            while (reader.Read())
-            {
-                if (reader.NodeType == XmlNodeType.Text)
-                    text = reader.Value;
-                else if (reader.NodeType == XmlNodeType.EndElement)
-                    break;
-                else if (reader.NodeType == XmlNodeType.Element)
-                    throw new StoryboardParsingException(reader, $"O elemento '{reader.LocalName}' não é suportado como filho do elemento '{value}'.");
-            }
-
-            if (string.IsNullOrEmpty(text))
-                throw new StoryboardParsingException(reader, $"O elemento '{value}' precisa possuir conteúdo.");
-
-            return new Choice(value, text, tip, condition);
-        }
-
         private ICondition? LookForCondition()
         {
             var elementName = reader.LocalName;
@@ -464,7 +221,7 @@ namespace IS.Reading.Parsers
 
             if (reader.MoveToNextAttribute())
             {
-                if (reader.LocalName == "when")
+                if (reader.LocalName == When)
                     condition = GetCondition(reader.Value);
                 else
                     throw new StoryboardParsingException(reader, $"O atributo '{reader.LocalName}' não é suportado para o elemento '{elementName}'.");
@@ -483,14 +240,14 @@ namespace IS.Reading.Parsers
 
             var condition = ConditionParser.Parse(text);
             if (condition == null)
-                throw new StoryboardParsingException(reader, $"O valor '{text}' não é válido para o atributo 'when'.");
+                throw new StoryboardParsingException(reader, $"O valor '{text}' não é válido para o atributo '{When}'.");
 
             return condition;
         }
 
         private void OpenBlockIfNecessary<T>(Func<T> creator) where T : IStoryboardItem
         {
-            CloseBlockIfNecessary(typeof(T));
+            CloseTalkBlockIfNecessary(typeof(T));
             if (currentBlock.Parent == null || currentBlock.Parent.GetType() != typeof(T))
                 OpenBlock(creator.Invoke());
         }
@@ -506,7 +263,7 @@ namespace IS.Reading.Parsers
 
         private void CloseBlock() => currentBlock = blocks.Pop();
 
-        private void CloseBlockIfNecessary(Type? ignore = null)
+        private void CloseTalkBlockIfNecessary(Type? ignore = null)
         {
             if (currentBlock.Parent == null)
                 return;
@@ -535,31 +292,6 @@ namespace IS.Reading.Parsers
         {
             var info = (IXmlLineInfo)reader;
             return (reader.LocalName, info.LineNumber, info.LinePosition);
-        }
-    }
-
-    public class StoryboardParsingException : Exception
-    {
-        internal StoryboardParsingException(XmlReader reader, string message) 
-            : base(GetMessage(reader, message))
-        {
-        }
-
-        private static string GetMessage(XmlReader reader, string message)
-        {
-            var info = (IXmlLineInfo)reader;
-            return $"{message}\r\nLinha {info.LineNumber}";
-        }
-
-        internal StoryboardParsingException(XmlReader reader, string elementName, string value)
-            : base(GetMessage(reader, elementName, value))
-        {
-        }
-
-        private static string GetMessage(XmlReader reader, string elementName, string value)
-        {
-            var info = (IXmlLineInfo)reader;
-            return $"O valor '{value}' não é válido para o elemento '{elementName}'.\r\nLinha {info.LineNumber}";
         }
     }
 }

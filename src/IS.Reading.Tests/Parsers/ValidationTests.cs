@@ -32,11 +32,19 @@ namespace IS.Reading.Parsers
         }
 
         [Fact]
-        public void WhenAfterChoice()
+        public void InterlocutorWithWhen()
         {
-            var data = "<storyboard><protagonist /><choice><a>Teste</a></choice><voice when=\"a\">Teste</voice></storyboard>";
+            var data = "<storyboard><person when=\"a\">teste</person></storyboard>";
             var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Load(data));
-            ex.Message.Should().Be("Não é permitido incluir condição 'when' no elemento seguinte a 'choice'.\r\nLinha 1");
+            ex.Message.Should().Be("O elemento 'person' não suporta condições 'when'.\r\nLinha 1");
+        }
+
+        [Fact]
+        public void WhenInsidePrompt()
+        {
+            var data = "<storyboard><protagonist /><prompt><a>Teste</a><voice when=\"a\">Teste</voice></prompt></storyboard>";
+            var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Load(data));
+            ex.Message.Should().Be("Não são permitidos atributos no elemento 'voice' dentro do elemento 'prompt'.\r\nLinha 1");
         }
 
         [Theory]
@@ -51,13 +59,13 @@ namespace IS.Reading.Parsers
         [InlineData("set")]
         [InlineData("trophy")]
         [InlineData("minigame")]
-        [InlineData("choice")]
+        [InlineData("prompt")]
         [InlineData("test")]
-        public void InvalidElementAfterChoice(string elementName)
+        public void InvalidElementInsidePrompt(string elementName)
         {
-            var data = $"<storyboard><protagonist /><choice><a>Teste</a></choice><{elementName} /></storyboard>";
+            var data = $"<storyboard><protagonist /><prompt><a>Teste</a><{elementName} /></prompt></storyboard>";
             var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Load(data));
-            ex.Message.Should().Be($"O elemento '{elementName}' não pode vir depois de um elemento 'choice'.\r\nLinha 1");
+            ex.Message.Should().Be($"O elemento '{elementName}' não é suportado dentro do elemento 'prompt'.\r\nLinha 1");
         }
 
         [Theory]
@@ -66,9 +74,9 @@ namespace IS.Reading.Parsers
         [InlineData("<thought>Teste</thought>")]
         [InlineData("<tutorial>Teste</tutorial>")]
         [InlineData("<narration>Teste</narration>")]
-        public void ValidElementAfterChoice(string element)
+        public void ValidElementInsidePrompt(string element)
         {
-            var data = $"<storyboard><protagonist /><choice><a>Teste</a></choice>{element}</storyboard>";
+            var data = $"<storyboard><protagonist /><prompt><a>Teste</a>{element}</prompt></storyboard>";
             StoryboardParser.Load(data);
         }
 
@@ -92,6 +100,7 @@ namespace IS.Reading.Parsers
         [InlineData("narration")]
         [InlineData("voice")]
         [InlineData("thought")]
+        [InlineData("person")]
         public void ElementMustHaveContent(string elementName)
         {
             var data = $"<storyboard><protagonist /><{elementName} /></storyboard>";
@@ -100,85 +109,85 @@ namespace IS.Reading.Parsers
         }
 
         [Theory]
-        [InlineData("<choice />")]
-        [InlineData("<choice/>")]
-        public void EmptyChoiceElement(string element)
+        [InlineData("<prompt />")]
+        [InlineData("<prompt/>")]
+        public void EmptyPromptElement(string element)
         {
             var data = $"<storyboard><protagonist />{element}</storyboard>";
             var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Load(data));
-            ex.Message.Should().Be($"O elemento 'choice' não pode estar vazio.\r\nLinha 1");
+            ex.Message.Should().Be($"O elemento 'prompt' não pode estar vazio.\r\nLinha 1");
         }
 
         [Fact]
-        public void ChoiceWithoutOptions()
+        public void PromptWithoutOptions()
         {
-            var data = $"<storyboard><protagonist /><choice></choice></storyboard>";
+            var data = $"<storyboard><protagonist /><prompt></prompt></storyboard>";
             var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Load(data));
-            ex.Message.Should().Be($"Nenhuma opção definida no elemento 'choice'. Favor definir um ou mais elementos de 'a' a 'z'.\r\nLinha 1");
+            ex.Message.Should().Be($"Nenhuma escolha definida no elemento 'prompt'. Favor definir um ou mais elementos de 'a' a 'z'.\r\nLinha 1");
         }
 
         [Fact]
-        public void ChoiceWithInvalidTime()
+        public void PromptWithInvalidTime()
         {
-            var data = $"<storyboard><protagonist /><choice time=\"abc\"></choice></storyboard>";
+            var data = $"<storyboard><protagonist /><prompt time=\"abc\"></prompt></storyboard>";
             var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Load(data));
             ex.Message.Should().Be($"O valor 'abc' não é válido para o atributo 'time'. É esperado um número inteiro.\r\nLinha 1");
         }
 
         [Fact]
-        public void ChoiceWithInvalidTimeout()
+        public void PromptWithInvalidDefault()
         {
-            var data = $"<storyboard><protagonist /><choice timeout=\"1\"></choice></storyboard>";
+            var data = $"<storyboard><protagonist /><prompt default=\"1\"></prompt></storyboard>";
             var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Load(data));
-            ex.Message.Should().Be($"O valor '1' não é válido para o atributo 'timeout'. É esperada uma opção de 'a' a 'z'.\r\nLinha 1");
+            ex.Message.Should().Be($"O valor '1' não é válido para o atributo 'default'. É esperada uma opção de 'a' a 'z'.\r\nLinha 1");
         }
 
         [Fact]
-        public void ChoiceWithInvalidRandomOrder()
+        public void PromptWithInvalidRandomOrder()
         {
-            var data = $"<storyboard><protagonist /><choice randomorder=\"abc\"></choice></storyboard>";
+            var data = $"<storyboard><protagonist /><prompt randomorder=\"abc\"></prompt></storyboard>";
             var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Load(data));
             ex.Message.Should().Be($"O valor 'abc' não é válido para o atributo 'randomorder'. É esperado '1' ou '0'.\r\nLinha 1");
         }
 
         [Fact]
-        public void ChoiceWithInvalidAttribute()
+        public void PromptWithInvalidAttribute()
         {
-            var data = $"<storyboard><protagonist /><choice teste=\"abc\"></choice></storyboard>";
+            var data = $"<storyboard><protagonist /><prompt teste=\"abc\"></prompt></storyboard>";
             var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Load(data));
-            ex.Message.Should().Be("O atributo 'teste' não é suportado para o elemento 'choice'.\r\nLinha 1");
+            ex.Message.Should().Be("O atributo 'teste' não é suportado para o elemento 'prompt'.\r\nLinha 1");
         }
 
         [Fact]
-        public void ChoiceWithInvalidChild()
+        public void PromptWithInvalidChild()
         {
-            var data = $"<storyboard><protagonist /><choice><aa>teste</aa></choice></storyboard>";
+            var data = $"<storyboard><protagonist /><prompt><aa>teste</aa></prompt></storyboard>";
             var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Load(data));
-            ex.Message.Should().Be("O elemento 'aa' não é suportado dentro do elemento 'choice'.\r\nLinha 1");
+            ex.Message.Should().Be("O elemento 'aa' não é suportado dentro do elemento 'prompt'.\r\nLinha 1");
         }
 
         [Theory]
         [InlineData("<a />")]
         [InlineData("<a></a>")]
-        public void EmptyChoiceOption(string element)
+        public void EmptyChoice(string element)
         {
-            var data = $"<storyboard><protagonist /><choice>{element}</choice></storyboard>";
+            var data = $"<storyboard><protagonist /><prompt>{element}</prompt></storyboard>";
             var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Load(data));
             ex.Message.Should().Be("O elemento 'a' precisa possuir conteúdo.\r\nLinha 1");
         }
 
         [Fact]
-        public void ChoiceOptionWithInvalidAttribute()
+        public void ChoiceWithInvalidAttribute()
         {
-            var data = $"<storyboard><protagonist /><choice><a teste=\"abc\">teste</a></choice></storyboard>";
+            var data = $"<storyboard><protagonist /><prompt><a teste=\"abc\">teste</a></prompt></storyboard>";
             var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Load(data));
             ex.Message.Should().Be("O atributo 'teste' não é suportado para o elemento 'a'.\r\nLinha 1");
         }
 
         [Fact]
-        public void ChoiceOptionWithInvalidChild()
+        public void ChoiceWithInvalidChild()
         {
-            var data = $"<storyboard><protagonist /><choice><a><b /></a></choice></storyboard>";
+            var data = $"<storyboard><protagonist /><prompt><a><b /></a></prompt></storyboard>";
             var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Load(data));
             ex.Message.Should().Be("O elemento 'b' não é suportado como filho do elemento 'a'.\r\nLinha 1");
         }
@@ -199,7 +208,7 @@ namespace IS.Reading.Parsers
         [InlineData("music")]
         [InlineData("set")]
         [InlineData("unset")]
-        [InlineData("choice")]
+        [InlineData("prompt")]
         [InlineData("voice")]
         [InlineData("thought")]
         [InlineData("narration")]

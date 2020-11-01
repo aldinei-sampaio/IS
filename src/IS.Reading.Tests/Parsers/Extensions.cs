@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using System;
-using Xunit;
 
 namespace IS.Reading.Parsers
 {
@@ -12,15 +11,23 @@ namespace IS.Reading.Parsers
         public static T Get<T>(this IStoryboardItem item) where T : IStoryboardItem
             => Get<T>(item.Block, false);
 
+        public static T GetSingle<T>(this Storyboard storyboard) where T : IStoryboardItem
+            => Get<T>(storyboard.Root, true);
+
         public static T GetSingle<T>(this IStoryboardItem item) where T : IStoryboardItem
             => Get<T>(item.Block, true);
 
         private static T Get<T>(StoryboardBlock block, bool single) where T : IStoryboardItem
         {
-            if (single && block.ForwardQueue.Count > 1)
-                throw new Exception($"Era esperado um bloco com um único elemento, mas ele contém {block.ForwardQueue.Count} elementos.");
             var item = block.ForwardQueue.Dequeue();
             item.Should().BeOfType<T>();
+
+            if (single && block.ForwardQueue.Count > 0)
+            {
+                var type = block.ForwardQueue.Peek().GetType();
+                throw new Exception($"Era esperado que '{typeof(T).Name}' fosse o último elemento do bloco, mas existe um elemento '{type.Name}' depois dele.");
+            }
+
             return (T)item;
         }
     }
