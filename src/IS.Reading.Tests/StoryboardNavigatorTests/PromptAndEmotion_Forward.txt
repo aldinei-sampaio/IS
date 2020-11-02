@@ -1,0 +1,9 @@
+﻿-- next --
+OnProtagonistArrive()
+OnProtagonistMoodChange(angry)
+OnPromptOpen()
+OnProtagonistThoughtOpen()
+OnProtagonistThoughtChange(...)
+-- next --
+OnProtagonistThoughtClose()
+OnProtagonistLeave()

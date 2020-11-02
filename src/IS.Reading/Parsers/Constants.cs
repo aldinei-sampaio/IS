@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace IS.Reading.Parsers
+﻿namespace IS.Reading.Parsers
 {
     public partial class StoryboardParser
     {
@@ -25,6 +21,7 @@ namespace IS.Reading.Parsers
         private const string Speech = "voice";
         private const string Emotion = "emotion";
         private const string Reward = "reward";
+        private const string Do = "do";
 
         #endregion
 

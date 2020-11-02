@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IS.Reading
 {
-    public class StoryContext : IStoryContextEventCaller, IStoryContextEvents
+    public class StoryContext : IStoryContextEventCaller, IStoryContextEvents, IVariableDictionary
     {
         public StringDictionary State { get; } = new StringDictionary();
         public IntDictionary Variables { get; } = new IntDictionary();
@@ -39,5 +39,12 @@ namespace IS.Reading
         IPromptEventCaller<Prompt> IStoryContextEventCaller.Prompt => Prompt;
         IPromptEventCaller<Display> IStoryContextEventCaller.Display => Display;
         INavigationEventCaller IStoryContextEventCaller.Navigation => Navigation;
+
+        int IVariableDictionary.Get(string name)
+        {
+            if (name == LastChoice)
+                return 1;
+            return Variables[name];
+        }
     }
 }

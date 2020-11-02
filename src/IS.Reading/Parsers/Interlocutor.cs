@@ -43,12 +43,44 @@ namespace IS.Reading.Parsers
                         return true;
                     }
                 case Bump:
-                    EnsureEmpty();
-                    Add(new InterlocutorBumpItem(LookForCondition()));
+                    HandleInterlocutorBump();
                     return true;
             }
             CloseBlock();
             return false;
+        }
+
+        private bool HandleInterlocutorBumpStartElement()
+        {
+            switch (reader.LocalName)
+            {
+                case Speech:
+                    {
+                        if (LookForCondition() != null)
+                            throw new StoryboardParsingException(reader, $"O elemento após '{Bump}' não pode ter condição '{When}'.");
+                        if (!Is<InterlocutorSpeechItem>())
+                            OpenBlock(new InterlocutorSpeechItem(null));
+                        OpenBlock(new InterlocutorBumpItem(null));
+                        Add(new InterlocutorSpeechTextItem(GetContent(), null));
+                        CloseBlock();
+                        isInterlocutorBump = false;
+                        return true;
+                    }
+                case Thought:
+                    {
+                        if (LookForCondition() != null)
+                            throw new StoryboardParsingException(reader, $"O elemento após '{Bump}' não pode ter condição '{When}'.");
+                        if (!Is<InterlocutorThoughtItem>())
+                            OpenBlock(new InterlocutorThoughtItem(null));
+                        OpenBlock(new InterlocutorBumpItem(null));
+                        Add(new InterlocutorThoughtTextItem(GetContent(), null));
+                        CloseBlock();
+                        isInterlocutorBump = false;
+                        return true;
+                    }
+                default:
+                    throw new StoryboardParsingException(reader, $"O elemento '{reader.LocalName}' não pode vir depois do elemento '{Bump}'. É esperado '{Thought}' ou '{Speech}'.");
+            }
         }
 
         private bool HandleInterlocutorSpeechStartElement()
@@ -61,6 +93,9 @@ namespace IS.Reading.Parsers
                     return true;
                 case Reward:
                     HandleInterlocutorReward();
+                    return true;
+                case Bump:
+                    HandleInterlocutorBump();
                     return true;
             }
             CloseBlock();
@@ -78,9 +113,20 @@ namespace IS.Reading.Parsers
                 case Reward:
                     HandleInterlocutorReward();
                     return true;
+                case Bump:
+                    HandleInterlocutorBump();
+                    return true;
             }
             CloseBlock();
             return false;
+        }
+
+        private void HandleInterlocutorBump()
+        {
+            EnsureEmpty();
+            if (LookForCondition() != null)
+                throw new StoryboardParsingException(reader, $"O elemento '{Bump}' não pode ter condição '{When}'.");
+            isInterlocutorBump = true;
         }
 
         private void HandleInterlocutorReward()

@@ -1,0 +1,45 @@
+﻿-- next --
+OnInterlocutorArrive(fox)
+OnInterlocutorMoodChange(angry)
+OnInterlocutorSpeechOpen()
+OnInterlocutorBump()
+OnInterlocutorSpeechChange(Craaaiiiin!)
+-- next --
+OnInterlocutorSpeechChange(Graaar!)
+-- next --
+OnInterlocutorSpeechClose()
+OnInterlocutorLeave()
+OnProtagonistArrive()
+OnProtagonistMoodChange(surprised)
+OnProtagonistSpeechOpen()
+OnProtagonistBump()
+OnProtagonistSpeechChange(O quê?!)
+-- next --
+OnProtagonistSpeechChange(Como?!)
+-- next --
+OnProtagonistSpeechClose()
+OnProtagonistLeave()
+OnInterlocutorArrive(fox)
+OnInterlocutorMoodChange(angry)
+OnInterlocutorThoughtOpen()
+OnInterlocutorBump()
+OnInterlocutorThoughtChange(Grr...)
+-- next --
+OnInterlocutorThoughtClose()
+OnInterlocutorLeave()
+OnTutorialOpen()
+OnTutorialChange(...)
+-- next --
+OnTutorialClose()
+OnProtagonistArrive()
+OnProtagonistMoodChange(surprised)
+OnProtagonistThoughtOpen()
+OnProtagonistBump()
+OnProtagonistThoughtChange(...)
+-- next --
+OnProtagonistThoughtClose()
+OnProtagonistLeave()
+OnNarrationOpen()
+OnNarrationChange(...)
+-- next --
+OnNarrationClose()

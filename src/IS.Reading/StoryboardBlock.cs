@@ -12,7 +12,7 @@ namespace IS.Reading
         public Stack<IStoryboardItem> BackwardStack { get; } = new Stack<IStoryboardItem>();
         public IStoryboardItem? Current { get; set; }
 
-        public IStoryboardItem? MoveNext(IStoryContextEventCaller context)
+        public IStoryboardItem? MoveNext(StoryContext context)
         {
             IStoryboardItem item;
             do
@@ -28,7 +28,7 @@ namespace IS.Reading
             return item;
         }
 
-        public IStoryboardItem? MovePrevious(IStoryContextEventCaller context)
+        public IStoryboardItem? MovePrevious(StoryContext context)
         {
             IStoryboardItem item;
             do

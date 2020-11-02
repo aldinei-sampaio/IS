@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard>
+  <viewpoint>belisar</viewpoint>
+  <music>last_duel</music>
+  <background>oldroad</background>
+
+  <tutorial>Algumas escolhas têm limite de tempo.</tutorial>
+  <tutorial>Fique atento também para o fato de que, em algumas batalhas, como esta, apenas uma das opções é a correta. Você precisa escolhê-la antes de o tempo acabar.</tutorial>
+
+  <protagonist />
+  <unset>battle</unset>
+  <prompt time="4" default="b" randomorder="1">
+    <a>Acertar o monstro!</a>
+    <b>Errar o monstro!</b>
+    <b>Errar o monstro!</b>
+    <thought>...</thought>
+  </prompt>
+
+  <narration>Você segura o artefato em seu punho direito e o ativa.</narration>
+  <narration>Energias místicas fluem de seu corpo através do artefato, gerando uma descarga elétrica que corta o ar na direção da batalha.</narration>
+
+  <narration>O monstro se contorce em agonia ao ser atingido em cheio!</narration>
+  <person>fox</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>Craaaiiiin!</voice>
+
+  <protagonist />
+  <reward>+battle</reward>
+  <thought>Um a menos!</thought>
+
+  <narration>Você respira fundo e se prepara a atingir outro monstro.</narration>
+
+  <protagonist />
+  <emotion>angry</emotion>
+  <prompt time="4" default="b" randomorder="1">
+    <a>Atingir o monstro!</a>
+    <b>Atingir o chão!</b>
+    <b>Errar o monstro!</b>
+    <c>Atingir a oficial!</c>
+    <voice>...</voice>
+  </prompt>
+
+  <narration>Você dispara uma nova rajada elétrica.</narration>
+
+  <narration>O monstro solta um grito agoniado quando a descarga o atinge!</narration>
+  <person>fox</person>
+  <emotion>angry</emotion>
+  <bump />
+  <voice>Graaaaa!</voice>
+  <narration>Incapaz de resistir aos ferimentos, ele desaba no chão, seu corpo se enrijecendo e lentamente se transformando em pó.</narration>
+  <narration>A oficial lança um olhar agradecido em sua direção e levanta o braço, tocando a têmpora com a ponta dos dedos.</narration>
+  <person>soldado8</person>
+  <emotion>happy</emotion>
+  <voice>...</voice>
+  <narration>Em seguida, ela se vira para ajudar os companheiros.</narration>
+  <protagonist />
+  <reward>+battle</reward>
+  <thought>Perfeito!</thought>
+</storyboard>

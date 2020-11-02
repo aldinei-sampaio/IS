@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard>
+  <protagonist />
+  <emotion>angry</emotion>
+  <prompt time="4" default="b" randomorder="1">
+    <a>Acertar o monstro!</a>
+    <b>Errar o monstro!</b>
+    <b>Errar o monstro!</b>
+    <thought>...</thought>
+  </prompt>
+</storyboard>

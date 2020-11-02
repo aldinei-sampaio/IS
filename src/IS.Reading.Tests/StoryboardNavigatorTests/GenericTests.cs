@@ -47,9 +47,23 @@ OnMusicChange()
             );
         }
 
+        [Fact]
+        public void PromptAndEmotion()
+        {
+            var sb = StoryboardParser.Parse(this.GetResourceStream("PromptAndEmotion.xml"));
+            var prot = sb.GetSingle<ProtagonistItem>();
+            var mood = prot.GetSingle<ProtagonistMoodItem>();
+            var prompt = mood.GetSingle<PromptItem>();
+            prompt.GetSingle<ProtagonistThoughtItem>().GetSingle<ProtagonistThoughtTextItem>().Text.Should().Be("...");
+        }
+
         [Theory]
         [InlineData("Introduction")]
         [InlineData("Dialog")]
+        [InlineData("Prompt")]
+        [InlineData("PromptAndEmotion")]
+        [InlineData("Bump")]
+        [InlineData("Do")]
         public void ForwardBackward(string prefix)
         {
             var expectedForward = this.GetResourceString(prefix + "_Forward.txt");

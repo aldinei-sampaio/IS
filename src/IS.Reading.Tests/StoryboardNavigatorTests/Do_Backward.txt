@@ -1,0 +1,17 @@
+﻿-- previous --
+OnTutorialOpen()
+OnTutorialChange(Fala 5)
+-- previous --
+OnTutorialChange(Fala 4)
+-- previous --
+OnTutorialClose()
+OnNarrationOpen()
+OnNarrationChange(Fala 3)
+-- previous --
+OnNarrationChange(Fala 2)
+-- previous --
+OnNarrationClose()
+OnTutorialOpen()
+OnTutorialChange(Fala 1)
+-- previous --
+OnTutorialClose()

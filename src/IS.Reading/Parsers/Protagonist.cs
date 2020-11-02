@@ -46,12 +46,19 @@ namespace IS.Reading.Parsers
                         return true;
                     }
                 case Bump:
-                    EnsureEmpty();
-                    Add(new ProtagonistBumpItem(LookForCondition()));
+                    HandleProtagonistBump();
                     return true;
             }
             CloseBlock();
             return false;
+        }
+
+        private void HandleProtagonistBump()
+        {
+            EnsureEmpty();
+            if (LookForCondition() != null)
+                throw new StoryboardParsingException(reader, $"O elemento '{Bump}' não pode ter condição '{When}'.");
+            isProtagonistBump = true;
         }
 
         private void HandleProtagonistReward()
@@ -59,6 +66,39 @@ namespace IS.Reading.Parsers
             var condition = LookForCondition();
             var increment = LoadIncrement();
             Add(new ProtagonistRewardItem(increment, condition));
+        }
+
+        private bool HandleProtagonistBumpStartElement()
+        {
+            switch (reader.LocalName)
+            {
+                case Speech:
+                    {
+                        if (LookForCondition() != null)
+                            throw new StoryboardParsingException(reader, $"O elemento após '{Bump}' não pode ter condição '{When}'.");
+                        if (!Is<ProtagonistSpeechItem>())
+                            OpenBlock(new ProtagonistSpeechItem(null));
+                        OpenBlock(new ProtagonistBumpItem(null));
+                        Add(new ProtagonistSpeechTextItem(GetContent(), null));
+                        CloseBlock();
+                        isProtagonistBump = false;
+                        return true;
+                    }
+                case Thought:
+                    {
+                        if (LookForCondition() != null)
+                            throw new StoryboardParsingException(reader, $"O elemento após '{Bump}' não pode ter condição '{When}'.");
+                        if (!Is<ProtagonistThoughtItem>())
+                            OpenBlock(new ProtagonistThoughtItem(null));
+                        OpenBlock(new ProtagonistBumpItem(null));
+                        Add(new ProtagonistThoughtTextItem(GetContent(), null));
+                        CloseBlock();
+                        isProtagonistBump = false;
+                        return true;
+                    }
+                default:
+                    throw new StoryboardParsingException(reader, $"O elemento '{reader.LocalName}' não pode vir depois do elemento '{Bump}'. É esperado '{Thought}' ou '{Speech}'.");
+            }
         }
 
         private bool HandleProtagonistSpeechStartElement()
@@ -71,6 +111,9 @@ namespace IS.Reading.Parsers
                     return true;
                 case Reward:
                     HandleProtagonistReward();
+                    return true;
+                case Bump:
+                    HandleProtagonistBump();
                     return true;
             }
             CloseBlock();
@@ -87,6 +130,9 @@ namespace IS.Reading.Parsers
                     return true;
                 case Reward:
                     HandleProtagonistReward();
+                    return true;
+                case Bump:
+                    HandleProtagonistBump();
                     return true;
             }
             CloseBlock();

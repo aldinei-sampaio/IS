@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="StoryboardNavigatorTests\Bump.xml" />
+    <None Remove="StoryboardNavigatorTests\Bump_Backward.txt" />
+    <None Remove="StoryboardNavigatorTests\Bump_Forward.txt" />
+    <None Remove="StoryboardNavigatorTests\Do.xml" />
+    <None Remove="StoryboardNavigatorTests\Do_Backward.txt" />
+    <None Remove="StoryboardNavigatorTests\Do_Forward.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="Parsers\InterlocutorReward.xml" />
     <EmbeddedResource Include="Parsers\ProtagonistReward.xml" />
     <EmbeddedResource Include="Parsers\SimpleElements.xml" />
@@ -20,9 +29,21 @@
     <EmbeddedResource Include="Parsers\SimpleProtagonist.xml" />
     <EmbeddedResource Include="Parsers\SimpleProtagonist2.xml" />
     <EmbeddedResource Include="Parsers\SimpleTutorial.xml" />
+    <EmbeddedResource Include="StoryboardNavigatorTests\Do_Backward.txt" />
+    <EmbeddedResource Include="StoryboardNavigatorTests\Do_Forward.txt" />
+    <EmbeddedResource Include="StoryboardNavigatorTests\Do.xml" />
+    <EmbeddedResource Include="StoryboardNavigatorTests\Bump.xml" />
+    <EmbeddedResource Include="StoryboardNavigatorTests\Bump_Backward.txt" />
+    <EmbeddedResource Include="StoryboardNavigatorTests\Bump_Forward.txt" />
     <EmbeddedResource Include="StoryboardNavigatorTests\Dialog.xml" />
     <EmbeddedResource Include="StoryboardNavigatorTests\Dialog_Backward.txt" />
     <EmbeddedResource Include="StoryboardNavigatorTests\Dialog_Forward.txt" />
+    <EmbeddedResource Include="StoryboardNavigatorTests\Prompt.xml" />
+    <EmbeddedResource Include="StoryboardNavigatorTests\Prompt_Backward.txt" />
+    <EmbeddedResource Include="StoryboardNavigatorTests\Prompt_Forward.txt" />
+    <EmbeddedResource Include="StoryboardNavigatorTests\PromptAndEmotion.xml" />
+    <EmbeddedResource Include="StoryboardNavigatorTests\PromptAndEmotion_Backward.txt" />
+    <EmbeddedResource Include="StoryboardNavigatorTests\PromptAndEmotion_Forward.txt" />
     <EmbeddedResource Include="StoryboardNavigatorTests\Introduction.xml" />
     <EmbeddedResource Include="StoryboardNavigatorTests\Introduction_Backward.txt" />
     <EmbeddedResource Include="StoryboardNavigatorTests\Introduction_Forward.txt" />

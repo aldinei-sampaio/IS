@@ -233,5 +233,59 @@ namespace IS.Reading.Parsers
             var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Parse(data));
             ex.Message.Should().Be("O valor 'a..b' não é válido para o atributo 'when'.\r\nLinha 1");
         }
+
+        [Theory]
+        [InlineData("<protagonist />")]
+        [InlineData("<person>teste</person>")]
+        public void BumpWithCondition(string mainElement)
+        {
+            var data = $"<storyboard>{mainElement}<bump when=\"a\" /><voice>...</voice></storyboard>";
+            var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Parse(data));
+            ex.Message.Should().Be("O elemento 'bump' não pode ter condição 'when'.\r\nLinha 1");
+        }
+
+        [Theory]
+        [InlineData("<protagonist />", "voice")]
+        [InlineData("<protagonist />", "thought")]
+        [InlineData("<person>teste</person>", "voice")]
+        [InlineData("<person>teste</person>", "thought")]
+        public void BumpFollowedByElementWithCondition(string mainElement, string secodElementName)
+        {
+            var data = $"<storyboard>{mainElement}<bump /><{secodElementName} when=\"a\">...</{secodElementName}></storyboard>";
+            var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Parse(data));
+            ex.Message.Should().Be("O elemento após 'bump' não pode ter condição 'when'.\r\nLinha 1");
+        }
+
+        [Theory]
+        [InlineData("<protagonist />", "protagonist")]
+        [InlineData("<protagonist />", "person")]
+        [InlineData("<protagonist />", "set")]
+        [InlineData("<protagonist />", "unset")]
+        [InlineData("<protagonist />", "prompt")]
+        [InlineData("<protagonist />", "bump")]
+        [InlineData("<protagonist />", "emotion")]
+        [InlineData("<protagonist />", "narration")]
+        [InlineData("<protagonist />", "tutorial")]
+        [InlineData("<protagonist />", "background")]
+        [InlineData("<protagonist />", "music")]
+        [InlineData("<protagonist />", "do")]
+        [InlineData("<person>teste</person>", "protagonist")]
+        [InlineData("<person>teste</person>", "person")]
+        [InlineData("<person>teste</person>", "set")]
+        [InlineData("<person>teste</person>", "unset")]
+        [InlineData("<person>teste</person>", "prompt")]
+        [InlineData("<person>teste</person>", "bump")]
+        [InlineData("<person>teste</person>", "emotion")]
+        [InlineData("<person>teste</person>", "narration")]
+        [InlineData("<person>teste</person>", "tutorial")]
+        [InlineData("<person>teste</person>", "background")]
+        [InlineData("<person>teste</person>", "music")]
+        [InlineData("<person>teste</person>", "do")]
+        public void BumpFollowedByInvalidElement(string mainElement, string elementName)
+        {
+            var data = $"<storyboard>{mainElement}<bump /><{elementName} /></storyboard>";
+            var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Parse(data));
+            ex.Message.Should().Be($"O elemento '{elementName}' não pode vir depois do elemento 'bump'. É esperado 'thought' ou 'voice'.\r\nLinha 1");
+        }
     }
 }

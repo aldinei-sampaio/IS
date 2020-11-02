@@ -21,6 +21,7 @@
             return Operator switch
             {
                 ConditionType.Defined => value > 0,
+                ConditionType.Undefined => value <= 0,
                 ConditionType.EqualTo => value == Value,
                 ConditionType.NotEqualTo => value != Value,
                 ConditionType.EqualOrLessThan => value <= Value,
@@ -39,6 +40,7 @@
             return Operator switch
             {
                 ConditionType.Defined => $"{joinedNames}[1:]",
+                ConditionType.Undefined => $"{joinedNames}[:0]",
                 ConditionType.EqualTo => $"{joinedNames}[{Value}]",
                 ConditionType.NotEqualTo => $"!{joinedNames}[{Value}]",
                 ConditionType.EqualOrLessThan => $"{joinedNames}[:{Value}]",
@@ -51,16 +53,16 @@
             };
         }
 
-        public bool Evaluate(IStoryContextEventCaller context)
+        public bool Evaluate(IVariableDictionary variables)
         {
             if (VariableNames.Length == 1)
-                return EvaluateFor(context.Variables[VariableNames[0]]);
+                return EvaluateFor(variables.Get(VariableNames[0]));
 
             var mustHaveDefined = Operator == ConditionType.Defined;
 
             foreach (var name in VariableNames)
             {
-                var value = context.Variables[name];
+                var value = variables.Get(name);
                 if (value != 0)
                     return mustHaveDefined;
             }

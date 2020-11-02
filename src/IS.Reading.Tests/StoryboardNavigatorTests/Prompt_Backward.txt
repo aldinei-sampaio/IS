@@ -1,0 +1,91 @@
+﻿-- previous --
+OnProtagonistChange(belisar)
+OnMusicChange(last_duel)
+OnBackgroundChange(oldroad)
+OnProtagonistArrive(belisar)
+OnProtagonistThoughtOpen()
+OnProtagonistThoughtChange(Perfeito!)
+-- previous --
+OnProtagonistThoughtClose()
+OnProtagonistLeave()
+OnNarrationOpen()
+OnNarrationChange(Em seguida, ela se vira para ajudar os companheiros.)
+-- previous --
+OnNarrationClose()
+OnInterlocutorArrive(soldado8)
+OnInterlocutorMoodChange(happy)
+OnInterlocutorSpeechOpen()
+OnInterlocutorSpeechChange(...)
+-- previous --
+OnInterlocutorSpeechClose()
+OnInterlocutorLeave()
+OnNarrationOpen()
+OnNarrationChange(A oficial lança um olhar agradecido em sua direção e levanta o braço, tocando a têmpora com a ponta dos dedos.)
+-- previous --
+OnNarrationChange(Incapaz de resistir aos ferimentos, ele desaba no chão, seu corpo se enrijecendo e lentamente se transformando em pó.)
+-- previous --
+OnNarrationClose()
+OnInterlocutorArrive(fox)
+OnInterlocutorMoodChange(angry)
+OnInterlocutorSpeechOpen()
+OnInterlocutorBump()
+OnInterlocutorSpeechChange(Graaaaa!)
+-- previous --
+OnInterlocutorSpeechClose()
+OnInterlocutorLeave()
+OnNarrationOpen()
+OnNarrationChange(O monstro solta um grito agoniado quando a descarga o atinge!)
+-- previous --
+OnNarrationChange(Você dispara uma nova rajada elétrica.)
+-- previous --
+OnNarrationClose()
+OnProtagonistArrive(belisar)
+OnProtagonistMoodChange(angry)
+OnPromptOpen()
+OnProtagonistSpeechOpen()
+OnProtagonistSpeechChange(...)
+-- previous --
+OnProtagonistSpeechClose()
+OnProtagonistLeave()
+OnNarrationOpen()
+OnNarrationChange(Você respira fundo e se prepara a atingir outro monstro.)
+-- previous --
+OnNarrationClose()
+OnProtagonistArrive(belisar)
+OnProtagonistThoughtOpen()
+OnProtagonistThoughtChange(Um a menos!)
+-- previous --
+OnProtagonistThoughtClose()
+OnProtagonistLeave()
+OnInterlocutorArrive(fox)
+OnInterlocutorMoodChange(angry)
+OnInterlocutorSpeechOpen()
+OnInterlocutorBump()
+OnInterlocutorSpeechChange(Craaaiiiin!)
+-- previous --
+OnInterlocutorSpeechClose()
+OnInterlocutorLeave()
+OnNarrationOpen()
+OnNarrationChange(O monstro se contorce em agonia ao ser atingido em cheio!)
+-- previous --
+OnNarrationChange(Energias místicas fluem de seu corpo através do artefato, gerando uma descarga elétrica que corta o ar na direção da batalha.)
+-- previous --
+OnNarrationChange(Você segura o artefato em seu punho direito e o ativa.)
+-- previous --
+OnNarrationClose()
+OnProtagonistArrive(belisar)
+OnPromptOpen()
+OnProtagonistThoughtOpen()
+OnProtagonistThoughtChange(...)
+-- previous --
+OnProtagonistThoughtClose()
+OnProtagonistLeave()
+OnTutorialOpen()
+OnTutorialChange(Fique atento também para o fato de que, em algumas batalhas, como esta, apenas uma das opções é a correta. Você precisa escolhê-la antes de o tempo acabar.)
+-- previous --
+OnTutorialChange(Algumas escolhas têm limite de tempo.)
+-- previous --
+OnTutorialClose()
+OnBackgroundChange()
+OnMusicChange()
+OnProtagonistChange()

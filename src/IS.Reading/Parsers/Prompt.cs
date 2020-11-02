@@ -110,7 +110,7 @@ namespace IS.Reading.Parsers
             {
                 for (; ; )
                 {
-                    if (Is<ProtagonistItem>())
+                    if (Is<ProtagonistItem>() || Is<ProtagonistMoodItem>() || Is<ProtagonistBumpItem>())
                         return;
 
                     if (blocks.Count == 0)

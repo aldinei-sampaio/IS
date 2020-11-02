@@ -2,6 +2,6 @@
 {
     public interface ICondition
     {
-        bool Evaluate(IStoryContextEventCaller context);
+        bool Evaluate(IVariableDictionary variables);
     }
 }

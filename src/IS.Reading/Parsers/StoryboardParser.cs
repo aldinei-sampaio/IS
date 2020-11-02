@@ -10,12 +10,14 @@ namespace IS.Reading.Parsers
 {
     public partial class StoryboardParser
     {
-        private const string varNamePattern = @"^[a-z0-9_]{2,}$";
+        private const string varNamePattern = /* language=regex */ @"^[a-z0-9_]{2,}$";
         private readonly Storyboard storyboard;
         private readonly Stack<StoryboardBlock> blocks;
         private readonly XmlReader reader;
 
         private StoryboardBlock currentBlock;
+        private bool isProtagonistBump;
+        private bool isInterlocutorBump;
 
         private StoryboardParser(XmlReader reader)
         { 
@@ -54,6 +56,10 @@ namespace IS.Reading.Parsers
 
         private void HandleStartElement()
         {
+            if (isInterlocutorBump)
+                if (HandleInterlocutorBumpStartElement())
+                    return;
+
             if (Is<InterlocutorSpeechItem>())
                 if (HandleInterlocutorSpeechStartElement())
                     return;
@@ -68,6 +74,10 @@ namespace IS.Reading.Parsers
 
             if (Is<InterlocutorItem>())
                 if (HandleInterlocutorStartElement(false))
+                    return;
+
+            if (isProtagonistBump)
+                if (HandleProtagonistBumpStartElement())
                     return;
 
             if (Is<ProtagonistSpeechItem>())
@@ -146,7 +156,7 @@ namespace IS.Reading.Parsers
                         CloseTalkBlockIfNecessary();
                         EnsureEmpty();
                         if (LookForCondition() != null)
-                            throw new StoryboardParsingException(reader, $"O elemento 'protagonist' não suporta condições '{When}'.");
+                            throw new StoryboardParsingException(reader, $"O elemento '{Protagonist}' não suporta condições '{When}'.");
                         OpenBlock(new ProtagonistItem(null));
                         break;
                     }
@@ -154,13 +164,19 @@ namespace IS.Reading.Parsers
                     {
                         CloseTalkBlockIfNecessary();
                         if (LookForCondition() != null)
-                            throw new StoryboardParsingException(reader, $"O elemento 'person' não suporta condições '{When}'.");
+                            throw new StoryboardParsingException(reader, $"O elemento '{Interlocutor}' não suporta condições '{When}'.");
                         OpenBlock(new InterlocutorItem(GetContent(), null));
                         break;
                     }
-                case "prompt":
+                case Prompt:
                     HandlePrompt();
                     break;
+                case Do:
+                    {
+                        var condition = LookForCondition();
+                        OpenBlock(new ConditionItem(condition));
+                        break;
+                    }
                 default:
                     throw new StoryboardParsingException(reader, $"O elemento '{reader.LocalName}' não é suportado.");
             }
@@ -171,7 +187,7 @@ namespace IS.Reading.Parsers
 
         private void CloseToRootOrDo()
         {
-            while (currentBlock.Parent != null)
+            while (currentBlock.Parent != null && !Is<ConditionItem>())
                 CloseBlock();
         }
 
@@ -306,12 +322,14 @@ namespace IS.Reading.Parsers
 
         private void HandleEndElement()
         {
-        }
-
-        private (string ElementName, int LineNumber, int LinePosition) GetInfo()
-        {
-            var info = (IXmlLineInfo)reader;
-            return (reader.LocalName, info.LineNumber, info.LinePosition);
+            switch (reader.LocalName)
+            {
+                case Do:
+                    while (!Is<ConditionItem>())
+                        CloseBlock();
+                    CloseBlock();
+                    break;
+            }
         }
     }
 }

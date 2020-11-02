@@ -14,8 +14,8 @@ namespace IS.Reading.Conditions
         // - var1,var2
         // - Os números dentro dos colchetes podem ser negativos (precedidos por "-")
         // - A condição toda pode ser negada incluindo um ! no início do texto
-        private const string RegexPattern1 = @"^(?<var>[A-Za-z0-9_]+(\,[A-Za-z0-9_]+)*)$";
-        private const string RegexPattern2 = @"^(?<var>[A-Za-z0-9_]+)(\[(?<min>\-?\d{0,9})?(?<max>\:\-?\d{0,9})?\])?$";
+        private const string RegexPattern1 = /* language=regex */ @"^(?<var>[A-Za-z0-9_]+(\,[A-Za-z0-9_]+)*)$";
+        private const string RegexPattern2 = /* language=regex */ @"^(?<var>[A-Za-z0-9_]+)(\[(?<min>\-?\d{0,9})?((?<sep>\:)(?<max>\-?\d{0,9})?)?\])?$";
 
         public static Condition? Parse(string text)
         {
@@ -39,6 +39,7 @@ namespace IS.Reading.Conditions
                 negate,
                 match.Groups["var"].Value,
                 match.Groups["min"].Value,
+                match.Groups["sep"].Value == ":",
                 match.Groups["max"].Value
             );
         }
@@ -46,11 +47,11 @@ namespace IS.Reading.Conditions
         private static Condition GetCondition(bool negate, string text)
         {
             var names = text.Split(',');
-            var op = negate ? ConditionType.EqualTo : ConditionType.Defined;
+            var op = negate ? ConditionType.Undefined : ConditionType.Defined;
             return new Condition(names, op, 0, 0);
         }
 
-        private static Condition? GetCondition(bool negate, string text, string min, string max)
+        private static Condition? GetCondition(bool negate, string text, string min, bool hasSep, string max)
         {
             var names = new[] { text };
             ConditionType op;
@@ -61,7 +62,7 @@ namespace IS.Reading.Conditions
             {
                 if (max.Length == 0)
                 {
-                    op = negate ? ConditionType.EqualTo : ConditionType.Defined;
+                    op = negate ? ConditionType.Undefined : ConditionType.Defined;
                 }
                 else
                 {
@@ -74,7 +75,10 @@ namespace IS.Reading.Conditions
             {
                 if (max.Length == 0)
                 {
-                    op = negate ? ConditionType.LessThan : ConditionType.EqualOrGreaterThan;
+                    if (hasSep)
+                        op = negate ? ConditionType.LessThan : ConditionType.EqualOrGreaterThan;
+                    else
+                        op = negate ? ConditionType.NotEqualTo : ConditionType.EqualTo;
                     if (!int.TryParse(min, out value))
                         return null;
                 }
