@@ -25,9 +25,15 @@ namespace IS.Reading.Parsers
             currentBlock = storyboard.Root;
         }
 
-        public static Storyboard? Load(string content)
+        public static Storyboard Parse(Stream stream)
+            => Parse(new StreamReader(stream));
+
+        public static Storyboard Parse(string content) 
+            => Parse(new StringReader(content));        
+
+        public static Storyboard Parse(TextReader textReader)
         {
-            using var reader = XmlReader.Create(new StringReader(content));
+            using var reader = XmlReader.Create(textReader);
             var parser = new StoryboardParser(reader);
 
             reader.MoveToContent();

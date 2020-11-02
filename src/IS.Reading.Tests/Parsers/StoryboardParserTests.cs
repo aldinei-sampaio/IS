@@ -8,10 +8,13 @@ namespace IS.Reading.Parsers
 {
     public class StoryboardParserTests
     {
+        private Storyboard Load(string resourceName)
+            => StoryboardParser.Parse(this.GetResourceStream(resourceName));
+
         [Fact]
         public void SimpleElements()
         {
-            var target = StoryboardParser.Load(Resources.SimpleElements);
+            var target = Load("SimpleElements.xml");
 
             target.Root.ForwardQueue.Count.Should().Be(7);
 
@@ -31,14 +34,14 @@ namespace IS.Reading.Parsers
             target.Get<PauseItem>();
             {
                 var item = target.Get<VarIncrementItem>();
-                item.ToString().Should().Be("var3+2");
+                item.Increment.ToString().Should().Be("var3+2");
             }
         }
 
         [Fact]
         public void SimpleNarration()
         {
-            var target = StoryboardParser.Load(Resources.SimpleNarration);
+            var target = Load("SimpleNarration.xml");
 
             target.Root.ForwardQueue.Count.Should().Be(3);
 
@@ -56,7 +59,7 @@ namespace IS.Reading.Parsers
         [Fact]
         public void SimpleTutorial()
         {
-            var target = StoryboardParser.Load(Resources.SimpleTutorial);
+            var target = Load("SimpleTutorial.xml");
 
             target.Root.ForwardQueue.Count.Should().Be(3);
 
@@ -74,7 +77,7 @@ namespace IS.Reading.Parsers
         [Fact]
         public void SimpleProtagonist()
         {
-            var target = StoryboardParser.Load(Resources.SimpleProtagonist);
+            var target = Load("SimpleProtagonist.xml");
 
             target.Get<BackgroundItem>().ImageName.Should().Be("imagem");
 
@@ -103,7 +106,7 @@ namespace IS.Reading.Parsers
         [Fact]
         public void SimpleProtagonist2()
         {
-            var target = StoryboardParser.Load(Resources.SimpleProtagonist2);
+            var target = Load("SimpleProtagonist2.xml");
 
             target.Get<MusicItem>().MusicName.Should().Be("musica");
 
@@ -133,7 +136,7 @@ namespace IS.Reading.Parsers
         [Fact]
         public void SimpleInterlocutor()
         {
-            var target = StoryboardParser.Load(Resources.SimpleInterlocutor);
+            var target = Load("SimpleInterlocutor.xml");
 
             target.Get<BackgroundItem>().ImageName.Should().Be("imagem");
 
@@ -165,7 +168,7 @@ namespace IS.Reading.Parsers
         [Fact]
         public void SimpleInterlocutor2()
         {
-            var target = StoryboardParser.Load(Resources.SimpleInterlocutor2);
+            var target = Load("SimpleInterlocutor2.xml");
 
             target.Get<MusicItem>().MusicName.Should().Be("musica");
 
@@ -196,7 +199,7 @@ namespace IS.Reading.Parsers
         [Fact]
         public void SimplePrompt()
         {
-            var target = StoryboardParser.Load(Resources.SimplePrompt);
+            var target = Load("SimplePrompt.xml");
 
             target.Get<BackgroundItem>().ImageName.Should().Be("imagem");
 
@@ -216,8 +219,8 @@ namespace IS.Reading.Parsers
         [Fact]
         public void SimplePrompt2()
         {
-            var target = StoryboardParser.Load(Resources.SimplePrompt2);
-
+            var target = Load("SimplePrompt2.xml");
+            
             target.Get<BackgroundItem>().ImageName.Should().Be("imagem");
 
             var prompt = target.Get<PromptItem>();
@@ -231,7 +234,7 @@ namespace IS.Reading.Parsers
         [Fact]
         public void SimplePrompt3()
         {
-            var target = StoryboardParser.Load(Resources.SimplePrompt3);
+            var target = Load("SimplePrompt3.xml");
 
             target.Get<TutorialItem>().GetSingle<TutorialTextItem>().Text.Should().Be("Tutorial 1");
 
@@ -248,7 +251,7 @@ namespace IS.Reading.Parsers
         [Fact]
         public void SimplePrompt4()
         {
-            var target = StoryboardParser.Load(Resources.SimplePrompt4);
+            var target = Load("SimplePrompt4.xml");
 
             target.Get<NarrationItem>().GetSingle<NarrationTextItem>().Text.Should().Be("Narração 1");
 
@@ -267,7 +270,7 @@ namespace IS.Reading.Parsers
         [Fact]
         public void ProtagonistReward()
         {
-            var target = StoryboardParser.Load(Resources.ProtagonistReward);
+            var target = Load("ProtagonistReward.xml");
 
             var protagonist = target.GetSingle<ProtagonistItem>();
             protagonist.Get<ProtagonistRewardItem>().Increment.ToString().Should().Be("v1+1");
@@ -289,7 +292,7 @@ namespace IS.Reading.Parsers
         [Fact]
         public void InterlocutorReward()
         {
-            var target = StoryboardParser.Load(Resources.InterlocutorReward);
+            var target = Load("InterlocutorReward.xml");
 
             var interlocutor = target.GetSingle<InterlocutorItem>();
             interlocutor.Name.Should().Be("sulana");

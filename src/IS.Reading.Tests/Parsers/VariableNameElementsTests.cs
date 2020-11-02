@@ -14,7 +14,7 @@ namespace IS.Reading.Parsers
         public void EmptyTag(string elementName)
         {
             var data = $"<storyboard><{elementName} /></storyboard>";
-            var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Load(data));
+            var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Parse(data));
             ex.Message.Should().Be($"Conteúdo é requerido para o elemento '{elementName}'.\r\nLinha 1");
         }
 
@@ -47,7 +47,7 @@ namespace IS.Reading.Parsers
         public void InvalidValue(string elementName, string value)
         {
             var data = $"<storyboard><{elementName}>{value}</{elementName}></storyboard>";
-            var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Load(data));
+            var ex = Assert.Throws<StoryboardParsingException>(() => StoryboardParser.Parse(data));
             ex.Message.Should().Be($"O valor '{value}' não é válido para o elemento '{elementName}'.\r\nLinha 1");
         }
     }

@@ -2,11 +2,31 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-
     <IsPackable>false</IsPackable>
-
     <RootNamespace>IS.Reading</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Parsers\InterlocutorReward.xml" />
+    <EmbeddedResource Include="Parsers\ProtagonistReward.xml" />
+    <EmbeddedResource Include="Parsers\SimpleElements.xml" />
+    <EmbeddedResource Include="Parsers\SimpleInterlocutor.xml" />
+    <EmbeddedResource Include="Parsers\SimpleInterlocutor2.xml" />
+    <EmbeddedResource Include="Parsers\SimpleNarration.xml" />
+    <EmbeddedResource Include="Parsers\SimplePrompt.xml" />
+    <EmbeddedResource Include="Parsers\SimplePrompt2.xml" />
+    <EmbeddedResource Include="Parsers\SimplePrompt3.xml" />
+    <EmbeddedResource Include="Parsers\SimplePrompt4.xml" />
+    <EmbeddedResource Include="Parsers\SimpleProtagonist.xml" />
+    <EmbeddedResource Include="Parsers\SimpleProtagonist2.xml" />
+    <EmbeddedResource Include="Parsers\SimpleTutorial.xml" />
+    <EmbeddedResource Include="StoryboardNavigatorTests\Dialog.xml" />
+    <EmbeddedResource Include="StoryboardNavigatorTests\Dialog_Backward.txt" />
+    <EmbeddedResource Include="StoryboardNavigatorTests\Dialog_Forward.txt" />
+    <EmbeddedResource Include="StoryboardNavigatorTests\Introduction.xml" />
+    <EmbeddedResource Include="StoryboardNavigatorTests\Introduction_Backward.txt" />
+    <EmbeddedResource Include="StoryboardNavigatorTests\Introduction_Forward.txt" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FakeItEasy" Version="6.2.1" />
@@ -25,30 +45,5 @@
 
   <ItemGroup>
     <ProjectReference Include="..\IS.Reading\IS.Reading.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Parsers\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Update="StoryboardNavigatorTests\Resource.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resource.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Parsers\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <CustomToolNamespace></CustomToolNamespace>
-    </EmbeddedResource>
-    <EmbeddedResource Update="StoryboardNavigatorTests\Resource.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>

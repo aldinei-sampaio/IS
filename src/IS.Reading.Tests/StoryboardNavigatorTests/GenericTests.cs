@@ -47,26 +47,20 @@ OnMusicChange()
             );
         }
 
-        [Fact]
-        public void Introduction()
+        [Theory]
+        [InlineData("Introduction")]
+        [InlineData("Dialog")]
+        public void ForwardBackward(string prefix)
         {
-            var sb = StoryboardParser.Load(Resource.Introduction);
-            var listener = new EventListener(sb.Context);
-            listener.Forward(sb).Should().Be(Resource.Introduction_Forward);
-            listener.Backward(sb).Should().Be(Resource.Introduction_Backward);
-            listener.Forward(sb).Should().Be(Resource.Introduction_Forward);
-            listener.Backward(sb).Should().Be(Resource.Introduction_Backward);
-        }
+            var expectedForward = this.GetResourceString(prefix + "_Forward.txt");
+            var expectedBackward = this.GetResourceString(prefix + "_Backward.txt");
 
-        [Fact]
-        public void Dialog()
-        {
-            var sb = StoryboardParser.Load(Resource.Dialog);
+            var sb = StoryboardParser.Parse(this.GetResourceStream(prefix + ".xml"));
             var listener = new EventListener(sb.Context);
-            listener.Forward(sb).Should().Be(Resource.Dialog_Forward);
-            listener.Backward(sb).Should().Be(Resource.Dialog_Backward);
-            listener.Forward(sb).Should().Be(Resource.Dialog_Forward);
-            listener.Backward(sb).Should().Be(Resource.Dialog_Backward);
+            listener.Forward(sb).Should().Be(expectedForward);
+            listener.Backward(sb).Should().Be(expectedBackward);
+            listener.Forward(sb).Should().Be(expectedForward);
+            listener.Backward(sb).Should().Be(expectedBackward);
         }
 
         //[Fact]
