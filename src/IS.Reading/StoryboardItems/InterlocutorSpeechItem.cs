@@ -10,18 +10,14 @@
 
         public IStoryboardItem Enter(IStoryContextEventCaller context)
         {
-            context.Protagonist.Speech.Open();
+            context.Interlocutor.Speech.Open();
             return this;
         }
 
         public void Leave(IStoryContextEventCaller context)
-            => context.Protagonist.Speech.Close();
+            => context.Interlocutor.Speech.Close();
 
         public StoryboardBlock Block { get; }
-
-        public bool IsPause => false;
-
-        public bool AllowBackwardsBlockEntry => true;
 
         public ICondition? Condition { get; }
     }

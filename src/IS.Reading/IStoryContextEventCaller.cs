@@ -12,5 +12,6 @@ namespace IS.Reading
         IPersonEventCaller Interlocutor { get; }
         IPromptEventCaller<Prompt> Prompt { get; }
         IPromptEventCaller<Display> Display { get; }
+        INavigationEventCaller Navigation { get; }
     }
 }

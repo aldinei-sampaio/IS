@@ -1,0 +1,44 @@
+﻿-- next --
+OnProtagonistChange(sulana)
+OnMusicChange(never_look_back)
+OnBackgroundChange(carmim)
+-- next --
+OnNarrationOpen()
+OnNarrationChange(Capítulo 1: Fúria)
+-- next --
+OnNarrationClose()
+OnBackgroundChange(transition)
+OnTutorialOpen()
+OnTutorialChange(Esta história tem dois protagonistas: Sulana e Belísar.)
+-- next --
+OnTutorialChange(A narrativa irá alternar entre os pontos de vista de um e do outro.)
+-- next --
+OnTutorialChange(Você também terá a oportunidade de fazer escolhas no decorrer da história que podem desbloquear cenas especiais e mudar o comportamento de outras pessoas em relação a você.)
+-- next --
+OnTutorialClose()
+OnMusicChange(enigma)
+OnBackgroundChange(sulana)
+OnTutorialOpen()
+OnTutorialChange(Você agora está controlando Sulana Lautine)
+-- next --
+OnTutorialClose()
+OnBackgroundChange(castle_siege)
+OnNarrationOpen()
+OnNarrationChange(A guerra é uma coisa horrível. Suja, brutal, desumana.)
+-- next --
+OnNarrationChange(Nela, nada importa além de derrotar seus oponentes, e isso sempre envolve morte e destruição.)
+-- next --
+OnNarrationChange(Por mais que não goste dela, você não consegue evitá-la.)
+-- next --
+OnNarrationChange(É algo visceral, profundamente enraizado dentro de você, uma necessidade absoluta, algo que não há como evitar.)
+-- next --
+OnNarrationClose()
+OnTutorialOpen()
+OnTutorialChange(Você está prestes a fazer a sua primeira escolha.)
+-- next --
+OnTutorialChange(Cada opção sempre terá seus prós e contras. Escolha com sabedoria.)
+-- next --
+OnTutorialClose()
+OnBackgroundChange()
+OnMusicChange()
+OnProtagonistChange()

@@ -14,14 +14,6 @@
             return new ProtagonistAntiRewardItem(Increment, Condition);
         }
 
-        public void Leave(IStoryContextEventCaller context) { }
-
-        public StoryboardBlock? Block => null;
-
-        public bool IsPause => false;
-
-        public bool AllowBackwardsBlockEntry => true;
-
         public ICondition? Condition { get; }
     }
 }

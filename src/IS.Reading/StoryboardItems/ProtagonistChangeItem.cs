@@ -14,14 +14,17 @@
             return new ProtagonistChangeItem(oldValue, Condition);
         }
 
-        public void Leave(IStoryContextEventCaller context) { }
-
-        public StoryboardBlock? Block => null;
-
-        public bool IsPause => false;
-
-        public bool AllowBackwardsBlockEntry => true;
-
         public ICondition? Condition { get; }
+
+        public bool ChangesContext => true;
+
+        public void OnStoryboardFinish(IStoryContextEventCaller context)
+        {
+            if (context.State[Keys.Protagonist] != string.Empty)
+            {
+                context.State[Keys.Protagonist] = string.Empty;
+                context.Protagonist.Change(string.Empty);
+            }
+        }
     }
 }

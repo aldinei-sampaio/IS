@@ -8,10 +8,10 @@ namespace IS.Reading.EventObjects
         public event EventHandler? OnOpen;
         public event EventHandler? OnClose;
 
-        void IOpenCloseEventCaller.Close()
+        void IOpenCloseEventCaller.Open()
             => OnOpen?.Invoke(this, EventArgs.Empty);
 
-        void IOpenCloseEventCaller.Open()
+        void IOpenCloseEventCaller.Close()
             => OnClose?.Invoke(this, EventArgs.Empty);
     }
 }

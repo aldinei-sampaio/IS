@@ -204,7 +204,7 @@ namespace IS.Reading.Parsers
                 var increment = VarIncrement.Parse(value);
                 if (!increment.HasValue)
                     throw new StoryboardParsingException(reader, elementName, value);
-                Add(new VarIncrementItem(increment.Value.Name, increment.Value.Value, condition));
+                Add(new VarIncrementItem(increment.Value, condition));
                 return;
             }
             

@@ -2,26 +2,16 @@
 {
     public struct VarIncrementItem : IStoryboardItem
     {
-        public string Name { get; }
+        public VarIncrement Increment { get; }
 
-        public int Increment { get; }
-
-        public VarIncrementItem(string name, int increment, ICondition? condition)
-            => (Name, Increment, Condition) = (name, increment, condition);
+        public VarIncrementItem(VarIncrement increment, ICondition? condition)
+            => (Increment, Condition) = (increment, condition);
 
         public IStoryboardItem Enter(IStoryContextEventCaller context)
         {
-            context.Variables[Name] = context.Variables[Name] + Increment;
-            return new VarIncrementItem(Name, -Increment, Condition);
+            context.Variables[Increment.Name] = context.Variables[Increment.Name] + Increment.Value;
+            return new VarIncrementItem(new VarIncrement(Increment.Name, -Increment.Value), Condition);
         }
-
-        public void Leave(IStoryContextEventCaller context) { }
-
-        public StoryboardBlock? Block => null;
-
-        public bool IsPause => false;
-
-        public bool AllowBackwardsBlockEntry => true;
 
         public ICondition? Condition { get; }
     }

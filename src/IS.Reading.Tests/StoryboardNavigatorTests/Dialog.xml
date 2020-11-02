@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard>
+  <viewpoint>sulana</viewpoint>
+  <music>never_look_back</music>
+  <background>carmim</background>
+
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Oi? Sou eu, Ronam, lembra?</voice>
+  <protagonist />
+  <voice>...</voice>
+  <voice>Tudo bem por aí?</voice>
+  <person>ronam</person>
+  <emotion>sad</emotion>
+  <voice>Vou sobreviver, eu acho.</voice>
+  <reward>+relationship</reward>
+  <emotion>happy</emotion>
+  <voice>Mas obrigado por perguntar.</voice>
+  <emotion>surprised</emotion>
+  <voice>Sabe, por um momento, você me deixou preocupado ali.</voice>
+  <protagonist />
+  <voice>Por quê?</voice>
+  <person>ronam</person>
+  <emotion>surprised</emotion>
+  <voice>"Por quê"?!</voice>
+  <emotion>happy</emotion>
+  <voice>Ver um mulherão, cheio de músculos e com olhos vermelhos brilhantes derrubando soldados profissionais como se não fossem nada, e usando apenas as mãos nuas?</voice>
+  <voice>Acha que isso é algo que se vê todo dia?</voice>
+  <protagonist />
+  <voice>Quantas batalhas já lutamos juntos?</voice>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>Duvido que algum dia vá me acostumar com isso.</voice>
+  <protagonist />
+  <emotion>happy</emotion>
+  <reward>+hope</reward>
+  <voice>Não foi você quem disse uma vez que não tinha medo de nada?</voice>
+  <person>ronam</person>
+  <emotion>happy</emotion>
+  <voice>É... você me pegou nessa.</voice>
+  <voice>Mas sabe que eu sempre vou confiar em você.</voice>
+</storyboard>

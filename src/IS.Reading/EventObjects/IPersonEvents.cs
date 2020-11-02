@@ -2,7 +2,7 @@
 
 namespace IS.Reading.EventObjects
 {
-    public interface IPersonEvents
+    public interface IPersonEvents : ISimpleEvents
     {
         event EventHandler<string>? OnArrive;
         event EventHandler? OnLeave;

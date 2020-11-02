@@ -22,10 +22,6 @@
 
         public StoryboardBlock Block { get; }
 
-        public bool IsPause => false;
-
-        public bool AllowBackwardsBlockEntry => true;
-
         public ICondition? Condition { get; }
     }
 }

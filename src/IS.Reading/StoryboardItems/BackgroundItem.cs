@@ -14,14 +14,17 @@
             return new BackgroundItem(oldValue, Condition);
         }
 
-        public void Leave(IStoryContextEventCaller context) { }
-
-        public StoryboardBlock? Block => null;
-
-        public bool IsPause => false;
-
-        public bool AllowBackwardsBlockEntry => true;
-
         public ICondition? Condition { get; }
+
+        public bool ChangesContext => true;
+
+        public void OnStoryboardFinish(IStoryContextEventCaller context)
+        {
+            if (context.State[Keys.BackgroundImage] != string.Empty)
+            {
+                context.State[Keys.BackgroundImage] = string.Empty;
+                context.Background.Change(string.Empty);
+            }
+        }
     }
 }

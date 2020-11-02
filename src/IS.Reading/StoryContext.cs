@@ -1,4 +1,5 @@
 ﻿using IS.Reading.EventObjects;
+using System.Collections.Generic;
 
 namespace IS.Reading
 {
@@ -17,6 +18,7 @@ namespace IS.Reading
         public PersonEventObject Interlocutor { get; } = new PersonEventObject();
         public PromptEventObject<Prompt> Prompt { get; } = new PromptEventObject<Prompt>();
         public PromptEventObject<Display> Display { get; } = new PromptEventObject<Display>();
+        public NavigationEventObject Navigation { get; } = new NavigationEventObject();
 
         ISimpleEvents IStoryContextEvents.Music => Music;
         ISimpleEvents IStoryContextEvents.Background => Background;
@@ -26,6 +28,7 @@ namespace IS.Reading
         IPersonEvents IStoryContextEvents.Interlocutor => Interlocutor;
         IPromptEvents<Prompt> IStoryContextEvents.Prompt => Prompt;
         IPromptEvents<Display> IStoryContextEvents.Display => Display;
+        INavigationEvents IStoryContextEvents.Navigation => Navigation;
 
         ISimpleEventCaller IStoryContextEventCaller.Music => Music;
         ISimpleEventCaller IStoryContextEventCaller.Background => Background;
@@ -35,5 +38,6 @@ namespace IS.Reading
         IPersonEventCaller IStoryContextEventCaller.Interlocutor => Interlocutor;
         IPromptEventCaller<Prompt> IStoryContextEventCaller.Prompt => Prompt;
         IPromptEventCaller<Display> IStoryContextEventCaller.Display => Display;
+        INavigationEventCaller IStoryContextEventCaller.Navigation => Navigation;
     }
 }

@@ -31,8 +31,7 @@ namespace IS.Reading.Parsers
             target.Get<PauseItem>();
             {
                 var item = target.Get<VarIncrementItem>();
-                item.Name.Should().Be("var3");
-                item.Increment.Should().Be(2);
+                item.ToString().Should().Be("var3+2");
             }
         }
 

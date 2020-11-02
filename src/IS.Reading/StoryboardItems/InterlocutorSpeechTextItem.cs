@@ -15,11 +15,7 @@
 
         public void Leave(IStoryContextEventCaller context) { }
 
-        public StoryboardBlock? Block => null;
-
         public bool IsPause => true;
-
-        public bool AllowBackwardsBlockEntry => true;
 
         public ICondition? Condition { get; }
     }

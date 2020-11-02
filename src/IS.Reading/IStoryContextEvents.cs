@@ -12,5 +12,6 @@ namespace IS.Reading
         IPersonEvents Interlocutor { get; }
         IPromptEvents<Prompt> Prompt { get; }
         IPromptEvents<Display> Display { get; }
+        INavigationEvents Navigation { get; }
     }
 }

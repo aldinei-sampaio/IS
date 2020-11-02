@@ -118,43 +118,43 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="SimpleElements" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>parsers\simpleelements.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="SimpleNarration" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>parsers\simplenarration.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="SimpleTutorial" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>parsers\simpletutorial.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="SimpleProtagonist" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>parsers\simpleprotagonist.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="SimpleProtagonist2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>parsers\simpleprotagonist2.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="SimplePrompt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>parsers\simpleprompt.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="SimplePrompt2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>parsers\simpleprompt2.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="SimplePrompt3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>parsers\simpleprompt3.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="SimplePrompt4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>parsers\simpleprompt4.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="SimpleInterlocutor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>parsers\simpleinterlocutor.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="SimpleInterlocutor2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>parsers\simpleinterlocutor2.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="InterlocutorReward" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>interlocutorreward.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="ProtagonistReward" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>parsers\protagonistreward.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+    <value>protagonistreward.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="InterlocutorReward" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>parsers\interlocutorreward.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="SimpleElements" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>simpleelements.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="SimpleInterlocutor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>simpleinterlocutor.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="SimpleInterlocutor2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>simpleinterlocutor2.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="SimpleNarration" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>simplenarration.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="SimplePrompt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>simpleprompt.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="SimplePrompt2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>simpleprompt2.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="SimplePrompt3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>simpleprompt3.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="SimplePrompt4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>simpleprompt4.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="SimpleProtagonist" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>simpleprotagonist.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="SimpleProtagonist2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>simpleprotagonist2.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="SimpleTutorial" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>simpletutorial.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>
