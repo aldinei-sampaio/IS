@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<trophies>
+  <coolheaded>
+    <title>CABEÇA FRIA</title>
+    <description>Você conseguiu controlar sua fúria e desbloqueou uma cena especial</description>
+    <requirement>Fúria menor que 3 no primeiro encontro com Giarle</requirement>
+  </coolheaded>
+  <heatheaded>
+    <title>CABEÇA QUENTE</title>
+    <description>Seu temperamento explosivo desbloqueou uma cena especial</description>
+    <requirement>Fúria maior que 2 no primeiro encontro com Derione</requirement>
+  </heatheaded>
+  <seductress>
+    <title>SEDUTORA</title>
+    <description>Você levou seu relacionamento com Derione para o próximo nível</description>
+    <requirement>Conseguir mais do que 3 pontos de relacionamento com Derione</requirement>
+  </seductress>
+  <responsible>
+    <title>RESPONSÁVEL</title>
+    <description>Você conseguiu sobreviver a mais um dia e retornar ileso para sua família</description>
+    <requirement>Conseguir mais do que 3 pontos em controle</requirement>
+  </responsible>
+  <violent>
+    <title>VIOLENTO</title>
+    <description>Sua esposa não está satisfeita com sua obsessão por poder</description>
+    <requirement>Conseguir mais do que 3 pontos em poder</requirement>
+  </violent>
+  <ambitious>
+    <title>AMBICIOSO</title>
+    <description>Você está determinado a melhorar a sua vida e de sua família</description>
+    <requirement>Conseguir mais do que 3 pontos em coragem</requirement>
+  </ambitious>
+</trophies>

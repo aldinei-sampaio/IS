@@ -22,6 +22,7 @@
         private const string Emotion = "emotion";
         private const string Reward = "reward";
         private const string Do = "do";
+        private const string Trophy = "trophy";
 
         #endregion
 

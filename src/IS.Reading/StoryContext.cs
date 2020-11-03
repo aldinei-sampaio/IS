@@ -19,6 +19,7 @@ namespace IS.Reading
         public PromptEventObject<Prompt> Prompt { get; } = new PromptEventObject<Prompt>();
         public PromptEventObject<Display> Display { get; } = new PromptEventObject<Display>();
         public NavigationEventObject Navigation { get; } = new NavigationEventObject();
+        public PromptEventObject<Trophy> Trophy { get; } = new PromptEventObject<Trophy>();
 
         ISimpleEvents IStoryContextEvents.Music => Music;
         ISimpleEvents IStoryContextEvents.Background => Background;
@@ -29,6 +30,7 @@ namespace IS.Reading
         IPromptEvents<Prompt> IStoryContextEvents.Prompt => Prompt;
         IPromptEvents<Display> IStoryContextEvents.Display => Display;
         INavigationEvents IStoryContextEvents.Navigation => Navigation;
+        IPromptEvents<Trophy> IStoryContextEvents.Trophy => Trophy;
 
         ISimpleEventCaller IStoryContextEventCaller.Music => Music;
         ISimpleEventCaller IStoryContextEventCaller.Background => Background;
@@ -39,6 +41,7 @@ namespace IS.Reading
         IPromptEventCaller<Prompt> IStoryContextEventCaller.Prompt => Prompt;
         IPromptEventCaller<Display> IStoryContextEventCaller.Display => Display;
         INavigationEventCaller IStoryContextEventCaller.Navigation => Navigation;
+        IPromptEventCaller<Trophy> IStoryContextEventCaller.Trophy => Trophy;
 
         int IVariableDictionary.Get(string name)
         {

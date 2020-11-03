@@ -1,0 +1,53 @@
+﻿@page "/book/{name}/read"
+@inject IAssetManager assetManager
+@implements IDisposable
+@using IS.Reading
+@using IS.Reading.Parsers
+@using IS.UI.Pages.Reader
+
+@if (storyboard == null)
+{
+    <div class="storyboard">
+        Carregando...
+    </div>
+}
+else
+{
+    <div class="storyboard">
+        <Background ImageName="@backgroundImageName" />
+    </div>
+}
+
+@code {
+    [Parameter]
+    public string Name { get; set; } = string.Empty;
+
+    private Storyboard? storyboard = null;
+
+    private string backgroundImageName = string.Empty;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        var tStream = await assetManager.GetThrophiesStreamAsync(Name, 1);
+        var trophies = TrophiesParser.Parse(tStream);
+
+        var sbStream = await assetManager.GetStoryboardStreamAsync(Name, 1);
+        storyboard = StoryboardParser.Parse(sbStream, trophies);
+
+        storyboard.Context.Background.OnChange += OnBackgroundChange;
+
+        storyboard.MoveNext();
+    }
+
+    private void OnBackgroundChange(object sender, string e)
+        => backgroundImageName = e;
+
+
+    public void Dispose()
+    {
+        if (storyboard == null)
+            return;
+
+        storyboard.Context.Background.OnChange -= OnBackgroundChange;
+    }
+}

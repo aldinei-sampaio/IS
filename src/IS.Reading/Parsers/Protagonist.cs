@@ -48,6 +48,9 @@ namespace IS.Reading.Parsers
                 case Bump:
                     HandleProtagonistBump();
                     return true;
+                case Trophy:
+                    HandleTrophy();
+                    return true;
             }
             CloseBlock();
             return false;
@@ -115,6 +118,9 @@ namespace IS.Reading.Parsers
                 case Bump:
                     HandleProtagonistBump();
                     return true;
+                case Trophy:
+                    HandleTrophy();
+                    return true;
             }
             CloseBlock();
             return false;
@@ -133,6 +139,9 @@ namespace IS.Reading.Parsers
                     return true;
                 case Bump:
                     HandleProtagonistBump();
+                    return true;
+                case Trophy:
+                    HandleTrophy();
                     return true;
             }
             CloseBlock();

@@ -14,29 +14,31 @@ namespace IS.Reading.Parsers
         private readonly Storyboard storyboard;
         private readonly Stack<StoryboardBlock> blocks;
         private readonly XmlReader reader;
+        private readonly Dictionary<string, Trophy>? trophies;
 
         private StoryboardBlock currentBlock;
         private bool isProtagonistBump;
         private bool isInterlocutorBump;
 
-        private StoryboardParser(XmlReader reader)
+        private StoryboardParser(XmlReader reader, Dictionary<string, Trophy>? trophies)
         { 
             this.reader = reader;
+            this.trophies = trophies;
             storyboard = new Storyboard();
             blocks = new Stack<StoryboardBlock>();
             currentBlock = storyboard.Root;
         }
 
-        public static Storyboard Parse(Stream stream)
-            => Parse(new StreamReader(stream));
+        public static Storyboard Parse(Stream stream, Dictionary<string, Trophy>? trophies = null)
+            => Parse(new StreamReader(stream), trophies);
 
-        public static Storyboard Parse(string content) 
-            => Parse(new StringReader(content));        
+        public static Storyboard Parse(string content, Dictionary<string, Trophy>? trophies = null) 
+            => Parse(new StringReader(content), trophies);        
 
-        public static Storyboard Parse(TextReader textReader)
+        public static Storyboard Parse(TextReader textReader, Dictionary<string, Trophy>? trophies)
         {
             using var reader = XmlReader.Create(textReader);
-            var parser = new StoryboardParser(reader);
+            var parser = new StoryboardParser(reader, trophies);
 
             reader.MoveToContent();
 
@@ -171,6 +173,9 @@ namespace IS.Reading.Parsers
                 case Prompt:
                     HandlePrompt();
                     break;
+                case Trophy:
+                    HandleTrophy();
+                    break;
                 case Do:
                     {
                         var condition = LookForCondition();
@@ -180,6 +185,15 @@ namespace IS.Reading.Parsers
                 default:
                     throw new StoryboardParsingException(reader, $"O elemento '{reader.LocalName}' não é suportado.");
             }
+        }
+
+        private void HandleTrophy()
+        {
+            var condition = LookForCondition();
+            var value = GetVariableName();
+            if (trophies == null || !trophies.TryGetValue(value, out var trophy))
+                throw new StoryboardParsingException(reader, $"Troféu '{value}' não encontrado.");
+            Add(new TrophyItem(trophy, condition));
         }
 
         private bool Is<T>()

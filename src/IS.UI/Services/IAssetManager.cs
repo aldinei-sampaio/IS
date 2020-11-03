@@ -1,7 +1,6 @@
 ﻿using IS.UI.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace IS.UI.Services
@@ -11,6 +10,10 @@ namespace IS.UI.Services
         Task<BookModel> GetBookAsync(string name);
         string GetBookCoverUrl(string bookName);
         Task<IReadOnlyList<BookModel>> GetBooksAsync();
-        Task<string> GetChapterData(string name, int chapter);
+        Task<string> GetChapterDataAsync(string name, int chapter);
+
+        string GetBackgroundImageUrl(string imageName);
+        Task<Stream> GetStoryboardStreamAsync(string book, int chapter);
+        Task<Stream> GetThrophiesStreamAsync(string book, int chapter);
     }
 }

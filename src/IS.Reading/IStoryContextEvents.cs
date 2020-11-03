@@ -13,5 +13,6 @@ namespace IS.Reading
         IPromptEvents<Prompt> Prompt { get; }
         IPromptEvents<Display> Display { get; }
         INavigationEvents Navigation { get; }
+        IPromptEvents<Trophy> Trophy { get; }
     }
 }

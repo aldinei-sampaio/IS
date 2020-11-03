@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
   <viewpoint>sulana</viewpoint>
-  <music>never-look-back</music>
+  <music>never_look_back</music>
   <background>carmim</background>
   <observe />
   <narration>Capítulo 1: Fúria</narration>
@@ -74,7 +74,7 @@
   <narration>Você se afasta da janela ao ver que os soldados do Exército Vermelho finalmente conseguiram arrombar as portas da fortaleza que você e seus aliados estão defendendo.</narration>
   <narration>Não há mais tempo para pensamentos inúteis, agora é matar ou morrer.</narration>
 
-  <music>desert-squad</music>
+  <music>desert_squad</music>
   <background>castle_saloon</background>
 
   <narration>Vários minutos depois, os sons da batalha podem ser ouvidos por toda a enorme e antiga construção.</narration>
@@ -99,11 +99,19 @@
   <voice>Ugh!</voice>
   <narration>O peitoral metálico da armadura dela é afundado de forma assustadora. Sem nenhum escudo místico que pudesse protege-lo, o corpo da adversária recebe todo o impacto.</narration>
   <narration>Ela cai no chão, seu corpo se convulsionando por alguns instantes, até se aquietar.</narration>
-  <protagonist />
 
-  <thought when="a">Que a próxima vida lhe seja mais generosa do que esta.</thought>
-  <thought when="b">Descanse em paz.</thought>
+  <do when="a">
+    <protagonist />
+    <thought>Que a próxima vida lhe seja mais generosa do que esta.</thought>
+  </do>
+  
+  <do when="b">
+    <protagonist />
+    <thought when="b">Descanse em paz.</thought>
+  </do>
+  
   <do when="c">
+    <protagonist />
     <emotion>angry</emotion>
     <thought>Quem é o próximo?</thought>
   </do>
@@ -325,7 +333,7 @@
 
   <narration>Neste momento, uma voz vinda de um dos corredores adjacentes lhe chama a atenção.</narration>
 
-  <music>free-mind</music>
+  <music>free_mind</music>
 
   <person>giarle</person>
   <emotion>surprised</emotion>
@@ -391,7 +399,7 @@
   <protagonist />
   <voice>E então? Nós vencemos?</voice>
 
-  <music>sad-story</music>
+  <music>sad_story</music>
 
   <person>giarle</person>
   <emotion>sad</emotion>
@@ -568,6 +576,7 @@
     </do>
 
     <do when="b">
+      <protagonist />
       <emotion>normal</emotion>
       <thought>Se quisessem que eu ouvisse alguma coisa, me diriam pessoalmente.</thought>
       <narration>Virando na direção da saída, você se afasta, imaginando o que fará nos próximos dias.</narration>
@@ -586,7 +595,7 @@
   <voice>Psiu!</voice>
 
   <do when="sulana_rampage">
-    <music>crime-fighter</music>
+    <music>crime_fighter</music>
     <trophy>heatheaded</trophy>
     <protagonist />
     <emotion>angry</emotion>
@@ -685,7 +694,7 @@
     <person>giarle</person>
     <voice>Ela vai ficar bem. Vamos, temos que ir embora daqui antes que os vermelhos retornem.</voice>
 
-    <music>open-sky</music>
+    <music>open_sky</music>
     <background>forest</background>
 
     <narration>Depois de alguns momentos de caminhada entre as árvores, você decide que é hora de fazer algumas perguntas.</narration>
@@ -731,7 +740,7 @@
   </do>
 
   <do when="!sulana_rampage">
-    <music>never-look-back</music>
+    <music>never_look_back</music>
     <protagonist />
     <emotion>surprised</emotion>
     <voice>(Quer me matar de susto, é?!)</voice>
@@ -767,6 +776,7 @@
   </prompt>
 
   <do when="a">
+    <protagonist />
     <emotion>angry</emotion>
     <reward>+fight</reward>
     <voice>O que eu te devo, afinal?</voice>
