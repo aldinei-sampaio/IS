@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>IS Research - Background</title>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+            overflow: hidden;
+        }
+
+        #background {
+            position: absolute;
+            width: calc(100% + 40px);
+            height: calc(100% + 40px);
+            left: -20px;
+            right: -20px;
+            background-image: url('img/sky.jpg');
+            background-size: cover;
+            transition: background-position-x 0.5s ease-in-out;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .left_normal {
+            background-position: left -10px center;
+        }
+
+        .left_protag {
+            background-position: left center;
+        }
+
+        .left_interl {
+            background-position: left -20px center;
+        }
+
+        .right_normal {
+            background-position: right -10px center;
+        }
+
+        .right_protag {
+            background-position: right -20px center;
+        }
+
+        .right_interl {
+            background-position: right center;
+        }
+
+        button {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <div id="background">
+        <button id="left_normal">Left Normal</button>
+        <button id="left_protag">Left Protag</button>
+        <button id="left_interl">Left Interloc</button>
+        <button id="right_normal">Right Normal</button>
+        <button id="right_protag">Right Protag</button>
+        <button id="right_interl">Right Interloc</button>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            var div = $("#background");
+
+            $("#left_normal").on("click", function () { div.attr("class", "left_normal"); });
+            $("#left_protag").on("click", function () { div.attr("class", "left_protag"); });
+            $("#left_interl").on("click", function () { div.attr("class", "left_interl"); });
+            $("#right_normal").on("click", function () { div.attr("class", "right_normal"); });
+            $("#right_protag").on("click", function () { div.attr("class", "right_protag"); });
+            $("#right_interl").on("click", function () { div.attr("class", "right_interl"); });
+        });
+    </script>
+</body>
+</html>
