@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IS.Reading", "IS.Reading\IS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IS.Reading.Tests", "IS.Reading.Tests\IS.Reading.Tests.csproj", "{B9C8F342-2207-4ADB-AA8E-F14C9F989762}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IS.HtmlResearch", "IS.HtmlResearch\IS.HtmlResearch.csproj", "{1FE376DB-245B-43AA-BF9C-FB3E786A7912}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B9C8F342-2207-4ADB-AA8E-F14C9F989762}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9C8F342-2207-4ADB-AA8E-F14C9F989762}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9C8F342-2207-4ADB-AA8E-F14C9F989762}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FE376DB-245B-43AA-BF9C-FB3E786A7912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FE376DB-245B-43AA-BF9C-FB3E786A7912}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FE376DB-245B-43AA-BF9C-FB3E786A7912}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FE376DB-245B-43AA-BF9C-FB3E786A7912}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
