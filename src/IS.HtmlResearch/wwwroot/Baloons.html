@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>IS Research - Background</title>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <style type="text/css">
+        html {
+            height: 100%;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 12pt;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+        }
+
+        #background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('img/sky.jpg');
+            background-size: cover;
+        }
+
+        #container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #baloonContainer {
+            position: absolute;
+            top: 50%;
+            -ms-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .baloon {
+            position: relative;
+            background: #712F26;
+            width: 85%;
+            border-radius: 5px;
+            border: 0.5px solid black;
+        }
+
+            .baloon.left {
+                float: left;
+                margin-left: 20px;
+            }
+
+            .baloon.right {
+                float: right;
+                margin-right: 20px;
+            }
+
+        .baloonTitle {
+            color: white;
+            text-align: center;
+            height: 24px;
+        }
+
+            .baloonTitle span {
+                display: inline-block;
+                vertical-align: middle;
+                font-weight: bold;
+                margin-top: 2px;
+            }
+
+        .baloonText {
+            background: white;
+            margin: 0px 4px 4px 4px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 0.5px solid black;
+            min-height: 40px;
+        }
+
+        .baloonArrow {
+            position: absolute;
+            width: 20px;
+            height: 26px;
+            stroke: black;
+            fill: white;
+            top: 0px;
+        }
+
+            .baloonArrow.left {
+                left: 30px;
+            }
+
+            .baloonArrow.right {
+                right: 30px;
+            }
+
+        .separator {
+            position: relative;
+            float: left;
+            height: 20px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="background">
+        <div id="container">
+            <div id="baloonContainer">
+                <div class="baloon left">
+                    <div class="baloonTitle">
+                        <span>Sulana</span>
+                    </div>
+                    <div class="baloonText">Eu gosto disso, está bem? E se tiver algo contra, o problema é seu!!</div>
+                    <svg class="baloonArrow left">
+                        <path d="M 0,0 L 15,28 L 0,28 z" />
+                    </svg>
+                </div>
+
+                <div class="separator"></div>
+
+                <div class="baloon left">
+                    <div class="baloonTitle">
+                        <span>Sulana</span>
+                    </div>
+                    <div class="baloonText">Eu gosto disso, está bem? E se tiver algo contra, o problema é seu!!</div>
+                    <svg class="baloonArrow left">
+                        <ellipse cx="8" cy="5" rx="4" ry="2" />
+                        <ellipse cx="11" cy="11" rx="6" ry="3" />
+                        <ellipse cx="14" cy="19" rx="8" ry="4" />
+                    </svg>
+                </div>
+
+                <div class="separator"></div>
+
+                <div class="baloon right">
+                    <div class="baloonTitle">
+                        <span>Sulana</span>
+                    </div>
+                    <div class="baloonText">Eu gosto disso, está bem? E se tiver algo contra, o problema é seu!!</div>
+                    <svg class="baloonArrow right">
+                        <path d="M 15,0 L 15,28 L 0,28 z" />
+                    </svg>
+                </div>
+
+                <div class="separator"></div>
+
+                <div class="baloon right">
+                    <div class="baloonTitle">
+                        <span>Sulana</span>
+                    </div>
+                    <div class="baloonText">Eu gosto disso, está bem? E se tiver algo contra, o problema é seu!!</div>
+                    <svg class="baloonArrow right">
+                        <ellipse cx="14" cy="5" rx="4" ry="2" />
+                        <ellipse cx="11" cy="11" rx="6" ry="3" />
+                        <ellipse cx="8" cy="19" rx="8" ry="4" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
