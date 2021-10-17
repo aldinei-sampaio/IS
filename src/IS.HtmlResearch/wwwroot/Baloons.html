@@ -1,12 +1,12 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>IS Research - Background</title>
+    <title>IS Research - Speak and Thought Baloons</title>
     <script src="js/jquery-3.6.0.min.js"></script>
     <style type="text/css">
         html {
             height: 100%;
-            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             font-size: 12pt;
         }
 
@@ -40,6 +40,12 @@
             width: 100%;
         }
 
+        .centerbalooncontainer {
+            position: relative;
+            float: left;
+            width: 100%;
+        }
+
         .baloon {
             position: relative;
             background: #712F26;
@@ -58,6 +64,10 @@
                 margin-right: 20px;
             }
 
+            .baloon.center {
+                margin: 0 auto;
+            }
+
         .baloonTitle {
             color: white;
             text-align: center;
@@ -73,13 +83,20 @@
 
         .baloonText {
             background: white;
-            margin: 0px 4px 4px 4px;
             padding: 10px;
             border-radius: 5px;
             border: 0.5px solid black;
             min-height: 40px;
             background-image: linear-gradient(0deg, #888888, #BBBBBB, white);
         }
+
+            .baloonText.withTitle {
+                margin: 0px 4px 4px 4px;
+            }
+
+            .baloonText.withoutTitle {
+                margin: 4px;
+            }
 
         .baloonArrow {
             position: absolute;
@@ -112,9 +129,9 @@
             <div id="baloonContainer">
                 <div class="baloon left">
                     <div class="baloonTitle">
-                        <span>Sulana</span>
+                        <span>Nome do Protagonista</span>
                     </div>
-                    <div class="baloonText">Eu gosto disso, está bem? E se tiver algo contra, o problema é seu!!</div>
+                    <div class="baloonText withTitle">Balão de fala do protagonista.</div>
                     <svg class="baloonArrow left">
                         <path d="M 0,0 L 15,28 L 0,28 z" />
                     </svg>
@@ -124,13 +141,13 @@
 
                 <div class="baloon left">
                     <div class="baloonTitle">
-                        <span>Sulana</span>
+                        <span>Nome do Protagonista</span>
                     </div>
-                    <div class="baloonText">Eu gosto disso, está bem? E se tiver algo contra, o problema é seu!!</div>
+                    <div class="baloonText withTitle">Balão de pensamento do protagonista.</div>
                     <svg class="baloonArrow left">
-                        <ellipse cx="8" cy="5" rx="4" ry="2" />
-                        <ellipse cx="11" cy="11" rx="6" ry="3" />
-                        <ellipse cx="14" cy="19" rx="8" ry="4" />
+                        <ellipse cx="6" cy="5" rx="4" ry="2" />
+                        <ellipse cx="9" cy="11" rx="6" ry="3" />
+                        <ellipse cx="12" cy="19" rx="8" ry="4" />
                     </svg>
                 </div>
 
@@ -138,9 +155,9 @@
 
                 <div class="baloon right">
                     <div class="baloonTitle">
-                        <span>Sulana</span>
+                        <span>Nome do Personagem</span>
                     </div>
-                    <div class="baloonText">Eu gosto disso, está bem? E se tiver algo contra, o problema é seu!!</div>
+                    <div class="baloonText withTitle">Balão de fala de personagem coadjuvante.</div>
                     <svg class="baloonArrow right">
                         <path d="M 15,0 L 15,28 L 0,28 z" />
                     </svg>
@@ -150,14 +167,33 @@
 
                 <div class="baloon right">
                     <div class="baloonTitle">
-                        <span>Sulana</span>
+                        <span>Nome do Personagem</span>
                     </div>
-                    <div class="baloonText">Eu gosto disso, está bem? E se tiver algo contra, o problema é seu!!</div>
+                    <div class="baloonText withTitle">Balão de pensamento de personagem coadjuvante.</div>
                     <svg class="baloonArrow right">
                         <ellipse cx="14" cy="5" rx="4" ry="2" />
                         <ellipse cx="11" cy="11" rx="6" ry="3" />
                         <ellipse cx="8" cy="19" rx="8" ry="4" />
                     </svg>
+                </div>
+
+                <div class="separator"></div>
+
+                <div class="centerbalooncontainer">
+                    <div class="baloon center">
+                        <div class="baloonTitle">
+                            <span>Tutorial</span>
+                        </div>
+                        <div class="baloonText withTitle">Balão para exibição de texto de tutorial sobre o jogo ou sobre o livro.</div>
+                    </div>
+                </div>
+
+                <div class="separator"></div>
+
+                <div class="centerbalooncontainer">
+                    <div class="baloon center">
+                        <div class="baloonText withoutTitle">Balão de narração, para exibir texto narrativo que não sejam falas ou pensamentos de nenhum personagem.</div>
+                    </div>
                 </div>
             </div>
         </div>
