@@ -28,26 +28,44 @@
     <script type="text/javascript">
         $(function () {
             var baloonText = $("#text");
-            var text = "Balão para exibição de texto de tutorial sobre o jogo ou sobre o livro. Este texto poderá ficar bem grande e ocupar diversas linhas dentro desse balão, por isso estou enchendo linguiça neste exemplo aqui para ilustrar isso.";
+            var delayValue = 25;
 
-            var delayValue = 30;
-            var spans = $('<span>' + text.split('').join('</span><span>') + '</span>');
+            var text = "Balão para exibição de <b>texto de tutorial</b> sobre o jogo ou sobre o livro. Este texto poderá ficar <em>bem grande</em> e ocupar diversas linhas dentro desse balão, por isso estou <em><b>enchendo linguiça</b></em> neste exemplo aqui para ilustrar isso.";
+            var temp = $("<span>" + text + "</span>");
 
             var timeouts = [];
+            var currentElement = $("<span />").appendTo(baloonText);
 
-            spans.hide().appendTo(baloonText).each(function (i) {
-                var span = $(this);
-                span.css({ display: 'inline', opacity: 0 });
-                timeouts.push(setTimeout(function () {
-                    span.animate({ opacity: 1 }, delayValue);
-                }, delayValue * i));
+            temp.each(function () {
+                ProcessChild(currentElement, $(this), timeouts, delayValue);
             });
 
             $(".background").one("click", function () {
                 timeouts.forEach(function (i) { clearTimeout(i); });
-                spans.each(function () { $(this).css({ opacity: 1 }); });
+                baloonText.find("span").each(function () { $(this).css({ opacity: 1 }); });
             });
 
+            function ProcessChild(currentElement, element, timeouts, delayValue) {
+                element.contents().each(function () {
+                    if (this.nodeType == 3) {
+                        var contents = $(this).text();
+
+                        var newSpans = $('<span>' + contents.split('').join('</span><span>') + '</span>');
+                        newSpans.hide().appendTo(currentElement).each(function (i) {
+                            var span = $(this);
+                            span.css({ display: 'inline', opacity: 0 });
+                            timeouts.push(setTimeout(function () {
+                                span.animate({ opacity: 1 }, delayValue);
+                            }, delayValue * timeouts.length));
+                        });
+                    } else {
+                        var tagName = $(this).prop("tagName").toLowerCase();
+                        var child = $("<" + tagName + " />");
+                        child.appendTo(currentElement);
+                        ProcessChild(child, $(this), timeouts, delayValue);
+                    }
+                });
+            }
         });
     </script>
 </body>
