@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>IS Research - Font</title>
+
+    <link rel="stylesheet" href="fonts/Proxima Nova.css" />
+
+    <style type="text/css">
+        html {
+            height: 100%;
+            font-family: 'Proxima Nova', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 12pt;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+        }
+
+        #background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('img/sky.jpg');
+            background-size: cover;
+        }
+
+        #container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #baloonContainer {
+            position: absolute;
+            top: 50%;
+            -ms-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .centerbalooncontainer {
+            position: relative;
+            float: left;
+            width: 100%;
+        }
+
+        .baloon {
+            position: relative;
+            background: #712F26;
+            width: 85%;
+            border-radius: 5px;
+            border: 0.5px solid black;
+        }
+
+            .baloon.center {
+                margin: 0 auto;
+            }
+
+        .baloonTitle {
+            color: white;
+            text-align: center;
+            height: 24px;
+        }
+
+            .baloonTitle span {
+                display: inline-block;
+                vertical-align: middle;
+                font-weight: bold;
+                margin-top: 2px;
+            }
+
+        .baloonText {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            border: 0.5px solid black;
+            min-height: 40px;
+            background-image: linear-gradient(0deg, #888888, #BBBBBB, white);
+        }
+
+            .baloonText.withTitle {
+                margin: 0px 4px 4px 4px;
+            }
+
+        
+    </style>
+</head>
+<body>
+    <div id="background">
+        <div id="container">
+            <div id="baloonContainer">
+
+                <div class="centerbalooncontainer">
+                    <div class="baloon center">
+                        <div class="baloonTitle">
+                            <span>Tutorial</span>
+                        </div>
+                        <div class="baloonText withTitle">Balão para exibição de <em>texto de tutorial</em> sobre o jogo ou sobre o livro.</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
