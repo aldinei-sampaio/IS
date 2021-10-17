@@ -1,0 +1,83 @@
+﻿.baloonContainer {
+	position: absolute;
+	top: 50%;
+	-ms-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+	max-width: 600px;
+	width: 100%;
+}
+
+.centerbalooncontainer {
+	position: relative;
+	float: left;
+	width: 100%;
+}
+
+.baloon {
+	position: relative;
+	background: #712F26;
+	width: 85%;
+	border-radius: 5px;
+	border: 0.5px solid black;
+}
+
+	.baloon.left {
+		float: left;
+		margin-left: 20px;
+	}
+
+	.baloon.right {
+		float: right;
+		margin-right: 20px;
+	}
+
+	.baloon.center {
+		margin: 0 auto;
+	}
+
+.baloonTitle {
+	color: white;
+	text-align: center;
+	height: 24px;
+}
+
+	.baloonTitle span {
+		display: inline-block;
+		vertical-align: middle;
+		font-weight: bold;
+		margin-top: 2px;
+	}
+
+.baloonText {
+	background: white;
+	padding: 10px;
+	border-radius: 5px;
+	border: 0.5px solid black;
+	min-height: 40px;
+	background-image: linear-gradient(0deg, #888888, #BBBBBB, white);
+}
+
+	.baloonText.withTitle {
+		margin: 0px 4px 4px 4px;
+	}
+
+	.baloonText.withoutTitle {
+		margin: 4px;
+	}
+
+.baloonArrow {
+	position: absolute;
+	width: 20px;
+	height: 26px;
+	stroke: black;
+	fill: white;
+	top: 0px;
+}
+
+	.baloonArrow.left {
+		left: 30px;
+	}
+
+	.baloonArrow.right {
+		right: 30px;
+	}
