@@ -1,0 +1,48 @@
+﻿.personContainer {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 51%;
+}
+
+.dialogContainer {
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	height: 50%;
+}
+
+.tutorialContainer {
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	transform: translate(0, -50%);
+}
+
+.personSizer {
+	position: absolute;
+	width: 40%;
+	height: 60%;
+	bottom: 0%;
+}
+
+	.personSizer.left {
+		margin-left: 10px;
+	}
+
+	.personSizer.right {
+		margin-right: 10px;
+		right: 0%;
+	}
+
+	.personSizer img {
+		width: 100%;
+		height: auto;
+		bottom: 0%;
+		position: absolute;
+	}
+
+.flipHorizontally {
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+}
