@@ -1,13 +1,4 @@
-﻿.baloonContainer {
-	position: absolute;
-	top: 50%;
-	-ms-transform: translate(0, -50%);
-	transform: translate(0, -50%);
-	max-width: 600px;
-	width: 100%;
-}
-
-.centerbalooncontainer {
+﻿.centerbalooncontainer {
 	position: relative;
 	float: left;
 	width: 100%;
