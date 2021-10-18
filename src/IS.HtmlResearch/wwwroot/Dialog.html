@@ -51,6 +51,17 @@
             -webkit-transform: scaleX(-1);
             transform: scaleX(-1);
         }
+
+        .fadein {
+            opacity: 0;
+            animation: fadein 1s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fadein {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
     </style>
 </head>
 <body>
@@ -59,8 +70,10 @@
             <div id="scene1" style="display:none;">
                 <div class="personContainer">
                     <div class="personSizer left">
-                        <img src="sprites/happy.png" />
+                        <img src="sprites/normal.png" />
+                        <img src="sprites/happy.png" class="fadein" />
                         <img src="sprites/emelin.png" />
+                        <img src="sprites/emelin_happy.png" class="fadein" />
                     </div>
                 </div>
                 <div class="dialogContainer">
@@ -78,8 +91,10 @@
             <div id="scene2" style="display:none;">
                 <div class="personContainer">
                     <div class="personSizer right">
-                        <img src="sprites/happy.png" class="flipHorizontally" />
+                        <img src="sprites/normal.png" class="flipHorizontally" />
+                        <img src="sprites/happy.png" class="flipHorizontally fadein" />
                         <img src="sprites/emelin.png" class="flipHorizontally" />
+                        <img src="sprites/emelin_happy.png" class="flipHorizontally fadein" />
                     </div>
                 </div>
                 <div class="dialogContainer">
