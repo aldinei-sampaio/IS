@@ -103,19 +103,19 @@ class PersonBaloon extends Baloon {
 
         this.scene = $(
             '<div class="scene ' + this.sceneClass + '">' +
-                '<div class="personContainer">' +
-                    '<div class="personSizer ' + this.directionClass + '">' +
-                    '</div>' +
-                '</div>' +
-                '<div class="dialogContainer">' +
-                    '<div class="baloon ' + this.directionClass + '">' +
-                        '<div class="baloonTitle">' +
-                            '<span>' + title + '</span>' +
-                        '</div>' +
-                        '<svg class="baloonArrow ' + this.directionClass + '"></svg>' +
-                        '<div class="baloonText withTitle"></div>' +
-                    '</div>' +
-                '</div>' +
+            '<div class="personContainer">' +
+            '<div class="personSizer ' + this.directionClass + '">' +
+            '</div>' +
+            '</div>' +
+            '<div class="dialogContainer">' +
+            '<div class="baloon ' + this.directionClass + '">' +
+            '<div class="baloonTitle">' +
+            '<span>' + title + '</span>' +
+            '</div>' +
+            '<svg class="baloonArrow ' + this.directionClass + '"></svg>' +
+            '<div class="baloonText withTitle"></div>' +
+            '</div>' +
+            '</div>' +
             '</div>'
         );
 
@@ -168,6 +168,22 @@ class PersonBaloon extends Baloon {
             me[fieldName] = void 0;
         }
     }
+
+    ShowBonus(text) {
+        var bonus = $('<div class="attribute bonus ' + this.directionClass + '">' + text + '</div>');
+        bonus.appendTo(this.personContainer);
+        setTimeout(function () {
+            bonus.addClass("out");
+        }, 3000);
+    }
+
+    ShowPenalty(text) {
+        var bonus = $('<div class="attribute penalty ' + this.directionClass + '">' + text + '</div>');
+        bonus.appendTo(this.personContainer);
+        setTimeout(function () {
+            bonus.addClass("out");
+        }, 3000);
+    }
 }
 
 class LeftPersonBaloon extends PersonBaloon {
@@ -190,14 +206,14 @@ class TutorialBaloon extends Baloon {
     Show(container, title) {
         this.scene = $(
             '<div class="scene tutorial">' +
-                '<div class="tutorialContainer">' +
-                    '<div class="baloon center">' +
-                        '<div class="baloonTitle">' +
-                            '<span>' + title + '</span>' +
-                        '</div>' +
-                        '<div class="baloonText withTitle"></div>' +
-                    '</div>' +
-                '</div>' +
+            '<div class="tutorialContainer">' +
+            '<div class="baloon center">' +
+            '<div class="baloonTitle">' +
+            '<span>' + title + '</span>' +
+            '</div>' +
+            '<div class="baloonText withTitle"></div>' +
+            '</div>' +
+            '</div>' +
             '</div>'
         );
 
@@ -212,11 +228,11 @@ class NarrationBaloon extends Baloon {
     Show(container) {
         this.scene = $(
             '<div class="scene tutorial">' +
-                '<div class="tutorialContainer">' +
-                    '<div class="baloon center">' +
-                        '<div class="baloonText withoutTitle"></div>' +
-                    '</div>' +
-                '</div>' +
+            '<div class="tutorialContainer">' +
+            '<div class="baloon center">' +
+            '<div class="baloonText withoutTitle"></div>' +
+            '</div>' +
+            '</div>' +
             '</div>'
         );
 
