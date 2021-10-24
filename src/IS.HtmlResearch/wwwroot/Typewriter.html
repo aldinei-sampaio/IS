@@ -6,6 +6,16 @@
     <link rel="stylesheet" href="css/General.css" />
     <link rel="stylesheet" href="css/Baloons.css" />
     <script src="js/jquery-3.6.0.min.js"></script>
+    <style type="text/css">
+        .baloonContainer {
+            position: absolute;
+            top: 50%;
+            -ms-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+            max-width: 600px;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <div class="background">
@@ -28,7 +38,7 @@
     <script type="text/javascript">
         $(function () {
             var baloonText = $("#text");
-            var delayValue = 25;
+            var delayValue = 3;
 
             var text = "Balão para exibição de <b>texto de tutorial</b> sobre o jogo ou sobre o livro. Este texto poderá ficar <em>bem grande</em> e ocupar diversas linhas dentro desse balão, por isso estou <em><b>enchendo linguiça</b></em> neste exemplo aqui para ilustrar isso.";
             var temp = $("<span>" + text + "</span>");

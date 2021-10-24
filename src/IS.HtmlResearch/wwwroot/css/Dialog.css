@@ -55,18 +55,22 @@
 }
 
 	.scene.protag {
-		animation: protag_fadein 0.5s;
+		animation: protag_fadein 0.25s;
 		animation-fill-mode: forwards;
 	}
 
 	.scene.interl {
-		animation: interl_fadein 0.5s;
+		animation: interl_fadein 0.25s;
 		animation-fill-mode: forwards;
 	}
 
 	.scene.tutorial {
-		animation: fadein 0.5s;
+		animation: fadein 0.25s;
 		animation-fill-mode: forwards;
+	}
+
+	.scene.out {
+		animation-direction: reverse;
 	}
 
 @keyframes protag_fadein {
@@ -99,9 +103,9 @@
 
 .fadein {
 	opacity: 0;
-	animation: fadein 1s;
+	animation: fadein 0.5s;
 	animation-fill-mode: forwards;
-	animation-delay: 0.5s;
+	animation-delay: 0.25s;
 }
 
 @keyframes fadein {
