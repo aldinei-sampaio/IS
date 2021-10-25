@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>IS Research - Exibição de Troféu</title>
+    <link rel="stylesheet" href="fonts/Proxima Nova.css" />
+    <link rel="stylesheet" href="css/General.css" />
+    <link rel="stylesheet" href="css/Baloons.css" />
+    <link rel="stylesheet" href="css/Dialog.css" />
+    <link rel="stylesheet" href="css/Attribute.css" />
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/dialogs.js"></script>
+    <style type="text/css">
+        .trophy {
+            position: relative;
+            top: 0;
+            margin-left: 20px;
+            margin-right: 20px;
+            border: 3px solid #BBBBBB;
+            background-color: #712F26;
+            opacity: 0.8;
+            border-radius: 15px;
+            padding: 10px 10px 10px 10px;
+            animation: trophy_fadein 1s;
+            animation-fill-mode: forwards;
+        }
+
+            .trophy.out {
+                animation-direction: reverse;
+            }
+
+        .trophy_image {
+            position: relative;
+            display: inline-block;
+            background-image: url("sprites/trophy.png");
+            width: 45px;
+            height: 45px;
+            vertical-align: middle;
+            left: 0;
+        }
+
+        .trophy_body {
+            position: relative;
+            display: inline-block;
+            right: 0;
+            width: calc(100% - 50px);
+            padding-left: 5px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .trophy_title {
+            position: relative;
+            font-size: 13pt;
+            font-weight: bold;
+            color: white;
+        }
+
+        .trophy_text {
+            position: relative;
+            font-size: 13pt;
+            color: white;
+        }
+
+        @keyframes trophy_fadein {
+            from {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+
+            to {
+                opacity: 0.8;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="container">
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        screen.orientation.lock("portrait").catch(function () { });
+
+        $(function () {
+            TextSettings.TypeDelay = 10;
+
+            var container = $(".container");
+            var scene;
+
+            $(".background").on("click", ShowNextScene);
+
+            var n = 0;
+
+            ShowNextScene();
+
+            function ShowNextScene() {
+                switch (n) {
+                    case 0:
+                        if (RemoveScene()) {
+                            return;
+                        }
+                        scene = new LeftPersonBaloon();
+                        scene.Show(container, Emotion.HAPPY, "emelin", "Emelin");
+                        scene.ShowVoice();
+                        ShowText("Bom dia, senhor!");
+                        Trophy.Show(container, "DESBRAVADOR", "Você conseguiu acessar uma cena secreta");
+                        break;
+                    case 1:
+                        scene.ChangeEmotion("normal");
+                        ShowText("Os relatórios mostram que está tudo ok nas linhas de frente, senhor.");
+                        Trophy.Show(container, "CAVALEIRO ANDANTE", "Você conseguiu salvar a princesa das garras do monstro maléfico destruidor de mundos");
+                        break;
+                }
+
+                if ((++n) > 1) {
+                    n = 0;
+                }
+
+                function RemoveScene() {
+                    if (scene !== void 0) {
+                        scene.Hide();
+                        setTimeout(function () {
+                            scene.Remove();
+                            scene = void 0;
+                            ShowNextScene();
+                        }, 250);
+                        return true;
+                    }
+                    return false;
+                }
+
+                function ShowText(text) {
+                    setTimeout(function () {
+                        scene.ShowText(text);
+                    }, 250);
+                }
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        class Trophy {
+            static Show(container, title, text) {
+                container.find(".trophy").remove();
+                var trophy = $(
+                    '<div class="trophy">' +
+                        '<div class="trophy_image"></div>' +
+                        '<div class="trophy_body">' +
+                            '<div class="trophy_title">' + title + '</div>' +
+                            '<div class="trophy_text">' + text + '</div>' +
+                        '</div>' +
+                    '</div>'
+                ).appendTo(container);
+
+                setTimeout(function () {
+                    CssHelper.AddOutClass(trophy);
+                }, 5000);
+            }
+        }
+    </script>
+
+</body>
+</html>

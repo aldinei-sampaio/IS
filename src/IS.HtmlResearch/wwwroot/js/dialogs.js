@@ -1,3 +1,16 @@
+class TextSettings {
+    static TypeDelay = 5;
+}
+
+class CssHelper {
+    static AddOutClass(element) {
+        var css = element.attr("class");
+        element.attr("class", "");
+        element.get(0).offsetWidth;
+        element.attr("class", css + " out");
+    }
+}
+
 class Baloon {
     constructor() {
         this.scene = void 0;
@@ -12,15 +25,15 @@ class Baloon {
         }
     }
 
-    ShowText(delayValue, text) {
+    ShowText(text) {
         if (this.balloon === void 0 || this.textContainer === void 0) {
             return;
         }
 
         this.balloon.show();
-        TypeWrite(this.textContainer, delayValue, text);
+        TypeWrite(this.textContainer, text);
 
-        function TypeWrite(container, delayValue, text) {
+        function TypeWrite(container, text) {
             container.empty();
 
             var temp = $("<span>" + text + "</span>");
@@ -29,10 +42,10 @@ class Baloon {
             var currentElement = $("<span />").appendTo(container);
 
             temp.each(function () {
-                ProcessChild(currentElement, $(this), timeouts, delayValue);
+                ProcessChild(currentElement, $(this), timeouts);
             });
 
-            function ProcessChild(currentElement, element, timeouts, delayValue) {
+            function ProcessChild(currentElement, element, timeouts) {
                 element.contents().each(function () {
                     if (this.nodeType == 3) {
                         var contents = $(this).text();
@@ -42,14 +55,14 @@ class Baloon {
                             var span = $(this);
                             span.css({ display: 'inline', opacity: 0 });
                             timeouts.push(setTimeout(function () {
-                                span.animate({ opacity: 1 }, delayValue);
-                            }, delayValue * timeouts.length));
+                                span.animate({ opacity: 1 }, TextSettings.TypeDelay);
+                            }, TextSettings.TypeDelay * timeouts.length));
                         });
                     } else {
                         var tagName = $(this).prop("tagName").toLowerCase();
                         var child = $("<" + tagName + " />");
                         child.appendTo(currentElement);
-                        ProcessChild(child, $(this), timeouts, delayValue);
+                        ProcessChild(child, $(this), timeouts);
                     }
                 });
             }
@@ -62,11 +75,7 @@ class Baloon {
             return;
         }
         me.balloon.hide();
-
-        var css = me.scene.attr("class");
-        me.scene.attr("class", "");
-        me.scene.get(0).offsetWidth;
-        me.scene.attr("class", css + " out");
+        CssHelper.AddOutClass(me.scene);
     };
 
     Remove() {
