@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>IS Research - Background Roll Class</title>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <style type="text/css">
+        html {
+            height: 100%;
+            font-family: 'Proxima Nova', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 14pt;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+            overflow: hidden;
+            color: black;
+        }
+
+        .root {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .background {
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            background-size: cover;
+            background-position: left center;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            max-width: 600px;
+        }
+
+        .middle_container {
+            position: absolute;
+            top: 50%;
+            -ms-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background"></div>
+
+    <div class="root">
+        <div class="container">
+            <div class="middle_container">
+                <button>Exemplo</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $("body").on("click", OnClick);
+
+            var back = new Background($(".background"));
+            back.Left();
+            back.FadeIn("forest");
+
+            var n = 0;
+
+            function OnClick() {
+                switch (n) {
+                    case 0:
+                        back.Panoramic();
+                        break;
+                    case 1:
+                        back.Panoramic();
+                        break;
+                    case 2:
+                        back.Protag();
+                        break;
+                    case 3:
+                        back.Interl();
+                        break;
+                    case 4:
+                        back.Default();
+                        break;
+                    case 5:
+                        back.FadeIn("sky");
+                        setTimeout(function () { back.Panoramic(); }, 1000);
+                        break;
+                    case 6:
+                        back.Protag();
+                        break;
+                    case 7:
+                        back.Interl();
+                        break;
+                    case 8:
+                        back.Default();
+                        break;
+                    case 9:
+                        back.Transitionate("forest", "white");
+                        setTimeout(function () { back.Panoramic(); }, 1000);
+                        break;
+                    case 10:
+                        back.Transitionate("sky", "black");
+                        setTimeout(function () { back.Panoramic(); }, 1000);
+                        break;
+                }
+                if (++n > 10) {
+                    n = 0;
+                }
+            }
+        })
+
+        
+    </script>
+
+    <script type="text/javascript">
+        class Background {
+            constructor(div) {
+                this.div = div;
+                this.position = "left";
+            }
+
+            Show(imageName) {
+                this.div.css("background-image", "url('img/" + imageName + ".jpg')");
+            }
+
+            FadeIn(imageName) {
+                var me = this;
+
+                var clone = this.div.clone();
+                clone.css("background-image", "url('img/" + imageName + ".jpg')");
+                clone.css("opacity", "0");
+                clone.insertAfter(this.div);
+                clone.animate({ opacity: "1.0" }, 500, function () {
+                    me.Show(imageName);
+                    clone.remove()
+                });
+            }
+
+            Transitionate(imageName, color) {
+                var me = this;
+
+                var transition = this.div.clone();
+                transition.css("background-image", "");
+                transition.css("background-color", color);
+                transition.css("opacity", "0");
+                transition.insertAfter(this.div);
+
+                var newBack = this.div.clone();
+                newBack.css("background-image", "url('img/" + imageName + ".jpg')");
+                newBack.css("opacity", "0");
+                newBack.insertAfter(transition);
+
+                transition.animate({ opacity: "1.0" }, 500, function () {
+                    newBack.animate({ opacity: "1.0" }, 500, function () {
+                        me.Show(imageName);
+                        newBack.remove();
+                        transition.remove();
+                    })
+                })
+            }
+
+            Left() {
+                this.div.css("left", "-5%");
+                this.position = "left";
+            }
+
+            Right() {
+                this.div.css("right", "-95%");
+                this.position = "right";
+            }
+
+            Panoramic() {
+                if (this.position === "left") {
+                    this.position = "right";
+                    this.div.animate({ left: "-95%" }, 2000);
+                } else {
+                    this.position = "left";
+                    this.div.animate({ left: "-5%" }, 2000);
+                }
+            }
+
+            Protag() {
+                var newPosition = (this.position === "left") ? "0%" : "-90%";
+                this.div.animate({ left: newPosition }, 500);
+            }
+
+            Interl() {
+                var newPosition = (this.position === "left") ? "-10%" : "-100%";
+                this.div.animate({ left: newPosition }, 500);
+            }
+
+            Default() {
+                var newPosition = (this.position === "left") ? "-5%" : "-95%";
+                this.div.animate({ left: newPosition }, 500);
+            }
+        }
+    </script>
+
+</body>
+</html>
