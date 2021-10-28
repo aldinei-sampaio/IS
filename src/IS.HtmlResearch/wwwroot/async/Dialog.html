@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>IS Research - Async Dialogs</title>
+    <link rel="stylesheet" href="is.css" />
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="is.js"></script>
+</head>
+<body>
+
+    <div class="background"></div>
+
+    <div class="root">
+        <div class="container">
+            <div class="middle_container">
+                <button>Clique sobre o fundo</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(async function () {
+            $("body").on("click", OnClick);
+            var button = $("button");
+            var container = $(".container");
+
+            var back = new Background($(".background"));
+            await back.FadeInAsync("forest", "left");
+
+            var scene;
+
+            var steps = [
+                async () => {
+                    if (scene) {
+                        await scene.HideAsync();
+                    }
+                    back.ProtagAsync();
+                    scene = new LeftPersonBaloon();
+                    await scene.ShowAsync(container, "happy", "emelin", "Emelin");
+                    scene.ShowVoice();
+                    await scene.ShowTextAsync("Bom dia, senhor!");
+                },
+                async () => {
+                    scene.ChangeEmotionAsync("normal");
+                    await scene.ShowTextAsync("Os relatórios mostram que está tudo ok nas linhas de frente, senhor.");
+                },
+                async () => {
+                    scene.ShowThought();
+                    await scene.ShowTextAsync("Tudo está ocorrendo conforme o planejado.");
+                },
+                async () => {
+                    scene.ChangeTitle("Emelin Feliz");
+                    scene.ChangeEmotionAsync("happy");
+                    scene.ShowVoice();
+                    await scene.ShowTextAsync("Creio que logo terminaremos por aqui!");
+                },
+                async () => {
+                    await scene.HideAsync();
+                    back.InterlAsync();
+                    scene = new RightPersonBaloon();
+                    await scene.ShowAsync(container, "happy", "emelin", "Emelin");
+                    scene.ShowVoice();
+                    await scene.ShowTextAsync("Bom dia, senhor!");
+                },
+                async () => {
+                    scene.ChangeEmotionAsync("normal");
+                    await scene.ShowTextAsync("Os relatórios mostram que está tudo ok nas linhas de frente, senhor.");
+                },
+                async () => {
+                    scene.ShowThought();
+                    await scene.ShowTextAsync("Tudo está ocorrendo conforme o planejado.");
+                },
+                async () => {
+                    scene.ChangeTitle("Emelin Feliz");
+                    scene.ChangeEmotionAsync("happy");
+                    scene.ShowVoice();
+                    await scene.ShowTextAsync("Creio que logo terminaremos por aqui!");
+                },
+                async () => {
+                    var p1 = back.DefaultAsync();
+                    var p2 = scene.HideAsync();
+                    await p1;
+                    await p2;
+                    scene = void 0;
+                    await back.PanoramicAsync();
+                }
+            ];
+
+            var n = 0;
+
+            async function OnClick() {
+                var sceneId = NextScene();
+                button.text("Step " + sceneId + " started");
+                await steps[sceneId]();
+                button.text("Step " + sceneId + " ended");
+            }
+
+            function NextScene() {
+                var oldValue = n;
+                if (++n >= steps.length) {
+                    n = 0;
+                }
+                return oldValue;
+            }
+        });
+    </script>
+</body>
+</html>

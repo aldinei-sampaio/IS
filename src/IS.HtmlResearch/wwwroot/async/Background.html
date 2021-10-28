@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>IS Research - Async Background Transitions</title>
+    <link rel="stylesheet" href="is.css" />
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="is.js"></script>
+</head>
+<body>
+
+    <div class="background"></div>
+
+    <div class="root">
+        <div class="container">
+            <div class="middle_container">
+                <button>Clique sobre o fundo</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $("body").on("click", OnClick);
+            var button = $("button");
+            var back = new Background($(".background"));
+            back.FadeInAsync("forest", "left");
+
+            var steps = [
+                async () => {
+                    await back.FadeInAsync("sky", "left");
+                    await back.PanoramicAsync();
+                },
+                async () => {
+                    await back.FadeInAsync("forest", "right");
+                    await back.PanoramicAsync();
+                },
+                async () => {
+                    await back.TransitionateAsync("sky", "black");
+                    await back.PanoramicAsync();
+                },
+                async () => {
+                    await back.TransitionateAsync("forest", "white", "left");
+                    await back.PanoramicAsync();
+                },
+                async () => {
+                    await back.TransitionateAsync("sky", "red", "right");
+                    await back.PanoramicAsync();
+                },
+                async () => {
+                    await back.TransitionateAsync("forest", "green");
+                    await back.PanoramicAsync();
+                }
+            ];
+
+            var n = 0;
+
+            async function OnClick() {
+                var sceneId = NextScene();
+                button.text("Step: " + sceneId + " Current pos: " + back.position);
+                await steps[sceneId]();
+                button.text("Step: " + sceneId + " Current pos: " + back.position);
+            }
+
+            function NextScene() {
+                var oldValue = n;
+                if (++n >= steps.length) {
+                    n = 0;
+                }
+                return oldValue;
+            }
+        });
+    </script>
+</body>
+</html>

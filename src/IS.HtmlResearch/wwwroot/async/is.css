@@ -1,0 +1,242 @@
+﻿html {
+	height: 100%;
+	font-family: 'Proxima Nova', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size: 14pt;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	min-height: 100%;
+	overflow: hidden;
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+.background {
+	position: absolute;
+	width: 200%;
+	height: 100%;
+	background-size: cover;
+	background-position: left center;
+}
+
+.container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	max-width: 600px;
+}
+
+.root {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.personContainer {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 51%;
+}
+
+.dialogContainer {
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	height: 50%;
+}
+
+.tutorialContainer {
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	transform: translate(0, -50%);
+}
+
+.personSizer {
+	position: absolute;
+	width: 40%;
+	height: 60%;
+	bottom: 0%;
+}
+
+	.personSizer.left {
+		margin-left: 10px;
+	}
+
+	.personSizer.right {
+		margin-right: 10px;
+		right: 0%;
+	}
+
+	.personSizer img {
+		width: 100%;
+		height: auto;
+		bottom: 0%;
+		position: absolute;
+	}
+
+.flipHorizontally {
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+}
+
+.scene {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+
+.baloon {
+	position: relative;
+	background: #712F26;
+	width: 85%;
+	border-radius: 5px;
+	border: 0.5px solid black;
+}
+
+	.baloon.left {
+		float: left;
+		margin-left: 10px;
+	}
+
+	.baloon.right {
+		float: right;
+		margin-right: 10px;
+	}
+
+	.baloon.center {
+		margin: 0 auto;
+	}
+
+.baloonTitle {
+	color: white;
+	text-align: center;
+	height: 24px;
+}
+
+	.baloonTitle span {
+		display: inline-block;
+		vertical-align: middle;
+		font-weight: bold;
+		margin-top: 2px;
+	}
+
+.baloonText {
+	background: white;
+	border-radius: 5px;
+	border: 0.5px solid black;
+	background-image: linear-gradient(0deg, #888888, #BBBBBB, white);
+}
+
+	.baloonText.withTitle {
+		margin: 0px 4px 4px 4px;
+		padding: 10px;
+		min-height: 40px;
+	}
+
+	.baloonText.withoutTitle {
+		margin: 4px;
+		padding: 15px;
+		text-align: center;
+	}
+
+.baloonArrow {
+	position: absolute;
+	width: 20px;
+	height: 26px;
+	stroke: black;
+	fill: white;
+	top: 0px;
+}
+
+	.baloonArrow.left {
+		left: 30px;
+	}
+
+	.baloonArrow.right {
+		right: 30px;
+	}
+
+.attribute {
+	position: absolute;
+	bottom: 0%;
+	padding: 3px 10px 3px 10px;
+	border-radius: 5px;
+	font-size: 10pt;
+	font-weight: bold;
+	margin-bottom: 20px;
+	white-space: nowrap;
+}
+
+	.attribute.left {
+		margin-left: 10px;
+	}
+
+	.attribute.right {
+		margin-right: 10px;
+		right: 0%;
+	}
+
+	.attribute.bonus {
+		background-color: black;
+		color: lawngreen;
+	}
+
+	.attribute.penalty {
+		background-color: black;
+		color: red;
+	}
+
+.trophy {
+	position: relative;
+	top: 0;
+	margin-left: 20px;
+	margin-right: 20px;
+	border: 3px solid #BBBBBB;
+	background-color: #712F26;
+	opacity: 0.8;
+	border-radius: 15px;
+	padding: 10px 10px 10px 10px;
+}
+
+.trophy_image {
+	position: relative;
+	display: inline-block;
+	background-image: url("../sprites/trophy.png");
+	width: 45px;
+	height: 45px;
+	vertical-align: middle;
+	left: 0;
+}
+
+.trophy_body {
+	position: relative;
+	display: inline-block;
+	right: 0;
+	width: calc(100% - 50px);
+	padding-left: 5px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.trophy_title {
+	position: relative;
+	font-size: 13pt;
+	font-weight: bold;
+	color: white;
+}
+
+.trophy_text {
+	position: relative;
+	font-size: 13pt;
+	color: white;
+}
