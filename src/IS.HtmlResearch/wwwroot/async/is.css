@@ -95,7 +95,7 @@ body {
 	opacity: 0;
 }
 
-.baloon {
+.balloon {
 	position: relative;
 	background: #712F26;
 	width: 85%;
@@ -103,53 +103,53 @@ body {
 	border: 0.5px solid black;
 }
 
-	.baloon.left {
+	.balloon.left {
 		float: left;
 		margin-left: 10px;
 	}
 
-	.baloon.right {
+	.balloon.right {
 		float: right;
 		margin-right: 10px;
 	}
 
-	.baloon.center {
+	.balloon.center {
 		margin: 0 auto;
 	}
 
-.baloonTitle {
+.balloonTitle {
 	color: white;
 	text-align: center;
 	height: 24px;
 }
 
-	.baloonTitle span {
+	.balloonTitle span {
 		display: inline-block;
 		vertical-align: middle;
 		font-weight: bold;
 		margin-top: 2px;
 	}
 
-.baloonText {
+.balloonText {
 	background: white;
 	border-radius: 5px;
 	border: 0.5px solid black;
 	background-image: linear-gradient(0deg, #888888, #BBBBBB, white);
 }
 
-	.baloonText.withTitle {
+	.balloonText.withTitle {
 		margin: 0px 4px 4px 4px;
 		padding: 10px;
 		min-height: 40px;
 	}
 
-	.baloonText.withoutTitle {
+	.balloonText.withoutTitle {
 		margin: 4px;
 		padding: 15px;
 		text-align: center;
 	}
 
-.baloonArrow {
+.balloonArrow {
 	position: absolute;
 	width: 20px;
 	height: 26px;
@@ -158,11 +158,11 @@ body {
 	top: 0px;
 }
 
-	.baloonArrow.left {
+	.balloonArrow.left {
 		left: 30px;
 	}
 
-	.baloonArrow.right {
+	.balloonArrow.right {
 		right: 30px;
 	}
 

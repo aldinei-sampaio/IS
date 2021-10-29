@@ -148,7 +148,7 @@ class TypeWriter {
     }
 }
 
-class Baloon {
+class Balloon {
     constructor() {
         this.scene = void 0;
         this.balloon = void 0;
@@ -179,7 +179,7 @@ const Emotion = {
     ANGRY: "angry"
 };
 
-class PersonBaloon extends Baloon {
+class PersonBalloon extends Balloon {
     constructor(directionClass, imageClass) {
         super();
         this.balloon = void 0;
@@ -201,23 +201,23 @@ class PersonBaloon extends Baloon {
             '</div>' +
             '</div>' +
             '<div class="dialogContainer">' +
-            '<div class="baloon ' + this.directionClass + '">' +
-            '<div class="baloonTitle">' +
+            '<div class="balloon ' + this.directionClass + '">' +
+            '<div class="balloonTitle">' +
             '<span>' + title + '</span>' +
             '</div>' +
-            '<svg class="baloonArrow ' + this.directionClass + '"></svg>' +
-            '<div class="baloonText withTitle"></div>' +
+            '<svg class="balloonArrow ' + this.directionClass + '"></svg>' +
+            '<div class="balloonText withTitle"><span></span></div>' +
             '</div>' +
             '</div>' +
             '</div>'
         );
 
-        this.titleContainer = this.scene.find(".baloonTitle span");
+        this.titleContainer = this.scene.find(".balloonTitle span");
         this.personContainer = this.scene.find(".personSizer");
         this.ChangeEmotionAsync(emotion);
         this.balloon = this.scene.find(".dialogContainer").hide();
-        this.arrowContainer = this.scene.find(".baloonArrow");
-        this.textContainer = this.scene.find(".baloonText");
+        this.arrowContainer = this.scene.find(".balloonArrow");
+        this.textContainer = this.scene.find(".balloonText span");
         this.scene.appendTo(container);
     };
 
@@ -274,7 +274,7 @@ class PersonBaloon extends Baloon {
     }
 }
 
-class LeftPersonBaloon extends PersonBaloon {
+class LeftPersonBalloon extends PersonBalloon {
     constructor() {
         super("left", "");
         this.voiceArrowHtml = '<path d="M 15,0 L 15,28 L 0,28 z" />';
@@ -308,7 +308,7 @@ class LeftPersonBaloon extends PersonBaloon {
     }
 }
 
-class RightPersonBaloon extends PersonBaloon {
+class RightPersonBalloon extends PersonBalloon {
     constructor() {
         super("right", "flipHorizontally");
         this.voiceArrowHtml = '<path d="M 0,0 L 15,28 L 0,28 z" />';
@@ -342,31 +342,52 @@ class RightPersonBaloon extends PersonBaloon {
     }
 }
 
-class TutorialBaloon extends Baloon {
+class TutorialBalloon extends Balloon {
     async ShowAsync(container, title, text) {
         this.scene = $(
             '<div class="scene">' +
             '<div class="tutorialContainer">' +
-            '<div class="baloon center">' +
-            '<div class="baloonTitle">' +
+            '<div class="balloon center">' +
+            '<div class="balloonTitle">' +
             '<span>' + title + '</span>' +
             '</div>' +
-            '<div class="baloonText withTitle"></div>' +
+            '<div class="balloonText withTitle"><span></span></div>' +
             '</div>' +
             '</div>' +
             '</div>'
         );
 
-        this.titleContainer = this.scene.find(".baloonTitle span");
+        this.titleContainer = this.scene.find(".balloonTitle span");
         this.balloon = this.scene.find(".tutorialContainer");
-        this.textContainer = this.scene.find(".baloonText");
-        this.scene.css("opacity", "0");
+        this.textContainer = this.scene.find(".balloonText span");
+
+        var dummy = this.balloon.clone();
+
+        this.scene.css("opacity", "1");
+        this.balloon.css("opacity", "0");
+        this.textContainer.html(text);
+        this.titleContainer.html(title);
         this.scene.appendTo(container);
 
-        var p1 = super.ShowTextAsync(text);
-        var p2 = this.scene.animate({ opacity: 1 }, 250).promise();
+        var textHeight = this.textContainer.height();
+
+        dummy.css("width", "10%");
+        dummy.css("left", "50%");
+        dummy.css("opacity", "0");
+        dummy.insertAfter(this.balloon);
+
+        var dummyText = dummy.find(".balloonText span");
+
+        var p1 = dummyText.animate({ height: textHeight + "px" }, 250);
+        var p2 = dummy.animate({ opacity: 1, width: "100%", left: "0%" }, 250).promise();
+
         await p1;
         await p2;
+
+        this.balloon.css("opacity", "1");
+        dummy.remove();
+
+        await super.ShowTextAsync(text);
     }
 
     async HideAsync() {
@@ -376,20 +397,20 @@ class TutorialBaloon extends Baloon {
     }
 }
 
-class NarrationBaloon extends Baloon {
+class NarrationBalloon extends Balloon {
     async ShowAsync(container, text) {
         this.scene = $(
             '<div class="scene">' +
             '<div class="tutorialContainer">' +
-            '<div class="baloon center">' +
-            '<div class="baloonText withoutTitle"></div>' +
+            '<div class="balloon center">' +
+            '<div class="balloonText withoutTitle"><span></span></div>' +
             '</div>' +
             '</div>' +
             '</div>'
         );
 
         this.balloon = this.scene.find(".tutorialContainer");
-        this.textContainer = this.scene.find(".baloonText");
+        this.textContainer = this.scene.find(".balloonText span");
         this.scene.css("opacity", "0");
         this.scene.appendTo(container);
 

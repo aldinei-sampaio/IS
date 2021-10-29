@@ -34,7 +34,7 @@
                     if (scene) {
                         await scene.HideAsync();
                     }
-                    scene = new TutorialBaloon();
+                    scene = new TutorialBalloon();
                     await scene.ShowAsync(container, "Tutorial Manero", "Este é um texto de tutorial propositalmente longo para verificar como a tela se comporta com textos maiores do que o comum e assim garantir que o visual consiga se adaptar bem a esse tipo de situação.");
                 },
                 async () => {
@@ -42,7 +42,7 @@
                 },
                 async () => {
                     scene.HideAsync();
-                    scene = new NarrationBaloon();
+                    scene = new NarrationBalloon();
                     await scene.ShowAsync(container, "E este aqui é um texto de narração criado para verificar a flexibilidade deste balão.");
                 },
                 async () => {

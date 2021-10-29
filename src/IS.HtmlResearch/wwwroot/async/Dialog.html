@@ -35,7 +35,7 @@
                         await scene.HideAsync();
                     }
                     back.ProtagAsync();
-                    scene = new LeftPersonBaloon();
+                    scene = new LeftPersonBalloon();
                     await scene.ShowAsync(container, "happy", "emelin", "Emelin");
                     scene.ShowVoice();
                     await scene.ShowTextAsync("Bom dia, senhor!");
@@ -57,7 +57,7 @@
                 async () => {
                     await scene.HideAsync();
                     back.InterlAsync();
-                    scene = new RightPersonBaloon();
+                    scene = new RightPersonBalloon();
                     await scene.ShowAsync(container, "happy", "emelin", "Emelin");
                     scene.ShowVoice();
                     await scene.ShowTextAsync("Bom dia, senhor!");
