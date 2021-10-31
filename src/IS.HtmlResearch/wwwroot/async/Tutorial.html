@@ -41,9 +41,9 @@
                     await scene.ShowTextAsync("Outro texto de tutorial para testar a transição.");
                 },
                 async () => {
-                    scene.HideAsync();
+                    await scene.HideAsync();
                     scene = new NarrationBalloon();
-                    await scene.ShowAsync(container, "E este aqui é um texto de narração criado para verificar a flexibilidade deste balão.");
+                    await scene.ShowAsync(container, "", "E este aqui é um texto de narração criado para verificar a flexibilidade deste balão.");
                 },
                 async () => {
                     await scene.ShowTextAsync("Testando a transição.");

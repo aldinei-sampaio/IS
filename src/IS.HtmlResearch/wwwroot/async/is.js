@@ -127,7 +127,7 @@ class TypeWriter {
                 if (this.nodeType == 3) {
                     var contents = $(this).text();
 
-                    var newSpans = $('<span>' + contents.split('').join('</span><span>') + '</span>');
+                    var newSpans = $('<span>' + contents.split(' ').join('</span> <span>') + '</span>');
                     newSpans.hide().appendTo(currentElement).each(function (i) {
                         var span = $(this);
                         span.css({ display: 'inline', opacity: 0 });
@@ -166,8 +166,31 @@ class Balloon {
         if (this.balloon === void 0 || this.textContainer === void 0) {
             return;
         }
-        this.balloon.show();
-        await TypeWriter.WriteAsync(this.textContainer, text);
+
+        if (this.textContainer.html() === "") {
+            await TypeWriter.WriteAsync(this.textContainer, text);
+            return;
+        }
+
+        var dummy = this.balloon.clone().css("opacity", "0");
+        var dummyText = dummy.find(".balloonText")
+            .html("")
+            .css("height", this.textContainer.height());
+        dummy.insertAfter(this.balloon);
+
+        await dummy.animate({ opacity: 1 }, 100).promise();
+
+        this.balloon.css("opacity", "0");
+        this.textContainer.html(text);
+
+        var newHeight = this.textContainer[0].offsetHeight;
+        if (newHeight !== dummyText[0].offsetHeight) {
+            await dummyText.animate({ height: newHeight }, 100).promise();
+        }
+
+        await TypeWriter.WriteAsync(dummyText, text);
+        this.balloon.css("opacity", "1");
+        dummy.remove();
     }
 }
 
@@ -342,20 +365,12 @@ class RightPersonBalloon extends PersonBalloon {
     }
 }
 
-class TutorialBalloon extends Balloon {
+class CenterBalloon extends Balloon {
+    CreateScene() {
+    }
+
     async ShowAsync(container, title, text) {
-        this.scene = $(
-            '<div class="scene">' +
-            '<div class="tutorialContainer">' +
-            '<div class="balloon center">' +
-            '<div class="balloonTitle">' +
-            '<span>' + title + '</span>' +
-            '</div>' +
-            '<div class="balloonText withTitle"><span></span></div>' +
-            '</div>' +
-            '</div>' +
-            '</div>'
-        );
+        this.scene = this.CreateScene();
 
         this.titleContainer = this.scene.find(".balloonTitle span");
         this.balloon = this.scene.find(".tutorialContainer");
@@ -371,6 +386,7 @@ class TutorialBalloon extends Balloon {
 
         var textHeight = this.textContainer.height();
 
+        dummy.find(".balloonTitle span").html(title);
         dummy.css("width", "10%");
         dummy.css("left", "50%");
         dummy.css("opacity", "0");
@@ -384,22 +400,41 @@ class TutorialBalloon extends Balloon {
         await p1;
         await p2;
 
+        await TypeWriter.WriteAsync(dummyText, text);
+
         this.balloon.css("opacity", "1");
         dummy.remove();
-
-        await super.ShowTextAsync(text);
     }
 
     async HideAsync() {
-        await this.scene.animate({ opacity: 0 }, 250).promise();
+        this.textContainer.css("height", this.textContainer.height());
+        await this.textContainer.animate({ opacity: 0 }, 250).promise();
+        await this.balloon.animate({ opacity: 0, width: "10%", left: "50%", height: 0 }, 250).promise();
         this.scene.remove();
         this.scene = void 0;
     }
 }
 
-class NarrationBalloon extends Balloon {
-    async ShowAsync(container, text) {
-        this.scene = $(
+class TutorialBalloon extends CenterBalloon {
+    CreateScene() {
+        return $(
+            '<div class="scene">' +
+            '<div class="tutorialContainer">' +
+            '<div class="balloon center">' +
+            '<div class="balloonTitle">' +
+            '<span></span>' +
+            '</div>' +
+            '<div class="balloonText withTitle"><span></span></div>' +
+            '</div>' +
+            '</div>' +
+            '</div>'
+        );
+    }
+}
+
+class NarrationBalloon extends CenterBalloon {
+    CreateScene() {
+        return $(
             '<div class="scene">' +
             '<div class="tutorialContainer">' +
             '<div class="balloon center">' +
@@ -408,20 +443,6 @@ class NarrationBalloon extends Balloon {
             '</div>' +
             '</div>'
         );
-
-        this.balloon = this.scene.find(".tutorialContainer");
-        this.textContainer = this.scene.find(".balloonText span");
-        this.scene.css("opacity", "0");
-        this.scene.appendTo(container);
-
-        var p1 = super.ShowTextAsync(text);
-        var p2 = this.scene.animate({ opacity: 1 }, 250).promise();
-        await p1;
-        await p2;
-    }
-
-    async HideAsync() {
-        await this.scene.animate({ opacity: 0 }, 250).promise();
     }
 }
 
