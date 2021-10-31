@@ -168,6 +168,7 @@ class Balloon {
         }
 
         if (this.textContainer.html() === "") {
+            await this.balloon.animate({ opacity: 1 }, 250).promise();
             await TypeWriter.WriteAsync(this.textContainer, text);
             return;
         }
@@ -238,7 +239,7 @@ class PersonBalloon extends Balloon {
         this.titleContainer = this.scene.find(".balloonTitle span");
         this.personContainer = this.scene.find(".personSizer");
         this.ChangeEmotionAsync(emotion);
-        this.balloon = this.scene.find(".dialogContainer").hide();
+        this.balloon = this.scene.find(".dialogContainer").css("opacity", "0");
         this.arrowContainer = this.scene.find(".balloonArrow");
         this.textContainer = this.scene.find(".balloonText span");
         this.scene.appendTo(container);
@@ -458,12 +459,16 @@ class Trophy {
             '</div>'
         )
             .css("opacity", "0")
-            .css("transform", "translateY(-100%)")
+            .css("top", "-30%")
             .appendTo(container);
 
-        await trophy.animate({ opacity: 0.8, transform: "translateY(0)" }, 1000).promise();
+        var height = trophy[0].offsetHeight;
+
+        trophy.css("top", "-" + height + "px");
+
+        await trophy.animate({ opacity: 0.8, top: "0" }, 1000).promise();
         await TimeoutAsync(4000);
-        await trophy.animate({ opacity: 0, transform: "translateY(-100%)" }, 1000).promise();
+        await trophy.animate({ opacity: 0, top: "-" + height + "px" }, 1000).promise();
 
         trophy.remove();
     }
