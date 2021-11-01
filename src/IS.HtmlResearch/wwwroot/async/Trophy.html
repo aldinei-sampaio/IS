@@ -35,10 +35,12 @@
                     }
                     back.ProtagAsync();
                     scene = new LeftPersonBalloon();
-                    await scene.ShowAsync(container, "happy", "emelin", "Emelin");
+                    await scene.ShowAsync(container, "emelin", "Emelin");
+                    var p0 = scene.ChangeEmotionAsync("happy");
                     scene.ShowVoice();
                     var p1 = scene.ShowTextAsync("Colocando aqui um texto bem longo para enrolar bastante e assim podermos ver se a transição suave entre os balões de fala está ocorrendo da forma correta.");
                     var p2 = Trophy.ShowAsync(container, "DESBRAVADOR", "Você conseguiu acessar uma cena secreta");
+                    await p0;
                     await p1;
                     await p2;
                 }

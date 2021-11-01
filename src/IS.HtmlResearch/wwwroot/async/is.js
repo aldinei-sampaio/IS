@@ -215,7 +215,7 @@ class PersonBalloon extends Balloon {
         this.arrowContainer = void 0;
     }
 
-    async ShowAsync(container, emotion, person, title) {
+    async ShowAsync(container, person, title) {
         this.person = person;
 
         this.scene = $(
@@ -238,10 +238,10 @@ class PersonBalloon extends Balloon {
 
         this.titleContainer = this.scene.find(".balloonTitle span");
         this.personContainer = this.scene.find(".personSizer");
-        this.ChangeEmotionAsync(emotion);
         this.balloon = this.scene.find(".dialogContainer").css("opacity", "0");
         this.arrowContainer = this.scene.find(".balloonArrow");
         this.textContainer = this.scene.find(".balloonText span");
+        this.ChangeEmotionAsync(this.emotion);
         this.scene.appendTo(container);
     };
 
@@ -305,8 +305,8 @@ class LeftPersonBalloon extends PersonBalloon {
         this.thoughtArrowHtml = '<ellipse cx="14" cy="5" rx="4" ry="2" /><ellipse cx="11" cy="11" rx="6" ry="3" /><ellipse cx="8" cy="19" rx="8" ry="4" />';
     }
 
-    async ShowAsync(container, emotion, person, title) {
-        super.ShowAsync(container, emotion, person, title);
+    async ShowAsync(container, person, title) {
+        super.ShowAsync(container, person, title);
         this.scene.css("opacity", "0");
         this.scene.css("left", "-50%");
         this.scene.css("top", "15%");
@@ -339,8 +339,8 @@ class RightPersonBalloon extends PersonBalloon {
         this.thoughtArrowHtml = '<ellipse cx="6" cy="5" rx="4" ry="2" /><ellipse cx="9" cy="11" rx="6" ry="3" /><ellipse cx="12" cy="19" rx="8" ry="4" />';
     }
 
-    async ShowAsync(container, emotion, person, title) {
-        super.ShowAsync(container, emotion, person, title);
+    async ShowAsync(container, person, title) {
+        super.ShowAsync(container, person, title);
         this.scene.css("opacity", "0");
         this.scene.css("right", "-50%");
         this.scene.css("top", "15%");
