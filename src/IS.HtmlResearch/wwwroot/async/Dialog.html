@@ -36,7 +36,7 @@
                     }
                     scene = new LeftPersonBalloon();
                     back.ProtagAsync();
-                    scene.ShowAsync(container, "emelin", "Emelin").then(() => scene.ChangeEmotionAsync("happy"));
+                    scene.ShowAsync(container, "emelin", "Agnes").then(() => scene.ChangeEmotionAsync("happy"));
                     scene.ShowVoice();
                     await scene.ShowTextAsync("Colocando aqui um texto bem longo para enrolar bastante e assim podermos ver se a transição suave entre os balões de fala está ocorrendo da forma correta.");
                 },
@@ -81,6 +81,7 @@
                     var p2 = scene.HideAsync();
                     await p1;
                     await p2;
+                    await back.TransitionateAsync("sky", "black", "right");
                     scene = void 0;
                     await back.PanoramicAsync();
                 }

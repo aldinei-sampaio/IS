@@ -27,7 +27,7 @@ class Background {
 
         clone.insertAfter(this.div);
 
-        await clone.animate({ opacity: "1.0" }, 500).promise();
+        await clone.animate({ opacity: "1.0" }, 500, "linear").promise();
 
         if (direction === "left") {
             me.Left();
@@ -58,8 +58,8 @@ class Background {
             newBack.css("left", "-95%");
         }
 
-        await transition.animate({ opacity: "1.0" }, 500).promise();
-        await newBack.animate({ opacity: "1.0" }, 500).promise();
+        await transition.animate({ opacity: "1.0" }, 250, "linear").promise();
+        await newBack.animate({ opacity: "1.0" }, 250, "linear").promise();
 
         if (direction === "left") {
             me.Left();
@@ -300,7 +300,7 @@ class PersonBalloon extends Balloon {
 class LeftPersonBalloon extends PersonBalloon {
     constructor() {
         super("left", "");
-        this.voiceArrowHtml = '<path d="M 15,0 L 15,28 L 0,28 z" />';
+        this.voiceArrowHtml = '<path d="M 0 28 L 15 0 L 15 28" />';
         this.thoughtArrowHtml = '<ellipse cx="14" cy="5" rx="4" ry="2" /><ellipse cx="11" cy="11" rx="6" ry="3" /><ellipse cx="8" cy="19" rx="8" ry="4" />';
     }
 
@@ -334,7 +334,7 @@ class LeftPersonBalloon extends PersonBalloon {
 class RightPersonBalloon extends PersonBalloon {
     constructor() {
         super("right", "flipHorizontally");
-        this.voiceArrowHtml = '<path d="M 0,0 L 15,28 L 0,28 z" />';
+        this.voiceArrowHtml = '<path d="M 0 28 L 0 0 L 15 28" />';
         this.thoughtArrowHtml = '<ellipse cx="6" cy="5" rx="4" ry="2" /><ellipse cx="9" cy="11" rx="6" ry="3" /><ellipse cx="12" cy="19" rx="8" ry="4" />';
     }
 

@@ -24,7 +24,7 @@
             var container = $(".container");
 
             var back = new Background($(".background"));
-            await back.FadeInAsync("forest", "left");
+            await back.FadeInAsync("sky", "left");
 
             var scene;
 
@@ -32,6 +32,7 @@
                 async () => {
                     if (scene) {
                         await scene.HideAsync();
+                        await back.TransitionateAsync("forest", "black", "right");
                     }
                     scene = new LeftPersonBalloon();
                     back.ProtagAsync();

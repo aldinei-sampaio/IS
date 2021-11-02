@@ -25,7 +25,7 @@
             var container = $(".container");
 
             var back = new Background($(".background"));
-            await back.FadeInAsync("forest", "left");
+            await back.FadeInAsync("sky", "left");
 
             var scene;
 
@@ -33,6 +33,7 @@
                 async () => {
                     if (scene) {
                         await scene.HideAsync();
+                        await back.TransitionateAsync("forest", "black", "right");
                     }
                     scene = new TutorialBalloon();
                     await scene.ShowAsync(container, "Tutorial Manero", "Este é um texto de tutorial propositalmente longo para verificar como a tela se comporta com textos maiores do que o comum e assim garantir que o visual consiga se adaptar bem a esse tipo de situação.");

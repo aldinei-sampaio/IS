@@ -99,8 +99,9 @@ body {
 	position: relative;
 	background: #712F26;
 	width: 85%;
-	border-radius: 5px;
-	border: 0.5px solid black;
+	border-radius: 10px;
+	border: 0.5px solid #202020;
+	box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5), 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
 }
 
 	.balloon.left {
@@ -132,13 +133,13 @@ body {
 
 .balloonText {
 	background: white;
-	border-radius: 5px;
-	border: 0.5px solid black;
+	border-radius: 8px;
+	border: 0.5px solid gray;
 	background-image: linear-gradient(0deg, #888888, #BBBBBB, white);
 }
 
 	.balloonText.withTitle {
-		margin: 0px 4px 4px 4px;
+		margin: 2px 4px 4px 4px;
 		padding: 10px;
 		min-height: 24px;
 	}
@@ -151,9 +152,9 @@ body {
 
 .balloonArrow {
 	position: absolute;
-	width: 20px;
-	height: 26px;
-	stroke: black;
+	width: 22px;
+	height: 27px;
+	stroke: #202020;
 	fill: white;
 	top: 0px;
 }
@@ -203,8 +204,9 @@ body {
 	margin-right: 20px;
 	border: 3px solid #BBBBBB;
 	background-color: #712F26;
-	opacity: 0.8;
+	opacity: 0.9;
 	border-radius: 15px;
+	box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5), 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
 	padding: 10px 10px 10px 10px;
 }
 
