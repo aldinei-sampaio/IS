@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>IS Research - Async Trophy</title>
+    <title>IS Research - Async Bonus</title>
     <link rel="stylesheet" href="is.css" />
     <script src="../js/jquery-3.6.0.min.js"></script>
     <script src="is.js"></script>
@@ -34,13 +34,24 @@
                         await scene.HideAsync();
                     }
                     scene = new LeftPersonBalloon();
-                    back.ProtagAsync();
-                    scene.ShowAsync(container, "emelin", "Emelin").then(() => scene.ChangeEmotionAsync("happy"));
-                    scene.ShowVoice();
-                    var p1 = scene.ShowTextAsync("Colocando aqui um texto bem longo para enrolar bastante e assim podermos ver se a transição suave entre os balões de fala está ocorrendo da forma correta.");
-                    var p2 = Trophy.ShowAsync(container, "DESBRAVADOR", "Você conseguiu acessar uma cena secreta");
-                    await p1;
-                    await p2;
+                    await All(
+                        back.ProtagAsync()
+                        , scene.ShowAsync(container, "emelin", "Emelin").then(() => scene.ChangeEmotionAsync("happy"))
+                        , scene.ShowVoice()
+                        , scene.ShowTextAsync("Colocando aqui um texto bem longo para enrolar bastante e assim podermos ver se a transição suave entre os balões de fala está ocorrendo da forma correta.")
+                        , scene.ShowBonusAsync("+Força de Vontade", "bonus")
+                    );
+                },
+                async () => {
+                    await scene.HideAsync();
+                    scene = new RightPersonBalloon();
+                    await All(
+                        back.InterlAsync()
+                        , scene.ShowAsync(container, "emelin", "Emelin").then(() => scene.ChangeEmotionAsync("happy"))
+                        , scene.ShowThought()
+                        , scene.ShowTextAsync("Colocando aqui um texto bem longo para enrolar bastante e assim podermos ver se a transição suave entre os balões de fala está ocorrendo da forma correta.")
+                        , scene.ShowBonusAsync("-Confiança", "penalty")
+                    );
                 }
             ];
 
@@ -59,6 +70,11 @@
                     n = 0;
                 }
                 return oldValue;
+            }
+
+            async function All() {
+                for (var n in arguments)
+                    await arguments[n];
             }
         });
     </script>

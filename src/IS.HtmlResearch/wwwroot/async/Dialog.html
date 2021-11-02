@@ -34,10 +34,9 @@
                     if (scene) {
                         await scene.HideAsync();
                     }
-                    back.ProtagAsync();
                     scene = new LeftPersonBalloon();
-                    await scene.ShowAsync(container, "emelin", "Emelin");
-                    scene.ChangeEmotionAsync("happy");
+                    back.ProtagAsync();
+                    scene.ShowAsync(container, "emelin", "Emelin").then(() => scene.ChangeEmotionAsync("happy"));
                     scene.ShowVoice();
                     await scene.ShowTextAsync("Colocando aqui um texto bem longo para enrolar bastante e assim podermos ver se a transição suave entre os balões de fala está ocorrendo da forma correta.");
                 },
@@ -57,10 +56,9 @@
                 },
                 async () => {
                     await scene.HideAsync();
-                    back.InterlAsync();
                     scene = new RightPersonBalloon();
-                    await scene.ShowAsync(container, "emelin", "Emelin");
-                    scene.ChangeEmotionAsync("happy");
+                    back.InterlAsync();
+                    scene.ShowAsync(container, "emelin", "Emelin").then(() => scene.ChangeEmotionAsync("happy"));
                     scene.ShowVoice();
                     await scene.ShowTextAsync("Bom dia, senhor!");
                 },

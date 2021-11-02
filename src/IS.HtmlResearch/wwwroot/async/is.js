@@ -167,19 +167,20 @@ class Balloon {
             return;
         }
 
-        if (this.textContainer.html() === "") {
-            await this.balloon.animate({ opacity: 1 }, 250).promise();
-            await TypeWriter.WriteAsync(this.textContainer, text);
-            return;
-        }
+        var isBalloonEmpty = (this.textContainer.html() === "");
 
-        var dummy = this.balloon.clone().css("opacity", "0");
+        var dummy = this.balloon.clone();
+        if (isBalloonEmpty) {
+            dummy.css("opacity", "0");
+        }
         var dummyText = dummy.find(".balloonText")
             .html("")
             .css("height", this.textContainer.height());
         dummy.insertAfter(this.balloon);
 
-        await dummy.animate({ opacity: 1 }, 100).promise();
+        if (isBalloonEmpty) {
+            await dummy.animate({ opacity: 1 }, 100).promise();
+        }
 
         this.balloon.css("opacity", "0");
         this.textContainer.html(text);
@@ -238,7 +239,7 @@ class PersonBalloon extends Balloon {
 
         this.titleContainer = this.scene.find(".balloonTitle span");
         this.personContainer = this.scene.find(".personSizer");
-        this.balloon = this.scene.find(".dialogContainer").css("opacity", "0");
+        this.balloon = this.scene.find(".dialogContainer");
         this.arrowContainer = this.scene.find(".balloonArrow");
         this.textContainer = this.scene.find(".balloonText span");
         this.ChangeEmotionAsync(this.emotion);
@@ -246,12 +247,10 @@ class PersonBalloon extends Balloon {
     };
 
     ShowVoice() {
-        this.textContainer.empty();
         this.arrowContainer.html(this.voiceArrowHtml);
     }
 
     ShowThought() {
-        this.textContainer.empty();
         this.arrowContainer.html(this.thoughtArrowHtml);
     }
 
@@ -281,8 +280,8 @@ class PersonBalloon extends Balloon {
                 .css("opacity", "0")
                 .insertAfter(me.currentPerson);
 
-            var p1 = newEmotion.animate({ opacity: 1 }, 500).promise();
-            var p2 = newPerson.animate({ opacity: 1 }, 500).promise();
+            var p1 = newEmotion.animate({ opacity: 1 }, 1000).promise();
+            var p2 = newPerson.animate({ opacity: 1 }, 1000).promise();
 
             await p1;
             await p2;
@@ -323,7 +322,7 @@ class LeftPersonBalloon extends PersonBalloon {
         var bonus = $('<div class="attribute ' + cssClass + ' ' + this.directionClass + '">' + text + '</div>')
             .css("opacity", "0")
             .css("bottom", "-20%")
-            .appentTo(this.personContainer);
+            .appendTo(this.personContainer);
 
         await bonus.animate({ opacity: 1, bottom: 0 }, 1000).promise();
         await TimeoutAsync(2000);
@@ -357,7 +356,7 @@ class RightPersonBalloon extends PersonBalloon {
         var bonus = $('<div class="attribute ' + cssClass + ' ' + this.directionClass + '">' + text + '</div>')
             .css("opacity", "0")
             .css("bottom", "-20%")
-            .appentTo(this.personContainer);
+            .appendTo(this.personContainer);
 
         await bonus.animate({ opacity: 1, bottom: 0 }, 1000).promise();
         await TimeoutAsync(2000);

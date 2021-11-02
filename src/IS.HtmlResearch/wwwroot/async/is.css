@@ -140,7 +140,7 @@ body {
 	.balloonText.withTitle {
 		margin: 0px 4px 4px 4px;
 		padding: 10px;
-		min-height: 40px;
+		min-height: 24px;
 	}
 
 	.balloonText.withoutTitle {
@@ -171,7 +171,7 @@ body {
 	bottom: 0%;
 	padding: 3px 10px 3px 10px;
 	border-radius: 5px;
-	font-size: 10pt;
+	font-size: 12pt;
 	font-weight: bold;
 	margin-bottom: 20px;
 	white-space: nowrap;
