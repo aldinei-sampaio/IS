@@ -5,11 +5,11 @@
 }
 
 .baloon {
-	position: relative;
 	background: #712F26;
 	width: 85%;
 	border-radius: 5px;
 	border: 0.5px solid black;
+	box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5), 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
 }
 
 	.baloon.left {
@@ -49,7 +49,7 @@
 	.baloonText.withTitle {
 		margin: 0px 4px 4px 4px;
 		padding: 10px;
-		min-height: 40px;
+		min-height: 24px;
 	}
 
 	.baloonText.withoutTitle {

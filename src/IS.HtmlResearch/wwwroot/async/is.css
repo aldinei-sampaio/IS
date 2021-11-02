@@ -213,7 +213,7 @@ body {
 .trophy_image {
 	position: relative;
 	display: inline-block;
-	background-image: url("../sprites/trophy.png");
+	background-image: url("../img/trophy.png");
 	width: 45px;
 	height: 45px;
 	vertical-align: middle;
@@ -241,4 +241,31 @@ body {
 	position: relative;
 	font-size: 13pt;
 	color: white;
+}
+
+.balloonInput {
+	background: white;
+	border-radius: 5px;
+	border: 0.5px solid black;
+	margin: 0px 4px 4px 4px;
+	padding: 10px;
+	line-height: 30px;
+}
+
+.balloonInput input {
+	width: calc(100% - 35px);
+	border: none;
+	font-family: Arial, sans-serif;
+	font-size: 14pt;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+	.balloonInput input:focus {
+		outline: none;
+	}
+
+.balloonInput img {
+	display: inline-block;
+	vertical-align: middle;
 }
