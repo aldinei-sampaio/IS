@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>IS Research - Async Trophy</title>
+    <link rel="stylesheet" href="is.css" />
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="is.js"></script>
+</head>
+<body>
+    <div class="background"></div>
+
+    <div class="root">
+        <div class="container">
+            <button style="position:absolute;float:left;">Escolha uma opção</button>
+            <div class="middle_container">
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(async function () {            
+            var button = $("button");
+            var container = $(".container");
+
+            var back = new Background($(".background"));
+            await back.FadeInAsync("sky", "left");
+
+            var scene;
+            var selection;
+
+            var steps = [
+                async () => {
+                    if (scene) {
+                        await scene.HideAsync();
+                        await back.TransitionateAsync("forest", "black", "right");
+                    }
+                    scene = new LeftPersonBalloon();
+                    back.ProtagAsync();
+                    scene.ShowAsync(container, "emelin", "Emelin");
+                    scene.ShowThought();
+                    var p1 = scene.ShowTextAsync("Eu vou...");
+                    var p2 = scene.ShowChoicesAsync(
+                        {
+                            choices: [
+                                {
+                                    key: "olhar",
+                                    text: "Olhar",
+                                    type: ChoiceType.SIMPLE
+                                },
+                                {
+                                    key: "falar",
+                                    text: "Falar",
+                                    type: ChoiceType.SIMPLE
+                                },
+                                {
+                                    key: "pensar",
+                                    text: "Pensar",
+                                    type: ChoiceType.SIMPLE
+                                }
+                            ]
+                        },
+                        OnChoiceClick
+                    );
+                    await p1;
+                    await p2;
+                },
+                async () => {
+                    if (selection === "olhar") {
+                        await scene.HideAsync();
+                        scene = new NarrationBalloon();
+                        await scene.ShowAsync(container, "", "Você olha ao seu redor, mas não vê nada.");
+                    } else if (selection === "falar") {
+                        scene.ShowVoice();
+                        await scene.ShowTextAsync("Olá? Tem alguém aí?");
+                    } else {
+                        await scene.HideAsync();
+                        scene = new NarrationBalloon();
+                        await scene.ShowAsync(container, "", "Você tenta se lembrar de como foi parar nesse lugar, mas sua mente parece uma folha em branco.");
+                    }
+
+                    $("body").one("click", OnClick);
+                },
+                async () => {
+                    if (scene) {
+                        await scene.HideAsync();
+                        await back.PanoramicAsync()
+                    }
+                    scene = new LeftPersonBalloon();
+                    back.ProtagAsync();
+                    scene.ShowAsync(container, "emelin", "Emelin");
+                    scene.ShowThought();
+                    var p1 = scene.ShowTextAsync("E agora?");
+                    var p2 = scene.ShowChoicesAsync(
+                        {
+                            choices: [
+                                {
+                                    key: "concentrar",
+                                    text: "Vou tentar me concentrar",
+                                    type: ChoiceType.ICON,
+                                    imageName: "heart"
+                                },
+                                {
+                                    key: "reclamar",
+                                    text: "Vou reclamar da minha vida",
+                                    type: ChoiceType.UNLOCKED
+                                },
+                                {
+                                    key: "dormir",
+                                    text: "Vou deitar no chão e tirar uma soneca",
+                                    type: ChoiceType.LOCKED
+                                }
+                            ]
+                        },
+                        OnChoiceClick
+                    );
+                    await p1;
+                    await p2;
+                },
+                async () => {
+                    if (selection === "concentrar") {
+                        scene.ShowVoice();
+                        scene.ShowBonusAsync("+Concentração", "bonus");
+                        await scene.ShowTextAsync("Humm...");
+                    } else if (selection === "reclamar") {
+                        scene.ShowVoice();
+                        Trophy.ShowAsync(container, "BOCA GRANDE", "Você reclamou da vida");
+                        await scene.ShowTextAsync("Mas que raio está acontecendo aqui?!");
+                    } else {
+                        await scene.HideAsync();
+                        scene = new NarrationBalloon();
+                        await scene.ShowAsync(container, "", "Você tenta se lembrar de como foi parar nesse lugar, mas sua mente parece uma folha em branco.");
+                    }
+
+                    $("body").one("click", OnClick);
+                }
+            ];
+
+            var n = 0;
+
+            async function OnClick() {
+                var sceneId = NextScene();
+                button.text("Step " + sceneId + " started");
+                await steps[sceneId]();
+                button.text("Step " + sceneId + " ended");
+            }
+
+            function NextScene() {
+                var oldValue = n;
+                if (++n >= steps.length) {
+                    n = 0;
+                }
+                return oldValue;
+            }
+
+            function OnChoiceClick(choice) {
+                selection = choice.key;
+                OnClick();
+            }
+
+            OnClick();
+        });
+    </script>
+</body>
+</html>

@@ -204,6 +204,13 @@ const Emotion = {
     ANGRY: "angry"
 };
 
+const ChoiceType = {
+    SIMPLE: "simple",
+    ICON: "icon",
+    LOCKED: "locked",
+    UNLOCKED: "unlocked"
+};
+
 class PersonBalloon extends Balloon {
     constructor(directionClass, imageClass) {
         super();
@@ -294,6 +301,71 @@ class PersonBalloon extends Balloon {
         }
 
         me.emotion = emotion;
+    }
+
+    async ShowChoicesAsync(options, clickCallBack) {
+        var optionsContainer = $('<div class="choices"></div>')
+            .css("opacity", 0);
+
+        var validButton = false;
+        options.choices.forEach(choice => {
+            var button = CreateButton(choice);
+            button.find(".textContainer span").text(choice.text);
+            button.appendTo(optionsContainer);
+            if (choice.type != ChoiceType.LOCKED) {
+                button.on("click", async () => {
+                    await optionsContainer.animate({ opacity: 0 }, 250).promise();
+                    optionsContainer.remove();
+                    clickCallBack(choice);
+                });
+                validButton = true;
+            }
+            button.appendTo(optionsContainer);
+        });
+
+        if (!validButton) {
+            throw new Error("Nenhuma opção desbloqueada informada.");
+        }
+        optionsContainer.appendTo(this.balloon);
+        await optionsContainer.animate({ opacity: 1 }, 500).promise();
+
+        function CreateButton(choice) {
+            switch (choice.type) {
+                case ChoiceType.ICON:
+                    return $('<button class="icon">' +
+                                '<div class="textContainer">' + 
+                                    '<span></span>' + 
+                                '</div>' + 
+                                '<div class="iconContainer">' +
+                                    '<img src="../img/' + choice.imageName + '.png" />' +
+                                '</div>' +
+                            '</button>');
+                case ChoiceType.LOCKED:
+                    return $('<button class="locked">' +
+                                '<div class="textContainer">' + 
+                                    '<span></span>' + 
+                                '</div>' + 
+                                '<div class="iconContainer">' +
+                                    '<img src="../img/locked.png" />' +
+                                '</div>' +
+                            '</button>');
+                case ChoiceType.UNLOCKED:
+                    return $('<button class="unlocked">' +
+                                '<div class="textContainer">' + 
+                                    '<span></span>' + 
+                                '</div>' + 
+                                '<div class="iconContainer">' +
+                                    '<img src="../img/unlocked.png" />' +
+                                '</div>' +
+                            '</button>');
+                default:
+                    return $('<button class="normal">' +
+                                '<div class="textContainer">' + 
+                                    '<span></span>' + 
+                                '</div>' + 
+                            '</button>');
+            }
+        }
     }
 }
 

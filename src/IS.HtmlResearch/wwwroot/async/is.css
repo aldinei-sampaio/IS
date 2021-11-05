@@ -204,7 +204,7 @@ body {
 	margin-right: 20px;
 	border: 3px solid #BBBBBB;
 	background-color: #712F26;
-	opacity: 0.9;
+	opacity: 0.95;
 	border-radius: 15px;
 	box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5), 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
 	padding: 10px 10px 10px 10px;
@@ -238,9 +238,10 @@ body {
 }
 
 .trophy_text {
+	margin-top: 3px;
 	position: relative;
-	font-size: 13pt;
-	color: white;
+	font-size: 12pt;
+	color: #C0C0C0;
 }
 
 .balloonInput {
@@ -268,4 +269,139 @@ body {
 .balloonInput img {
 	display: inline-block;
 	vertical-align: middle;
+}
+
+.choices {
+	float: left;
+	height: 100%;
+	width: 90%;
+	padding-left: 5%;
+	padding-right: 5%;
+	transform: translateY(-12px);
+}
+
+	.choices button {
+		display: inline;
+		width: 100%;
+		height: 13%;
+		text-align: left;
+		vertical-align: middle;
+		margin-bottom: 10px;
+		font-family: 'Proxima Nova', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+		border-radius: 20px;
+		border: 0.5px solid black;
+		box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5), 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
+		padding: 0;
+	}
+
+		.choices button:focus {
+			outline: none;
+		}
+
+		.choices button:active {
+			box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.5), 2px 2px 2px 0 rgba(0, 0, 0, 0.5);
+			transform: translate(2px, 2px);
+		}
+
+		.choices button.icon,
+		.choices button.unlocked,
+		.choices button.normal {
+			background-color: #712F26;
+			color: white;
+		}
+
+			.choices button.icon:hover,
+			.choices button.unlocked:hover,
+			.choices button.normal:hover {
+				color: yellow;
+				background-color: #611F16;
+			}
+
+			.choices button.normal div.textContainer {
+				display: block;
+				padding: 0 4% 0 4%;
+				width: 92%;
+			}
+
+		.choices button.locked {
+			background-color: #510F06;
+			color: gray;
+			font-style: italic;
+		}
+
+			.choices button.locked:hover {
+				color: #A0A0A0;
+				background-color: #611F16;
+			}
+
+			.choices button.locked div.iconContainer {
+				background-color: darkkhaki;
+			}
+
+			.choices button.locked:hover div.iconContainer {
+				background-color: khaki;
+			}
+
+		.choices button.unlocked {
+		}
+
+			.choices button.unlocked div.iconContainer {
+				background-color: #88fe62;
+			}
+
+			.choices button.unlocked:hover div.iconContainer {
+				background-color: #6fd04f;
+			}
+
+			.choices button.icon div.textContainer,
+			.choices button.unlocked div.textContainer,
+			.choices button.locked div.textContainer {
+				float: left;
+				position: relative;
+				width: 81%;
+				height: 100%;
+				padding: 0 4% 0 4%;
+			}
+
+				.choices button.icon div.textContainer span,
+				.choices button.unlocked div.textContainer span,
+				.choices button.locked div.textContainer span {
+					position: absolute;
+					top: 50%;
+					transform: translateY(-50%);
+				}
+
+			.choices button.icon div.iconContainer,
+			.choices button.unlocked div.iconContainer,
+			.choices button.locked div.iconContainer {
+				float: right;
+				position: relative;
+				width: 10%;
+				height: 100%;
+				border-top-right-radius: 20px;
+				border-bottom-right-radius: 20px;
+			}
+
+				.choices button.icon div.iconContainer img,
+				.choices button.unlocked div.iconContainer img,
+				.choices button.locked div.iconContainer img {
+					position: absolute;
+					width: 50%;
+					height: 50%;
+					object-fit: contain;
+					left: 0;
+					top: 0;
+					transform: translate(50%, 50%);
+				}
+
+@media screen and (max-width: 599px) {
+	.choices button {
+		font-size: 3.2vw;
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.choices button {
+		font-size: 14pt;
+	}
 }
