@@ -152,6 +152,11 @@ body {
 		text-align: center;
 	}
 
+	.balloonText .thought {
+		font-style: italic;
+		color: #303030;
+	}
+
 .balloonArrow {
 	position: absolute;
 	width: 22px;

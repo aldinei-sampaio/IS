@@ -443,10 +443,12 @@ class PersonBalloon extends Balloon {
 
     ShowVoice() {
         this.arrowContainer.html(this.voiceArrowHtml);
+        this.textContainer.removeClass("thought");
     }
 
     ShowThought() {
         this.arrowContainer.html(this.thoughtArrowHtml);
+        this.textContainer.addClass("thought");
     }
 
     async ChangeEmotionAsync(emotion) {
