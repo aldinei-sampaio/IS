@@ -1,5 +1,28 @@
-function TimeoutAsync(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+"use strict";
+
+class AssetLoader {
+    static GetCommonImage(name) {
+        return "../img/" + name + ".png";
+    }
+    static GetBackground(name) {
+        return "../img/" + name + ".jpg";
+    }
+    static GetPersonSprite(name, emotion) {
+        return "../sprites/" + name + "_" + emotion + ".png"
+    }
+    static GetEmotionSprite(name) {
+        return "../sprites/" + name + ".png";
+    }
+}
+
+class Task {
+    static async WaitAll() {
+        for (var n in arguments)
+            await arguments[n];
+    }
+    static async Delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 }
 
 class Background {
@@ -9,14 +32,14 @@ class Background {
     }
 
     Show(imageName) {
-        this.div.css("background-image", "url('../img/" + imageName + ".jpg')");
+        this.div.css("background-image",  "url('" + AssetLoader.GetBackground(imageName) + "')");
     }
 
     async FadeInAsync(imageName, direction) {
         var me = this;
 
         var clone = this.div.clone();
-        clone.css("background-image", "url('../img/" + imageName + ".jpg')");
+        clone.css("background-image", "url(" + AssetLoader.GetBackground(imageName) + "')");
         clone.css("opacity", "0");
 
         if (direction === "left") {
@@ -48,7 +71,7 @@ class Background {
         transition.insertAfter(this.div);
 
         var newBack = this.div.clone();
-        newBack.css("background-image", "url('../img/" + imageName + ".jpg')");
+        newBack.css("background-image", "url(" + AssetLoader.GetBackground(imageName) + ")");
         newBack.css("opacity", "0");
         newBack.insertAfter(transition);
 
@@ -264,8 +287,8 @@ class PersonBalloon extends Balloon {
     async ChangeEmotionAsync(emotion) {
         const me = this;
 
-        const emotionImage = "../sprites/" + emotion + ".png";
-        const personImage = "../sprites/" + this.person + "_" + emotion + ".png";
+        const emotionImage = AssetLoader.GetEmotionSprite(emotion);
+        const personImage = AssetLoader.GetPersonSprite(this.person, emotion);
 
         if (me.currentEmotion === void 0) {
             me.currentEmotion = $('<img class="' + this.imageClass + '" />').appendTo(me.personContainer);
@@ -287,11 +310,10 @@ class PersonBalloon extends Balloon {
                 .css("opacity", "0")
                 .insertAfter(me.currentPerson);
 
-            var p1 = newEmotion.animate({ opacity: 1 }, 1000).promise();
-            var p2 = newPerson.animate({ opacity: 1 }, 1000).promise();
-
-            await p1;
-            await p2;
+            await Task.WaitAll(
+                newEmotion.animate({ opacity: 1 }, 1000).promise(),
+                newPerson.animate({ opacity: 1 }, 1000).promise()
+            );
 
             me.currentEmotion.attr("src", emotionImage);
             me.currentPerson.attr("src", personImage);
@@ -304,62 +326,162 @@ class PersonBalloon extends Balloon {
     }
 
     async ShowChoicesAsync(options, clickCallBack) {
-        var optionsContainer = $('<div class="choices"></div>')
-            .css("opacity", 0);
+        var optionsContainer = $('<div class="choices"></div>');
 
-        var validButton = false;
-        options.choices.forEach(choice => {
+        var internalContainer = $('<div class="scroll"></div>')
+            .css("left", "-100%")
+            .css("opacity", "0")
+            .appendTo(optionsContainer);
+
+        var currentPage = 0;
+
+        if (options.choices.length > 5) {
+            if (options.current !== void 0) {
+                for (var n = 0; n < options.choices.length; n++) {
+                    var option = options.choices[n];
+                    if (option.key === options.current) {
+                        currentPage = Math.floor(n / 4);
+                        break;
+                    }
+                }
+            }
+            ShowCurrentPage(internalContainer);
+        } else {
+            var validButton = false;
+            options.choices.forEach(choice => {
+                if (AppendChoice(choice, internalContainer)) {
+                    validButton = true;
+                }
+            });
+
+            if (!validButton) {
+                throw new Error("Nenhuma opção desbloqueada informada.");
+            }
+        }
+
+        optionsContainer.appendTo(this.balloon);
+        await internalContainer.animate({ opacity: 1, left: 0 }, 500).promise();
+
+        function ShowCurrentPage(container) {
+            var startIndex = currentPage * 4;
+            var count = Math.min(4, options.choices.length - startIndex);
+
+            for (var n = 0; n < count; n++) {
+                var option = options.choices[startIndex + n];
+                AppendChoice(option, container);
+            }
+
+            while (count < 4) {
+                $('<div class="navigation"></div>').appendTo(container);
+                count++;
+            }
+
+            var navBar = $(
+                '<div class="navigation">' +
+                    '<button class="previous">' +
+                        '<img class="normal" src="' + AssetLoader.GetCommonImage("previous") + '" />' +
+                        '<img class="hover" src="' + AssetLoader.GetCommonImage("previous_hover") + '" />' +
+                    '</button>' +
+                    '<button class="next">' +
+                        '<img class="normal" src="' + AssetLoader.GetCommonImage("next") + '" />' +
+                        '<img class="hover" src="' + AssetLoader.GetCommonImage("next_hover") + '" />' +
+                    '</button>' +
+                '</div>'
+            );
+            navBar.appendTo(container);
+
+            navBar.find("button.next").on("click", async () => {
+                currentPage++;
+                if (currentPage * 4 >= options.choices.length) {
+                    currentPage = 0;
+                }
+
+                var newContainer = $('<div class="scroll"></div>')
+                    .css("left", "100%")
+                    .css("opacity", "0")
+                    .appendTo(optionsContainer);
+
+                ShowCurrentPage(newContainer);
+
+                await Task.WaitAll(
+                    internalContainer.animate({ opacity: 0, left: "-100%" }, 250).promise(),
+                    newContainer.animate({ opacity: 1, left: 0 }, 250).promise()
+                );
+
+                internalContainer.remove();
+                internalContainer = newContainer;
+            });
+
+            navBar.find("button.previous").on("click", async () => {
+                currentPage--;
+                if (currentPage < 0) {
+                    currentPage = (options.choices.length - 1) / 4;
+                }
+
+                var newContainer = $('<div class="scroll"></div>')
+                    .css("left", "-100%")
+                    .css("opacity", "0")
+                    .appendTo(optionsContainer);
+
+                ShowCurrentPage(newContainer);
+
+                await Task.WaitAll(
+                    internalContainer.animate({ opacity: 0, left: "100%" }, 250).promise(),
+                    newContainer.animate({ opacity: 1, left: 0 }, 250).promise()
+                );
+
+                internalContainer.remove();
+                internalContainer = newContainer;
+            });
+        }
+
+        function AppendChoice(choice, container) {
             var button = CreateButton(choice);
             button.find(".textContainer span").text(choice.text);
-            button.appendTo(optionsContainer);
-            if (choice.type != ChoiceType.LOCKED) {
-                button.on("click", async () => {
-                    await optionsContainer.animate({ opacity: 0 }, 250).promise();
-                    optionsContainer.remove();
-                    clickCallBack(choice);
-                });
-                validButton = true;
+            button.appendTo(container);
+            if (choice.type === ChoiceType.LOCKED) {
+                return false;
             }
-            button.appendTo(optionsContainer);
-        });
-
-        if (!validButton) {
-            throw new Error("Nenhuma opção desbloqueada informada.");
+            button.on("click", async () => {
+                await internalContainer.animate({ opacity: 0, left: "-100%" }, 250).promise();
+                optionsContainer.remove();
+                clickCallBack(choice);
+                return true;
+            });
+            return true;
         }
-        optionsContainer.appendTo(this.balloon);
-        await optionsContainer.animate({ opacity: 1 }, 500).promise();
 
         function CreateButton(choice) {
             switch (choice.type) {
                 case ChoiceType.ICON:
-                    return $('<button class="icon">' +
+                    return $('<button class="choiceButton icon">' +
                                 '<div class="textContainer">' + 
                                     '<span></span>' + 
                                 '</div>' + 
                                 '<div class="iconContainer">' +
-                                    '<img src="../img/' + choice.imageName + '.png" />' +
+                                    '<img src="' + AssetLoader.GetCommonImage(choice.imageName) + '" />' +
                                 '</div>' +
                             '</button>');
                 case ChoiceType.LOCKED:
-                    return $('<button class="locked">' +
+                    return $('<button class="choiceButton locked">' +
                                 '<div class="textContainer">' + 
                                     '<span></span>' + 
                                 '</div>' + 
                                 '<div class="iconContainer">' +
-                                    '<img src="../img/locked.png" />' +
+                                    '<img src="' + AssetLoader.GetCommonImage("locked") + '" />' +
                                 '</div>' +
                             '</button>');
                 case ChoiceType.UNLOCKED:
-                    return $('<button class="unlocked">' +
+                    return $('<button class="choiceButton unlocked">' +
                                 '<div class="textContainer">' + 
                                     '<span></span>' + 
                                 '</div>' + 
                                 '<div class="iconContainer">' +
-                                    '<img src="../img/unlocked.png" />' +
+                                    '<img src="' + AssetLoader.GetCommonImage("unlocked") + '" />' +
                                 '</div>' +
                             '</button>');
                 default:
-                    return $('<button class="normal">' +
+                    return $('<button class="choiceButton normal">' +
                                 '<div class="textContainer">' + 
                                     '<span></span>' + 
                                 '</div>' + 
@@ -397,7 +519,7 @@ class LeftPersonBalloon extends PersonBalloon {
             .appendTo(this.personContainer);
 
         await bonus.animate({ opacity: 1, bottom: 0 }, 1000).promise();
-        await TimeoutAsync(2000);
+        await Task.Delay(2000);
         await bonus.animate({ opacity: 0, scale: 0, left: "25%", bottom: "25%" }, 1000).promise();
         bonus.remove();
     }
@@ -431,7 +553,7 @@ class RightPersonBalloon extends PersonBalloon {
             .appendTo(this.personContainer);
 
         await bonus.animate({ opacity: 1, bottom: 0 }, 1000).promise();
-        await TimeoutAsync(2000);
+        await Task.Delay(2000);
         await bonus.animate({ opacity: 0, transform: "scale(0,0)", right: "25%", bottom: "25%" }, 1000).promise();
         bonus.remove();
     }
@@ -466,11 +588,10 @@ class CenterBalloon extends Balloon {
 
         var dummyText = dummy.find(".balloonText span");
 
-        var p1 = dummyText.animate({ height: textHeight + "px" }, 250);
-        var p2 = dummy.animate({ opacity: 1, width: "100%", left: "0%" }, 250).promise();
-
-        await p1;
-        await p2;
+        await Task.WaitAll(
+            dummyText.animate({ height: textHeight + "px" }, 250).promise(),
+            dummy.animate({ opacity: 1, width: "100%", left: "0%" }, 250).promise()
+        );
 
         await TypeWriter.WriteAsync(dummyText, text);
 
@@ -528,7 +649,7 @@ class TextInputBalloon extends CenterBalloon {
                             '<span></span>' +
                             '<div class="balloonInput">' +
                                 '<input type="text" maxlength="16" spellcheck="false" />' +
-                                '<img src="../img/return_disabled.png" />' +
+                                '<img src="' + AssetLoader.GetCommonImage("return_disabled") + '" />' +
                             '</div>' +
                         '</div>' +
                     '</div>' +
@@ -560,9 +681,9 @@ class TextInputBalloon extends CenterBalloon {
         function UpdateImage() {
             var value = input.val().trim();
             if (value === "") {
-                img.attr("src", "../img/return_disabled.png");
+                img.attr("src", AssetLoader.GetCommonImage("return_disabled"));
             } else {
-                img.attr("src", "../img/return.png");
+                img.attr("src", AssetLoader.GetCommonImage("return"));
             }
         }
 
@@ -605,8 +726,8 @@ class Trophy {
 
         trophy.css("top", "-" + height + "px");
 
-        await trophy.animate({ opacity: 0.8, top: "0" }, 1000).promise();
-        await TimeoutAsync(4000);
+        await trophy.animate({ opacity: 0.9, top: "0" }, 1000).promise();
+        await Task.Delay(4000);
         await trophy.animate({ opacity: 0, top: "-" + height + "px" }, 1000).promise();
 
         trophy.remove();
