@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>IS Research - Async Input</title>
+    <link rel="stylesheet" href="is.css" />
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="is.js"></script>
+</head>
+<body>
+    <div class="background"></div>
+
+    <div class="root">
+        <div class="container">
+            <button style="position:absolute;float:left;">Escolha uma opção</button>
+            <div class="middle_container">
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(async function () {            
+            var button = $("button");
+            var container = $(".container");
+
+            var back = new Background($(".background"));
+            await back.FadeInAsync("forest", "left");
+
+            var scene;
+            var selection;
+            var name = "Emelin";
+
+            var steps = [
+                async () => {
+                    if (scene) {
+                        scene.HideAsync();
+                    }
+
+                    var inputScene = new TextInputBalloon();
+                    await inputScene.ShowAsync(container, "Por favor informe o nome para a personagem:", name, v => {
+                        name = v;
+                        OnClick();
+                    });
+                },
+                async () => {
+                    scene = new LeftPersonBalloon();
+                    back.ProtagAsync();
+                    scene.ShowAsync(container, "emelin", name);
+                    scene.ShowThought();
+                    var p1 = scene.ShowTextAsync("É esse o meu nome?");
+                    var p2 = scene.ShowChoicesAsync(
+                        {
+                            choices: [
+                                {
+                                    key: "1",
+                                    text: "Sim, quero prosseguir usando o nome '" + name + "'",
+                                    type: ChoiceType.SIMPLE
+                                },
+                                {
+                                    key: "2",
+                                    text: "Não, quero escolher um nome melhor",
+                                    type: ChoiceType.SIMPLE
+                                }
+                            ]
+                        },
+                        OnChoiceClick
+                    );
+                    await p1;
+                    await p2;
+                }
+            ];
+
+            var n = 0;
+
+            async function OnClick() {
+                var sceneId = NextScene();
+                button.text("Step " + sceneId + " started");
+                await steps[sceneId]();
+                button.text("Step " + sceneId + " ended");
+            }
+
+            function NextScene() {
+                var oldValue = n;
+                if (++n >= steps.length) {
+                    n = 0;
+                }
+                return oldValue;
+            }
+
+            function OnChoiceClick(choice) {
+                selection = choice.key;
+                OnClick();
+            }
+
+            OnClick();
+        });
+    </script>
+</body>
+</html>

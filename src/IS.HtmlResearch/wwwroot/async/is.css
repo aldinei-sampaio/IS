@@ -247,29 +247,29 @@ body {
 .balloonInput {
 	background: white;
 	border-radius: 5px;
-	border: 0.5px solid black;
-	margin: 0px 4px 4px 4px;
-	padding: 10px;
+	border: 0.5px solid gray;
+	margin: 2vh 0.5vw 0.5vh 0.5vw;
+	padding: 0px 3px 3px 3px;
 	line-height: 30px;
 }
 
-.balloonInput input {
-	width: calc(100% - 35px);
-	border: none;
-	font-family: Arial, sans-serif;
-	font-size: 14pt;
-	display: inline-block;
-	vertical-align: middle;
-}
-
-	.balloonInput input:focus {
-		outline: none;
+	.balloonInput input {
+		width: calc(100% - 35px);
+		border: none;
+		font-family: Arial, sans-serif;
+		font-size: 14pt;
+		display: inline-block;
+		vertical-align: middle;
 	}
 
-.balloonInput img {
-	display: inline-block;
-	vertical-align: middle;
-}
+		.balloonInput input:focus {
+			outline: none;
+		}
+
+	.balloonInput img {
+		display: inline-block;
+		vertical-align: middle;
+	}
 
 .choices {
 	float: left;

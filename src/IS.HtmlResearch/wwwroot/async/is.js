@@ -518,6 +518,74 @@ class NarrationBalloon extends CenterBalloon {
     }
 }
 
+class TextInputBalloon extends CenterBalloon {
+    CreateScene() {
+        return $(
+            '<div class="scene">' +
+                '<div class="tutorialContainer">' +
+                    '<div class="balloon center">' +
+                        '<div class="balloonText withoutTitle">' +
+                            '<span></span>' +
+                            '<div class="balloonInput">' +
+                                '<input type="text" maxlength="16" spellcheck="false" />' +
+                                '<img src="../img/return_disabled.png" />' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+            '</div>'
+        );
+    }
+
+    async ShowAsync(container, text, defaultText, callback) {
+        await super.ShowAsync(container, "", text);
+
+        var input = this.scene.find(".balloonInput input");
+        var img = this.scene.find(".balloonInput img");
+
+        input.on("input propertychange paste", UpdateImage);
+        input.on('keyup', e => {
+            if (e.key === 'Enter' || e.keyCode === 13) {
+                OnReturn();
+            }
+        });
+
+        input.val(defaultText);
+        input.focus();
+        input.select();
+
+        UpdateImage();
+        img.on("click", OnReturn);
+
+        function UpdateImage() {
+            var value = input.val().trim();
+            if (value === "") {
+                img.attr("src", "../img/return_disabled.png");
+            } else {
+                img.attr("src", "../img/return.png");
+            }
+        }
+
+        var me = this;
+
+        async function OnReturn() {
+            var value = TitleCase(input.val().trim());
+            if (value !== "") {
+                await me.HideAsync();
+                callback(value);
+            }
+        }
+
+        function TitleCase(str) {
+            var splitStr = str.toLowerCase().split(' ');
+            for (var i = 0; i < splitStr.length; i++) {
+                splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1).toLowerCase();
+            }
+            return splitStr.join(' ');
+        }
+    }
+}
+
 class Trophy {
     static async ShowAsync(container, title, text) {
         var trophy = $(
