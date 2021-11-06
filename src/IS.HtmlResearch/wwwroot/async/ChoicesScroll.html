@@ -31,12 +31,47 @@
 
             var steps = [
                 async () => {
-                    if (!scene) {
-                        scene = new LeftPersonBalloon();
-                        back.ProtagAsync();
-                        await scene.ShowAsync(container, "emelin", "Emelin");
-                        scene.ShowThought();
+                    if (scene) {
+                        await scene.HideAsync();
                     }
+
+                    scene = new LeftPersonBalloon();
+                    back.ProtagAsync();
+                    await scene.ShowAsync(container, "emelin", "Emelin");
+                    scene.ShowThought();
+
+                    await Task.WaitAll(
+                        scene.ShowTextAsync("Texto propositalmente longo para foçar uma quebra de linha no balão."),
+                        scene.ShowChoicesAsync(
+                            {
+                                current: current,
+                                choices: [
+                                    { key: "1", text: "Opção 1", type: read[0] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                    { key: "2", text: "Opção 2", type: read[1] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                    { key: "3", text: "Opção 3", type: read[2] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                    { key: "4", text: "Opção 4", type: read[3] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                    { key: "5", text: "Opção 5", type: read[4] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                    { key: "6", text: "Opção 6", type: read[5] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                    { key: "7", text: "Opção 7", type: read[6] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                    { key: "8", text: "Opção 8", type: read[7] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                    { key: "9", text: "Opção 9", type: read[8] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" }
+                                ]
+                            },
+                            OnChoiceClick
+                        )
+                    );
+                },
+                async () => {
+                    await scene.ShowTextAsync("Você escolheu a opção " + current + ".");
+                    $("body").one("click", OnClick);
+                },
+                async () => {
+                    await scene.HideAsync();
+
+                    scene = new RightPersonBalloon();
+                    back.ProtagAsync();
+                    await scene.ShowAsync(container, "emelin", "Emelin");
+                    scene.ShowThought();
 
                     await Task.WaitAll(
                         scene.ShowTextAsync("Escolha uma opção..."),
@@ -61,7 +96,62 @@
                 },
                 async () => {
                     await scene.ShowTextAsync("Você escolheu a opção " + current + ".");
+                    $("body").one("click", OnClick);
+                },
+                async () => {
+                    await scene.HideAsync();
 
+                    scene = new TutorialBalloon();
+                    await scene.ShowAsync(container, "Tutorial", "Escolha uma opção...");
+
+                    await scene.ShowChoicesAsync(
+                        {
+                            current: current,
+                            choices: [
+                                { key: "1", text: "Opção 1", type: read[0] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                { key: "2", text: "Opção 2", type: read[1] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                { key: "3", text: "Opção 3", type: read[2] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                { key: "4", text: "Opção 4", type: read[3] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                { key: "5", text: "Opção 5", type: read[4] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                { key: "6", text: "Opção 6", type: read[5] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                { key: "7", text: "Opção 7", type: read[6] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                { key: "8", text: "Opção 8", type: read[7] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                { key: "9", text: "Opção 9", type: read[8] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" }
+                            ]
+                        },
+                        OnChoiceClick
+                    );                    
+                },
+                async () => {
+                    await scene.ShowTextAsync("Você escolheu a opção " + current + ".");
+                    $("body").one("click", OnClick);
+                },
+                async () => {
+                    await scene.HideAsync();
+
+                    scene = new NarrationBalloon();
+                    await scene.ShowAsync(container, "", "Escolha uma opção...");
+
+                    await scene.ShowChoicesAsync(
+                        {
+                            current: current,
+                            choices: [
+                                { key: "1", text: "Opção 1", type: read[0] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                { key: "2", text: "Opção 2", type: read[1] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                { key: "3", text: "Opção 3", type: read[2] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                { key: "4", text: "Opção 4", type: read[3] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                { key: "5", text: "Opção 5", type: read[4] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                { key: "6", text: "Opção 6", type: read[5] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                { key: "7", text: "Opção 7", type: read[6] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                { key: "8", text: "Opção 8", type: read[7] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" },
+                                { key: "9", text: "Opção 9", type: read[8] ? ChoiceType.ICON : ChoiceType.SIMPLE, imageName: "visualized" }
+                            ]
+                        },
+                        OnChoiceClick
+                    );
+                },
+                async () => {
+                    await scene.ShowTextAsync("Você escolheu a opção " + current + ".");
                     $("body").one("click", OnClick);
                 }
             ];

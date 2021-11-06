@@ -44,7 +44,7 @@
                             choices: [
                                 {
                                     key: "olhar",
-                                    text: "Olhar",
+                                    text: "Olhar sem temor para a vida e sentir o valor de se ter liberdade",
                                     type: ChoiceType.SIMPLE
                                 },
                                 {
@@ -68,7 +68,7 @@
                     if (selection === "olhar") {
                         await scene.HideAsync();
                         scene = new NarrationBalloon();
-                        await scene.ShowAsync(container, "", "Você olha ao seu redor, mas não vê nada.");
+                        await scene.ShowAsync(container, "", "Você olha ao seu redor, mas não vê nada que chame a atenção. Tudo parece devidamente dentro da normalidade, não tem nada fora do lugar e por mais que você se esforçe, não encontra nada digno de nota.");
                     } else if (selection === "falar") {
                         scene.ShowVoice();
                         await scene.ShowTextAsync("Olá? Tem alguém aí?");

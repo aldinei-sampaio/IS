@@ -217,6 +217,171 @@ class Balloon {
         this.balloon.css("opacity", "1");
         dummy.remove();
     }
+
+    async ShowChoicesAsync(options, clickCallBack) {
+        var optionsContainer = $('<div class="choices"></div>');
+
+        var internalContainer = $('<div class="scroll"></div>')
+            .css("left", "-100%")
+            .css("opacity", "0")
+            .appendTo(optionsContainer);
+
+        var currentPage = 0;
+
+        if (options.choices.length > 5) {
+            if (options.current !== void 0) {
+                for (var n = 0; n < options.choices.length; n++) {
+                    var option = options.choices[n];
+                    if (option.key === options.current) {
+                        currentPage = Math.floor(n / 4);
+                        break;
+                    }
+                }
+            }
+            ShowCurrentPage(internalContainer);
+        } else {
+            var validButton = false;
+            options.choices.forEach(choice => {
+                if (AppendChoice(choice, internalContainer)) {
+                    validButton = true;
+                }
+            });
+
+            if (!validButton) {
+                throw new Error("Nenhuma opção desbloqueada informada.");
+            }
+        }
+
+        optionsContainer.appendTo(this.balloon);
+        await internalContainer.animate({ opacity: 1, left: 0 }, 500).promise();
+
+        function ShowCurrentPage(container) {
+            var startIndex = currentPage * 4;
+            var count = Math.min(4, options.choices.length - startIndex);
+
+            for (var n = 0; n < count; n++) {
+                var option = options.choices[startIndex + n];
+                AppendChoice(option, container);
+            }
+
+            while (count < 4) {
+                $('<div class="navigation"></div>').appendTo(container);
+                count++;
+            }
+
+            var navBar = $(
+                '<div class="navigation">' +
+                '<button class="previous">' +
+                '<img class="normal" src="' + AssetLoader.GetCommonImage("previous") + '" />' +
+                '<img class="hover" src="' + AssetLoader.GetCommonImage("previous_hover") + '" />' +
+                '</button>' +
+                '<button class="next">' +
+                '<img class="normal" src="' + AssetLoader.GetCommonImage("next") + '" />' +
+                '<img class="hover" src="' + AssetLoader.GetCommonImage("next_hover") + '" />' +
+                '</button>' +
+                '</div>'
+            );
+            navBar.appendTo(container);
+
+            navBar.find("button.next").on("click", async () => {
+                currentPage++;
+                if (currentPage * 4 >= options.choices.length) {
+                    currentPage = 0;
+                }
+
+                var newContainer = $('<div class="scroll"></div>')
+                    .css("left", "100%")
+                    .css("opacity", "0")
+                    .appendTo(optionsContainer);
+
+                ShowCurrentPage(newContainer);
+
+                await Task.WaitAll(
+                    internalContainer.animate({ opacity: 0, left: "-100%" }, 250).promise(),
+                    newContainer.animate({ opacity: 1, left: 0 }, 250).promise()
+                );
+
+                internalContainer.remove();
+                internalContainer = newContainer;
+            });
+
+            navBar.find("button.previous").on("click", async () => {
+                currentPage--;
+                if (currentPage < 0) {
+                    currentPage = (options.choices.length - 1) / 4;
+                }
+
+                var newContainer = $('<div class="scroll"></div>')
+                    .css("left", "-100%")
+                    .css("opacity", "0")
+                    .appendTo(optionsContainer);
+
+                ShowCurrentPage(newContainer);
+
+                await Task.WaitAll(
+                    internalContainer.animate({ opacity: 0, left: "100%" }, 250).promise(),
+                    newContainer.animate({ opacity: 1, left: 0 }, 250).promise()
+                );
+
+                internalContainer.remove();
+                internalContainer = newContainer;
+            });
+        }
+
+        function AppendChoice(choice, container) {
+            var button = CreateButton(choice);
+            button.find(".textContainer span").text(choice.text);
+            button.appendTo(container);
+            if (choice.type === ChoiceType.LOCKED) {
+                return false;
+            }
+            button.on("click", async () => {
+                await internalContainer.animate({ opacity: 0, left: "-100%" }, 250).promise();
+                optionsContainer.remove();
+                clickCallBack(choice);
+                return true;
+            });
+            return true;
+        }
+
+        function CreateButton(choice) {
+            switch (choice.type) {
+                case ChoiceType.ICON:
+                    return $('<button class="choiceButton icon">' +
+                        '<div class="textContainer">' +
+                        '<span></span>' +
+                        '</div>' +
+                        '<div class="iconContainer">' +
+                        '<img src="' + AssetLoader.GetCommonImage(choice.imageName) + '" />' +
+                        '</div>' +
+                        '</button>');
+                case ChoiceType.LOCKED:
+                    return $('<button class="choiceButton locked">' +
+                        '<div class="textContainer">' +
+                        '<span></span>' +
+                        '</div>' +
+                        '<div class="iconContainer">' +
+                        '<img src="' + AssetLoader.GetCommonImage("locked") + '" />' +
+                        '</div>' +
+                        '</button>');
+                case ChoiceType.UNLOCKED:
+                    return $('<button class="choiceButton unlocked">' +
+                        '<div class="textContainer">' +
+                        '<span></span>' +
+                        '</div>' +
+                        '<div class="iconContainer">' +
+                        '<img src="' + AssetLoader.GetCommonImage("unlocked") + '" />' +
+                        '</div>' +
+                        '</button>');
+                default:
+                    return $('<button class="choiceButton normal">' +
+                        '<div class="textContainer">' +
+                        '<span></span>' +
+                        '</div>' +
+                        '</button>');
+            }
+        }
+    }
 }
 
 const Emotion = {
@@ -323,171 +488,6 @@ class PersonBalloon extends Balloon {
         }
 
         me.emotion = emotion;
-    }
-
-    async ShowChoicesAsync(options, clickCallBack) {
-        var optionsContainer = $('<div class="choices"></div>');
-
-        var internalContainer = $('<div class="scroll"></div>')
-            .css("left", "-100%")
-            .css("opacity", "0")
-            .appendTo(optionsContainer);
-
-        var currentPage = 0;
-
-        if (options.choices.length > 5) {
-            if (options.current !== void 0) {
-                for (var n = 0; n < options.choices.length; n++) {
-                    var option = options.choices[n];
-                    if (option.key === options.current) {
-                        currentPage = Math.floor(n / 4);
-                        break;
-                    }
-                }
-            }
-            ShowCurrentPage(internalContainer);
-        } else {
-            var validButton = false;
-            options.choices.forEach(choice => {
-                if (AppendChoice(choice, internalContainer)) {
-                    validButton = true;
-                }
-            });
-
-            if (!validButton) {
-                throw new Error("Nenhuma opção desbloqueada informada.");
-            }
-        }
-
-        optionsContainer.appendTo(this.balloon);
-        await internalContainer.animate({ opacity: 1, left: 0 }, 500).promise();
-
-        function ShowCurrentPage(container) {
-            var startIndex = currentPage * 4;
-            var count = Math.min(4, options.choices.length - startIndex);
-
-            for (var n = 0; n < count; n++) {
-                var option = options.choices[startIndex + n];
-                AppendChoice(option, container);
-            }
-
-            while (count < 4) {
-                $('<div class="navigation"></div>').appendTo(container);
-                count++;
-            }
-
-            var navBar = $(
-                '<div class="navigation">' +
-                    '<button class="previous">' +
-                        '<img class="normal" src="' + AssetLoader.GetCommonImage("previous") + '" />' +
-                        '<img class="hover" src="' + AssetLoader.GetCommonImage("previous_hover") + '" />' +
-                    '</button>' +
-                    '<button class="next">' +
-                        '<img class="normal" src="' + AssetLoader.GetCommonImage("next") + '" />' +
-                        '<img class="hover" src="' + AssetLoader.GetCommonImage("next_hover") + '" />' +
-                    '</button>' +
-                '</div>'
-            );
-            navBar.appendTo(container);
-
-            navBar.find("button.next").on("click", async () => {
-                currentPage++;
-                if (currentPage * 4 >= options.choices.length) {
-                    currentPage = 0;
-                }
-
-                var newContainer = $('<div class="scroll"></div>')
-                    .css("left", "100%")
-                    .css("opacity", "0")
-                    .appendTo(optionsContainer);
-
-                ShowCurrentPage(newContainer);
-
-                await Task.WaitAll(
-                    internalContainer.animate({ opacity: 0, left: "-100%" }, 250).promise(),
-                    newContainer.animate({ opacity: 1, left: 0 }, 250).promise()
-                );
-
-                internalContainer.remove();
-                internalContainer = newContainer;
-            });
-
-            navBar.find("button.previous").on("click", async () => {
-                currentPage--;
-                if (currentPage < 0) {
-                    currentPage = (options.choices.length - 1) / 4;
-                }
-
-                var newContainer = $('<div class="scroll"></div>')
-                    .css("left", "-100%")
-                    .css("opacity", "0")
-                    .appendTo(optionsContainer);
-
-                ShowCurrentPage(newContainer);
-
-                await Task.WaitAll(
-                    internalContainer.animate({ opacity: 0, left: "100%" }, 250).promise(),
-                    newContainer.animate({ opacity: 1, left: 0 }, 250).promise()
-                );
-
-                internalContainer.remove();
-                internalContainer = newContainer;
-            });
-        }
-
-        function AppendChoice(choice, container) {
-            var button = CreateButton(choice);
-            button.find(".textContainer span").text(choice.text);
-            button.appendTo(container);
-            if (choice.type === ChoiceType.LOCKED) {
-                return false;
-            }
-            button.on("click", async () => {
-                await internalContainer.animate({ opacity: 0, left: "-100%" }, 250).promise();
-                optionsContainer.remove();
-                clickCallBack(choice);
-                return true;
-            });
-            return true;
-        }
-
-        function CreateButton(choice) {
-            switch (choice.type) {
-                case ChoiceType.ICON:
-                    return $('<button class="choiceButton icon">' +
-                                '<div class="textContainer">' + 
-                                    '<span></span>' + 
-                                '</div>' + 
-                                '<div class="iconContainer">' +
-                                    '<img src="' + AssetLoader.GetCommonImage(choice.imageName) + '" />' +
-                                '</div>' +
-                            '</button>');
-                case ChoiceType.LOCKED:
-                    return $('<button class="choiceButton locked">' +
-                                '<div class="textContainer">' + 
-                                    '<span></span>' + 
-                                '</div>' + 
-                                '<div class="iconContainer">' +
-                                    '<img src="' + AssetLoader.GetCommonImage("locked") + '" />' +
-                                '</div>' +
-                            '</button>');
-                case ChoiceType.UNLOCKED:
-                    return $('<button class="choiceButton unlocked">' +
-                                '<div class="textContainer">' + 
-                                    '<span></span>' + 
-                                '</div>' + 
-                                '<div class="iconContainer">' +
-                                    '<img src="' + AssetLoader.GetCommonImage("unlocked") + '" />' +
-                                '</div>' +
-                            '</button>');
-                default:
-                    return $('<button class="choiceButton normal">' +
-                                '<div class="textContainer">' + 
-                                    '<span></span>' + 
-                                '</div>' + 
-                            '</button>');
-            }
-        }
     }
 }
 
@@ -600,9 +600,19 @@ class CenterBalloon extends Balloon {
     }
 
     async HideAsync() {
-        this.textContainer.css("height", this.textContainer.height());
+        var textHeight = this.textContainer.height();
         await this.textContainer.animate({ opacity: 0 }, 250).promise();
-        await this.balloon.animate({ opacity: 0, width: "10%", left: "50%", height: 0 }, 250).promise();
+
+        this.textContainer
+            .css("height", textHeight + "px")
+            .css("display", "inline-block")
+            .empty();
+
+        await Task.WaitAll(
+            this.textContainer.animate({ height: "10px" }, 250).promise(),
+            this.balloon.animate({ opacity: 0, width: "10%", left: "50%" }, 250).promise()
+        );
+
         this.scene.remove();
         this.scene = void 0;
     }
