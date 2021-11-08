@@ -1,0 +1,43 @@
+﻿@font-face {
+	font-family: "Proxima Nova";
+	src: url("Proxima Nova Bold.eot");
+	src: local(""),
+        url("Proxima Nova Bold.svg") format("svg"),
+        url("Proxima Nova Bold.ttf") format("truetype"),
+        url("Proxima Nova Bold.woff") format("woff");
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Proxima Nova";
+	src: url("Proxima Nova Bold It.eot");
+	src: local(""),
+        url("Proxima Nova Bold It.svg") format("svg"),
+        url("Proxima Nova Bold It.ttf") format("truetype"),
+        url("Proxima Nova Bold It.woff") format("woff");
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: "Proxima Nova";
+	src: url("Proxima Nova Reg.eot");
+	src: local(""),
+        url("Proxima Nova Reg.svg") format("svg"),
+        url("Proxima Nova Reg.ttf") format("truetype"),
+        url("Proxima Nova Reg.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Proxima Nova";
+	src: url("Proxima Nova Reg It.eot");
+	src: local(""),
+        url("Proxima Nova Reg It.svg") format("svg"),
+        url("Proxima Nova Reg It.ttf") format("truetype"),
+        url("Proxima Nova Reg It.woff") format("woff");
+	font-weight: normal;
+	font-style: italic;
+}

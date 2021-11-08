@@ -1,0 +1,26 @@
+﻿@inject IAssetManager assetManager
+
+@if (Book != null)
+{
+    <div class="container">
+        <div class="book">
+            <img src="@coverUrl" />
+            <span>@Book.Title</span>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public BookModel? Book { get; set; }
+
+    private string coverUrl = string.Empty;
+
+    protected override void OnParametersSet()
+    {
+        if (Book == null)
+            return;
+
+        coverUrl = assetManager.GetBookCoverUrl(Book.Name);
+    }
+}
