@@ -15,15 +15,23 @@
             <div class="book_list">
                 @foreach (var book in category.Books)
                 {
-                    <Thumbnail Book="@book" />
+                    <Thumbnail Book="@book" OnClick="SelectBookAsync" />
                 }
             </div>
         }
     </div>
 }
 
+@if (selectedBook != null)
+{
+    <div class="details" style="background: url('@assetManager.GetBookCoverUrl(selectedBook.Name)')" @onclick="CloseDetails">
+        
+    </div>
+}
+
 @code {
     private IEnumerable<CategoryDto>? categories;
+    private BookDetailsDto? selectedBook;
 
     private async Task RefreshAsync()
     {
@@ -31,4 +39,14 @@
     }
 
     protected async override Task OnInitializedAsync() => await RefreshAsync();
+
+    private async Task SelectBookAsync(BookDto book)
+    {
+        selectedBook = await assetManager.GetBookDetailsAsync(book.Name);
+    }
+
+    private void CloseDetails()
+    {
+        selectedBook = null;
+    }
 }

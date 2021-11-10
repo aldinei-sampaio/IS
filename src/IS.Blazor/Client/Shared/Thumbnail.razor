@@ -2,7 +2,7 @@
 
 @if (Book != null)
 {
-    <div class="container">
+    <div class="container" @onclick="() => OnClick.InvokeAsync(Book)">
         <div class="book">
             <img src="@thumbnailUrl" />
             <span>@Book.Title</span>
@@ -13,6 +13,9 @@
 @code {
     [Parameter]
     public BookDto? Book { get; set; }
+
+    [Parameter]
+    public EventCallback<BookDto> OnClick { get; set; }
 
     private string thumbnailUrl = string.Empty;
 
