@@ -1,7 +1,7 @@
-﻿using IS.Blazor.Models;
+﻿using IS.Blazor.Dto;
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
@@ -17,25 +17,35 @@ namespace IS.Blazor.Services
             this.httpClient = httpClient;
         }
 
-        public async Task<IReadOnlyList<BookModel>> GetBooksAsync()
-            => await httpClient.GetFromJsonAsync<BookModel[]>($"data/books/books.json?{DateTime.Now:yyyyMMddHHmmss}");
+        public async Task<IEnumerable<CategoryDto>> GetBooksByCategoryAsync()
+        {
+            var books = await httpClient.GetFromJsonAsync<IEnumerable<BookDto>>($"assets/books/books.json?{DateTime.Now:yyyyMMddHHmmss}");
+            if (books == null)
+                return Enumerable.Empty<CategoryDto>();
 
-        public string GetBookCoverUrl(string bookName)
-            => $"data/books/{bookName}/cover.jpg";
+            var categories = await httpClient.GetFromJsonAsync<List<CategoryDto>>($"assets/books/categories.json?{DateTime.Now:yyyyMMddHHmmss}");
+            if (categories == null)
+                return Enumerable.Empty<CategoryDto>();
 
-        public async Task<BookModel> GetBookAsync(string name)
-            => await httpClient.GetFromJsonAsync<BookModel>($"data/books/{name}/book.json?{DateTime.Now:yyyyMMddHHmmss}");
+            foreach (var category in categories)
+            {
+                var categoryBooks = new List<BookDto>();
+                foreach(var book in books)
+                {
+                    if (book.Categories.Contains(category.Name, StringComparer.OrdinalIgnoreCase))
+                        categoryBooks.Add(book);
+                }
+                category.Books = categoryBooks;
+            }
 
-        public async Task<string> GetChapterDataAsync(string name, int chapter)
-            => await (await httpClient.GetAsync($"/data/books/{name}/{chapter:000}/sc01.xml?{DateTime.Now:yyyyMMddHHmmss}")).Content.ReadAsStringAsync();
+            return categories;
+        }
 
-        public string GetBackgroundImageUrl(string imageName)
-            => $"/data/assets/background/{imageName}.jpg";
+        public string GetBookThumbnailUrl(string bookName)
+            => (new Uri(httpClient.BaseAddress!, $"assets/books/{bookName}/thumbnail.png")).ToString();
 
-        public async Task<Stream> GetStoryboardStreamAsync(string book, int chapter)
-            => await (await httpClient.GetAsync($"/data/books/{book}/{chapter:000}/sc01.xml?{DateTime.Now:yyyyMMddHHmmss}")).Content.ReadAsStreamAsync();
+        public string GetCommonIconUrl(string imageName)
+            => (new Uri(httpClient.BaseAddress!, $"assets/common/{imageName}.png")).ToString();
 
-        public async Task<Stream> GetThrophiesStreamAsync(string book, int chapter)
-            => await (await httpClient.GetAsync($"/data/books/{book}/{chapter:000}/trophies.xml?{DateTime.Now:yyyyMMddHHmmss}")).Content.ReadAsStreamAsync();
     }
 }

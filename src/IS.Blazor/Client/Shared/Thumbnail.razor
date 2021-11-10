@@ -4,7 +4,7 @@
 {
     <div class="container">
         <div class="book">
-            <img src="@coverUrl" />
+            <img src="@thumbnailUrl" />
             <span>@Book.Title</span>
         </div>
     </div>
@@ -12,15 +12,15 @@
 
 @code {
     [Parameter]
-    public BookModel? Book { get; set; }
+    public BookDto? Book { get; set; }
 
-    private string coverUrl = string.Empty;
+    private string thumbnailUrl = string.Empty;
 
     protected override void OnParametersSet()
     {
         if (Book == null)
             return;
 
-        coverUrl = assetManager.GetBookCoverUrl(Book.Name);
+        thumbnailUrl = assetManager.GetBookThumbnailUrl(Book.Name);
     }
 }

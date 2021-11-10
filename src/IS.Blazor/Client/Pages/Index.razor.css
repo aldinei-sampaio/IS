@@ -10,6 +10,8 @@
     bottom: 0;
     overflow: auto;
     height: calc(100% - 55px);
+    width: 100%;
+    background-color: white;
 }
 
 .group_header {
@@ -31,36 +33,9 @@
     margin-right: 10px;
 }
 
-.book {
-    display: grid;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-}
-
-    .book img {
-        border-radius: 10px;
-    }
-
-    .book span {
-        display: inline-block;
-        height: 36px;
-        font-size: 12pt;
-        overflow: hidden;
-    }
-
-.book_details {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-}
-
 .logo {
 }
 
 .refresh {
-
+    float:right;
 }

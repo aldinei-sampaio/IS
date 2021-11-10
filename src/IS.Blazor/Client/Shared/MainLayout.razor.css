@@ -11,4 +11,7 @@
     height: 100%;
     overflow: hidden;
     max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fef9e7;
 }

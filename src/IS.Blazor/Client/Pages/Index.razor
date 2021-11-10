@@ -2,29 +2,32 @@
 @inject IAssetManager assetManager
 
 <div class="header">
-    <img src="~/assets/common/logo.png" class="logo" />
-    <img src="~/assets/common/refresh.png" class="refresh" @onclick="RefreshAsync" />
+    <img src="@(assetManager.GetCommonIconUrl("logo"))" class="logo" />
+    <img src="@(assetManager.GetCommonIconUrl("refresh"))" class="refresh" @onclick="RefreshAsync" />
 </div>
 
-@if (books != null)
+@if (categories != null)
 {
     <div class="body">
-        <div class="group_header">Livros Disponíveis</div>
-        <div class="book_list">
-            @foreach (var book in books)
-            {
-                <Thumbnail Book="@book" />
-            }
-        </div>
+        @foreach (var category in categories)
+        {
+            <div class="group_header">@category.Title</div>
+            <div class="book_list">
+                @foreach (var book in category.Books)
+                {
+                    <Thumbnail Book="@book" />
+                }
+            </div>
+        }
     </div>
 }
 
 @code {
-    private IReadOnlyCollection<BookModel>? books;
+    private IEnumerable<CategoryDto>? categories;
 
     private async Task RefreshAsync()
     {
-        books = await assetManager.GetBooksAsync();
+        categories = await assetManager.GetBooksByCategoryAsync();
     }
 
     protected async override Task OnInitializedAsync() => await RefreshAsync();
