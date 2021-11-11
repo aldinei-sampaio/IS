@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>IS Research - Lobby</title>
+
+    <link rel="stylesheet" href="fonts/Proxima Nova.css" />
+
+    <style type="text/css">
+        html {
+            height: 100%;
+            font-family: 'Proxima Nova', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 19pt;
+        }
+
+        @media screen and (max-width: 599px) {
+            html {
+                font-size: 4vw;
+            }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+        }
+
+        .root {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: white;
+        }
+
+        .cover {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-image: url('img/cover.png');
+            background-size: cover;
+        }
+
+        .filter {
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
+        }
+
+        .text {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            color: white;
+        }
+
+        .title {
+            font-weight: bold;
+            padding: 20px;
+        }
+
+        .sinopsis {
+            text-align: justify;
+            padding: 20px;
+        }
+
+        .tags {
+            padding-left: 20px;
+            padding-right: 20px;
+            font-style: italic;
+        }
+
+        .start {
+            margin: 40px;
+            width: calc(100% - 80px);
+            padding: 10px;
+            font-size: 19pt;
+            border-radius: 20px;
+            border: 0.5px solid black;
+            box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5), 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
+            background-color: #712F26;
+            color: white;
+        }
+
+        .start:hover {
+            color: yellow;
+            background-color: #611F16;
+        }
+
+        .start:focus {
+            outline: none;
+        }
+
+        .start:active {
+            box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.5), 2px 2px 2px 0 rgba(0, 0, 0, 0.5);
+            transform: translate(2px, 2px);
+        }
+
+        @media screen and (max-width: 599px) {
+            .start {
+                font-size: 4vw;
+            }
+        }
+
+        .options {
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-bottom: 20px;
+        }
+
+        .status {
+            display: inline-block;
+        }
+
+        .restart {
+            float: right;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="root">
+        <div class="container">            
+            <div class="cover">
+                <div class="filter"></div>
+                <div class="text">
+                    <div class="title">O Vale Encantado</div>
+                    <div class="sinopsis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas posuere lacus est, dapibus ullamcorper erat accumsan quis. Aliquam porta ut massa in hendrerit. Integer viverra lacinia mi, ut ullamcorper sapien.</div>
+                    <div class="tags"><small>Romance &bull; Fantasia &bull; O Império</small></div>
+                    <button class="start">Iniciar Leitura</button>
+                    <div class="options">
+                        <div class="status"><small>Capítulos semanais</small></div>
+                        <img class="restart" src="img/refresh.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

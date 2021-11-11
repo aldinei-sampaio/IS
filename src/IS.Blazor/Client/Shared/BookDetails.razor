@@ -1,0 +1,29 @@
+﻿@inject IAssetManager assetManager
+
+@if (bookDetails != null)
+{
+    <div class="details" style="background: url('@bookCoverUrl')" @onclick="() => OnClose.InvokeAsync()">
+        
+    </div>
+}
+
+@code {
+    [Parameter]
+    public BookDto? Book { get; set; }
+
+    [Parameter]
+    public EventCallback OnClose { get; set; }
+
+
+    private BookDetailsDto? bookDetails;
+    private string? bookCoverUrl;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Book == null)
+            return;
+
+        bookCoverUrl = assetManager.GetBookCoverUrl(Book.Name);
+        bookDetails = await assetManager.GetBookDetailsAsync(Book.Name);
+    }
+}

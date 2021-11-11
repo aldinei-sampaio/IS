@@ -55,6 +55,5 @@ namespace IS.Blazor.Services
 
         public async Task<BookDetailsDto> GetBookDetailsAsync(string bookName)
             => (await httpClient.GetFromJsonAsync<BookDetailsDto>(PrepareUrl($"assets/books/{bookName}/details.json")))!;
-
     }
 }
