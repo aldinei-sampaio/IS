@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IS.Blazor.Dto
 {
     public class BookDetailsDto : BookDto
     {
-        public string Sinopsis { get; set; } = string.Empty;
+        public string Synopsis { get; set; } = string.Empty;
+        public IEnumerable<string> Tags { get; set; } = Enumerable.Empty<string>();
+        public int ReleasedChapters { get; set; } = 0;
+        public bool FullReleased { get; set; }
     }
 }

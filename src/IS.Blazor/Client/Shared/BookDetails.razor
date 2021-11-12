@@ -2,8 +2,19 @@
 
 @if (bookDetails != null)
 {
-    <div class="details" style="background: url('@bookCoverUrl')" @onclick="() => OnClose.InvokeAsync()">
-        
+    <div class="cover" style="background: url('@bookCoverUrl')">
+        <div class="filter"></div>
+        <div class="close" style="background: url('@assetManager.GetCommonIconUrl("close")')" @onclick="() => OnClose.InvokeAsync()"></div>
+        <div class="text">
+            <div class="title">@bookDetails.Title</div>
+            <div class="sinopsis">@bookDetails.Synopsis</div>
+            <div class="tags">@string.Join(" • ", bookDetails.Tags)</div>
+            <button class="start">Iniciar Leitura</button>
+            <div class="options">
+                <div class="status">@status</div>
+                <img class="restart" src="@assetManager.GetCommonIconUrl("refresh")" />
+            </div>
+        </div>
     </div>
 }
 
@@ -17,6 +28,7 @@
 
     private BookDetailsDto? bookDetails;
     private string? bookCoverUrl;
+    private string status = string.Empty;
 
     protected override async Task OnParametersSetAsync()
     {
@@ -25,5 +37,9 @@
 
         bookCoverUrl = assetManager.GetBookCoverUrl(Book.Name);
         bookDetails = await assetManager.GetBookDetailsAsync(Book.Name);
+        if (bookDetails.FullReleased)
+            status = $"{bookDetails.ReleasedChapters} capítulos (completo)";
+        else
+            status = $"{bookDetails.ReleasedChapters} capítulos disponíveis";
     }
 }
