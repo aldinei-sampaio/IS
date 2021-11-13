@@ -2,17 +2,22 @@
 
 @if (bookDetails != null)
 {
-    <div class="cover" style="background: url('@bookCoverUrl')">
-        <div class="filter"></div>
-        <div class="close" style="background: url('@assetManager.GetCommonIconUrl("close")')" @onclick="() => OnClose.InvokeAsync()"></div>
-        <div class="text">
-            <div class="title">@bookDetails.Title</div>
-            <div class="sinopsis">@bookDetails.Synopsis</div>
-            <div class="tags">@string.Join(" • ", bookDetails.Tags)</div>
-            <button class="start">Iniciar Leitura</button>
-            <div class="options">
-                <div class="status">@status</div>
-                <img class="restart" src="@assetManager.GetCommonIconUrl("refresh")" />
+    <div class="@GetContainerClass()">
+        <div class="cover" style="background: url('@bookCoverUrl')">
+            <div class="header">
+                <div class="close" style="background: url('@closeIconUrl')" @onclick="OnCloseClickAsync"></div>
+            </div>
+            <div class="text">
+                <div class="filter">
+                    <div class="title">@bookDetails.Title</div>
+                    <div class="sinopsis">@bookDetails.Synopsis</div>
+                    <div class="tags">@string.Join(" • ", bookDetails.Tags)</div>
+                    <button class="start" @onclick="OnStartClickAsync">Iniciar Leitura</button>
+                    <div class="options">
+                        <div class="status">@status</div>
+                        <img class="restart" src="@refreshIconUrl" />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -25,15 +30,25 @@
     [Parameter]
     public EventCallback OnClose { get; set; }
 
+    [Parameter]
+    public EventCallback OnStart { get; set; }
+
+    [Parameter]
+    public bool Closing { get; set; }
 
     private BookDetailsDto? bookDetails;
-    private string? bookCoverUrl;
+    private string bookCoverUrl = string.Empty;
     private string status = string.Empty;
+    private string closeIconUrl = string.Empty;
+    private string refreshIconUrl = string.Empty;
 
     protected override async Task OnParametersSetAsync()
     {
         if (Book == null)
             return;
+
+        closeIconUrl = assetManager.GetCommonIconUrl("close");
+        refreshIconUrl = assetManager.GetCommonIconUrl("refresh");
 
         bookCoverUrl = assetManager.GetBookCoverUrl(Book.Name);
         bookDetails = await assetManager.GetBookDetailsAsync(Book.Name);
@@ -42,4 +57,17 @@
         else
             status = $"{bookDetails.ReleasedChapters} capítulos disponíveis";
     }
+
+    private async Task OnCloseClickAsync()
+    {
+        Closing = true;
+        await Task.Delay(TimeSpan.FromSeconds(0.5));
+        await OnClose.InvokeAsync();
+    }
+
+    private string GetContainerClass()
+        => Closing ? "container fadeout" : "container";
+
+    private Task OnStartClickAsync()
+        => OnStart.InvokeAsync();
 }
