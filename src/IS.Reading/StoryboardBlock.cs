@@ -11,6 +11,8 @@ public class StoryboardBlock
     public Stack<IStoryboardItem> ForwardStack { get; } = new Stack<IStoryboardItem>();
     public Stack<IStoryboardItem> BackwardStack { get; } = new Stack<IStoryboardItem>();
     public IStoryboardItem? Current { get; set; }
+    private IStoryboardItem? backCurrent;
+    private IStoryboardItem? forwardCurrent;
 
     private IStoryboardItem? GetNext()
     {
@@ -38,12 +40,22 @@ public class StoryboardBlock
 
     public async Task<IStoryboardItem?> MoveNextAsync(StoryContext context)
     {
+        if (forwardCurrent is not null)
+        {
+            if (Current is not null)
+                BackwardStack.Push(Current);
+            forwardCurrent = null;
+        }
+
+        if (backCurrent is not null)
+            BackwardStack.Push(backCurrent);
+
         var item = GetNext(context);
         if (item is null)
             return null;
 
         Current = item;
-        BackwardStack.Push(await item.EnterAsync(context));
+        backCurrent = await item.EnterAsync(context);
 
         return item;
     }
@@ -62,12 +74,23 @@ public class StoryboardBlock
 
     public async Task<IStoryboardItem?> MovePreviousAsync(StoryContext context)
     {
+        if (backCurrent is not null)
+        {
+            if (Current is not null)
+                ForwardStack.Push(Current);
+            backCurrent = null;
+        }
+
+        if (forwardCurrent is not null)
+            ForwardStack.Push(forwardCurrent);
+
         var item = GetPrevious(context);
         if (item is null)
             return null;
 
         Current = item;
-        ForwardStack.Push(await item.EnterAsync(context));
+
+        forwardCurrent = await item.EnterAsync(context);
 
         return item;
     }

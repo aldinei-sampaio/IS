@@ -26,6 +26,8 @@ public class EventListener
         return builder.ToString();
     }
 
+    public override string ToString() => builder.ToString();    
+
     public EventListener(IStoryContextEvents contextEvents)
     {
         contextEvents.Navigation.OnMoveNextAsync += (s, e) => AddAsync("-- next --");
