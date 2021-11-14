@@ -1,24 +1,23 @@
-﻿namespace IS.Reading.StoryboardItems
+﻿namespace IS.Reading.StoryboardItems;
+
+public class ProtagonistItem : IStoryboardItem
 {
-    public class ProtagonistItem : IStoryboardItem
+    public ProtagonistItem(ICondition? condition)
     {
-        public ProtagonistItem(ICondition? condition)
-        {
-            Condition = condition;
-            Block = new StoryboardBlock(this);
-        }
-
-        public IStoryboardItem Enter(IStoryContextEventCaller context)
-        {
-            context.Protagonist.Enter(context.State[Keys.Protagonist]);
-            return this;
-        }
-
-        public void Leave(IStoryContextEventCaller context) 
-            => context.Protagonist.Leave();
-
-        public StoryboardBlock Block { get; }
-
-        public ICondition? Condition { get; }
+        Condition = condition;
+        Block = new StoryboardBlock(this);
     }
+
+    public async Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
+    {
+        await context.Protagonist.EnterAsync(context.State[Keys.Protagonist]);
+        return this;
+    }
+
+    public async Task LeaveAsync(IStoryContextEventCaller context)
+        => await context.Protagonist.LeaveAsync();
+
+    public StoryboardBlock Block { get; }
+
+    public ICondition? Condition { get; }
 }

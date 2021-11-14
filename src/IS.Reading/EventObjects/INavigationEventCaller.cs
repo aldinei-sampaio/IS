@@ -1,8 +1,7 @@
-﻿namespace IS.Reading.EventObjects
+﻿namespace IS.Reading.EventObjects;
+
+public interface INavigationEventCaller
 {
-    public interface INavigationEventCaller
-    {
-        void MoveNext();
-        void MovePrevious();
-    }
+    Task MoveNextAsync();
+    Task MovePreviousAsync();
 }

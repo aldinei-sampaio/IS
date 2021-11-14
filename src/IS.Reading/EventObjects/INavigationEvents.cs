@@ -1,10 +1,7 @@
-﻿using System;
+﻿namespace IS.Reading.EventObjects;
 
-namespace IS.Reading.EventObjects
+public interface INavigationEvents
 {
-    public interface INavigationEvents
-    {
-        event EventHandler? OnMoveNext;
-        event EventHandler? OnMovePrevious;
-    }
+    event AsyncEventHandler<EventArgs>? OnMoveNextAsync;
+    event AsyncEventHandler<EventArgs>? OnMovePreviousAsync;
 }

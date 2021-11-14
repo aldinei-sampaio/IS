@@ -1,7 +1,6 @@
-﻿namespace IS.Reading.EventObjects
+﻿namespace IS.Reading.EventObjects;
+
+public interface ISimpleEventCaller
 {
-    public interface ISimpleEventCaller
-    {
-        void Change(string value);
-    }
+    Task ChangeAsync(string value);
 }

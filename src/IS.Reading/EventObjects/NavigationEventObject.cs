@@ -1,13 +1,13 @@
-﻿using System;
+﻿namespace IS.Reading.EventObjects;
 
-namespace IS.Reading.EventObjects
+public class NavigationEventObject : INavigationEvents, INavigationEventCaller
 {
-    public class NavigationEventObject : INavigationEvents, INavigationEventCaller
-    {
-        public event EventHandler? OnMoveNext;
-        public event EventHandler? OnMovePrevious;
+    public event AsyncEventHandler<EventArgs>? OnMoveNextAsync;
+    public event AsyncEventHandler<EventArgs>? OnMovePreviousAsync;
 
-        public void MoveNext() => OnMoveNext?.Invoke(this, EventArgs.Empty);
-        public void MovePrevious() => OnMovePrevious?.Invoke(this, EventArgs.Empty);
-    }
+    public Task MoveNextAsync()
+        => OnMoveNextAsync.InvokeAllAsync(this, EventArgs.Empty);
+
+    public Task MovePreviousAsync()
+        => OnMovePreviousAsync.InvokeAllAsync(this, EventArgs.Empty);
 }

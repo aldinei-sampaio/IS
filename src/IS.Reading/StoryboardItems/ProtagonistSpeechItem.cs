@@ -1,24 +1,23 @@
-﻿namespace IS.Reading.StoryboardItems
+﻿namespace IS.Reading.StoryboardItems;
+
+public class ProtagonistSpeechItem : IStoryboardItem
 {
-    public class ProtagonistSpeechItem : IStoryboardItem
+    public ProtagonistSpeechItem(ICondition? condition)
     {
-        public ProtagonistSpeechItem(ICondition? condition)
-        {
-            Condition = condition;
-            Block = new StoryboardBlock(this);
-        }
-
-        public IStoryboardItem Enter(IStoryContextEventCaller context)
-        {
-            context.Protagonist.Speech.Open();
-            return this;
-        }
-
-        public void Leave(IStoryContextEventCaller context)
-            => context.Protagonist.Speech.Close();
-
-        public StoryboardBlock Block { get; }
-
-        public ICondition? Condition { get; }
+        Condition = condition;
+        Block = new StoryboardBlock(this);
     }
+
+    public async Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
+    {
+        await context.Protagonist.Speech.OpenAsync();
+        return this;
+    }
+
+    public async Task LeaveAsync(IStoryContextEventCaller context)
+        => await context.Protagonist.Speech.CloseAsync();
+
+    public StoryboardBlock Block { get; }
+
+    public ICondition? Condition { get; }
 }

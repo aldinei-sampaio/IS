@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Shared\IS.Blazor.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\assets\common\object\" />
+  </ItemGroup>
+
 </Project>

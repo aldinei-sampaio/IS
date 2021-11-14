@@ -1,9 +1,6 @@
-﻿using System;
+﻿namespace IS.Reading.EventObjects;
 
-namespace IS.Reading.EventObjects
+public interface ISimpleEvents
 {
-    public interface ISimpleEvents
-    {
-        event EventHandler<string>? OnChange;
-    }
+    event AsyncEventHandler<EventArgs<string>>? OnChangeAsync;
 }

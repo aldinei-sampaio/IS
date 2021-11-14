@@ -1,17 +1,17 @@
-﻿namespace IS.Reading.StoryboardItems
+﻿namespace IS.Reading.StoryboardItems;
+
+public class ConditionItem : IStoryboardItem
 {
-    public class ConditionItem : IStoryboardItem
+    public ConditionItem(ICondition? condition)
     {
-        public ConditionItem(ICondition? condition)
-        {
-            Condition = condition;
-            Block = new StoryboardBlock(this);
-        }
-
-        public IStoryboardItem Enter(IStoryContextEventCaller context) => this;
-
-        public StoryboardBlock Block { get; }
-
-        public ICondition? Condition { get; }
+        Condition = condition;
+        Block = new StoryboardBlock(this);
     }
+
+    public Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
+        => Task.FromResult<IStoryboardItem>(this);
+
+    public StoryboardBlock Block { get; }
+
+    public ICondition? Condition { get; }
 }

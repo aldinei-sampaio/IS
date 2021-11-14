@@ -1,107 +1,108 @@
 ﻿using System.Collections.Generic;
 
-namespace IS.Reading
+namespace IS.Reading;
+
+public class Storyboard
 {
-    public class Storyboard
+    public StoryboardBlock Root { get; }
+    public StoryContext Context { get; }
+
+    private StoryboardBlock current;
+    private readonly Stack<StoryboardBlock> stack;
+    private readonly List<IStoryboardItem> contextItems = new List<IStoryboardItem>();
+    private bool atEnd = false;
+
+    public Storyboard()
     {
-        public StoryboardBlock Root { get; }
-        public StoryContext Context { get; }
+        Root = new StoryboardBlock(null);
+        current = Root;
+        stack = new Stack<StoryboardBlock>();
+        Context = new StoryContext();
+    }
 
-        private StoryboardBlock current;
-        private readonly Stack<StoryboardBlock> stack;
-        private readonly List<IStoryboardItem> contextItems = new List<IStoryboardItem>();
-        private bool atEnd = false;
+    public async Task<bool> MoveNextAsync()
+    {
+        await Context.Navigation.MoveNextAsync();
+        return await MoveAsync(true);
+    }
 
-        public Storyboard()
+    public async Task<bool> MovePreviousAsync()
+    {
+        await Context.Navigation.MovePreviousAsync();
+        if (atEnd)
         {
-            Root = new StoryboardBlock(null);
-            current = Root;
-            stack = new Stack<StoryboardBlock>();
-            Context = new StoryContext();
+            atEnd = false;
+            foreach (var item in contextItems)
+                await item.EnterAsync(Context);
         }
+        return await MoveAsync(false);
+    }
 
-        public bool MoveNext()
-        {
-            Context.Navigation.MoveNext();
-            return Move(true);
-        }
+    private async Task<bool> MoveAsync(bool forward)
+    {
+        var block = current;
+        if (block.Current is not null)
+            await block.Current.LeaveAsync(Context);
 
-        public bool MovePrevious()
+        for (; ; )
         {
-            Context.Navigation.MovePrevious();
-            if (atEnd)
+            var item = forward ? await block.MoveNextAsync(Context) : await block.MovePreviousAsync(Context);
+
+            if (item == null)
             {
-                atEnd = false;
-                foreach(var item in contextItems)
-                    item.Enter(Context);
-            }
-            return Move(false);
-        }
-
-        private bool Move(bool forward)
-        {
-            var block = current;
-            block.Current?.Leave(Context);
-
-            for (; ; )
-            {
-                var item = forward ? block.MoveNext(Context) : block.MovePrevious(Context);
-                if (item == null)
+                if (!stack.TryPop(out block))
                 {
-                    if (!stack.TryPop(out block))
-                    {
-                        HandleContextChangingItems(forward);
-                        return false;
-                    }
+                    await HandleContextChangingItemsAsync(forward);
+                    return false;
+                }
 
-                    if (block.Current != null)
-                    {
-                        block.Current.Leave(Context);
-                        block.Current = null;
-                    }
-                    current = block;
+                if (block.Current != null)
+                {
+                    await block.Current.LeaveAsync(Context);
+                    block.Current = null;
+                }
+                current = block;
+            }
+            else
+            {
+                if (item.ChangesContext)
+                    StoreContextChangingItem(item);
+
+                if (item.Block == null)
+                {
+                    if (item.IsPause)
+                        return true;
+
+                    await item.LeaveAsync(Context);
                 }
                 else
                 {
-                    if (item.ChangesContext)
-                        StoreContextChangingItem(item);
-                    
-                    if (item.Block == null)
-                    {
-                        if (item.IsPause)
-                            return true;
-
-                        item.Leave(Context);
-                    }
-                    else
-                    {
-                        stack.Push(block);
-                        current = item.Block;
-                        block = item.Block;
-                    }
+                    stack.Push(block);
+                    current = item.Block;
+                    block = item.Block;
                 }
             }
         }
+    }
 
-        private void StoreContextChangingItem(IStoryboardItem item)
+    private void StoreContextChangingItem(IStoryboardItem item)
+    {
+        var type = item.GetType();
+        for (var n = 0; n < contextItems.Count; n++)
         {
-            var type = item.GetType();
-            for(var n = 0; n < contextItems.Count; n++)
+            if (contextItems[n].GetType() == type)
             {
-                if (contextItems[n].GetType() == type)
-                {
-                    contextItems[n] = item;
-                    return;
-                }
+                contextItems[n] = item;
+                return;
             }
-            contextItems.Add(item);
         }
+        contextItems.Add(item);
+    }
 
-        private void HandleContextChangingItems(bool forward)
-        {
-            for (var n = contextItems.Count - 1; n >= 0; n--)
-                contextItems[n].OnStoryboardFinish(Context);
-            atEnd = forward;
-        }
+    private async Task HandleContextChangingItemsAsync(bool forward)
+    {
+        for (var n = contextItems.Count - 1; n >= 0; n--)
+            await contextItems[n].OnStoryboardFinishAsync(Context);
+        atEnd = forward;
     }
 }

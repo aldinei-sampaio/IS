@@ -1,47 +1,74 @@
 ﻿using System.Collections.Generic;
 
-namespace IS.Reading
+namespace IS.Reading;
+
+public class StoryboardBlock
 {
-    public class StoryboardBlock
+    public StoryboardBlock(IStoryboardItem? parent) => Parent = parent;
+
+    public IStoryboardItem? Parent { get; }
+    public Queue<IStoryboardItem> ForwardQueue { get; } = new Queue<IStoryboardItem>();
+    public Stack<IStoryboardItem> ForwardStack { get; } = new Stack<IStoryboardItem>();
+    public Stack<IStoryboardItem> BackwardStack { get; } = new Stack<IStoryboardItem>();
+    public IStoryboardItem? Current { get; set; }
+
+    private IStoryboardItem? GetNext()
     {
-        public StoryboardBlock(IStoryboardItem? parent) => Parent = parent;        
+        if (ForwardStack.TryPop(out var stackItem))
+            return stackItem;
 
-        public IStoryboardItem? Parent { get; }
-        public Queue<IStoryboardItem> ForwardQueue { get; } = new Queue<IStoryboardItem>();
-        public Stack<IStoryboardItem> ForwardStack { get; } = new Stack<IStoryboardItem>();
-        public Stack<IStoryboardItem> BackwardStack { get; } = new Stack<IStoryboardItem>();
-        public IStoryboardItem? Current { get; set; }
+        if (ForwardQueue.TryDequeue(out var queueItem))
+            return queueItem;
 
-        public IStoryboardItem? MoveNext(StoryContext context)
+        return null;
+    }
+
+    private IStoryboardItem? GetNext(StoryContext context)
+    {
+        for (; ; )
         {
-            IStoryboardItem item;
-            do
-            {
-                if (!ForwardStack.TryPop(out item) && !ForwardQueue.TryDequeue(out item))
-                    return null;
-            }
-            while (item.Condition != null && !item.Condition.Evaluate(context));
+            var item = GetNext();
+            if (item == null)
+                return null;
 
-            Current = item;
-            BackwardStack.Push(item.Enter(context));
-            
-            return item;
+            if (item.Condition == null || item.Condition.Evaluate(context))
+                return item;
         }
+    }
 
-        public IStoryboardItem? MovePrevious(StoryContext context)
+    public async Task<IStoryboardItem?> MoveNextAsync(StoryContext context)
+    {
+        var item = GetNext(context);
+        if (item is null)
+            return null;
+
+        Current = item;
+        BackwardStack.Push(await item.EnterAsync(context));
+
+        return item;
+    }
+
+    private IStoryboardItem? GetPrevious(StoryContext context)
+    {
+        for (; ; )
         {
-            IStoryboardItem item;
-            do
-            {
-                if (!BackwardStack.TryPop(out item))
-                    return null;
-            }
-            while (item.Condition != null && !item.Condition.Evaluate(context));
+            if (!BackwardStack.TryPop(out var item))
+                return null;
 
-            Current = item;
-            ForwardStack.Push(item.Enter(context));
-
-            return item;
+            if (item.Condition == null || item.Condition.Evaluate(context))
+                return item;
         }
+    }
+
+    public async Task<IStoryboardItem?> MovePreviousAsync(StoryContext context)
+    {
+        var item = GetPrevious(context);
+        if (item is null)
+            return null;
+
+        Current = item;
+        ForwardStack.Push(await item.EnterAsync(context));
+
+        return item;
     }
 }

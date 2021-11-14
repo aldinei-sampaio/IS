@@ -16,10 +16,12 @@
 
     .book img {
         border-radius: 10px;
+        box-shadow: var(--common-shadow-pressed);
     }
 
     .book span {
         display: inline-block;
+        margin-top: 5px;
         height: 36px;
         font-size: 12pt;
         overflow: hidden;

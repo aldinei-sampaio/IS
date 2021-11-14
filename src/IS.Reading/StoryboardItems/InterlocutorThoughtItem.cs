@@ -1,24 +1,23 @@
-﻿namespace IS.Reading.StoryboardItems
+﻿namespace IS.Reading.StoryboardItems;
+
+public class InterlocutorThoughtItem : IStoryboardItem
 {
-    public class InterlocutorThoughtItem : IStoryboardItem
+    public InterlocutorThoughtItem(ICondition? condition)
     {
-        public InterlocutorThoughtItem(ICondition? condition)
-        {
-            Condition = condition;
-            Block = new StoryboardBlock(this);
-        }
-
-        public IStoryboardItem Enter(IStoryContextEventCaller context)
-        {
-            context.Interlocutor.Thought.Open();
-            return this;
-        }
-
-        public void Leave(IStoryContextEventCaller context)
-            => context.Interlocutor.Thought.Close();
-
-        public StoryboardBlock Block { get; }
-
-        public ICondition? Condition { get; }
+        Condition = condition;
+        Block = new StoryboardBlock(this);
     }
+
+    public async Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
+    {
+        await context.Interlocutor.Thought.OpenAsync();
+        return this;
+    }
+
+    public async Task LeaveAsync(IStoryContextEventCaller context)
+        => await context.Interlocutor.Thought.CloseAsync();
+
+    public StoryboardBlock Block { get; }
+
+    public ICondition? Condition { get; }
 }

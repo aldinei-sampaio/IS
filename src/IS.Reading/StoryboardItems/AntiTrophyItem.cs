@@ -1,15 +1,14 @@
-﻿namespace IS.Reading.StoryboardItems
+﻿namespace IS.Reading.StoryboardItems;
+
+public struct AntiTrophyItem : IStoryboardItem
 {
-    public struct AntiTrophyItem : IStoryboardItem
-    {
-        public Trophy Trophy { get; }
+    public Trophy Trophy { get; }
 
-        public AntiTrophyItem(Trophy trophy, ICondition? condition)
-            => (Trophy, Condition) = (trophy, condition);
+    public AntiTrophyItem(Trophy trophy, ICondition? condition)
+        => (Trophy, Condition) = (trophy, condition);
 
-        public IStoryboardItem Enter(IStoryContextEventCaller context)
-            => new TrophyItem(Trophy, Condition);
+    public Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
+        => Task.FromResult<IStoryboardItem>(new TrophyItem(Trophy, Condition));
 
-        public ICondition? Condition { get; }
-    }
+    public ICondition? Condition { get; }
 }

@@ -1,30 +1,29 @@
-﻿namespace IS.Reading.StoryboardItems
+﻿namespace IS.Reading.StoryboardItems;
+
+public struct ProtagonistChangeItem : IStoryboardItem
 {
-    public struct ProtagonistChangeItem : IStoryboardItem
+    public string Name { get; }
+
+    public ProtagonistChangeItem(string name, ICondition? condition)
+        => (Name, Condition) = (name, condition);
+
+    public async Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
     {
-        public string Name { get; }
+        var oldValue = context.State.Set(Keys.Protagonist, Name);
+        await context.Protagonist.ChangeAsync(Name);
+        return new ProtagonistChangeItem(oldValue, Condition);
+    }
 
-        public ProtagonistChangeItem(string name, ICondition? condition)
-            => (Name, Condition) = (name, condition);
+    public ICondition? Condition { get; }
 
-        public IStoryboardItem Enter(IStoryContextEventCaller context)
+    public bool ChangesContext => true;
+
+    public async Task OnStoryboardFinishAsync(IStoryContextEventCaller context)
+    {
+        if (context.State[Keys.Protagonist] != string.Empty)
         {
-            var oldValue = context.State.Set(Keys.Protagonist, Name);
-            context.Protagonist.Change(Name);
-            return new ProtagonistChangeItem(oldValue, Condition);
-        }
-
-        public ICondition? Condition { get; }
-
-        public bool ChangesContext => true;
-
-        public void OnStoryboardFinish(IStoryContextEventCaller context)
-        {
-            if (context.State[Keys.Protagonist] != string.Empty)
-            {
-                context.State[Keys.Protagonist] = string.Empty;
-                context.Protagonist.Change(string.Empty);
-            }
+            context.State[Keys.Protagonist] = string.Empty;
+            await context.Protagonist.ChangeAsync(string.Empty);
         }
     }
 }

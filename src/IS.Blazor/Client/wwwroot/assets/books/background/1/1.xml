@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyboard xmlns="http://aldinei.com/is/storyboard.xsd">
+	<viewpoint>emelin</viewpoint>
+	<background>forest</background>
+	<observe />
+	<background>
+		<slide />
+	</background>
+	<observe />
+	<background>
+		<left />
+		<color>black</color>
+		<image>sky</image>
+		<slide />
+	</background>
+	<observe />
+</storyboard>	

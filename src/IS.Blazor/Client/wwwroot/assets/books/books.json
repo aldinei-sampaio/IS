@@ -5,13 +5,8 @@
     "categories": [ "short_story", "other" ]
   },
   {
-    "name": "test",
-    "title": "Teste: A Miss\u00E3o",
-    "categories": ["test", "other" ]
-  },
-  {
-    "name": "test2",
-    "title": "Apenas mais um teste com t\u00EDtulo bem grande para ver como fica na tela",
-    "categories": [ "test", "other" ]
+    "name": "background",
+    "title": "Testes com Background",
+    "categories": ["test" ]
   }
 ]

@@ -1,50 +1,71 @@
 ﻿@page "/"
 @inject IAssetManager assetManager
 
-<div class="header">
-    <img src="@(assetManager.GetCommonIconUrl("logo"))" class="logo" />
-    <img src="@(assetManager.GetCommonIconUrl("refresh"))" class="refresh" @onclick="RefreshAsync" />
-</div>
-
-@if (categories != null)
-{
-    <div class="body">
-        @foreach (var category in categories)
-        {
-            <div class="group_header">@category.Title</div>
-            <div class="book_list">
-                @foreach (var book in category.Books)
-                {
-                    <Thumbnail Book="@book" OnClick="SelectBookAsync" />
-                }
-            </div>
-        }
+<div class="root">
+    <div class="header">
+        <div class="logo" />
+        <div class="refresh" @onclick="OnRefreshClickAsync" />
     </div>
-}
 
-@if (selectedBook != null)
-{
-    <BookDetails Book="@selectedBook" OnClose="CloseDetails" />
-}
+    @if (categories == null)
+    {
+        <div class="loading">Carregando livros...</div>
+    }
+    else
+    {
+        <div class="body">
+            @foreach (var category in categories)
+            {
+                <div class="group_header">@category.Title</div>
+                <div class="book_list">
+                    <div class="book_background_top"></div>
+                    @foreach (var book in category.Books)
+                    {
+                        <Thumbnail Book="@book" OnClick="SelectBookAsync" />
+                    }
+                    <div class="book_background_bottom"></div>
+                </div>
+            }
+        </div>
+    }
+
+    @if (selectedBook != null)
+    {
+        <BookDetails Book="@selectedBook" OnClose="CloseDetails" />
+    }
+</div>
 
 @code {
     private IEnumerable<CategoryDto>? categories;
     private BookDetailsDto? selectedBook;
 
+    private async Task OnRefreshClickAsync()
+    {
+        categories = null;
+        StateHasChanged();
+        await RefreshAsync();
+    }
+
     private async Task RefreshAsync()
     {
         categories = await assetManager.GetBooksByCategoryAsync();
+        StateHasChanged();
     }
 
-    protected async override Task OnInitializedAsync() => await RefreshAsync();
+    protected override Task OnInitializedAsync()
+    {
+        var task = async () =>
+        {
+            await RefreshAsync();
+        };
+        task();
+        return Task.CompletedTask;
+    }
 
     private async Task SelectBookAsync(BookDto book)
     {
         selectedBook = await assetManager.GetBookDetailsAsync(book.Name);
     }
 
-    private void CloseDetails()
-    {
-        selectedBook = null;
-    }
+    private void CloseDetails() => selectedBook = null;
 }

@@ -1,9 +1,6 @@
-﻿using System;
+﻿namespace IS.Reading.EventObjects;
 
-namespace IS.Reading.EventObjects
+public interface IPromptEvents<T>
 {
-    public interface IPromptEvents<T>
-    {
-        public event EventHandler<T>? OnOpen;
-    }
+    public event AsyncEventHandler<EventArgs<T>>? OnOpenAsync;
 }

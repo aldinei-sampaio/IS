@@ -1,72 +1,74 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 
-namespace IS.Reading.StoryboardNavigatorTests
+namespace IS.Reading.StoryboardNavigatorTests;
+
+public class EventListener
 {
-    public class EventListener
+    private StringBuilder builder = new StringBuilder();
+
+    private Task AddAsync(string text)
+    { 
+        builder.AppendLine(text);
+        return Task.CompletedTask;
+    }
+
+    public async Task<string> ForwardAsync(Storyboard sb)
     {
-        private StringBuilder builder = new StringBuilder();
+        builder = new StringBuilder();
+        while (await sb.MoveNextAsync()) { }
+        return builder.ToString();
+    }
 
-        private void Add(string text) => builder.AppendLine(text);
+    public async Task<string> BackwardAsync(Storyboard sb)
+    {
+        builder = new StringBuilder();
+        while (await sb.MovePreviousAsync()) { }
+        return builder.ToString();
+    }
 
-        public string Forward(Storyboard sb)
-        {
-            builder = new StringBuilder();
-            while (sb.MoveNext()) { }
-            return builder.ToString();
-        }
+    public EventListener(IStoryContextEvents contextEvents)
+    {
+        contextEvents.Navigation.OnMoveNextAsync += (s, e) => AddAsync("-- next --");
+        contextEvents.Navigation.OnMovePreviousAsync += (s, e) => AddAsync("-- previous --");
 
-        public string Backward(Storyboard sb)
-        {
-            builder = new StringBuilder();
-            while (sb.MovePrevious()) { }
-            return builder.ToString();
-        }
+        contextEvents.Background.OnChangeAsync += (s, e) => AddAsync($"OnBackgroundChange({e})");
+        contextEvents.Music.OnChangeAsync += (s, e) => AddAsync($"OnMusicChange({e})");
 
-        public EventListener(IStoryContextEvents contextEvents)
-        {
-            contextEvents.Navigation.OnMoveNext += (s, e) => Add("-- next --");
-            contextEvents.Navigation.OnMovePrevious += (s, e) => Add("-- previous --");
+        contextEvents.Display.OnOpenAsync += (s, e) => AddAsync($"OnDisplayOpen({e})");
 
-            contextEvents.Background.OnChange += (s, e) => Add($"OnBackgroundChange({e})");
-            contextEvents.Music.OnChange += (s, e) => Add($"OnMusicChange({e})");
+        contextEvents.Tutorial.OnOpenAsync += (s, e) => AddAsync($"OnTutorialOpen()");
+        contextEvents.Tutorial.OnChangeAsync += (s, e) => AddAsync($"OnTutorialChange({e})");
+        contextEvents.Tutorial.OnCloseAsync += (s, e) => AddAsync($"OnTutorialClose()");
 
-            contextEvents.Display.OnOpen += (s, e) => Add($"OnDisplayOpen({e})");
+        contextEvents.Narration.OnOpenAsync += (s, e) => AddAsync($"OnNarrationOpen()");
+        contextEvents.Narration.OnChangeAsync += (s, e) => AddAsync($"OnNarrationChange({e})");
+        contextEvents.Narration.OnCloseAsync += (s, e) => AddAsync($"OnNarrationClose()");
 
-            contextEvents.Tutorial.OnOpen += (s, e) => Add($"OnTutorialOpen()");
-            contextEvents.Tutorial.OnChange += (s, e) => Add($"OnTutorialChange({e})");
-            contextEvents.Tutorial.OnClose += (s, e) => Add($"OnTutorialClose()");
+        contextEvents.Protagonist.OnChangeAsync += (s, e) => AddAsync($"OnProtagonistChange({e})");
+        contextEvents.Protagonist.OnArriveAsync += (s, e) => AddAsync($"OnProtagonistArrive({e})");
+        contextEvents.Protagonist.OnBumpAsync += (s, e) => AddAsync($"OnProtagonistBump()");
+        contextEvents.Protagonist.OnLeaveAsync += (s, e) => AddAsync($"OnProtagonistLeave()");
+        contextEvents.Protagonist.Mood.OnChangeAsync += (s, e) => AddAsync($"OnProtagonistMoodChange({e})");
+        contextEvents.Protagonist.Reward.OnOpenAsync += (s, e) => AddAsync($"OnProtagonistRewardOpen({e})");
+        contextEvents.Protagonist.Speech.OnOpenAsync += (s, e) => AddAsync($"OnProtagonistSpeechOpen()");
+        contextEvents.Protagonist.Speech.OnChangeAsync += (s, e) => AddAsync($"OnProtagonistSpeechChange({e})");
+        contextEvents.Protagonist.Speech.OnCloseAsync += (s, e) => AddAsync($"OnProtagonistSpeechClose()");
+        contextEvents.Protagonist.Thought.OnOpenAsync += (s, e) => AddAsync($"OnProtagonistThoughtOpen()");
+        contextEvents.Protagonist.Thought.OnChangeAsync += (s, e) => AddAsync($"OnProtagonistThoughtChange({e})");
+        contextEvents.Protagonist.Thought.OnCloseAsync += (s, e) => AddAsync($"OnProtagonistThoughtClose()");
 
-            contextEvents.Narration.OnOpen += (s, e) => Add($"OnNarrationOpen()");
-            contextEvents.Narration.OnChange += (s, e) => Add($"OnNarrationChange({e})");
-            contextEvents.Narration.OnClose += (s, e) => Add($"OnNarrationClose()");
+        contextEvents.Interlocutor.OnArriveAsync += (s, e) => AddAsync($"OnInterlocutorArrive({e})");
+        contextEvents.Interlocutor.OnBumpAsync += (s, e) => AddAsync($"OnInterlocutorBump()");
+        contextEvents.Interlocutor.OnLeaveAsync += (s, e) => AddAsync($"OnInterlocutorLeave()");
+        contextEvents.Interlocutor.Mood.OnChangeAsync += (s, e) => AddAsync($"OnInterlocutorMoodChange({e})");
+        contextEvents.Interlocutor.Reward.OnOpenAsync += (s, e) => AddAsync($"OnInterlocutorRewardOpen({e})");
+        contextEvents.Interlocutor.Speech.OnOpenAsync += (s, e) => AddAsync($"OnInterlocutorSpeechOpen()");
+        contextEvents.Interlocutor.Speech.OnChangeAsync += (s, e) => AddAsync($"OnInterlocutorSpeechChange({e})");
+        contextEvents.Interlocutor.Speech.OnCloseAsync += (s, e) => AddAsync($"OnInterlocutorSpeechClose()");
+        contextEvents.Interlocutor.Thought.OnOpenAsync += (s, e) => AddAsync($"OnInterlocutorThoughtOpen()");
+        contextEvents.Interlocutor.Thought.OnChangeAsync += (s, e) => AddAsync($"OnInterlocutorThoughtChange({e})");
+        contextEvents.Interlocutor.Thought.OnCloseAsync += (s, e) => AddAsync($"OnInterlocutorThoughtClose()");
 
-            contextEvents.Protagonist.OnChange += (s, e) => Add($"OnProtagonistChange({e})");
-            contextEvents.Protagonist.OnArrive += (s, e) => Add($"OnProtagonistArrive({e})");
-            contextEvents.Protagonist.OnBump += (s, e) => Add($"OnProtagonistBump()");
-            contextEvents.Protagonist.OnLeave += (s, e) => Add($"OnProtagonistLeave()");
-            contextEvents.Protagonist.Mood.OnChange += (s, e) => Add($"OnProtagonistMoodChange({e})");
-            contextEvents.Protagonist.Reward.OnOpen += (s, e) => Add($"OnProtagonistRewardOpen({e})");
-            contextEvents.Protagonist.Speech.OnOpen += (s, e) => Add($"OnProtagonistSpeechOpen()");
-            contextEvents.Protagonist.Speech.OnChange += (s, e) => Add($"OnProtagonistSpeechChange({e})");
-            contextEvents.Protagonist.Speech.OnClose += (s, e) => Add($"OnProtagonistSpeechClose()");
-            contextEvents.Protagonist.Thought.OnOpen += (s, e) => Add($"OnProtagonistThoughtOpen()");
-            contextEvents.Protagonist.Thought.OnChange += (s, e) => Add($"OnProtagonistThoughtChange({e})");
-            contextEvents.Protagonist.Thought.OnClose += (s, e) => Add($"OnProtagonistThoughtClose()");
-
-            contextEvents.Interlocutor.OnArrive += (s, e) => Add($"OnInterlocutorArrive({e})");
-            contextEvents.Interlocutor.OnBump += (s, e) => Add($"OnInterlocutorBump()");
-            contextEvents.Interlocutor.OnLeave += (s, e) => Add($"OnInterlocutorLeave()");
-            contextEvents.Interlocutor.Mood.OnChange += (s, e) => Add($"OnInterlocutorMoodChange({e})");
-            contextEvents.Interlocutor.Reward.OnOpen += (s, e) => Add($"OnInterlocutorRewardOpen({e})");
-            contextEvents.Interlocutor.Speech.OnOpen += (s, e) => Add($"OnInterlocutorSpeechOpen()");
-            contextEvents.Interlocutor.Speech.OnChange += (s, e) => Add($"OnInterlocutorSpeechChange({e})");
-            contextEvents.Interlocutor.Speech.OnClose += (s, e) => Add($"OnInterlocutorSpeechClose()");
-            contextEvents.Interlocutor.Thought.OnOpen += (s, e) => Add($"OnInterlocutorThoughtOpen()");
-            contextEvents.Interlocutor.Thought.OnChange += (s, e) => Add($"OnInterlocutorThoughtChange({e})");
-            contextEvents.Interlocutor.Thought.OnClose += (s, e) => Add($"OnInterlocutorThoughtClose()");
-
-            contextEvents.Prompt.OnOpen += (s, e) => Add($"OnPromptOpen()");
-        }
+        contextEvents.Prompt.OnOpenAsync += (s, e) => AddAsync($"OnPromptOpen()");
     }
 }

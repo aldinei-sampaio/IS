@@ -1,7 +1,6 @@
-﻿namespace IS.Reading.EventObjects
+﻿namespace IS.Reading.EventObjects;
+
+public interface IPromptEventCaller<T>
 {
-    public interface IPromptEventCaller<T>
-    {
-        void Open(T prompt);
-    }
+    Task OpenAsync(T prompt);
 }

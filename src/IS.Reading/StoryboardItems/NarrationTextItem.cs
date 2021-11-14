@@ -1,20 +1,19 @@
-﻿namespace IS.Reading.StoryboardItems
+﻿namespace IS.Reading.StoryboardItems;
+
+public struct NarrationTextItem : IStoryboardItem
 {
-    public struct NarrationTextItem : IStoryboardItem
+    public string Text { get; }
+
+    public NarrationTextItem(string text, ICondition? condition)
+        => (Text, Condition) = (text, condition);
+
+    public async Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
     {
-        public string Text { get; }
-
-        public NarrationTextItem(string text, ICondition? condition)
-            => (Text, Condition) = (text, condition);
-
-        public IStoryboardItem Enter(IStoryContextEventCaller context)
-        {
-            context.Narration.Change(Text);
-            return this;
-        }
-
-        public bool IsPause => true;
-
-        public ICondition? Condition { get; }
+        await context.Narration.ChangeAsync(Text);
+        return this;
     }
+
+    public bool IsPause => true;
+
+    public ICondition? Condition { get; }
 }

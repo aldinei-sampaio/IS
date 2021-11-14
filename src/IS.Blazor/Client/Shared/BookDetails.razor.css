@@ -5,38 +5,14 @@
     width: 100%;
     height: 100%;
     background-color: black;
-    animation: fadein 0.5s;
+    animation: leftfadein 0.5s;
     animation-fill-mode: forwards;
 }
 
     .container.fadeout {
-        animation: fadeout 0.5s;
+        animation: leftfadeout 0.5s;
         animation-fill-mode: forwards;
     }
-
-@keyframes fadein {
-    from {
-        opacity: 0;
-        left: -100%;
-    }
-
-    to {
-        opacity: 1;
-        left: 0;
-    }
-}
-
-@keyframes fadeout {
-    to {
-        opacity: 0;
-        left: -100%;
-    }
-
-    from {
-        opacity: 1;
-        left: 0;
-    }
-}
 
 .cover {
     position: absolute;
@@ -45,6 +21,11 @@
     height: 100%;
     background-size: cover;
 }
+
+    .cover.fadeout {
+        animation: fadeout 0.5s;
+        animation-fill-mode: forwards;
+    }
 
 .header {
     position: relative;
@@ -61,7 +42,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.75), rgba(0,0,0,0.60), rgba(0,0,0,0.55), rgba(0,0,0,0.50), rgba(0,0,0,0));
+    background-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.40) 90%, rgba(0,0,0,0));
 }
 
 .text {
@@ -99,7 +80,7 @@
     font-size: 19pt;
     border-radius: 20px;
     border: 0.5px solid black;
-    box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5), 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: var(--common-shadow);
     background-color: #712F26;
     color: white;
 }
@@ -114,7 +95,8 @@
     }
 
     .start:active {
-        box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.5), 2px 2px 2px 0 rgba(0, 0, 0, 0.5);
+        color: yellow;
+        box-shadow: var(--common-shadow-pressed);
         transform: translate(2px, 2px);
     }
 
@@ -137,11 +119,23 @@
 
 .restart {
     float: right;
+    width: 24px;
+    height: 24px;
     cursor: pointer;
+    background-image: url('assets/common/refresh.png')
 }
+
+    .restart:hover {
+        background-image: url('assets/common/refresh_hover.png')
+    }
 
 .close {
     width: 24px;
     height: 24px;
     cursor: pointer;
+    background-image: url('assets/common/close.png')
 }
+
+    .close:hover {
+        background-image: url('assets/common/close_hover.png')
+    }

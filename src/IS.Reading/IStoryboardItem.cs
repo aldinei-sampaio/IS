@@ -1,14 +1,13 @@
-﻿namespace IS.Reading
+﻿namespace IS.Reading;
+
+public interface IStoryboardItem
 {
-    public interface IStoryboardItem
-    {
-        IStoryboardItem Enter(IStoryContextEventCaller context);
-        StoryboardBlock? Block => null;
-        void Leave(IStoryContextEventCaller context) { }
-        bool IsPause => false;
-        bool AllowBackwardsBlockEntry => true;
-        ICondition? Condition => null;
-        bool ChangesContext => false;
-        void OnStoryboardFinish(IStoryContextEventCaller context) { }
-    }
+    Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context);
+    StoryboardBlock? Block => null;
+    Task LeaveAsync(IStoryContextEventCaller context) => Task.CompletedTask;
+    bool IsPause => false;
+    bool AllowBackwardsBlockEntry => true;
+    ICondition? Condition => null;
+    bool ChangesContext => false;
+    Task OnStoryboardFinishAsync(IStoryContextEventCaller context) => Task.CompletedTask;
 }

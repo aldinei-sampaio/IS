@@ -1,0 +1,92 @@
+﻿@inject IAssetManager assetManager
+@inject ISaveManager saveManager
+
+<div class="@GetRootClass()">
+    <div class="loading">
+        <div class="cover" style="background: url('@bookCoverUrl')"></div>
+        <div class="message">Preparando livro...</div>
+    </div>
+
+    @if(state == State.Ready)
+    {
+        <div class="container">Leitura
+        </div>        
+    }
+    else if (state != State.Loading)
+    {
+        <div class="container">
+            <div class="cover" style="background: url('@bookCoverUrl')"></div>
+            <div class="header">
+                <div class="close" @onclick="OnCloseClickAsync"></div>
+            </div>
+            @if (state == State.Completed)
+            {
+                <div class="message">Você já concluiu a leitura deste livro.</div>
+            }
+            else
+            {
+                <div class="message">Este capítulo ainda não está disponível.</div>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    private enum State
+    {
+        Loading = 0,
+        Completed = 1,
+        NotAvailable = 2,
+        Ready = 3
+    }
+
+    [Parameter]
+    public BookDetailsDto? Book { get; set; }
+
+    [Parameter]
+    public EventCallback OnClose { get; set; }
+
+    private State state = State.Loading;
+    private string bookCoverUrl = string.Empty;
+    private bool closing = false;
+
+    protected override Task OnParametersSetAsync()
+    {
+        if (Book is not null)
+        {
+            bookCoverUrl = assetManager.GetBookCoverUrl(Book.Name);
+            var task = LoadAsync();
+        }
+
+        return Task.CompletedTask;
+    }
+
+    private async Task LoadAsync()
+    {
+        if (Book == null)
+            return;
+
+        var progress = await saveManager.GetBookProgressAsync(Book.Name);
+        var chapter = progress is null ? 1 : progress.CurrentChapter;
+        if (chapter > Book.ReleasedChapters)
+        {
+            state = Book.FullReleased ? State.Completed : State.NotAvailable;
+            StateHasChanged();
+            return;
+        }
+
+        await Task.Delay(TimeSpan.FromSeconds(2));
+        state = State.Ready;
+        StateHasChanged();
+    }
+
+    private async Task OnCloseClickAsync()
+    {
+        closing = true;
+        await Task.Delay(TimeSpan.FromSeconds(0.5));
+        await OnClose.InvokeAsync();
+    }
+
+    private string GetRootClass()
+        => closing ? "root fadeout" : "root";
+}

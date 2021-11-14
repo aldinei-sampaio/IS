@@ -1,13 +1,12 @@
-﻿namespace IS.Reading.EventObjects
+﻿namespace IS.Reading.EventObjects;
+
+public interface IPersonEventCaller : ISimpleEventCaller
 {
-    public interface IPersonEventCaller : ISimpleEventCaller
-    {
-        void Enter(string value);
-        void Leave();
-        void Bump();
-        ISimpleEventCaller Mood { get; }
-        IOpenCloseEventCaller Thought { get; }
-        IOpenCloseEventCaller Speech { get; }
-        IPromptEventCaller<VarIncrement> Reward { get; }
-    }
+    Task EnterAsync(string value);
+    Task LeaveAsync();
+    Task BumpAsync();
+    ISimpleEventCaller Mood { get; }
+    IOpenCloseEventCaller Thought { get; }
+    IOpenCloseEventCaller Speech { get; }
+    IPromptEventCaller<VarIncrement> Reward { get; }
 }

@@ -1,30 +1,29 @@
-﻿namespace IS.Reading.StoryboardItems
+﻿namespace IS.Reading.StoryboardItems;
+
+public struct MusicItem : IStoryboardItem
 {
-    public struct MusicItem : IStoryboardItem
+    public string MusicName { get; }
+
+    public MusicItem(string musicName, ICondition? condition)
+        => (MusicName, Condition) = (musicName, condition);
+
+    public async Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
     {
-        public string MusicName { get; }
+        var oldValue = context.State.Set(Keys.Music, MusicName);
+        await context.Music.ChangeAsync(MusicName);
+        return new MusicItem(oldValue, Condition);
+    }
 
-        public MusicItem(string musicName, ICondition? condition)
-            => (MusicName, Condition) = (musicName, condition);
+    public ICondition? Condition { get; }
 
-        public IStoryboardItem Enter(IStoryContextEventCaller context)
+    public bool ChangesContext => true;
+
+    public async Task OnStoryboardFinishAsync(IStoryContextEventCaller context)
+    {
+        if (context.State[Keys.Music] != string.Empty)
         {
-            var oldValue = context.State.Set(Keys.Music, MusicName);
-            context.Music.Change(MusicName);
-            return new MusicItem(oldValue, Condition);
-        }
-
-        public ICondition? Condition { get; }
-
-        public bool ChangesContext => true;
-
-        public void OnStoryboardFinish(IStoryContextEventCaller context)
-        {
-            if (context.State[Keys.Music] != string.Empty)
-            {
-                context.State[Keys.Music] = string.Empty;
-                context.Music.Change(string.Empty);
-            }
+            context.State[Keys.Music] = string.Empty;
+            await context.Music.ChangeAsync(string.Empty);
         }
     }
 }

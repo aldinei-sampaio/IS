@@ -5,22 +5,27 @@
     <div class="@GetContainerClass()">
         <div class="cover" style="background: url('@bookCoverUrl')">
             <div class="header">
-                <div class="close" style="background: url('@closeIconUrl')" @onclick="OnCloseClickAsync"></div>
+                <div class="close" @onclick="OnCloseClickAsync"></div>
             </div>
             <div class="text">
                 <div class="filter">
                     <div class="title">@bookDetails.Title</div>
                     <div class="sinopsis">@bookDetails.Synopsis</div>
                     <div class="tags">@string.Join(" • ", bookDetails.Tags)</div>
-                    <button class="start" @onclick="OnStartClickAsync">Iniciar Leitura</button>
+                    <button class="start" @onclick="OnStartClick">Iniciar Leitura</button>
                     <div class="options">
                         <div class="status">@status</div>
-                        <img class="restart" src="@refreshIconUrl" />
+                        <div class="restart"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    @if (reading)
+    {
+        <Reading Book="bookDetails" OnClose="OnCloseReading" />
+    }
 }
 
 @code {
@@ -30,25 +35,16 @@
     [Parameter]
     public EventCallback OnClose { get; set; }
 
-    [Parameter]
-    public EventCallback OnStart { get; set; }
-
-    [Parameter]
-    public bool Closing { get; set; }
-
+    private bool closing = false;
+    private bool reading = false;
     private BookDetailsDto? bookDetails;
     private string bookCoverUrl = string.Empty;
     private string status = string.Empty;
-    private string closeIconUrl = string.Empty;
-    private string refreshIconUrl = string.Empty;
 
     protected override async Task OnParametersSetAsync()
     {
         if (Book == null)
             return;
-
-        closeIconUrl = assetManager.GetCommonIconUrl("close");
-        refreshIconUrl = assetManager.GetCommonIconUrl("refresh");
 
         bookCoverUrl = assetManager.GetBookCoverUrl(Book.Name);
         bookDetails = await assetManager.GetBookDetailsAsync(Book.Name);
@@ -60,14 +56,23 @@
 
     private async Task OnCloseClickAsync()
     {
-        Closing = true;
+        closing = true;
         await Task.Delay(TimeSpan.FromSeconds(0.5));
         await OnClose.InvokeAsync();
     }
 
     private string GetContainerClass()
-        => Closing ? "container fadeout" : "container";
+        => closing ? "container fadeout" : "container";
 
-    private Task OnStartClickAsync()
-        => OnStart.InvokeAsync();
+    private void OnStartClick()
+    {
+        reading = true;
+        StateHasChanged();
+    }
+
+    private void OnCloseReading()
+    {
+        reading = false;
+        StateHasChanged();
+    }
 }

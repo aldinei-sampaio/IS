@@ -1,12 +1,9 @@
-﻿using System;
+﻿namespace IS.Reading.EventObjects;
 
-namespace IS.Reading.EventObjects
+public class PromptEventObject<T> : IPromptEvents<T>, IPromptEventCaller<T>
 {
-    public class PromptEventObject<T> : IPromptEvents<T>, IPromptEventCaller<T>
-    {
-        public event EventHandler<T>? OnOpen;
+    public event AsyncEventHandler<EventArgs<T>>? OnOpenAsync;
 
-        void IPromptEventCaller<T>.Open(T prompt)
-            => OnOpen?.Invoke(this, prompt);
-    }
+    Task IPromptEventCaller<T>.OpenAsync(T prompt)
+        => OnOpenAsync.InvokeAllAsync(this, new(prompt));
 }

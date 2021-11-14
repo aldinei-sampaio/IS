@@ -1,12 +1,9 @@
-﻿using System;
+﻿namespace IS.Reading.EventObjects;
 
-namespace IS.Reading.EventObjects
+public class SimpleEventObject : ISimpleEvents, ISimpleEventCaller
 {
-    public class SimpleEventObject : ISimpleEvents, ISimpleEventCaller
-    {
-        public event EventHandler<string>? OnChange;
+    public event AsyncEventHandler<EventArgs<string>>? OnChangeAsync;
 
-        void ISimpleEventCaller.Change(string value) 
-            => OnChange?.Invoke(this, value);
-    }
+    Task ISimpleEventCaller.ChangeAsync(string value)
+        => OnChangeAsync.InvokeAllAsync(this, new(value));
 }

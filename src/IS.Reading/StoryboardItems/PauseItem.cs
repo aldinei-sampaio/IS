@@ -1,13 +1,13 @@
-﻿namespace IS.Reading.StoryboardItems
+﻿namespace IS.Reading.StoryboardItems;
+
+public struct PauseItem : IStoryboardItem
 {
-    public struct PauseItem : IStoryboardItem
-    {
-        public PauseItem(ICondition? condition) => Condition = condition;
+    public PauseItem(ICondition? condition) => Condition = condition;
 
-        public IStoryboardItem Enter(IStoryContextEventCaller context) => this;
+    public Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context) 
+        => Task.FromResult<IStoryboardItem>(this);
 
-        public bool IsPause => true;
+    public bool IsPause => true;
 
-        public ICondition? Condition { get; }
-    }
+    public ICondition? Condition { get; }
 }

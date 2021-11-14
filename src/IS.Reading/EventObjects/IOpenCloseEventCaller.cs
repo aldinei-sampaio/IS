@@ -1,8 +1,7 @@
-﻿namespace IS.Reading.EventObjects
+﻿namespace IS.Reading.EventObjects;
+
+public interface IOpenCloseEventCaller : ISimpleEventCaller
 {
-    public interface IOpenCloseEventCaller : ISimpleEventCaller
-    {
-        void Open();
-        void Close();
-    }
+    Task OpenAsync();
+    Task CloseAsync();
 }

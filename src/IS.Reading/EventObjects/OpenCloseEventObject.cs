@@ -1,17 +1,13 @@
-﻿using System;
+﻿namespace IS.Reading.EventObjects;
 
-namespace IS.Reading.EventObjects
+public class OpenCloseEventObject : SimpleEventObject, IOpenCloseEvents, IOpenCloseEventCaller
 {
+    public event AsyncEventHandler<EventArgs>? OnOpenAsync;
+    public event AsyncEventHandler<EventArgs>? OnCloseAsync;
 
-    public class OpenCloseEventObject : SimpleEventObject, IOpenCloseEvents, IOpenCloseEventCaller
-    {
-        public event EventHandler? OnOpen;
-        public event EventHandler? OnClose;
+    Task IOpenCloseEventCaller.OpenAsync()
+        => OnOpenAsync.InvokeAllAsync(this, EventArgs.Empty);
 
-        void IOpenCloseEventCaller.Open()
-            => OnOpen?.Invoke(this, EventArgs.Empty);
-
-        void IOpenCloseEventCaller.Close()
-            => OnClose?.Invoke(this, EventArgs.Empty);
-    }
+    Task IOpenCloseEventCaller.CloseAsync()
+        => OnCloseAsync.InvokeAllAsync(this, EventArgs.Empty);
 }

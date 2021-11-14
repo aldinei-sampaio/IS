@@ -7,8 +7,9 @@ namespace IS.Blazor.Services
     {
         public Task<BookProgressDto?> GetBookProgressAsync(string bookName)
         {
-            BookProgressDto? result = null;
-            return Task.FromResult(result);
+            return Task.FromResult<BookProgressDto?>(new BookProgressDto { CurrentChapter = 2 });
+            //BookProgressDto? result = null;
+            //return Task.FromResult(result);
         }
     }
 }

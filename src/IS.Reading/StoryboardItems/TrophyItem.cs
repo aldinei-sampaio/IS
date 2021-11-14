@@ -1,18 +1,17 @@
-﻿namespace IS.Reading.StoryboardItems
+﻿namespace IS.Reading.StoryboardItems;
+
+public struct TrophyItem : IStoryboardItem
 {
-    public struct TrophyItem : IStoryboardItem
+    public Trophy Trophy { get; }
+
+    public TrophyItem(Trophy trophy, ICondition? condition)
+        => (Trophy, Condition) = (trophy, condition);
+
+    public async Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
     {
-        public Trophy Trophy { get; }
-
-        public TrophyItem(Trophy trophy, ICondition? condition)
-            => (Trophy, Condition) = (trophy, condition);
-
-        public IStoryboardItem Enter(IStoryContextEventCaller context)
-        {
-            context.Trophy.Open(Trophy);
-            return new AntiTrophyItem(Trophy, Condition);
-        }
-
-        public ICondition? Condition { get; }
+        await context.Trophy.OpenAsync(Trophy);
+        return new AntiTrophyItem(Trophy, Condition);
     }
+
+    public ICondition? Condition { get; }
 }
