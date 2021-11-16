@@ -6,5 +6,6 @@
         IntDictionary Variables { get; }
         StringDictionary Names { get; }
         string LastChoice { get; set; }
+        IStoryboardItem? CurrentItem { get; }
     }
 }

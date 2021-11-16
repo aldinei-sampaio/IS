@@ -8,8 +8,8 @@ public class ConditionItem : IStoryboardItem
         Block = new StoryboardBlock(this);
     }
 
-    public Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
-        => Task.FromResult<IStoryboardItem>(this);
+    public Task<IStoryboardItem?> EnterAsync(IStoryContextEventCaller context)
+        => Task.FromResult<IStoryboardItem?>(this);
 
     public StoryboardBlock Block { get; }
 

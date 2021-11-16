@@ -7,7 +7,7 @@ public class InterlocutorRewardItem : IStoryboardItem
     public InterlocutorRewardItem(VarIncrement increment, ICondition? condition)
         => (Increment, Condition) = (increment, condition);
 
-    public async Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
+    public async Task<IStoryboardItem?> EnterAsync(IStoryContextEventCaller context)
     {
         context.Variables[Increment.Name] = context.Variables[Increment.Name] + Increment.Value;
         await context.Interlocutor.Reward.OpenAsync(Increment);

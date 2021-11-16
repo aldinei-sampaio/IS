@@ -53,6 +53,7 @@ public class Storyboard
                 if (!stack.TryPop(out block))
                 {
                     await HandleContextChangingItemsAsync(forward);
+                    Context.CurrentItem = null;
                     return false;
                 }
 
@@ -61,7 +62,8 @@ public class Storyboard
                     await block.Current.LeaveAsync(Context);
                     block.Current = null;
                 }
-                current = block;
+
+                current = block;                
             }
             else
             {
@@ -71,7 +73,10 @@ public class Storyboard
                 if (item.Block == null)
                 {
                     if (item.IsPause)
+                    {
+                        Context.CurrentItem = item;
                         return true;
+                    }
 
                     await item.LeaveAsync(Context);
                 }

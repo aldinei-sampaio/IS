@@ -11,7 +11,7 @@ public class ProtagonistMoodItem : IStoryboardItem
         Block = new StoryboardBlock(this);
     }
 
-    public async Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
+    public async Task<IStoryboardItem?> EnterAsync(IStoryContextEventCaller context)
     {
         await context.Protagonist.Mood.ChangeAsync(Name);
         return this;

@@ -7,7 +7,7 @@ public struct NarrationTextItem : IStoryboardItem
     public NarrationTextItem(string text, ICondition? condition)
         => (Text, Condition) = (text, condition);
 
-    public async Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
+    public async Task<IStoryboardItem?> EnterAsync(IStoryContextEventCaller context)
     {
         await context.Narration.ChangeAsync(Text);
         return this;

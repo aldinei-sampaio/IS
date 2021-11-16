@@ -4,8 +4,8 @@ public struct PauseItem : IStoryboardItem
 {
     public PauseItem(ICondition? condition) => Condition = condition;
 
-    public Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context) 
-        => Task.FromResult<IStoryboardItem>(this);
+    public Task<IStoryboardItem?> EnterAsync(IStoryContextEventCaller context) 
+        => Task.FromResult<IStoryboardItem?>(this);
 
     public bool IsPause => true;
 

@@ -8,7 +8,7 @@ public class TutorialItem : IStoryboardItem
         Block = new StoryboardBlock(this);
     }
 
-    public async Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
+    public async Task<IStoryboardItem?> EnterAsync(IStoryContextEventCaller context)
     {
         await context.Tutorial.OpenAsync();
         return this;

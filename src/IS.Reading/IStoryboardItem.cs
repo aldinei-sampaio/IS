@@ -2,7 +2,7 @@
 
 public interface IStoryboardItem
 {
-    Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context);
+    Task<IStoryboardItem?> EnterAsync(IStoryContextEventCaller context);
     StoryboardBlock? Block => null;
     Task LeaveAsync(IStoryContextEventCaller context) => Task.CompletedTask;
     bool IsPause => false;

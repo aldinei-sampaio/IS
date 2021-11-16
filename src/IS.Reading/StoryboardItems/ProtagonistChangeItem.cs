@@ -7,7 +7,7 @@ public struct ProtagonistChangeItem : IStoryboardItem
     public ProtagonistChangeItem(string name, ICondition? condition)
         => (Name, Condition) = (name, condition);
 
-    public async Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
+    public async Task<IStoryboardItem?> EnterAsync(IStoryContextEventCaller context)
     {
         var oldValue = context.State.Set(Keys.Protagonist, Name);
         await context.Protagonist.ChangeAsync(Name);

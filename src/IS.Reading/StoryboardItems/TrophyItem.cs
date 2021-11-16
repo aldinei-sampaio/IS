@@ -7,7 +7,7 @@ public struct TrophyItem : IStoryboardItem
     public TrophyItem(Trophy trophy, ICondition? condition)
         => (Trophy, Condition) = (trophy, condition);
 
-    public async Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
+    public async Task<IStoryboardItem?> EnterAsync(IStoryContextEventCaller context)
     {
         await context.Trophy.OpenAsync(Trophy);
         return new AntiTrophyItem(Trophy, Condition);

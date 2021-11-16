@@ -9,10 +9,10 @@ public struct VarSetItem : IStoryboardItem
     public VarSetItem(string name, int value, ICondition? condition)
         => (Name, Value, Condition) = (name, value, condition);
 
-    public Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
+    public Task<IStoryboardItem?> EnterAsync(IStoryContextEventCaller context)
     {
         var oldValue = context.Variables.Set(Name, Value);
-        return Task.FromResult<IStoryboardItem>(new VarSetItem(Name, oldValue, Condition));
+        return Task.FromResult<IStoryboardItem?>(new VarSetItem(Name, oldValue, Condition));
     }
 
     public ICondition? Condition { get; }

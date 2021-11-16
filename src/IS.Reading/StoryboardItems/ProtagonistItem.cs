@@ -8,7 +8,7 @@ public class ProtagonistItem : IStoryboardItem
         Block = new StoryboardBlock(this);
     }
 
-    public async Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
+    public async Task<IStoryboardItem?> EnterAsync(IStoryContextEventCaller context)
     {
         await context.Protagonist.EnterAsync(context.State[Keys.Protagonist]);
         return this;

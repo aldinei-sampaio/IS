@@ -6,8 +6,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Using Include="System"/>
-		<Using Include="System.Threading.Tasks"/>
+		<Using Include="System" />
+		<Using Include="System.Threading.Tasks" />
 	</ItemGroup>
 
 </Project>

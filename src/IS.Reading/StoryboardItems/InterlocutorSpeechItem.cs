@@ -8,7 +8,7 @@ public class InterlocutorSpeechItem : IStoryboardItem
         Block = new StoryboardBlock(this);
     }
 
-    public async Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
+    public async Task<IStoryboardItem?> EnterAsync(IStoryContextEventCaller context)
     {
         await context.Interlocutor.Speech.OpenAsync();
         return this;

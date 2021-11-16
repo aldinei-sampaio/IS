@@ -7,7 +7,7 @@ public struct MusicItem : IStoryboardItem
     public MusicItem(string musicName, ICondition? condition)
         => (MusicName, Condition) = (musicName, condition);
 
-    public async Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
+    public async Task<IStoryboardItem?> EnterAsync(IStoryContextEventCaller context)
     {
         var oldValue = context.State.Set(Keys.Music, MusicName);
         await context.Music.ChangeAsync(MusicName);

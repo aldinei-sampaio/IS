@@ -21,6 +21,8 @@ namespace IS.Reading
         public NavigationEventObject Navigation { get; } = new NavigationEventObject();
         public PromptEventObject<Trophy> Trophy { get; } = new PromptEventObject<Trophy>();
 
+        public IStoryboardItem? CurrentItem { get; internal set; }
+
         ISimpleEvents IStoryContextEvents.Music => Music;
         ISimpleEvents IStoryContextEvents.Background => Background;
         IOpenCloseEvents IStoryContextEvents.Narration => Narration;

@@ -7,10 +7,10 @@ public struct VarIncrementItem : IStoryboardItem
     public VarIncrementItem(VarIncrement increment, ICondition? condition)
         => (Increment, Condition) = (increment, condition);
 
-    public Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
+    public Task<IStoryboardItem?> EnterAsync(IStoryContextEventCaller context)
     {
         context.Variables[Increment.Name] = context.Variables[Increment.Name] + Increment.Value;
-        return Task.FromResult<IStoryboardItem>(new VarIncrementItem(new VarIncrement(Increment.Name, -Increment.Value), Condition));
+        return Task.FromResult<IStoryboardItem?>(new VarIncrementItem(new VarIncrement(Increment.Name, -Increment.Value), Condition));
     }
 
     public ICondition? Condition { get; }

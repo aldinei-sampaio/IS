@@ -13,7 +13,7 @@ public class PromptItem : IStoryboardItem
 
     public StoryboardBlock Block { get; }
 
-    public async Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
+    public async Task<IStoryboardItem?> EnterAsync(IStoryContextEventCaller context)
     {
         await context.Prompt.OpenAsync(Prompt);
         return this;

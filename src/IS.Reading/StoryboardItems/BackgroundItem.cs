@@ -7,7 +7,7 @@ public struct BackgroundItem : IStoryboardItem
     public BackgroundItem(string imageName, ICondition? condition)
         => (ImageName, Condition) = (imageName, condition);
 
-    public async Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
+    public async Task<IStoryboardItem?> EnterAsync(IStoryContextEventCaller context)
     {
         var oldValue = context.State.Set(Keys.BackgroundImage, ImageName);
         await context.Background.ChangeAsync(ImageName);

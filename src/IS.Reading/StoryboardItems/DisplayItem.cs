@@ -9,7 +9,7 @@ public struct DisplayItem : IStoryboardItem
 
     public ICondition? Condition { get; }
 
-    public async Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
+    public async Task<IStoryboardItem?> EnterAsync(IStoryContextEventCaller context)
     {
         await context.Display.OpenAsync(Display);
         return this;

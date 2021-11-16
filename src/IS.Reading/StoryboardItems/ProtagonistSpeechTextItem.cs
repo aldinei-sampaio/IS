@@ -7,7 +7,7 @@ public struct ProtagonistSpeechTextItem : IStoryboardItem
     public ProtagonistSpeechTextItem(string text, ICondition? condition)
         => (Text, Condition) = (text, condition);
 
-    public async Task<IStoryboardItem> EnterAsync(IStoryContextEventCaller context)
+    public async Task<IStoryboardItem?> EnterAsync(IStoryContextEventCaller context)
     {
         await context.Protagonist.Speech.ChangeAsync(Text);
         return this;
