@@ -25,6 +25,8 @@ public class TestNode : INavigationNode
 
     public ICondition Condition { get; }
 
+    public INavigationBlock ChildBlock => null;
+
     public Task<INavigationNode> EnterAsync(INavigationContext context)
     {
         log?.Add($"Enter:{Name}");

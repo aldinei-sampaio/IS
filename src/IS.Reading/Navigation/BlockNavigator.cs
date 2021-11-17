@@ -11,7 +11,9 @@
                 OriginalNode = originalNode;
             }
 
-            public ICondition? Condition => null;
+            public ICondition? Condition => throw new NotImplementedException();
+
+            public INavigationBlock? ChildBlock => throw new NotImplementedException();
 
             public Task<INavigationNode> EnterAsync(INavigationContext context)
                 => throw new NotImplementedException();

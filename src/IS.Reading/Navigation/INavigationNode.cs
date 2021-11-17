@@ -5,5 +5,6 @@
         Task<INavigationNode> EnterAsync(INavigationContext context);
         Task LeaveAsync(INavigationContext context);
         ICondition? Condition { get; }
+        INavigationBlock? ChildBlock { get; }
     }
 }
