@@ -2,27 +2,27 @@
 {
     public class BlockNavigator : IBlockNavigator
     {
-        private class BlockedNode : INavigationNode
+        private class BlockedNode : INode
         {
-            public INavigationNode OriginalNode { get; }
+            public INode OriginalNode { get; }
 
-            public BlockedNode(INavigationNode originalNode)
+            public BlockedNode(INode originalNode)
             {
                 OriginalNode = originalNode;
             }
 
             public ICondition? Condition => throw new NotImplementedException();
 
-            public INavigationBlock? ChildBlock => throw new NotImplementedException();
+            public IBlock? ChildBlock => throw new NotImplementedException();
 
-            public Task<INavigationNode> EnterAsync(INavigationContext context)
+            public Task<INode> EnterAsync(IContext context)
                 => throw new NotImplementedException();
 
-            public Task LeaveAsync(INavigationContext context)
+            public Task LeaveAsync(IContext context)
                 => throw new NotImplementedException();
         }
 
-        private static async Task LeaveCurrentNodeAsync(INavigationBlock block, INavigationContext context)
+        private static async Task LeaveCurrentNodeAsync(IBlock block, IContext context)
         {
             if (block.Current is null)
                 return;
@@ -31,7 +31,7 @@
             block.Current = null;
         }
 
-        public async Task<INavigationNode?> MoveNextAsync(INavigationBlock block, INavigationContext context)
+        public async Task<INode?> MoveNextAsync(IBlock block, IContext context)
         {
             await LeaveCurrentNodeAsync(block, context);
 
@@ -48,7 +48,7 @@
             return item;
         }
 
-        private static INavigationNode? GetNextNode(INavigationBlock block)
+        private static INode? GetNextNode(IBlock block)
         {
             if (block.ForwardStack.TryPop(out var stackItem))
                 return stackItem;
@@ -59,7 +59,7 @@
             return null;
         }
 
-        private static INavigationNode? GetNextValidNode(INavigationBlock block, INavigationContext context)
+        private static INode? GetNextValidNode(IBlock block, IContext context)
         {
             for (; ; )
             {
@@ -74,7 +74,7 @@
             }
         }
 
-        public async Task<INavigationNode?> MovePreviousAsync(INavigationBlock block, INavigationContext context)
+        public async Task<INode?> MovePreviousAsync(IBlock block, IContext context)
         {
             await LeaveCurrentNodeAsync(block, context);
 
@@ -91,7 +91,7 @@
             return item;
         }
 
-        private static INavigationNode? GetValidPreviousNode(INavigationBlock block)
+        private static INode? GetValidPreviousNode(IBlock block)
         {
             for (; ; )
             {

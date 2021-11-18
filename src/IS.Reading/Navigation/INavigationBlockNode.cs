@@ -1,7 +1,7 @@
 ﻿namespace IS.Reading.Navigation
 {
-    public interface INavigationBlockNode : INavigationNode
+    public interface INavigationBlockNode : INode
     {
-        INavigationBlock Block { get; }
+        IBlock Block { get; }
     }
 }

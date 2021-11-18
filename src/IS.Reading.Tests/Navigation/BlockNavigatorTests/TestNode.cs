@@ -1,6 +1,6 @@
 ﻿namespace IS.Reading.Navigation.BlockNavigatorTests;
 
-public class TestNode : INavigationNode
+public class TestNode : INode
 {
     private readonly List<string> log;
 
@@ -21,19 +21,19 @@ public class TestNode : INavigationNode
 
     public string Name { get; }
 
-    public INavigationNode Reversed { get; internal set; }
+    public INode Reversed { get; internal set; }
 
     public ICondition Condition { get; }
 
-    public INavigationBlock ChildBlock => null;
+    public IBlock ChildBlock => null;
 
-    public Task<INavigationNode> EnterAsync(INavigationContext context)
+    public Task<INode> EnterAsync(IContext context)
     {
         log?.Add($"Enter:{Name}");
         return Task.FromResult(Reversed);
     }
 
-    public Task LeaveAsync(INavigationContext context)
+    public Task LeaveAsync(IContext context)
     {
         log?.Add($"Leave:{Name}");
         return Task.CompletedTask;

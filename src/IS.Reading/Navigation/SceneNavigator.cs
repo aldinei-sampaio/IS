@@ -1,6 +1,6 @@
 ﻿namespace IS.Reading.Navigation;
 
-public class SceneNavigator
+public class SceneNavigator : ISceneNavigator
 {
     private readonly IBlockNavigator blockNavigator;
 
@@ -8,8 +8,8 @@ public class SceneNavigator
         => this.blockNavigator = blockNavigator;
 
     public async Task<bool> MoveAsync(
-        INavigationStoryboard storyboard,
-        INavigationContext context,
+        IStoryboard storyboard,
+        IContext context,
         bool forward
     )
     {
@@ -20,7 +20,7 @@ public class SceneNavigator
 
         for (; ; )
         {
-            INavigationNode? item;
+            INode? item;
 
             if (forward)
                 item = await blockNavigator.MoveNextAsync(block, context);
@@ -49,7 +49,7 @@ public class SceneNavigator
                 continue;
             }
 
-            if (item is INavigationPauseNode)
+            if (item is IPauseNode)
             {
                 storyboard.CurrentNode = item;
                 return true;

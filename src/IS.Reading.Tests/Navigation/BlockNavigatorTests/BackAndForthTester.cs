@@ -2,8 +2,8 @@
 
 public class BackAndForthTester
 {
-    public INavigationBlock Block { get; }
-    public INavigationContext Context { get; }
+    public IBlock Block { get; }
+    public IContext Context { get; }
     public BlockNavigator Navigator { get; }
 
     private List<string> log = new();
@@ -11,8 +11,8 @@ public class BackAndForthTester
     public BackAndForthTester()
     {
         Navigator = new BlockNavigator();
-        Block = A.Dummy<INavigationBlock>();
-        Context = A.Dummy<INavigationContext>();
+        Block = A.Dummy<IBlock>();
+        Context = A.Dummy<IContext>();
     }
 
     public void CheckLog(params string[] expectedLogEntries)

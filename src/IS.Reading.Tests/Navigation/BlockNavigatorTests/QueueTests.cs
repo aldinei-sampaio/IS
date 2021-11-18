@@ -2,15 +2,15 @@
 
 public class QueueTests
 {
-    private readonly INavigationBlock block;
-    private readonly INavigationContext context;
+    private readonly IBlock block;
+    private readonly IContext context;
     private readonly BlockNavigator sut;
 
     public QueueTests()
     {
         sut = new();
-        block = A.Dummy<INavigationBlock>();
-        context = A.Dummy<INavigationContext>();
+        block = A.Dummy<IBlock>();
+        context = A.Dummy<IContext>();
     }
 
     [Fact]
@@ -70,15 +70,15 @@ public class QueueTests
         CheckQueueCount(0, 2, 0);
     }
 
-    private async Task TestPreviousAsync(INavigationNode node)
+    private async Task TestPreviousAsync(INode node)
         => (await sut.MovePreviousAsync(block, context)).Should().BeSameAs(node);
 
-    private async Task TestNextAsync(INavigationNode node)
+    private async Task TestNextAsync(INode node)
         => (await sut.MoveNextAsync(block, context)).Should().BeSameAs(node);
 
-    private static INavigationNode FakeNode(INavigationContext context)
+    private static INode FakeNode(IContext context)
     {
-        var node = A.Fake<INavigationNode>();
+        var node = A.Fake<INode>();
         A.CallTo(() => node.Condition).Returns(null);
         A.CallTo(() => node.EnterAsync(context)).Returns(node);
         return node;

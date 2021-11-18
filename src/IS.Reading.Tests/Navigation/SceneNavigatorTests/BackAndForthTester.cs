@@ -2,16 +2,16 @@
 
 public class BackAndForthTester
 {
-    public interface ITestPauseNode : INavigationPauseNode
+    public interface ITestPauseNode : IPauseNode
     {
         public string Name { get; set; }
     }
 
-    private readonly INavigationContext navigationContext = A.Fake<INavigationContext>();
-    private readonly INavigationStoryboard navigationStoryboard = A.Dummy<INavigationStoryboard>();
+    private readonly IContext navigationContext = A.Fake<IContext>();
+    private readonly IStoryboard navigationStoryboard = A.Dummy<IStoryboard>();
     private readonly SceneNavigator sut;
 
-    private readonly Queue<INavigationNode> queue = new();
+    private readonly Queue<INode> queue = new();
 
     public BackAndForthTester(bool? forward = null)
     {
@@ -39,7 +39,7 @@ public class BackAndForthTester
 
     public void AddDummy()
     {
-        var node = A.Fake<INavigationNode>(i => i.Strict());
+        var node = A.Fake<INode>(i => i.Strict());
         A.CallTo(() => node.ChildBlock).Returns(null);
         queue.Enqueue(node);
     }
