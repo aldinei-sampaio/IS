@@ -12,10 +12,4 @@ public struct Block : IBlock
     public Stack<INode> BackwardStack { get; } = new();
 
     public INode? Current { get; set; } = null;
-
-    public Block(params INode[] nodes)
-    {
-        foreach (var node in nodes)
-            ForwardQueue.Enqueue(node);
-    }
 }

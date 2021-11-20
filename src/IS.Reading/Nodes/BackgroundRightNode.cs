@@ -2,14 +2,16 @@
 
 namespace IS.Reading.Nodes
 {
-    public struct BackgroundRightNode : INode
+    public class BackgroundRightNode : INode
     {
         public string ImageName { get; }
 
         public BackgroundRightNode(string imageName, ICondition? condition)
-            => (ImageName, Condition) = (imageName, condition);
+            => (ImageName, When) = (imageName, condition);
 
-        public ICondition? Condition { get; }
+        public ICondition? When { get; }
+
+        public ICondition? While => null;
 
         public IBlock? ChildBlock => null;
 

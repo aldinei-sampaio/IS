@@ -2,12 +2,14 @@
 
 namespace IS.Reading.Nodes
 {
-    public struct PauseNode : IPauseNode
+    public class PauseNode : IPauseNode
     {
         public PauseNode(ICondition? condition)
-            => Condition = condition;
+            => When = condition;
 
-        public ICondition? Condition { get; }
+        public ICondition? When { get; }
+
+        public ICondition? While => null;
 
         public IBlock? ChildBlock => null;
 

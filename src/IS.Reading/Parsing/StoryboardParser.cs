@@ -1,46 +1,33 @@
 ﻿using IS.Reading.Navigation;
-using IS.Reading.Parsing.NodeParsers;
-using System.Collections.Generic;
+using IS.Reading.Parsing.Nodes;
 using System.IO;
-using System.Threading;
 using System.Xml;
-using System.Xml.Linq;
 
 namespace IS.Reading.Parsing;
 
 public class StoryboardParser
 {
-    private readonly Dictionary<string, INodeParser> parsers = CreateParsers();
+    private readonly INodeParser nodeParser;
 
-    private static Dictionary<string, INodeParser> CreateParsers()
+    public StoryboardParser(INodeParser nodeParser)
     {
-        return new(StringComparer.OrdinalIgnoreCase)
-        {
-            { "background", new BackgroundParser() }
-        };
+        this.nodeParser = nodeParser;
     }
 
     public async Task<IStoryboard> ParseAsync(Stream stream)
     {
+        var context = new ParsingContext();
         var xmlReader = XmlReader.Create(stream);
         await xmlReader.MoveToContentAsync();
 
-        var block = new Block();
+        var node = await nodeParser.ParseAsync(xmlReader, context);
 
-        while (await xmlReader.ReadAsync())
-        {
-            if (xmlReader.NodeType == XmlNodeType.Element)
-            {
-                if (!parsers.TryGetValue(xmlReader.LocalName, out var parser))
-                    throw new ElementNotRecognizedException(xmlReader.LocalName);
+        if (!context.IsSuccess)
+            throw new ParsingException(context.ToString());
 
-                using var elementReader = xmlReader.ReadSubtree();
-                var element = await XElement.LoadAsync(elementReader, LoadOptions.None, CancellationToken.None);
+        if (node is null || node.ChildBlock is null)
+            throw new InvalidOperationException();
 
-                block.ForwardQueue.Enqueue(parser.Parse(element));
-            }
-        }
-
-        return new Storyboard(block);
+        return new Storyboard(node.ChildBlock);
     }
 }

@@ -79,7 +79,7 @@ public class QueueTests
     private static INode FakeNode(IContext context)
     {
         var node = A.Fake<INode>();
-        A.CallTo(() => node.Condition).Returns(null);
+        A.CallTo(() => node.When).Returns(null);
         A.CallTo(() => node.EnterAsync(context)).Returns(node);
         return node;
     }

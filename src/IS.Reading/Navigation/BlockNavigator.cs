@@ -11,7 +11,9 @@
                 OriginalNode = originalNode;
             }
 
-            public ICondition? Condition => throw new NotImplementedException();
+            public ICondition? When => throw new NotImplementedException();
+
+            public ICondition? While => throw new NotImplementedException();
 
             public IBlock? ChildBlock => throw new NotImplementedException();
 
@@ -67,7 +69,7 @@
                 if (item == null)
                     return null;
 
-                if (item.Condition == null || item.Condition.Evaluate(context.Variables))
+                if (item.When == null || item.When.Evaluate(context.Variables))
                     return item;
 
                 block.BackwardStack.Push(new BlockedNode(item));

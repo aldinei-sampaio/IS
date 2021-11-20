@@ -2,14 +2,16 @@
 
 namespace IS.Reading.Nodes
 {
-    public struct BackgroundColorNode : INode
+    public class BackgroundColorNode : INode
     {
         public string Color { get; }
 
         public BackgroundColorNode(string color, ICondition? condition)
-            => (Color, Condition) = (color, condition);
+            => (Color, When) = (color, condition);
 
-        public ICondition? Condition { get; }
+        public ICondition? When { get; }
+
+        public ICondition? While => null;
 
         public IBlock? ChildBlock => null;
 

@@ -17,6 +17,18 @@ namespace IS.Reading.Conditions
         private const string RegexPattern1 = /* language=regex */ @"^(?<var>[A-Za-z0-9_]+(\,[A-Za-z0-9_]+)*)$";
         private const string RegexPattern2 = /* language=regex */ @"^(?<var>[A-Za-z0-9_]+)(\[(?<min>\-?\d{0,9})?((?<sep>\:)(?<max>\-?\d{0,9})?)?\])?$";
 
+        public static bool TryParse(string text, out Condition condition)
+        {
+            var result = Parse(text);
+            if (result is not null)
+            {
+                condition = result.Value;
+                return true;
+            }
+            condition = Condition.Empty;
+            return false;
+        }
+
         public static Condition? Parse(string text)
         {
             if (string.IsNullOrEmpty(text))

@@ -2,12 +2,14 @@
 
 namespace IS.Reading.Nodes
 {
-    public struct BackgroundScrollNode : INode
+    public class BackgroundScrollNode : INode
     {
         public BackgroundScrollNode(ICondition? condition)
-            => Condition = condition;
+            => When = condition;
 
-        public ICondition? Condition { get; }
+        public ICondition? When { get; }
+
+        public ICondition? While => null;
 
         public IBlock? ChildBlock => null;
 

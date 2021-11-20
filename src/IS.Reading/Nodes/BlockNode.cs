@@ -2,12 +2,14 @@
 
 namespace IS.Reading.Nodes
 {
-    public struct BlockNode : INode
+    public class BlockNode : INode
     {
-        public BlockNode(IBlock childBlock, ICondition? condition)
-            => (ChildBlock, Condition) = (childBlock, condition);
+        public BlockNode(IBlock childBlock, ICondition? when, ICondition? @while)
+            => (ChildBlock, When, While) = (childBlock, when, @while);
 
-        public ICondition? Condition { get; }
+        public ICondition? When { get; }
+
+        public ICondition? While { get; }
 
         public IBlock? ChildBlock { get; }
 

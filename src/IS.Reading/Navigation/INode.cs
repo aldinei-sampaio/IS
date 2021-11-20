@@ -4,7 +4,8 @@
     {
         Task<INode> EnterAsync(IContext context);
         Task LeaveAsync(IContext context);
-        ICondition? Condition { get; }
+        ICondition? When { get; }
+        ICondition? While { get; }
         IBlock? ChildBlock { get; }
     }
 }

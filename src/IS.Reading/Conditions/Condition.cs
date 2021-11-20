@@ -3,6 +3,8 @@
 
     public struct Condition : ICondition
     {
+        public static Condition Empty { get; } = new();
+
         public string[] VariableNames { get; }
         public ConditionType Operator { get; }
         public int Value { get; }

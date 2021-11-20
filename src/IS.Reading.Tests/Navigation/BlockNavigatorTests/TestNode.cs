@@ -15,7 +15,7 @@ public class TestNode : INode
     private TestNode(string name, ICondition condition, List<string> log)
     {
         Name = name;
-        Condition = condition;
+        When = condition;
         this.log = log;
     }
 
@@ -23,7 +23,7 @@ public class TestNode : INode
 
     public INode Reversed { get; internal set; }
 
-    public ICondition Condition { get; }
+    public ICondition When { get; }
 
     public IBlock ChildBlock => null;
 
