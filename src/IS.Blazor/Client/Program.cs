@@ -18,7 +18,7 @@ namespace IS.Blazor
             builder.Services.AddScoped<IAssetManager, InternalAssetManager>();
             builder.Services.AddScoped<ISaveManager, InternalSaveManager>();
 
-            await builder.Build().Services.RunAsync();
+            await builder.Build().RunAsync();
         }
     }
 }

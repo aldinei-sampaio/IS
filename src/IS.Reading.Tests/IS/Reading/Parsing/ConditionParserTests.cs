@@ -19,11 +19,16 @@ public class ConditionParserTests
     [InlineData("abcde [1:2]")]
     [InlineData("abcde[1:2] ")]
     [InlineData(" abcde[1:2]")]
+    [InlineData("abcde[a:2]")]
+    [InlineData("abcde[2:a]")]
+    [InlineData("abcde[a:]")]
+    [InlineData("abcde[:a]")]
     [InlineData("[0]")]
     [InlineData("[0:]")]
     [InlineData("[0:1]")]
     [InlineData("[:1]")]
     [InlineData("abc[2147483647]")]
+    [InlineData("abc[:2147483647]")]
     [InlineData("abc[1000000000:]")]
     [InlineData("abc[:1234567890]")]
     [InlineData("abc[2147483647:2147483647]")]
@@ -67,33 +72,33 @@ public class ConditionParserTests
     [InlineData("rage[-999999999:-999999999]", "rage", -999999999, -999999999, ConditionType.Between)]
     public void Parse(string expression, string varname, int v1, int v2, ConditionType op)
     {
-        var condition = (Condition?)sut.Parse(expression);
+        var condition = (Condition)sut.Parse(expression);
         condition.Should().NotBeNull();
-        condition.Value.VariableNames.Should().BeEquivalentTo(varname);
-        condition.Value.Value.Should().Be(v1);
-        condition.Value.Value2.Should().Be(v2);
-        condition.Value.Operator.Should().Be(op);
+        condition.VariableNames.Should().BeEquivalentTo(varname);
+        condition.Value.Should().Be(v1);
+        condition.Value2.Should().Be(v2);
+        condition.Operator.Should().Be(op);
     }
 
     [Fact]
     public void MultipleVariables1()
     {
-        var condition = (Condition?)sut.Parse("rage,fury");
+        var condition = (Condition)sut.Parse("rage,fury");
         condition.Should().NotBeNull();
-        condition.Value.VariableNames.Should().BeEquivalentTo("rage", "fury");
-        condition.Value.Operator.Should().Be(ConditionType.Defined);
-        condition.Value.Value.Should().Be(0);
-        condition.Value.Value2.Should().Be(0);
+        condition.VariableNames.Should().BeEquivalentTo("rage", "fury");
+        condition.Operator.Should().Be(ConditionType.Defined);
+        condition.Value.Should().Be(0);
+        condition.Value2.Should().Be(0);
     }
 
     [Fact]
     public void MultipleVariables2()
     {
-        var condition = (Condition?)sut.Parse("!a,b,c");
+        var condition = (Condition)sut.Parse("!a,b,c");
         condition.Should().NotBeNull();
-        condition.Value.VariableNames.Should().BeEquivalentTo("a", "b", "c");
-        condition.Value.Operator.Should().Be(ConditionType.Undefined);
-        condition.Value.Value.Should().Be(0);
-        condition.Value.Value2.Should().Be(0);
+        condition.VariableNames.Should().BeEquivalentTo("a", "b", "c");
+        condition.Operator.Should().Be(ConditionType.Undefined);
+        condition.Value.Should().Be(0);
+        condition.Value2.Should().Be(0);
     }
 }

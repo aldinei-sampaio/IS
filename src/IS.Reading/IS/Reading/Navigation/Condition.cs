@@ -1,9 +1,7 @@
 ﻿namespace IS.Reading.Navigation;
 
-public struct Condition : ICondition
+public class Condition : ICondition
 {
-    public static Condition Empty { get; } = new();
-
     public string[] VariableNames { get; }
     public ConditionType Operator { get; }
     public int Value { get; }
@@ -23,7 +21,6 @@ public struct Condition : ICondition
         {
             ConditionType.Defined => value > 0,
             ConditionType.Undefined => value <= 0,
-            ConditionType.EqualTo => value == Value,
             ConditionType.NotEqualTo => value != Value,
             ConditionType.EqualOrLessThan => value <= Value,
             ConditionType.LessThan => value < Value,
@@ -42,7 +39,6 @@ public struct Condition : ICondition
         {
             ConditionType.Defined => $"{joinedNames}[1:]",
             ConditionType.Undefined => $"{joinedNames}[:0]",
-            ConditionType.EqualTo => $"{joinedNames}[{Value}]",
             ConditionType.NotEqualTo => $"!{joinedNames}[{Value}]",
             ConditionType.EqualOrLessThan => $"{joinedNames}[:{Value}]",
             ConditionType.LessThan => $"!{joinedNames}[{Value}:]",

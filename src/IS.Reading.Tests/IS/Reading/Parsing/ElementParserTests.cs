@@ -9,14 +9,10 @@ public class ElementParserTests
     [Fact]
     public async Task Empty()
     {
-        using var textReader = new StringReader("<teste />");
-        using var reader = XmlReader.Create(textReader, new() { Async = true });
-        reader.MoveToContent();
-
+        using var reader = CreateReader("<teste />");
         var context = A.Dummy<IParsingContext>();
 
         var sut = new ElementParser();
-
         var parsed = await sut.ParseAsync(reader, context);
 
         parsed.Should().NotBeNull();
@@ -39,9 +35,7 @@ public class ElementParserTests
     [InlineData("<t abc=\"1\" />", false, false)]
     public async Task AttributeParsing(string xml, bool hasWhen, bool hasWhile)
     {
-        using var textReader = new StringReader(xml);
-        using var reader = XmlReader.Create(textReader, new() { Async = true });
-        reader.MoveToContent();
+        using var reader = CreateReader(xml);
 
         var context = A.Dummy<IParsingContext>();
         var whenAttribute = A.Dummy<WhenAttribute>();
@@ -80,9 +74,7 @@ public class ElementParserTests
         const string whenMessage = "Atributo não reconhecido: when";
         const string whileMessage = "Atributo não reconhecido: while";
 
-        using var textReader = new StringReader("<teste when=\"1\" while=\"0\" />");
-        using var reader = XmlReader.Create(textReader, new() { Async = true });
-        reader.MoveToContent();
+        using var reader = CreateReader("<teste when=\"1\" while=\"0\" />");
 
         var context = A.Fake<IParsingContext>(i => i.Strict());
         A.CallTo(() => context.LogError(reader, whenMessage)).DoesNothing();
@@ -108,9 +100,7 @@ public class ElementParserTests
     [InlineData("<t></t>", false, false)]
     public async Task ElementParsing(string xml, bool hasA, bool hasB)
     {
-        using var textReader = new StringReader(xml);
-        using var reader = XmlReader.Create(textReader, new() { Async = true });
-        reader.MoveToContent();
+        using var reader = CreateReader(xml);
 
         var context = A.Dummy<IParsingContext>();
 
@@ -144,6 +134,151 @@ public class ElementParserTests
         {
             parsed.Block.Should().BeNull();
         }        
+    }
+
+    [Fact]
+    public async Task UnconfiguredElement()
+    {
+        const string aMessage = "Elemento não reconhecido: a";
+        const string bMessage = "Elemento não reconhecido: b";
+
+        using var reader = CreateReader("<t><a /><b /><c /></t>");
+
+        var context = A.Fake<IParsingContext>(i => i.Strict());
+        A.CallTo(() => context.LogError(reader, aMessage)).DoesNothing();
+        A.CallTo(() => context.LogError(reader, bMessage)).DoesNothing();
+
+        var node = A.Dummy<INode>();
+
+        var sut = new ElementParser();
+        sut.ChildParsers.Add("c", new DummyNodeParser(node));
+
+        var parsed = await sut.ParseAsync(reader, context);
+
+        parsed.Should().NotBeNull();
+        parsed.Block.Should().NotBeNull();
+        parsed.Block.ForwardQueue.Peek().Should().BeSameAs(node);
+
+        A.CallTo(() => context.LogError(reader, aMessage)).MustHaveHappenedOnceExactly();
+        A.CallTo(() => context.LogError(reader, bMessage)).MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task TextParsing()
+    {
+        using var reader = CreateReader("<t>Pindamonhangaba</t>");
+
+        var context = A.Fake<IParsingContext>(i => i.Strict());
+        
+        var textParser = A.Fake<ITextParser>(i => i.Strict());
+        A.CallTo(() => textParser.Parse(reader, context, "Pindamonhangaba")).Returns("Formatado");
+
+        var sut = new ElementParser();
+        sut.TextParser = textParser;
+
+        var parsed = await sut.ParseAsync(reader, context);
+
+        parsed.Should().NotBeNull();
+        parsed.When.Should().BeNull();
+        parsed.While.Should().BeNull();
+        parsed.Block.Should().BeNull();
+        parsed.Text.Should().Be("Formatado");
+    }
+
+    [Theory]
+    [InlineData("<t><!-- comentário --></t>", "Conteúdo inválido detectado: Comment")]
+    [InlineData("<t><![CDATA[ seção CDATA ]]></t>", "Conteúdo inválido detectado: CDATA")]
+    public async Task InvalidContent(string xmlContent, string message)
+    {
+        using var reader = CreateReader(xmlContent);
+        var context = A.Fake<IParsingContext>(i => i.Strict());
+        A.CallTo(() => context.LogError(reader, message)).DoesNothing();
+        var textParser = A.Fake<ITextParser>(i => i.Strict());
+
+        var sut = new ElementParser();
+        sut.TextParser = textParser;
+
+        var parsed = await sut.ParseAsync(reader, context);
+
+        parsed.Should().NotBeNull();
+        parsed.When.Should().BeNull();
+        parsed.While.Should().BeNull();
+        parsed.Block.Should().BeNull();
+        parsed.Text.Should().BeNull();
+
+        A.CallTo(() => context.LogError(reader, message)).MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task UnconfiguredText()
+    {
+        const string message = "Este elemento não permite texto.";
+
+        using var reader = CreateReader("<t>Pindamonhangaba</t>");
+
+        var context = A.Fake<IParsingContext>(i => i.Strict());
+        A.CallTo(() => context.LogError(reader, message)).DoesNothing();
+
+        var sut = new ElementParser();
+
+        var parsed = await sut.ParseAsync(reader, context);
+
+        parsed.Should().NotBeNull();
+        parsed.When.Should().BeNull();
+        parsed.While.Should().BeNull();
+        parsed.Block.Should().BeNull();
+        parsed.Text.Should().BeNull();
+
+        A.CallTo(() => context.LogError(reader, message)).MustHaveHappenedOnceExactly();
+    }
+
+    [Theory]
+    [InlineData("<t>abc<a /></t>", true)]
+    [InlineData("<t><a />abc</t>", false)]
+    public async Task TextAndElementSimultaneouslyIsNotAllowed(string xml, bool textFirst)
+    {
+        const string message = "Não é permitido texto dentro de elemento que tenha elementos filhos.";
+
+        using var reader = CreateReader(xml);
+
+        var context = A.Fake<IParsingContext>(i => i.Strict());
+        A.CallTo(() => context.LogError(reader, message)).DoesNothing();
+
+        var textParser = A.Fake<ITextParser>(i => i.Strict());
+        A.CallTo(() => textParser.Parse(reader, context, "abc")).Returns("def");
+
+        var node = A.Dummy<INode>();
+
+        var sut = new ElementParser();
+        sut.TextParser = textParser;
+        sut.ChildParsers.Add("a", new DummyNodeParser(node));
+
+        var parsed = await sut.ParseAsync(reader, context);
+
+        parsed.Should().NotBeNull();
+        parsed.When.Should().BeNull();
+        parsed.While.Should().BeNull();
+        if (textFirst)
+        {
+            parsed.Block.Should().BeNull();
+            parsed.Text.Should().Be("def");
+        }
+        else
+        {
+            parsed.Block.Should().NotBeNull();
+            parsed.Block.ForwardQueue.Peek().Should().BeEquivalentTo(node);
+            parsed.Text.Should().BeNull();
+        }
+
+        A.CallTo(() => context.LogError(reader, message)).MustHaveHappenedOnceExactly();
+    }
+
+    private static XmlReader CreateReader(string xmlContents)
+    {
+        var textReader = new StringReader(xmlContents);
+        var reader = XmlReader.Create(textReader, new() { Async = true });
+        reader.MoveToContent();
+        return reader;
     }
 
     private class DummyNodeParser : INodeParser

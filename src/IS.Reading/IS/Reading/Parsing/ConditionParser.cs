@@ -68,8 +68,7 @@ public class ConditionParser : IConditionParser
             else
             {
                 op = negate ? ConditionType.GreaterThan : ConditionType.EqualOrLessThan;
-                if (!int.TryParse(max, out value))
-                    return null;
+                value = int.Parse(max);
             }
         }
         else
@@ -80,14 +79,13 @@ public class ConditionParser : IConditionParser
                     op = negate ? ConditionType.LessThan : ConditionType.EqualOrGreaterThan;
                 else
                     op = negate ? ConditionType.NotEqualTo : ConditionType.EqualTo;
-                if (!int.TryParse(min, out value))
-                    return null;
+                value = int.Parse(min);
             }
             else
             {
                 op = negate ? ConditionType.NotBetween : ConditionType.Between;
-                if (!int.TryParse(min, out value) || !int.TryParse(max, out value2))
-                    return null;
+                value = int.Parse(min);
+                value2 = int.Parse(max);
             }
         }
 

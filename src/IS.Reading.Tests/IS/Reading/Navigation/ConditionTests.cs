@@ -71,4 +71,33 @@ public class ConditionTests
         condition.Should().NotBeNull();
         condition.Evaluate(context).Should().Be(expectedResult);
     }
+
+    [Theory]
+    [InlineData("a", ConditionType.LessThan, 2, 0, "!a[2:]")]
+    [InlineData("b,c", ConditionType.LessThan, -9, 599, "!b,c[-9:]")]
+    [InlineData("c", ConditionType.EqualOrLessThan, 1, 0, "c[:1]")]
+    [InlineData("d,e,f", ConditionType.EqualOrLessThan, -7, 831, "d,e,f[:-7]")]
+    [InlineData("e", ConditionType.GreaterThan, 3, 0, "!e[:3]")]
+    [InlineData("f,g", ConditionType.GreaterThan, -8, 324, "!f,g[:-8]")]
+    [InlineData("g", ConditionType.EqualOrGreaterThan, 6, 0, "g[6:]")]
+    [InlineData("h,i", ConditionType.EqualOrGreaterThan, -5, 28, "h,i[-5:]")]
+    [InlineData("i", ConditionType.Between, 1, 5, "i[1:5]")]
+    [InlineData("j,k,l", ConditionType.Between, -2, -1, "j,k,l[-2:-1]")]
+    [InlineData("k", ConditionType.Between, -1, 3, "k[-1:3]")]
+    [InlineData("l,m,n,o", ConditionType.NotBetween, 4, 6, "!l,m,n,o[4:6]")]
+    [InlineData("m", ConditionType.NotBetween, -8, -5, "!m[-8:-5]")]
+    [InlineData("n,o", ConditionType.NotBetween, -3, 4, "!n,o[-3:4]")]
+    [InlineData("o", ConditionType.Defined, 3, 8, "o[1:]")]
+    [InlineData("p,q,r", ConditionType.Defined, -9, -1, "p,q,r[1:]")]
+    [InlineData("q", ConditionType.Undefined, 5, 5, "q[:0]")]
+    [InlineData("r,s", ConditionType.Undefined, -3, -2, "r,s[:0]")]
+    [InlineData("s", ConditionType.EqualTo, 5, 0, "s[5]")]
+    [InlineData("t,u,v", ConditionType.EqualTo, -7, 951, "t,u,v[-7]")]
+    [InlineData("u", ConditionType.NotEqualTo, 6, 0, "!u[6]")]
+    [InlineData("v,w,x,y,z", ConditionType.NotEqualTo, -1, 357, "!v,w,x,y,z[-1]")]
+    public void ToStringTest(string varName, ConditionType type, int min, int max, string expected)
+    {
+        var sut = new Condition(varName.Split(','), type, min, max);
+        sut.ToString().Should().Be(expected);
+    }
 }

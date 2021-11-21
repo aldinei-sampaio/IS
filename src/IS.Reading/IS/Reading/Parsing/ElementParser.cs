@@ -75,12 +75,6 @@ public class ElementParser : IElementParser
                     continue;
                 }
 
-                if (textFound)
-                {
-                    parsingContext.LogError(reader, "Mais de um bloco de texto encontrado.");
-                    continue;
-                }
-
                 textFound = true;
 
                 if (TextParser is null)
