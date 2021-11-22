@@ -1,5 +1,7 @@
-﻿using IS.Reading.Parsing;
-using IS.Reading.Parsing.Attributes;
+﻿using IS.Reading.Navigation;
+using IS.Reading.Parsing;
+using IS.Reading.Parsing.AttributeParsers;
+using IS.Reading.Parsing.TextParsers;
 using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics.CodeAnalysis;
 
@@ -13,7 +15,12 @@ namespace IS.Reading
             services.AddSingleton<IConditionParser, ConditionParser>();
             services.AddSingleton<IWhenAttributeParser, WhenAttributeParser>();
             services.AddSingleton<IWhileAttributeParser, WhileAttributeParser>();            
-            services.AddTransient<IElementParser, ElementParser>();
+            services.AddSingleton<IElementParser, ElementParser>();
+
+            services.AddSingleton<IColorTextParser, ColorTextParser>();
+            services.AddSingleton<IBackgroundImageTextParser, BackgroundImageTextParser>();
+
+            services.AddSingleton<IBlockNavigator, BlockNavigator>();
 
             return services;
         }

@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="IS\Reading\Parsing\Attributes\" />
+    <Folder Include="IS\Reading\Parsing\NodeParsers\" />
   </ItemGroup>
 
 </Project>

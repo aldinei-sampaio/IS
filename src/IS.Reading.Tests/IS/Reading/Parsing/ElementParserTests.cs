@@ -1,5 +1,5 @@
 ﻿using IS.Reading.Navigation;
-using IS.Reading.Parsing.Attributes;
+using IS.Reading.Parsing.AttributeParsers;
 using System.Xml;
 
 namespace IS.Reading.Parsing;
@@ -11,9 +11,10 @@ public class ElementParserTests
     {
         using var reader = CreateReader("<teste />");
         var context = A.Dummy<IParsingContext>();
+        var settings = new DummySettings();
 
         var sut = new ElementParser();
-        var parsed = await sut.ParseAsync(reader, context);
+        var parsed = await sut.ParseAsync(reader, context, settings);
 
         parsed.Should().NotBeNull();
         parsed.Text.Should().BeNull();
@@ -47,11 +48,12 @@ public class ElementParserTests
         var whileParser = A.Fake<IAttributeParser>();
         A.CallTo(() => whileParser.Parse(reader, context)).Returns(whileAttribute);
 
-        var sut = new ElementParser();
-        sut.AttributeParsers.Add("when", whenParser);
-        sut.AttributeParsers.Add("while", whileParser);
+        var settings = new DummySettings();
+        settings.AttributeParsers.Add("when", whenParser);
+        settings.AttributeParsers.Add("while", whileParser);
 
-        var parsed = await sut.ParseAsync(reader, context);
+        var sut = new ElementParser();
+        var parsed = await sut.ParseAsync(reader, context, settings);
 
         parsed.Should().NotBeNull();
         parsed.Text.Should().BeNull();
@@ -80,9 +82,10 @@ public class ElementParserTests
         A.CallTo(() => context.LogError(reader, whenMessage)).DoesNothing();
         A.CallTo(() => context.LogError(reader, whileMessage)).DoesNothing();
 
-        var sut = new ElementParser();
+        var settings = new DummySettings();
 
-        var parsed = await sut.ParseAsync(reader, context);
+        var sut = new ElementParser();
+        var parsed = await sut.ParseAsync(reader, context, settings);
 
         parsed.Should().NotBeNull();
 
@@ -108,11 +111,12 @@ public class ElementParserTests
         var bNode = A.Dummy<INode>();
         var aParser = new DummyNodeParser(aNode);
 
-        var sut = new ElementParser();
-        sut.ChildParsers.Add("a", new DummyNodeParser(aNode));
-        sut.ChildParsers.Add("b", new DummyNodeParser(bNode));
+        var settings = new DummySettings();
+        settings.ChildParsers.Add("a", new DummyNodeParser(aNode));
+        settings.ChildParsers.Add("b", new DummyNodeParser(bNode));
 
-        var parsed = await sut.ParseAsync(reader, context);
+        var sut = new ElementParser();
+        var parsed = await sut.ParseAsync(reader, context, settings);
 
         parsed.Should().NotBeNull();
         parsed.Text.Should().BeNull();
@@ -149,11 +153,11 @@ public class ElementParserTests
         A.CallTo(() => context.LogError(reader, bMessage)).DoesNothing();
 
         var node = A.Dummy<INode>();
+        var settings = new DummySettings();
+        settings.ChildParsers.Add("c", new DummyNodeParser(node));
 
         var sut = new ElementParser();
-        sut.ChildParsers.Add("c", new DummyNodeParser(node));
-
-        var parsed = await sut.ParseAsync(reader, context);
+        var parsed = await sut.ParseAsync(reader, context, settings);
 
         parsed.Should().NotBeNull();
         parsed.Block.Should().NotBeNull();
@@ -173,10 +177,11 @@ public class ElementParserTests
         var textParser = A.Fake<ITextParser>(i => i.Strict());
         A.CallTo(() => textParser.Parse(reader, context, "Pindamonhangaba")).Returns("Formatado");
 
-        var sut = new ElementParser();
-        sut.TextParser = textParser;
+        var settings = new DummySettings();
+        settings.TextParser = textParser;
 
-        var parsed = await sut.ParseAsync(reader, context);
+        var sut = new ElementParser();
+        var parsed = await sut.ParseAsync(reader, context, settings);
 
         parsed.Should().NotBeNull();
         parsed.When.Should().BeNull();
@@ -195,10 +200,11 @@ public class ElementParserTests
         A.CallTo(() => context.LogError(reader, message)).DoesNothing();
         var textParser = A.Fake<ITextParser>(i => i.Strict());
 
-        var sut = new ElementParser();
-        sut.TextParser = textParser;
+        var settings = new DummySettings();
+        settings.TextParser = textParser;
 
-        var parsed = await sut.ParseAsync(reader, context);
+        var sut = new ElementParser();
+        var parsed = await sut.ParseAsync(reader, context, settings);
 
         parsed.Should().NotBeNull();
         parsed.When.Should().BeNull();
@@ -219,9 +225,10 @@ public class ElementParserTests
         var context = A.Fake<IParsingContext>(i => i.Strict());
         A.CallTo(() => context.LogError(reader, message)).DoesNothing();
 
-        var sut = new ElementParser();
+        var settings = new DummySettings();
 
-        var parsed = await sut.ParseAsync(reader, context);
+        var sut = new ElementParser();
+        var parsed = await sut.ParseAsync(reader, context, settings);
 
         parsed.Should().NotBeNull();
         parsed.When.Should().BeNull();
@@ -248,12 +255,12 @@ public class ElementParserTests
         A.CallTo(() => textParser.Parse(reader, context, "abc")).Returns("def");
 
         var node = A.Dummy<INode>();
+        var settings = new DummySettings();
+        settings.TextParser = textParser;
+        settings.ChildParsers.Add("a", new DummyNodeParser(node));
 
         var sut = new ElementParser();
-        sut.TextParser = textParser;
-        sut.ChildParsers.Add("a", new DummyNodeParser(node));
-
-        var parsed = await sut.ParseAsync(reader, context);
+        var parsed = await sut.ParseAsync(reader, context, settings);
 
         parsed.Should().NotBeNull();
         parsed.When.Should().BeNull();
@@ -271,6 +278,15 @@ public class ElementParserTests
         }
 
         A.CallTo(() => context.LogError(reader, message)).MustHaveHappenedOnceExactly();
+    }
+
+    private class DummySettings : IElementParserSettings
+    {
+        public ITextParser TextParser { get; set; }
+
+        public ParserDictionary<IAttributeParser> AttributeParsers { get; } = new();
+
+        public ParserDictionary<INodeParser> ChildParsers { get; } = new();
     }
 
     private static XmlReader CreateReader(string xmlContents)
