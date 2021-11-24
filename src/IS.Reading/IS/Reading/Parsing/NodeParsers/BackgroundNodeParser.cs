@@ -1,0 +1,61 @@
+﻿using IS.Reading.Navigation;
+using IS.Reading.Nodes;
+using IS.Reading.Parsing.AttributeParsers;
+using IS.Reading.Parsing.TextParsers;
+using System.Xml;
+
+namespace IS.Reading.Parsing.NodeParsers;
+
+public class BackgroundNodeParser : IBackgroundNodeParser
+{
+    private readonly IElementParser elementParser;
+
+    public IElementParserSettings Settings { get; }
+
+    public BackgroundNodeParser(
+        IElementParser elementParser,
+        IWhenAttributeParser whenAttributeParser,
+        IBackgroundImageTextParser backgroundImageTextParser,
+        IBackgroundColorNodeParser backgroundColorNodeParser,
+        IBackgroundLeftNodeParser backgroundLeftNodeParser,
+        IBackgroundRightNodeParser backgroundRightNodeParser,
+        IBackgroundScrollNodeParser backgroundScrollNodeParser,
+        IPauseNodeParser pauseNodeParser
+    )
+    {
+        this.elementParser = elementParser;
+        Settings = new ElementParserSettings(
+            whenAttributeParser, 
+            backgroundImageTextParser,
+            backgroundColorNodeParser,
+            backgroundLeftNodeParser,
+            backgroundRightNodeParser,
+            backgroundScrollNodeParser,
+            pauseNodeParser
+        );
+    }
+
+
+    public string ElementName => "background";
+
+    public async Task<INode?> ParseAsync(XmlReader reader, IParsingContext parsingContext)
+    {
+        var parsed = await elementParser.ParseAsync(reader, parsingContext, Settings);
+
+        if (!string.IsNullOrWhiteSpace(parsed.Text))
+        {
+            var block = new Block();
+            block.ForwardQueue.Enqueue(new BackgroundLeftNode(parsed.Text, null));
+            block.ForwardQueue.Enqueue(new BackgroundScrollNode(null));
+            return new BlockNode(block, parsed.When, parsed.While);
+        }
+
+        if (parsed.Block is null || parsed.Block.ForwardQueue.Count == 0)
+        {
+            parsingContext.LogError(reader, "Nome de imagem ou elemento filho era esperado.");
+            return null;
+        }
+
+        return new BlockNode(parsed.Block, parsed.When, parsed.While);
+    }
+}

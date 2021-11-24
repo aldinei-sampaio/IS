@@ -6,10 +6,10 @@ namespace IS.Reading.Parsing.AttributeParsers;
 public class WhenAttributeParserTests
 {
     [Fact]
-    public void ElementName()
+    public void AttributeName()
     {
         var sut = new WhenAttributeParser(A.Dummy<IConditionParser>());
-        sut.ElementName.Should().Be("when");
+        sut.AttributeName.Should().Be("when");
     }
 
     [Fact]

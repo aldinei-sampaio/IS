@@ -11,7 +11,7 @@ public class WhenAttributeParser : IWhenAttributeParser
         this.conditionParser = conditionParser;
     }
 
-    public string ElementName => "when";
+    public string AttributeName => "when";
 
     public IAttribute? Parse(XmlReader reader, IParsingContext parsingContext)
     {

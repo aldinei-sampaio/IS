@@ -5,16 +5,16 @@ using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers;
 
-public class BackgroundLeftNodeParserTests
+public class BackgroundRightNodeParserTests
 {
     private readonly XmlReader reader;
     private readonly IParsingContext context;
     private readonly IElementParser elementParser;
     private readonly IWhenAttributeParser whenAttributeParser;
     private readonly IBackgroundImageTextParser textParser;
-    private readonly BackgroundLeftNodeParser sut;
+    private readonly BackgroundRightNodeParser sut;
 
-    public BackgroundLeftNodeParserTests()
+    public BackgroundRightNodeParserTests()
     {
         reader = A.Dummy<XmlReader>();
         context = A.Fake<IParsingContext>(i => i.Strict());
@@ -28,7 +28,7 @@ public class BackgroundLeftNodeParserTests
     [Fact]
     public void Initialization()
     {
-        sut.ElementName.Should().Be("left");
+        sut.ElementName.Should().Be("right");
         sut.Settings.AttributeParsers.Should().ContainValues(whenAttributeParser);
         sut.Settings.ChildParsers.Should().BeEmpty();
         sut.Settings.TextParser.Should().BeSameAs(textParser);
@@ -44,9 +44,9 @@ public class BackgroundLeftNodeParserTests
         var result = await sut.ParseAsync(reader, context);
 
         result.Should().NotBeNull();
-        result.Should().BeOfType<BackgroundLeftNode>();
+        result.Should().BeOfType<BackgroundRightNode>();
 
-        var node = (BackgroundLeftNode)result;
+        var node = (BackgroundRightNode)result;
         node.When.Should().BeSameAs(parsed.When);
         node.While.Should().BeNull();
         node.ChildBlock.Should().BeNull();

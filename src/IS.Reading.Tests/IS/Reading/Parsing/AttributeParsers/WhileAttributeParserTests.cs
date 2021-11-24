@@ -6,10 +6,10 @@ namespace IS.Reading.Parsing.AttributeParsers;
 public class WhileAttributeParserTests
 {
     [Fact]
-    public void ElementName()
+    public void AttributetName()
     {
         var sut = new WhileAttributeParser(A.Dummy<IConditionParser>());
-        sut.ElementName.Should().Be("while");
+        sut.AttributeName.Should().Be("while");
     }
 
     [Fact]

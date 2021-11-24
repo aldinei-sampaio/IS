@@ -17,9 +17,9 @@ public class ElementParserSettingsTests
         var textParser = A.Dummy<ITextParser>();
 
         var attParser1 = A.Fake<IAttributeParser>();
-        A.CallTo(() => attParser1.ElementName).Returns("a");
+        A.CallTo(() => attParser1.AttributeName).Returns("a");
         var attParser2 = A.Fake<IAttributeParser>();
-        A.CallTo(() => attParser2.ElementName).Returns("b");
+        A.CallTo(() => attParser2.AttributeName).Returns("b");
         var nodeParser1 = A.Fake<INodeParser>();
         A.CallTo(() => nodeParser1.ElementName).Returns("c");
         var nodeParser2 = A.Dummy<INodeParser>();
@@ -51,7 +51,7 @@ public class ElementParserSettingsTests
     public void OnlyAttributeParser()
     {
         var attParser = A.Fake<IAttributeParser>();
-        A.CallTo(() => attParser.ElementName).Returns("a");
+        A.CallTo(() => attParser.AttributeName).Returns("a");
         var sut = new ElementParserSettings(attParser);
 
         sut.TextParser.Should().BeNull();

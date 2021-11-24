@@ -15,7 +15,7 @@ public class ElementParserSettings : IElementParserSettings
             switch(parser)
             {
                 case IAttributeParser attributeParser:
-                    AttributeParsers.Add(attributeParser.ElementName, attributeParser);
+                    AttributeParsers.Add(attributeParser.AttributeName, attributeParser);
                     break;
                 case INodeParser nodeParser:
                     ChildParsers.Add(nodeParser.ElementName, nodeParser);

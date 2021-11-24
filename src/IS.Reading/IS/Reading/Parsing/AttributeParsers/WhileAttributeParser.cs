@@ -11,7 +11,7 @@ public class WhileAttributeParser : IWhileAttributeParser
         this.conditionParser = conditionParser;
     }
 
-    public string ElementName => "while";
+    public string AttributeName => "while";
 
     public IAttribute? Parse(XmlReader reader, IParsingContext parsingContext)
     {
