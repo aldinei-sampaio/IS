@@ -5,7 +5,7 @@ public class HierarchyTests
     [Fact]
     public async Task Empty()
     {
-        var navigationContext = A.Dummy<IContext>();
+        var navigationContext = A.Dummy<INavigationContext>();
         var navigationStoryboard = A.Dummy<IStoryboard>();
 
         var blockNavigator = A.Fake<IBlockNavigator>(i => i.Strict());

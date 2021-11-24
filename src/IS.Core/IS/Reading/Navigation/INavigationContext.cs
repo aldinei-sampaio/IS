@@ -1,6 +1,6 @@
 ﻿namespace IS.Reading.Navigation;
 
-public interface IContext
+public interface INavigationContext
 {
     StringDictionary State { get; }
     IVariableDictionary Variables { get; }

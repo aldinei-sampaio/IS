@@ -3,7 +3,7 @@
 public class BackAndForthTester
 {
     public IBlock Block { get; }
-    public IContext Context { get; }
+    public INavigationContext Context { get; }
     public BlockNavigator Navigator { get; }
 
     private List<string> log = new();
@@ -12,7 +12,7 @@ public class BackAndForthTester
     {
         Navigator = new BlockNavigator();
         Block = A.Dummy<IBlock>();
-        Context = A.Dummy<IContext>();
+        Context = A.Dummy<INavigationContext>();
     }
 
     public void CheckLog(params string[] expectedLogEntries)

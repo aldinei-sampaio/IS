@@ -2,5 +2,5 @@
 
 public interface IBlockNavigator
 {
-    Task<INode?> MoveAsync(IBlock block, IContext context, bool forward);
+    Task<INode?> MoveAsync(IBlock block, INavigationContext context, bool forward);
 }

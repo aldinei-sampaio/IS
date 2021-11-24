@@ -2,8 +2,8 @@
 
 public interface INode
 {
-    Task<INode> EnterAsync(IContext context);
-    Task LeaveAsync(IContext context);
+    Task<INode> EnterAsync(INavigationContext context);
+    Task LeaveAsync(INavigationContext context);
     ICondition? When { get; }
     ICondition? While { get; }
     IBlock? ChildBlock { get; }

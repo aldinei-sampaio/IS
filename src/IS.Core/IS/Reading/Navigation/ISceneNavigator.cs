@@ -2,5 +2,5 @@
 
 public interface ISceneNavigator
 {
-    Task<bool> MoveAsync(IStoryboard storyboard, IContext context, bool forward);
+    Task<bool> MoveAsync(IStoryboard storyboard, INavigationContext context, bool forward);
 }

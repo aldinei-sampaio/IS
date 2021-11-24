@@ -29,13 +29,13 @@ public class TestNode : INode
 
     public IBlock ChildBlock => null;
 
-    public Task<INode> EnterAsync(IContext context)
+    public Task<INode> EnterAsync(INavigationContext context)
     {
         log?.Add($"Enter:{Name}");
         return Task.FromResult(Reversed);
     }
 
-    public Task LeaveAsync(IContext context)
+    public Task LeaveAsync(INavigationContext context)
     {
         log?.Add($"Leave:{Name}");
         return Task.CompletedTask;

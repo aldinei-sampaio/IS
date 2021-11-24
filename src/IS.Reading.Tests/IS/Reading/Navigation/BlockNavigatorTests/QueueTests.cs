@@ -3,14 +3,14 @@
 public class QueueTests
 {
     private readonly IBlock block;
-    private readonly IContext context;
+    private readonly INavigationContext context;
     private readonly BlockNavigator sut;
 
     public QueueTests()
     {
         sut = new();
         block = A.Dummy<IBlock>();
-        context = A.Dummy<IContext>();
+        context = A.Dummy<INavigationContext>();
     }
 
     [Fact]
@@ -76,7 +76,7 @@ public class QueueTests
     private async Task TestNextAsync(INode node)
         => (await sut.MoveAsync(block, context, true)).Should().BeSameAs(node);
 
-    private static INode FakeNode(IContext context)
+    private static INode FakeNode(INavigationContext context)
     {
         var node = A.Fake<INode>();
         A.CallTo(() => node.When).Returns(null);

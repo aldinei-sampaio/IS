@@ -2,7 +2,7 @@
 
 public class HierarchyTester
 {
-    private readonly IContext navigationContext = A.Dummy<IContext>();
+    private readonly INavigationContext navigationContext = A.Dummy<INavigationContext>();
     private readonly IStoryboard navigationStoryboard = A.Dummy<IStoryboard>();
     private readonly IBlockNavigator blockNavigator = A.Fake<IBlockNavigator>(i => i.Strict());
     private readonly SceneNavigator sut;

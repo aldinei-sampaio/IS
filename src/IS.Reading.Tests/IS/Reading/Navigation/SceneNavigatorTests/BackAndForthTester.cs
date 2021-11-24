@@ -7,7 +7,7 @@ public class BackAndForthTester
         public string Name { get; set; }
     }
 
-    private readonly IContext navigationContext = A.Fake<IContext>();
+    private readonly INavigationContext navigationContext = A.Fake<INavigationContext>();
     private readonly IStoryboard navigationStoryboard = A.Dummy<IStoryboard>();
     private readonly SceneNavigator sut;
 

@@ -13,12 +13,12 @@ namespace IS.Reading.Nodes
 
         public IBlock? ChildBlock => null;
 
-        public Task<INode> EnterAsync(IContext context)
+        public Task<INode> EnterAsync(INavigationContext context)
         {
             throw new NotImplementedException();
         }
 
-        public Task LeaveAsync(IContext context)
+        public Task LeaveAsync(INavigationContext context)
         {
             throw new NotImplementedException();
         }

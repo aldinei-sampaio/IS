@@ -23,13 +23,13 @@ public class BlockNavigator : IBlockNavigator
         public IBlock? ChildBlock => throw new NotImplementedException();
 
         [ExcludeFromCodeCoverage]
-        public Task<INode> EnterAsync(IContext context) => throw new NotImplementedException();
+        public Task<INode> EnterAsync(INavigationContext context) => throw new NotImplementedException();
 
         [ExcludeFromCodeCoverage]
-        public Task LeaveAsync(IContext context) => throw new NotImplementedException();
+        public Task LeaveAsync(INavigationContext context) => throw new NotImplementedException();
     }
 
-    public async Task<INode?> MoveAsync(IBlock block, IContext context, bool forward)
+    public async Task<INode?> MoveAsync(IBlock block, INavigationContext context, bool forward)
     {
         if (forward)
             return await MoveNextAsync(block, context);
@@ -37,7 +37,7 @@ public class BlockNavigator : IBlockNavigator
             return await MovePreviousAsync(block, context);
     }
 
-    private static async Task<INode?> MoveNextAsync(IBlock block, IContext context)
+    private static async Task<INode?> MoveNextAsync(IBlock block, INavigationContext context)
     {
         await LeaveCurrentNodeAsync(block, context);
 
@@ -54,7 +54,7 @@ public class BlockNavigator : IBlockNavigator
         return item;
     }
 
-    private static async Task LeaveCurrentNodeAsync(IBlock block, IContext context)
+    private static async Task LeaveCurrentNodeAsync(IBlock block, INavigationContext context)
     {
         if (block.Current is null)
             return;
@@ -74,7 +74,7 @@ public class BlockNavigator : IBlockNavigator
         return null;
     }
 
-    private static INode? GetNextValidNode(IBlock block, IContext context)
+    private static INode? GetNextValidNode(IBlock block, INavigationContext context)
     {
         for (; ; )
         {
@@ -89,7 +89,7 @@ public class BlockNavigator : IBlockNavigator
         }
     }
 
-    private static async Task<INode?> MovePreviousAsync(IBlock block, IContext context)
+    private static async Task<INode?> MovePreviousAsync(IBlock block, INavigationContext context)
     {
         await LeaveCurrentNodeAsync(block, context);
 

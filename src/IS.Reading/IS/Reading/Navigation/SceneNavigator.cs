@@ -7,7 +7,7 @@ public class SceneNavigator : ISceneNavigator
     public SceneNavigator(IBlockNavigator blockNavigator)
         => this.blockNavigator = blockNavigator;
 
-    public async Task<bool> MoveAsync(IStoryboard storyboard, IContext context, bool forward)
+    public async Task<bool> MoveAsync(IStoryboard storyboard, INavigationContext context, bool forward)
     {
         if (storyboard.CurrentBlock is null)
             storyboard.CurrentBlock = storyboard.RootBlock;
