@@ -12,15 +12,5 @@ namespace IS.Reading.Nodes
         public ICondition? While { get; }
 
         public IBlock? ChildBlock { get; }
-
-        public Task<INode> EnterAsync(INavigationContext context)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task LeaveAsync(INavigationContext context)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

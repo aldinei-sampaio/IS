@@ -4,5 +4,5 @@ namespace IS.Reading.Parsing;
 
 public interface IStoryboardParser
 {
-    Task<IStoryboard> ParseAsync(Stream stream);
+    Task<IStoryboard> ParseAsync(TextReader textReader);
 }

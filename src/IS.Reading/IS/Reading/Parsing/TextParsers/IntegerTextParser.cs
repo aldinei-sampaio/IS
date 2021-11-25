@@ -12,9 +12,9 @@ public class IntegerTextParser : IIntegerTextParser
 
         value = value.Trim();
 
-        if (!Regex.IsMatch(value, @"^\d{1,9}$"))
+        if (!Regex.IsMatch(value, @"^\-?\d{1,9}$"))
         { 
-            parsingContext.LogError(reader, $"O texto '{value}' não representa uma número inteiro válido.");
+            parsingContext.LogError(reader, $"O texto '{value}' não representa um número inteiro válido.");
             return null;
         }
 

@@ -1,6 +1,7 @@
 ﻿using IS.Reading.Nodes;
 using IS.Reading.Parsing.AttributeParsers;
 using IS.Reading.Parsing.TextParsers;
+using IS.Reading.State;
 using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers;
@@ -49,8 +50,8 @@ public class BackgroundRightNodeParserTests
         var node = (BackgroundChangeNode)result;
         node.When.Should().BeSameAs(parsed.When);
         node.State.Name.Should().Be(parsed.Text);
-        node.State.Type.Should().Be(State.BackgroundType.Image);
-        node.State.Position.Should().Be(State.BackgroundPosition.Right);
+        node.State.Type.Should().Be(BackgroundType.Image);
+        node.State.Position.Should().Be(BackgroundPosition.Right);
     }
 
     [Fact]

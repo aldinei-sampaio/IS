@@ -2,5 +2,4 @@
 
 public interface IPauseNode : INode
 {
-    TimeSpan? Duration { get; }
 }

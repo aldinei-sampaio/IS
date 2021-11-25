@@ -34,34 +34,75 @@ public class PauseNodeParserTests
         sut.Settings.TextParser.Should().BeSameAs(integerTextParser);
     }
 
-    [Fact]
-    public async Task Success()
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData("  ")]
+    public async Task NormalPause(string text)
     {
         var parsed = A.Dummy<IElementParsedData>();
-        parsed.Text = null;
+        parsed.Text = text;
         A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
 
         var result = await sut.ParseAsync(reader, context);
 
         result.Should().NotBeNull();
-        var node = result.Should().BeOfType<PauseNode>().Which;
-        node.When.Should().BeSameAs(parsed.When);
-        node.Duration.Should().BeNull();
+        result.Should().BeOfType<PauseNode>()
+            .Which.When.Should().BeSameAs(parsed.When);
     }
 
-    [Fact]
-    public async Task Duration()
+    [Theory]
+    [InlineData(1)]
+    [InlineData(19)]
+    [InlineData(258)]
+    [InlineData(1234)]
+    [InlineData(5000)]
+    public async Task TimedPause(int value)
     {
         var parsed = A.Dummy<IElementParsedData>();
-        parsed.Text = "1000";
+        parsed.Text = value.ToString();
         A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
 
         var result = await sut.ParseAsync(reader, context);
 
         result.Should().NotBeNull();
-        var node = result.Should().BeOfType<PauseNode>().Which;
+        var node = result.Should().BeOfType<TimedPauseNode>().Which;
         node.When.Should().BeSameAs(parsed.When);
-        node.Duration.Should().Be(TimeSpan.FromSeconds(1));
+        node.Duration.Should().Be(TimeSpan.FromMilliseconds(value));
     }
 
+    [Theory]
+    [InlineData("0")]
+    [InlineData("-1")]
+    [InlineData("-5000")]
+    public async Task DurationShouldBeGreaterThanZero(string duration)
+    {
+        const string message = "O tempo de espera precisa ser maior que zero.";
+        await CheckForValidationErrorAsync(duration, message);
+    }
+
+    [Theory]
+    [InlineData("5001")]
+    [InlineData("6000")]
+    [InlineData("10000")]
+    [InlineData("999999999")]
+    public async Task DurationShouldBeUpTo5000(string duration)
+    {
+        const string message = "O tempo de espera não pode ser maior que 5000.";
+        await CheckForValidationErrorAsync(duration, message);
+    }
+
+    private async Task CheckForValidationErrorAsync(string duration, string message)
+    {
+        A.CallTo(() => context.LogError(reader, message)).DoesNothing();
+
+        var parsed = A.Dummy<IElementParsedData>();
+        parsed.Text = duration;
+        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
+
+        var result = await sut.ParseAsync(reader, context);
+        result.Should().BeNull();
+
+        A.CallTo(() => context.LogError(reader, message)).MustHaveHappenedOnceExactly();
+    }
 }

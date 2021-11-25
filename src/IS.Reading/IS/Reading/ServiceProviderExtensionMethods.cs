@@ -11,7 +11,7 @@ namespace IS.Reading
     [ExcludeFromCodeCoverage]
     public static class ServiceProviderExtensionMethods
     {
-        public static IServiceCollection AddParsing(this IServiceCollection services)
+        public static IServiceCollection AddISReading(this IServiceCollection services)
         {
             // Auxiliar parsers
             services.AddSingleton<IConditionParser, ConditionParser>();
@@ -33,6 +33,11 @@ namespace IS.Reading
             services.AddSingleton<IBackgroundColorNodeParser, BackgroundColorNodeParser>();
             services.AddSingleton<IBackgroundScrollNodeParser, BackgroundScrollNodeParser>();
             services.AddSingleton<IBackgroundNodeParser, BackgroundNodeParser>();
+            services.AddSingleton<IBlockNodeParser, BlockNodeParser>();
+
+            // Storyboard parsers
+            services.AddSingleton<IRootBlockParser, RootBlockParser>();
+            services.AddSingleton<IStoryboardParser, StoryboardParser>();
 
             // Navigators
             services.AddSingleton<IBlockNavigator, BlockNavigator>();

@@ -8,4 +8,7 @@ public class BackgroundChangeEvent : IBackgroundChangeEvent
         => State = state;
 
     public IBackgroundState State { get; }
+
+    public override string? ToString()
+        => State.ToString();
 }

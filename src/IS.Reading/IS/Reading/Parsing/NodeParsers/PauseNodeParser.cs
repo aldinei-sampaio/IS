@@ -28,10 +28,23 @@ public class PauseNodeParser : IPauseNodeParser
     {
         var parsed = await elementParser.ParseAsync(reader, parsingContext, Settings);
 
-        if (string.IsNullOrEmpty(parsed.Text))
-            return new PauseNode(null, parsed.When);
+        if (string.IsNullOrWhiteSpace(parsed.Text))
+            return new PauseNode(parsed.When);
 
         var value = int.Parse(parsed.Text);
-        return new PauseNode(TimeSpan.FromMilliseconds(value), parsed.When);
+
+        if (value <= 0)
+        {
+            parsingContext.LogError(reader, "O tempo de espera precisa ser maior que zero.");
+            return null;
+        }
+
+        if (value > 5000)
+        {
+            parsingContext.LogError(reader, "O tempo de espera não pode ser maior que 5000.");
+            return null;
+        }
+
+        return new TimedPauseNode(TimeSpan.FromMilliseconds(value), parsed.When);
     }
 }

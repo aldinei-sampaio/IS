@@ -1,6 +1,7 @@
 ﻿using IS.Reading.Nodes;
 using IS.Reading.Parsing.AttributeParsers;
 using IS.Reading.Parsing.TextParsers;
+using IS.Reading.State;
 using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers;
@@ -88,8 +89,8 @@ public class BackgroundNodeParserTests
             var subnode = node.ChildBlock.ForwardQueue.Dequeue() as BackgroundChangeNode;
             subnode.Should().NotBeNull();
             subnode.State.Name.Should().Be("alfa");
-            subnode.State.Type.Should().Be(State.BackgroundType.Image);
-            subnode.State.Position.Should().Be(State.BackgroundPosition.Left);
+            subnode.State.Type.Should().Be(BackgroundType.Image);
+            subnode.State.Position.Should().Be(BackgroundPosition.Left);
             subnode.When.Should().BeNull();
         }
         {
