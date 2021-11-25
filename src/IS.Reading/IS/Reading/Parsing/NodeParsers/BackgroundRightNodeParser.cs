@@ -2,6 +2,7 @@
 using IS.Reading.Nodes;
 using IS.Reading.Parsing.AttributeParsers;
 using IS.Reading.Parsing.TextParsers;
+using IS.Reading.State;
 using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers;
@@ -37,6 +38,8 @@ public class BackgroundRightNodeParser : IBackgroundRightNodeParser
             return null;
         }
 
-        return new BackgroundRightNode(parsed.Text, parsed.When);
+        var state = new BackgroundState(parsed.Text, BackgroundType.Image, BackgroundPosition.Right);
+
+        return new BackgroundChangeNode(state, parsed.When);
     }
 }

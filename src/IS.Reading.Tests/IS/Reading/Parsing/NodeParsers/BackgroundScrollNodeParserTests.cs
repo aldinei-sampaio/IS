@@ -45,7 +45,5 @@ public class BackgroundScrollNodeParserTests
 
         var node = (BackgroundScrollNode)result;
         node.When.Should().BeSameAs(parsed.When);
-        node.While.Should().BeNull();
-        node.ChildBlock.Should().BeNull();
     }
 }

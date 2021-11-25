@@ -2,6 +2,7 @@
 using IS.Reading.Nodes;
 using IS.Reading.Parsing.AttributeParsers;
 using IS.Reading.Parsing.TextParsers;
+using IS.Reading.State;
 using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers;
@@ -37,6 +38,8 @@ public class BackgroundColorNodeParser : IBackgroundColorNodeParser
             return null;
         }
 
-        return new BackgroundColorNode(parsed.Text, parsed.When);
+        var state = new BackgroundState(parsed.Text, BackgroundType.Color, BackgroundPosition.Undefined);
+
+        return new BackgroundChangeNode(state, parsed.When);
     }
 }

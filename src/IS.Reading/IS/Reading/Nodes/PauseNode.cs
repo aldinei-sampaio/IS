@@ -4,21 +4,14 @@ namespace IS.Reading.Nodes
 {
     public class PauseNode : IPauseNode
     {
-        public PauseNode(ICondition? condition)
-            => When = condition;
+        public PauseNode(TimeSpan? duration, ICondition? when)
+            => (Duration, When) = (duration, when);
 
         public ICondition? When { get; }
 
-        public ICondition? While => null;
-
-        public IBlock? ChildBlock => null;
+        public TimeSpan? Duration { get; }
 
         public Task<INode> EnterAsync(INavigationContext context)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task LeaveAsync(INavigationContext context)
         {
             throw new NotImplementedException();
         }

@@ -22,9 +22,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="IS\Reading\Nodes\" />
 	  <Folder Include="IS\Reading\Parsing\AttributeParsers\" />
-	  <Folder Include="IS\Reading\Parsing\TextParsers\" />
 	</ItemGroup>
 
 </Project>

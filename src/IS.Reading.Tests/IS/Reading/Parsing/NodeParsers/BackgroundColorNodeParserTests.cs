@@ -44,13 +44,13 @@ public class BackgroundColorNodeParserTests
         var result = await sut.ParseAsync(reader, context);
 
         result.Should().NotBeNull();
-        result.Should().BeOfType<BackgroundColorNode>();
+        result.Should().BeOfType<BackgroundChangeNode>();
 
-        var node = (BackgroundColorNode)result;
+        var node = (BackgroundChangeNode)result;
         node.When.Should().BeSameAs(parsed.When);
-        node.While.Should().BeNull();
-        node.ChildBlock.Should().BeNull();
-        node.Color.Should().BeSameAs(parsed.Text);
+        node.State.Name.Should().Be(parsed.Text);
+        node.State.Type.Should().Be(State.BackgroundType.Color);
+        node.State.Position.Should().Be(State.BackgroundPosition.Undefined);
     }
 
     [Fact]

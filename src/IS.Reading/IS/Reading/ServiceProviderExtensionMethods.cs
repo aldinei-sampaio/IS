@@ -24,6 +24,7 @@ namespace IS.Reading
             // Text parsers
             services.AddSingleton<IColorTextParser, ColorTextParser>();
             services.AddSingleton<IBackgroundImageTextParser, BackgroundImageTextParser>();
+            services.AddSingleton<IIntegerTextParser, IntegerTextParser>();
 
             // Node parsers
             services.AddSingleton<IPauseNodeParser, PauseNodeParser>();

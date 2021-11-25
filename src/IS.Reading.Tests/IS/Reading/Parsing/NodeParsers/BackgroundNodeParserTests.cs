@@ -85,9 +85,11 @@ public class BackgroundNodeParserTests
         node.ChildBlock.Should().NotBeNull();
         node.ChildBlock.ForwardQueue.Count.Should().Be(2);
         {
-            var subnode = node.ChildBlock.ForwardQueue.Dequeue() as BackgroundLeftNode;
+            var subnode = node.ChildBlock.ForwardQueue.Dequeue() as BackgroundChangeNode;
             subnode.Should().NotBeNull();
-            subnode.ImageName.Should().Be("alfa");
+            subnode.State.Name.Should().Be("alfa");
+            subnode.State.Type.Should().Be(State.BackgroundType.Image);
+            subnode.State.Position.Should().Be(State.BackgroundPosition.Left);
             subnode.When.Should().BeNull();
         }
         {

@@ -2,6 +2,7 @@
 using IS.Reading.Nodes;
 using IS.Reading.Parsing.AttributeParsers;
 using IS.Reading.Parsing.TextParsers;
+using IS.Reading.State;
 using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers;
@@ -45,7 +46,8 @@ public class BackgroundNodeParser : IBackgroundNodeParser
         if (!string.IsNullOrWhiteSpace(parsed.Text))
         {
             var block = new Block();
-            block.ForwardQueue.Enqueue(new BackgroundLeftNode(parsed.Text, null));
+            var state = new BackgroundState(parsed.Text, BackgroundType.Image, BackgroundPosition.Left);
+            block.ForwardQueue.Enqueue(new BackgroundChangeNode(state, null));
             block.ForwardQueue.Enqueue(new BackgroundScrollNode(null));
             return new BlockNode(block, parsed.When, parsed.While);
         }
