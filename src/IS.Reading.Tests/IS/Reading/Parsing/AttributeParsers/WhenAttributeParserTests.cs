@@ -9,7 +9,7 @@ public class WhenAttributeParserTests
     public void AttributeName()
     {
         var sut = new WhenAttributeParser(A.Dummy<IConditionParser>());
-        sut.AttributeName.Should().Be("when");
+        sut.Name.Should().Be("when");
     }
 
     [Fact]

@@ -28,18 +28,12 @@ public class BackgroundNodeParserTests
         elementParser = A.Fake<IElementParser>(i => i.Strict());
 
         backgroundImageTextParser = A.Dummy<IBackgroundImageTextParser>();
-        whenAttributeParser = A.Dummy<IWhenAttributeParser>();
-        A.CallTo(() => whenAttributeParser.AttributeName).Returns("when");
-        backgroundColorNodeParser = A.Dummy<IBackgroundColorNodeParser>();
-        A.CallTo(() => backgroundColorNodeParser.ElementName).Returns("color");
-        backgroundLeftNodeParser = A.Dummy<IBackgroundLeftNodeParser>();
-        A.CallTo(() => backgroundLeftNodeParser.ElementName).Returns("left");
-        backgroundRightNodeParser = A.Dummy<IBackgroundRightNodeParser>();
-        A.CallTo(() => backgroundRightNodeParser.ElementName).Returns("right");
-        backgroundScrollNodeParser = A.Dummy<IBackgroundScrollNodeParser>();
-        A.CallTo(() => backgroundScrollNodeParser.ElementName).Returns("scroll");
-        pauseNodeParser = A.Dummy<IPauseNodeParser>();
-        A.CallTo(() => pauseNodeParser.ElementName).Returns("pause");
+        whenAttributeParser = Helper.FakeParser<IWhenAttributeParser>("when");
+        backgroundColorNodeParser = Helper.FakeParser<IBackgroundColorNodeParser>("color");
+        backgroundLeftNodeParser = Helper.FakeParser<IBackgroundLeftNodeParser>("left");
+        backgroundRightNodeParser = Helper.FakeParser<IBackgroundRightNodeParser>("right");
+        backgroundScrollNodeParser = Helper.FakeParser<IBackgroundScrollNodeParser>("scroll");
+        pauseNodeParser = Helper.FakeParser<IPauseNodeParser>("pause");
 
         sut = new(
             elementParser, 
@@ -56,14 +50,15 @@ public class BackgroundNodeParserTests
     [Fact]
     public void Initialization()
     {
-        sut.ElementName.Should().Be("background");
-        sut.Settings.AttributeParsers.Should().ContainValues(whenAttributeParser);
+        sut.Name.Should().Be("background");
+        sut.Settings.AttributeParsers["when"].Should().BeSameAs(whenAttributeParser);
+        sut.Settings.AttributeParsers.Count.Should().Be(1);
         sut.Settings.ChildParsers["left"].Should().BeSameAs(backgroundLeftNodeParser);
         sut.Settings.ChildParsers["right"].Should().BeSameAs(backgroundRightNodeParser);
         sut.Settings.ChildParsers["color"].Should().BeSameAs(backgroundColorNodeParser);
         sut.Settings.ChildParsers["scroll"].Should().BeSameAs(backgroundScrollNodeParser);
         sut.Settings.ChildParsers["pause"].Should().BeSameAs(pauseNodeParser);
-        sut.Settings.ChildParsers.Should().HaveCount(5);
+        sut.Settings.ChildParsers.Count.Should().Be(5);
         sut.Settings.TextParser.Should().BeSameAs(backgroundImageTextParser);
     }
 

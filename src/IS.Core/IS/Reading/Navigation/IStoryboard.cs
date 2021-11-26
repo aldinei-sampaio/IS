@@ -1,9 +1,11 @@
-﻿namespace IS.Reading.Navigation;
+﻿using IS.Reading.Events;
 
-public interface IStoryboard
+namespace IS.Reading.Navigation;
+
+public interface IStoryboard : IDisposable
 {
-    IBlock RootBlock { get; }
-    Stack<IBlock> EnteredBlocks { get; }
-    IBlock? CurrentBlock { get; set; }
-    INode? CurrentNode { get; set; }
+    IEventSubscriber Events { get; }
+    Task LoadStateAsync(Stream stream);
+    Task<bool> MoveAsync(bool forward);
+    Task SaveStateAsync(Stream stream);
 }

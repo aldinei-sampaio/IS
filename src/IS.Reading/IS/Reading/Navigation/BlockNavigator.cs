@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace IS.Reading.Navigation;
+﻿namespace IS.Reading.Navigation;
 
 public class BlockNavigator : IBlockNavigator
 {
@@ -12,21 +10,6 @@ public class BlockNavigator : IBlockNavigator
         {
             OriginalNode = originalNode;
         }
-
-        [ExcludeFromCodeCoverage]
-        public ICondition? When => throw new NotImplementedException();
-
-        [ExcludeFromCodeCoverage]
-        public ICondition? While => throw new NotImplementedException();
-
-        [ExcludeFromCodeCoverage]
-        public IBlock? ChildBlock => throw new NotImplementedException();
-
-        [ExcludeFromCodeCoverage]
-        public Task<INode> EnterAsync(INavigationContext context) => throw new NotImplementedException();
-
-        [ExcludeFromCodeCoverage]
-        public Task LeaveAsync(INavigationContext context) => throw new NotImplementedException();
     }
 
     public async Task<INode?> MoveAsync(IBlock block, INavigationContext context, bool forward)

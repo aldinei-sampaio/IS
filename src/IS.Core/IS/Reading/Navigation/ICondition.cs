@@ -1,4 +1,6 @@
-﻿namespace IS.Reading.Navigation
+﻿using IS.Reading.State;
+
+namespace IS.Reading.Navigation
 {
     public interface ICondition
     {

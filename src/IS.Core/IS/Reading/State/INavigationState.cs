@@ -1,6 +1,6 @@
 ﻿namespace IS.Reading.State;
 
-public interface IState
+public interface INavigationState
 {
     IBackgroundState Background { get; set; }
 }

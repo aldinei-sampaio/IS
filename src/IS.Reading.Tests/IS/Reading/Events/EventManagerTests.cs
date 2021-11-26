@@ -73,9 +73,43 @@ public class EventManagerTests
         helper.Check(expected);
     }
 
+    [Fact]
+    public async Task SubscriptToAll()
+    {
+        var helper = new TestHelper();
+
+        var sut = new EventManager();
+        sut.Subscribe(i => helper.HandleAsync(i));
+
+        await sut.InvokeAsync(new TestEvent1 { Name = "e1" });
+        await sut.InvokeAsync(new TestEvent1 { Name = "e2" });
+        await sut.InvokeAsync(new TestEvent2 { Name = "e3" });
+
+        helper.Check("TestEvent1:e1 TestEvent1:e2 TestEvent2:e3 ");
+    }
+
+    [Fact]
+    public async Task BothTypesOfSubscriptions()
+    {
+        var helper = new TestHelper();
+
+        var sut = new EventManager();
+        sut.Subscribe(i => helper.HandleAsync(i));
+        sut.Subscribe<TestEvent2>(i => helper.HandleAsync(i));
+
+        await sut.InvokeAsync(new TestEvent1 { Name = "e1" });
+        await sut.InvokeAsync(new TestEvent1 { Name = "e2" });
+        await sut.InvokeAsync(new TestEvent2 { Name = "e3" });
+
+        helper.Check("TestEvent1:e1 TestEvent1:e2 TestEvent2:e3 TestEvent2:e3 ");
+    }
+
     public class TestHelper
     {
         private readonly StringBuilder stringBuilder = new();
+
+        public Task HandleAsync(IReadingEvent @event)
+            => HandleAsync((TestEvent)@event);
 
         public Task HandleAsync(TestEvent @event)
         {

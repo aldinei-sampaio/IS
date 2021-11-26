@@ -76,7 +76,7 @@ public class ElementParser : IElementParser
             return;
         }
 
-        if (!settings.ChildParsers.TryGetValue(reader.LocalName, out var parser))
+        if (!settings.ChildParsers.TryGet(reader.LocalName, out var parser))
         {
             parsingContext.LogError(reader, $"Elemento não reconhecido: {reader.LocalName}");
             return;
@@ -101,7 +101,7 @@ public class ElementParser : IElementParser
     {
         while (reader.MoveToNextAttribute())
         {
-            if (!settings.AttributeParsers.TryGetValue(reader.LocalName, out var attributeParser))
+            if (!settings.AttributeParsers.TryGet(reader.LocalName, out var attributeParser))
             {
                 parsingContext.LogError(reader, $"Atributo não reconhecido: {reader.LocalName}");
                 continue;

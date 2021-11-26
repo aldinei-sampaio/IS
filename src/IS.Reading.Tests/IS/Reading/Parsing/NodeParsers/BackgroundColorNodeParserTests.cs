@@ -20,7 +20,7 @@ public class BackgroundColorNodeParserTests
         reader = A.Dummy<XmlReader>();
         context = A.Fake<IParsingContext>(i => i.Strict());
         elementParser = A.Fake<IElementParser>(i => i.Strict());
-        whenAttributeParser = A.Dummy<IWhenAttributeParser>();
+        whenAttributeParser = Helper.FakeParser<IWhenAttributeParser>("when");
         colorTextParser = A.Dummy<IColorTextParser>();
 
         sut = new(elementParser, whenAttributeParser, colorTextParser);
@@ -29,9 +29,10 @@ public class BackgroundColorNodeParserTests
     [Fact]
     public void Initialization()
     {
-        sut.ElementName.Should().Be("color");
-        sut.Settings.AttributeParsers.Should().ContainValues(whenAttributeParser);
-        sut.Settings.ChildParsers.Should().BeEmpty();
+        sut.Name.Should().Be("color");
+        sut.Settings.AttributeParsers.Count.Should().Be(1);
+        sut.Settings.AttributeParsers["when"].Should().BeSameAs(whenAttributeParser);
+        sut.Settings.ChildParsers.Count.Should().Be(0);
         sut.Settings.TextParser.Should().BeSameAs(colorTextParser);
     }
 

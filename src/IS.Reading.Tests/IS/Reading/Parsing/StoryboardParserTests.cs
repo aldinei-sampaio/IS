@@ -14,14 +14,16 @@ public class StoryboardParserTests
         var rootBlockParser = A.Fake<IRootBlockParser>();
         A.CallTo(() => rootBlockParser.ParseAsync(null, null)).WithAnyArguments().Returns(block);
 
-        var sut = new StoryboardParser(rootBlockParser);
-        var result = await sut.ParseAsync(reader);
+        var sceneNavigator = A.Dummy<ISceneNavigator>();
+
+        var sut = new StoryboardParser(rootBlockParser, sceneNavigator);
+        var result = (Storyboard)await sut.ParseAsync(reader);
 
         result.Should().NotBeNull();
-        result.RootBlock.Should().BeSameAs(block);
-        result.EnteredBlocks.Should().BeEmpty();
-        result.CurrentBlock.Should().BeNull();
-        result.CurrentNode.Should().BeNull();
+        result.NavigationContext.RootBlock.Should().BeSameAs(block);
+        result.NavigationContext.EnteredBlocks.Should().BeEmpty();
+        result.NavigationContext.CurrentBlock.Should().BeNull();
+        result.NavigationContext.CurrentNode.Should().BeNull();
     }
 
     [Fact]
@@ -46,11 +48,13 @@ public class StoryboardParserTests
                 return block;
             });
 
-        var sut = new StoryboardParser(rootBlockParser);
-        var result = await sut.ParseAsync(reader);
+        var sceneNavigator = A.Dummy<ISceneNavigator>();
+
+        var sut = new StoryboardParser(rootBlockParser, sceneNavigator);
+        var result = (Storyboard)await sut.ParseAsync(reader);
 
         result.Should().NotBeNull();
-        result.RootBlock.Should().BeSameAs(block);
+        result.NavigationContext.RootBlock.Should().BeSameAs(block);
     }
 
     [Fact]
@@ -69,7 +73,8 @@ public class StoryboardParserTests
                 return Task.FromResult<IBlock>(null);
             });
 
-        var sut = new StoryboardParser(rootBlockParser);
+        var sceneNavigator = A.Dummy<ISceneNavigator>();
+        var sut = new StoryboardParser(rootBlockParser, sceneNavigator);
 
         var ex = await Assert.ThrowsAsync<ParsingException>(
             () => sut.ParseAsync(reader)
@@ -98,7 +103,8 @@ public class StoryboardParserTests
                 return null;
             });
 
-        var sut = new StoryboardParser(rootBlockParser);
+        var sceneNavigator = A.Dummy<ISceneNavigator>();
+        var sut = new StoryboardParser(rootBlockParser, sceneNavigator);
 
         var ex = await Assert.ThrowsAsync<ParsingException>(
             () => sut.ParseAsync(reader)

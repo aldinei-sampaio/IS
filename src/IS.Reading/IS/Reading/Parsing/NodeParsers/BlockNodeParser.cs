@@ -26,10 +26,10 @@ public class BlockNodeParser : IBlockNodeParser
             backgroundNodeParser,
             pauseNodeParser
         );
-        Settings.ChildParsers.Add(ElementName, this);
+        Settings.ChildParsers.Add(this);
     }
 
-    public string ElementName => "do";
+    public string Name => "do";
 
     public async Task<INode?> ParseAsync(XmlReader reader, IParsingContext parsingContext)
     {

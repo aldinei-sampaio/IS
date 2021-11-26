@@ -2,8 +2,7 @@
 
 namespace IS.Reading.Parsing;
 
-public interface IAttributeParser
+public interface IAttributeParser : IParser
 {
-    string AttributeName { get; }
     IAttribute? Parse(XmlReader reader, IParsingContext parsingContext);
 }

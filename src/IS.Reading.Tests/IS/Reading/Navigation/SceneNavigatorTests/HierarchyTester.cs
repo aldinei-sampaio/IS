@@ -3,11 +3,10 @@
 public class HierarchyTester
 {
     private readonly INavigationContext navigationContext = A.Dummy<INavigationContext>();
-    private readonly IStoryboard navigationStoryboard = A.Dummy<IStoryboard>();
     private readonly IBlockNavigator blockNavigator = A.Fake<IBlockNavigator>(i => i.Strict());
     private readonly SceneNavigator sut;
 
-    public IBlock RootBlock => navigationStoryboard.CurrentBlock;
+    public IBlock RootBlock => navigationContext.CurrentBlock;
 
     public HierarchyTester()
     {
@@ -25,8 +24,8 @@ public class HierarchyTester
 
     public async Task MoveAsync(bool forward, INode node)
     {
-        (await sut.MoveAsync(navigationStoryboard, navigationContext, forward)).Should().Be(node is not null);
-        navigationStoryboard.CurrentNode.Should().BeSameAs(node);
+        (await sut.MoveAsync(navigationContext, forward)).Should().Be(node is not null);
+        navigationContext.CurrentNode.Should().BeSameAs(node);
     }
 
     public static INode CreateNode(string name, IBlock childBlock = null)

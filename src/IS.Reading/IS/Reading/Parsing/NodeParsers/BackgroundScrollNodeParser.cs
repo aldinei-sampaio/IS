@@ -17,7 +17,7 @@ public class BackgroundScrollNodeParser : IBackgroundScrollNodeParser
         Settings = new ElementParserSettings(whenAttributeParser);
     }
 
-    public string ElementName => "scroll";
+    public string Name => "scroll";
 
     public async Task<INode?> ParseAsync(XmlReader reader, IParsingContext parsingContext)
     {

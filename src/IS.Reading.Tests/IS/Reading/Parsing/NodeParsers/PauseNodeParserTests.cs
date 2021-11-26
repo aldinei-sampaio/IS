@@ -19,7 +19,7 @@ public class PauseNodeParserTests
         reader = A.Dummy<XmlReader>();
         context = A.Fake<IParsingContext>(i => i.Strict());
         elementParser = A.Fake<IElementParser>(i => i.Strict());
-        whenAttributeParser = A.Dummy<IWhenAttributeParser>();
+        whenAttributeParser = Helper.FakeParser<IWhenAttributeParser>("when");
         integerTextParser = A.Fake<IIntegerTextParser>();
 
         sut = new(elementParser, whenAttributeParser, integerTextParser);
@@ -28,9 +28,10 @@ public class PauseNodeParserTests
     [Fact]
     public void Initialization()
     {
-        sut.ElementName.Should().Be("pause");
-        sut.Settings.AttributeParsers.Should().ContainValues(whenAttributeParser);
-        sut.Settings.ChildParsers.Should().BeEmpty();
+        sut.Name.Should().Be("pause");
+        sut.Settings.AttributeParsers["when"].Should().BeSameAs(whenAttributeParser);
+        sut.Settings.AttributeParsers.Count.Should().Be(1);
+        sut.Settings.ChildParsers.Count.Should().Be(0);
         sut.Settings.TextParser.Should().BeSameAs(integerTextParser);
     }
 

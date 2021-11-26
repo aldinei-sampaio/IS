@@ -20,18 +20,10 @@ public class BlockNodeParserTests
         reader = A.Dummy<XmlReader>();
         context = A.Fake<IParsingContext>(i => i.Strict());
         elementParser = A.Fake<IElementParser>(i => i.Strict());
-
-        whenAttributeParser = A.Dummy<IWhenAttributeParser>();
-        A.CallTo(() => whenAttributeParser.AttributeName).Returns("when");
-        
-        whileAttributeParser = A.Dummy<IWhileAttributeParser>();
-        A.CallTo(() => whileAttributeParser.AttributeName).Returns("while");
-        
-        backgroundNodeParser = A.Dummy<IBackgroundNodeParser>();
-        A.CallTo(() => backgroundNodeParser.ElementName).Returns("background");
-        
-        pauseNodeParser = A.Dummy<IPauseNodeParser>();
-        A.CallTo(() => pauseNodeParser.ElementName).Returns("pause");
+        whenAttributeParser = Helper.FakeParser<IWhenAttributeParser>("when");
+        whileAttributeParser = Helper.FakeParser<IWhileAttributeParser>("while");
+        backgroundNodeParser = Helper.FakeParser<IBackgroundNodeParser>("background");
+        pauseNodeParser = Helper.FakeParser<IPauseNodeParser>("pause");
 
         sut = new(
             elementParser, 
@@ -45,14 +37,14 @@ public class BlockNodeParserTests
     [Fact]
     public void Initialization()
     {
-        sut.ElementName.Should().Be("do");
+        sut.Name.Should().Be("do");
         sut.Settings.AttributeParsers["when"].Should().BeSameAs(whenAttributeParser);
         sut.Settings.AttributeParsers["while"].Should().BeSameAs(whileAttributeParser);
-        sut.Settings.AttributeParsers.Should().HaveCount(2);
+        sut.Settings.AttributeParsers.Count.Should().Be(2);
         sut.Settings.ChildParsers["background"].Should().BeSameAs(backgroundNodeParser);
         sut.Settings.ChildParsers["do"].Should().BeSameAs(sut);
         sut.Settings.ChildParsers["pause"].Should().BeSameAs(pauseNodeParser);
-        sut.Settings.ChildParsers.Should().HaveCount(3);
+        sut.Settings.ChildParsers.Count.Should().Be(3);
         sut.Settings.TextParser.Should().BeNull();
     }
 

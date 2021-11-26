@@ -1,15 +1,36 @@
-﻿namespace IS.Reading.Navigation;
+﻿using IS.Reading.Events;
+
+namespace IS.Reading.Navigation;
 
 public class Storyboard : IStoryboard
 {
-    public IBlock RootBlock { get; }
+    private readonly ISceneNavigator sceneNavigator;
+    private readonly EventManager eventManager;
 
-    public Stack<IBlock> EnteredBlocks { get; } = new();
+    public Storyboard(IBlock rootBlock, ISceneNavigator sceneNavigator)
+    {
+        eventManager = new();
+        NavigationContext = new NavigationContext(rootBlock, eventManager);
+        this.sceneNavigator = sceneNavigator;
+    }
 
-    public IBlock? CurrentBlock { get; set; }
+    public INavigationContext NavigationContext { get; }
 
-    public INode? CurrentNode { get; set; }
+    public IEventSubscriber Events => eventManager;
 
-    public Storyboard(IBlock rootBlock)
-        => RootBlock = rootBlock;
+    public Task<bool> MoveAsync(bool forward)
+        => sceneNavigator.MoveAsync(NavigationContext, forward);
+
+    public Task LoadStateAsync(Stream stream)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task SaveStateAsync(Stream stream)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Dispose()
+        => eventManager.Dispose();
 }

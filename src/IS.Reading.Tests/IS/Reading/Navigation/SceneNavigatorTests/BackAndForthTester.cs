@@ -8,7 +8,6 @@ public class BackAndForthTester
     }
 
     private readonly INavigationContext navigationContext = A.Fake<INavigationContext>();
-    private readonly IStoryboard navigationStoryboard = A.Dummy<IStoryboard>();
     private readonly SceneNavigator sut;
 
     private readonly Queue<INode> queue = new();
@@ -56,19 +55,19 @@ public class BackAndForthTester
     {
         if (sceneNames is null)
         {
-            (await sut.MoveAsync(navigationStoryboard, navigationContext, forward)).Should().BeFalse();
+            (await sut.MoveAsync(navigationContext, forward)).Should().BeFalse();
             return;
         }
         foreach (var sceneName in sceneNames)
         {
             if (sceneName is null)
             {
-                (await sut.MoveAsync(navigationStoryboard, navigationContext, forward)).Should().BeFalse();
+                (await sut.MoveAsync(navigationContext, forward)).Should().BeFalse();
             }
             else
             {
-                (await sut.MoveAsync(navigationStoryboard, navigationContext, forward)).Should().BeTrue();
-                ((ITestPauseNode)navigationStoryboard.CurrentNode).Name.Should().Be(sceneName);
+                (await sut.MoveAsync(navigationContext, forward)).Should().BeTrue();
+                ((ITestPauseNode)navigationContext.CurrentNode).Name.Should().Be(sceneName);
             }
         }
     }

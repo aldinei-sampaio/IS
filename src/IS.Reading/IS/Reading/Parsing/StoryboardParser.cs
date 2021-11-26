@@ -6,9 +6,13 @@ namespace IS.Reading.Parsing;
 public class StoryboardParser : IStoryboardParser
 {
     private readonly IRootBlockParser rootBlockParser;
+    private readonly ISceneNavigator sceneNavigator;
 
-    public StoryboardParser(IRootBlockParser rootBlockParser)
-        => this.rootBlockParser = rootBlockParser;
+    public StoryboardParser(IRootBlockParser rootBlockParser, ISceneNavigator sceneNavigator)
+    {
+        this.rootBlockParser = rootBlockParser;
+        this.sceneNavigator = sceneNavigator;
+    }
 
     public async Task<IStoryboard> ParseAsync(TextReader textReader)
     {
@@ -18,6 +22,6 @@ public class StoryboardParser : IStoryboardParser
         var parsed = await rootBlockParser.ParseAsync(reader, context);
         if (!context.IsSuccess)
             throw new ParsingException(context.ToString());
-        return new Storyboard(parsed!);
+        return new Storyboard(parsed!, sceneNavigator);
     }
 }

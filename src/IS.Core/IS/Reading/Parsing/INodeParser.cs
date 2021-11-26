@@ -3,8 +3,7 @@ using System.Xml;
 
 namespace IS.Reading.Parsing;
 
-public interface INodeParser
+public interface INodeParser : IParser
 {
-    string ElementName { get; }
     Task<INode?> ParseAsync(XmlReader reader, IParsingContext parsingContext);
 }

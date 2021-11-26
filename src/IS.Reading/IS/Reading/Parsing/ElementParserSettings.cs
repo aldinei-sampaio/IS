@@ -4,21 +4,24 @@ public class ElementParserSettings : IElementParserSettings
 {
     public ITextParser? TextParser { get; set; }
 
-    public ParserDictionary<IAttributeParser> AttributeParsers { get; } = new();
+    public IParserDictionary<IAttributeParser> AttributeParsers { get; }         
 
-    public ParserDictionary<INodeParser> ChildParsers { get; } = new();
+    public IParserDictionary<INodeParser> ChildParsers { get; }
 
     public ElementParserSettings(params object[] parsers)
     {
-        foreach(var parser in parsers)
+        AttributeParsers = new ParserDictionary<IAttributeParser>();
+        ChildParsers = new ParserDictionary<INodeParser>();
+
+        foreach (var parser in parsers)
         {
             switch(parser)
             {
                 case IAttributeParser attributeParser:
-                    AttributeParsers.Add(attributeParser.AttributeName, attributeParser);
+                    AttributeParsers.Add(attributeParser);
                     break;
                 case INodeParser nodeParser:
-                    ChildParsers.Add(nodeParser.ElementName, nodeParser);
+                    ChildParsers.Add(nodeParser);
                     break;
                 case ITextParser textParser:
                     TextParser = textParser;

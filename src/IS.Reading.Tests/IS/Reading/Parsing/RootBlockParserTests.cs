@@ -1,6 +1,4 @@
 ﻿using IS.Reading.Navigation;
-using IS.Reading.Nodes;
-using IS.Reading.Parsing.AttributeParsers;
 using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers;
@@ -21,12 +19,9 @@ public class RootBlockParserTests
         context = A.Fake<IParsingContext>(i => i.Strict());
         elementParser = A.Fake<IElementParser>(i => i.Strict());
 
-        backgroundNodeParser = A.Dummy<IBackgroundNodeParser>();
-        A.CallTo(() => backgroundNodeParser.ElementName).Returns("background");
-        blockNodeParser = A.Dummy<IBlockNodeParser>();
-        A.CallTo(() => blockNodeParser.ElementName).Returns("do");
-        pauseNodeParser = A.Dummy<IPauseNodeParser>();
-        A.CallTo(() => pauseNodeParser.ElementName).Returns("pause");
+        backgroundNodeParser = Helper.FakeParser<IBackgroundNodeParser>("background");
+        blockNodeParser = Helper.FakeParser<IBlockNodeParser>("do");
+        pauseNodeParser = Helper.FakeParser<IPauseNodeParser>("pause");
 
         sut = new(
             elementParser, 
@@ -39,11 +34,11 @@ public class RootBlockParserTests
     [Fact]
     public void Initialization()
     {
-        sut.Settings.AttributeParsers.Should().BeEmpty();
+        sut.Settings.AttributeParsers.Count.Should().Be(0);
         sut.Settings.ChildParsers["background"].Should().BeSameAs(backgroundNodeParser);
         sut.Settings.ChildParsers["do"].Should().BeSameAs(blockNodeParser);
         sut.Settings.ChildParsers["pause"].Should().BeSameAs(pauseNodeParser);
-        sut.Settings.ChildParsers.Should().HaveCount(3);
+        sut.Settings.ChildParsers.Count.Should().Be(3);
         sut.Settings.TextParser.Should().BeNull();
     }
 

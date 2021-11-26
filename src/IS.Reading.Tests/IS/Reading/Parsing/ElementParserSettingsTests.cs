@@ -16,22 +16,18 @@ public class ElementParserSettingsTests
     {
         var textParser = A.Dummy<ITextParser>();
 
-        var attParser1 = A.Fake<IAttributeParser>();
-        A.CallTo(() => attParser1.AttributeName).Returns("a");
-        var attParser2 = A.Fake<IAttributeParser>();
-        A.CallTo(() => attParser2.AttributeName).Returns("b");
-        var nodeParser1 = A.Fake<INodeParser>();
-        A.CallTo(() => nodeParser1.ElementName).Returns("c");
-        var nodeParser2 = A.Dummy<INodeParser>();
-        A.CallTo(() => nodeParser2.ElementName).Returns("d");
+        var attParser1 = Helper.FakeParser<IAttributeParser>("a");
+        var attParser2 = Helper.FakeParser<IAttributeParser>("b");
+        var nodeParser1 = Helper.FakeParser<INodeParser>("c");
+        var nodeParser2 = Helper.FakeParser<INodeParser>("d");
 
         var sut = new ElementParserSettings(textParser, attParser1, attParser2, nodeParser1, nodeParser2);
 
         sut.TextParser.Should().BeSameAs(textParser);
-        sut.AttributeParsers.Should().HaveCount(2);
+        sut.AttributeParsers.Count.Should().Be(2);
         sut.AttributeParsers["a"].Should().BeSameAs(attParser1);
         sut.AttributeParsers["b"].Should().BeSameAs(attParser2);
-        sut.ChildParsers.Should().HaveCount(2);
+        sut.ChildParsers.Count.Should().Be(2);
         sut.ChildParsers["c"].Should().BeSameAs(nodeParser1);
         sut.ChildParsers["d"].Should().BeSameAs(nodeParser2);
     }
@@ -43,33 +39,31 @@ public class ElementParserSettingsTests
         var sut = new ElementParserSettings(textParser);
 
         sut.TextParser.Should().BeSameAs(textParser);
-        sut.AttributeParsers.Should().BeEmpty();
-        sut.ChildParsers.Should().BeEmpty();
+        sut.AttributeParsers.Count.Should().Be(0);
+        sut.ChildParsers.Count.Should().Be(0);
     }
 
     [Fact]
     public void OnlyAttributeParser()
     {
-        var attParser = A.Fake<IAttributeParser>();
-        A.CallTo(() => attParser.AttributeName).Returns("a");
+        var attParser = Helper.FakeParser<IAttributeParser>("a");
         var sut = new ElementParserSettings(attParser);
 
         sut.TextParser.Should().BeNull();
-        sut.AttributeParsers.Should().HaveCount(1);
+        sut.AttributeParsers.Count.Should().Be(1);
         sut.AttributeParsers["a"].Should().BeSameAs(attParser);
-        sut.ChildParsers.Should().BeEmpty();
+        sut.ChildParsers.Count.Should().Be(0);
     }
 
     [Fact]
     public void OnlyNodeParser()
     {
-        var attParser = A.Fake<INodeParser>();
-        A.CallTo(() => attParser.ElementName).Returns("a");
+        var attParser = Helper.FakeParser<INodeParser>("a");
         var sut = new ElementParserSettings(attParser);
 
         sut.TextParser.Should().BeNull();
-        sut.AttributeParsers.Should().BeEmpty();
-        sut.ChildParsers.Should().HaveCount(1);
+        sut.AttributeParsers.Count.Should().Be(0);
+        sut.ChildParsers.Count.Should().Be(1);
         sut.ChildParsers["a"].Should().BeSameAs(attParser);
     }
 }

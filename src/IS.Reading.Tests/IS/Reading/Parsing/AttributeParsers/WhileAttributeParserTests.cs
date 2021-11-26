@@ -9,7 +9,7 @@ public class WhileAttributeParserTests
     public void AttributetName()
     {
         var sut = new WhileAttributeParser(A.Dummy<IConditionParser>());
-        sut.AttributeName.Should().Be("while");
+        sut.Name.Should().Be("while");
     }
 
     [Fact]

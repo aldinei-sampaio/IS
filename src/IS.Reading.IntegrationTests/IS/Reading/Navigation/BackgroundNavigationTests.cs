@@ -17,6 +17,26 @@ public class BackgroundNavigationTests
     [Fact]
     public async Task Test()
     {
+        var xml =
+@"<storyboard>
+    <background>
+        <right>fundo1</right>
+        <scroll />
+        <pause />
+        <color>black</color>
+        <pause>250</pause>
+        <color>white</color>
+    </background>
+    <pause />
+    <background>fundo2</background>
+    <pause />
+</storyboard>";
+
         var parser = serviceProvider.GetRequiredService<IStoryboardParser>();
+        using var sb = await parser.ParseAsync(new StringReader(xml));
+
+        //sb.Events.Subscribe<BackgroundChangeEvent>(i => DoSomethingAsync(i));
+
+        await sb.MoveAsync(true);
     }
 }

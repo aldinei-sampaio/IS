@@ -23,7 +23,7 @@ public class BackgroundRightNodeParser : IBackgroundRightNodeParser
         Settings = new ElementParserSettings(whenAttributeParser, backgroundImageTextParser);
     }
 
-    public string ElementName => "right";
+    public string Name => "right";
 
     public async Task<INode?> ParseAsync(XmlReader reader, IParsingContext parsingContext)
     {

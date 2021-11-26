@@ -17,7 +17,7 @@ public class BackgroundScrollNodeParserTests
         reader = A.Dummy<XmlReader>();
         context = A.Fake<IParsingContext>(i => i.Strict());
         elementParser = A.Fake<IElementParser>(i => i.Strict());
-        whenAttributeParser = A.Dummy<IWhenAttributeParser>();
+        whenAttributeParser = Helper.FakeParser<IWhenAttributeParser>("when");
 
         sut = new(elementParser, whenAttributeParser);
     }
@@ -25,9 +25,10 @@ public class BackgroundScrollNodeParserTests
     [Fact]
     public void Initialization()
     {
-        sut.ElementName.Should().Be("scroll");
-        sut.Settings.AttributeParsers.Should().ContainValues(whenAttributeParser);
-        sut.Settings.ChildParsers.Should().BeEmpty();
+        sut.Name.Should().Be("scroll");
+        sut.Settings.AttributeParsers["when"].Should().BeSameAs(whenAttributeParser);
+        sut.Settings.AttributeParsers.Count.Should().Be(1);
+        sut.Settings.ChildParsers.Count.Should().Be(0);
         sut.Settings.TextParser.Should().BeNull();
     }
 

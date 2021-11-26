@@ -37,7 +37,7 @@ public class BackgroundNodeParser : IBackgroundNodeParser
     }
 
 
-    public string ElementName => "background";
+    public string Name => "background";
 
     public async Task<INode?> ParseAsync(XmlReader reader, IParsingContext parsingContext)
     {

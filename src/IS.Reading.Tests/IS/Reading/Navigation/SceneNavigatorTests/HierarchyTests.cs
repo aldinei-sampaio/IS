@@ -6,15 +6,14 @@ public class HierarchyTests
     public async Task Empty()
     {
         var navigationContext = A.Dummy<INavigationContext>();
-        var navigationStoryboard = A.Dummy<IStoryboard>();
 
         var blockNavigator = A.Fake<IBlockNavigator>(i => i.Strict());
         A.CallTo(() => blockNavigator.MoveAsync(null, null, true)).WithAnyArguments().Returns((INode)null);
 
         var sut = new SceneNavigator(blockNavigator);
 
-        (await sut.MoveAsync(navigationStoryboard, navigationContext, true)).Should().BeFalse();
-        (await sut.MoveAsync(navigationStoryboard, navigationContext, false)).Should().BeFalse();
+        (await sut.MoveAsync(navigationContext, true)).Should().BeFalse();
+        (await sut.MoveAsync(navigationContext, false)).Should().BeFalse();
     }
 
     [Theory]

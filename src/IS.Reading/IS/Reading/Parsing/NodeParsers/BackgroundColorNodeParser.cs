@@ -23,7 +23,7 @@ public class BackgroundColorNodeParser : IBackgroundColorNodeParser
         Settings = new ElementParserSettings(whenAttributeParser, colorTextParser);
     }
 
-    public string ElementName => "color";
+    public string Name => "color";
 
     public async Task<INode?> ParseAsync(XmlReader reader, IParsingContext parsingContext)
     {

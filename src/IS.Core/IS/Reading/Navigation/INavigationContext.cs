@@ -5,7 +5,11 @@ namespace IS.Reading.Navigation;
 
 public interface INavigationContext
 {
-    IState State { get; }
     IVariableDictionary Variables { get; }
+    INavigationState State { get; }
     IEventInvoker Events { get; }
+    IBlock RootBlock { get; }
+    Stack<IBlock> EnteredBlocks { get; }
+    IBlock? CurrentBlock { get; set; }
+    INode? CurrentNode { get; set; }
 }

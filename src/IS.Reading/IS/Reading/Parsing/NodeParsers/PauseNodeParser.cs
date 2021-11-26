@@ -22,7 +22,7 @@ public class PauseNodeParser : IPauseNodeParser
         Settings = new ElementParserSettings(whenAttributeParser, integerTextParser);
     }
 
-    public string ElementName => "pause";
+    public string Name => "pause";
 
     public async Task<INode?> ParseAsync(XmlReader reader, IParsingContext parsingContext)
     {

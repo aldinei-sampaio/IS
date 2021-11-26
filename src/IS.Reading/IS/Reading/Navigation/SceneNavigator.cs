@@ -7,12 +7,12 @@ public class SceneNavigator : ISceneNavigator
     public SceneNavigator(IBlockNavigator blockNavigator)
         => this.blockNavigator = blockNavigator;
 
-    public async Task<bool> MoveAsync(IStoryboard storyboard, INavigationContext context, bool forward)
+    public async Task<bool> MoveAsync(INavigationContext context, bool forward)
     {
-        if (storyboard.CurrentBlock is null)
-            storyboard.CurrentBlock = storyboard.RootBlock;
+        if (context.CurrentBlock is null)
+            context.CurrentBlock = context.RootBlock;
 
-        var block = storyboard.CurrentBlock;
+        var block = context.CurrentBlock;
 
         for (; ; )
         {
@@ -20,29 +20,29 @@ public class SceneNavigator : ISceneNavigator
 
             if (item is null)
             {
-                if (!storyboard.EnteredBlocks.TryPop(out var parentBlock))
+                if (!context.EnteredBlocks.TryPop(out var parentBlock))
                 {
-                    storyboard.CurrentNode = null;
-                    storyboard.CurrentBlock = null;
+                    context.CurrentNode = null;
+                    context.CurrentBlock = null;
                     return false;
                 }
 
                 block = parentBlock;
-                storyboard.CurrentBlock = parentBlock;
+                context.CurrentBlock = parentBlock;
                 continue;
             }
 
             if (item.ChildBlock is not null)
             {
                 block = item.ChildBlock;
-                storyboard.EnteredBlocks.Push(storyboard.CurrentBlock);
-                storyboard.CurrentBlock = block;
+                context.EnteredBlocks.Push(context.CurrentBlock);
+                context.CurrentBlock = block;
                 continue;
             }
 
             if (item is IPauseNode)
             {
-                storyboard.CurrentNode = item;
+                context.CurrentNode = item;
                 return true;
             }
         }

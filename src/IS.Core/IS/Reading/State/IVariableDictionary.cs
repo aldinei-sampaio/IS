@@ -1,4 +1,4 @@
-﻿namespace IS.Reading
+﻿namespace IS.Reading.State
 {
     public interface IVariableDictionary
     {

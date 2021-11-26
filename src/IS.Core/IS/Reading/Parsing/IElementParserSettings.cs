@@ -3,6 +3,6 @@
 public interface IElementParserSettings
 {
     ITextParser? TextParser { get; set; }
-    ParserDictionary<IAttributeParser> AttributeParsers { get; }
-    ParserDictionary<INodeParser> ChildParsers { get; }
+    IParserDictionary<IAttributeParser> AttributeParsers { get; }
+    IParserDictionary<INodeParser> ChildParsers { get; }
 }
