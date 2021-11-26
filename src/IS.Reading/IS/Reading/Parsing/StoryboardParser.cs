@@ -1,28 +1,39 @@
 ﻿using IS.Reading.Events;
 using IS.Reading.Navigation;
+using Microsoft.Extensions.DependencyInjection;
 using System.Xml;
 
 namespace IS.Reading.Parsing;
 
 public class StoryboardParser : IStoryboardParser
 {
-    private readonly IRootBlockParser rootBlockParser;
-    private readonly ISceneNavigator sceneNavigator;
+    private readonly IServiceProvider serviceProvider;
 
-    public StoryboardParser(IRootBlockParser rootBlockParser, ISceneNavigator sceneNavigator)
+    public StoryboardParser(IServiceProvider serviceProvider)
     {
-        this.rootBlockParser = rootBlockParser;
-        this.sceneNavigator = sceneNavigator;
+        this.serviceProvider = serviceProvider;
     }
 
     public async Task<IStoryboard> ParseAsync(TextReader textReader)
     {
-        var context = new ParsingContext();
+        var context = serviceProvider.GetRequiredService<IParsingContext>();
+
         using var reader = XmlReader.Create(textReader, new() { Async = true });
         reader.MoveToContent();
+
+        var rootBlockParser = serviceProvider.GetRequiredService<IRootBlockParser>();
+
         var parsed = await rootBlockParser.ParseAsync(reader, context);
+
         if (!context.IsSuccess)
-            throw new ParsingException(context.ToString());
-        return new Storyboard(parsed!, sceneNavigator, new EventManager());
+            throw new ParsingException(context.ToString()!);
+
+        if (parsed is null)
+            throw new InvalidOperationException();
+
+        var sceneNavigator = serviceProvider.GetRequiredService<ISceneNavigator>();
+        var eventManager = serviceProvider.GetRequiredService<IEventManager>();
+
+        return new Storyboard(parsed, sceneNavigator, eventManager);
     }
 }

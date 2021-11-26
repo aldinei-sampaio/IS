@@ -44,8 +44,9 @@ namespace IS.Reading
             services.AddSingleton<IBlockNavigator, BlockNavigator>();
             services.AddSingleton<ISceneNavigator, SceneNavigator>();
 
-            // Events
+            // Transient
             services.AddTransient<IEventManager, EventManager>();
+            services.AddTransient<IParsingContext, ParsingContext>();
 
             return services;
         }
