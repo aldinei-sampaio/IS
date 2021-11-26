@@ -1,6 +1,4 @@
-﻿using IS.Reading.State;
-
-namespace IS.Reading.Parsing.State;
+﻿namespace IS.Reading.State;
 
 public class BackgroundStateTests
 {

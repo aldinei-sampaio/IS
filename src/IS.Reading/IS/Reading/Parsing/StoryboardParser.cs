@@ -1,4 +1,5 @@
-﻿using IS.Reading.Navigation;
+﻿using IS.Reading.Events;
+using IS.Reading.Navigation;
 using System.Xml;
 
 namespace IS.Reading.Parsing;
@@ -22,6 +23,6 @@ public class StoryboardParser : IStoryboardParser
         var parsed = await rootBlockParser.ParseAsync(reader, context);
         if (!context.IsSuccess)
             throw new ParsingException(context.ToString());
-        return new Storyboard(parsed!, sceneNavigator);
+        return new Storyboard(parsed!, sceneNavigator, new EventManager());
     }
 }

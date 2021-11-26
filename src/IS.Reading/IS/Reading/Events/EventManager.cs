@@ -1,9 +1,11 @@
 ﻿namespace IS.Reading.Events;
 
-public class EventManager : IEventSubscriber, IEventInvoker, IDisposable
+public class EventManager : IEventManager
 {
     private readonly Dictionary<Type, List<object>> individualSubscriptions = new();
     private readonly List<Func<IReadingEvent, Task>> allSubscriptions = new();
+
+    public int SubscriptionCount => individualSubscriptions.Count + allSubscriptions.Count;
 
     public void Dispose()
     {

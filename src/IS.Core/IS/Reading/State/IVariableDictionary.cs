@@ -2,6 +2,7 @@
 {
     public interface IVariableDictionary
     {
-        int Get(string name);
+        int this[string name] { get; set; }
+        int Count { get; }
     }
 }

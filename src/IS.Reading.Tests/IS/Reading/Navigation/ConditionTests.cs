@@ -63,9 +63,9 @@ public class ConditionTests
     public void Evaluate(string when, int actualValue, bool expectedResult)
     {
         var context = A.Fake<IVariableDictionary>(i => i.Strict());
-        A.CallTo(() => context.Get("a")).Returns(actualValue);
-        A.CallTo(() => context.Get("b")).Returns(0);
-        A.CallTo(() => context.Get("c")).Returns(0);
+        A.CallTo(() => context["a"]).Returns(actualValue);
+        A.CallTo(() => context["b"]).Returns(0);
+        A.CallTo(() => context["c"]).Returns(0);
 
         var parser = new ConditionParser();
         var condition = parser.Parse(when);

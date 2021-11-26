@@ -1,9 +1,9 @@
-﻿using IS.Reading.Navigation;
+﻿using IS.Reading.Events;
+using IS.Reading.Navigation;
 using IS.Reading.Parsing;
 using IS.Reading.Parsing.AttributeParsers;
 using IS.Reading.Parsing.NodeParsers;
 using IS.Reading.Parsing.TextParsers;
-using IS.Reading.State;
 using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics.CodeAnalysis;
 
@@ -43,6 +43,9 @@ namespace IS.Reading
             // Navigators
             services.AddSingleton<IBlockNavigator, BlockNavigator>();
             services.AddSingleton<ISceneNavigator, SceneNavigator>();
+
+            // Events
+            services.AddTransient<IEventManager, EventManager>();
 
             return services;
         }

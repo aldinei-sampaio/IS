@@ -55,13 +55,13 @@ public class Condition : ICondition
     public bool Evaluate(IVariableDictionary variables)
     {
         if (VariableNames.Length == 1)
-            return EvaluateFor(variables.Get(VariableNames[0]));
+            return EvaluateFor(variables[VariableNames[0]]);
 
         var mustHaveDefined = Operator == ConditionType.Defined;
 
         foreach (var name in VariableNames)
         {
-            var value = variables.Get(name);
+            var value = variables[name];
             if (value != 0)
                 return mustHaveDefined;
         }

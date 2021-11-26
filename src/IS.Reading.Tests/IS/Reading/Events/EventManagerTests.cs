@@ -104,6 +104,41 @@ public class EventManagerTests
         helper.Check("TestEvent1:e1 TestEvent1:e2 TestEvent2:e3 TestEvent2:e3 ");
     }
 
+    [Fact]
+    public async Task DisposeShouldUnsubscribeAll()
+    {
+        var helper = new TestHelper();
+
+        var sut = new EventManager();
+        sut.Subscribe(i => helper.HandleAsync(i));
+        sut.Subscribe<TestEvent2>(i => helper.HandleAsync(i));
+
+        sut.Dispose();
+        sut.SubscriptionCount.Should().Be(0);
+
+        await sut.InvokeAsync(new TestEvent1 { Name = "e1" });
+
+        helper.Check("");
+    }
+
+    [Fact]
+    public void SubscriptionCount()
+    {
+        var helper = new TestHelper();
+
+        var sut = new EventManager();
+        sut.SubscriptionCount.Should().Be(0);
+        sut.Subscribe(i => helper.HandleAsync(i));
+        sut.SubscriptionCount.Should().Be(1);
+        sut.Subscribe<TestEvent1>(i => helper.HandleAsync(i));
+        sut.SubscriptionCount.Should().Be(2);
+        sut.Subscribe<TestEvent2>(i => helper.HandleAsync(i));
+        sut.SubscriptionCount.Should().Be(3);
+
+        sut.Dispose();
+        sut.SubscriptionCount.Should().Be(0);
+    }
+
     public class TestHelper
     {
         private readonly StringBuilder stringBuilder = new();

@@ -5,7 +5,7 @@ namespace IS.Reading.Navigation;
 public interface IStoryboard : IDisposable
 {
     IEventSubscriber Events { get; }
-    Task LoadStateAsync(Stream stream);
     Task<bool> MoveAsync(bool forward);
-    Task SaveStateAsync(Stream stream);
+    // TODO: Task LoadStateAsync(Stream stream);
+    // TODO: Task SaveStateAsync(Stream stream);
 }

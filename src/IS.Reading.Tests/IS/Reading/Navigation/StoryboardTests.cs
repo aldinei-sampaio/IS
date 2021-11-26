@@ -6,13 +6,15 @@ public class StoryboardTests
 {
     private readonly IBlock rootBlock;
     private readonly ISceneNavigator sceneNavigator;
+    private readonly IEventManager eventManager;
     private readonly Storyboard sut;
 
     public StoryboardTests()
     {
         rootBlock = A.Dummy<IBlock>();
         sceneNavigator = A.Fake<ISceneNavigator>(i => i.Strict());
-        sut = new Storyboard(rootBlock, sceneNavigator);
+        eventManager = A.Fake<IEventManager>(i => i.Strict());
+        sut = new Storyboard(rootBlock, sceneNavigator, eventManager);
     }
 
     [Fact]
@@ -38,23 +40,10 @@ public class StoryboardTests
     }
 
     [Fact]
-    public async Task Events()
+    public void DisposeShouldUnsubscribeEvents()
     {
-        var @event = new TestEvent();
-        TestEvent received = null;
-
-        sut.Events.Subscribe<TestEvent>(i =>
-        {
-            received = i;
-            return Task.CompletedTask;
-        });
-
-        await sut.NavigationContext.Events.InvokeAsync(@event);
-
-        received.Should().BeSameAs(@event);
-    }
-
-    private class TestEvent : IReadingEvent
-    {
+        A.CallTo(() => eventManager.Dispose()).DoesNothing();
+        sut.Dispose();
+        A.CallTo(() => eventManager.Dispose()).MustHaveHappenedOnceExactly();
     }
 }
