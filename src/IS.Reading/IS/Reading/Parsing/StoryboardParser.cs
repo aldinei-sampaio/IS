@@ -31,6 +31,9 @@ public class StoryboardParser : IStoryboardParser
         if (parsed is null)
             throw new InvalidOperationException();
 
+        for(var n = context.DismissNodes.Count - 1; n >= 0; n--)
+            parsed.ForwardQueue.Enqueue(context.DismissNodes[n]);
+
         var sceneNavigator = serviceProvider.GetRequiredService<ISceneNavigator>();
         var eventManager = serviceProvider.GetRequiredService<IEventManager>();
 

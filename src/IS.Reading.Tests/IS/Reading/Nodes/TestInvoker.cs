@@ -11,4 +11,10 @@ public class TestInvoker : IEventInvoker
         Received.Add(@event);
         return Task.CompletedTask;
     }
+
+    public T Single<T>() where T : IReadingEvent
+    {
+        Received.Should().HaveCount(1);
+        return Received[0].Should().BeAssignableTo<T>().Which;
+    }
 }

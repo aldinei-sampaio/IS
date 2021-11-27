@@ -2,6 +2,5 @@
 
 public class NavigationState : INavigationState
 {
-    public IBackgroundState Background { get; set; } 
-        = new BackgroundState(string.Empty, BackgroundType.Undefined, BackgroundPosition.Undefined);
+    public IBackgroundState Background { get; set; } = BackgroundState.Empty;
 }

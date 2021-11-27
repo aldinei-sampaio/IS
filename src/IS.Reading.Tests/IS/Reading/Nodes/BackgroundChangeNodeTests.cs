@@ -6,42 +6,86 @@ namespace IS.Reading.Nodes;
 
 public class BackgroundChangeNodeTests
 {
-    [Fact]
-    public void Initialization()
+    private readonly IBackgroundState initialState;
+    private readonly IBackgroundState newState;
+    private readonly ICondition when;
+    private readonly INavigationContext context;
+    private readonly BackgroundChangeNode sut;
+
+    public BackgroundChangeNodeTests()
     {
-        var newState = A.Dummy<IBackgroundState>();
-        var when = A.Dummy<ICondition>();
+        initialState = A.Dummy<IBackgroundState>();
+        newState = A.Dummy<IBackgroundState>();
+        when = A.Dummy<ICondition>();
+        context = A.Dummy<INavigationContext>();
+        context.State.Background = initialState;
 
-        var sut = new BackgroundChangeNode(newState, when);
+        sut = new BackgroundChangeNode(newState, when);
+    }
 
+    [Fact]
+    public void ConstructorShouldInitializeStateAndWhen()
+    {
         sut.State.Should().BeSameAs(newState);
         sut.When.Should().BeSameAs(when);
     }
 
     [Fact]
-    public async Task EnterAsync()
+    public async Task EnterAsyncShouldRaiseEvent()
     {
-        var oldState = A.Dummy<IBackgroundState>();
-        var newState = A.Dummy<IBackgroundState>();
-        var when = A.Dummy<ICondition>();
-
         var invoker = new TestInvoker();
-
-        var context = A.Dummy<INavigationContext>();
-        context.State.Background = oldState;
         A.CallTo(() => context.Events).Returns(invoker);
 
-        var sut = new BackgroundChangeNode(newState, when);
-        var ret = await sut.EnterAsync(context);
+        await sut.EnterAsync(context);
 
         invoker.Received.Should().HaveCount(1);
         invoker.Received[0].Should().BeOfType<BackgroundChangeEvent>()
             .Which.State.Should().BeSameAs(newState);
+    }
 
+    [Fact]
+    public async Task EnterAsyncShouldChangeState()
+    {
+        await sut.EnterAsync(context);
         context.State.Background.Should().BeSameAs(newState);
+    }
+
+    [Fact]
+    public async Task EnterAsyncShouldReturnAReversalNode()
+    {
+        var ret = await sut.EnterAsync(context);
 
         var retNode = ret.Should().BeOfType<BackgroundChangeNode>().Which;
-        retNode.State.Should().BeSameAs(oldState);
+        retNode.State.Should().BeSameAs(initialState);
         retNode.When.Should().BeSameAs(when);
+    }
+
+    [Fact]
+    public async Task ShouldNotRaiseEventIfThereIsNoChangeInBackground()
+    {
+        context.State.Background = newState;
+
+        var invoker = new TestInvoker();
+        A.CallTo(() => context.Events).Returns(invoker);
+
+        await sut.EnterAsync(context);
+
+        invoker.Received.Should().HaveCount(0);
+    }
+
+    [Fact]
+    public async Task ShouldReturnSelfIfThereIsNoChangeInBackground()
+    {
+        context.State.Background = newState;
+        var ret = await sut.EnterAsync(context);
+        ret.Should().BeSameAs(sut);    
+    }
+
+    [Fact]
+    public async Task ShouldKeepStateIfThereIsNoChangeInBackground()
+    {
+        context.State.Background = newState;
+        await sut.EnterAsync(context);
+        context.State.Background.Should().BeSameAs(newState);
     }
 }

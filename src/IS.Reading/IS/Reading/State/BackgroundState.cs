@@ -6,6 +6,9 @@ public record BackgroundState(
     BackgroundPosition Position
 ) : IBackgroundState
 {
+    public static BackgroundState Empty { get; }
+         = new(string.Empty, BackgroundType.Undefined, BackgroundPosition.Undefined);
+
     public override string ToString()
     {
         if (Type == BackgroundType.Color)

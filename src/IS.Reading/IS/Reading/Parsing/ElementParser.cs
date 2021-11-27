@@ -100,6 +100,13 @@ public class ElementParser : IElementParser
             if (parsed.Block is null)
                 parsed.Block = new Block();
             parsed.Block.ForwardQueue.Enqueue(child);
+
+            var dismissNode = parser.DismissNode;
+            if (dismissNode is not null)
+            {
+                if (!parsingContext.DismissNodes.Contains(dismissNode))
+                    parsingContext.DismissNodes.Add(dismissNode);
+            }
         }
     }
 

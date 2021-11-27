@@ -16,7 +16,7 @@ public class BackgroundNavigationTests
     }
 
     [Fact]
-    public async Task Test()
+    public async Task FowardAndBackward()
     {
         var xml =
 @"<storyboard>
@@ -40,8 +40,32 @@ public class BackgroundNavigationTests
 
         sb.Events.Subscribe(eventHandler.Handle);
 
-        (await sb.MoveAsync(true)).Should().BeTrue();
-        eventHandler.Check("bg right: fundo1", "bg scroll");
+        for (var n = 0; n <= 3; n++)
+        {
+            (await sb.MoveAsync(true)).Should().BeTrue();
+            eventHandler.Check("bg right: fundo1", "bg scroll");
+
+            (await sb.MoveAsync(true)).Should().BeTrue();
+            eventHandler.Check("bg color: black", "pause: 250", "bg color: white");
+
+            (await sb.MoveAsync(true)).Should().BeTrue();
+            eventHandler.Check("bg left: fundo2", "bg scroll");
+
+            (await sb.MoveAsync(true)).Should().BeFalse();
+            eventHandler.Check("bg empty");
+
+            (await sb.MoveAsync(false)).Should().BeTrue();
+            eventHandler.Check("bg right: fundo2");
+
+            (await sb.MoveAsync(false)).Should().BeTrue();
+            eventHandler.Check("bg scroll", "bg color: white");
+
+            (await sb.MoveAsync(false)).Should().BeTrue();
+            eventHandler.Check("bg color: black", "pause: 250", "bg left: fundo1");
+
+            (await sb.MoveAsync(false)).Should().BeFalse();
+            eventHandler.Check("bg scroll", "bg empty");
+        }
     }
 
     private class TestEventHandler

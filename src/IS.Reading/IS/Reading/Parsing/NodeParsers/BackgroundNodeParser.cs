@@ -60,4 +60,6 @@ public class BackgroundNodeParser : IBackgroundNodeParser
 
         return new BlockNode(parsed.Block, parsed.When, parsed.While);
     }
+
+    public INode? DismissNode { get; } = new BackgroundDismissNode();
 }

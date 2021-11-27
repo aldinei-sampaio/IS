@@ -6,6 +6,7 @@ namespace IS.Reading.Parsing;
 
 public class StoryboardParserTests
 {
+    private readonly List<INode> dismissNodes;
     private readonly IParsingContext parsingContext;
     private readonly IRootBlockParser rootBlockParser;
     private readonly ISceneNavigator sceneNavigator;
@@ -14,7 +15,10 @@ public class StoryboardParserTests
 
     public StoryboardParserTests()
     {
+        dismissNodes = new();
         parsingContext = A.Fake<IParsingContext>(i => i.Strict());
+        A.CallTo(() => parsingContext.DismissNodes).Returns(dismissNodes);
+
         rootBlockParser = A.Fake<IRootBlockParser>(i => i.Strict());
         sceneNavigator = A.Fake<ISceneNavigator>(i => i.Strict());
         eventManager = A.Fake<IEventManager>(i => i.Strict());
@@ -113,5 +117,33 @@ public class StoryboardParserTests
         await Assert.ThrowsAsync<InvalidOperationException>(
             () => sut.ParseAsync(reader)
         );
+    }
+
+    [Fact]
+    public async Task DismissNodesShouldBeAppendedToEndOfTheStoryboard()
+    {
+        var reader = new StringReader("<storyboard><abc /></storyboard>");
+
+        var normalNode = A.Dummy<INode>();
+        var dismissNode = A.Dummy<INode>();
+        
+        var block = A.Dummy<IBlock>();
+        block.ForwardQueue.Enqueue(normalNode);
+
+        A.CallTo(() => parsingContext.IsSuccess).Returns(true);
+        A.CallTo(() => rootBlockParser.ParseAsync(A<XmlReader>.Ignored, parsingContext))
+            .ReturnsLazily(i =>
+            {
+                parsingContext.DismissNodes.Add(dismissNode);
+                return Task.FromResult(block);
+            });
+
+        var result = (Storyboard)await sut.ParseAsync(reader);
+
+        result.Should().NotBeNull();
+        result.NavigationContext.RootBlock.Should().BeSameAs(block);
+        block.ForwardQueue.Dequeue().Should().BeSameAs(normalNode);
+        block.ForwardQueue.Dequeue().Should().BeSameAs(dismissNode);
+        block.ForwardQueue.Count.Should().Be(0);
     }
 }

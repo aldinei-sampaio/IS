@@ -16,6 +16,9 @@ public class BackgroundChangeNode : INode
     public async Task<INode> EnterAsync(INavigationContext context)
     {
         var oldState = context.State.Background;
+        if (oldState == State)
+            return this;
+
         await context.Events.InvokeAsync<IBackgroundChangeEvent>(new BackgroundChangeEvent(State));
         context.State.Background = State;
 

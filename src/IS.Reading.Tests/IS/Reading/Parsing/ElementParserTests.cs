@@ -304,18 +304,32 @@ public class ElementParserTests
     }
 
     [Fact]
-    public async Task ChildParser()
+    public async Task DismissNode()
     {
-        var xml = "<a><a><b /></a></a>";
-        using var reader = CreateReader(xml);
-
+        using var reader = CreateReader("<a><b /><b /></a>");
         var context = A.Fake<IParsingContext>(i => i.Strict());
+        var dismissNodes = new List<INode>();
+        A.CallTo(() => context.DismissNodes).Returns(dismissNodes);
 
-        var node = A.Dummy<INode>();
-        var settings = FakeSettings(new DummyNodeParser("b", node));
+        var normalNode = A.Dummy<INode>();
+        var dismissNode = A.Dummy<INode>();
+
+        var parser1 = A.Fake<INodeParser>(i => i.Strict());
+        A.CallTo(() => parser1.Name).Returns("b");
+        A.CallTo(() => parser1.ParseAsync(A<XmlReader>.Ignored, context)).Returns(normalNode);
+        A.CallTo(() => parser1.DismissNode).Returns(dismissNode);
+
+        var settings = FakeSettings(parser1);
 
         var sut = new ElementParser();
         var parsed = await sut.ParseAsync(reader, context, settings);
+
+        parsed.Block.ForwardQueue.Count.Should().Be(2);
+        parsed.Block.ForwardQueue.Dequeue().Should().BeSameAs(normalNode);
+        parsed.Block.ForwardQueue.Dequeue().Should().BeSameAs(normalNode);
+
+        dismissNodes.Count.Should().Be(1);
+        dismissNodes[0].Should().BeSameAs(dismissNode);
     }
 
     private static XmlReader CreateReader(string xmlContents)

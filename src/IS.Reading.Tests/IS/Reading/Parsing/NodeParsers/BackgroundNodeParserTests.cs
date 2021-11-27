@@ -60,6 +60,7 @@ public class BackgroundNodeParserTests
         sut.Settings.ChildParsers["pause"].Should().BeSameAs(pauseNodeParser);
         sut.Settings.ChildParsers.Count.Should().Be(5);
         sut.Settings.TextParser.Should().BeSameAs(backgroundImageTextParser);
+        sut.DismissNode.Should().BeOfType<BackgroundDismissNode>();
     }
 
     [Fact]

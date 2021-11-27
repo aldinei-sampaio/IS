@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using IS.Reading.Navigation;
+using System.Text;
 using System.Xml;
 
 namespace IS.Reading.Parsing;
@@ -12,6 +13,8 @@ public class ParsingContext : IParsingContext
     private int errorCount = 0;
 
     public bool IsSuccess => errorCount == 0;
+
+    public List<INode> DismissNodes { get; } = new();
 
     public void LogError(XmlReader xmlReader, string message)
     {
