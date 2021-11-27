@@ -1,4 +1,5 @@
-﻿using IS.Reading.Parsing;
+﻿using IS.Reading.Events;
+using IS.Reading.Parsing;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace IS.Reading.Navigation;
@@ -32,11 +33,31 @@ public class BackgroundNavigationTests
     <pause />
 </storyboard>";
 
+        var eventHandler = new TestEventHandler();
+
         var parser = serviceProvider.GetRequiredService<IStoryboardParser>();
         using var sb = await parser.ParseAsync(new StringReader(xml));
 
-        //sb.Events.Subscribe<BackgroundChangeEvent>(i => DoSomethingAsync(i));
+        sb.Events.Subscribe(eventHandler.Handle);
 
-        await sb.MoveAsync(true);
+        (await sb.MoveAsync(true)).Should().BeTrue();
+        eventHandler.Check("bg right: fundo1", "bg scroll");
+    }
+
+    private class TestEventHandler
+    {
+        private readonly List<string> received = new();
+
+        public Task Handle(IReadingEvent @event)
+        { 
+            received.Add(@event.ToString());
+            return Task.CompletedTask;
+        }
+        
+        public void Check(params string[] expectedEvents)
+        {
+            received.Should().BeEquivalentTo(expectedEvents);
+            received.Clear();
+        }
     }
 }

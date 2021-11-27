@@ -120,17 +120,18 @@ public class ElementParserTests
 
     [Theory]
     [InlineData("<t><a /><b /></t>", true, true)]
+    [InlineData("<t>\r\n  <a />\r\n  <b />\r\n</t>", true, true)]
     [InlineData("<t><a x=\"1\" /><b /></t>", true, true)]
     [InlineData("<t><a /><b y=\"0\" /></t>", true, true)]
-    [InlineData("<t><x /><a /><y /><b /><z /></t>", true, true)]
     [InlineData("<t><a /></t>", true, false)]
     [InlineData("<t><b /></t>", false, true)]
-    [InlineData("<t></t>", false, false)]
+    [InlineData("<t><!-- Comentário --></t>", false, false)]
     public async Task ElementParsing(string xml, bool hasA, bool hasB)
     {
         using var reader = CreateReader(xml);
 
-        var context = A.Dummy<IParsingContext>();
+        var context = A.Fake<IParsingContext>(i => i.Strict());
+        A.CallTo(() => context.IsSuccess).Returns(true);
 
         var aNode = A.Dummy<INode>();
         var bNode = A.Dummy<INode>();
@@ -215,7 +216,6 @@ public class ElementParserTests
     }
 
     [Theory]
-    [InlineData("<t><!-- comentário --></t>", "Conteúdo inválido detectado: Comment")]
     [InlineData("<t><![CDATA[ seção CDATA ]]></t>", "Conteúdo inválido detectado: CDATA")]
     public async Task InvalidContent(string xmlContent, string message)
     {
@@ -301,6 +301,21 @@ public class ElementParserTests
         }
 
         A.CallTo(() => context.LogError(reader, message)).MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task ChildParser()
+    {
+        var xml = "<a><a><b /></a></a>";
+        using var reader = CreateReader(xml);
+
+        var context = A.Fake<IParsingContext>(i => i.Strict());
+
+        var node = A.Dummy<INode>();
+        var settings = FakeSettings(new DummyNodeParser("b", node));
+
+        var sut = new ElementParser();
+        var parsed = await sut.ParseAsync(reader, context, settings);
     }
 
     private static XmlReader CreateReader(string xmlContents)

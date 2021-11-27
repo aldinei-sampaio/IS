@@ -18,19 +18,29 @@ public class ElementParser : IElementParser
 
         while (await reader.ReadAsync())
         {
-            if (reader.NodeType == XmlNodeType.Element)
+            switch(reader.NodeType)
             {
-                elementFound = true;
-                await ParseElementAsync(reader, parsingContext, settings, parsed, textFound);
-            }
-            else if (reader.NodeType == XmlNodeType.Text)
-            {
-                textFound = true;
-                ParseText(reader, parsingContext, settings, parsed, elementFound);
-            }
-            else if (reader.NodeType != XmlNodeType.EndElement)
-            {
-                parsingContext.LogError(reader, $"Conteúdo inválido detectado: {reader.NodeType}");
+                case XmlNodeType.Element:
+                    elementFound = true;
+                    await ParseElementAsync(reader, parsingContext, settings, parsed, textFound);
+                    break;
+
+                case XmlNodeType.Text:
+                    textFound = true;
+                    ParseText(reader, parsingContext, settings, parsed, elementFound);
+                    break;
+
+                case XmlNodeType.Whitespace:
+                case XmlNodeType.SignificantWhitespace:
+                case XmlNodeType.EndElement:
+                case XmlNodeType.Comment:
+                    // Ignore
+                    break;
+
+                default:
+                    parsingContext.LogError(reader, $"Conteúdo inválido detectado: {reader.NodeType}");
+                    break;
+
             }
         }
 
@@ -83,6 +93,7 @@ public class ElementParser : IElementParser
         }
 
         var childReader = reader.ReadSubtree();
+        await childReader.MoveToContentAsync();
         var child = await parser.ParseAsync(childReader, parsingContext);
         if (child is not null)
         {
