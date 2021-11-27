@@ -19,19 +19,15 @@ public class TimedPauseNodeTests
     [Fact]
     public async Task EnterAsync()
     {
-        var invoker = new TestInvoker();
-
         var context = A.Dummy<INavigationContext>();
-        A.CallTo(() => context.Events).Returns(invoker);
+        var invoker = new TestInvoker(context);
 
         var duration = TimeSpan.FromMilliseconds(234567);
 
         var sut = new TimedPauseNode(duration, null);
         var ret = await sut.EnterAsync(context);
 
-        invoker.Received.Should().HaveCount(1);
-        invoker.Received[0].Should().BeOfType<TimedPauseEvent>()
-            .Which.Duration.Should().Be(duration);
+        invoker.Single<ITimedPauseEvent>().Duration.Should().Be(duration);
 
         ret.Should().BeSameAs(ret);
     }

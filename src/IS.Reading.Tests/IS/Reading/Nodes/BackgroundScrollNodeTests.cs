@@ -25,18 +25,14 @@ public class BackgroundScrollNodeTests
 
         var when = A.Dummy<ICondition>();
 
-        var invoker = new TestInvoker();
-
         var context = A.Dummy<INavigationContext>();
         context.State.Background = oldState;
-        A.CallTo(() => context.Events).Returns(invoker);
+        var invoker = new TestInvoker(context);
 
         var sut = new BackgroundScrollNode(when);
         var ret = await sut.EnterAsync(context);
 
-        invoker.Received.Should().HaveCount(1);
-        invoker.Received[0].Should().BeOfType<BackgroundScrollEvent>()
-            .Which.Position.Should().Be(newPosition);
+        invoker.Single<IBackgroundScrollEvent>().Position.Should().Be(newPosition);
 
         context.State.Background.Should().Be(newState);
 
@@ -55,16 +51,15 @@ public class BackgroundScrollNodeTests
     public async Task IgnoreOnInvalidState(BackgroundType type, BackgroundPosition position)
     {
         var oldState = new BackgroundState("alpha", type, position);
-        var invoker = new TestInvoker();
         var context = A.Dummy<INavigationContext>();
         context.State.Background = oldState;
-        A.CallTo(() => context.Events).Returns(invoker);
+        var invoker = new TestInvoker(context);
 
         var sut = new BackgroundScrollNode(null);
         var ret = await sut.EnterAsync(context);
 
         ret.Should().BeSameAs(sut);
         context.State.Background.Should().BeSameAs(oldState);
-        invoker.Received.Should().BeEmpty();
+        invoker.Count.Should().Be(0);
     }
 }

@@ -33,14 +33,9 @@ public class BackgroundChangeNodeTests
     [Fact]
     public async Task EnterAsyncShouldRaiseEvent()
     {
-        var invoker = new TestInvoker();
-        A.CallTo(() => context.Events).Returns(invoker);
-
+        var invoker = new TestInvoker(context);
         await sut.EnterAsync(context);
-
-        invoker.Received.Should().HaveCount(1);
-        invoker.Received[0].Should().BeOfType<BackgroundChangeEvent>()
-            .Which.State.Should().BeSameAs(newState);
+        invoker.Single<IBackgroundChangeEvent>().State.Should().BeSameAs(newState);
     }
 
     [Fact]
@@ -63,14 +58,12 @@ public class BackgroundChangeNodeTests
     [Fact]
     public async Task ShouldNotRaiseEventIfThereIsNoChangeInBackground()
     {
+        var invoker = new TestInvoker(context);
+
         context.State.Background = newState;
-
-        var invoker = new TestInvoker();
-        A.CallTo(() => context.Events).Returns(invoker);
-
         await sut.EnterAsync(context);
 
-        invoker.Received.Should().HaveCount(0);
+        invoker.Count.Should().Be(0);
     }
 
     [Fact]

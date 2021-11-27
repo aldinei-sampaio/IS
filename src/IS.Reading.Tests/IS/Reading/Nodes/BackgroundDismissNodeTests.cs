@@ -63,53 +63,41 @@ public class BackgroundDismissNodeTests
     [Fact]
     public async Task EnterAsyncShouldRaiseEvent()
     {
-        var invoker = new TestInvoker();
-        A.CallTo(() => context.Events).Returns(invoker);
-
+        var invoker = new TestInvoker(context);
         var sut = new BackgroundDismissNode();
 
         for (var n = 1; n <= 3; n++)
         {
-            invoker.Received.Clear();
-
             sut = (BackgroundDismissNode)(await sut.EnterAsync(context));
             invoker.Single<IBackgroundChangeEvent>().State.Should().Be(BackgroundState.Empty);
-
-            invoker.Received.Clear();
+            invoker.Clear();
 
             sut = (BackgroundDismissNode)(await sut.EnterAsync(context));
             invoker.Single<IBackgroundChangeEvent>().State.Should().Be(initialState);
-        }
-    }
-
-    [Fact]
-    public async Task ShouldNotRaiseEventIfThereIsNoBackgroundChange()
-    {
-        context.State.Background = BackgroundState.Empty;
-
-        var invoker = new TestInvoker();
-        A.CallTo(() => context.Events).Returns(invoker);
-
-        var sut = new BackgroundDismissNode();
-
-        for(var n = 1; n <= 3; n++)
-        {
-            sut = (BackgroundDismissNode)(await sut.EnterAsync(context));
-            invoker.Received.Should().HaveCount(0);
-
-            sut = (BackgroundDismissNode)(await sut.EnterAsync(context));
-            invoker.Received.Should().HaveCount(0);
+            invoker.Clear();
         }
     }
 
     [Fact]
     public async Task ShouldReturnSelfIfThereIsNoBackgroundChange()
     {
-        context.State.Background = BackgroundState.Empty;
-
         var sut = new BackgroundDismissNode();
+
+        context.State.Background = BackgroundState.Empty;
         var ret = await sut.EnterAsync(context);
 
         ret.Should().BeSameAs(sut);
+    }
+
+    [Fact]
+    public async Task ShouldNotRaiseEventIfThereIsNoBackgroundChange()
+    {
+        var invoker = new TestInvoker(context);
+        var sut = new BackgroundDismissNode();
+
+        context.State.Background = BackgroundState.Empty;
+        await sut.EnterAsync(context);
+
+        invoker.Count.Should().Be(0);
     }
 }
