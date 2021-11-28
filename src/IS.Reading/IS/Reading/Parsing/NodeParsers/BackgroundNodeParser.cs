@@ -61,5 +61,6 @@ public class BackgroundNodeParser : IBackgroundNodeParser
         return new BlockNode(parsed.Block, parsed.When, parsed.While);
     }
 
-    public INode? DismissNode { get; } = new BackgroundDismissNode();
+    public INode? DismissNode { get; } 
+        = DismissNode<BackgroundChangeNode>.Create(new(BackgroundState.Empty, null));
 }

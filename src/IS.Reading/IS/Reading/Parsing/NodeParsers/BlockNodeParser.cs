@@ -16,7 +16,11 @@ public class BlockNodeParser : IBlockNodeParser
         IWhenAttributeParser whenAttributeParser,
         IWhileAttributeParser whileAttributeParser,
         IBackgroundNodeParser backgroundNodeParser,
-        IPauseNodeParser pauseNodeParser
+        IPauseNodeParser pauseNodeParser,
+        IProtagonistNodeParser protagonistNodeParser,
+        IPersonNodeParser personNodeParser,
+        INarrationNodeParser narrationNodeParser,
+        ITutorialNodeParser tutorialNodeParser
     )
     {
         this.elementParser = elementParser;
@@ -24,7 +28,11 @@ public class BlockNodeParser : IBlockNodeParser
             whenAttributeParser, 
             whileAttributeParser,
             backgroundNodeParser,
-            pauseNodeParser
+            pauseNodeParser,
+            protagonistNodeParser,
+            personNodeParser,
+            narrationNodeParser,
+            tutorialNodeParser
         );
         Settings.ChildParsers.Add(this);
     }

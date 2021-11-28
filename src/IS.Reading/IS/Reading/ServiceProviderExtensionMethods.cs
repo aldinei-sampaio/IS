@@ -26,8 +26,12 @@ namespace IS.Reading
             services.AddSingleton<IColorTextParser, ColorTextParser>();
             services.AddSingleton<IBackgroundImageTextParser, BackgroundImageTextParser>();
             services.AddSingleton<IIntegerTextParser, IntegerTextParser>();
+            services.AddSingleton<INameTextParser, NameTextParser>();
+            services.AddSingleton<IMoodTextParser, MoodTextParser>();
+            services.AddSingleton<IBalloonTextParser, BalloonTextParser>();
 
             // Node parsers
+            services.AddSingleton<IProtagonistNodeParser, ProtagonistNodeParser>();
             services.AddSingleton<IPauseNodeParser, PauseNodeParser>();
             services.AddSingleton<IBackgroundLeftNodeParser, BackgroundLeftNodeParser>();
             services.AddSingleton<IBackgroundRightNodeParser, BackgroundRightNodeParser>();
@@ -35,6 +39,12 @@ namespace IS.Reading
             services.AddSingleton<IBackgroundScrollNodeParser, BackgroundScrollNodeParser>();
             services.AddSingleton<IBackgroundNodeParser, BackgroundNodeParser>();
             services.AddSingleton<IBlockNodeParser, BlockNodeParser>();
+            services.AddSingleton<ISpeechNodeParser, SpeechNodeParser>();
+            services.AddSingleton<IThoughtNodeParser, ThoughtNodeParser>();
+            services.AddSingleton<INarrationNodeParser, NarrationNodeParser>();
+            services.AddSingleton<ITutorialNodeParser, TutorialNodeParser>();
+            services.AddSingleton<IMoodNodeParser, MoodNodeParser>();
+            services.AddSingleton<IPersonNodeParser, PersonNodeParser>();
 
             // Storyboard parsers
             services.AddSingleton<IRootBlockParser, RootBlockParser>();

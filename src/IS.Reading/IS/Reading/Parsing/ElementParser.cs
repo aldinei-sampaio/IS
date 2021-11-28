@@ -6,6 +6,57 @@ namespace IS.Reading.Parsing;
 
 public class ElementParser : IElementParser
 {
+    public async Task<IElementParsedData> ParseSiblingsAsync(
+        XmlReader reader, 
+        IParsingContext parsingContext, 
+        INodeParser parser
+    )
+    {
+        var parsed = new ElementParsedData();
+
+        do
+        {
+            switch (reader.NodeType)
+            {
+                case XmlNodeType.Element:
+                    if (string.Compare(reader.LocalName, parser.Name, StringComparison.OrdinalIgnoreCase) != 0)
+                        return parsed;
+                    await ParseElementAsync(reader, parsingContext, parser, parsed, false);
+                    break;
+                case XmlNodeType.Text:
+                    parsingContext.LogError(reader, "Texto não permitido nesta posição");
+                    break;
+            }
+        } while (await reader.ReadAsync());
+
+        return parsed;
+    }
+
+    private class AggregateInfo
+    {
+        private readonly INodeParser nodeParser;
+        public INodeAggregation Aggregation => nodeParser.NodeAggregation!;
+        public ElementParsedData ParsedData { get; } = new();
+
+        public AggregateInfo(INodeParser nodeParser)
+            => this.nodeParser = nodeParser;
+
+        public void Aggregate(ElementParsedData parsed)
+        {
+            if (ParsedData.Block is null || ParsedData.Block.ForwardStack.Count == 0)
+                return;
+
+            var node = nodeParser.Aggregate(ParsedData.Block);
+            if (node is null)
+                return;
+
+            if (parsed.Block is null)
+                parsed.Block = new Block();
+
+            parsed.Block.ForwardQueue.Enqueue(node);
+        }
+    }
+
     public async Task<IElementParsedData> ParseAsync(XmlReader reader, IParsingContext parsingContext, IElementParserSettings settings)
     {
         var parsed = new ElementParsedData();
@@ -16,13 +67,41 @@ public class ElementParser : IElementParser
         var textFound = false;
         var elementFound = false;
 
+        AggregateInfo? aggregateInfo = null;
+
         while (await reader.ReadAsync())
         {
             switch(reader.NodeType)
             {
                 case XmlNodeType.Element:
                     elementFound = true;
-                    await ParseElementAsync(reader, parsingContext, settings, parsed, textFound);
+
+                    if (aggregateInfo is not null)
+                    {
+                        if (aggregateInfo.Aggregation.ChildParsers.TryGet(reader.LocalName, out var aggParser))
+                        {
+                            await ParseElementAsync(reader, parsingContext, aggParser, aggregateInfo.ParsedData, textFound);
+                            break;
+                        }
+                        aggregateInfo.Aggregate(parsed);
+                        aggregateInfo = null;
+                    }
+
+                    if (!settings.ChildParsers.TryGet(reader.LocalName, out var parser))
+                    {
+                        parsingContext.LogError(reader, $"Elemento não reconhecido: {reader.LocalName}");
+                        break;
+                    }
+
+                    if (parser.NodeAggregation is not null)
+                    {
+                        aggregateInfo = new(parser);
+                        await ParseElementAsync(reader, parsingContext, parser, aggregateInfo.ParsedData, textFound);
+                        break;
+                    }
+
+                    await ParseElementAsync(reader, parsingContext, parser, parsed, textFound);
+
                     break;
 
                 case XmlNodeType.Text:
@@ -43,6 +122,8 @@ public class ElementParser : IElementParser
 
             }
         }
+
+        aggregateInfo?.Aggregate(parsed);
 
         return parsed;
     }
@@ -75,7 +156,7 @@ public class ElementParser : IElementParser
     private static async Task ParseElementAsync(
         XmlReader reader, 
         IParsingContext parsingContext,
-        IElementParserSettings settings,
+        INodeParser parser,
         ElementParsedData parsed, 
         bool textFound
     )
@@ -83,12 +164,6 @@ public class ElementParser : IElementParser
         if (textFound)
         {
             parsingContext.LogError(reader, "Não é permitido texto dentro de elemento que tenha elementos filhos.");
-            return;
-        }
-
-        if (!settings.ChildParsers.TryGet(reader.LocalName, out var parser))
-        {
-            parsingContext.LogError(reader, $"Elemento não reconhecido: {reader.LocalName}");
             return;
         }
 

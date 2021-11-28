@@ -18,7 +18,7 @@ public class StoryboardParser : IStoryboardParser
     {
         var context = serviceProvider.GetRequiredService<IParsingContext>();
 
-        using var reader = XmlReader.Create(textReader, new() { Async = true });
+        using var reader = XmlReader.Create(textReader, new() { Async = true, CloseInput = true });
         await reader.MoveToContentAsync();
 
         var rootBlockParser = serviceProvider.GetRequiredService<IRootBlockParser>();

@@ -314,8 +314,7 @@ public class ElementParserTests
         var normalNode = A.Dummy<INode>();
         var dismissNode = A.Dummy<INode>();
 
-        var parser1 = A.Fake<INodeParser>(i => i.Strict());
-        A.CallTo(() => parser1.Name).Returns("b");
+        var parser1 = Helper.FakeNodeParser("b");
         A.CallTo(() => parser1.ParseAsync(A<XmlReader>.Ignored, context)).Returns(normalNode);
         A.CallTo(() => parser1.DismissNode).Returns(dismissNode);
 

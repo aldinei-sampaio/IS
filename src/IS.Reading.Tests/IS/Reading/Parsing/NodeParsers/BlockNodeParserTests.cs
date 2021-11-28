@@ -13,6 +13,10 @@ public class BlockNodeParserTests
     private readonly IWhileAttributeParser whileAttributeParser;
     private readonly IBackgroundNodeParser backgroundNodeParser;
     private readonly IPauseNodeParser pauseNodeParser;
+    private readonly IProtagonistNodeParser protagonistNodeParser;
+    private readonly IPersonNodeParser personNodeParser;
+    private readonly INarrationNodeParser narrationNodeParser;
+    private readonly ITutorialNodeParser tutorialNodeParser;
     private readonly BlockNodeParser sut;
 
     public BlockNodeParserTests()
@@ -24,13 +28,21 @@ public class BlockNodeParserTests
         whileAttributeParser = Helper.FakeParser<IWhileAttributeParser>("while");
         backgroundNodeParser = Helper.FakeParser<IBackgroundNodeParser>("background");
         pauseNodeParser = Helper.FakeParser<IPauseNodeParser>("pause");
+        protagonistNodeParser = Helper.FakeParser<IProtagonistNodeParser>("protagonist");
+        personNodeParser = Helper.FakeParser<IPersonNodeParser>("person");
+        narrationNodeParser = Helper.FakeParser<INarrationNodeParser>("narration");
+        tutorialNodeParser = Helper.FakeParser<ITutorialNodeParser>("tutorial");
 
         sut = new(
             elementParser, 
             whenAttributeParser, 
             whileAttributeParser, 
             backgroundNodeParser, 
-            pauseNodeParser
+            pauseNodeParser,
+            protagonistNodeParser,
+            personNodeParser,
+            narrationNodeParser,
+            tutorialNodeParser
         );
     }
 
@@ -44,7 +56,11 @@ public class BlockNodeParserTests
         sut.Settings.ChildParsers["background"].Should().BeSameAs(backgroundNodeParser);
         sut.Settings.ChildParsers["do"].Should().BeSameAs(sut);
         sut.Settings.ChildParsers["pause"].Should().BeSameAs(pauseNodeParser);
-        sut.Settings.ChildParsers.Count.Should().Be(3);
+        sut.Settings.ChildParsers["protagonist"].Should().BeSameAs(protagonistNodeParser);
+        sut.Settings.ChildParsers["person"].Should().BeSameAs(personNodeParser);
+        sut.Settings.ChildParsers["tutorial"].Should().BeSameAs(tutorialNodeParser);
+        sut.Settings.ChildParsers["narration"].Should().BeSameAs(narrationNodeParser);
+        sut.Settings.ChildParsers.Count.Should().Be(7);
         sut.Settings.TextParser.Should().BeNull();
     }
 

@@ -7,14 +7,16 @@ namespace IS.Reading.Parsing;
 public class ParsingContext : IParsingContext
 {
     private const int MaxErrorCount = 10;
-
     private readonly StringBuilder stringBuilder = new();
-
     private int errorCount = 0;
 
     public bool IsSuccess => errorCount == 0;
 
     public List<INode> DismissNodes { get; } = new();
+
+    public string? Person { get; set; }
+
+    public BalloonType? BalloonType { get; set; }
 
     public void LogError(XmlReader xmlReader, string message)
     {
