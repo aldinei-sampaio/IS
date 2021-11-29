@@ -6,6 +6,9 @@ public class NodeAggregation : INodeAggregation
 
     public NodeAggregation(params INodeParser[] nodeParsers)
     {
+        if (nodeParsers is null)
+            throw new ArgumentNullException(nameof(nodeParsers));
+
         var parsers = new ParserDictionary<INodeParser>();
 
         foreach (var nodeParser in nodeParsers)

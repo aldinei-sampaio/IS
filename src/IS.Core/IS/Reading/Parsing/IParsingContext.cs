@@ -9,5 +9,4 @@ public interface IParsingContext
     bool IsSuccess { get; }
     List<INode> DismissNodes { get; }
     string? Person { get; set; }
-    BalloonType? BalloonType { get; set; }
 }

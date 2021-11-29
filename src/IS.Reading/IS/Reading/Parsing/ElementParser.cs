@@ -6,32 +6,6 @@ namespace IS.Reading.Parsing;
 
 public class ElementParser : IElementParser
 {
-    public async Task<IElementParsedData> ParseSiblingsAsync(
-        XmlReader reader, 
-        IParsingContext parsingContext, 
-        INodeParser parser
-    )
-    {
-        var parsed = new ElementParsedData();
-
-        do
-        {
-            switch (reader.NodeType)
-            {
-                case XmlNodeType.Element:
-                    if (string.Compare(reader.LocalName, parser.Name, StringComparison.OrdinalIgnoreCase) != 0)
-                        return parsed;
-                    await ParseElementAsync(reader, parsingContext, parser, parsed, false);
-                    break;
-                case XmlNodeType.Text:
-                    parsingContext.LogError(reader, "Texto não permitido nesta posição");
-                    break;
-            }
-        } while (await reader.ReadAsync());
-
-        return parsed;
-    }
-
     private class AggregateInfo
     {
         private readonly INodeParser nodeParser;
@@ -43,7 +17,7 @@ public class ElementParser : IElementParser
 
         public void Aggregate(ElementParsedData parsed)
         {
-            if (ParsedData.Block is null || ParsedData.Block.ForwardStack.Count == 0)
+            if (ParsedData.Block is null)
                 return;
 
             var node = nodeParser.Aggregate(ParsedData.Block);
@@ -167,7 +141,7 @@ public class ElementParser : IElementParser
             return;
         }
 
-        var childReader = reader.ReadSubtree();
+        using var childReader = reader.ReadSubtree();
         await childReader.MoveToContentAsync();
         var child = await parser.ParseAsync(childReader, parsingContext);
         if (child is not null)

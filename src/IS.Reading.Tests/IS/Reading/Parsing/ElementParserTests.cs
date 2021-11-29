@@ -9,7 +9,7 @@ public class ElementParserTests
     [Fact]
     public async Task Empty()
     {
-        using var reader = CreateReader("<teste />");
+        using var reader = Helper.CreateReader("<teste />");
         var context = A.Dummy<IParsingContext>();
         var settings = A.Dummy<IElementParserSettings>();
 
@@ -62,7 +62,7 @@ public class ElementParserTests
     [InlineData("<t abc=\"1\" />", false, false)]
     public async Task AttributeParsing(string xml, bool hasWhen, bool hasWhile)
     {
-        using var reader = CreateReader(xml);
+        using var reader = Helper.CreateReader(xml);
 
         var context = A.Dummy<IParsingContext>();
         var whenAttribute = A.Dummy<WhenAttribute>();
@@ -101,7 +101,7 @@ public class ElementParserTests
         const string whenMessage = "Atributo não reconhecido: when";
         const string whileMessage = "Atributo não reconhecido: while";
 
-        using var reader = CreateReader("<teste when=\"1\" while=\"0\" />");
+        using var reader = Helper.CreateReader("<teste when=\"1\" while=\"0\" />");
 
         var context = A.Fake<IParsingContext>(i => i.Strict());
         A.CallTo(() => context.LogError(reader, whenMessage)).DoesNothing();
@@ -128,7 +128,7 @@ public class ElementParserTests
     [InlineData("<t><!-- Comentário --></t>", false, false)]
     public async Task ElementParsing(string xml, bool hasA, bool hasB)
     {
-        using var reader = CreateReader(xml);
+        using var reader = Helper.CreateReader(xml);
 
         var context = A.Fake<IParsingContext>(i => i.Strict());
         A.CallTo(() => context.IsSuccess).Returns(true);
@@ -172,7 +172,7 @@ public class ElementParserTests
         const string aMessage = "Elemento não reconhecido: a";
         const string bMessage = "Elemento não reconhecido: b";
 
-        using var reader = CreateReader("<t><a /><b /><c /></t>");
+        using var reader = Helper.CreateReader("<t><a /><b /><c /></t>");
 
         var context = A.Fake<IParsingContext>(i => i.Strict());
         A.CallTo(() => context.LogError(reader, aMessage)).DoesNothing();
@@ -195,7 +195,7 @@ public class ElementParserTests
     [Fact]
     public async Task TextParsing()
     {
-        using var reader = CreateReader("<t>Pindamonhangaba</t>");
+        using var reader = Helper.CreateReader("<t>Pindamonhangaba</t>");
 
         var context = A.Fake<IParsingContext>(i => i.Strict());
         
@@ -219,7 +219,7 @@ public class ElementParserTests
     [InlineData("<t><![CDATA[ seção CDATA ]]></t>", "Conteúdo inválido detectado: CDATA")]
     public async Task InvalidContent(string xmlContent, string message)
     {
-        using var reader = CreateReader(xmlContent);
+        using var reader = Helper.CreateReader(xmlContent);
         var context = A.Fake<IParsingContext>(i => i.Strict());
         A.CallTo(() => context.LogError(reader, message)).DoesNothing();
         var textParser = A.Fake<ITextParser>(i => i.Strict());
@@ -244,7 +244,7 @@ public class ElementParserTests
     {
         const string message = "Este elemento não permite texto.";
 
-        using var reader = CreateReader("<t>Pindamonhangaba</t>");
+        using var reader = Helper.CreateReader("<t>Pindamonhangaba</t>");
 
         var context = A.Fake<IParsingContext>(i => i.Strict());
         A.CallTo(() => context.LogError(reader, message)).DoesNothing();
@@ -271,7 +271,7 @@ public class ElementParserTests
     {
         const string message = "Não é permitido texto dentro de elemento que tenha elementos filhos.";
 
-        using var reader = CreateReader(xml);
+        using var reader = Helper.CreateReader(xml);
 
         var context = A.Fake<IParsingContext>(i => i.Strict());
         A.CallTo(() => context.LogError(reader, message)).DoesNothing();
@@ -306,7 +306,7 @@ public class ElementParserTests
     [Fact]
     public async Task DismissNode()
     {
-        using var reader = CreateReader("<a><b /><b /></a>");
+        using var reader = Helper.CreateReader("<a><b /><b /></a>");
         var context = A.Fake<IParsingContext>(i => i.Strict());
         var dismissNodes = new List<INode>();
         A.CallTo(() => context.DismissNodes).Returns(dismissNodes);
@@ -331,23 +331,174 @@ public class ElementParserTests
         dismissNodes[0].Should().BeSameAs(dismissNode);
     }
 
-    private static XmlReader CreateReader(string xmlContents)
+    [Fact]
+    public async Task AggregatedNodes()
     {
-        var textReader = new StringReader(xmlContents);
-        var reader = XmlReader.Create(textReader, new() { Async = true });
-        reader.MoveToContent();
-        return reader;
+        var aNode = A.Dummy<INode>();
+        var bNode = A.Dummy<INode>();
+
+        var bParser = new DummyNodeParser("b", bNode);
+        var aParser = new DummyNodeParser("a", aNode, bParser);
+        var settings = new DummySettings(aParser);
+
+        using var reader = Helper.CreateReader("<sb><a /><b /></sb>");
+        var context = A.Dummy<IParsingContext>();
+
+        var sut = new ElementParser();
+        var ret = await sut.ParseAsync(reader, context, settings);
+
+        ret.Should().NotBeNull();
+        ret.Block.ForwardQueue.Count.Should().Be(1);
+        var finalNode = ret.Block.ForwardQueue.Dequeue();
+        var queue = finalNode.ChildBlock.ForwardQueue;
+        queue.Count().Should().Be(2);
+        queue.Dequeue().Should().BeSameAs(aNode);
+        queue.Dequeue().Should().BeSameAs(bNode);
+    }
+
+    [Fact]
+    public async Task AggregatedAndNormal()
+    {
+        var aNode = A.Dummy<INode>();
+        var bNode = A.Dummy<INode>();
+        var cNode = A.Dummy<INode>();
+
+        var bParser = new DummyNodeParser("b", bNode);
+        var aParser = new DummyNodeParser("a", aNode, bParser);
+        var cParser = new DummyNodeParser("c", cNode);
+        var settings = new DummySettings(aParser, cParser);
+
+        using var reader = Helper.CreateReader("<sb><a /><b /><c /></sb>");
+        var context = A.Dummy<IParsingContext>();
+
+        var sut = new ElementParser();
+        var ret = await sut.ParseAsync(reader, context, settings);
+
+        ret.Should().NotBeNull();
+        ret.Block.ForwardQueue.Count.Should().Be(2);
+        var finalNode = ret.Block.ForwardQueue.Dequeue();
+        var queue = finalNode.ChildBlock.ForwardQueue;
+        queue.Count().Should().Be(2);
+        queue.Dequeue().Should().BeSameAs(aNode);
+        queue.Dequeue().Should().BeSameAs(bNode);
+
+        ret.Block.ForwardQueue.Dequeue().Should().BeSameAs(cNode);
+    }
+
+    [Fact]
+    public async Task AggregateRepeated()
+    {
+        var aNode = A.Dummy<INode>();
+        var a2Node = A.Dummy<INode>();
+        var cNode = A.Dummy<INode>();
+
+        var a2Parser = new DummyNodeParser("a", a2Node);
+        var aParser = new DummyNodeParser("a", aNode, a2Parser);
+        var cParser = new DummyNodeParser("c", cNode);
+        var settings = new DummySettings(aParser, cParser);
+
+        using var reader = Helper.CreateReader("<sb><a /><a /><a /><a /><c /></sb>");
+        var context = A.Dummy<IParsingContext>();
+
+        var sut = new ElementParser();
+        var ret = await sut.ParseAsync(reader, context, settings);
+
+        ret.Should().NotBeNull();
+        ret.Block.ForwardQueue.Count.Should().Be(2);
+        var finalNode = ret.Block.ForwardQueue.Dequeue();
+        var queue = finalNode.ChildBlock.ForwardQueue;
+        queue.Count().Should().Be(4);
+        queue.Dequeue().Should().BeSameAs(aNode);
+        queue.Dequeue().Should().BeSameAs(a2Node);
+        queue.Dequeue().Should().BeSameAs(a2Node);
+        queue.Dequeue().Should().BeSameAs(a2Node);
+
+        ret.Block.ForwardQueue.Dequeue().Should().BeSameAs(cNode);
+    }
+
+    [Fact]
+    public async Task AggregateNullParsed()
+    {
+        var a2Parser = new DummyNodeParser("a", null);
+        var aParser = new DummyNodeParser("a", null, a2Parser);
+        var settings = new DummySettings(aParser);
+
+        using var reader = Helper.CreateReader("<sb><a /><a /></sb>");
+        var context = A.Dummy<IParsingContext>();
+
+        var sut = new ElementParser();
+        var ret = await sut.ParseAsync(reader, context, settings);
+
+        ret.Should().NotBeNull();
+        ret.Block.Should().BeNull();
+    }
+
+    [Fact]
+    public async Task AggregatedReturningNull()
+    {
+        var aNode = A.Dummy<INode>();
+        var bNode = A.Dummy<INode>();
+
+        var bParser = new DummyNodeParser("b", bNode);
+        var aParser = new DummyNodeParser("a", aNode, bParser);
+        aParser.AggregateShouldReturnNull = true;
+        var settings = new DummySettings(aParser);
+
+        using var reader = Helper.CreateReader("<sb><a /><b /></sb>");
+        var context = A.Dummy<IParsingContext>();
+
+        var sut = new ElementParser();
+        var ret = await sut.ParseAsync(reader, context, settings);
+
+        ret.Should().NotBeNull();
+        ret.Block.Should().BeNull();
+    }
+
+    private class DummySettings : IElementParserSettings
+    {
+        public DummySettings(params INodeParser[] nodeParsers)
+        {
+            foreach(var nodeParser in nodeParsers)
+                ChildParsers.Add(nodeParser);
+        }
+
+        public ITextParser TextParser { get; set; }
+
+        public IParserDictionary<IAttributeParser> AttributeParsers { get; }
+            = new ParserDictionary<IAttributeParser>();
+
+        public IParserDictionary<INodeParser> ChildParsers { get; }
+            = new ParserDictionary<INodeParser>();
+    }
+
+    private class DummyAggregation : INodeAggregation
+    {
+        public IParserDictionary<INodeParser> ChildParsers { get; } 
+            = new ParserDictionary<INodeParser>();
     }
 
     private class DummyNodeParser : INodeParser
     {
         private readonly INode ret;
 
-        public DummyNodeParser(string name, INode ret)
+        public DummyNodeParser(string name, INode ret, params INodeParser[] aggregated)
         {
             this.ret = ret;
             Name = name;
+            if (aggregated is not null && aggregated.Length > 0)
+            {
+                var aggregation = new DummyAggregation();
+                foreach (var aggParser in aggregated)
+                    aggregation.ChildParsers.Add(aggParser);
+                NodeAggregation = aggregation;
+            }
+            else
+            {
+                NodeAggregation = null;
+            }
         }
+
+        public INodeAggregation NodeAggregation { get; }
 
         public string Name { get; }
 
@@ -357,6 +508,21 @@ public class ElementParserTests
             {
             }
             return ret;
+        }
+
+        public bool AggregateShouldReturnNull { get; set; }
+
+        public INode Aggregate(IBlock block)
+        {
+            if (NodeAggregation is null)
+                throw new InvalidOperationException("Aggregate() sendo chamado quando NodeAggregation é null");
+
+            if (AggregateShouldReturnNull)
+                return null;
+
+            var node = A.Dummy<INode>();
+            A.CallTo(() => node.ChildBlock).Returns(block);
+            return node;
         }
     }
 }

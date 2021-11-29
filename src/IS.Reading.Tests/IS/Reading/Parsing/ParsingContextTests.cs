@@ -6,6 +6,15 @@ namespace IS.Reading.Parsing;
 public class ParsingContextTests
 {
     [Fact]
+    public void Person()
+    {
+        var sut = new ParsingContext();
+        sut.Person.Should().BeNull();
+        sut.Person = "abc";
+        sut.Person.Should().Be("abc");
+    }
+
+    [Fact]
     public void IsSuccessShouldReturnFalseAfterLogError()
     {
         var sut = new ParsingContext();

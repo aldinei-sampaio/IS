@@ -16,8 +16,6 @@ public class ParsingContext : IParsingContext
 
     public string? Person { get; set; }
 
-    public BalloonType? BalloonType { get; set; }
-
     public void LogError(XmlReader xmlReader, string message)
     {
         if (errorCount >= MaxErrorCount)
