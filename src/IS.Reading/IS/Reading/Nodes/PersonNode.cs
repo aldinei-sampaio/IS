@@ -19,7 +19,7 @@ namespace IS.Reading.Nodes
         {
             var @event = new PersonEnterEvent(Name, IsProtagonist(context, Name));
             await context.Events.InvokeAsync<IPersonEnterEvent>(@event);
-            context.State.Person = Name;
+            context.State.PersonName = Name;
             return this;
         }
 
@@ -28,7 +28,7 @@ namespace IS.Reading.Nodes
             var @event = new PersonLeaveEvent(Name, IsProtagonist(context, Name));
             await context.Events.InvokeAsync<IPersonLeaveEvent>(@event);
             context.State.MoodType = null;
-            context.State.Person = null;
+            context.State.PersonName = null;
             return this;
         }
     }

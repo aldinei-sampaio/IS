@@ -2,17 +2,17 @@
 
 public class ProtagonistChangeEvent : IProtagonistChangeEvent
 {
-    public ProtagonistChangeEvent(string? name)
-        => Name = name;
+    public ProtagonistChangeEvent(string? personName)
+        => PersonName = personName;
 
-    public string? Name { get; }
+    public string? PersonName { get; }
 
     public override string ToString()
     {
-        if (Name is null)
+        if (PersonName is null)
             return "protagonist undefined";
         else
-            return $"protagonist: {Name}";
+            return $"protagonist: {PersonName}";
     }
         
 }

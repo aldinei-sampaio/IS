@@ -3,12 +3,12 @@
 public class PersonEnterEvent : IPersonEnterEvent
 {
     public PersonEnterEvent(string name, bool isProtagonist)
-        => (Name, IsProtagonist) = (name, IsProtagonist);
+        => (PersonName, IsProtagonist) = (name, isProtagonist);
 
-    public string Name { get; }
+    public string PersonName { get; }
 
     public bool IsProtagonist { get; }
 
     public override string ToString()
-        => $"person{Helper.ProtagSymbol(IsProtagonist)} enter: {Name}";
+        => $"person enter: {PersonName}{Helper.ProtagSymbol(IsProtagonist)}";
 }

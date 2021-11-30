@@ -10,14 +10,14 @@ public class NavigationStateTests
         sut.Background.Should().BeSameAs(BackgroundState.Empty);        
         sut.Protagonist.Should().BeNull();
         sut.MoodType.Should().BeNull();
-        sut.Person.Should().BeNull();
+        sut.PersonName.Should().BeNull();
 
         sut.Protagonist = "protagonist";
         sut.MoodType = MoodType.Happy;
-        sut.Person = "person";
+        sut.PersonName = "person";
 
         sut.Protagonist.Should().Be("protagonist");
         sut.MoodType.Should().Be(MoodType.Happy);
-        sut.Person.Should().Be("person");
+        sut.PersonName.Should().Be("person");
     }
 }

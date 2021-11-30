@@ -17,7 +17,7 @@ public class MoodNode : INode
         if (context.State.MoodType == MoodType)
             return this;
 
-        var @event = new MoodChangeEvent(context.State.Person!, MoodType);
+        var @event = new MoodChangeEvent(context.State.PersonName!, context.State.IsProtagonist(), MoodType);
         await context.Events.InvokeAsync<IMoodChangeEvent>(@event);
         context.State.MoodType = MoodType;
 

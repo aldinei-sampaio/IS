@@ -2,7 +2,7 @@
 
 public interface IBalloonTextEvent : IReadingEvent
 {
-    BalloonType BallonType { get; }
+    BalloonType BalloonType { get; }
     bool IsProtagonist { get; }
     string Text { get; }
 }

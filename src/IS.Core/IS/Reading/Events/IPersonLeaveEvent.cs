@@ -3,5 +3,5 @@
 public interface IPersonLeaveEvent : IReadingEvent
 {
     bool IsProtagonist { get; }
-    string Name { get; }
+    string PersonName { get; }
 }

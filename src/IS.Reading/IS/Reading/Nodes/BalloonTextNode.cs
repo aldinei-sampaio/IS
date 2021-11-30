@@ -3,7 +3,7 @@ using IS.Reading.Navigation;
 
 namespace IS.Reading.Nodes;
 
-public class BalloonTextNode : INode
+public class BalloonTextNode : IPauseNode
 {
     public string Text { get; }
     public BalloonType BalloonType { get; }

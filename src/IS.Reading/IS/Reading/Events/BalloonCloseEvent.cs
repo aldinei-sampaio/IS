@@ -10,5 +10,5 @@ public class BalloonCloseEvent : IBalloonCloseEvent
     public bool IsProtagonist { get; }
 
     public override string ToString()
-        => $"{BallonType.ToString().ToLower()}{Helper.ProtagSymbol(IsProtagonist)} end";
+        => $"{BallonType.ToString().ToLower()}{Helper.ProtagSymbol(BallonType, IsProtagonist)} end";
 }

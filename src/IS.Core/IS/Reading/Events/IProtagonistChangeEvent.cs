@@ -2,5 +2,5 @@
 
 public interface IProtagonistChangeEvent : IReadingEvent
 {
-    string? Name { get; }
+    string? PersonName { get; }
 }

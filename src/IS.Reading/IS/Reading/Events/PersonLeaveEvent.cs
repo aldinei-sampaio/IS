@@ -3,12 +3,12 @@
 public class PersonLeaveEvent : IPersonLeaveEvent
 {
     public PersonLeaveEvent(string name, bool isProtagonist)
-        => (Name, IsProtagonist) = (name, IsProtagonist);
+        => (PersonName, IsProtagonist) = (name, isProtagonist);
 
-    public string Name { get; }
+    public string PersonName { get; }
 
     public bool IsProtagonist { get; }
 
     public override string ToString()
-        => $"person{(IsProtagonist ? "*" : string.Empty)} leave: {Name}";
+        => $"person leave: {PersonName}{Helper.ProtagSymbol(IsProtagonist)}";
 }
