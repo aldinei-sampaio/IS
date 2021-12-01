@@ -4,11 +4,11 @@ using IS.Reading.State;
 
 namespace IS.Reading.Nodes;
 
-public class BackgroundChangeNode : INode
+public class BackgroundNode : INode
 {
     public IBackgroundState State { get; }
 
-    public BackgroundChangeNode(IBackgroundState state, ICondition? when)
+    public BackgroundNode(IBackgroundState state, ICondition? when)
         => (State, When) = (state, when);
 
     public ICondition? When { get; }
@@ -22,6 +22,6 @@ public class BackgroundChangeNode : INode
         await context.Events.InvokeAsync<IBackgroundChangeEvent>(new BackgroundChangeEvent(State));
         context.State.Background = State;
 
-        return new BackgroundChangeNode(oldState, When);
+        return new BackgroundNode(oldState, When);
     }
 }

@@ -14,7 +14,7 @@ public class ExtensionMethodsTests
     {
         var state = A.Dummy<INavigationState>();
         state.PersonName = personName;
-        state.Protagonist = protagonistName;
+        state.ProtagonistName = protagonistName;
         state.IsProtagonist().Should().Be(expected);
     }
 }

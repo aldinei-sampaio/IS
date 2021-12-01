@@ -5,27 +5,27 @@ namespace IS.Reading.Nodes
 {
     public class PersonNode : INode
     {
-        public string Name { get; }
+        public string PersonName { get; }
 
-        public PersonNode(string name, IBlock childBlock)
-            => (Name, ChildBlock) = (name, childBlock);
+        public PersonNode(string personName, IBlock childBlock)
+            => (PersonName, ChildBlock) = (personName, childBlock);
         
         public IBlock? ChildBlock { get; }
 
         private static bool IsProtagonist(INavigationContext context, string name)
-            => name == context.State.Protagonist;
+            => name == context.State.ProtagonistName;
 
         public async Task<INode> EnterAsync(INavigationContext context)
         {
-            var @event = new PersonEnterEvent(Name, IsProtagonist(context, Name));
+            var @event = new PersonEnterEvent(PersonName, IsProtagonist(context, PersonName));
             await context.Events.InvokeAsync<IPersonEnterEvent>(@event);
-            context.State.PersonName = Name;
+            context.State.PersonName = PersonName;
             return this;
         }
 
         public async Task<INode> LeaveAsync(INavigationContext context)
         {
-            var @event = new PersonLeaveEvent(Name, IsProtagonist(context, Name));
+            var @event = new PersonLeaveEvent(PersonName, IsProtagonist(context, PersonName));
             await context.Events.InvokeAsync<IPersonLeaveEvent>(@event);
             context.State.MoodType = null;
             context.State.PersonName = null;

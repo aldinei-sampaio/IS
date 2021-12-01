@@ -42,9 +42,9 @@ public class BackgroundScrollNodeParserTests
         var result = await sut.ParseAsync(reader, context);
 
         result.Should().NotBeNull();
-        result.Should().BeOfType<BackgroundScrollNode>();
+        result.Should().BeOfType<ScrollNode>();
 
-        var node = (BackgroundScrollNode)result;
+        var node = (ScrollNode)result;
         node.When.Should().BeSameAs(parsed.When);
     }
 }

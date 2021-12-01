@@ -40,6 +40,6 @@ public class BackgroundColorNodeParser : IBackgroundColorNodeParser
 
         var state = new BackgroundState(parsed.Text, BackgroundType.Color, BackgroundPosition.Undefined);
 
-        return new BackgroundChangeNode(state, parsed.When);
+        return new BackgroundNode(state, parsed.When);
     }
 }

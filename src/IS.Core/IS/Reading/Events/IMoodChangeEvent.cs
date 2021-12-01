@@ -4,4 +4,5 @@ public interface IMoodChangeEvent : IReadingEvent
 {
     string PersonName { get; }
     MoodType MoodType { get; }
+    bool IsProtagonist { get; }
 }

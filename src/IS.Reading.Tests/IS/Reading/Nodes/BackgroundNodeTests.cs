@@ -4,15 +4,15 @@ using IS.Reading.State;
 
 namespace IS.Reading.Nodes;
 
-public class BackgroundChangeNodeTests
+public class BackgroundNodeTests
 {
     private readonly IBackgroundState initialState;
     private readonly IBackgroundState newState;
     private readonly ICondition when;
     private readonly INavigationContext context;
-    private readonly BackgroundChangeNode sut;
+    private readonly BackgroundNode sut;
 
-    public BackgroundChangeNodeTests()
+    public BackgroundNodeTests()
     {
         initialState = A.Dummy<IBackgroundState>();
         newState = A.Dummy<IBackgroundState>();
@@ -20,7 +20,7 @@ public class BackgroundChangeNodeTests
         context = A.Dummy<INavigationContext>();
         context.State.Background = initialState;
 
-        sut = new BackgroundChangeNode(newState, when);
+        sut = new BackgroundNode(newState, when);
     }
 
     [Fact]
@@ -50,7 +50,7 @@ public class BackgroundChangeNodeTests
     {
         var ret = await sut.EnterAsync(context);
 
-        var retNode = ret.Should().BeOfType<BackgroundChangeNode>().Which;
+        var retNode = ret.Should().BeOfType<BackgroundNode>().Which;
         retNode.State.Should().BeSameAs(initialState);
         retNode.When.Should().BeSameAs(when);
     }

@@ -22,6 +22,6 @@ public class BackgroundScrollNodeParser : IBackgroundScrollNodeParser
     public async Task<INode?> ParseAsync(XmlReader reader, IParsingContext parsingContext)
     {
         var parsed = await elementParser.ParseAsync(reader, parsingContext, Settings);
-        return new BackgroundScrollNode(parsed.When);
+        return new ScrollNode(parsed.When);
     }
 }

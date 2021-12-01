@@ -3,7 +3,7 @@
 public class NavigationState : INavigationState
 {
     public IBackgroundState Background { get; set; } = BackgroundState.Empty;
-    public string? Protagonist { get; set; }
+    public string? ProtagonistName { get; set; }
     public string? PersonName { get; set; }
     public MoodType? MoodType { get; set; }
 }

@@ -4,14 +4,14 @@ using IS.Reading.State;
 
 namespace IS.Reading.Nodes;
 
-public class BackgroundScrollNodeTests
+public class ScrollNodeTests
 {
     [Fact]
     public void Initialization()
     {
         var when = A.Dummy<ICondition>();
 
-        var sut = new BackgroundScrollNode(when);
+        var sut = new ScrollNode(when);
         sut.When.Should().BeSameAs(when);
     }
 
@@ -29,14 +29,14 @@ public class BackgroundScrollNodeTests
         context.State.Background = oldState;
         var invoker = new TestInvoker(context);
 
-        var sut = new BackgroundScrollNode(when);
+        var sut = new ScrollNode(when);
         var ret = await sut.EnterAsync(context);
 
         invoker.Single<IBackgroundScrollEvent>().Position.Should().Be(newPosition);
 
         context.State.Background.Should().Be(newState);
 
-        var retNode = ret.Should().BeOfType<BackgroundScrollNode>().Which;
+        var retNode = ret.Should().BeOfType<ScrollNode>().Which;
         retNode.When.Should().BeSameAs(when);
     }
 
@@ -55,7 +55,7 @@ public class BackgroundScrollNodeTests
         context.State.Background = oldState;
         var invoker = new TestInvoker(context);
 
-        var sut = new BackgroundScrollNode(null);
+        var sut = new ScrollNode(null);
         var ret = await sut.EnterAsync(context);
 
         ret.Should().BeSameAs(sut);

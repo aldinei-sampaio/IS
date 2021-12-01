@@ -37,9 +37,9 @@ public class ProtagonistNodeParser : IProtagonistNodeParser
             return null;
         }
 
-        return new ProtagonistChangeNode(parsed.Text, parsed.When);
+        return new ProtagonistNode(parsed.Text, parsed.When);
     }
 
     public INode? DismissNode { get; } 
-        = DismissNode<ProtagonistChangeNode>.Create(new(string.Empty, null));
+        = DismissNode<ProtagonistNode>.Create(new(string.Empty, null));
 }

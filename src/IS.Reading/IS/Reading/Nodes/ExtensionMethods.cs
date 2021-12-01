@@ -6,8 +6,8 @@ internal static class ExtensionMethods
 {
     public static bool IsProtagonist(this INavigationState state)
     {
-        if (state.PersonName is null || state.Protagonist is null)
+        if (state.PersonName is null || state.ProtagonistName is null)
             return false;
-        return state.PersonName == state.Protagonist;
+        return state.PersonName == state.ProtagonistName;
     }
 }

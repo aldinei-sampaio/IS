@@ -40,6 +40,6 @@ public class BackgroundLeftNodeParser : IBackgroundLeftNodeParser
 
         var state = new BackgroundState(parsed.Text, BackgroundType.Image, BackgroundPosition.Left);
 
-        return new BackgroundChangeNode(state, parsed.When);
+        return new BackgroundNode(state, parsed.When);
     }
 }

@@ -26,7 +26,7 @@ public class BalloonTextNodeTests
     {
         var state = A.Dummy<INavigationState>();
         state.PersonName = "alpha";
-        state.Protagonist = isProtagonist ? "alpha" : "beta";
+        state.ProtagonistName = isProtagonist ? "alpha" : "beta";
 
         var context = A.Fake<INavigationContext>(i => i.Strict());
         A.CallTo(() => context.State).Returns(state);

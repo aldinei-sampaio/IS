@@ -4,9 +4,9 @@ using IS.Reading.State;
 
 namespace IS.Reading.Nodes
 {
-    public class BackgroundScrollNode : INode
+    public class ScrollNode : INode
     {
-        public BackgroundScrollNode(ICondition? when)
+        public ScrollNode(ICondition? when)
             => When = when;
 
         public ICondition? When { get; }

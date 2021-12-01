@@ -60,7 +60,7 @@ public class BackgroundNodeParserTests
         sut.Settings.ChildParsers["pause"].Should().BeSameAs(pauseNodeParser);
         sut.Settings.ChildParsers.Count.Should().Be(5);
         sut.Settings.TextParser.Should().BeSameAs(backgroundImageTextParser);
-        sut.DismissNode.Should().BeOfType<DismissNode<BackgroundChangeNode>>();
+        sut.DismissNode.Should().BeOfType<DismissNode<BackgroundNode>>();
     }
 
     [Fact]
@@ -82,7 +82,7 @@ public class BackgroundNodeParserTests
         node.ChildBlock.Should().NotBeNull();
         node.ChildBlock.ForwardQueue.Count.Should().Be(2);
         {
-            var subnode = node.ChildBlock.ForwardQueue.Dequeue() as BackgroundChangeNode;
+            var subnode = node.ChildBlock.ForwardQueue.Dequeue() as BackgroundNode;
             subnode.Should().NotBeNull();
             subnode.State.Name.Should().Be("alfa");
             subnode.State.Type.Should().Be(BackgroundType.Image);
@@ -90,7 +90,7 @@ public class BackgroundNodeParserTests
             subnode.When.Should().BeNull();
         }
         {
-            var subnode = node.ChildBlock.ForwardQueue.Dequeue() as BackgroundScrollNode;
+            var subnode = node.ChildBlock.ForwardQueue.Dequeue() as ScrollNode;
             subnode.Should().NotBeNull();
             subnode.When.Should().BeNull();
         }

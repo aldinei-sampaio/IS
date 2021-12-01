@@ -46,9 +46,9 @@ public class BackgroundColorNodeParserTests
         var result = await sut.ParseAsync(reader, context);
 
         result.Should().NotBeNull();
-        result.Should().BeOfType<BackgroundChangeNode>();
+        result.Should().BeOfType<BackgroundNode>();
 
-        var node = (BackgroundChangeNode)result;
+        var node = (BackgroundNode)result;
         node.When.Should().BeSameAs(parsed.When);
         node.State.Name.Should().Be(parsed.Text);
         node.State.Type.Should().Be(BackgroundType.Color);

@@ -47,8 +47,8 @@ public class BackgroundNodeParser : IBackgroundNodeParser
         {
             var block = new Block();
             var state = new BackgroundState(parsed.Text, BackgroundType.Image, BackgroundPosition.Left);
-            block.ForwardQueue.Enqueue(new BackgroundChangeNode(state, null));
-            block.ForwardQueue.Enqueue(new BackgroundScrollNode(null));
+            block.ForwardQueue.Enqueue(new BackgroundNode(state, null));
+            block.ForwardQueue.Enqueue(new ScrollNode(null));
             return new BlockNode(block, parsed.When, parsed.While);
         }
 
@@ -62,5 +62,5 @@ public class BackgroundNodeParser : IBackgroundNodeParser
     }
 
     public INode? DismissNode { get; } 
-        = DismissNode<BackgroundChangeNode>.Create(new(BackgroundState.Empty, null));
+        = DismissNode<BackgroundNode>.Create(new(BackgroundState.Empty, null));
 }
