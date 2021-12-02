@@ -13,14 +13,14 @@ public class MoodNodeParser : IMoodNodeParser
 
     public MoodNodeParser(
         IElementParser elementParser, 
-        INameTextParser nameTextParser,
+        IMoodTextParser moodTextParser,
         ISpeechNodeParser speechNodeParser,
         IThoughtNodeParser thoughtNodeParser,
         IPauseNodeParser pauseNodeParser
     )
     {
         this.elementParser = elementParser;
-        Settings = new ElementParserSettings(nameTextParser);
+        Settings = new ElementParserSettings(moodTextParser);
 
         Aggregation = new NodeAggregation(
             speechNodeParser, 
