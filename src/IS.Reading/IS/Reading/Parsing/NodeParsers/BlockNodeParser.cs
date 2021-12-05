@@ -1,5 +1,4 @@
-﻿using IS.Reading.Navigation;
-using IS.Reading.Nodes;
+﻿using IS.Reading.Nodes;
 using IS.Reading.Parsing.AttributeParsers;
 using System.Xml;
 
@@ -15,6 +14,7 @@ public class BlockNodeParser : IBlockNodeParser
         IElementParser elementParser,
         IWhenAttributeParser whenAttributeParser,
         IWhileAttributeParser whileAttributeParser,
+        IMusicNodeParser musicNodeParser,
         IBackgroundNodeParser backgroundNodeParser,
         IPauseNodeParser pauseNodeParser,
         IProtagonistNodeParser protagonistNodeParser,
@@ -24,9 +24,10 @@ public class BlockNodeParser : IBlockNodeParser
     )
     {
         this.elementParser = elementParser;
-        Settings = new ElementParserSettings(
+        Settings = ElementParserSettings.Normal(
             whenAttributeParser, 
             whileAttributeParser,
+            musicNodeParser,
             backgroundNodeParser,
             pauseNodeParser,
             protagonistNodeParser,
@@ -39,16 +40,18 @@ public class BlockNodeParser : IBlockNodeParser
 
     public string Name => "do";
 
-    public async Task<INode?> ParseAsync(XmlReader reader, IParsingContext parsingContext)
+    public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var parsed = await elementParser.ParseAsync(reader, parsingContext, Settings);
+        var myContext = new BlockParentParsingContext();
+        await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
 
-        if (parsed.Block is null || parsed.Block.ForwardQueue.Count == 0)
+        if (myContext.Block.ForwardQueue.Count == 0)
         {
             parsingContext.LogError(reader, "Elemento filho era esperado.");
-            return null;
+            return;
         }
 
-        return new BlockNode(parsed.Block, parsed.When, parsed.While);
+        var node = new BlockNode(myContext.Block, myContext.When, myContext.While);
+        parentParsingContext.AddNode(node);
     }
 }

@@ -28,42 +28,50 @@ public class ProtagonistNodeTests
             .Which.ProtagonistName.Should().Be("rúcula");
     }
 
-    [Fact]
-    public async Task OnEnterAsyncShouldRaiseEvent()
+    [Theory]
+    [InlineData(null, "omega")]
+    [InlineData("omega", null)]
+    [InlineData("alpha", "beta")]
+    public async Task OnEnterAsyncShouldUpdateState(string currentValue, string newValue)
     {
         var context = A.Dummy<INavigationContext>();
-        context.State.ProtagonistName = null;
+        context.State.ProtagonistName = currentValue;
+
+        var sut = new ProtagonistNode(newValue, null);
+        await sut.EnterAsync(context);
+
+        context.State.ProtagonistName.Should().Be(newValue);
+    }
+
+    [Theory]
+    [InlineData(null, "omega")]
+    [InlineData("omega", null)]
+    [InlineData("alpha", "beta")]
+    public async Task OnEnterShouldRaiseEvent(string currentValue, string newValue)
+    {
+        var context = A.Dummy<INavigationContext>();
+        context.State.ProtagonistName = currentValue;
 
         var invoker = new TestInvoker(context);
 
-        var sut = new ProtagonistNode("advocado", null);
+        var sut = new ProtagonistNode(newValue, null);
         await sut.EnterAsync(context);
 
         var @event = invoker.Single<IProtagonistChangeEvent>();
-        @event.PersonName.Should().Be("advocado");
+        @event.PersonName.Should().Be(newValue);
     }
 
-    [Fact]
-    public async Task OnEnterAsyncShouldUpdateState()
+    [Theory]
+    [InlineData(null)]
+    [InlineData("omega")]
+    public async Task OnEnterAsyncShouldNotRaiseEventIfProtagonistWasNotChanged(string value)
     {
         var context = A.Dummy<INavigationContext>();
-        context.State.ProtagonistName = "linguini";
-
-        var sut = new ProtagonistNode("repasto", null);
-        await sut.EnterAsync(context);
-
-        context.State.ProtagonistName.Should().Be("repasto");
-    }
-
-    [Fact]
-    public async Task OnEnterAsyncShouldNotRaiseEventIfProtagonistWasNotChanged()
-    {
-        var context = A.Dummy<INavigationContext>();
-        context.State.ProtagonistName = "escandinavia";
+        context.State.ProtagonistName = value;
 
         var invoker = new TestInvoker(context);
 
-        var sut = new ProtagonistNode("escandinavia", null);
+        var sut = new ProtagonistNode(value, null);
         var ret = await sut.EnterAsync(context);
         ret.Should().BeSameAs(sut);
 

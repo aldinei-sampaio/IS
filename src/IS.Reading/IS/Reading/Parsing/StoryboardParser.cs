@@ -16,10 +16,9 @@ public class StoryboardParser : IStoryboardParser
 
     public async Task<IStoryboard> ParseAsync(TextReader textReader)
     {
-        var context = serviceProvider.GetRequiredService<IParsingContext>();
+        var context = new ParsingContext();
 
         using var reader = XmlReader.Create(textReader, new() { Async = true, CloseInput = true });
-        await reader.MoveToContentAsync();
 
         var rootBlockParser = serviceProvider.GetRequiredService<IRootBlockParser>();
 
@@ -28,10 +27,7 @@ public class StoryboardParser : IStoryboardParser
         if (!context.IsSuccess)
             throw new ParsingException(context.ToString()!);
 
-        if (parsed is null)
-            throw new InvalidOperationException();
-
-        for(var n = context.DismissNodes.Count - 1; n >= 0; n--)
+        for (var n = context.DismissNodes.Count - 1; n >= 0; n--)
             parsed.ForwardQueue.Enqueue(context.DismissNodes[n]);
 
         var sceneNavigator = serviceProvider.GetRequiredService<ISceneNavigator>();

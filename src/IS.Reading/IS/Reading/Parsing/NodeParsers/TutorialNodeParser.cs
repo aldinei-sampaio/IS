@@ -1,11 +1,11 @@
-﻿using IS.Reading.Parsing.TextParsers;
+﻿using IS.Reading.Parsing.NodeParsers.BalloonParsers;
 
 namespace IS.Reading.Parsing.NodeParsers;
 
-public class TutorialNodeParser : Helpers.BalloonTextNodeParserBase, ITutorialNodeParser
+public class TutorialNodeParser : BalloonTextNodeParserBase, ITutorialNodeParser
 {
-    public TutorialNodeParser(IElementParser elementParser, IBalloonTextParser balloonTextParser)
-        : base("tutorial", BalloonType.Tutorial, elementParser, balloonTextParser)
+    public TutorialNodeParser(IElementParser elementParser, ITutorialChildNodeParser childParser)
+        : base(elementParser, childParser)
     {        
     }
 }

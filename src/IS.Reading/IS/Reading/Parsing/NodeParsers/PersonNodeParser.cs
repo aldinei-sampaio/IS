@@ -1,5 +1,4 @@
-﻿using IS.Reading.Navigation;
-using IS.Reading.Nodes;
+﻿using IS.Reading.Nodes;
 using IS.Reading.Parsing.TextParsers;
 using System.Xml;
 
@@ -11,6 +10,8 @@ public class PersonNodeParser : IPersonNodeParser
 
     public IElementParserSettings Settings { get; }
 
+    public IElementParserSettings AggregationSettings { get; }
+
     public PersonNodeParser(
         IElementParser elementParser, 
         INameTextParser nameTextParser,
@@ -21,9 +22,9 @@ public class PersonNodeParser : IPersonNodeParser
     )
     {
         this.elementParser = elementParser;
-        Settings = new ElementParserSettings(nameTextParser);
+        Settings = ElementParserSettings.Normal(nameTextParser);
 
-        Aggregation = new NodeAggregation(
+        AggregationSettings = ElementParserSettings.Aggregated(
             speechNodeParser, 
             thoughtNodeParser,
             moodNodeParser,
@@ -31,43 +32,34 @@ public class PersonNodeParser : IPersonNodeParser
         );
     }
 
-    public INode? Aggregate(IBlock block)
-    {
-        if (block.ForwardQueue.Count <= 1)
-            return null;
-
-        if (block.ForwardQueue.Dequeue() is not PersonNode mainNode)
-            return null;
-
-        if (mainNode.ChildBlock is null)
-            throw new InvalidOperationException();
-
-        var source = block.ForwardQueue;
-        var target = mainNode.ChildBlock.ForwardQueue;
-
-        while (source.TryDequeue(out var item))
-            target.Enqueue(item);
-
-        return mainNode;
-    }
-
     public string Name => "person";
 
-    public INodeAggregation? Aggregation { get; }
-
-    public async Task<INode?> ParseAsync(XmlReader reader, IParsingContext parsingContext)
+    public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var parsed = await elementParser.ParseAsync(reader, parsingContext, Settings);
+        var myContext = new TextParentParsingContext();
+        await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
 
-        if (parsed.Text is null)
-            return null;
+        var parsedText = myContext.ParsedText;
 
-        if (parsed.Text.Length == 0)
+        if (parsedText is null)
+            return;
+
+        if (parsedText.Length == 0)
         {
             parsingContext.LogError(reader, "Era esperado o nome do personagem.");
-            return null;
+            return;
         }
 
-        return new PersonNode(parsed.Text, new Block());
+        if (reader.ReadState == ReadState.EndOfFile)
+            return;
+
+        var aggContext = new BlockParentParsingContext();
+        await elementParser.ParseAsync(reader, parsingContext, aggContext, AggregationSettings);
+
+        if (aggContext.Block.ForwardQueue.Count == 0)
+            return;
+
+        var node = new PersonNode(parsedText, aggContext.Block);
+        parentParsingContext.AddNode(node);
     }
 }

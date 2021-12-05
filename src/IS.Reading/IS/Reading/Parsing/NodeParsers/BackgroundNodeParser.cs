@@ -1,6 +1,7 @@
 ﻿using IS.Reading.Navigation;
 using IS.Reading.Nodes;
 using IS.Reading.Parsing.AttributeParsers;
+using IS.Reading.Parsing.NodeParsers.BackgroundParsers;
 using IS.Reading.Parsing.TextParsers;
 using IS.Reading.State;
 using System.Xml;
@@ -25,7 +26,7 @@ public class BackgroundNodeParser : IBackgroundNodeParser
     )
     {
         this.elementParser = elementParser;
-        Settings = new ElementParserSettings(
+        Settings = ElementParserSettings.Normal(
             whenAttributeParser, 
             backgroundImageTextParser,
             backgroundColorNodeParser,
@@ -36,31 +37,49 @@ public class BackgroundNodeParser : IBackgroundNodeParser
         );
     }
 
-
     public string Name => "background";
 
-    public async Task<INode?> ParseAsync(XmlReader reader, IParsingContext parsingContext)
+    public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var parsed = await elementParser.ParseAsync(reader, parsingContext, Settings);
+        var context = new BackgroundContext();
+        await elementParser.ParseAsync(reader, parsingContext, context, Settings);
 
-        if (!string.IsNullOrWhiteSpace(parsed.Text))
+        if (!string.IsNullOrWhiteSpace(context.ParsedText))
         {
             var block = new Block();
-            var state = new BackgroundState(parsed.Text, BackgroundType.Image, BackgroundPosition.Left);
+            var state = new BackgroundState(context.ParsedText, BackgroundType.Image, BackgroundPosition.Left);
             block.ForwardQueue.Enqueue(new BackgroundNode(state, null));
             block.ForwardQueue.Enqueue(new ScrollNode(null));
-            return new BlockNode(block, parsed.When, parsed.While);
+            parentParsingContext.AddNode(new BlockNode(block, context.When, null));
+            parsingContext.RegisterDismissNode(DismissNode);
+            return;
         }
 
-        if (parsed.Block is null || parsed.Block.ForwardQueue.Count == 0)
+        if (context.Block is null || context.Block.ForwardQueue.Count == 0)
         {
             parsingContext.LogError(reader, "Nome de imagem ou elemento filho era esperado.");
-            return null;
+            return;
         }
 
-        return new BlockNode(parsed.Block, parsed.When, parsed.While);
+        parentParsingContext.AddNode(new BlockNode(context.Block, context.When, null));
+        parsingContext.RegisterDismissNode(DismissNode);
     }
 
-    public INode? DismissNode { get; } 
+    public INode DismissNode { get; } 
         = DismissNode<BackgroundNode>.Create(new(BackgroundState.Empty, null));
+
+    public class BackgroundContext : IParentParsingContext
+    {
+        public IBlock? Block { get; private set; }
+
+        public void AddNode(INode node)
+        {
+            if (Block is null)
+                Block = new Block();
+            Block.ForwardQueue.Enqueue(node);
+        }
+
+        public string? ParsedText { get; set; }
+        public ICondition? When { get; set; }
+    }
 }

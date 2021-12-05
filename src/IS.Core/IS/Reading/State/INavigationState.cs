@@ -6,4 +6,5 @@ public interface INavigationState
     string? ProtagonistName { get; set; }
     string? PersonName { get; set; }
     MoodType? MoodType { get; set; }
+    string? MusicName { get; set; }
 }

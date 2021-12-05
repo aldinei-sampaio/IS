@@ -2,7 +2,8 @@
 
 public interface IElementParserSettings
 {
-    ITextParser? TextParser { get; set; }
+    ITextParser? TextParser { get; }
     IParserDictionary<IAttributeParser> AttributeParsers { get; }
     IParserDictionary<INodeParser> ChildParsers { get; }
+    bool ExitOnUnknownNode { get; }
 }

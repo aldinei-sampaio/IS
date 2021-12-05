@@ -42,6 +42,12 @@ public class ParsingContext : IParsingContext
         }
     }
 
+    public void RegisterDismissNode(INode node)
+    {
+        if (!DismissNodes.Contains(node))
+            DismissNodes.Add(node);
+    }
+
     public override string ToString()
         => stringBuilder.ToString();
 }

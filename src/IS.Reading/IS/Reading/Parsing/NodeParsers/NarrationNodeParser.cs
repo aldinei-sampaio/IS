@@ -1,11 +1,11 @@
-﻿using IS.Reading.Parsing.TextParsers;
+﻿using IS.Reading.Parsing.NodeParsers.BalloonParsers;
 
 namespace IS.Reading.Parsing.NodeParsers;
 
-public class NarrationNodeParser : Helpers.BalloonTextNodeParserBase, INarrationNodeParser
+public class NarrationNodeParser : BalloonTextNodeParserBase, INarrationNodeParser
 {
-    public NarrationNodeParser(IElementParser elementParser, IBalloonTextParser balloonTextParser)
-        : base("narration", BalloonType.Narration, elementParser, balloonTextParser)
+    public NarrationNodeParser(IElementParser elementParser, INarrationChildNodeParser childParser)
+        : base(elementParser, childParser)
     {        
     }
 }

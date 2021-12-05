@@ -31,20 +31,22 @@ public class ProtagonistNodeParserTests
         sut.Settings.ChildParsers.Count.Should().Be(0);
     }
 
-    [Fact]
-    public async Task ParseAsyncShouldReturnProtagonistNode()
+    [Theory]
+    [InlineData("chamusca", "chamusca")]
+    [InlineData("", null)]
+    public async Task ParseAsyncShouldReturnProtagonistNode(string parsedValue, string protagonistName)
     {
         var reader = A.Dummy<XmlReader>();
         var context = A.Dummy<IParsingContext>();
         var when = A.Dummy<ICondition>();
         var parsed = A.Dummy<IElementParsedData>();
-        parsed.Text = "chamusca";
+        parsed.Text = parsedValue;
         parsed.When = when;
         A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
 
         var ret = await sut.ParseAsync(reader, context);
         var protagonistNode = ret.Should().BeOfType<ProtagonistNode>().Which;
-        protagonistNode.ProtagonistName.Should().Be("chamusca");
+        protagonistNode.ProtagonistName.Should().Be(protagonistName);
         protagonistNode.When.Should().BeSameAs(when);
 
         A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).MustHaveHappenedOnceExactly();
@@ -64,29 +66,12 @@ public class ProtagonistNodeParserTests
     }
 
     [Fact]
-    public async Task ParseAsyncShouldLogErrorIfParsedTextIsEmpty()
-    {
-        var message = "Era esperado o nome do personagem.";
-        var reader = A.Dummy<XmlReader>();
-        var context = A.Fake<IParsingContext>(i => i.Strict());
-        var parsed = A.Dummy<IElementParsedData>();
-        parsed.Text = string.Empty;
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
-        A.CallTo(() => context.LogError(reader, message)).DoesNothing();
-
-        var ret = await sut.ParseAsync(reader, context);
-        ret.Should().BeNull();
-
-        A.CallTo(() => context.LogError(reader, message)).MustHaveHappenedOnceExactly();
-    }
-
-    [Fact]
     public void DismissNodeShouldClearProtagonist()
     {
         var node = sut.DismissNode;
         var dismiss = node.Should().BeOfType<DismissNode<ProtagonistNode>>().Which;
         var protagNode = dismiss.ChangeNode.Should().BeOfType<ProtagonistNode>().Which;
-        protagNode.ProtagonistName.Should().Be(string.Empty);
+        protagNode.ProtagonistName.Should().BeNull();
         protagNode.When.Should().BeNull();
     }
 }

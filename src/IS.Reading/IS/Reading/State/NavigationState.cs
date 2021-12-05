@@ -6,4 +6,5 @@ public class NavigationState : INavigationState
     public string? ProtagonistName { get; set; }
     public string? PersonName { get; set; }
     public MoodType? MoodType { get; set; }
+    public string? MusicName { get; set; }
 }

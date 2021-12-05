@@ -19,27 +19,26 @@ public class ProtagonistNodeParser : IProtagonistNodeParser
     )
     {
         this.elementParser = elementParser;
-        Settings = new ElementParserSettings(whenAttributeParser, nameTextParser);
+        Settings = ElementParserSettings.Normal(whenAttributeParser, nameTextParser);
     }
 
     public string Name => "protagonist";
 
-    public async Task<INode?> ParseAsync(XmlReader reader, IParsingContext parsingContext)
+    public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var parsed = await elementParser.ParseAsync(reader, parsingContext, Settings);
+        var myContext = new TextParentParsingContext();
+        await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
 
-        if (parsed.Text is null)
-            return null;
+        var parsedText = myContext.ParsedText;
 
-        if (parsed.Text.Length == 0)
-        {
-            parsingContext.LogError(reader, "Era esperado o nome do personagem.");
-            return null;
-        }
+        if (parsedText is null)
+            return;
 
-        return new ProtagonistNode(parsed.Text, parsed.When);
+        var node = new ProtagonistNode(parsedText.Length == 0 ? null : parsedText, myContext.When);
+        parentParsingContext.AddNode(node);
+        parsingContext.RegisterDismissNode(DismissNode);
     }
 
-    public INode? DismissNode { get; } 
-        = DismissNode<ProtagonistNode>.Create(new(string.Empty, null));
+    public INode DismissNode { get; } 
+        = DismissNode<ProtagonistNode>.Create(new(null, null));
 }

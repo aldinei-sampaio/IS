@@ -1,86 +1,57 @@
-﻿using IS.Reading.Navigation;
-using IS.Reading.Parsing.AttributeParsers;
+﻿using IS.Reading.Parsing.AttributeParsers;
 using System.Xml;
 
 namespace IS.Reading.Parsing;
 
 public class ElementParser : IElementParser
 {
-    private class AggregateInfo
+    public async Task ParseAsync(
+        XmlReader reader, 
+        IParsingContext parsingContext,
+        IParentParsingContext parentParsingContext,
+        IElementParserSettings settings
+    )
     {
-        private readonly INodeParser nodeParser;
-        public INodeAggregation Aggregation => nodeParser.NodeAggregation!;
-        public ElementParsedData ParsedData { get; } = new();
-
-        public AggregateInfo(INodeParser nodeParser)
-            => this.nodeParser = nodeParser;
-
-        public void Aggregate(ElementParsedData parsed)
+        if (reader.ReadState == ReadState.Initial)
         {
-            if (ParsedData.Block is null)
+            await reader.MoveToContentAsync();
+            if (reader.HasAttributes)
+                ParseAttributes(reader, parsingContext, parentParsingContext, settings);
+            if (!await reader.ReadAsync())
                 return;
-
-            var node = nodeParser.Aggregate(ParsedData.Block);
-            if (node is null)
-                return;
-
-            if (parsed.Block is null)
-                parsed.Block = new Block();
-
-            parsed.Block.ForwardQueue.Enqueue(node);
         }
-    }
-
-    public async Task<IElementParsedData> ParseAsync(XmlReader reader, IParsingContext parsingContext, IElementParserSettings settings)
-    {
-        var parsed = new ElementParsedData();
-
-        if (reader.HasAttributes)
-            ParseAttributes(reader, parsingContext, settings, parsed);
+        else
+        {
+            if (reader.HasAttributes)
+                ParseAttributes(reader, parsingContext, parentParsingContext, settings);
+        }
 
         var textFound = false;
         var elementFound = false;
 
-        AggregateInfo? aggregateInfo = null;
-
-        while (await reader.ReadAsync())
+        do
         {
             switch(reader.NodeType)
             {
                 case XmlNodeType.Element:
                     elementFound = true;
 
-                    if (aggregateInfo is not null)
-                    {
-                        if (aggregateInfo.Aggregation.ChildParsers.TryGet(reader.LocalName, out var aggParser))
-                        {
-                            await ParseElementAsync(reader, parsingContext, aggParser, aggregateInfo.ParsedData, textFound);
-                            break;
-                        }
-                        aggregateInfo.Aggregate(parsed);
-                        aggregateInfo = null;
-                    }
-
                     if (!settings.ChildParsers.TryGet(reader.LocalName, out var parser))
                     {
+                        if (settings.ExitOnUnknownNode)
+                            return;
+
                         parsingContext.LogError(reader, $"Elemento não reconhecido: {reader.LocalName}");
                         break;
                     }
 
-                    if (parser.NodeAggregation is not null)
-                    {
-                        aggregateInfo = new(parser);
-                        await ParseElementAsync(reader, parsingContext, parser, aggregateInfo.ParsedData, textFound);
-                        break;
-                    }
-
-                    await ParseElementAsync(reader, parsingContext, parser, parsed, textFound);
+                    await ParseElementAsync(reader, parsingContext, parentParsingContext, parser, textFound);
 
                     break;
 
                 case XmlNodeType.Text:
                     textFound = true;
-                    ParseText(reader, parsingContext, settings, parsed, elementFound);
+                    ParseText(reader, parsingContext, parentParsingContext, settings, elementFound);
                     break;
 
                 case XmlNodeType.Whitespace:
@@ -96,17 +67,14 @@ public class ElementParser : IElementParser
 
             }
         }
-
-        aggregateInfo?.Aggregate(parsed);
-
-        return parsed;
+        while (await reader.ReadAsync());
     }
 
     private static void ParseText(
         XmlReader reader, 
         IParsingContext parsingContext, 
+        IParentParsingContext parentParsingContext,
         IElementParserSettings settings, 
-        ElementParsedData parsed, 
         bool elementFound
     )
     {
@@ -124,14 +92,14 @@ public class ElementParser : IElementParser
 
         var parsedText = settings.TextParser.Parse(reader, parsingContext, reader.Value);
         if (parsedText is not null)
-            parsed.Text = parsedText;
+            parentParsingContext.ParsedText = parsedText;
     }
 
     private static async Task ParseElementAsync(
         XmlReader reader, 
         IParsingContext parsingContext,
+        IParentParsingContext parentParsingContext,
         INodeParser parser,
-        ElementParsedData parsed, 
         bool textFound
     )
     {
@@ -142,28 +110,14 @@ public class ElementParser : IElementParser
         }
 
         using var childReader = reader.ReadSubtree();
-        await childReader.MoveToContentAsync();
-        var child = await parser.ParseAsync(childReader, parsingContext);
-        if (child is not null)
-        {
-            if (parsed.Block is null)
-                parsed.Block = new Block();
-            parsed.Block.ForwardQueue.Enqueue(child);
-
-            var dismissNode = parser.DismissNode;
-            if (dismissNode is not null)
-            {
-                if (!parsingContext.DismissNodes.Contains(dismissNode))
-                    parsingContext.DismissNodes.Add(dismissNode);
-            }
-        }
+        await parser.ParseAsync(childReader, parsingContext, parentParsingContext);
     }
 
     private static void ParseAttributes(
         XmlReader reader, 
         IParsingContext parsingContext, 
-        IElementParserSettings settings, 
-        ElementParsedData parsed
+        IParentParsingContext parentParsingContext,
+        IElementParserSettings settings
     )
     {
         while (reader.MoveToNextAttribute())
@@ -178,10 +132,10 @@ public class ElementParser : IElementParser
             if (attribute is not null)
             {
                 if (attribute is WhenAttribute whenAttribute)
-                    parsed.When = whenAttribute.Condition;
+                    parentParsingContext.When = whenAttribute.Condition;
 
                 if (attribute is WhileAttribute whileAttribute)
-                    parsed.While = whileAttribute.Condition;
+                    parentParsingContext.While = whileAttribute.Condition;
             }
         }
         reader.MoveToElement();

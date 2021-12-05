@@ -1,5 +1,4 @@
-﻿using IS.Reading.Navigation;
-using IS.Reading.Nodes;
+﻿using IS.Reading.Nodes;
 using IS.Reading.Parsing.AttributeParsers;
 using IS.Reading.Parsing.TextParsers;
 using System.Xml;
@@ -19,32 +18,40 @@ public class PauseNodeParser : IPauseNodeParser
     )
     {
         this.elementParser = elementParser;
-        Settings = new ElementParserSettings(whenAttributeParser, integerTextParser);
+        Settings = ElementParserSettings.Normal(whenAttributeParser, integerTextParser);
     }
 
     public string Name => "pause";
 
-    public async Task<INode?> ParseAsync(XmlReader reader, IParsingContext parsingContext)
+    public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var parsed = await elementParser.ParseAsync(reader, parsingContext, Settings);
+        var myContext = new TextParentParsingContext();
+        await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
 
-        if (string.IsNullOrWhiteSpace(parsed.Text))
-            return new PauseNode(parsed.When);
+        var parsedText = myContext.ParsedText;
 
-        var value = int.Parse(parsed.Text);
+        if (string.IsNullOrWhiteSpace(parsedText))
+        {
+            var node = new PauseNode(myContext.When);
+            parentParsingContext.AddNode(node);
+            return;
+        }
+
+        var value = int.Parse(parsedText);
 
         if (value <= 0)
         {
             parsingContext.LogError(reader, "O tempo de espera precisa ser maior que zero.");
-            return null;
+            return;
         }
 
         if (value > 5000)
         {
             parsingContext.LogError(reader, "O tempo de espera não pode ser maior que 5000.");
-            return null;
+            return;
         }
 
-        return new TimedPauseNode(TimeSpan.FromMilliseconds(value), parsed.When);
+        var timedPauseNode = new TimedPauseNode(TimeSpan.FromMilliseconds(value), myContext.When);
+        parentParsingContext.AddNode(timedPauseNode);
     }
 }

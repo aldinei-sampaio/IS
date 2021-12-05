@@ -7,6 +7,6 @@ public interface IParsingContext
 {
     void LogError(XmlReader xmlReader, string message);
     bool IsSuccess { get; }
-    List<INode> DismissNodes { get; }
+    void RegisterDismissNode(INode node);
     string? Person { get; set; }
 }

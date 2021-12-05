@@ -12,29 +12,46 @@ public class RootBlockParser : IRootBlockParser
 
     public RootBlockParser(
         IElementParser elementParser,
+        IMusicNodeParser musicNodeParser,
         IBackgroundNodeParser backgroundNodeParser,
         IBlockNodeParser blockNodeParser,
-        IPauseNodeParser pauseNodeParser
+        IPauseNodeParser pauseNodeParser,
+        IProtagonistNodeParser protagonistNodeParser,
+        IPersonNodeParser personNodeParser,
+        INarrationNodeParser narrationNodeParser,
+        ITutorialNodeParser tutorialNodeParser
     )
     {
         this.elementParser = elementParser;
-        Settings = new ElementParserSettings(
+        Settings = ElementParserSettings.Normal(
+            musicNodeParser,
             backgroundNodeParser,
             blockNodeParser,
-            pauseNodeParser
+            pauseNodeParser,
+            protagonistNodeParser,
+            personNodeParser,
+            narrationNodeParser,
+            tutorialNodeParser
         );
     }
 
-    public async Task<IBlock?> ParseAsync(XmlReader reader, IParsingContext parsingContext)
+    public async Task<IBlock> ParseAsync(XmlReader reader, IParsingContext parsingContext)
     {
-        var parsed = await elementParser.ParseAsync(reader, parsingContext, Settings);
+        var context = new BlockParentParsingContext();
 
-        if (parsed.Block is null || parsed.Block.ForwardQueue.Count == 0)
-        {
+        await elementParser.ParseAsync(reader, parsingContext, context, Settings);
+
+        if (context.Block.ForwardQueue.Count == 0)
             parsingContext.LogError(reader, "Elemento filho era esperado.");
-            return null;
-        }
 
-        return parsed.Block;
+        return context.Block;
+    }
+
+    public class RootBlockContext : IParentParsingContext
+    {
+        public Block Block { get; } = new();
+
+        public void AddNode(INode node)
+            => Block.ForwardQueue.Enqueue(node);
     }
 }
