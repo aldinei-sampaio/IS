@@ -6,7 +6,7 @@ public class ElementParserSettingsTests
     public void InvalidArgument()
     {
         var ex = Assert.Throws<ArgumentException>(
-            () => new ElementParserSettings("gibberish")
+            () => ElementParserSettings.Normal("gibberish")
         );
         ex.Message.Should().Be("Argumento do tipo 'String' não é válido.");
     }
@@ -21,7 +21,7 @@ public class ElementParserSettingsTests
         var nodeParser1 = Helper.FakeParser<INodeParser>("c");
         var nodeParser2 = Helper.FakeParser<INodeParser>("d");
 
-        var sut = new ElementParserSettings(textParser, attParser1, attParser2, nodeParser1, nodeParser2);
+        var sut = ElementParserSettings.Normal(textParser, attParser1, attParser2, nodeParser1, nodeParser2);
 
         sut.TextParser.Should().BeSameAs(textParser);
         sut.AttributeParsers.Count.Should().Be(2);
@@ -36,7 +36,7 @@ public class ElementParserSettingsTests
     public void OnlyTextParser()
     {
         var textParser = A.Dummy<ITextParser>();
-        var sut = new ElementParserSettings(textParser);
+        var sut = ElementParserSettings.Normal(textParser);
 
         sut.TextParser.Should().BeSameAs(textParser);
         sut.AttributeParsers.Count.Should().Be(0);
@@ -47,7 +47,7 @@ public class ElementParserSettingsTests
     public void OnlyAttributeParser()
     {
         var attParser = Helper.FakeParser<IAttributeParser>("a");
-        var sut = new ElementParserSettings(attParser);
+        var sut = ElementParserSettings.Normal(attParser);
 
         sut.TextParser.Should().BeNull();
         sut.AttributeParsers.Count.Should().Be(1);
@@ -59,11 +59,17 @@ public class ElementParserSettingsTests
     public void OnlyNodeParser()
     {
         var attParser = Helper.FakeParser<INodeParser>("a");
-        var sut = new ElementParserSettings(attParser);
+        var sut = ElementParserSettings.Normal(attParser);
 
         sut.TextParser.Should().BeNull();
         sut.AttributeParsers.Count.Should().Be(0);
         sut.ChildParsers.Count.Should().Be(1);
         sut.ChildParsers["a"].Should().BeSameAs(attParser);
+    }
+
+    [Fact]
+    public void Aggregated()
+    {
+        throw new NotImplementedException();
     }
 }

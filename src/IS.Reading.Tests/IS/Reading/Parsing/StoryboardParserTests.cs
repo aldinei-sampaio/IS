@@ -17,7 +17,8 @@ public class StoryboardParserTests
     {
         dismissNodes = new();
         parsingContext = A.Fake<IParsingContext>(i => i.Strict());
-        A.CallTo(() => parsingContext.DismissNodes).Returns(dismissNodes);
+        A.CallTo(() => parsingContext.RegisterDismissNode(A<INode>.Ignored))
+            .Invokes(i => dismissNodes.Add(i.Arguments.Get<INode>(0)));
 
         rootBlockParser = A.Fake<IRootBlockParser>(i => i.Strict());
         sceneNavigator = A.Fake<ISceneNavigator>(i => i.Strict());
@@ -134,7 +135,7 @@ public class StoryboardParserTests
         A.CallTo(() => rootBlockParser.ParseAsync(A<XmlReader>.Ignored, parsingContext))
             .ReturnsLazily(i =>
             {
-                parsingContext.DismissNodes.Add(dismissNode);
+                parsingContext.RegisterDismissNode(dismissNode);
                 return Task.FromResult(block);
             });
 

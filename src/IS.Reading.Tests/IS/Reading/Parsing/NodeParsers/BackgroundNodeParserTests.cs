@@ -1,5 +1,7 @@
-﻿using IS.Reading.Nodes;
+﻿using IS.Reading.Navigation;
+using IS.Reading.Nodes;
 using IS.Reading.Parsing.AttributeParsers;
+using IS.Reading.Parsing.NodeParsers.BackgroundParsers;
 using IS.Reading.Parsing.TextParsers;
 using IS.Reading.State;
 using System.Xml;
@@ -10,6 +12,7 @@ public class BackgroundNodeParserTests
 {
     private readonly XmlReader reader;
     private readonly IParsingContext context;
+    private readonly FakeParentParsingContext parentContext = new();
     private readonly IElementParser elementParser;
 
     private readonly IWhenAttributeParser whenAttributeParser;
@@ -66,19 +69,23 @@ public class BackgroundNodeParserTests
     [Fact]
     public async Task SuccessText()
     {
-        var parsed = A.Dummy<IElementParsedData>();
-        A.CallTo(() => parsed.Text).Returns("alfa");
-        
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
+        var when = A.Dummy<ICondition>();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i =>
+            {
+                var ctx = i.Arguments.Get<IParentParsingContext>(2);
+                ctx.ParsedText = "gama";
+                ctx.When = when;
+            });
 
-        var result = await sut.ParseAsync(reader, context);
+        await sut.ParseAsync(reader, context, parentContext);
 
-        result.Should().NotBeNull();
-        result.Should().BeOfType<BlockNode>();
+        var node = parentContext.Nodes.Should().ContainSingle()
+            .Which.Should().BeOfType<BlockNode>()
+            .Which;
 
-        var node = (BlockNode)result;
-        node.When.Should().BeSameAs(parsed.When);
-        node.While.Should().BeSameAs(parsed.While);
+        node.When.Should().BeSameAs(when);
+        node.While.Should().BeNull();
         node.ChildBlock.Should().NotBeNull();
         node.ChildBlock.ForwardQueue.Count.Should().Be(2);
         {
@@ -99,24 +106,26 @@ public class BackgroundNodeParserTests
     [Fact]
     public async Task SuccessElement()
     {
-        var block = new Navigation.Block();
-        block.ForwardQueue.Enqueue(A.Dummy<Navigation.INode>());
+        var parsedNode = A.Dummy<INode>();
+        var when = A.Dummy<ICondition>();
 
-        var parsed = A.Dummy<IElementParsedData>();
-        A.CallTo(() => parsed.Text).Returns(null);
-        A.CallTo(() => parsed.Block).Returns(block);
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i =>
+            {
+                var ctx = i.Arguments.Get<IParentParsingContext>(2);
+                ctx.AddNode(parsedNode);
+                ctx.When = when;
+            });
 
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
+        await sut.ParseAsync(reader, context, parentContext);
 
-        var result = await sut.ParseAsync(reader, context);
+        var node = parentContext.Nodes.Should().ContainSingle()
+            .Which.Should().BeOfType<BlockNode>()
+            .Which; 
 
-        result.Should().NotBeNull();
-        result.Should().BeOfType<BlockNode>();
-
-        var node = (BlockNode)result;
-        node.When.Should().BeSameAs(parsed.When);
-        node.While.Should().BeSameAs(parsed.While);
-        node.ChildBlock.Should().BeSameAs(block);
+        node.When.Should().BeSameAs(when);
+        node.While.Should().BeNull();
+        node.ChildBlock.ForwardQueue.Dequeue().Should().BeSameAs(parsedNode);
     }
 
     [Fact]
@@ -124,33 +133,11 @@ public class BackgroundNodeParserTests
     {
         const string message = "Nome de imagem ou elemento filho era esperado.";
         A.CallTo(() => context.LogError(reader, message)).DoesNothing();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).DoesNothing();
 
-        var parsed = A.Dummy<IElementParsedData>();
-        A.CallTo(() => parsed.Text).Returns(null);
+        await sut.ParseAsync(reader, context, parentContext);
+        parentContext.ShouldBeEmpty();
 
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
-
-        var result = await sut.ParseAsync(reader, context);
-
-        result.Should().BeNull();
-        A.CallTo(() => context.LogError(reader, message)).MustHaveHappenedOnceExactly();
-    }
-
-    [Fact]
-    public async Task NullTextNullBlock()
-    {
-        const string message = "Nome de imagem ou elemento filho era esperado.";
-        A.CallTo(() => context.LogError(reader, message)).DoesNothing();
-
-        var parsed = A.Dummy<IElementParsedData>();
-        A.CallTo(() => parsed.Text).Returns(null);
-        A.CallTo(() => parsed.Block).Returns(null);
-
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
-
-        var result = await sut.ParseAsync(reader, context);
-
-        result.Should().BeNull();
         A.CallTo(() => context.LogError(reader, message)).MustHaveHappenedOnceExactly();
     }
 }

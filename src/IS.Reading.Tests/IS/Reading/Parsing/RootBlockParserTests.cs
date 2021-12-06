@@ -65,27 +65,20 @@ public class RootBlockParserTests
     [Fact]
     public async Task SimpleParsing()
     {
-        var parsed = A.Dummy<IElementParsedData>();
-        parsed.Block.ForwardQueue.Enqueue(A.Dummy<INode>());
-
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
+        var parsed = A.Dummy<INode>();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(parsed));
 
         var result = await sut.ParseAsync(reader, context);
-        result.Should().BeSameAs(parsed.Block);
+        result.ForwardQueue.Dequeue().Should().BeSameAs(parsed);
+        result.ForwardQueue.Count().Should().Be(0);
     }
 
-    [Theory]
-    [InlineData(true)]
-    [InlineData(false)]
-    public async Task Empty(bool nullParsedBlock)
+    [Fact]
+    public async Task Empty()
     {
         A.CallTo(() => context.LogError(reader, "Elemento filho era esperado.")).DoesNothing();
-
-        var parsed = A.Dummy<IElementParsedData>();
-        if (nullParsedBlock)
-            parsed.Block = null;
-
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).DoesNothing();
 
         var result = await sut.ParseAsync(reader, context);
         result.Should().BeNull();

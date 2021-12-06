@@ -3,7 +3,7 @@ using IS.Reading.Nodes;
 using IS.Reading.Parsing.TextParsers;
 using System.Xml;
 
-namespace IS.Reading.Parsing.NodeParsers;
+namespace IS.Reading.Parsing.NodeParsers.PersonParsers;
 
 public class MoodNodeParserTests
 {

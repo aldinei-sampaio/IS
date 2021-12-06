@@ -1,4 +1,5 @@
-﻿using IS.Reading.Events;
+﻿using IS.Reading.Choices;
+using IS.Reading.Events;
 using IS.Reading.Navigation;
 using IS.Reading.State;
 
@@ -14,9 +15,18 @@ public class BalloonTextNodeTests
     public void Initialization(BalloonType balloonType)
     {
         var text = "Gibberish";
-        var sut = new BalloonTextNode(text, balloonType);
+        var sut = new BalloonTextNode(text, balloonType, null);
         sut.Text.Should().Be(text);
         sut.BalloonType.Should().Be(balloonType);
+        sut.ChoiceNode.Should().BeNull();
+    }
+
+    [Fact]
+    public void InitializeChoiceNode()
+    {
+        var choiceNode = A.Dummy<IChoiceNode>();
+        var sut = new BalloonTextNode("abc", BalloonType.Narration, choiceNode);
+        sut.ChoiceNode.Should().BeSameAs(choiceNode);
     }
 
     [Theory]
@@ -31,7 +41,7 @@ public class BalloonTextNodeTests
         var context = A.Fake<INavigationContext>(i => i.Strict());
         A.CallTo(() => context.State).Returns(state);
 
-        var sut = new BalloonTextNode(text, balloonType);
+        var sut = new BalloonTextNode(text, balloonType, null);
         var invoker = new TestInvoker(context);
 
         var ret = await sut.EnterAsync(context);
@@ -41,5 +51,6 @@ public class BalloonTextNodeTests
         @event.Text.Should().Be(text);
         @event.BalloonType.Should().Be(balloonType);
         @event.IsProtagonist.Should().Be(isProtagonist);
+        @event.Choice.Should().BeNull();
     }
 }

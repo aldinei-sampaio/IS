@@ -1,13 +1,15 @@
-﻿using IS.Reading.Nodes;
+﻿using IS.Reading.Navigation;
+using IS.Reading.Nodes;
 using IS.Reading.Parsing.AttributeParsers;
 using System.Xml;
 
-namespace IS.Reading.Parsing.NodeParsers;
+namespace IS.Reading.Parsing.NodeParsers.BackgroundParsers;
 
 public class BackgroundScrollNodeParserTests
 {
     private readonly XmlReader reader;
     private readonly IParsingContext context;
+    private readonly FakeParentParsingContext parentContext = new();
     private readonly IElementParser elementParser;
     private readonly IWhenAttributeParser whenAttributeParser;
     private readonly BackgroundScrollNodeParser sut;
@@ -35,16 +37,14 @@ public class BackgroundScrollNodeParserTests
     [Fact]
     public async Task Success()
     {
-        var parsed = A.Dummy<IElementParsedData>();
-        parsed.Text = null;
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
+        var when = A.Dummy<ICondition>();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).When = when);
 
-        var result = await sut.ParseAsync(reader, context);
+        await sut.ParseAsync(reader, context, parentContext);
 
-        result.Should().NotBeNull();
-        result.Should().BeOfType<ScrollNode>();
-
-        var node = (ScrollNode)result;
-        node.When.Should().BeSameAs(parsed.When);
+        parentContext.Nodes.Should().ContainSingle()
+            .Which.Should().BeOfType<ScrollNode>()
+            .Which.When.Should().BeSameAs(when);
     }
 }

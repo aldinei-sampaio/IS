@@ -7,6 +7,7 @@ using IS.Reading.Parsing.NodeParsers.BackgroundParsers;
 using IS.Reading.Parsing.NodeParsers.BalloonParsers;
 using IS.Reading.Parsing.NodeParsers.ChoiceOptionParsers;
 using IS.Reading.Parsing.NodeParsers.ChoiceParsers;
+using IS.Reading.Parsing.NodeParsers.PersonParsers;
 using IS.Reading.Parsing.TextParsers;
 using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics.CodeAnalysis;

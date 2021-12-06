@@ -1,15 +1,17 @@
-﻿using IS.Reading.Nodes;
+﻿using IS.Reading.Navigation;
+using IS.Reading.Nodes;
 using IS.Reading.Parsing.AttributeParsers;
 using IS.Reading.Parsing.TextParsers;
 using IS.Reading.State;
 using System.Xml;
 
-namespace IS.Reading.Parsing.NodeParsers;
+namespace IS.Reading.Parsing.NodeParsers.BackgroundParsers;
 
 public class BackgroundLeftNodeParserTests
 {
     private readonly XmlReader reader;
     private readonly IParsingContext context;
+    private readonly FakeParentParsingContext parentContext = new();
     private readonly IElementParser elementParser;
     private readonly IWhenAttributeParser whenAttributeParser;
     private readonly IBackgroundImageTextParser textParser;
@@ -39,18 +41,23 @@ public class BackgroundLeftNodeParserTests
     [Fact]
     public async Task Success()
     {
-        var parsed = A.Dummy<IElementParsedData>();
-        parsed.Text = "alfa";
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
+        var when = A.Dummy<ICondition>();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i =>
+            {
+                var ctx = i.Arguments.Get<IParentParsingContext>(2);
+                ctx.ParsedText = "beta";
+                ctx.When = when;
+            });
 
-        var result = await sut.ParseAsync(reader, context);
+        await sut.ParseAsync(reader, context, parentContext);
 
-        result.Should().NotBeNull();
-        result.Should().BeOfType<BackgroundNode>();
+        var node = parentContext.Nodes.Should().ContainSingle()
+            .Which.Should().BeOfType<BackgroundNode>()
+            .Which;
 
-        var node = (BackgroundNode)result;
-        node.When.Should().BeSameAs(parsed.When);
-        node.State.Name.Should().Be(parsed.Text);
+        node.When.Should().BeSameAs(when);
+        node.State.Name.Should().Be("beta");
         node.State.Type.Should().Be(BackgroundType.Image);
         node.State.Position.Should().Be(BackgroundPosition.Left);
     }
@@ -61,12 +68,12 @@ public class BackgroundLeftNodeParserTests
         const string message = "Era esperado o nome da imagem.";
         A.CallTo(() => context.LogError(reader, message)).DoesNothing();
 
-        var parsed = A.Dummy<IElementParsedData>();
-        parsed.Text = string.Empty;
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).ParsedText = string.Empty);
 
-        var result = await sut.ParseAsync(reader, context);
-        result.Should().BeNull();
+        await sut.ParseAsync(reader, context, parentContext);
+
+        parentContext.ShouldBeEmpty();
 
         A.CallTo(() => context.LogError(reader, message)).MustHaveHappenedOnceExactly();
     }
@@ -74,11 +81,11 @@ public class BackgroundLeftNodeParserTests
     [Fact]
     public async Task InvalidImageName()
     {
-        var parsed = A.Dummy<IElementParsedData>();
-        parsed.Text = null; // O ColorTextParser irá retornar NULL se o nome da cor for inválido
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
+        // O TextParser irá retornar NULL se o nome da imagem for inválido
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).ParsedText = null);
 
-        var result = await sut.ParseAsync(reader, context);
-        result.Should().BeNull();
+        await sut.ParseAsync(reader, context, parentContext);
+        parentContext.ShouldBeEmpty();
     }
 }

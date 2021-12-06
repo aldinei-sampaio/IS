@@ -8,7 +8,6 @@ public static class Helper
     {
         var parser = A.Fake<INodeParser>();
         A.CallTo(() => parser.Name).Returns(name);
-        A.CallTo(() => parser.NodeAggregation).Returns(null);
         return parser;
     }
 
@@ -23,7 +22,7 @@ public static class Helper
     {
         var textReader = new StringReader(xmlContents);
         var reader = XmlReader.Create(textReader, new() { Async = true });
-        reader.MoveToContent();
         return reader;
     }
+
 }

@@ -1,4 +1,4 @@
-﻿namespace IS.Reading.Parsing.NodeParsers;
+﻿namespace IS.Reading.Parsing.NodeParsers.PersonParsers;
 
 public interface IMoodNodeParser : IAggregateNodeParser
 {

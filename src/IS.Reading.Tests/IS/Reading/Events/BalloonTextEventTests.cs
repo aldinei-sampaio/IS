@@ -1,4 +1,6 @@
-﻿namespace IS.Reading.Events;
+﻿using IS.Reading.Choices;
+
+namespace IS.Reading.Events;
 
 public class BalloonTextEventTests
 {
@@ -13,10 +15,19 @@ public class BalloonTextEventTests
     [InlineData("wvx", BalloonType.Thought, true, "thought*: wvx")]
     public void Initialization(string text, BalloonType balloonType, bool isProtagonist, string description)
     {
-        var sut = new BalloonTextEvent(text, balloonType, isProtagonist);
+        var sut = new BalloonTextEvent(text, balloonType, isProtagonist, null);
         sut.Text.Should().Be(text);
         sut.BalloonType.Should().Be(balloonType);
         sut.IsProtagonist.Should().Be(isProtagonist);
         sut.ToString().Should().Be(description);
+        sut.Choice.Should().BeNull();
+    }
+
+    [Fact]
+    public void InitializateChoices()
+    {
+        var choice = A.Dummy<IChoice>();
+        var sut = new BalloonTextEvent("teste", BalloonType.Speech, true, choice);
+        sut.Choice.Should().BeSameAs(choice);
     }
 }

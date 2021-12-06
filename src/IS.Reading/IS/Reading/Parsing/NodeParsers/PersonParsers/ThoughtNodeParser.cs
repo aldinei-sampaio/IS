@@ -1,6 +1,6 @@
 ﻿using IS.Reading.Parsing.NodeParsers.BalloonParsers;
 
-namespace IS.Reading.Parsing.NodeParsers;
+namespace IS.Reading.Parsing.NodeParsers.PersonParsers;
 
 public class ThoughtNodeParser : BalloonTextNodeParserBase, IThoughtNodeParser
 {
