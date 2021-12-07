@@ -6,32 +6,34 @@ namespace IS.Reading.Parsing.NodeParsers.BalloonParsers;
 public abstract class BalloonTextNodeParserBase : INodeParser
 {
     private readonly IElementParser elementParser;
+    private readonly IBalloonChildNodeParser childParser;
     
-    public IBalloonTextChildNodeParser ChildParser { get; }
+    public IElementParserSettings Settings { get; }
 
     public IElementParserSettings AggregationSettings { get; }
 
     public BalloonTextNodeParserBase(
         IElementParser elementParser,
-        IBalloonTextChildNodeParser childParser
+        IBalloonChildNodeParser childParser
     )
     {
         this.elementParser = elementParser;
-        ChildParser = childParser;
+        this.childParser = childParser;
+        Settings = ElementParserSettings.NoRepeat(childParser);
         AggregationSettings = ElementParserSettings.Aggregated(childParser);
     }
 
-    public string Name => ChildParser.Name;
+    public string Name => childParser.Name;
 
     public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
         var myContext = new BlockParentParsingContext();
-        await ChildParser.ParseAsync(reader, parsingContext, myContext);
+        await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
 
         if (reader.ReadState != ReadState.EndOfFile)
             await elementParser.ParseAsync(reader, parsingContext, myContext, AggregationSettings);
 
-        var node = new BalloonNode(ChildParser.BalloonType, myContext.Block);
+        var node = new BalloonNode(childParser.BalloonType, myContext.Block);
         parentParsingContext.AddNode(node);
     }
 }

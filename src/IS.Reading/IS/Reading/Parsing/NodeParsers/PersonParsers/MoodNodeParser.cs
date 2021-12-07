@@ -1,5 +1,4 @@
 ﻿using IS.Reading.Nodes;
-using IS.Reading.Parsing.TextParsers;
 using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers.PersonParsers;
@@ -7,6 +6,7 @@ namespace IS.Reading.Parsing.NodeParsers.PersonParsers;
 public class MoodNodeParser : IMoodNodeParser
 {
     private readonly IElementParser elementParser;
+    private readonly INodeParser childParser;
 
     public IElementParserSettings Settings { get; }
 
@@ -14,14 +14,15 @@ public class MoodNodeParser : IMoodNodeParser
 
     public MoodNodeParser(
         IElementParser elementParser, 
-        IMoodTextParser moodTextParser,
+        IMoodTextNodeParser moodTextNodeParser,
         ISpeechNodeParser speechNodeParser,
         IThoughtNodeParser thoughtNodeParser,
         IPauseNodeParser pauseNodeParser
     )
     {
         this.elementParser = elementParser;
-        Settings = ElementParserSettings.Normal(moodTextParser);
+        this.childParser = moodTextNodeParser;
+        Settings = ElementParserSettings.NoRepeat(moodTextNodeParser);
 
         AggregationSettings = ElementParserSettings.Aggregated(
             speechNodeParser, 
@@ -30,11 +31,11 @@ public class MoodNodeParser : IMoodNodeParser
         );
     }
 
-    public string Name => "mood";
+    public string Name => childParser.Name;
 
     public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var myContext = new TextParentParsingContext();
+        var myContext = new BlockParentParsingContext();
         await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
 
         var parsedText = myContext.ParsedText;
@@ -44,11 +45,10 @@ public class MoodNodeParser : IMoodNodeParser
 
         var moodType = Enum.Parse<MoodType>(parsedText);
 
-        var aggContext = new BlockParentParsingContext();
         if (reader.ReadState != ReadState.EndOfFile)
-            await elementParser.ParseAsync(reader, parsingContext, aggContext, AggregationSettings);
+            await elementParser.ParseAsync(reader, parsingContext, myContext, AggregationSettings);
 
-        var node = new MoodNode(moodType, aggContext.Block);
+        var node = new MoodNode(moodType, myContext.Block);
         parentParsingContext.AddNode(node);
     }
 }

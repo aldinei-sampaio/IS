@@ -6,4 +6,6 @@ public interface IElementParserSettings
     IParserDictionary<IAttributeParser> AttributeParsers { get; }
     IParserDictionary<INodeParser> ChildParsers { get; }
     bool ExitOnUnknownNode { get; }
+
+    bool NoRepeatNode { get; }
 }

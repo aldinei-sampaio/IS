@@ -8,9 +8,10 @@ public class SpeechNodeParserTests
     public void Initialization()
     {
         var elementParser = A.Dummy<IElementParser>();
-        var childParser = Helper.FakeParser<ISpeechChildNodeParser>("speech");
-        var sut = new SpeechNodeParser(elementParser, childParser);
-        sut.Name.Should().Be("speech");
-        sut.ChildParser.Should().BeSameAs(childParser);
+        var speechChildNodeParser = Helper.FakeParser<ISpeechChildNodeParser>("bizantino");
+        var sut = new SpeechNodeParser(elementParser, speechChildNodeParser);
+        sut.Name.Should().Be("bizantino");
+        sut.Settings.ShouldBeNoRepeat(speechChildNodeParser);
+        sut.AggregationSettings.ShouldBeAggregate(speechChildNodeParser);
     }
 }

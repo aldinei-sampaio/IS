@@ -15,19 +15,20 @@ public class ElementParser : IElementParser
         if (reader.ReadState == ReadState.Initial)
         {
             await reader.MoveToContentAsync();
+
             if (reader.HasAttributes)
                 ParseAttributes(reader, parsingContext, parentParsingContext, settings);
+
             if (!await reader.ReadAsync())
                 return;
-        }
-        else
-        {
-            if (reader.HasAttributes)
-                ParseAttributes(reader, parsingContext, parentParsingContext, settings);
         }
 
         var textFound = false;
         var elementFound = false;
+
+        HashSet<INodeParser>? processed = null;
+        if (settings.NoRepeatNode)
+            processed = new();
 
         do
         {
@@ -45,8 +46,10 @@ public class ElementParser : IElementParser
                         break;
                     }
 
-                    await ParseElementAsync(reader, parsingContext, parentParsingContext, parser, textFound);
+                    if (settings.NoRepeatNode && !processed!.Add(parser))
+                        return;
 
+                    await ParseElementAsync(reader, parsingContext, parentParsingContext, parser, textFound);
                     break;
 
                 case XmlNodeType.Text:
@@ -106,6 +109,12 @@ public class ElementParser : IElementParser
         if (textFound)
         {
             parsingContext.LogError(reader, "Não é permitido texto dentro de elemento que tenha elementos filhos.");
+            return;
+        }
+
+        if (parser is IAggregateNodeParser)
+        {
+            await parser.ParseAsync(reader, parsingContext, parentParsingContext);
             return;
         }
 

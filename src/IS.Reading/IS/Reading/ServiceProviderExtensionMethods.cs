@@ -42,8 +42,9 @@ public static class ServiceProviderExtensionMethods
         services.AddSingleton<IBackgroundNodeParser, BackgroundNodeParser>();
         services.AddSingleton<IBlockNodeParser, BlockNodeParser>();
         services.AddSingleton<IMoodNodeParser, MoodNodeParser>();
+        services.AddSingleton<IMoodTextNodeParser, MoodTextNodeParser>();
         services.AddSingleton<IPersonNodeParser, PersonNodeParser>();
-        services.AddSingleton<IChoiceNodeParser, ChoiceNodeParser>();
+        services.AddSingleton<IPersonTextNodeParser, PersonTextNodeParser>();
 
         services.AddSingleton<IBackgroundLeftNodeParser, BackgroundLeftNodeParser>();
         services.AddSingleton<IBackgroundRightNodeParser, BackgroundRightNodeParser>();
@@ -51,14 +52,19 @@ public static class ServiceProviderExtensionMethods
         services.AddSingleton<IBackgroundScrollNodeParser, BackgroundScrollNodeParser>();
 
         services.AddSingleton<ISpeechNodeParser, SpeechNodeParser>();
-        services.AddSingleton<IThoughtNodeParser, ThoughtNodeParser>();
-        services.AddSingleton<INarrationNodeParser, NarrationNodeParser>();
-        services.AddSingleton<ITutorialNodeParser, TutorialNodeParser>();
         services.AddSingleton<ISpeechChildNodeParser, SpeechChildNodeParser>();
+        services.AddSingleton<ISpeechTextNodeParser, SpeechTextNodeParser>();
+        services.AddSingleton<IThoughtNodeParser, ThoughtNodeParser>();
         services.AddSingleton<IThoughtChildNodeParser, ThoughtChildNodeParser>();
+        services.AddSingleton<IThoughtTextNodeParser, ThoughtTextNodeParser>();
+        services.AddSingleton<INarrationNodeParser, NarrationNodeParser>();
         services.AddSingleton<INarrationChildNodeParser, NarrationChildNodeParser>();
+        services.AddSingleton<INarrationTextNodeParser, NarrationTextNodeParser>();
+        services.AddSingleton<ITutorialNodeParser, TutorialNodeParser>();
         services.AddSingleton<ITutorialChildNodeParser, TutorialChildNodeParser>();
+        services.AddSingleton<ITutorialTextNodeParser, TutorialTextNodeParser>();
 
+        services.AddSingleton<IChoiceNodeParser, ChoiceNodeParser>();
         services.AddSingleton<IChoiceDefaultNodeParser, ChoiceDefaultNodeParser>();
         services.AddSingleton<IChoiceTimeLimitNodeParser, ChoiceTimeLimitNodeParser>();
         services.AddSingleton<IChoiceOptionNodeParser, ChoiceOptionNodeParser>();

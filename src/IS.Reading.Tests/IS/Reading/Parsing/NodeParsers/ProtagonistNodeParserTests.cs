@@ -38,18 +38,24 @@ public class ProtagonistNodeParserTests
     {
         var reader = A.Dummy<XmlReader>();
         var context = A.Dummy<IParsingContext>();
+        var parentContext = new FakeParentParsingContext();
+
         var when = A.Dummy<ICondition>();
-        var parsed = A.Dummy<IElementParsedData>();
-        parsed.Text = parsedValue;
-        parsed.When = when;
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i =>
+            {
+                var ctx = i.GetArgument<IParentParsingContext>(2);
+                ctx.ParsedText = parsedValue;
+                ctx.When = when;
+            });
 
-        var ret = await sut.ParseAsync(reader, context);
-        var protagonistNode = ret.Should().BeOfType<ProtagonistNode>().Which;
-        protagonistNode.ProtagonistName.Should().Be(protagonistName);
-        protagonistNode.When.Should().BeSameAs(when);
+        await sut.ParseAsync(reader, context, parentContext);
 
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).MustHaveHappenedOnceExactly();
+        var node = parentContext.ShouldContainSingle<ProtagonistNode>();
+        node.ProtagonistName.Should().Be(protagonistName);
+        node.When.Should().BeSameAs(when);
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).MustHaveHappenedOnceExactly();
     }
 
     [Fact]
@@ -57,12 +63,12 @@ public class ProtagonistNodeParserTests
     {
         var reader = A.Dummy<XmlReader>();
         var context = A.Dummy<IParsingContext>();
-        var parsed = A.Dummy<IElementParsedData>();
-        parsed.Text = null;
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
+        var parentContext = new FakeParentParsingContext();
 
-        var ret = await sut.ParseAsync(reader, context);
-        ret.Should().BeNull();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).DoesNothing();
+
+        await sut.ParseAsync(reader, context, parentContext);
+        parentContext.ShouldBeEmpty();
     }
 
     [Fact]

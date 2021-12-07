@@ -1,19 +1,13 @@
-﻿using IS.Reading.Parsing.TextParsers;
+﻿namespace IS.Reading.Parsing.NodeParsers.BalloonParsers;
 
-namespace IS.Reading.Parsing.NodeParsers.BalloonParsers;
-
-public class TutorialChildNodeParser : BalloonTextChildNodeParserBase, ITutorialChildNodeParser
+public class TutorialChildNodeParser : BalloonChildNodeParserBase, ITutorialChildNodeParser
 {
     public TutorialChildNodeParser(
         IElementParser elementParser, 
-        IBalloonTextParser balloonTextParser, 
+        ITutorialTextNodeParser tutorialTextNodeParser, 
         IChoiceNodeParser choiceNodeParser
     ) 
-    : base(elementParser, balloonTextParser, choiceNodeParser)
+    : base(elementParser, tutorialTextNodeParser, choiceNodeParser)
     {
     }
-
-    public override string Name => "tutorial";
-
-    public override BalloonType BalloonType => BalloonType.Tutorial;
 }

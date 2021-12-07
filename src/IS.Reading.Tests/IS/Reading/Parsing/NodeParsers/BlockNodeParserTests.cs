@@ -1,4 +1,5 @@
 ﻿using IS.Reading.Navigation;
+using IS.Reading.Nodes;
 using IS.Reading.Parsing.AttributeParsers;
 using System.Xml;
 
@@ -8,6 +9,7 @@ public class BlockNodeParserTests
 {
     private readonly XmlReader reader;
     private readonly IParsingContext context;
+    private readonly FakeParentParsingContext parentContext = new();
     private readonly IElementParser elementParser;
     private readonly IWhenAttributeParser whenAttributeParser;
     private readonly IWhileAttributeParser whileAttributeParser;
@@ -23,6 +25,7 @@ public class BlockNodeParserTests
     public BlockNodeParserTests()
     {
         reader = A.Dummy<XmlReader>();
+
         context = A.Fake<IParsingContext>(i => i.Strict());
         elementParser = A.Fake<IElementParser>(i => i.Strict());
         whenAttributeParser = Helper.FakeParser<IWhenAttributeParser>("when");
@@ -53,19 +56,18 @@ public class BlockNodeParserTests
     public void Initialization()
     {
         sut.Name.Should().Be("do");
-        sut.Settings.AttributeParsers["when"].Should().BeSameAs(whenAttributeParser);
-        sut.Settings.AttributeParsers["while"].Should().BeSameAs(whileAttributeParser);
-        sut.Settings.AttributeParsers.Count.Should().Be(2);
-        sut.Settings.ChildParsers["music"].Should().BeSameAs(musicNodeParser);
-        sut.Settings.ChildParsers["background"].Should().BeSameAs(backgroundNodeParser);
-        sut.Settings.ChildParsers["do"].Should().BeSameAs(sut);
-        sut.Settings.ChildParsers["pause"].Should().BeSameAs(pauseNodeParser);
-        sut.Settings.ChildParsers["protagonist"].Should().BeSameAs(protagonistNodeParser);
-        sut.Settings.ChildParsers["person"].Should().BeSameAs(personNodeParser);
-        sut.Settings.ChildParsers["tutorial"].Should().BeSameAs(tutorialNodeParser);
-        sut.Settings.ChildParsers["narration"].Should().BeSameAs(narrationNodeParser);
-        sut.Settings.ChildParsers.Count.Should().Be(8);
-        sut.Settings.TextParser.Should().BeNull();
+        sut.Settings.ShouldBeNormal(
+            whenAttributeParser,
+            whileAttributeParser,
+            musicNodeParser,
+            backgroundNodeParser,
+            sut,
+            pauseNodeParser,
+            protagonistNodeParser,
+            personNodeParser,
+            tutorialNodeParser,
+            narrationNodeParser
+        );
     }
 
     [Fact]
@@ -74,33 +76,36 @@ public class BlockNodeParserTests
         var parsed = A.Dummy<IElementParsedData>();
         parsed.Block.ForwardQueue.Enqueue(A.Dummy<INode>());
 
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
+        var when = A.Dummy<ICondition>();
+        var @while = A.Dummy<ICondition>();
+        var parsedNode = A.Dummy<INode>();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i =>
+            {
+                var ctx = i.Arguments.Get<IParentParsingContext>(2);
+                ctx.When = when;
+                ctx.While = @while;
+                ctx.AddNode(parsedNode);
+            });
 
-        var result = await sut.ParseAsync(reader, context);
+        await sut.ParseAsync(reader, context, parentContext);
 
-        result.Should().NotBeNull();
-        result.When.Should().BeSameAs(parsed.When);
-        result.While.Should().BeSameAs(parsed.While);
-        result.ChildBlock.Should().BeSameAs(parsed.Block);
+        var node = parentContext.ShouldContainSingle<BlockNode>();
+        node.When.Should().BeSameAs(parsed.When);
+        node.While.Should().BeSameAs(parsed.While);
+        node.ChildBlock.ForwardQueue.Count.Should().Be(1);
+        node.ChildBlock.ForwardQueue.Peek().Should().BeSameAs(parsedNode);
     }
 
-    [Theory]
-    [InlineData(true)]
-    [InlineData(false)]
-    public async Task Empty(bool nullParsedBlock)
+    [Fact]
+    public async Task Empty()
     {
         A.CallTo(() => context.LogError(reader, "Elemento filho era esperado.")).DoesNothing();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).DoesNothing();
 
-        var parsed = A.Dummy<IElementParsedData>();
-        if (nullParsedBlock)
-            parsed.Block = null;
-
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
-
-        var result = await sut.ParseAsync(reader, context);
-        result.Should().BeNull();
+        await sut.ParseAsync(reader, context, parentContext);
+        parentContext.ShouldBeEmpty();
 
         A.CallTo(() => context.LogError(reader, "Elemento filho era esperado.")).MustHaveHappenedOnceExactly();
     }
-
 }

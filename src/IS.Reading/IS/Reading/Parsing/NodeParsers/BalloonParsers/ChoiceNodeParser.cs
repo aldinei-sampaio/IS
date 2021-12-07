@@ -37,7 +37,7 @@ public class ChoiceNodeParser : IChoiceNodeParser
             return;
         }
 
-        var ctx = (BalloonTextChildParentParsingContext)parentParsingContext;
+        var ctx = (BalloonChildParsingContext)parentParsingContext;
         ctx.ChoiceNode = myContext.Choice;
     }
 }

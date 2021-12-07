@@ -2,7 +2,8 @@
 
 namespace IS.Reading.Parsing.NodeParsers.BalloonParsers;
 
-public class BalloonTextChildParentParsingContext : IParentParsingContext
+public class BalloonChildParsingContext : IParentParsingContext
 {
+    public string? ParsedText { get; set; }
     public ChoiceNode? ChoiceNode { get; set; }
 }

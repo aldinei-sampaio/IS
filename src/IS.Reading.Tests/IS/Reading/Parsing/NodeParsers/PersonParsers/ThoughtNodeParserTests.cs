@@ -8,9 +8,10 @@ public class ThoughtNodeParserTests
     public void Initialization()
     {
         var elementParser = A.Dummy<IElementParser>();
-        var childParser = Helper.FakeParser<IThoughtChildNodeParser>("thought");
-        var sut = new ThoughtNodeParser(elementParser, childParser);
-        sut.Name.Should().Be("thought");
-        sut.ChildParser.Should().BeSameAs(childParser);
+        var thoughtChildNodeParser = Helper.FakeParser<IThoughtChildNodeParser>("oceania");
+        var sut = new ThoughtNodeParser(elementParser, thoughtChildNodeParser);
+        sut.Name.Should().Be("oceania");
+        sut.Settings.ShouldBeNoRepeat(thoughtChildNodeParser);
+        sut.AggregationSettings.ShouldBeAggregate(thoughtChildNodeParser);
     }
 }

@@ -1,6 +1,5 @@
-﻿using IS.Reading.Navigation;
-using IS.Reading.Nodes;
-using IS.Reading.Parsing.TextParsers;
+﻿using IS.Reading.Nodes;
+using IS.Reading.Parsing.NodeParsers.PersonParsers;
 using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers;
@@ -8,7 +7,7 @@ namespace IS.Reading.Parsing.NodeParsers;
 public class PersonNodeParserTests
 {
     private readonly IElementParser elementParser;
-    private readonly INameTextParser nameTextParser;
+    private readonly IPersonTextNodeParser personTextNodeParser;
     private readonly ISpeechNodeParser speechNodeParser;
     private readonly IThoughtNodeParser thoughtNodeParser;
     private readonly IMoodNodeParser moodNodeParser;
@@ -18,28 +17,20 @@ public class PersonNodeParserTests
     public PersonNodeParserTests()
     {
         elementParser = A.Fake<IElementParser>(i => i.Strict());
-        nameTextParser = A.Dummy<INameTextParser>();
+        personTextNodeParser = Helper.FakeParser<IPersonTextNodeParser>("person");
         speechNodeParser = Helper.FakeParser<ISpeechNodeParser>("speech");
         thoughtNodeParser = Helper.FakeParser<IThoughtNodeParser>("thought");
         moodNodeParser = Helper.FakeParser<IMoodNodeParser>("mood");
         pauseNodeParser = Helper.FakeParser<IPauseNodeParser>("pause");
-        sut = new(elementParser, nameTextParser, speechNodeParser, thoughtNodeParser, moodNodeParser, pauseNodeParser);
+        sut = new(elementParser, personTextNodeParser, speechNodeParser, thoughtNodeParser, moodNodeParser, pauseNodeParser);
     }
 
     [Fact]
     public void Initialization()
     {
         sut.Name.Should().Be("person");
-        sut.Settings.TextParser.Should().BeSameAs(nameTextParser);
-        sut.Settings.AttributeParsers.Count.Should().Be(0);
-        sut.Settings.ChildParsers.Count.Should().Be(0);
-
-        sut.Aggregation.Should().NotBeNull();
-        sut.Aggregation.ChildParsers["speech"].Should().BeSameAs(speechNodeParser);
-        sut.Aggregation.ChildParsers["thought"].Should().BeSameAs(thoughtNodeParser);
-        sut.Aggregation.ChildParsers["mood"].Should().BeSameAs(moodNodeParser);
-        sut.Aggregation.ChildParsers["pause"].Should().BeSameAs(pauseNodeParser);
-        sut.Aggregation.ChildParsers.Count.Should().Be(4);
+        sut.Settings.ShouldBeNoRepeat(personTextNodeParser);
+        sut.AggregationSettings.ShouldBeAggregate(speechNodeParser, thoughtNodeParser, moodNodeParser, pauseNodeParser);
     }
 
     [Fact]
@@ -47,31 +38,34 @@ public class PersonNodeParserTests
     {
         var reader = A.Dummy<XmlReader>();
         var context = A.Dummy<IParsingContext>();
-        var parsed = A.Dummy<IElementParsedData>();
-        parsed.Text = "lorenipsum";
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
+        var parentContext = new FakeParentParsingContext();
 
-        var ret = await sut.ParseAsync(reader, context);
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).ParsedText = "lorenipsum");
 
-        var personNode = ret.Should().BeOfType<PersonNode>().Which;
+        await sut.ParseAsync(reader, context, parentContext);
+
+        var personNode = parentContext.Nodes.Should().ContainSingle()
+            .Which.Should().BeOfType<PersonNode>().Which;
+
         personNode.PersonName.Should().Be("lorenipsum");
         personNode.ChildBlock.Should().NotBeNull();
         personNode.ChildBlock.ForwardQueue.Count.Should().Be(0);
 
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).MustHaveHappenedOnceExactly();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).MustHaveHappenedOnceExactly();
     }
 
+    // TODO: Refatorar nomes de unittest uma vez que ParseAsync não tem mais valor de retorno
     [Fact]
     public async Task ParseAsyncShouldReturnNullIfParsedTextIsNull()
     {
         var reader = A.Dummy<XmlReader>();
         var context = A.Dummy<IParsingContext>();
-        var parsed = A.Dummy<IElementParsedData>();
-        parsed.Text = null;
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
+        var parentContext = new FakeParentParsingContext();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).DoesNothing();
 
-        var ret = await sut.ParseAsync(reader, context);
-        ret.Should().BeNull();
+        await sut.ParseAsync(reader, context, parentContext);
+        parentContext.ShouldBeEmpty();
     }
 
     [Fact]
@@ -80,75 +74,16 @@ public class PersonNodeParserTests
         var errorMessage = "Era esperado o nome do personagem.";
         var reader = A.Dummy<XmlReader>();
         var context = A.Fake<IParsingContext>(i => i.Strict());
-        var parsed = A.Dummy<IElementParsedData>();
-        parsed.Text = string.Empty;
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
+        var parentContext = new FakeParentParsingContext();
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).ParsedText = string.Empty);
+
         A.CallTo(() => context.LogError(reader, errorMessage)).DoesNothing();
 
-        var ret = await sut.ParseAsync(reader, context);
-        ret.Should().BeNull();
+        await sut.ParseAsync(reader, context, parentContext);
+        parentContext.ShouldBeEmpty();
 
         A.CallTo(() => context.LogError(reader, errorMessage)).MustHaveHappenedOnceExactly();
-    }
-
-    [Fact]
-    public void AggregateShouldReturnNullWhenBlockIsEmpty()
-    {
-        var block = A.Dummy<IBlock>();
-        var ret = sut.Aggregate(block);
-        ret.Should().BeNull();
-    }
-
-    [Fact]
-    public void AggregateShouldReturnNullIfFirstNodeIsNotPersonNode()
-    {
-        var block = A.Dummy<IBlock>();
-        block.ForwardQueue.Enqueue(A.Dummy<INode>());
-        block.ForwardQueue.Enqueue(A.Dummy<INode>());
-        var ret = sut.Aggregate(block);
-        ret.Should().BeNull();
-    }
-
-    [Fact]
-    public void AggregateShouldReturnNullIfBlockHasLessThanTwoNodes()
-    {
-        var block = A.Dummy<IBlock>();
-        var node = new PersonNode("omega", null);
-        block.ForwardQueue.Enqueue(node);
-        var ret = sut.Aggregate(block);
-        ret.Should().BeNull();
-    }
-
-    [Fact]
-    public void AggregateChildNodeOfPersonNodeShouldNotBeNull()
-    {
-        var block = A.Dummy<IBlock>();
-        var node = new PersonNode("jirama", null);
-        block.ForwardQueue.Enqueue(node);
-        block.ForwardQueue.Enqueue(A.Dummy<INode>());
-        Assert.Throws<InvalidOperationException>(() => sut.Aggregate(block));
-    }
-
-    [Fact]
-    public void AggregateShouldAppendAllOtherNodesAsChildrenOfThePersonNode()
-    {
-        var personNode = new PersonNode("navira", A.Dummy<IBlock>());
-        var node1 = A.Dummy<INode>();
-        var node2 = A.Dummy<INode>();
-        var node3 = A.Dummy<INode>();
-
-        var block = A.Dummy<IBlock>();
-        block.ForwardQueue.Enqueue(personNode);
-        block.ForwardQueue.Enqueue(node1);
-        block.ForwardQueue.Enqueue(node2);
-        block.ForwardQueue.Enqueue(node3);
-
-        var ret = sut.Aggregate(block);
-
-        ret.Should().BeSameAs(personNode);
-        personNode.ChildBlock.ForwardQueue.Count.Should().Be(3);
-        personNode.ChildBlock.ForwardQueue.Dequeue().Should().BeSameAs(node1);
-        personNode.ChildBlock.ForwardQueue.Dequeue().Should().BeSameAs(node2);
-        personNode.ChildBlock.ForwardQueue.Dequeue().Should().BeSameAs(node3);
     }
 }

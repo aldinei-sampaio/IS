@@ -8,9 +8,10 @@ public class TutorialNodeParserTests
     public void Initialization()
     {
         var elementParser = A.Dummy<IElementParser>();
-        var childParser = Helper.FakeParser<ITutorialChildNodeParser>("tutorial");
-        var sut = new TutorialNodeParser(elementParser, childParser);
-        sut.Name.Should().Be("tutorial");
-        sut.ChildParser.Should().Be(childParser);
+        var tutorialChildNodeParser = Helper.FakeParser<ITutorialChildNodeParser>("tomorrow");
+        var sut = new TutorialNodeParser(elementParser, tutorialChildNodeParser);
+        sut.Name.Should().Be("tomorrow");
+        sut.Settings.ShouldBeNoRepeat(tutorialChildNodeParser);
+        sut.AggregationSettings.ShouldBeAggregate(tutorialChildNodeParser);
     }
 }

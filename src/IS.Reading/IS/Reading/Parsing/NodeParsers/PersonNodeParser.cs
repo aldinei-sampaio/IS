@@ -1,6 +1,5 @@
 ﻿using IS.Reading.Nodes;
 using IS.Reading.Parsing.NodeParsers.PersonParsers;
-using IS.Reading.Parsing.TextParsers;
 using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers;
@@ -8,6 +7,7 @@ namespace IS.Reading.Parsing.NodeParsers;
 public class PersonNodeParser : IPersonNodeParser
 {
     private readonly IElementParser elementParser;
+    private readonly INodeParser childParser;
 
     public IElementParserSettings Settings { get; }
 
@@ -15,7 +15,7 @@ public class PersonNodeParser : IPersonNodeParser
 
     public PersonNodeParser(
         IElementParser elementParser, 
-        INameTextParser nameTextParser,
+        IPersonTextNodeParser personTextNodeParser,
         ISpeechNodeParser speechNodeParser,
         IThoughtNodeParser thoughtNodeParser,
         IMoodNodeParser moodNodeParser,
@@ -23,7 +23,8 @@ public class PersonNodeParser : IPersonNodeParser
     )
     {
         this.elementParser = elementParser;
-        Settings = ElementParserSettings.Normal(nameTextParser);
+        this.childParser = personTextNodeParser;
+        Settings = ElementParserSettings.NoRepeat(childParser);
 
         AggregationSettings = ElementParserSettings.Aggregated(
             speechNodeParser, 
@@ -33,11 +34,11 @@ public class PersonNodeParser : IPersonNodeParser
         );
     }
 
-    public string Name => "person";
+    public string Name => childParser.Name;
 
     public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var myContext = new TextParentParsingContext();
+        var myContext = new BlockParentParsingContext();
         await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
 
         var parsedText = myContext.ParsedText;
@@ -54,13 +55,12 @@ public class PersonNodeParser : IPersonNodeParser
         if (reader.ReadState == ReadState.EndOfFile)
             return;
 
-        var aggContext = new BlockParentParsingContext();
-        await elementParser.ParseAsync(reader, parsingContext, aggContext, AggregationSettings);
+        await elementParser.ParseAsync(reader, parsingContext, myContext, AggregationSettings);
 
-        if (aggContext.Block.ForwardQueue.Count == 0)
+        if (myContext.Block.ForwardQueue.Count == 0)
             return;
 
-        var node = new PersonNode(parsedText, aggContext.Block);
+        var node = new PersonNode(parsedText, myContext.Block);
         parentParsingContext.AddNode(node);
     }
 }

@@ -1,44 +1,44 @@
 ﻿using IS.Reading.Nodes;
-using IS.Reading.Parsing.TextParsers;
 using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers.BalloonParsers;
 
-public abstract class BalloonTextChildNodeParserBase : IAggregateNodeParser
+public abstract class BalloonChildNodeParserBase : IAggregateNodeParser
 {
     private readonly IElementParser elementParser;
+    private readonly IBalloonTextNodeParser childParser;
 
     public IElementParserSettings Settings { get; }
 
     public IElementParserSettings AggregationSettings { get; }
 
-    public BalloonTextChildNodeParserBase(
+    public BalloonChildNodeParserBase(
         IElementParser elementParser,
-        IBalloonTextParser balloonTextParser,
+        IBalloonTextNodeParser balloonTextNodeParser,
         IChoiceNodeParser choiceNodeParser
     )
     {
         this.elementParser = elementParser;
-        Settings = ElementParserSettings.Normal(balloonTextParser);
+        this.childParser = balloonTextNodeParser;
+        Settings = ElementParserSettings.NoRepeat(balloonTextNodeParser);
         AggregationSettings = ElementParserSettings.Aggregated(choiceNodeParser);
     }
 
-    public abstract string Name { get; }
-    public abstract BalloonType BalloonType { get; }
+    public string Name => childParser.Name;
+    public BalloonType BalloonType => childParser.BalloonType;
 
     public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var myContext = new TextParentParsingContext();
+        var myContext = new BalloonChildParsingContext();
         await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
 
         if (myContext.ParsedText is null)
             return;
 
-        var aggContext = new BalloonTextChildParentParsingContext();
         if (reader.ReadState != ReadState.EndOfFile)
-            await elementParser.ParseAsync(reader, parsingContext, aggContext, AggregationSettings);
+            await elementParser.ParseAsync(reader, parsingContext, myContext, AggregationSettings);
 
-        var node = new BalloonTextNode(myContext.ParsedText, BalloonType, aggContext.ChoiceNode);
+        var node = new BalloonTextNode(myContext.ParsedText, BalloonType, myContext.ChoiceNode);
         parentParsingContext.AddNode(node);
     }
 }

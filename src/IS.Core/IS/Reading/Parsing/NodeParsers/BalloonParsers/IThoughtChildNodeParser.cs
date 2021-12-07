@@ -1,5 +1,5 @@
 ﻿namespace IS.Reading.Parsing.NodeParsers.BalloonParsers;
 
-public interface IThoughtChildNodeParser : IBalloonTextChildNodeParser
+public interface IThoughtChildNodeParser : IBalloonChildNodeParser
 {
 }

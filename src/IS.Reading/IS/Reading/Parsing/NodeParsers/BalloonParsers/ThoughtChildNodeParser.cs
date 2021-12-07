@@ -1,19 +1,13 @@
-﻿using IS.Reading.Parsing.TextParsers;
+﻿namespace IS.Reading.Parsing.NodeParsers.BalloonParsers;
 
-namespace IS.Reading.Parsing.NodeParsers.BalloonParsers;
-
-public class ThoughtChildNodeParser : BalloonTextChildNodeParserBase, IThoughtChildNodeParser
+public class ThoughtChildNodeParser : BalloonChildNodeParserBase, IThoughtChildNodeParser
 {
     public ThoughtChildNodeParser(
         IElementParser elementParser, 
-        IBalloonTextParser balloonTextParser, 
+        IThoughtTextNodeParser thoughtTextNodeParser, 
         IChoiceNodeParser choiceNodeParser
     ) 
-    : base(elementParser, balloonTextParser, choiceNodeParser)
+    : base(elementParser, thoughtTextNodeParser, choiceNodeParser)
     {
     }
-
-    public override string Name => "thought";
-
-    public override BalloonType BalloonType => BalloonType.Thought;
 }

@@ -14,6 +14,8 @@ public class ElementParserSettings : IElementParserSettings
 
     public bool ExitOnUnknownNode { get; private set; }
 
+    public bool NoRepeatNode { get; private set; }
+
     public static ElementParserSettings Normal(params object[] parsers)
     { 
         var settings = new ElementParserSettings();
@@ -36,6 +38,13 @@ public class ElementParserSettings : IElementParserSettings
             }
         }
 
+        return settings;
+    }
+
+    public static ElementParserSettings NoRepeat(params object[] parsers)
+    {
+        var settings = Aggregated(parsers);
+        settings.NoRepeatNode = true;
         return settings;
     }
 

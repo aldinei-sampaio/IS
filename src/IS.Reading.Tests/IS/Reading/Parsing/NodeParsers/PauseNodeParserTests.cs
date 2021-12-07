@@ -1,4 +1,5 @@
-﻿using IS.Reading.Nodes;
+﻿using IS.Reading.Navigation;
+using IS.Reading.Nodes;
 using IS.Reading.Parsing.AttributeParsers;
 using IS.Reading.Parsing.TextParsers;
 using System.Xml;
@@ -9,6 +10,7 @@ public class PauseNodeParserTests
 {
     private readonly XmlReader reader;
     private readonly IParsingContext context;
+    private readonly FakeParentParsingContext parentContext = new();
     private readonly IElementParser elementParser;
     private readonly IWhenAttributeParser whenAttributeParser;
     private readonly IIntegerTextParser integerTextParser;
@@ -41,15 +43,19 @@ public class PauseNodeParserTests
     [InlineData("  ")]
     public async Task NormalPause(string text)
     {
-        var parsed = A.Dummy<IElementParsedData>();
-        parsed.Text = text;
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
+        var when = A.Dummy<ICondition>();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i => 
+            {
+                var ctx = i.Arguments.Get<IParentParsingContext>(2);
+                ctx.ParsedText = text;
+                ctx.When = when;
+            });
 
-        var result = await sut.ParseAsync(reader, context);
+        await sut.ParseAsync(reader, context, parentContext);
 
-        result.Should().NotBeNull();
-        result.Should().BeOfType<PauseNode>()
-            .Which.When.Should().BeSameAs(parsed.When);
+        var node = parentContext.ShouldContainSingle<PauseNode>();
+        node.When.Should().BeSameAs(when);
     }
 
     [Theory]
@@ -60,15 +66,19 @@ public class PauseNodeParserTests
     [InlineData(5000)]
     public async Task TimedPause(int value)
     {
-        var parsed = A.Dummy<IElementParsedData>();
-        parsed.Text = value.ToString();
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
+        var when = A.Dummy<ICondition>();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i =>
+            {
+                var ctx = i.Arguments.Get<IParentParsingContext>(2);
+                ctx.ParsedText = value.ToString();
+                ctx.When = when;
+            });
 
-        var result = await sut.ParseAsync(reader, context);
+        await sut.ParseAsync(reader, context, parentContext);
 
-        result.Should().NotBeNull();
-        var node = result.Should().BeOfType<TimedPauseNode>().Which;
-        node.When.Should().BeSameAs(parsed.When);
+        var node = parentContext.ShouldContainSingle<TimedPauseNode>();
+        node.When.Should().BeSameAs(when);
         node.Duration.Should().Be(TimeSpan.FromMilliseconds(value));
     }
 
@@ -97,12 +107,11 @@ public class PauseNodeParserTests
     {
         A.CallTo(() => context.LogError(reader, message)).DoesNothing();
 
-        var parsed = A.Dummy<IElementParsedData>();
-        parsed.Text = duration;
-        A.CallTo(() => elementParser.ParseAsync(reader, context, sut.Settings)).Returns(parsed);
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).ParsedText = duration);
 
-        var result = await sut.ParseAsync(reader, context);
-        result.Should().BeNull();
+        await sut.ParseAsync(reader, context, parentContext);
+        parentContext.ShouldBeEmpty();
 
         A.CallTo(() => context.LogError(reader, message)).MustHaveHappenedOnceExactly();
     }

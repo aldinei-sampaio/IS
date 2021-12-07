@@ -1,6 +1,5 @@
 ﻿using IS.Reading.Navigation;
 using IS.Reading.Nodes;
-using IS.Reading.Parsing.TextParsers;
 using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers.BalloonParsers;
@@ -9,70 +8,120 @@ public class BalloonTextNodeParserBaseTests
 {
     private class TestClass : BalloonTextNodeParserBase
     {
-        public TestClass(string name, BalloonType balloonType, IElementParser elementParser, IBalloonTextParser balloonTextParser) 
-            : base(name, balloonType, elementParser, balloonTextParser)
+        public TestClass(IElementParser elementParser, IBalloonChildNodeParser balloonTextChildNodeParser) 
+            : base(elementParser, balloonTextChildNodeParser)
         {
         }
+    }
 
-        public INodeParser FakeChildParser()
-        {
-            ChildParser = A.Fake<INodeParser>();
-            return ChildParser;
-        }
+    private readonly IElementParser elementParser;
+    private readonly IBalloonChildNodeParser balloonTextChildNodeParser;
+    private readonly TestClass sut;
+
+    public BalloonTextNodeParserBaseTests()
+    {
+        elementParser = A.Fake<IElementParser>(i => i.Strict());
+        balloonTextChildNodeParser = Helper.FakeParser<IBalloonChildNodeParser>("abc");
+        A.CallTo(() => balloonTextChildNodeParser.BalloonType).Returns(BalloonType.Speech);
+
+        sut = new(elementParser, balloonTextChildNodeParser);
     }
 
     [Fact]
     public void Initialization()
     {
-        var elementParser = A.Dummy<IElementParser>();
-        var balloonTextparser = A.Dummy<IBalloonTextParser>();
-        var sut = new TestClass("chorume", BalloonType.Thought, elementParser, balloonTextparser);
-        sut.Name.Should().Be("chorume");
+        sut.Name.Should().Be("abc");
         
-        var childParser = sut.ChildParser.Should().BeOfType<BalloonTextChildNodeParser>().Which;
-        childParser.Name.Should().Be("chorume");
-        childParser.BalloonType.Should().Be(BalloonType.Thought);
-        childParser.Settings.TextParser.Should().BeSameAs(balloonTextparser);
-        childParser.Settings.AttributeParsers.Count.Should().Be(0);
-        childParser.Settings.ChildParsers.Count.Should().Be(0);
+        sut.Settings.ChildParsers.Count.Should().Be(1);
+        sut.Settings.ChildParsers["abc"].Should().BeSameAs(balloonTextChildNodeParser);
+        sut.Settings.NoRepeatNode.Should().BeTrue();
+        sut.Settings.ExitOnUnknownNode.Should().BeTrue();
 
-        sut.Aggregation.Should().NotBeNull();
-        sut.Aggregation.ChildParsers.Count.Should().Be(1);
-        sut.Aggregation.ChildParsers["chorume"].Should().BeSameAs(childParser);
+        sut.AggregationSettings.Should().NotBeNull();
+        sut.AggregationSettings.ChildParsers.Count.Should().Be(1);
+        sut.AggregationSettings.ChildParsers["abc"].Should().BeSameAs(balloonTextChildNodeParser);
+        sut.Settings.NoRepeatNode.Should().BeFalse();
+        sut.Settings.ExitOnUnknownNode.Should().BeTrue();
     }
 
     [Fact]
-    public async Task ParseAsyncShouldCallChildParser()
+    public async Task NoAggregation()
     {
+        var parentContext = new FakeParentParsingContext();
         var context = A.Dummy<IParsingContext>();
         var reader = A.Dummy<XmlReader>();
+        A.CallTo(() => reader.ReadState).Returns(ReadState.Interactive);
 
-        var elementParser = A.Dummy<IElementParser>();
-        var balloonTextparser = A.Dummy<IBalloonTextParser>();
-        var sut = new TestClass("teste", BalloonType.Speech, elementParser, balloonTextparser);
+        var dummyNode1 = A.Dummy<INode>();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(dummyNode1));
 
-        var childParser = sut.FakeChildParser();
-        var node = A.Fake<INode>();
-        A.CallTo(() => childParser.ParseAsync(reader, context)).Returns(node);
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.AggregationSettings)).DoesNothing();
 
-        var ret = await sut.ParseAsync(reader, context);
-        ret.Should().Be(node);
+        await sut.ParseAsync(reader, context, parentContext);
 
-        A.CallTo(() => childParser.ParseAsync(reader, context)).MustHaveHappenedOnceExactly();
+        var node = parentContext.Nodes.Should().ContainSingle()
+            .Which.Should().BeOfType<BalloonNode>().Which;
+
+        node.BallonType.Should().Be(BalloonType.Speech);
+        node.ChildBlock.ForwardQueue.Dequeue().Should().BeSameAs(dummyNode1);
+        node.ChildBlock.ForwardQueue.Count.Should().Be(0);
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).MustHaveHappenedOnceExactly();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.AggregationSettings)).MustHaveHappenedOnceExactly();
     }
 
     [Fact]
-    public void AggregateShouldCreateBalloonNode()
+    public async Task Aggregation()
     {
-        var elementParser = A.Dummy<IElementParser>();
-        var balloonTextparser = A.Dummy<IBalloonTextParser>();
-        var sut = new TestClass("teste", BalloonType.Thought, elementParser, balloonTextparser);
+        var parentContext = new FakeParentParsingContext();
+        var context = A.Dummy<IParsingContext>();
+        var reader = A.Dummy<XmlReader>();
+        A.CallTo(() => reader.ReadState).Returns(ReadState.Interactive);
 
-        var block = A.Dummy<IBlock>();
+        var dummyNode1 = A.Dummy<INode>();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(dummyNode1));
 
-        var ret = sut.Aggregate(block);
-        var node = ret.Should().BeOfType<BalloonNode>().Which;
-        node.ChildBlock.Should().BeSameAs(block);
-        node.BallonType.Should().Be(BalloonType.Thought);
+        var dummyNode2 = A.Dummy<INode>();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.AggregationSettings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(dummyNode2));
+
+        await sut.ParseAsync(reader, context, parentContext);
+
+        var node = parentContext.Nodes.Should().ContainSingle()
+            .Which.Should().BeOfType<BalloonNode>().Which;
+
+        node.BallonType.Should().Be(BalloonType.Speech);
+        node.ChildBlock.ForwardQueue.Dequeue().Should().BeSameAs(dummyNode1);
+        node.ChildBlock.ForwardQueue.Dequeue().Should().BeSameAs(dummyNode2);
+        node.ChildBlock.ForwardQueue.Count.Should().Be(0);
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).MustHaveHappenedOnceExactly();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.AggregationSettings)).MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task ShouldNotTryAggregateAtEndOfElement()
+    {
+        var parentContext = new FakeParentParsingContext();
+        var context = A.Dummy<IParsingContext>();
+        var reader = A.Dummy<XmlReader>();
+        A.CallTo(() => reader.ReadState).Returns(ReadState.EndOfFile);
+
+        var dummyNode1 = A.Dummy<INode>();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(dummyNode1));
+
+        await sut.ParseAsync(reader, context, parentContext);
+
+        var node = parentContext.Nodes.Should().ContainSingle()
+            .Which.Should().BeOfType<BalloonNode>().Which;
+
+        node.BallonType.Should().Be(BalloonType.Speech);
+        node.ChildBlock.ForwardQueue.Dequeue().Should().BeSameAs(dummyNode1);
+        node.ChildBlock.ForwardQueue.Count.Should().Be(0);
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).MustHaveHappenedOnceExactly();
     }
 }

@@ -17,4 +17,7 @@ public class FakeParentParsingContext : IParentParsingContext
         Nodes.Should().BeEmpty();
         ParsedText.Should().BeNull();
     }
+
+    public T ShouldContainSingle<T>() where T : INode
+        => Nodes.Should().ContainSingle().Which.Should().BeOfType<T>().Which;
 }
