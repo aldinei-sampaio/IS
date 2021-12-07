@@ -21,7 +21,7 @@ public class ParserDictionary<T> : IParserDictionary<T> where T : IParser
 
     public void Add(T value)
     {
-        if (value.NameRegex is null)
+        if (string.IsNullOrEmpty(value.NameRegex))
             dic.Add(value.Name, value);
         else
             ruleParsers.Add(value);

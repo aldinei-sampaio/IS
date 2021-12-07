@@ -1,4 +1,5 @@
-﻿using IS.Reading.Nodes;
+﻿using IS.Reading.Navigation;
+using IS.Reading.Nodes;
 using IS.Reading.Parsing.NodeParsers.PersonParsers;
 using System.Xml;
 
@@ -30,7 +31,7 @@ public class PersonNodeParserTests
     {
         sut.Name.Should().Be("person");
         sut.Settings.ShouldBeNoRepeat(personTextNodeParser);
-        sut.AggregationSettings.ShouldBeAggregate(speechNodeParser, thoughtNodeParser, moodNodeParser, pauseNodeParser);
+        sut.AggregationSettings.ShouldBeAggregated(speechNodeParser, thoughtNodeParser, moodNodeParser, pauseNodeParser);
     }
 
     [Fact]
@@ -43,16 +44,22 @@ public class PersonNodeParserTests
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
             .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).ParsedText = "lorenipsum");
 
+        var dummyNode = A.Dummy<INode>();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.AggregationSettings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(dummyNode));
+
         await sut.ParseAsync(reader, context, parentContext);
 
         var personNode = parentContext.Nodes.Should().ContainSingle()
             .Which.Should().BeOfType<PersonNode>().Which;
 
         personNode.PersonName.Should().Be("lorenipsum");
-        personNode.ChildBlock.Should().NotBeNull();
-        personNode.ChildBlock.ForwardQueue.Count.Should().Be(0);
+        personNode.ChildBlock.ShouldContainOnly(dummyNode);
 
-        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).MustHaveHappenedOnceExactly();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .MustHaveHappenedOnceExactly();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.AggregationSettings))
+            .MustHaveHappenedOnceExactly();
     }
 
     // TODO: Refatorar nomes de unittest uma vez que ParseAsync não tem mais valor de retorno

@@ -9,6 +9,11 @@ public static class IBlockExtensionMethods
         block.ForwardQueue.Count.Should().Be(1);
         block.ForwardQueue.Peek().Should().BeSameAs(node);
     }
+
+    public static void ShouldBeEmpty(this IBlock block)
+    {
+        block.ForwardQueue.Count.Should().Be(0);
+    }
 }
 
 public static class IElementParserSettingsExtensionMethods
@@ -40,8 +45,8 @@ public static class IElementParserSettingsExtensionMethods
                 throw new InvalidOperationException("Objeto não é um parser.");
             }
         }
-        settings.AttributeParsers.Count.Should().Be(0);
-        settings.ChildParsers.Count.Should().Be(0);
+        settings.AttributeParsers.Count.Should().Be(attributeParserCount);
+        settings.ChildParsers.Count.Should().Be(nodeParserCount);
         if (!textParserFound)
             settings.TextParser.Should().BeNull();
     }
@@ -53,7 +58,7 @@ public static class IElementParserSettingsExtensionMethods
         settings.ExitOnUnknownNode.Should().BeTrue();
     }
 
-    public static void ShouldBeAggregate(this IElementParserSettings settings, params object[] parsers)
+    public static void ShouldBeAggregated(this IElementParserSettings settings, params object[] parsers)
     {
         settings.ShouldContainOnly(parsers);
         settings.NoRepeatNode.Should().BeFalse();

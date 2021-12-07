@@ -9,4 +9,5 @@ public interface IParsingContext
     bool IsSuccess { get; }
     void RegisterDismissNode(INode node);
     string? Person { get; set; }
+    IEnumerable<INode> DismissNodes { get; }
 }

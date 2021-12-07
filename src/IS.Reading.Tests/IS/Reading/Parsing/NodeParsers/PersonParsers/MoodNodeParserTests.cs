@@ -29,7 +29,7 @@ public class MoodNodeParserTests
     {
         sut.Name.Should().Be("mood");
         sut.Settings.ShouldBeNoRepeat(moodTextNodeParser);
-        sut.AggregationSettings.ShouldBeAggregate(speechNodeParser, thoughtNodeParser, pauseNodeParser);
+        sut.AggregationSettings.ShouldBeAggregated(speechNodeParser, thoughtNodeParser, pauseNodeParser);
     }
 
     [Fact]
@@ -59,9 +59,6 @@ public class MoodNodeParserTests
         var reader = A.Dummy<XmlReader>();
         var context = A.Dummy<IParsingContext>();
         var parentContext = new FakeParentParsingContext();
-
-        var parsed = A.Dummy<IElementParsedData>();
-        parsed.Text = null;
 
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).DoesNothing();
 

@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using IS.Reading.Parsing.TextParsers;
+using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 
@@ -8,7 +9,7 @@ public class ChoiceDefaultNodeParser : IChoiceDefaultNodeParser
 
     public IElementParserSettings Settings { get; }
 
-    public ChoiceDefaultNodeParser(IElementParser elementParser, ITextParser textParser)
+    public ChoiceDefaultNodeParser(IElementParser elementParser, INameTextParser textParser)
     {
         this.elementParser = elementParser;
         Settings = ElementParserSettings.Normal(textParser);

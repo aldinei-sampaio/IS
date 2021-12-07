@@ -12,6 +12,6 @@ public class TutorialNodeParserTests
         var sut = new TutorialNodeParser(elementParser, tutorialChildNodeParser);
         sut.Name.Should().Be("tomorrow");
         sut.Settings.ShouldBeNoRepeat(tutorialChildNodeParser);
-        sut.AggregationSettings.ShouldBeAggregate(tutorialChildNodeParser);
+        sut.AggregationSettings.ShouldBeAggregated(tutorialChildNodeParser);
     }
 }

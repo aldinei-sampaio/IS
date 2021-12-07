@@ -12,6 +12,6 @@ public class NarrationNodeParserTests
         var sut = new NarrationNodeParser(elementParser, narrationChildNodeParser);
         sut.Name.Should().Be("forget");
         sut.Settings.ShouldBeNoRepeat(narrationChildNodeParser);
-        sut.AggregationSettings.ShouldBeAggregate(narrationChildNodeParser);
+        sut.AggregationSettings.ShouldBeAggregated(narrationChildNodeParser);
     }
 }

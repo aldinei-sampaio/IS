@@ -12,7 +12,9 @@ public class ParsingContext : IParsingContext
 
     public bool IsSuccess => errorCount == 0;
 
-    public List<INode> DismissNodes { get; } = new();
+    public IEnumerable<INode> DismissNodes => dismissNodes;
+
+    private readonly List<INode> dismissNodes = new();
 
     public string? Person { get; set; }
 
@@ -44,8 +46,8 @@ public class ParsingContext : IParsingContext
 
     public void RegisterDismissNode(INode node)
     {
-        if (!DismissNodes.Contains(node))
-            DismissNodes.Add(node);
+        if (!dismissNodes.Contains(node))
+            dismissNodes.Add(node);
     }
 
     public override string ToString()

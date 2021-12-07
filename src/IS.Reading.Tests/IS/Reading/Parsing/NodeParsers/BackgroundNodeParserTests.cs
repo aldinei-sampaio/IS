@@ -54,21 +54,27 @@ public class BackgroundNodeParserTests
     public void Initialization()
     {
         sut.Name.Should().Be("background");
-        sut.Settings.AttributeParsers["when"].Should().BeSameAs(whenAttributeParser);
-        sut.Settings.AttributeParsers.Count.Should().Be(1);
-        sut.Settings.ChildParsers["left"].Should().BeSameAs(backgroundLeftNodeParser);
-        sut.Settings.ChildParsers["right"].Should().BeSameAs(backgroundRightNodeParser);
-        sut.Settings.ChildParsers["color"].Should().BeSameAs(backgroundColorNodeParser);
-        sut.Settings.ChildParsers["scroll"].Should().BeSameAs(backgroundScrollNodeParser);
-        sut.Settings.ChildParsers["pause"].Should().BeSameAs(pauseNodeParser);
-        sut.Settings.ChildParsers.Count.Should().Be(5);
-        sut.Settings.TextParser.Should().BeSameAs(backgroundImageTextParser);
-        sut.DismissNode.Should().BeOfType<DismissNode<BackgroundNode>>();
+        sut.Settings.ShouldBeNormal(
+            whenAttributeParser,
+            backgroundImageTextParser,
+            backgroundLeftNodeParser,
+            backgroundRightNodeParser,
+            backgroundColorNodeParser,
+            backgroundScrollNodeParser,
+            pauseNodeParser
+        );
+
+        var dismissNode = sut.DismissNode.Should().BeOfType<DismissNode<BackgroundNode>>()
+            .Which.ChangeNode.Should().BeOfType<BackgroundNode>().Which;
+
+        dismissNode.State.Should().Be(BackgroundState.Empty);
+        dismissNode.When.Should().BeNull();            
     }
 
     [Fact]
     public async Task SuccessText()
     {
+        A.CallTo(() => context.RegisterDismissNode(sut.DismissNode)).DoesNothing();
         var when = A.Dummy<ICondition>();
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
             .Invokes(i =>
@@ -91,7 +97,7 @@ public class BackgroundNodeParserTests
         {
             var subnode = node.ChildBlock.ForwardQueue.Dequeue() as BackgroundNode;
             subnode.Should().NotBeNull();
-            subnode.State.Name.Should().Be("alfa");
+            subnode.State.Name.Should().Be("gama");
             subnode.State.Type.Should().Be(BackgroundType.Image);
             subnode.State.Position.Should().Be(BackgroundPosition.Left);
             subnode.When.Should().BeNull();
@@ -109,6 +115,7 @@ public class BackgroundNodeParserTests
         var parsedNode = A.Dummy<INode>();
         var when = A.Dummy<ICondition>();
 
+        A.CallTo(() => context.RegisterDismissNode(sut.DismissNode)).DoesNothing();
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
             .Invokes(i =>
             {
@@ -126,6 +133,21 @@ public class BackgroundNodeParserTests
         node.When.Should().BeSameAs(when);
         node.While.Should().BeNull();
         node.ChildBlock.ForwardQueue.Dequeue().Should().BeSameAs(parsedNode);
+    }
+
+    [Fact]
+    public async Task DismissNodeMustBeRegistered()
+    {
+        var parsedNode = A.Dummy<INode>();
+
+        A.CallTo(() => context.RegisterDismissNode(sut.DismissNode)).DoesNothing();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i => i.GetArgument<IParentParsingContext>(2).AddNode(parsedNode));
+
+        await sut.ParseAsync(reader, context, parentContext);
+
+        A.CallTo(() => context.RegisterDismissNode(sut.DismissNode)).MustHaveHappenedOnceExactly();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).MustHaveHappenedOnceExactly();
     }
 
     [Fact]

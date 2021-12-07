@@ -12,6 +12,6 @@ public class SpeechNodeParserTests
         var sut = new SpeechNodeParser(elementParser, speechChildNodeParser);
         sut.Name.Should().Be("bizantino");
         sut.Settings.ShouldBeNoRepeat(speechChildNodeParser);
-        sut.AggregationSettings.ShouldBeAggregate(speechChildNodeParser);
+        sut.AggregationSettings.ShouldBeAggregated(speechChildNodeParser);
     }
 }

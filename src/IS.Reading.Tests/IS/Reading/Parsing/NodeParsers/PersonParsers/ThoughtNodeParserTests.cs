@@ -12,6 +12,6 @@ public class ThoughtNodeParserTests
         var sut = new ThoughtNodeParser(elementParser, thoughtChildNodeParser);
         sut.Name.Should().Be("oceania");
         sut.Settings.ShouldBeNoRepeat(thoughtChildNodeParser);
-        sut.AggregationSettings.ShouldBeAggregate(thoughtChildNodeParser);
+        sut.AggregationSettings.ShouldBeAggregated(thoughtChildNodeParser);
     }
 }

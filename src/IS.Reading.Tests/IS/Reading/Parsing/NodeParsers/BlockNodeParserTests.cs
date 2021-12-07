@@ -73,9 +73,6 @@ public class BlockNodeParserTests
     [Fact]
     public async Task SimpleParsing()
     {
-        var parsed = A.Dummy<IElementParsedData>();
-        parsed.Block.ForwardQueue.Enqueue(A.Dummy<INode>());
-
         var when = A.Dummy<ICondition>();
         var @while = A.Dummy<ICondition>();
         var parsedNode = A.Dummy<INode>();
@@ -91,8 +88,8 @@ public class BlockNodeParserTests
         await sut.ParseAsync(reader, context, parentContext);
 
         var node = parentContext.ShouldContainSingle<BlockNode>();
-        node.When.Should().BeSameAs(parsed.When);
-        node.While.Should().BeSameAs(parsed.While);
+        node.When.Should().BeSameAs(when);
+        node.While.Should().BeSameAs(@while);
         node.ChildBlock.ForwardQueue.Count.Should().Be(1);
         node.ChildBlock.ForwardQueue.Peek().Should().BeSameAs(parsedNode);
     }

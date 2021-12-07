@@ -83,6 +83,7 @@ public static class ServiceProviderExtensionMethods
 
         // Transient
         services.AddTransient<IEventManager, EventManager>();
+        services.AddTransient<IParsingContext, ParsingContext>();
 
         return services;
     }

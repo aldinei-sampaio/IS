@@ -16,7 +16,7 @@ public class StoryboardParser : IStoryboardParser
 
     public async Task<IStoryboard> ParseAsync(TextReader textReader)
     {
-        var context = new ParsingContext();
+        var context = serviceProvider.GetRequiredService<IParsingContext>();
 
         using var reader = XmlReader.Create(textReader, new() { Async = true, CloseInput = true });
 
@@ -27,8 +27,8 @@ public class StoryboardParser : IStoryboardParser
         if (!context.IsSuccess)
             throw new ParsingException(context.ToString()!);
 
-        for (var n = context.DismissNodes.Count - 1; n >= 0; n--)
-            parsed.ForwardQueue.Enqueue(context.DismissNodes[n]);
+        foreach(var node in context.DismissNodes.Reverse())
+            parsed.ForwardQueue.Enqueue(node);
 
         var sceneNavigator = serviceProvider.GetRequiredService<ISceneNavigator>();
         var eventManager = serviceProvider.GetRequiredService<IEventManager>();

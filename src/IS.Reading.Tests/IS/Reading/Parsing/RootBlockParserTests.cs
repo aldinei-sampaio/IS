@@ -81,7 +81,7 @@ public class RootBlockParserTests
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).DoesNothing();
 
         var result = await sut.ParseAsync(reader, context);
-        result.Should().BeNull();
+        result.ShouldBeEmpty();
 
         A.CallTo(() => context.LogError(reader, "Elemento filho era esperado.")).MustHaveHappenedOnceExactly();
     }
