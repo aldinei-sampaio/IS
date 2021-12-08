@@ -9,6 +9,7 @@ using IS.Reading.Parsing.NodeParsers.ChoiceOptionParsers;
 using IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 using IS.Reading.Parsing.NodeParsers.PersonParsers;
 using IS.Reading.Parsing.TextParsers;
+using IS.Reading.State;
 using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics.CodeAnalysis;
 
@@ -19,6 +20,9 @@ public static class ServiceProviderExtensionMethods
 {
     public static IServiceCollection AddISReading(this IServiceCollection services)
     {
+        // Auxiliar
+        services.AddSingleton<IRandomizer, Randomizer>();
+
         // Auxiliar parsers
         services.AddSingleton<IConditionParser, ConditionParser>();
         services.AddSingleton<IElementParser, ElementParser>();
@@ -84,6 +88,8 @@ public static class ServiceProviderExtensionMethods
         // Transient
         services.AddTransient<IEventManager, EventManager>();
         services.AddTransient<IParsingContext, ParsingContext>();
+        services.AddTransient<INavigationState, NavigationState>();
+        services.AddTransient<IVariableDictionary, VariableDictionary>();
 
         return services;
     }

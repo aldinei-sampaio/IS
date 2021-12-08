@@ -4,24 +4,24 @@ namespace IS.Reading.Navigation;
 
 public class StoryboardTests
 {
-    private readonly IBlock rootBlock;
     private readonly ISceneNavigator sceneNavigator;
     private readonly IEventManager eventManager;
+    private readonly INavigationContext navigationContext;
     private readonly Storyboard sut;
 
     public StoryboardTests()
     {
-        rootBlock = A.Dummy<IBlock>();
         sceneNavigator = A.Fake<ISceneNavigator>(i => i.Strict());
         eventManager = A.Fake<IEventManager>(i => i.Strict());
-        sut = new Storyboard(rootBlock, sceneNavigator, eventManager);
+        navigationContext = A.Fake<INavigationContext>(i => i.Strict());
+        sut = new Storyboard(navigationContext, sceneNavigator, eventManager);
     }
 
     [Fact]
     public void Initialization()
     {
-        sut.NavigationContext.Should().NotBeNull();
-        sut.Events.Should().BeSameAs(sut.NavigationContext.Events);
+        sut.NavigationContext.Should().BeSameAs(navigationContext);
+        sut.Events.Should().BeSameAs(eventManager);
     }
 
     [Theory]

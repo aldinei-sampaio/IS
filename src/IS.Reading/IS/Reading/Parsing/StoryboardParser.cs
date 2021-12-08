@@ -1,5 +1,6 @@
 ﻿using IS.Reading.Events;
 using IS.Reading.Navigation;
+using IS.Reading.State;
 using Microsoft.Extensions.DependencyInjection;
 using System.Xml;
 
@@ -32,7 +33,11 @@ public class StoryboardParser : IStoryboardParser
 
         var sceneNavigator = serviceProvider.GetRequiredService<ISceneNavigator>();
         var eventManager = serviceProvider.GetRequiredService<IEventManager>();
+        var randomizer = serviceProvider.GetRequiredService<IRandomizer>();
+        var navigationState = serviceProvider.GetRequiredService<INavigationState>();
+        var variableDictionary = serviceProvider.GetRequiredService<IVariableDictionary>();
 
-        return new Storyboard(parsed, sceneNavigator, eventManager);
+        var navigationContext = new NavigationContext(parsed, eventManager, randomizer, navigationState, variableDictionary);
+        return new Storyboard(navigationContext, sceneNavigator, eventManager);
     }
 }

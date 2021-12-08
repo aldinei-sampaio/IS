@@ -1,5 +1,6 @@
 ﻿using IS.Reading.Events;
 using IS.Reading.Navigation;
+using IS.Reading.State;
 using System.Xml;
 
 namespace IS.Reading.Parsing;
@@ -11,6 +12,9 @@ public class StoryboardParserTests
     private readonly IRootBlockParser rootBlockParser;
     private readonly ISceneNavigator sceneNavigator;
     private readonly IEventManager eventManager;
+    private readonly IRandomizer randomizer;
+    private readonly INavigationState navigationState;
+    private readonly IVariableDictionary variableDictionary;
     private readonly StoryboardParser sut;
 
     public StoryboardParserTests()
@@ -23,12 +27,18 @@ public class StoryboardParserTests
         rootBlockParser = A.Fake<IRootBlockParser>(i => i.Strict());
         sceneNavigator = A.Fake<ISceneNavigator>(i => i.Strict());
         eventManager = A.Fake<IEventManager>(i => i.Strict());
+        randomizer = A.Fake<IRandomizer>(i => i.Strict());
+        navigationState = A.Fake<INavigationState>(i => i.Strict());
+        variableDictionary = A.Fake<IVariableDictionary>(i => i.Strict());
 
         var serviceProvider = A.Fake<IServiceProvider>(i => i.Strict());
         A.CallTo(() => serviceProvider.GetService(typeof(IParsingContext))).Returns(parsingContext);
         A.CallTo(() => serviceProvider.GetService(typeof(IRootBlockParser))).Returns(rootBlockParser);
         A.CallTo(() => serviceProvider.GetService(typeof(ISceneNavigator))).Returns(sceneNavigator);
         A.CallTo(() => serviceProvider.GetService(typeof(IEventManager))).Returns(eventManager);
+        A.CallTo(() => serviceProvider.GetService(typeof(IRandomizer))).Returns(randomizer);
+        A.CallTo(() => serviceProvider.GetService(typeof(INavigationState))).Returns(navigationState);
+        A.CallTo(() => serviceProvider.GetService(typeof(IVariableDictionary))).Returns(variableDictionary);
         sut = new StoryboardParser(serviceProvider);
     }
 

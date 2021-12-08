@@ -12,4 +12,5 @@ public interface INavigationContext
     Stack<IBlock> EnteredBlocks { get; }
     IBlock? CurrentBlock { get; set; }
     INode? CurrentNode { get; set; }
+    IRandomizer Randomizer { get; }
 }

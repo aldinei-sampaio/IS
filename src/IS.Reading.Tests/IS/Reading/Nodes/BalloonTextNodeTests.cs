@@ -236,6 +236,39 @@ public class BalloonTextNodeTests
         @event.Choice.Should().BeNull();
     }
 
+    [Fact]
+    public async Task RandomOrder()
+    {
+        var choiceNode = new TestChoiceNode
+        {
+            RandomOrder = true,
+            Options = new()
+            {
+                new TestChoiceOptionNode { Key = "a", Text = "Opção1"},
+                new TestChoiceOptionNode { Key = "b", Text = "Opção2"}
+            }
+        };
+
+        var shuffled = new List<IChoiceOption>
+        {
+            A.Fake<IChoiceOption>(i => i.ConfigureFake(i => {
+                A.CallTo(() => i.IsEnabled).Returns(true);
+            }))
+        };
+
+        var randomizer = A.Fake<IRandomizer>(i => i.Strict());
+        A.CallTo(() => randomizer.Shuffle(A<List<IChoiceOption>>.Ignored)).Returns(shuffled);
+        A.CallTo(() => context.Randomizer).Returns(randomizer);
+
+        var sut = new BalloonTextNode("...", BalloonType.Speech, choiceNode);
+        var invoker = new TestInvoker(context);
+
+        await sut.EnterAsync(context);
+
+        var @event = invoker.Single<IBalloonTextEvent>();
+        @event.Choice.Options.Should().BeSameAs(shuffled);
+    }
+
     private class TestChoiceNode : IChoiceNode
     {
         public TimeSpan? TimeLimit { get; set; }
@@ -243,6 +276,8 @@ public class BalloonTextNodeTests
         public string Default { get; set; }
 
         public List<IChoiceOptionNode> Options { get; set;  }
+
+        public bool RandomOrder { get; set; }
 
         IEnumerable<IChoiceOptionNode> IChoiceNode.Options => Options;
     }

@@ -41,6 +41,9 @@ public class BalloonTextNode : IPauseNode
         if (options.Count == 0 || options.All(i => !i.IsEnabled))
             return null;
 
+        if (choiceNode.RandomOrder)
+            options = context.Randomizer.Shuffle(options);
+
         return new Choice(options, choiceNode.TimeLimit, choiceNode.Default);
     }
 }

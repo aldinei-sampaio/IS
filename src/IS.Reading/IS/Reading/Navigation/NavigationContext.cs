@@ -5,7 +5,7 @@ namespace IS.Reading.Navigation;
 
 public class NavigationContext : INavigationContext
 {
-    public INavigationState State { get; } = new NavigationState();
+    public INavigationState State { get; }
 
     public IEventInvoker Events { get; }
 
@@ -17,11 +17,22 @@ public class NavigationContext : INavigationContext
 
     public INode? CurrentNode { get; set; }
 
-    public IVariableDictionary Variables { get; } = new VariableDictionary();
+    public IVariableDictionary Variables { get; }
 
-    public NavigationContext(IBlock rootBlock, IEventInvoker events)
+    public IRandomizer Randomizer { get; }
+
+    public NavigationContext(
+        IBlock rootBlock, 
+        IEventInvoker events, 
+        IRandomizer randomizer, 
+        INavigationState navigationState,
+        IVariableDictionary variableDictionary
+    )
     {
         RootBlock = rootBlock;
         Events = events;
+        Randomizer = randomizer;
+        State = navigationState;
+        Variables = variableDictionary;
     }
 }

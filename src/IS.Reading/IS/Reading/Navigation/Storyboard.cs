@@ -7,9 +7,9 @@ public class Storyboard : IStoryboard
     private readonly ISceneNavigator sceneNavigator;
     private readonly IEventManager eventManager;
 
-    public Storyboard(IBlock rootBlock, ISceneNavigator sceneNavigator, IEventManager eventManager)
+    public Storyboard(INavigationContext navigationContext, ISceneNavigator sceneNavigator, IEventManager eventManager)
     {
-        NavigationContext = new NavigationContext(rootBlock, eventManager);
+        NavigationContext = navigationContext;
         this.eventManager = eventManager;
         this.sceneNavigator = sceneNavigator;
     }
