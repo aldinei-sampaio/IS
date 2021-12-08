@@ -22,7 +22,7 @@ public class MoodNodeParser : IMoodNodeParser
     {
         this.elementParser = elementParser;
         this.childParser = moodTextNodeParser;
-        Settings = ElementParserSettings.NoRepeat(moodTextNodeParser);
+        Settings = ElementParserSettings.AggregatedNonRepeat(moodTextNodeParser);
 
         AggregationSettings = ElementParserSettings.Aggregated(
             speechNodeParser, 

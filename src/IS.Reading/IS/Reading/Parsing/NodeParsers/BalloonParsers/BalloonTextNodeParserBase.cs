@@ -19,7 +19,7 @@ public abstract class BalloonTextNodeParserBase : INodeParser
     {
         this.elementParser = elementParser;
         this.childParser = childParser;
-        Settings = ElementParserSettings.NoRepeat(childParser);
+        Settings = ElementParserSettings.AggregatedNonRepeat(childParser);
         AggregationSettings = ElementParserSettings.Aggregated(childParser);
     }
 

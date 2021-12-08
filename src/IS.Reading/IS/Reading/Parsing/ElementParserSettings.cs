@@ -41,7 +41,14 @@ public class ElementParserSettings : IElementParserSettings
         return settings;
     }
 
-    public static ElementParserSettings NoRepeat(params object[] parsers)
+    public static ElementParserSettings NonRepeat(params object[] parsers)
+    {
+        var settings = Normal(parsers);
+        settings.NoRepeatNode = true;
+        return settings;
+    }
+
+    public static ElementParserSettings AggregatedNonRepeat(params object[] parsers)
     {
         var settings = Aggregated(parsers);
         settings.NoRepeatNode = true;

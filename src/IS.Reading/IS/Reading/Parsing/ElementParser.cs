@@ -47,7 +47,13 @@ public class ElementParser : IElementParser
                     }
 
                     if (settings.NoRepeatNode && !processed!.Add(parser))
-                        return;
+                    {
+                        if (settings.ExitOnUnknownNode)
+                            return;
+
+                        parsingContext.LogError(reader, $"Elemento repetido: {reader.LocalName}");
+                        break;
+                    }
 
                     await ParseElementAsync(reader, parsingContext, parentParsingContext, parser, textFound);
                     break;

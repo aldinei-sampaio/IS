@@ -21,7 +21,7 @@ public class ChoiceOptionNodeParser : IChoiceOptionNodeParser
     {
         this.elementParser = elementParser;
 
-        Settings = ElementParserSettings.Normal(
+        Settings = ElementParserSettings.NonRepeat(
             whenAttributeParser,
             balloonTextParser,
             new ChoiceOptionTextNodeParser(elementParser, balloonTextParser),

@@ -38,7 +38,7 @@ public class BalloonTextNode : IPauseNode
             options.Add(new ChoiceOption(option.Key, text, isEnabled, option.ImageName, option.HelpText));
         }
 
-        if (options.Count == 0)
+        if (options.Count == 0 || options.All(i => !i.IsEnabled))
             return null;
 
         return new Choice(options, choiceNode.TimeLimit, choiceNode.Default);

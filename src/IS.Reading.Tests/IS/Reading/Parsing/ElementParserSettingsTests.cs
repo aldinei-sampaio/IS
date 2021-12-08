@@ -30,7 +30,7 @@ public class ElementParserSettingsTests
         var nodeParser1 = Helper.FakeParser<INodeParser>("c");
         var nodeParser2 = Helper.FakeParser<INodeParser>("d");
 
-        var sut = ElementParserSettings.NoRepeat(nodeParser1, nodeParser2);
+        var sut = ElementParserSettings.AggregatedNonRepeat(nodeParser1, nodeParser2);
         sut.ShouldBeNoRepeat(nodeParser1, nodeParser2);
     }
 

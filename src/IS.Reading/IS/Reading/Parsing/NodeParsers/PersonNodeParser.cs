@@ -24,7 +24,7 @@ public class PersonNodeParser : IPersonNodeParser
     {
         this.elementParser = elementParser;
         this.childParser = personTextNodeParser;
-        Settings = ElementParserSettings.NoRepeat(childParser);
+        Settings = ElementParserSettings.AggregatedNonRepeat(childParser);
 
         AggregationSettings = ElementParserSettings.Aggregated(
             speechNodeParser, 

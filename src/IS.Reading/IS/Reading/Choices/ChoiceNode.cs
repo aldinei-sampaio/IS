@@ -4,6 +4,7 @@ public class ChoiceNode : IChoiceNode
 {
     public TimeSpan? TimeLimit { get; set; }
     public string? Default { get; set; }
+    public bool RandomOrder { get; set; }
     public List<IChoiceOptionNode> Options { get; } = new();
 
     IEnumerable<IChoiceOptionNode> IChoiceNode.Options => Options;

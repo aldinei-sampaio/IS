@@ -20,7 +20,7 @@ public abstract class BalloonChildNodeParserBase : IAggregateNodeParser
     {
         this.elementParser = elementParser;
         this.childParser = balloonTextNodeParser;
-        Settings = ElementParserSettings.NoRepeat(balloonTextNodeParser);
+        Settings = ElementParserSettings.AggregatedNonRepeat(balloonTextNodeParser);
         AggregationSettings = ElementParserSettings.Aggregated(choiceNodeParser);
     }
 
