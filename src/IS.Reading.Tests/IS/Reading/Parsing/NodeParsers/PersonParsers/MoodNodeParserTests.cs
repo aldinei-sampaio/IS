@@ -28,7 +28,7 @@ public class MoodNodeParserTests
     public void Initialization()
     {
         sut.Name.Should().Be("mood");
-        sut.Settings.ShouldBeNoRepeat(moodTextNodeParser);
+        sut.Settings.ShouldBeAggregatedNonRepeat(moodTextNodeParser);
         sut.AggregationSettings.ShouldBeAggregated(speechNodeParser, thoughtNodeParser, pauseNodeParser);
     }
 

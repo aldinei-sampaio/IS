@@ -31,7 +31,7 @@ public class BalloonTextNodeParserBaseTests
     public void Initialization()
     {
         sut.Name.Should().Be("abc");
-        sut.Settings.ShouldBeNoRepeat(balloonTextChildNodeParser);
+        sut.Settings.ShouldBeAggregatedNonRepeat(balloonTextChildNodeParser);
         sut.AggregationSettings.ShouldBeAggregated(balloonTextChildNodeParser);
     }
 

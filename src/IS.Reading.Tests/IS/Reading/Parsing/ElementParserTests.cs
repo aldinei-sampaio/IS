@@ -288,4 +288,103 @@ public class ElementParserTests
         A.CallTo(() => context.LogError(reader, message)).MustHaveHappenedOnceExactly();
     }
 
+    [Fact]
+    public async Task NonRepeat()
+    {
+        const string message = "Elemento repetido: a";
+
+        using var reader = Helper.CreateReader("<t><a /><a /></t>");
+
+        var parentContext = new FakeParentParsingContext();
+        var context = A.Fake<IParsingContext>(i => i.Strict());
+        A.CallTo(() => context.LogError(reader, message)).DoesNothing();
+
+        var node = A.Dummy<INode>();
+        var settings = FakeSettings(new FakeNodeParser("a", node));
+        A.CallTo(() => settings.NoRepeatNode).Returns(true);
+        A.CallTo(() => settings.ExitOnUnknownNode).Returns(false);
+
+        var sut = new ElementParser();
+        await sut.ParseAsync(reader, context, parentContext, settings);
+
+        A.CallTo(() => context.LogError(reader, message)).MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task AggregatedNonRepeat()
+    {
+        using var reader = Helper.CreateReader("<t><a /><a /></t>");
+
+        var parentContext = new FakeParentParsingContext();
+        var context = A.Fake<IParsingContext>(i => i.Strict());
+
+        var node = A.Dummy<INode>();
+        var settings = FakeSettings(new FakeNodeParser("a", node));
+        A.CallTo(() => settings.NoRepeatNode).Returns(true);
+        A.CallTo(() => settings.ExitOnUnknownNode).Returns(true);
+
+        var sut = new ElementParser();
+        await sut.ParseAsync(reader, context, parentContext, settings);
+
+        reader.LocalName.Should().Be("a");
+    }
+
+    [Fact]
+    public async Task Aggregated()
+    {
+        using var reader = Helper.CreateReader("<t><a /><b /></t>");
+
+        var parentContext = new FakeParentParsingContext();
+        var context = A.Fake<IParsingContext>(i => i.Strict());
+
+        var node = A.Dummy<INode>();
+        var settings = FakeSettings(new FakeNodeParser("a", node));
+        A.CallTo(() => settings.NoRepeatNode).Returns(false);
+        A.CallTo(() => settings.ExitOnUnknownNode).Returns(true);
+
+        var sut = new ElementParser();
+        await sut.ParseAsync(reader, context, parentContext, settings);
+
+        reader.LocalName.Should().Be("b");
+    }
+
+    [Fact]
+    public async Task AggregateNodeParser()
+    {
+        using var reader = Helper.CreateReader("<t><a /></t>");
+
+        var parentContext = new FakeParentParsingContext();
+        var context = A.Fake<IParsingContext>(i => i.Strict());
+
+        var node = A.Dummy<INode>();
+        var nodeParser = new FakeNodeParser("a", node);
+
+        var sut = new ElementParser();
+        var settings = FakeSettings(new FakeAggregatedNodeParser(sut, nodeParser));
+
+        await sut.ParseAsync(reader, context, parentContext, settings);
+
+        parentContext.ShouldContainSingle(node);
+    }
+
+    public class FakeAggregatedNodeParser : IAggregateNodeParser
+    {
+        private readonly IElementParser elementParser;
+        private readonly IElementParserSettings settings;
+
+        public FakeAggregatedNodeParser(IElementParser elementParser, INodeParser childNodeParser)
+        {
+            this.elementParser = elementParser;
+            settings = FakeSettings(childNodeParser);
+            Name = childNodeParser.Name;
+        }
+
+        public string Name { get; }
+
+        public Task ParseAsync(System.Xml.XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
+        {
+            return elementParser.ParseAsync(reader, parsingContext, parentParsingContext, settings);
+        }
+    }
 }
+

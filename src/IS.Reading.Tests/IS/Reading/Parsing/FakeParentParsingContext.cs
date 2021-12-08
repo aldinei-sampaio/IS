@@ -20,4 +20,7 @@ public class FakeParentParsingContext : IParentParsingContext
 
     public T ShouldContainSingle<T>() where T : INode
         => Nodes.Should().ContainSingle().Which.Should().BeOfType<T>().Which;
+
+    public void ShouldContainSingle(INode obj)
+        => Nodes.Should().ContainSingle().Which.Should().BeSameAs(obj);
 }

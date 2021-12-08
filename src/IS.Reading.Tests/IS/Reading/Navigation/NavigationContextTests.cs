@@ -23,5 +23,6 @@ public class NavigationContextTests
         sut.CurrentBlock.Should().BeNull();
         sut.CurrentNode.Should().BeNull();
         sut.Variables.Should().BeSameAs(variableDictionary);
+        sut.Randomizer.Should().BeSameAs(randomizer);
     }
 }

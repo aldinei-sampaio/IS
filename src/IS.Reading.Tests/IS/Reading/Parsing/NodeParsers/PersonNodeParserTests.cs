@@ -30,7 +30,7 @@ public class PersonNodeParserTests
     public void Initialization()
     {
         sut.Name.Should().Be("person");
-        sut.Settings.ShouldBeNoRepeat(personTextNodeParser);
+        sut.Settings.ShouldBeAggregatedNonRepeat(personTextNodeParser);
         sut.AggregationSettings.ShouldBeAggregated(speechNodeParser, thoughtNodeParser, moodNodeParser, pauseNodeParser);
     }
 

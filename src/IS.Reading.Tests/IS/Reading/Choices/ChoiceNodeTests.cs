@@ -8,6 +8,7 @@ public class ChoiceNodeTests
         var sut = new ChoiceNode();
         sut.Default.Should().BeNull();
         sut.TimeLimit.Should().BeNull();
+        sut.RandomOrder.Should().BeFalse();
         sut.Options.Should().NotBeNull().And.BeEmpty();
         ((IChoiceNode)sut).Options.Should().BeSameAs(sut.Options);
     }

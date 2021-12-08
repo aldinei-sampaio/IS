@@ -51,7 +51,14 @@ public static class IElementParserSettingsExtensionMethods
             settings.TextParser.Should().BeNull();
     }
 
-    public static void ShouldBeNoRepeat(this IElementParserSettings settings, params object[] parsers)
+    public static void ShouldBeNonRepeat(this IElementParserSettings settings, params object[] parsers)
+    {
+        settings.ShouldContainOnly(parsers);
+        settings.NoRepeatNode.Should().BeTrue();
+        settings.ExitOnUnknownNode.Should().BeFalse();
+    }
+
+    public static void ShouldBeAggregatedNonRepeat(this IElementParserSettings settings, params object[] parsers)
     {
         settings.ShouldContainOnly(parsers);
         settings.NoRepeatNode.Should().BeTrue();

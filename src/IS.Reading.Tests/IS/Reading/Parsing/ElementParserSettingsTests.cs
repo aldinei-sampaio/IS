@@ -25,13 +25,23 @@ public class ElementParserSettingsTests
     }
 
     [Fact]
-    public void NoRepeat()
+    public void NonRepeat()
+    {
+        var nodeParser1 = Helper.FakeParser<INodeParser>("c");
+        var nodeParser2 = Helper.FakeParser<INodeParser>("d");
+
+        var sut = ElementParserSettings.NonRepeat(nodeParser1, nodeParser2);
+        sut.ShouldBeNonRepeat(nodeParser1, nodeParser2);
+    }
+
+    [Fact]
+    public void AggregatedNonRepeat()
     {
         var nodeParser1 = Helper.FakeParser<INodeParser>("c");
         var nodeParser2 = Helper.FakeParser<INodeParser>("d");
 
         var sut = ElementParserSettings.AggregatedNonRepeat(nodeParser1, nodeParser2);
-        sut.ShouldBeNoRepeat(nodeParser1, nodeParser2);
+        sut.ShouldBeAggregatedNonRepeat(nodeParser1, nodeParser2);
     }
 
     [Fact]
