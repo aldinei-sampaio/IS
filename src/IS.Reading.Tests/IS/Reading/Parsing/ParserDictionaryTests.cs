@@ -19,4 +19,32 @@ public class ParserDictionaryTests
         result.Should().BeTrue();
         value.Should().BeSameAs(parser);
     }
+
+    [Fact]
+    public void DefaultMethodShouldRaiseExceptionWhenKeyNotExists()
+    {
+        var sut = new ParserDictionary<INodeParser>();
+        var ex = Assert.Throws<KeyNotFoundException>(() => sut["chaveinexistente"]);
+        ex.Message.Should().Be("Chave não encontrada: chaveinexistente");
+    }
+
+    [Fact]
+    public void NameRegex()
+    {
+        var parser1 = A.Dummy<IParser>();
+        A.CallTo(() => parser1.Name).Returns(string.Empty);
+        A.CallTo(() => parser1.NameRegex).Returns(@"^[a-z]$");
+
+        var parser2 = Helper.FakeParser<IParser>("abc");
+
+        var sut = new ParserDictionary<IParser>();
+        sut.Add(parser1);
+        sut.Add(parser2);
+
+        sut["a"].Should().Be(parser1);
+        sut["b"].Should().Be(parser1);
+        sut["c"].Should().Be(parser1);
+        sut["z"].Should().Be(parser1);
+        sut["abc"].Should().Be(parser2);
+    }
 }

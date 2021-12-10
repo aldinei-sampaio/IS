@@ -93,4 +93,49 @@ public class PersonNodeParserTests
 
         A.CallTo(() => context.LogError(reader, errorMessage)).MustHaveHappenedOnceExactly();
     }
+
+    [Fact]
+    public async Task ShouldNotCreateNodeWhenThereAreNoMoreElements()
+    {
+        var reader = A.Dummy<XmlReader>();
+        var context = A.Dummy<IParsingContext>();
+        var parentContext = new FakeParentParsingContext();
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).ParsedText = "lorenipsum");
+
+        // Se depois do elementParser.ParseAsync o ReadState for EndOfFile significa que não há mais elementos
+        // dentro do elemento atual
+        A.CallTo(() => reader.ReadState).Returns(ReadState.EndOfFile);
+
+        await sut.ParseAsync(reader, context, parentContext);
+
+        parentContext.ShouldBeEmpty();
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task ShouldNotCreateNodeWhenThereAreNoAggregatableElements()
+    {
+        var reader = A.Dummy<XmlReader>();
+        var context = A.Dummy<IParsingContext>();
+        var parentContext = new FakeParentParsingContext();
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).ParsedText = "lorenipsum");
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.AggregationSettings))
+            .DoesNothing();
+
+        await sut.ParseAsync(reader, context, parentContext);
+
+        parentContext.ShouldBeEmpty();
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .MustHaveHappenedOnceExactly();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.AggregationSettings))
+            .MustHaveHappenedOnceExactly();
+    }
 }

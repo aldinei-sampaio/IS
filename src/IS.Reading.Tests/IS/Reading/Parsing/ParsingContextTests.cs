@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using IS.Reading.Navigation;
+using System.Text;
 using System.Xml;
 
 namespace IS.Reading.Parsing;
@@ -68,5 +69,17 @@ public class ParsingContextTests
 
         var expected = builder.ToString();
         sut.ToString().Should().Be(expected);
+    }
+
+    [Fact]
+    public void DismissNodes()
+    {
+        var sut = new ParsingContext();
+        sut.DismissNodes.Should().BeEmpty();
+
+        var node = A.Dummy<INode>();
+        sut.RegisterDismissNode(node);
+
+        sut.DismissNodes.Should().ContainSingle().Which.Should().BeSameAs(node);
     }
 }

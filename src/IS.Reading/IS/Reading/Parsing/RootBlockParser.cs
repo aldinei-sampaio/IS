@@ -46,12 +46,4 @@ public class RootBlockParser : IRootBlockParser
 
         return context.Block;
     }
-
-    public class RootBlockContext : IParentParsingContext
-    {
-        public Block Block { get; } = new();
-
-        public void AddNode(INode node)
-            => Block.ForwardQueue.Enqueue(node);
-    }
 }

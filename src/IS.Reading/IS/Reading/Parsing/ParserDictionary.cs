@@ -15,7 +15,7 @@ public class ParserDictionary<T> : IParserDictionary<T> where T : IParser
         {
             if (TryGet(key, out var value))
                 return value;
-            throw new KeyNotFoundException(key);
+            throw new KeyNotFoundException($"Chave não encontrada: {key}");
         }
     }
 
@@ -31,7 +31,7 @@ public class ParserDictionary<T> : IParserDictionary<T> where T : IParser
     {
         foreach(var item in ruleParsers)
         {
-            if (Regex.IsMatch(item.NameRegex!, key))
+            if (Regex.IsMatch(key, item.NameRegex!))
             {
                 value = item;
                 return true;
