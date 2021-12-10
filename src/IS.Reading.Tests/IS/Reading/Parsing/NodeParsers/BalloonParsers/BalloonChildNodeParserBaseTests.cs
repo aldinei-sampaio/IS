@@ -35,7 +35,7 @@ public class BalloonChildNodeParserBaseTests
         sut.Name.Should().Be("xyz");
         sut.BalloonType.Should().Be(BalloonType.Narration);
         sut.Settings.ShouldBeAggregatedNonRepeat(balloonTextNodeParser);
-        sut.AggregationSettings.ShouldBeAggregated(choiceNodeParser);
+        sut.AggregationSettings.ShouldBeAggregatedNonRepeat(choiceNodeParser);
     }
 
     [Fact]
