@@ -43,8 +43,7 @@ public class BalloonNodeTests
         var tester = new Tester(balloonType, isProtagonist);
         var sut = tester.BalloonNode;
 
-        var ret = await sut.LeaveAsync(tester.Context);
-        ret.Should().BeSameAs(sut);
+        await sut.LeaveAsync(tester.Context);
 
         var @event = tester.Invoker.Single<IBalloonCloseEvent>();
         @event.BallonType.Should().Be(balloonType);

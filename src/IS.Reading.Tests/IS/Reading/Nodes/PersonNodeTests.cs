@@ -69,8 +69,7 @@ public class PersonNodeTests
         var childBlock = A.Dummy<IBlock>();
         var sut = new PersonNode(personName, childBlock);
 
-        var ret = await sut.LeaveAsync(context);
-        ret.Should().BeSameAs(sut);
+        await sut.LeaveAsync(context);
 
         var @event = invoker.Single<IPersonLeaveEvent>();
         @event.PersonName.Should().Be(personName);
@@ -87,8 +86,7 @@ public class PersonNodeTests
         var childBlock = A.Dummy<IBlock>();
         var sut = new PersonNode("amaterasu", childBlock);
 
-        var ret = await sut.LeaveAsync(context);
-        ret.Should().BeSameAs(sut);
+        await sut.LeaveAsync(context);
 
         context.State.PersonName.Should().BeNull();
         context.State.MoodType.Should().BeNull();

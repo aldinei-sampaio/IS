@@ -33,6 +33,12 @@ public abstract class BalloonTextNodeParserBase : INodeParser
         if (reader.ReadState != ReadState.EndOfFile)
             await elementParser.ParseAsync(reader, parsingContext, myContext, AggregationSettings);
 
+        if (myContext.Block.ForwardQueue.Count == 0)
+        {
+            parsingContext.LogError(reader, "Era esperado um elemento filho.");
+            return;
+        }
+
         var node = new BalloonNode(childParser.BalloonType, myContext.Block);
         parentParsingContext.AddNode(node);
     }

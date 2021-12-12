@@ -19,10 +19,10 @@ public class BalloonNode : INode
         return this;
     }
 
-    public async Task<INode> LeaveAsync(INavigationContext context)
+    public async Task LeaveAsync(INavigationContext context)
     {
         var @event = new BalloonCloseEvent(BallonType, context.State.IsProtagonist());
         await context.Events.InvokeAsync<IBalloonCloseEvent>(@event);
-        return this;
+        return;
     }
 }

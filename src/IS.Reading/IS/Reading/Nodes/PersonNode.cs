@@ -23,13 +23,13 @@ namespace IS.Reading.Nodes
             return this;
         }
 
-        public async Task<INode> LeaveAsync(INavigationContext context)
+        public async Task LeaveAsync(INavigationContext context)
         {
             var @event = new PersonLeaveEvent(PersonName, IsProtagonist(context, PersonName));
             await context.Events.InvokeAsync<IPersonLeaveEvent>(@event);
             context.State.MoodType = null;
             context.State.PersonName = null;
-            return this;
+            return;
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿namespace IS.Reading.Parsing.NodeParsers;
 
-public interface INarrationNodeParser : INodeParser
+public interface INarrationNodeParser : IAggregateNodeParser
 {
 }

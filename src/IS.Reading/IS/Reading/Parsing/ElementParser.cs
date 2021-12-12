@@ -30,7 +30,7 @@ public class ElementParser : IElementParser
         if (settings.NoRepeatNode)
             processed = new();
 
-        do
+        for(; ; )
         {
             switch(reader.NodeType)
             {
@@ -55,10 +55,19 @@ public class ElementParser : IElementParser
                         break;
                     }
 
-                    await ParseElementAsync(reader, parsingContext, parentParsingContext, parser, textFound);
+                    if (await ParseElementAsync(reader, parsingContext, parentParsingContext, parser, textFound))
+                    {
+                        if (reader.ReadState == ReadState.EndOfFile)
+                            return;
+                        continue;
+                    }
+
                     break;
 
                 case XmlNodeType.Text:
+                    if (settings.TextParser is null && settings.ExitOnUnknownNode)
+                        return;
+
                     textFound = true;
                     ParseText(reader, parsingContext, parentParsingContext, settings, elementFound);
                     break;
@@ -75,8 +84,10 @@ public class ElementParser : IElementParser
                     break;
 
             }
+
+            if (!await reader.ReadAsync())
+                return;
         }
-        while (await reader.ReadAsync());
     }
 
     private static void ParseText(
@@ -104,7 +115,7 @@ public class ElementParser : IElementParser
             parentParsingContext.ParsedText = parsedText;
     }
 
-    private static async Task ParseElementAsync(
+    private static async Task<bool> ParseElementAsync(
         XmlReader reader, 
         IParsingContext parsingContext,
         IParentParsingContext parentParsingContext,
@@ -115,17 +126,19 @@ public class ElementParser : IElementParser
         if (textFound)
         {
             parsingContext.LogError(reader, "Não é permitido texto dentro de elemento que tenha elementos filhos.");
-            return;
+            return false;
         }
 
         if (parser is IAggregateNodeParser)
         {
             await parser.ParseAsync(reader, parsingContext, parentParsingContext);
-            return;
+            return true;
         }
 
         using var childReader = reader.ReadSubtree();
         await parser.ParseAsync(childReader, parsingContext, parentParsingContext);
+
+        return false;
     }
 
     private static void ParseAttributes(
