@@ -1,6 +1,7 @@
 ﻿using IS.Reading.Events;
 using IS.Reading.Parsing;
 using Microsoft.Extensions.DependencyInjection;
+using System.Text;
 
 namespace IS.Reading.Navigation;
 
@@ -48,6 +49,53 @@ public class StoryboardEventTester
         received.Clear();
         (await storyboard.MoveAsync(forward)).Should().Be(!atEnd);
         received.Should().BeEquivalentTo(expectedEvents);
+    }
+
+    private async Task<bool> LogAsync(StringBuilder builder, bool forward)
+    {
+        received.Clear();
+        var atEnd = !await storyboard.MoveAsync(forward);
+        if (atEnd)
+        {
+            if (forward)
+                builder.Append("await tester.ForwardEndAsync(");
+            else
+                builder.Append("await tester.BackwardEndAsync(");
+        }
+        else
+        {
+            if (forward)
+                builder.Append("await tester.ForwardAsync(");
+            else
+                builder.Append("await tester.BackwardAsync(");
+        }
+        for(var n = 0; n < received.Count; n++)
+        {
+            if (n > 0)
+                builder.Append(", ");
+            builder.Append('"');
+            builder.Append(received[n]);
+            builder.Append('"');
+        }
+        builder.Append(");");
+        if (!atEnd)
+            builder.AppendLine();
+        return !atEnd;
+    }
+
+    public static async Task<string> GenerateLogAsync(string xml)
+    {
+        var builder = new StringBuilder();
+        var tester = await CreateAsync(xml);
+        while (await tester.LogAsync(builder, true))
+        {
+        }
+        builder.AppendLine();
+        builder.AppendLine();
+        while (await tester.LogAsync(builder, false))
+        {
+        }
+        return builder.ToString();
     }
 }
 

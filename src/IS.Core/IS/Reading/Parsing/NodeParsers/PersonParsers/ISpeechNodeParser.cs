@@ -1,5 +1,5 @@
 ﻿namespace IS.Reading.Parsing.NodeParsers.PersonParsers;
 
-public interface ISpeechNodeParser : INodeParser
+public interface ISpeechNodeParser : IAggregateNodeParser
 {
 }

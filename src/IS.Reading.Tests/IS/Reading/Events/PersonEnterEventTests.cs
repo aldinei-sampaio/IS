@@ -4,7 +4,7 @@ public class PersonEnterEventTests
 {
     [Theory]
     [InlineData("abc", false, "person enter: abc")]
-    [InlineData("DEF", true, "person enter: DEF*")]
+    [InlineData("DEF", true, "person* enter: DEF")]
     public void Initialization(string personName, bool isProtagonist, string description)
     {
         var sut = new PersonEnterEvent(personName, isProtagonist);

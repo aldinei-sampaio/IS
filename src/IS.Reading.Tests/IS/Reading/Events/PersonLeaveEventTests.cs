@@ -4,7 +4,7 @@ public class PersonLeaveEventTests
 {
     [Theory]
     [InlineData("abc", false, "person leave: abc")]
-    [InlineData("DEF", true, "person leave: DEF*")]
+    [InlineData("DEF", true, "person* leave: DEF")]
     public void Initialization(string personName, bool isProtagonist, string description)
     {
         var sut = new PersonLeaveEvent(personName, isProtagonist);

@@ -10,5 +10,5 @@ public class PersonEnterEvent : IPersonEnterEvent
     public bool IsProtagonist { get; }
 
     public override string ToString()
-        => $"person enter: {PersonName}{Helper.ProtagSymbol(IsProtagonist)}";
+        => $"person{Helper.ProtagSymbol(IsProtagonist)} enter: {PersonName}";
 }

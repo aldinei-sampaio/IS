@@ -10,5 +10,5 @@ public class PersonLeaveEvent : IPersonLeaveEvent
     public bool IsProtagonist { get; }
 
     public override string ToString()
-        => $"person leave: {PersonName}{Helper.ProtagSymbol(IsProtagonist)}";
+        => $"person{Helper.ProtagSymbol(IsProtagonist)} leave: {PersonName}";
 }
