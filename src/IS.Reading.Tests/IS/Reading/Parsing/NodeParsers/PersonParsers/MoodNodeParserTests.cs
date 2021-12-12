@@ -48,9 +48,11 @@ public class MoodNodeParserTests
 
         await sut.ParseAsync(reader, context, parentContext);
 
-        var node = parentContext.ShouldContainSingle<MoodNode>();
-        node.MoodType.Should().Be(MoodType.Happy);
-        node.ChildBlock.ShouldContainOnly(dummyNode);
+        parentContext.ShouldContainSingle<MoodNode>(i =>
+        {
+            i.MoodType.Should().Be(MoodType.Happy);
+            i.ChildBlock.ShouldContainOnly(dummyNode);
+        });
     }
 
     [Fact]

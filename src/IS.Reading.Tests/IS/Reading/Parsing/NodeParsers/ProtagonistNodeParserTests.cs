@@ -51,9 +51,11 @@ public class ProtagonistNodeParserTests
 
         await sut.ParseAsync(reader, context, parentContext);
 
-        var node = parentContext.ShouldContainSingle<ProtagonistNode>();
-        node.ProtagonistName.Should().Be(protagonistName);
-        node.When.Should().BeSameAs(when);
+        parentContext.ShouldContainSingle<ProtagonistNode>(i =>
+        {
+            i.ProtagonistName.Should().Be(protagonistName);
+            i.When.Should().BeSameAs(when);
+        });
 
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).MustHaveHappenedOnceExactly();
     }

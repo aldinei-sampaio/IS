@@ -1,9 +1,21 @@
-﻿using IS.Reading.Navigation;
+﻿using FluentAssertions.Execution;
+using IS.Reading.Navigation;
 
 namespace IS.Reading.Parsing;
 
 public static class IBlockExtensionMethods
 {
+    public static void ShouldContain(this IBlock block, params Action<INode>[] validations)
+    {
+        block.ForwardQueue.Count.Should().Be(validations.Length);
+        var blockNodes = block.ForwardQueue.ToList();
+        for (var n = 0; n < validations.Length; n++)
+            blockNodes[n].ShouldSatisfy(validations[n]);
+    }
+
+    public static void ShouldContain(this IBlock block, params INode[] nodes)
+        => block.ForwardQueue.ToList().Should().ContainInOrder(nodes);
+
     public static void ShouldContainOnly(this IBlock block, INode node)
     {
         block.ForwardQueue.Count.Should().Be(1);

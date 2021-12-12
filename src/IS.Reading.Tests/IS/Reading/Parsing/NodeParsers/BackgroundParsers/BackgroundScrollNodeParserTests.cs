@@ -43,8 +43,6 @@ public class BackgroundScrollNodeParserTests
 
         await sut.ParseAsync(reader, context, parentContext);
 
-        parentContext.Nodes.Should().ContainSingle()
-            .Which.Should().BeOfType<ScrollNode>()
-            .Which.When.Should().BeSameAs(when);
+        parentContext.ShouldContainSingle<ScrollNode>(i => i.When.Should().BeSameAs(when));
     }
 }

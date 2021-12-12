@@ -8,7 +8,7 @@ public class DismissNodeTests
     public void ConstructorShouldInitializeChangeNodeProperty()
     {
         var node = A.Fake<INode>(i => i.Strict());
-        var sut = new DismissNode<INode>(node);
+        var sut = DismissNode.Create(node);
         sut.ChangeNode.Should().BeSameAs(node);
     }
 
@@ -23,7 +23,7 @@ public class DismissNodeTests
         A.CallTo(() => reversedNode.ToString()).Returns("[reversedNode]");
         A.CallTo(() => reversedNode.EnterAsync(context)).Returns(node);
 
-        var sut = new DismissNode<INode>(node);
+        var sut = DismissNode.Create(node);
 
         sut = (DismissNode<INode>)await sut.EnterAsync(context);
         sut.ChangeNode.Should().BeSameAs(reversedNode);
@@ -42,7 +42,7 @@ public class DismissNodeTests
         var node = A.Fake<INode>(i => i.Strict(StrictFakeOptions.AllowObjectMethods));
         A.CallTo(() => node.EnterAsync(context)).Returns(node);
 
-        var sut = new DismissNode<INode>(node);
+        var sut = DismissNode.Create(node);
 
         var result = (DismissNode<INode>)await sut.EnterAsync(context);
         result.Should().BeSameAs(sut);

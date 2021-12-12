@@ -51,12 +51,11 @@ public class BalloonTextNodeParserBaseTests
 
         await sut.ParseAsync(reader, context, parentContext);
 
-        var node = parentContext.Nodes.Should().ContainSingle()
-            .Which.Should().BeOfType<BalloonNode>().Which;
-
-        node.BallonType.Should().Be(BalloonType.Speech);
-        node.ChildBlock.ForwardQueue.Dequeue().Should().BeSameAs(dummyNode1);
-        node.ChildBlock.ForwardQueue.Count.Should().Be(0);
+        parentContext.ShouldContainSingle<BalloonNode>(i =>
+        {
+            i.BallonType.Should().Be(BalloonType.Speech);
+            i.ChildBlock.ShouldContainOnly(dummyNode1);
+        });
 
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).MustHaveHappenedOnceExactly();
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.AggregationSettings)).MustHaveHappenedOnceExactly();
@@ -80,13 +79,11 @@ public class BalloonTextNodeParserBaseTests
 
         await sut.ParseAsync(reader, context, parentContext);
 
-        var node = parentContext.Nodes.Should().ContainSingle()
-            .Which.Should().BeOfType<BalloonNode>().Which;
-
-        node.BallonType.Should().Be(BalloonType.Speech);
-        node.ChildBlock.ForwardQueue.Dequeue().Should().BeSameAs(dummyNode1);
-        node.ChildBlock.ForwardQueue.Dequeue().Should().BeSameAs(dummyNode2);
-        node.ChildBlock.ForwardQueue.Count.Should().Be(0);
+        parentContext.ShouldContainSingle<BalloonNode>(i =>
+        {
+            i.BallonType.Should().Be(BalloonType.Speech);
+            i.ChildBlock.ShouldContain(dummyNode1, dummyNode2);
+        });
 
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).MustHaveHappenedOnceExactly();
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.AggregationSettings)).MustHaveHappenedOnceExactly();
@@ -98,21 +95,52 @@ public class BalloonTextNodeParserBaseTests
         var parentContext = new FakeParentParsingContext();
         var context = A.Dummy<IParsingContext>();
         var reader = A.Dummy<XmlReader>();
-        A.CallTo(() => reader.ReadState).Returns(ReadState.EndOfFile);
+        A.CallTo(() => reader.ReadState).Returns(ReadState.Interactive);
 
         var dummyNode1 = A.Dummy<INode>();
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
-            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(dummyNode1));
+            .Invokes(i => {
+                i.Arguments.Get<IParentParsingContext>(2).AddNode(dummyNode1);
+                A.CallTo(() => reader.ReadState).Returns(ReadState.EndOfFile);
+            });
 
         await sut.ParseAsync(reader, context, parentContext);
 
-        var node = parentContext.Nodes.Should().ContainSingle()
-            .Which.Should().BeOfType<BalloonNode>().Which;
-
-        node.BallonType.Should().Be(BalloonType.Speech);
-        node.ChildBlock.ForwardQueue.Dequeue().Should().BeSameAs(dummyNode1);
-        node.ChildBlock.ForwardQueue.Count.Should().Be(0);
+        parentContext.ShouldContainSingle<BalloonNode>(i =>
+        {
+            i.BallonType.Should().Be(BalloonType.Speech);
+            i.ChildBlock.ShouldContainOnly(dummyNode1);
+        });
 
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task ShouldLogErrorWhenChildrenDoesNotCreateAnyNode()
+    {
+        const string message = "Era esperado um elemento filho.";
+
+        var reader = A.Dummy<XmlReader>();
+        A.CallTo(() => reader.ReadState).Returns(ReadState.Interactive);
+
+        var context = A.Fake<IParsingContext>(i => i.Strict());
+        A.CallTo(() => context.LogError(reader, message)).DoesNothing();
+
+        var parentContext = A.Fake<IParentParsingContext>(i => i.Strict());
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .DoesNothing();
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.AggregationSettings))
+            .DoesNothing();
+
+        await sut.ParseAsync(reader, context, parentContext);
+
+        A.CallTo(() => context.LogError(reader, message))
+            .MustHaveHappenedOnceExactly();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .MustHaveHappenedOnceExactly();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.AggregationSettings))
+            .MustHaveHappenedOnceExactly();
     }
 }

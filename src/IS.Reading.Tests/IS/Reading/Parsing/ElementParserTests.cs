@@ -1,5 +1,6 @@
 ﻿using IS.Reading.Navigation;
 using IS.Reading.Parsing.AttributeParsers;
+using System.Xml;
 
 namespace IS.Reading.Parsing;
 
@@ -281,7 +282,7 @@ public class ElementParserTests
         }
         else
         {
-            parentContext.Nodes.Should().ContainSingle().Which.Should().BeSameAs(node);
+            parentContext.ShouldContainSingle(node);
             parentContext.ParsedText.Should().BeNull();
         }
 
@@ -365,6 +366,26 @@ public class ElementParserTests
         await sut.ParseAsync(reader, context, parentContext, settings);
 
         parentContext.ShouldContainSingle(node);
+    }
+
+    [Fact]
+    public async Task WithAggregateSettingsWithoutTextParserShouldReturnWhenTextIsFound()
+    {
+        var reader = A.Fake<XmlReader>(i => i.Strict());
+        A.CallTo(() => reader.ReadState).Returns(ReadState.Interactive);
+        A.CallTo(() => reader.NodeType).Returns(XmlNodeType.Text);
+
+        var parentContext = A.Fake<IParentParsingContext>(i => i.Strict());
+        var context = A.Fake<IParsingContext>(i => i.Strict());
+
+        var settings = A.Fake<IElementParserSettings>(i => i.Strict());
+        A.CallTo(() => settings.TextParser).Returns(null);
+        A.CallTo(() => settings.NoRepeatNode).Returns(false);
+        A.CallTo(() => settings.ExitOnUnknownNode).Returns(true);
+
+        var sut = new ElementParser();
+
+        await sut.ParseAsync(reader, context, parentContext, settings);
     }
 
     public class FakeAggregatedNodeParser : IAggregateNodeParser

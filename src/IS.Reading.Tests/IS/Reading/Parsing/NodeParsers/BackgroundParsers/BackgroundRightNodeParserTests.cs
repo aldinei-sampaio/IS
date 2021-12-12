@@ -52,14 +52,15 @@ public class BackgroundRightNodeParserTests
 
         await sut.ParseAsync(reader, context, parentContext);
 
-        var node = parentContext.Nodes.Should().ContainSingle()
-            .Which.Should().BeOfType<BackgroundNode>()
-            .Which;
-
-        node.When.Should().BeSameAs(when);
-        node.State.Name.Should().Be("gama");
-        node.State.Type.Should().Be(BackgroundType.Image);
-        node.State.Position.Should().Be(BackgroundPosition.Right);
+        parentContext.ShouldContainSingle<BackgroundNode>(i => {
+            i.When.Should().BeSameAs(when);
+            i.State.Should().BeEquivalentTo(new
+            {
+                Name = "gama",
+                Type = BackgroundType.Image,
+                Position = BackgroundPosition.Right
+            });
+        });
     }
 
     [Fact]

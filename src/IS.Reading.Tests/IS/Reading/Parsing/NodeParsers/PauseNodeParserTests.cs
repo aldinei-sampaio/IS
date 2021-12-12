@@ -54,8 +54,7 @@ public class PauseNodeParserTests
 
         await sut.ParseAsync(reader, context, parentContext);
 
-        var node = parentContext.ShouldContainSingle<PauseNode>();
-        node.When.Should().BeSameAs(when);
+        parentContext.ShouldContainSingle<PauseNode>(i => i.When.Should().BeSameAs(when));
     }
 
     [Theory]
@@ -77,9 +76,11 @@ public class PauseNodeParserTests
 
         await sut.ParseAsync(reader, context, parentContext);
 
-        var node = parentContext.ShouldContainSingle<TimedPauseNode>();
-        node.When.Should().BeSameAs(when);
-        node.Duration.Should().Be(TimeSpan.FromMilliseconds(value));
+        parentContext.ShouldContainSingle<TimedPauseNode>(i =>
+        {
+            i.When.Should().BeSameAs(when);
+            i.Duration.Should().Be(TimeSpan.FromMilliseconds(value));
+        });
     }
 
     [Theory]

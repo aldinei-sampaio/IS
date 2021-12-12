@@ -40,5 +40,5 @@ public class MusicNodeParser : IMusicNodeParser
     }
 
     public INode DismissNode { get; } 
-        = DismissNode<MusicNode>.Create(new(null, null));
+        = new DismissNode<MusicNode>(new(null, null));
 }

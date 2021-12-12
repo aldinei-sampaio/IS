@@ -18,8 +18,12 @@ public class FakeParentParsingContext : IParentParsingContext
         ParsedText.Should().BeNull();
     }
 
-    public T ShouldContainSingle<T>() where T : INode
-        => Nodes.Should().ContainSingle().Which.Should().BeOfType<T>().Which;
+    public void ShouldContainSingle<T>(Action<T> validator) where T : INode
+    { 
+        Nodes.Should().ContainSingle()
+            .Which.Should().BeOfType<T>()
+            .Which.ShouldSatisfy(validator);
+    }
 
     public void ShouldContainSingle(INode obj)
         => Nodes.Should().ContainSingle().Which.Should().BeSameAs(obj);

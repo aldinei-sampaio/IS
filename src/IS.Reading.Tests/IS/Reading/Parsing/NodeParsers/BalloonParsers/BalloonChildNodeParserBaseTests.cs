@@ -53,9 +53,10 @@ public class BalloonChildNodeParserBaseTests
 
         await sut.ParseAsync(reader, context, parentContext);
 
-        var parsed = parentContext.ShouldContainSingle<BalloonTextNode>();
-        parsed.Text.Should().Be("abc");
-        parsed.BalloonType.Should().Be(balloonType);
+        parentContext.ShouldContainSingle<BalloonTextNode>(i => {
+            i.Text.Should().Be("abc");
+            i.BalloonType.Should().Be(balloonType);
+        });
     }
 
     [Fact]

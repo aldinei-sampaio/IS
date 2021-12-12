@@ -64,11 +64,12 @@ public class BackgroundNodeParserTests
             pauseNodeParser
         );
 
-        var dismissNode = sut.DismissNode.Should().BeOfType<DismissNode<BackgroundNode>>()
-            .Which.ChangeNode.Should().BeOfType<BackgroundNode>().Which;
-
-        dismissNode.State.Should().Be(BackgroundState.Empty);
-        dismissNode.When.Should().BeNull();            
+        sut.DismissNode.Should().BeOfType<DismissNode<BackgroundNode>>()
+            .Which.ChangeNode.Should().BeEquivalentTo(new
+            {
+                State = BackgroundState.Empty,
+                When = (ICondition)null
+            });
     }
 
     [Fact]
@@ -86,27 +87,24 @@ public class BackgroundNodeParserTests
 
         await sut.ParseAsync(reader, context, parentContext);
 
-        var node = parentContext.Nodes.Should().ContainSingle()
-            .Which.Should().BeOfType<BlockNode>()
-            .Which;
-
-        node.When.Should().BeSameAs(when);
-        node.While.Should().BeNull();
-        node.ChildBlock.Should().NotBeNull();
-        node.ChildBlock.ForwardQueue.Count.Should().Be(2);
-        {
-            var subnode = node.ChildBlock.ForwardQueue.Dequeue() as BackgroundNode;
-            subnode.Should().NotBeNull();
-            subnode.State.Name.Should().Be("gama");
-            subnode.State.Type.Should().Be(BackgroundType.Image);
-            subnode.State.Position.Should().Be(BackgroundPosition.Left);
-            subnode.When.Should().BeNull();
-        }
-        {
-            var subnode = node.ChildBlock.ForwardQueue.Dequeue() as ScrollNode;
-            subnode.Should().NotBeNull();
-            subnode.When.Should().BeNull();
-        }
+        parentContext.ShouldContainSingle<BlockNode>(i => {
+            i.When.Should().BeSameAs(when);
+            i.While.Should().BeNull();
+            i.ChildBlock.ShouldContain(
+                i => i.Should().BeOfType<BackgroundNode>().Which.ShouldSatisfy(j =>
+                {
+                    j.Should().NotBeNull();
+                    j.When.Should().BeNull();
+                    j.State.Should().BeEquivalentTo(new
+                    {
+                        Name = "gama",
+                        Type = BackgroundType.Image,
+                        Position = BackgroundPosition.Left
+                    });
+                }),
+                i => i.Should().BeOfType<ScrollNode>().Which.When.Should().BeNull()
+            );
+        });
     }
 
     [Fact]

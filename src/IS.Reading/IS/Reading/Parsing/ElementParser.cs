@@ -12,7 +12,8 @@ public class ElementParser : IElementParser
         HashSet<INodeParser>? Processed,
         IParsingContext ParsingContext,
         IParentParsingContext ParentParsingContext,
-        IElementParserSettings Settings
+        IElementParserSettings Settings,
+        XmlReader Reader
     );
 
     public async Task ParseAsync(
@@ -22,32 +23,34 @@ public class ElementParser : IElementParser
         IElementParserSettings settings
     )
     {
-        if (reader.ReadState == ReadState.Initial
-            && !await InitializeAsync(reader, parsingContext, parentParsingContext, settings))
-            return;
-
         var state = new State(
             TextFound: false,
             ElementFound: false,
-            Processed: settings.NoRepeatNode ? new() : null,
+            Processed: null,
             parsingContext,
             parentParsingContext,
-            settings
+            settings,
+            reader
         );
 
-        while(reader.ReadState != ReadState.EndOfFile)
+        if (!await InitializeAsync(state))
+            return;
+
+        state.Processed = settings.NoRepeatNode ? new() : null;
+
+        while (reader.ReadState != ReadState.EndOfFile)
         {
             switch(reader.NodeType)
             {
                 case XmlNodeType.Element:
                     state.ElementFound = true;
 
-                    if (!TryGetParser(reader, state, out var parser))
+                    if (!TryGetParser(state, out var parser))
                     {
                         if (settings.ExitOnUnknownNode)
                             return;
                     }
-                    else if (await ParseElementAsync(reader, state, parser))
+                    else if (!await ParseElementAsync(state, parser))
                         continue;
 
                     break;
@@ -77,18 +80,23 @@ public class ElementParser : IElementParser
         }
     }
 
-    private static async Task<bool> InitializeAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext, IElementParserSettings settings)
+    private static async Task<bool> InitializeAsync(State state)
     {
-        await reader.MoveToContentAsync();
+        if (state.Reader.ReadState != ReadState.Initial)
+            return true;
 
-        if (reader.HasAttributes)
-            ParseAttributes(reader, parsingContext, parentParsingContext, settings);
+        await state.Reader.MoveToContentAsync();
 
-        return await reader.ReadAsync();
+        if (state.Reader.HasAttributes)
+            ParseAttributes(state);
+
+        return await state.Reader.ReadAsync();
     }
 
-    private static bool TryGetParser(XmlReader reader, State state, [MaybeNullWhen(false)] out INodeParser parser)
+    private static bool TryGetParser(State state, [MaybeNullWhen(false)] out INodeParser parser)
     {
+        var reader = state.Reader;
+
         if (!state.Settings.ChildParsers.TryGet(reader.LocalName, out parser))
         {
             if (!state.Settings.ExitOnUnknownNode)
@@ -127,53 +135,48 @@ public class ElementParser : IElementParser
             state.ParentParsingContext.ParsedText = parsedText;
     }
 
-    private static async Task<bool> ParseElementAsync(
-        XmlReader reader, 
-        State state,
-        INodeParser parser
-    )
+    private static async Task<bool> ParseElementAsync(State state, INodeParser parser)
     {
+        var reader = state.Reader;
+
         if (state.TextFound)
         {
             state.ParsingContext.LogError(reader, "Não é permitido texto dentro de elemento que tenha elementos filhos.");
-            return false;
+            return true;
         }
 
         if (parser is IAggregateNodeParser)
         {
             await parser.ParseAsync(reader, state.ParsingContext, state.ParentParsingContext);
-            return true;
+            return false;
         }
 
         using var childReader = reader.ReadSubtree();
         await parser.ParseAsync(childReader, state.ParsingContext, state.ParentParsingContext);
 
-        return false;
+        return true;
     }
 
-    private static void ParseAttributes(
-        XmlReader reader, 
-        IParsingContext parsingContext, 
-        IParentParsingContext parentParsingContext,
-        IElementParserSettings settings
-    )
+    private static void ParseAttributes(State state)
     {
+        var reader = state.Reader;
+
         while (reader.MoveToNextAttribute())
         {
-            if (!settings.AttributeParsers.TryGet(reader.LocalName, out var attributeParser))
+            if (!state.Settings.AttributeParsers.TryGet(reader.LocalName, out var attributeParser))
             {
-                parsingContext.LogError(reader, $"Atributo não reconhecido: {reader.LocalName}");
+                state.ParsingContext.LogError(reader, $"Atributo não reconhecido: {reader.LocalName}");
                 continue;
             }
 
-            var attribute = attributeParser.Parse(reader, parsingContext);
+            var attribute = attributeParser.Parse(reader, state.ParsingContext);
             if (attribute is not null)
             {
                 if (attribute is WhenAttribute whenAttribute)
-                    parentParsingContext.When = whenAttribute.Condition;
+                    state.ParentParsingContext.When = whenAttribute.Condition;
 
                 if (attribute is WhileAttribute whileAttribute)
-                    parentParsingContext.While = whileAttribute.Condition;
+                    state.ParentParsingContext.While = whileAttribute.Condition;
             }
         }
         reader.MoveToElement();

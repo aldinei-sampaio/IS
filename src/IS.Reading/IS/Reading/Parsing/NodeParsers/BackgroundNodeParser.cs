@@ -66,7 +66,7 @@ public class BackgroundNodeParser : IBackgroundNodeParser
     }
 
     public INode DismissNode { get; } 
-        = DismissNode<BackgroundNode>.Create(new(BackgroundState.Empty, null));
+        = new DismissNode<BackgroundNode>(new(BackgroundState.Empty, null));
 
     public class BackgroundContext : IParentParsingContext
     {

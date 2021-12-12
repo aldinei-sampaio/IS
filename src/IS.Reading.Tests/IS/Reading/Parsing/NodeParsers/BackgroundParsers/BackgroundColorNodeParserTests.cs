@@ -52,14 +52,16 @@ public class BackgroundColorNodeParserTests
 
         await sut.ParseAsync(reader, context, parentContext);
 
-        var node = parentContext.Nodes.Should().ContainSingle()
-            .Which.Should().BeOfType<BackgroundNode>()
-            .Which;
-
-        node.When.Should().BeSameAs(when);
-        node.State.Name.Should().Be("alfa");
-        node.State.Type.Should().Be(BackgroundType.Color);
-        node.State.Position.Should().Be(BackgroundPosition.Undefined);
+        parentContext.ShouldContainSingle<BackgroundNode>(i =>
+        {
+            i.When.Should().BeSameAs(when);
+            i.State.Should().BeEquivalentTo(new
+            {
+                Name = "alfa",
+                Type = BackgroundType.Color,
+                Position = BackgroundPosition.Undefined
+            });
+        });
     }
 
     [Fact]
