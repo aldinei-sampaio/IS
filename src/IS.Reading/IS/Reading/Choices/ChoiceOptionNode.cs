@@ -2,7 +2,7 @@
 
 namespace IS.Reading.Choices;
 
-public class ChoiceOptionNode : IChoiceOptionNode
+public class ChoiceOptionNode : IChoiceOptionNodeSetter
 {
     public string Key { get; set; } = string.Empty;
     public string Text { get; set; } = string.Empty;

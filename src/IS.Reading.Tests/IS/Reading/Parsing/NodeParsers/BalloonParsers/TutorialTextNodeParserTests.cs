@@ -14,5 +14,6 @@ public class TutorialTextNodeParserTests
         sut.Name.Should().Be("tutorial");
         sut.BalloonType.Should().Be(BalloonType.Tutorial);
         sut.Settings.ShouldBeNormal(balloonTextParser);
+        sut.Should().BeAssignableTo<GenericTextNodeParserBase>();
     }
 }

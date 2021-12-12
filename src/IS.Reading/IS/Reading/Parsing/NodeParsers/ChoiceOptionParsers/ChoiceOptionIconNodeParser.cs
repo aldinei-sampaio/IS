@@ -9,10 +9,10 @@ public class ChoiceOptionIconNodeParser : IChoiceOptionIconNodeParser
 
     public IElementParserSettings Settings { get; }
 
-    public ChoiceOptionIconNodeParser(IElementParser elementParser, INameTextParser textParser)
+    public ChoiceOptionIconNodeParser(IElementParser elementParser, INameTextParser nameTextParser)
     {
         this.elementParser = elementParser;
-        Settings = ElementParserSettings.Normal(textParser);
+        Settings = ElementParserSettings.Normal(nameTextParser);
     }
 
     public string Name => "icon";
@@ -21,10 +21,7 @@ public class ChoiceOptionIconNodeParser : IChoiceOptionIconNodeParser
     {
         var myContext = new TextParentParsingContext();
         await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
-        if (myContext.ParsedText is null)
-            return;
-
-        var ctx = (ChoiceOptionParentParsingContext)parentParsingContext;
+        var ctx = (IChoiceOptionParentParsingContext)parentParsingContext;
         ctx.Option.ImageName = myContext.ParsedText;
     }
 }

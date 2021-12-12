@@ -17,7 +17,7 @@ public class ChoiceOptionEnabledWhenNodeParser : IChoiceOptionEnabledWhenNodePar
         Settings = ElementParserSettings.Normal(textParser);
     }
 
-    public string Name => "enablewhen";
+    public string Name => "enabledwhen";
 
     public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
@@ -32,7 +32,7 @@ public class ChoiceOptionEnabledWhenNodeParser : IChoiceOptionEnabledWhenNodePar
             parsingContext.LogError(reader, "Condição inválida.");
             return;
         }
-        var ctx = (ChoiceOptionParentParsingContext)parentParsingContext;
+        var ctx = (IChoiceOptionParentParsingContext)parentParsingContext;
         ctx.Option.EnabledWhen = condition;
     }
 }

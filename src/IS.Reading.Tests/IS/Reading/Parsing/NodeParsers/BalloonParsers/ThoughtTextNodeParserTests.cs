@@ -14,5 +14,6 @@ public class ThoughtTextNodeParserTests
         sut.Name.Should().Be("thought");
         sut.BalloonType.Should().Be(BalloonType.Thought);
         sut.Settings.ShouldBeNormal(balloonTextParser);
+        sut.Should().BeAssignableTo<GenericTextNodeParserBase>();
     }
 }

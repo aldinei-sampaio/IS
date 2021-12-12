@@ -15,8 +15,10 @@ public class ChoiceOptionNodeParser : IChoiceOptionNodeParser
         IElementParser elementParser,
         IWhenAttributeParser whenAttributeParser,
         IBalloonTextParser balloonTextParser,
-        INameTextParser nameTextParser,
-        IConditionParser conditionParser
+        IChoiceOptionTextNodeParser choiceOptionTextNodeParser,
+        IChoiceOptionEnabledWhenNodeParser choiceOptionEnabledWhenNodeParser,
+        IChoiceOptionDisabledTextNodeParser choiceOptionDisabledTextNodeParser,
+        IChoiceOptionIconNodeParser choiceOptionIconNodeParser
     )
     {
         this.elementParser = elementParser;
@@ -24,10 +26,10 @@ public class ChoiceOptionNodeParser : IChoiceOptionNodeParser
         Settings = ElementParserSettings.NonRepeat(
             whenAttributeParser,
             balloonTextParser,
-            new ChoiceOptionTextNodeParser(elementParser, balloonTextParser),
-            new ChoiceOptionEnabledWhenNodeParser(elementParser, balloonTextParser, conditionParser),
-            new ChoiceOptionDisabledTextNodeParser(elementParser, balloonTextParser),
-            new ChoiceOptionIconNodeParser(elementParser, nameTextParser)
+            choiceOptionTextNodeParser,
+            choiceOptionEnabledWhenNodeParser,
+            choiceOptionDisabledTextNodeParser,
+            choiceOptionIconNodeParser
         );
     }
 
@@ -41,9 +43,6 @@ public class ChoiceOptionNodeParser : IChoiceOptionNodeParser
         myContext.Option.Key = reader.LocalName;
 
         await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
-
-        if (myContext.ParsedText is not null)
-            myContext.Option.Text = myContext.ParsedText;
 
         if (string.IsNullOrWhiteSpace(myContext.Option.Text))
         {

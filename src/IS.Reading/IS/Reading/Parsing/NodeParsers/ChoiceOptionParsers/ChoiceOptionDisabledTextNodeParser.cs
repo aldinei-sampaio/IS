@@ -9,10 +9,13 @@ public class ChoiceOptionDisabledTextNodeParser : IChoiceOptionDisabledTextNodeP
 
     public IElementParserSettings Settings { get; }
 
-    public ChoiceOptionDisabledTextNodeParser(IElementParser elementParser, IBalloonTextParser textParser)
+    public ChoiceOptionDisabledTextNodeParser(
+        IElementParser elementParser, 
+        IBalloonTextParser balloonTextParser
+    )
     {
         this.elementParser = elementParser;
-        Settings = ElementParserSettings.Normal(textParser);
+        Settings = ElementParserSettings.Normal(balloonTextParser);
     }
 
     public string Name => "disabledtext";
@@ -21,9 +24,6 @@ public class ChoiceOptionDisabledTextNodeParser : IChoiceOptionDisabledTextNodeP
     {
         var myContext = new TextParentParsingContext();
         await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
-        if (myContext.ParsedText is null)
-            return;
-
         var ctx = (ChoiceOptionParentParsingContext)parentParsingContext;
         ctx.Option.DisabledText = myContext.ParsedText;
     }

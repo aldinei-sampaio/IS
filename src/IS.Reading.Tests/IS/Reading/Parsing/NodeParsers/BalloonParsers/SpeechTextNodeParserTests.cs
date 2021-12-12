@@ -14,5 +14,6 @@ public class SpeechTextNodeParserTests
         sut.Name.Should().Be("speech");
         sut.BalloonType.Should().Be(BalloonType.Speech);
         sut.Settings.ShouldBeNormal(balloonTextParser);
+        sut.Should().BeAssignableTo<GenericTextNodeParserBase>();
     }
 }

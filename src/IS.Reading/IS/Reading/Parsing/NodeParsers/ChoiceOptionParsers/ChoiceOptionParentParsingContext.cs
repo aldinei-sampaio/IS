@@ -4,6 +4,5 @@ namespace IS.Reading.Parsing.NodeParsers.ChoiceOptionParsers;
 
 public class ChoiceOptionParentParsingContext : IParentParsingContext
 {
-    public ChoiceOptionNode Option { get; set; } = new();
-    public string? ParsedText { get; set; }
+    public IChoiceOptionNodeSetter Option { get; set; } = new ChoiceOptionNode();
 }

@@ -9,10 +9,10 @@ public class ChoiceOptionTextNodeParser : IChoiceOptionTextNodeParser
 
     public IElementParserSettings Settings { get; }
 
-    public ChoiceOptionTextNodeParser(IElementParser elementParser, IBalloonTextParser textParser)
+    public ChoiceOptionTextNodeParser(IElementParser elementParser, IBalloonTextParser balloonTextParser)
     {
         this.elementParser = elementParser;
-        Settings = ElementParserSettings.Normal(textParser);
+        Settings = ElementParserSettings.Normal(balloonTextParser);
     }
 
     public string Name => "text";
@@ -24,7 +24,7 @@ public class ChoiceOptionTextNodeParser : IChoiceOptionTextNodeParser
         if (myContext.ParsedText is null)
             return;
 
-        var ctx = (ChoiceOptionParentParsingContext)parsingContext;
+        var ctx = (IChoiceOptionParentParsingContext)parentParsingContext;
         ctx.Option.Text = myContext.ParsedText;
     }
 }

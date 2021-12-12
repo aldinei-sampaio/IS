@@ -14,5 +14,6 @@ public class NarrationTextNodeParserTests
         sut.Name.Should().Be("narration");
         sut.BalloonType.Should().Be(BalloonType.Narration);
         sut.Settings.ShouldBeNormal(balloonTextParser);
+        sut.Should().BeAssignableTo<GenericTextNodeParserBase>();
     }
 }
