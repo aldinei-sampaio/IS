@@ -5,22 +5,26 @@ namespace IS.Reading.Nodes;
 
 public class MoodNode : INode
 {
-    public MoodType MoodType { get; }
+    public MoodType? MoodType { get; }
 
-    public MoodNode(MoodType moodType, IBlock childBlock)
-        => (MoodType, ChildBlock) = (moodType, childBlock);
-
-    public IBlock? ChildBlock { get; }
+    public MoodNode(MoodType? moodType)
+        => (MoodType) = (moodType);
 
     public async Task<INode> EnterAsync(INavigationContext context)
     {
-        if (context.State.MoodType == MoodType)
+        var oldState = context.State.MoodType;
+
+        if (oldState == MoodType)
             return this;
 
-        var @event = new MoodChangeEvent(context.State.PersonName!, context.State.IsProtagonist(), MoodType);
-        await context.Events.InvokeAsync<IMoodChangeEvent>(@event);
+        if (MoodType.HasValue)
+        {
+            var @event = new MoodChangeEvent(context.State.PersonName!, context.State.IsProtagonist(), MoodType.Value);
+            await context.Events.InvokeAsync<IMoodChangeEvent>(@event);
+        }
+            
         context.State.MoodType = MoodType;
 
-        return this;
+        return new MoodNode(oldState);
     }
 }

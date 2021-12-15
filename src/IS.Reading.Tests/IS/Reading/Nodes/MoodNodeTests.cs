@@ -13,9 +13,8 @@ public class MoodNodeTests
     public void Initialization(MoodType moodType)
     {
         var childBlock = A.Dummy<IBlock>();
-        var sut = new MoodNode(moodType, childBlock);
+        var sut = new MoodNode(moodType);
         sut.MoodType.Should().Be(moodType);
-        sut.ChildBlock.Should().Be(childBlock);
     }
 
     [Theory]
@@ -32,8 +31,7 @@ public class MoodNodeTests
 
         var invoker = new TestInvoker(context);
 
-        var childBlock = A.Dummy<IBlock>();
-        var sut = new MoodNode(moodType, childBlock);
+        var sut = new MoodNode(moodType);
 
         var ret = await sut.EnterAsync(context);
         ret.Should().BeSameAs(sut);
@@ -51,8 +49,7 @@ public class MoodNodeTests
         var context = A.Dummy<INavigationContext>();
         context.State.MoodType = null;
 
-        var childBlock = A.Dummy<IBlock>();
-        var sut = new MoodNode(moodType, childBlock);
+        var sut = new MoodNode(moodType);
 
         await sut.EnterAsync(context);
 
@@ -67,8 +64,7 @@ public class MoodNodeTests
 
         var invoker = new TestInvoker(context);
 
-        var childBlock = A.Dummy<IBlock>();
-        var sut = new MoodNode(MoodType.Happy, childBlock);
+        var sut = new MoodNode(MoodType.Happy);
 
         var ret = await sut.EnterAsync(context);
         ret.Should().BeSameAs(sut);

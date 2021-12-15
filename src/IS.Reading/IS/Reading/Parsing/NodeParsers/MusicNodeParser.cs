@@ -34,6 +34,13 @@ public class MusicNodeParser : IMusicNodeParser
         if (parsedText is null)
             return;
 
+        if (parsingContext.SceneContext.HasMusic)
+        {
+            parsingContext.LogError(reader, "Mais de uma definição de música para a mesma cena.");
+            return;
+        }
+        parsingContext.SceneContext.HasMusic = true;
+
         var node = new MusicNode(parsedText.Length == 0 ? null : parsedText, myContext.When);
         parentParsingContext.AddNode(node);
         parsingContext.RegisterDismissNode(DismissNode);

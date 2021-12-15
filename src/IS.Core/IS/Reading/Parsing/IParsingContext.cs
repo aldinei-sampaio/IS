@@ -8,6 +8,6 @@ public interface IParsingContext
     void LogError(XmlReader xmlReader, string message);
     bool IsSuccess { get; }
     void RegisterDismissNode(INode node);
-    string? Person { get; set; }
     IEnumerable<INode> DismissNodes { get; }
+    IParsingSceneContext SceneContext { get; }
 }

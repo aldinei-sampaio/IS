@@ -40,5 +40,7 @@ public abstract class BalloonChildNodeParserBase : IAggregateNodeParser
 
         var node = new BalloonTextNode(myContext.ParsedText, BalloonType, myContext.ChoiceNode);
         parentParsingContext.AddNode(node);
+
+        parsingContext.SceneContext.Reset();
     }
 }

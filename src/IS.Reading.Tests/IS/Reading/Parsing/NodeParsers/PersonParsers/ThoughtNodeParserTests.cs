@@ -9,9 +9,10 @@ public class ThoughtNodeParserTests
     {
         var elementParser = A.Dummy<IElementParser>();
         var thoughtChildNodeParser = Helper.FakeParser<IThoughtChildNodeParser>("oceania");
-        var sut = new ThoughtNodeParser(elementParser, thoughtChildNodeParser);
+        var moodNodeParser = A.Dummy<IMoodNodeParser>();
+        var sut = new ThoughtNodeParser(elementParser, thoughtChildNodeParser, moodNodeParser);
         sut.Name.Should().Be("oceania");
         sut.Settings.ShouldBeAggregatedNonRepeat(thoughtChildNodeParser);
-        sut.AggregationSettings.ShouldBeAggregated(thoughtChildNodeParser);
+        sut.AggregationSettings.ShouldBeAggregated(thoughtChildNodeParser, moodNodeParser);
     }
 }

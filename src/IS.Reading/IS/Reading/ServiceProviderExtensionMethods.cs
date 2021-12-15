@@ -46,7 +46,6 @@ public static class ServiceProviderExtensionMethods
         services.AddSingleton<IBackgroundNodeParser, BackgroundNodeParser>();
         services.AddSingleton<IBlockNodeParser, BlockNodeParser>();
         services.AddSingleton<IMoodNodeParser, MoodNodeParser>();
-        services.AddSingleton<IMoodTextNodeParser, MoodTextNodeParser>();
         services.AddSingleton<IPersonNodeParser, PersonNodeParser>();
         services.AddSingleton<IPersonTextNodeParser, PersonTextNodeParser>();
 

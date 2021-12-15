@@ -41,9 +41,9 @@ public class RootBlockParser : IRootBlockParser
 
         await elementParser.ParseAsync(reader, parsingContext, context, Settings);
 
-        if (context.Block.ForwardQueue.Count == 0)
+        if (context.Nodes.Count == 0)
             parsingContext.LogError(reader, "Elemento filho era esperado.");
 
-        return context.Block;
+        return new Block(context.Nodes);
     }
 }

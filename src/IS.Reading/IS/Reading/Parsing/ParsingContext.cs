@@ -10,13 +10,13 @@ public class ParsingContext : IParsingContext
     private readonly StringBuilder stringBuilder = new();
     private int errorCount = 0;
 
+    public IParsingSceneContext SceneContext { get; set; } = new ParsingSceneContext();
+
     public bool IsSuccess => errorCount == 0;
 
     public IEnumerable<INode> DismissNodes => dismissNodes;
 
     private readonly List<INode> dismissNodes = new();
-
-    public string? Person { get; set; }
 
     public void LogError(XmlReader xmlReader, string message)
     {

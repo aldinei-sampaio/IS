@@ -20,6 +20,7 @@ namespace IS.Reading.Nodes
             var @event = new PersonEnterEvent(PersonName, IsProtagonist(context, PersonName));
             await context.Events.InvokeAsync<IPersonEnterEvent>(@event);
             context.State.PersonName = PersonName;
+            context.State.MoodType = null;
             return this;
         }
 

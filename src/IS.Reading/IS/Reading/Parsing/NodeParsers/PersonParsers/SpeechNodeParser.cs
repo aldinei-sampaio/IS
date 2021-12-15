@@ -4,8 +4,8 @@ namespace IS.Reading.Parsing.NodeParsers.PersonParsers;
 
 public class SpeechNodeParser : BalloonTextNodeParserBase, ISpeechNodeParser
 {
-    public SpeechNodeParser(IElementParser elementParser, ISpeechChildNodeParser childParser) 
-        : base(elementParser, childParser)
+    public SpeechNodeParser(IElementParser elementParser, ISpeechChildNodeParser childParser, IMoodNodeParser moodNodeParser) 
+        : base(elementParser, childParser, moodNodeParser)
     {
     }
 }

@@ -1,4 +1,5 @@
-﻿using IS.Reading.Nodes;
+﻿using IS.Reading.Navigation;
+using IS.Reading.Nodes;
 using IS.Reading.Parsing.AttributeParsers;
 using System.Xml;
 
@@ -45,13 +46,13 @@ public class BlockNodeParser : IBlockNodeParser
         var myContext = new BlockParentParsingContext();
         await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
 
-        if (myContext.Block.ForwardQueue.Count == 0)
+        if (myContext.Nodes.Count == 0)
         {
             parsingContext.LogError(reader, "Elemento filho era esperado.");
             return;
         }
 
-        var node = new BlockNode(myContext.Block, myContext.When, myContext.While);
+        var node = new BlockNode(new Block(myContext.Nodes), myContext.When, myContext.While);
         parentParsingContext.AddNode(node);
     }
 }

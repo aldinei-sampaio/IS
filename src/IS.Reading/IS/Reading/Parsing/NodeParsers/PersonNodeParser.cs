@@ -1,4 +1,5 @@
-﻿using IS.Reading.Nodes;
+﻿using IS.Reading.Navigation;
+using IS.Reading.Nodes;
 using IS.Reading.Parsing.NodeParsers.PersonParsers;
 using System.Xml;
 
@@ -57,10 +58,19 @@ public class PersonNodeParser : IPersonNodeParser
 
         await elementParser.ParseAsync(reader, parsingContext, myContext, AggregationSettings);
 
-        if (myContext.Block.ForwardQueue.Count == 0)
+        if (myContext.Nodes.Count == 0)
             return;
 
-        var node = new PersonNode(parsedText, myContext.Block);
+        if (parsingContext.SceneContext.HasMood)
+        {
+            parsingContext.LogError(reader, "Foi definido humor mas não foi definida uma fala ou pensamento correspondente.");
+            return;
+        }
+
+        // Para lembrar do humor ao entrar no bloco usando a função de "Voltar" do storyboard
+        myContext.Nodes.Add(new MoodNode(null));
+
+        var node = new PersonNode(parsedText, new Block(myContext.Nodes));
         parentParsingContext.AddNode(node);
     }
 }

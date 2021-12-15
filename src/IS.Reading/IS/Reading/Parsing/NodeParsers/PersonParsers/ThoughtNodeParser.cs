@@ -4,8 +4,8 @@ namespace IS.Reading.Parsing.NodeParsers.PersonParsers;
 
 public class ThoughtNodeParser : BalloonTextNodeParserBase, IThoughtNodeParser
 {
-    public ThoughtNodeParser(IElementParser elementParser, IThoughtChildNodeParser childParser)
-        : base(elementParser, childParser)
+    public ThoughtNodeParser(IElementParser elementParser, IThoughtChildNodeParser childParser, IMoodNodeParser moodNodeParser)
+        : base(elementParser, childParser, moodNodeParser)
     {
     }
 }

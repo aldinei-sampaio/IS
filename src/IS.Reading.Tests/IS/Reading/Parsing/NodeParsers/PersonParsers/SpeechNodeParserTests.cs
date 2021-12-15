@@ -9,9 +9,10 @@ public class SpeechNodeParserTests
     {
         var elementParser = A.Dummy<IElementParser>();
         var speechChildNodeParser = Helper.FakeParser<ISpeechChildNodeParser>("bizantino");
-        var sut = new SpeechNodeParser(elementParser, speechChildNodeParser);
+        var moodNodeParser = A.Dummy<IMoodNodeParser>();
+        var sut = new SpeechNodeParser(elementParser, speechChildNodeParser, moodNodeParser);
         sut.Name.Should().Be("bizantino");
         sut.Settings.ShouldBeAggregatedNonRepeat(speechChildNodeParser);
-        sut.AggregationSettings.ShouldBeAggregated(speechChildNodeParser);
+        sut.AggregationSettings.ShouldBeAggregated(speechChildNodeParser, moodNodeParser);
     }
 }

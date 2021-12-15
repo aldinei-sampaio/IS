@@ -46,22 +46,23 @@ public class BackgroundNodeParser : IBackgroundNodeParser
 
         if (!string.IsNullOrWhiteSpace(context.ParsedText))
         {
-            var block = new Block();
             var state = new BackgroundState(context.ParsedText, BackgroundType.Image, BackgroundPosition.Left);
-            block.ForwardQueue.Enqueue(new BackgroundNode(state, null));
-            block.ForwardQueue.Enqueue(new ScrollNode(null));
+            var block = new Block(
+                new BackgroundNode(state, null),
+                new ScrollNode(null)
+            );
             parentParsingContext.AddNode(new BlockNode(block, context.When, null));
             parsingContext.RegisterDismissNode(DismissNode);
             return;
         }
 
-        if (context.Block is null || context.Block.ForwardQueue.Count == 0)
+        if (context.Nodes is null || context.Nodes.Count == 0)
         {
             parsingContext.LogError(reader, "Nome de imagem ou elemento filho era esperado.");
             return;
         }
 
-        parentParsingContext.AddNode(new BlockNode(context.Block, context.When, null));
+        parentParsingContext.AddNode(new BlockNode(new Block(context.Nodes), context.When, null));
         parsingContext.RegisterDismissNode(DismissNode);
     }
 
@@ -70,14 +71,10 @@ public class BackgroundNodeParser : IBackgroundNodeParser
 
     public class BackgroundContext : IParentParsingContext
     {
-        public IBlock? Block { get; private set; }
+        public List<INode> Nodes { get; } = new();
 
         public void AddNode(INode node)
-        {
-            if (Block is null)
-                Block = new Block();
-            Block.ForwardQueue.Enqueue(node);
-        }
+            => Nodes.Add(node);
 
         public string? ParsedText { get; set; }
         public ICondition? When { get; set; }

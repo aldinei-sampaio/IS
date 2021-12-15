@@ -7,12 +7,10 @@ namespace IS.Reading.Parsing;
 public class ParsingContextTests
 {
     [Fact]
-    public void Person()
+    public void SceneContext()
     {
         var sut = new ParsingContext();
-        sut.Person.Should().BeNull();
-        sut.Person = "abc";
-        sut.Person.Should().Be("abc");
+        sut.SceneContext.Should().BeEquivalentTo(new {HasMood = false, HasMusic = false});
     }
 
     [Fact]

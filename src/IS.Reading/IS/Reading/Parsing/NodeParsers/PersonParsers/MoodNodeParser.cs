@@ -1,4 +1,5 @@
 ﻿using IS.Reading.Nodes;
+using IS.Reading.Parsing.TextParsers;
 using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers.PersonParsers;
@@ -6,49 +7,37 @@ namespace IS.Reading.Parsing.NodeParsers.PersonParsers;
 public class MoodNodeParser : IMoodNodeParser
 {
     private readonly IElementParser elementParser;
-    private readonly INodeParser childParser;
 
     public IElementParserSettings Settings { get; }
 
-    public IElementParserSettings AggregationSettings { get; }
-
     public MoodNodeParser(
         IElementParser elementParser, 
-        IMoodTextNodeParser moodTextNodeParser,
-        ISpeechNodeParser speechNodeParser,
-        IThoughtNodeParser thoughtNodeParser,
-        IPauseNodeParser pauseNodeParser
+        IMoodTextParser moodTextParser
     )
     {
         this.elementParser = elementParser;
-        this.childParser = moodTextNodeParser;
-        Settings = ElementParserSettings.AggregatedNonRepeat(moodTextNodeParser);
-
-        AggregationSettings = ElementParserSettings.Aggregated(
-            speechNodeParser, 
-            thoughtNodeParser,
-            pauseNodeParser
-        );
+        Settings = ElementParserSettings.Normal(moodTextParser);
     }
 
-    public string Name => childParser.Name;
+    public string Name => "mood";
 
     public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var myContext = new BlockParentParsingContext();
+        var myContext = new TextParentParsingContext();
         await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
 
         var parsedText = myContext.ParsedText;
-
         if (parsedText is null)
             return;
 
+        if (parsingContext.SceneContext.HasMood)
+        {
+            parsingContext.LogError(reader, "Mais de uma definição de humor para a mesma cena.");
+            return;
+        }
+        parsingContext.SceneContext.HasMood = true;
+
         var moodType = Enum.Parse<MoodType>(parsedText);
-
-        if (reader.ReadState != ReadState.EndOfFile)
-            await elementParser.ParseAsync(reader, parsingContext, myContext, AggregationSettings);
-
-        var node = new MoodNode(moodType, myContext.Block);
-        parentParsingContext.AddNode(node);
+        parentParsingContext.AddNode(new MoodNode(moodType));
     }
 }

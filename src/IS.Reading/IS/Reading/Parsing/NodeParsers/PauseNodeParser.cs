@@ -30,6 +30,8 @@ public class PauseNodeParser : IPauseNodeParser
 
         var parsedText = myContext.ParsedText;
 
+        parsingContext.SceneContext.Reset();
+
         if (string.IsNullOrWhiteSpace(parsedText))
         {
             var node = new PauseNode(myContext.When);
