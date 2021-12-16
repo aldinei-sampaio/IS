@@ -30,9 +30,13 @@ public class BalloonNodeTests
         var ret = await sut.EnterAsync(tester.Context);
         ret.Should().BeSameAs(sut);
 
-        var @event = tester.Invoker.Single<IBalloonOpenEvent>();
-        @event.BallonType.Should().Be(balloonType);
-        @event.IsProtagonist.Should().Be(isProtagonist);
+        tester.Invoker.ShouldContainSingle<IBalloonOpenEvent>(
+            i => i.Should().BeEquivalentTo(new
+            {
+                BalloonType = balloonType,
+                IsProtagonist = isProtagonist
+            })
+        );
     }
 
     [Theory]
@@ -45,9 +49,13 @@ public class BalloonNodeTests
 
         await sut.LeaveAsync(tester.Context);
 
-        var @event = tester.Invoker.Single<IBalloonCloseEvent>();
-        @event.BallonType.Should().Be(balloonType);
-        @event.IsProtagonist.Should().Be(isProtagonist);
+        tester.Invoker.ShouldContainSingle<IBalloonCloseEvent>(
+            i => i.Should().BeEquivalentTo(new
+            {
+                BalloonType = balloonType,
+                IsProtagonist = isProtagonist
+            })
+        );
     }
 
     private class Tester

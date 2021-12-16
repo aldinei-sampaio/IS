@@ -1,4 +1,5 @@
-﻿using IS.Reading.Events;
+﻿using FluentAssertions.Execution;
+using IS.Reading.Events;
 using IS.Reading.Navigation;
 
 namespace IS.Reading.Nodes;
@@ -21,7 +22,13 @@ public class TestInvoker : IEventInvoker
         return Task.CompletedTask;
     }
 
-    public T Single<T>() where T : IReadingEvent
+    public void ShouldContainSingle<T>(Action<T> validation) where T : IReadingEvent
+    {
+        using (new AssertionScope())
+            validation.Invoke(Single<T>());
+    }
+
+    private T Single<T>() where T : IReadingEvent
     {
         invoked.Should().HaveCount(1);
         invokedTypes[0].Should().BeSameAs(typeof(T));

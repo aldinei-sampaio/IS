@@ -57,8 +57,9 @@ public class ProtagonistNodeTests
         var sut = new ProtagonistNode(newValue, null);
         await sut.EnterAsync(context);
 
-        var @event = invoker.Single<IProtagonistChangeEvent>();
-        @event.PersonName.Should().Be(newValue);
+        invoker.ShouldContainSingle<IProtagonistChangeEvent>(
+            i => i.Should().BeEquivalentTo(new { PersonName = newValue })
+        );
     }
 
     [Theory]

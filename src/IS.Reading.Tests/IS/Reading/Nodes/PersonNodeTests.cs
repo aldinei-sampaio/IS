@@ -33,9 +33,9 @@ public class PersonNodeTests
         var ret = await sut.EnterAsync(context);
         ret.Should().BeSameAs(sut);
 
-        var @event = invoker.Single<IPersonEnterEvent>();
-        @event.PersonName.Should().Be(personName);
-        @event.IsProtagonist.Should().Be(isProtagonist);
+        invoker.ShouldContainSingle<IPersonEnterEvent>(
+            i => i.Should().BeEquivalentTo(new { PersonName = personName, IsProtagonist = isProtagonist })
+        );
     }
 
     [Fact]
@@ -71,9 +71,9 @@ public class PersonNodeTests
 
         await sut.LeaveAsync(context);
 
-        var @event = invoker.Single<IPersonLeaveEvent>();
-        @event.PersonName.Should().Be(personName);
-        @event.IsProtagonist.Should().Be(isProtagonist);
+        invoker.ShouldContainSingle<IPersonLeaveEvent>(
+            i => i.Should().BeEquivalentTo(new { PersonName = personName, IsProtagonist = isProtagonist })
+        );
     }
 
     [Fact]

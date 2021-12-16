@@ -14,7 +14,7 @@ public class BalloonOpenEventTests
     public void Initialization(BalloonType balloonType, bool isProtagonist, string description)
     {
         var sut = new BalloonOpenEvent(balloonType, isProtagonist);
-        sut.BallonType.Should().Be(balloonType);
+        sut.BalloonType.Should().Be(balloonType);
         sut.IsProtagonist.Should().Be(isProtagonist);
         sut.ToString().Should().Be(description);
     }

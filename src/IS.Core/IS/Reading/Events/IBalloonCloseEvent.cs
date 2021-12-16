@@ -2,6 +2,6 @@
 
 public interface IBalloonCloseEvent : IReadingEvent
 {
-    BalloonType BallonType { get; }
+    BalloonType BalloonType { get; }
     bool IsProtagonist { get; }
 }

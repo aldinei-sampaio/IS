@@ -34,12 +34,40 @@ public class MoodNodeTests
         var sut = new MoodNode(moodType);
 
         var ret = await sut.EnterAsync(context);
-        ret.Should().BeSameAs(sut);
+        ret.Should().BeOfType<MoodNode>().And.BeEquivalentTo(new { MoodType = (MoodType?)null });
 
-        var @event = invoker.Single<IMoodChangeEvent>();
-        @event.MoodType.Should().Be(moodType);
-        @event.PersonName.Should().Be(personName);
-        @event.IsProtagonist.Should().Be(isProtagonist);
+        invoker.ShouldContainSingle<IMoodChangeEvent>(
+            i => i.Should().BeEquivalentTo(new
+            {
+                MoodType = moodType,
+                PersonName = personName,
+                IsProtagonist = isProtagonist
+            })
+        );
+    }
+
+    [Fact]
+    public async Task OnEnterShouldReturnMoonNodeWithPreviousMood()
+    {
+        var context = A.Dummy<INavigationContext>();
+        context.State.MoodType = MoodType.Surprised;
+        context.State.PersonName = "abc";
+
+        var invoker = new TestInvoker(context);
+
+        var sut = new MoodNode(MoodType.Happy);
+        var ret = await sut.EnterAsync(context);
+        
+        ret.Should().BeOfType<MoodNode>().And.BeEquivalentTo(new { MoodType = MoodType.Surprised });
+
+        invoker.ShouldContainSingle<IMoodChangeEvent>(
+            i => i.Should().BeEquivalentTo(new
+            {
+                MoodType = MoodType.Happy,
+                PersonName = "abc",
+                IsProtagonist = false
+            })
+        );
     }
 
     [Theory]

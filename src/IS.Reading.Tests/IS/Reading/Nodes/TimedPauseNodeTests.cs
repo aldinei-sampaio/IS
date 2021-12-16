@@ -27,7 +27,9 @@ public class TimedPauseNodeTests
         var sut = new TimedPauseNode(duration, null);
         var ret = await sut.EnterAsync(context);
 
-        invoker.Single<ITimedPauseEvent>().Duration.Should().Be(duration);
+        invoker.ShouldContainSingle<ITimedPauseEvent>(
+            i => i.Should().BeEquivalentTo(new { Duration = duration })
+        );
 
         ret.Should().BeSameAs(ret);
     }

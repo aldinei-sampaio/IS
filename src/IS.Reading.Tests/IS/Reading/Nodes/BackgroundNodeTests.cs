@@ -35,7 +35,7 @@ public class BackgroundNodeTests
     {
         var invoker = new TestInvoker(context);
         await sut.EnterAsync(context);
-        invoker.Single<IBackgroundChangeEvent>().State.Should().BeSameAs(newState);
+        invoker.ShouldContainSingle<IBackgroundChangeEvent>(i => i.State.Should().BeSameAs(newState));
     }
 
     [Fact]

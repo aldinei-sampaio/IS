@@ -60,11 +60,15 @@ public class BalloonTextNodeTests
         var ret = await sut.EnterAsync(context);
         ret.Should().BeSameAs(sut);
 
-        var @event = invoker.Single<IBalloonTextEvent>();
-        @event.Text.Should().Be(text);
-        @event.BalloonType.Should().Be(balloonType);
-        @event.IsProtagonist.Should().Be(isProtagonist);
-        @event.Choice.Should().BeNull();
+        invoker.ShouldContainSingle<IBalloonTextEvent>(
+            i => i.Should().BeEquivalentTo(new
+            {
+                Text = text,
+                BalloonType = balloonType,
+                IsProtagonist = isProtagonist,
+                Choice = (IChoice)null
+            })
+        );
     }
 
     [Fact]
@@ -89,18 +93,24 @@ public class BalloonTextNodeTests
 
         await sut.EnterAsync(context);
 
-        var @event = invoker.Single<IBalloonTextEvent>();
-        @event.Text.Should().Be("...");
-        @event.BalloonType.Should().Be(BalloonType.Speech);
-        @event.IsProtagonist.Should().BeFalse();
-        @event.Choice.Should().NotBeNull();
-        @event.Choice.TimeLimit.Should().Be(TimeSpan.FromSeconds(3));
-        @event.Choice.Default.Should().Be("a");
-
-        var eventOptions = @event.Choice.Options.ToList();
-        eventOptions.Should().HaveCount(2);
-        eventOptions[0].ShouldBe("a", "Opção1", true, null, null);
-        eventOptions[1].ShouldBe("b", "Opção2", true, "abc", "help");
+        invoker.ShouldContainSingle<IBalloonTextEvent>(
+            i => i.Should().BeEquivalentTo(new
+            {
+                Text = "...",
+                BalloonType = BalloonType.Speech,
+                IsProtagonist = false,
+                Choice = new
+                {
+                    TimeLimit = TimeSpan.FromSeconds(3),
+                    Default = "a",
+                    Options = new[]
+                    {
+                        new { Key = "a", Text = "Opção1", IsEnabled = true, ImageName = (string)null, HelpText = (string)null },
+                        new { Key = "b", Text = "Opção2", IsEnabled = true, ImageName = "abc", HelpText = "help" }
+                    }
+                }
+            })
+        );
     }
 
     [Fact]
@@ -128,12 +138,25 @@ public class BalloonTextNodeTests
 
         await sut.EnterAsync(context);
 
-        var @event = invoker.Single<IBalloonTextEvent>();
-        var eventOptions = @event.Choice.Options.ToList();
-        eventOptions.Should().HaveCount(3);
-        eventOptions[0].ShouldBe("a", "Opção1", true, null, null);
-        eventOptions[1].ShouldBe("b", "Não ativa", false, null, null);
-        eventOptions[2].ShouldBe("c", "Opção3", false, null, null);
+        invoker.ShouldContainSingle<IBalloonTextEvent>(
+            i => i.Should().BeEquivalentTo(new
+            {
+                Text = "...",
+                BalloonType = BalloonType.Speech,
+                IsProtagonist = true,
+                Choice = new
+                {
+                    TimeLimit = (TimeSpan?)null,
+                    Default = (string)null,
+                    Options = new[]
+                    {
+                        new { Key = "a", Text = "Opção1", IsEnabled = true, ImageName = (string)null, HelpText = (string)null },
+                        new { Key = "b", Text = "Não ativa", IsEnabled = false, ImageName = (string)null, HelpText = (string)null },
+                        new { Key = "c", Text = "Opção3", IsEnabled = false, ImageName = (string)null, HelpText = (string)null }
+                    }
+                }
+            })
+        );
 
         A.CallTo(() => when1.Evaluate(variables)).MustHaveHappenedOnceExactly();
         A.CallTo(() => when2.Evaluate(variables)).MustHaveHappenedOnceExactly();
@@ -157,15 +180,28 @@ public class BalloonTextNodeTests
             }
         };
 
-        var sut = new BalloonTextNode("...", BalloonType.Speech, choiceNode);
+        var sut = new BalloonTextNode("....", BalloonType.Thought, choiceNode);
         var invoker = new TestInvoker(context);
 
         await sut.EnterAsync(context);
 
-        var @event = invoker.Single<IBalloonTextEvent>();
-        var eventOptions = @event.Choice.Options.ToList();
-        eventOptions.Should().HaveCount(1);
-        eventOptions[0].ShouldBe("b", "Opção2", true, null, null);
+        invoker.ShouldContainSingle<IBalloonTextEvent>(
+            i => i.Should().BeEquivalentTo(new
+            {
+                Text = "....",
+                BalloonType = BalloonType.Thought,
+                IsProtagonist = true,
+                Choice = new
+                {
+                    TimeLimit = (TimeSpan?)null,
+                    Default = (string)null,
+                    Options = new[]
+                    {
+                        new { Key = "b", Text = "Opção2", IsEnabled = true, ImageName = (string)null, HelpText = (string)null }
+                    }
+                }
+            })
+        );
 
         A.CallTo(() => visible1.Evaluate(variables)).MustHaveHappenedOnceExactly();
         A.CallTo(() => visible2.Evaluate(variables)).MustHaveHappenedOnceExactly();
@@ -179,13 +215,20 @@ public class BalloonTextNodeTests
 
         var choiceNode = new TestChoiceNode { Options = new() };
 
-        var sut = new BalloonTextNode("...", BalloonType.Speech, choiceNode);
+        var sut = new BalloonTextNode("Então...", BalloonType.Tutorial, choiceNode);
         var invoker = new TestInvoker(context);
 
         await sut.EnterAsync(context);
 
-        var @event = invoker.Single<IBalloonTextEvent>();
-        @event.Choice.Should().BeNull();
+        invoker.ShouldContainSingle<IBalloonTextEvent>(
+            i => i.Should().BeEquivalentTo(new
+            {
+                Text = "Então...",
+                BalloonType = BalloonType.Tutorial,
+                IsProtagonist = true,
+                Choice = (IChoice)null
+            })
+        );
     }
 
     [Fact]
@@ -203,13 +246,20 @@ public class BalloonTextNodeTests
             }
         };
 
-        var sut = new BalloonTextNode("...", BalloonType.Speech, choiceNode);
+        var sut = new BalloonTextNode("Opções", BalloonType.Narration, choiceNode);
         var invoker = new TestInvoker(context);
 
         await sut.EnterAsync(context);
 
-        var @event = invoker.Single<IBalloonTextEvent>();
-        @event.Choice.Should().BeNull();
+        invoker.ShouldContainSingle<IBalloonTextEvent>(
+            i => i.Should().BeEquivalentTo(new
+            {
+                Text = "Opções",
+                BalloonType = BalloonType.Narration,
+                IsProtagonist = true,
+                Choice = (IChoice)null
+            })
+        );
     }
 
     [Fact]
@@ -232,8 +282,15 @@ public class BalloonTextNodeTests
 
         await sut.EnterAsync(context);
 
-        var @event = invoker.Single<IBalloonTextEvent>();
-        @event.Choice.Should().BeNull();
+        invoker.ShouldContainSingle<IBalloonTextEvent>(
+            i => i.Should().BeEquivalentTo(new
+            {
+                Text = "...",
+                BalloonType = BalloonType.Speech,
+                IsProtagonist = true,
+                Choice = (IChoice)null
+            })
+        );
     }
 
     [Fact]
@@ -265,8 +322,20 @@ public class BalloonTextNodeTests
 
         await sut.EnterAsync(context);
 
-        var @event = invoker.Single<IBalloonTextEvent>();
-        @event.Choice.Options.Should().BeSameAs(shuffled);
+        invoker.ShouldContainSingle<IBalloonTextEvent>(
+            i => i.Should().BeEquivalentTo(new
+            {
+                Text = "...",
+                BalloonType = BalloonType.Speech,
+                IsProtagonist = true,
+                Choice = new
+                {
+                    TimeLimit = (TimeSpan?)null,
+                    Default = (string)null,
+                    Options = shuffled
+                }
+            })
+        );
     }
 
     private class TestChoiceNode : IChoiceNode

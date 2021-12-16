@@ -39,8 +39,9 @@ public class MusicNodeTests
         var sut = new MusicNode("goodbye", null);
         await sut.EnterAsync(context);
 
-        var @event = invoker.Single<IMusicChangeEvent>();
-        @event.MusicName.Should().Be("goodbye");
+        invoker.ShouldContainSingle<IMusicChangeEvent>(
+            i => i.Should().BeEquivalentTo(new { MusicName = "goodbye" })
+        );
     }
 
     [Fact]

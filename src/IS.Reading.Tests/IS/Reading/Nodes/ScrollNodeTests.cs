@@ -32,12 +32,14 @@ public class ScrollNodeTests
         var sut = new ScrollNode(when);
         var ret = await sut.EnterAsync(context);
 
-        invoker.Single<IBackgroundScrollEvent>().Position.Should().Be(newPosition);
+        invoker.ShouldContainSingle<IBackgroundScrollEvent>(
+            i => i.Should().BeEquivalentTo(new { Position = newPosition })
+        );
 
         context.State.Background.Should().Be(newState);
 
-        var retNode = ret.Should().BeOfType<ScrollNode>().Which;
-        retNode.When.Should().BeSameAs(when);
+        ret.Should().BeOfType<ScrollNode>()
+            .Which.Should().BeEquivalentTo(new { When = when });
     }
 
     [Theory]
