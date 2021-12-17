@@ -32,6 +32,7 @@ public class PersonNodeParserTests
         sut.Name.Should().Be("person");
         sut.Settings.ShouldBeAggregatedNonRepeat(personTextNodeParser);
         sut.AggregationSettings.ShouldBeAggregated(speechNodeParser, thoughtNodeParser, moodNodeParser, pauseNodeParser);
+        sut.ResetMoodNode.Should().BeEquivalentTo(new { MoodType = (MoodType?)null });
     }
 
     [Fact]
@@ -50,11 +51,12 @@ public class PersonNodeParserTests
 
         await sut.ParseAsync(reader, context, parentContext);
 
-        var personNode = parentContext.Nodes.Should().ContainSingle()
-            .Which.Should().BeOfType<PersonNode>().Which;
-
-        personNode.PersonName.Should().Be("lorenipsum");
-        personNode.ChildBlock.ShouldContainOnly(dummyNode);
+        parentContext.ShouldContainSingle<PersonNode>(i =>
+            {
+                i.PersonName.Should().Be("lorenipsum");
+                i.ChildBlock.ShouldContain(dummyNode, sut.ResetMoodNode);
+            }
+        );
 
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
             .MustHaveHappenedOnceExactly();

@@ -43,7 +43,7 @@ public class BalloonTextNodeParserBaseTests
         var reader = A.Dummy<XmlReader>();
         A.CallTo(() => reader.ReadState).Returns(ReadState.Interactive);
 
-        var dummyNode1 = A.Dummy<INode>();
+        var dummyNode1 = A.Dummy<IPauseNode>();
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
             .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(dummyNode1));
 
@@ -69,11 +69,11 @@ public class BalloonTextNodeParserBaseTests
         var reader = A.Dummy<XmlReader>();
         A.CallTo(() => reader.ReadState).Returns(ReadState.Interactive);
 
-        var dummyNode1 = A.Dummy<INode>();
+        var dummyNode1 = A.Dummy<IPauseNode>();
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
             .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(dummyNode1));
 
-        var dummyNode2 = A.Dummy<INode>();
+        var dummyNode2 = A.Dummy<IPauseNode>();
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.AggregationSettings))
             .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(dummyNode2));
 
@@ -90,6 +90,36 @@ public class BalloonTextNodeParserBaseTests
     }
 
     [Fact]
+    public async Task NonPauseNodesShouldNotBeAtEndOfBalloonNode()
+    {
+        var parentContext = new FakeParentParsingContext();
+        var context = A.Dummy<IParsingContext>();
+        var reader = A.Dummy<XmlReader>();
+        A.CallTo(() => reader.ReadState).Returns(ReadState.Interactive);
+
+        var dummyNode1 = A.Dummy<IPauseNode>();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(dummyNode1));
+
+        var dummyNode2 = A.Dummy<INode>();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.AggregationSettings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(dummyNode2));
+
+        await sut.ParseAsync(reader, context, parentContext);
+
+        parentContext.Nodes.Count.Should().Be(2);
+        parentContext.Nodes[0].Should().BeOfType<BalloonNode>().Which.ShouldSatisfy(i =>
+        {
+            i.BallonType.Should().Be(BalloonType.Speech);
+            i.ChildBlock.ShouldContainOnly(dummyNode1);
+        });
+        parentContext.Nodes[1].Should().BeSameAs(dummyNode2);
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).MustHaveHappenedOnceExactly();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.AggregationSettings)).MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
     public async Task ShouldNotTryAggregateAtEndOfElement()
     {
         var parentContext = new FakeParentParsingContext();
@@ -97,7 +127,7 @@ public class BalloonTextNodeParserBaseTests
         var reader = A.Dummy<XmlReader>();
         A.CallTo(() => reader.ReadState).Returns(ReadState.Interactive);
 
-        var dummyNode1 = A.Dummy<INode>();
+        var dummyNode1 = A.Dummy<IPauseNode>();
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
             .Invokes(i => {
                 i.Arguments.Get<IParentParsingContext>(2).AddNode(dummyNode1);

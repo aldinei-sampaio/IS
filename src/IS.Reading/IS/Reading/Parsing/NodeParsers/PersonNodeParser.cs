@@ -68,9 +68,11 @@ public class PersonNodeParser : IPersonNodeParser
         }
 
         // Para lembrar do humor ao entrar no bloco usando a função de "Voltar" do storyboard
-        myContext.Nodes.Add(new MoodNode(null));
+        myContext.Nodes.Add(ResetMoodNode);
 
         var node = new PersonNode(parsedText, new Block(myContext.Nodes));
         parentParsingContext.AddNode(node);
     }
+
+    public MoodNode ResetMoodNode { get; } = new MoodNode(null);
 }

@@ -10,6 +10,7 @@ public class PauseNodeParserTests
 {
     private readonly XmlReader reader;
     private readonly IParsingContext context;
+    private readonly IParsingSceneContext sceneContext;
     private readonly FakeParentParsingContext parentContext = new();
     private readonly IElementParser elementParser;
     private readonly IWhenAttributeParser whenAttributeParser;
@@ -20,6 +21,10 @@ public class PauseNodeParserTests
     {
         reader = A.Dummy<XmlReader>();
         context = A.Fake<IParsingContext>(i => i.Strict());
+        sceneContext = A.Fake<IParsingSceneContext>(i => i.Strict());
+        A.CallTo(() => context.SceneContext).Returns(sceneContext);
+        A.CallTo(() => sceneContext.Reset()).DoesNothing();
+
         elementParser = A.Fake<IElementParser>(i => i.Strict());
         whenAttributeParser = Helper.FakeParser<IWhenAttributeParser>("when");
         integerTextParser = A.Fake<IIntegerTextParser>();
@@ -55,6 +60,7 @@ public class PauseNodeParserTests
         await sut.ParseAsync(reader, context, parentContext);
 
         parentContext.ShouldContainSingle<PauseNode>(i => i.When.Should().BeSameAs(when));
+        A.CallTo(() => sceneContext.Reset()).MustHaveHappenedOnceExactly();
     }
 
     [Theory]
@@ -81,6 +87,7 @@ public class PauseNodeParserTests
             i.When.Should().BeSameAs(when);
             i.Duration.Should().Be(TimeSpan.FromMilliseconds(value));
         });
+        A.CallTo(() => sceneContext.Reset()).MustHaveHappenedOnceExactly();
     }
 
     [Theory]
