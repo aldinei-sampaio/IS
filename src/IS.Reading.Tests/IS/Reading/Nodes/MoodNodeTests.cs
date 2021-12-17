@@ -18,7 +18,7 @@ public class MoodNodeTests
     }
 
     [Theory]
-    [InlineData(MoodType.Normal, "alpha", "beta")]
+    [InlineData(MoodType.Surprised, "alpha", "beta")]
     [InlineData(MoodType.Sad, "alpha", "alpha")]
     [InlineData(MoodType.Happy, "beta", "beta")]
     public async Task OnEnterAsyncShouldRaiseEvent(MoodType moodType, string personName, string protagonist)
@@ -44,6 +44,22 @@ public class MoodNodeTests
                 IsProtagonist = isProtagonist
             })
         );
+    }
+
+    [Fact]
+    public async Task ShouldNotRaiseEventForNomalMoodWhenContextMoodIsNull()
+    {
+        var context = A.Dummy<INavigationContext>();
+        context.State.MoodType = null;
+
+        var invoker = new TestInvoker(context);
+
+        var sut = new MoodNode(MoodType.Normal);
+
+        var ret = await sut.EnterAsync(context);
+        ret.Should().BeOfType<MoodNode>().And.BeEquivalentTo(new { MoodType = (MoodType?)null });
+
+        invoker.Count.Should().Be(0);
     }
 
     [Fact]

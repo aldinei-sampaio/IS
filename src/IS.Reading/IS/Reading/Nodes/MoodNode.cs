@@ -10,6 +10,12 @@ public class MoodNode : INode
     public MoodNode(MoodType? moodType)
         => (MoodType) = (moodType);
 
+    private async static Task RaiseEventAsync(INavigationContext context, MoodType mood)
+    {
+        var @event = new MoodChangeEvent(context.State.PersonName!, context.State.IsProtagonist(), mood);
+        await context.Events.InvokeAsync<IMoodChangeEvent>(@event);
+    }
+
     public async Task<INode> EnterAsync(INavigationContext context)
     {
         var oldState = context.State.MoodType;
@@ -19,10 +25,10 @@ public class MoodNode : INode
 
         if (MoodType.HasValue)
         {
-            var @event = new MoodChangeEvent(context.State.PersonName!, context.State.IsProtagonist(), MoodType.Value);
-            await context.Events.InvokeAsync<IMoodChangeEvent>(@event);
+            if (oldState.HasValue || MoodType.Value != Reading.MoodType.Normal)
+                await RaiseEventAsync(context, MoodType.Value);
         }
-            
+
         context.State.MoodType = MoodType;
 
         return new MoodNode(oldState);

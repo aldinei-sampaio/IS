@@ -12,5 +12,5 @@ public class MoodChangeEvent : IMoodChangeEvent
     public bool IsProtagonist { get; }
 
     public override string ToString()
-        => $"mood {MoodType.ToString().ToLower()}: {PersonName}{Helper.ProtagSymbol(IsProtagonist)}";
+        => $"mood{Helper.ProtagSymbol(IsProtagonist)} {MoodType.ToString().ToLower()}: {PersonName}";
 }

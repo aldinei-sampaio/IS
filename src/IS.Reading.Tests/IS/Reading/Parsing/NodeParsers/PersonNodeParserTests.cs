@@ -32,7 +32,7 @@ public class PersonNodeParserTests
         sut.Name.Should().Be("person");
         sut.Settings.ShouldBeAggregatedNonRepeat(personTextNodeParser);
         sut.AggregationSettings.ShouldBeAggregated(speechNodeParser, thoughtNodeParser, moodNodeParser, pauseNodeParser);
-        sut.ResetMoodNode.Should().BeEquivalentTo(new { MoodType = (MoodType?)null });
+        sut.DismissMoodNode.Should().BeEquivalentTo(new { MoodType = (MoodType?)null });
     }
 
     [Fact]
@@ -54,7 +54,7 @@ public class PersonNodeParserTests
         parentContext.ShouldContainSingle<PersonNode>(i =>
             {
                 i.PersonName.Should().Be("lorenipsum");
-                i.ChildBlock.ShouldContain(dummyNode, sut.ResetMoodNode);
+                i.ChildBlock.ShouldContain(dummyNode, sut.DismissMoodNode);
             }
         );
 
