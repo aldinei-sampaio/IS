@@ -13,8 +13,8 @@ public static class IBlockExtensionMethods
             blockNodes[n].ShouldSatisfy(validations[n]);
     }
 
-    public static void ShouldContain(this IBlock block, params INode[] nodes)
-        => block.ForwardQueue.ToList().Should().ContainInOrder(nodes);
+    public static void ShouldBeEquivalentTo(this IBlock block, params INode[] nodes)
+        => block.ForwardQueue.ToList().Should().BeEquivalentTo(nodes);
 
     public static void ShouldContainOnly(this IBlock block, INode node)
     {

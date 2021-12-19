@@ -54,7 +54,7 @@ public class PersonNodeParserTests
         parentContext.ShouldContainSingle<PersonNode>(i =>
             {
                 i.PersonName.Should().Be("lorenipsum");
-                i.ChildBlock.ShouldContain(dummyNode, sut.DismissMoodNode);
+                i.ChildBlock.ShouldBeEquivalentTo(sut.InitializeMoodNode, dummyNode, sut.DismissMoodNode);
             }
         );
 

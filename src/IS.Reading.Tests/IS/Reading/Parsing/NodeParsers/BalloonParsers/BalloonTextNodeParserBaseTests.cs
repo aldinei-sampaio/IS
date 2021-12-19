@@ -82,7 +82,7 @@ public class BalloonTextNodeParserBaseTests
         parentContext.ShouldContainSingle<BalloonNode>(i =>
         {
             i.BallonType.Should().Be(BalloonType.Speech);
-            i.ChildBlock.ShouldContain(dummyNode1, dummyNode2);
+            i.ChildBlock.ShouldBeEquivalentTo(dummyNode1, dummyNode2);
         });
 
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).MustHaveHappenedOnceExactly();
