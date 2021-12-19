@@ -1,5 +1,4 @@
-﻿using IS.Reading.Navigation;
-using IS.Reading.Nodes;
+﻿using IS.Reading.Nodes;
 using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers.BalloonParsers;
@@ -70,5 +69,28 @@ public class BalloonChildNodeParserBaseTests
 
         await sut.ParseAsync(reader, context, parentContext);
         parentContext.ShouldBeEmpty();
+    }
+
+    [Fact]
+    public async Task ShouldResetSceneParsingContext()
+    {
+        var reader = A.Dummy<XmlReader>();        
+        var parentContext = new FakeParentParsingContext();
+
+        var sceneContext = A.Fake<IParsingSceneContext>(i => i.Strict());
+        A.CallTo(() => sceneContext.Reset()).DoesNothing();
+
+        var context = A.Fake<IParsingContext>(i => i.Strict());
+        A.CallTo(() => context.SceneContext).Returns(sceneContext);
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).ParsedText = "abc");
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.AggregationSettings))
+            .DoesNothing();
+
+        await sut.ParseAsync(reader, context, parentContext);
+
+        A.CallTo(() => context.SceneContext).MustHaveHappenedOnceExactly();
     }
 }

@@ -53,4 +53,49 @@ public class MoodNodeParserTests
         await sut.ParseAsync(reader, context, parentContext);
         parentContext.ShouldBeEmpty();
     }
+
+    [Fact]
+    public async Task ShouldSetHasMood()
+    {
+        var reader = A.Dummy<XmlReader>();
+        var parentContext = new FakeParentParsingContext();
+
+        var sceneContext = A.Fake<IParsingSceneContext>(i => i.Strict());
+        A.CallTo(() => sceneContext.HasMood).Returns(false);
+        A.CallToSet(() => sceneContext.HasMood).To(true).DoesNothing();
+
+        var context = A.Fake<IParsingContext>(i => i.Strict());
+        A.CallTo(() => context.SceneContext).Returns(sceneContext);
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i => i.GetArgument<IParentParsingContext>(2).ParsedText = "Happy");
+
+        await sut.ParseAsync(reader, context, parentContext);
+
+        A.CallToSet(() => sceneContext.HasMood).To(true).MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task ShouldLogErrorWhenHasMoodIsTrue()
+    {
+        var message = "Mais de uma definição de humor para a mesma cena.";
+
+        var reader = A.Dummy<XmlReader>();
+        var parentContext = new FakeParentParsingContext();
+
+        var sceneContext = A.Fake<IParsingSceneContext>(i => i.Strict());
+        A.CallTo(() => sceneContext.HasMood).Returns(true);
+
+        var context = A.Fake<IParsingContext>(i => i.Strict());
+        A.CallTo(() => context.SceneContext).Returns(sceneContext);
+        A.CallTo(() => context.LogError(reader, message)).DoesNothing();
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i => i.GetArgument<IParentParsingContext>(2).ParsedText = "Happy");
+
+        await sut.ParseAsync(reader, context, parentContext);
+        parentContext.ShouldBeEmpty();
+
+        A.CallTo(() => context.LogError(reader, message)).MustHaveHappenedOnceExactly();
+    }
 }

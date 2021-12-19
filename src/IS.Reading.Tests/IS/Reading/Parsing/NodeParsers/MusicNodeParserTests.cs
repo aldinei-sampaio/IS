@@ -82,4 +82,49 @@ public class MusicNodeParserTests
         protagNode.MusicName.Should().BeNull();
         protagNode.When.Should().BeNull();
     }
+
+    [Fact]
+    public async Task ShouldSetHasMusic()
+    {
+        var sceneContext = A.Fake<IParsingSceneContext>(i => i.Strict());
+        A.CallTo(() => sceneContext.HasMusic).Returns(false);
+        A.CallToSet(() => sceneContext.HasMusic).To(true).DoesNothing();
+
+        var context = A.Fake<IParsingContext>(i => i.Strict());
+        A.CallTo(() => context.SceneContext).Returns(sceneContext);
+        A.CallTo(() => context.RegisterDismissNode(sut.DismissNode)).DoesNothing();
+
+        var reader = A.Dummy<XmlReader>();
+        var parentContext = new FakeParentParsingContext();
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).ParsedText = "chaos");
+
+        await sut.ParseAsync(reader, context, parentContext);
+
+        A.CallToSet(() => sceneContext.HasMusic).To(true).MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task ShouldLogErrorWhenHasMusicIsTrue()
+    {
+        var message = "Mais de uma definição de música para a mesma cena.";
+
+        var reader = A.Dummy<XmlReader>();
+        var parentContext = new FakeParentParsingContext();
+
+        var sceneContext = A.Fake<IParsingSceneContext>(i => i.Strict());
+        A.CallTo(() => sceneContext.HasMusic).Returns(true);
+
+        var context = A.Fake<IParsingContext>(i => i.Strict());
+        A.CallTo(() => context.SceneContext).Returns(sceneContext);
+        A.CallTo(() => context.LogError(reader, message)).DoesNothing();
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).ParsedText = "chaos");
+
+        await sut.ParseAsync(reader, context, parentContext);
+
+        A.CallTo(() => context.LogError(reader, message)).MustHaveHappenedOnceExactly();
+    }
 }

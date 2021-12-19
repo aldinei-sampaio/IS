@@ -56,7 +56,7 @@ public class BackgroundNodeParser : IBackgroundNodeParser
             return;
         }
 
-        if (context.Nodes is null || context.Nodes.Count == 0)
+        if (context.Nodes.Count == 0)
         {
             parsingContext.LogError(reader, "Nome de imagem ou elemento filho era esperado.");
             return;

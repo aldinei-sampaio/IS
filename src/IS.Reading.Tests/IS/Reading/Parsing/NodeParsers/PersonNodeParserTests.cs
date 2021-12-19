@@ -140,4 +140,31 @@ public class PersonNodeParserTests
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.AggregationSettings))
             .MustHaveHappenedOnceExactly();
     }
+
+    [Fact]
+    public async Task ShouldLogErrorWhenHasMoodIsTrue()
+    {
+        var message = "Foi definido humor mas não foi definida uma fala ou pensamento correspondente.";
+
+        var reader = A.Dummy<XmlReader>();
+        var parentContext = new FakeParentParsingContext();
+
+        var sceneContext = A.Fake<IParsingSceneContext>(i => i.Strict());
+        A.CallTo(() => sceneContext.HasMood).Returns(true);
+
+        var context = A.Fake<IParsingContext>(i => i.Strict());
+        A.CallTo(() => context.SceneContext).Returns(sceneContext);
+        A.CallTo(() => context.LogError(reader, message)).DoesNothing();
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+                    .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).ParsedText = "lorenipsum");
+
+        var dummyNode = A.Dummy<INode>();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.AggregationSettings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(dummyNode));
+
+        await sut.ParseAsync(reader, context, parentContext);
+
+        A.CallTo(() => context.LogError(reader, message)).MustHaveHappenedOnceExactly();
+    }
 }
