@@ -1,6 +1,7 @@
 ﻿using IS.Reading.Events;
 using IS.Reading.Navigation;
 using IS.Reading.State;
+using IS.Reading.Variables;
 using Microsoft.Extensions.DependencyInjection;
 using System.Xml;
 

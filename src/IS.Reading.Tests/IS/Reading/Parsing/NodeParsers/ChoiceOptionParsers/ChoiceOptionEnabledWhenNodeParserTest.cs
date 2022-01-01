@@ -1,5 +1,6 @@
 ﻿using IS.Reading.Choices;
-using IS.Reading.Navigation;
+using IS.Reading.Conditions;
+using IS.Reading.Parsing.ConditionParsers;
 using IS.Reading.Parsing.TextParsers;
 using System.Xml;
 

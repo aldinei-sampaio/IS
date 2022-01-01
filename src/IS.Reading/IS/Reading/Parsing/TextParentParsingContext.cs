@@ -1,4 +1,4 @@
-﻿using IS.Reading.Navigation;
+﻿using IS.Reading.Conditions;
 
 namespace IS.Reading.Parsing;
 

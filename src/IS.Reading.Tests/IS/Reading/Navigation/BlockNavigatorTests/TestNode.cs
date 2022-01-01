@@ -1,4 +1,6 @@
-﻿namespace IS.Reading.Navigation.BlockNavigatorTests;
+﻿using IS.Reading.Conditions;
+
+namespace IS.Reading.Navigation.BlockNavigatorTests;
 
 public class TestNode : INode
 {

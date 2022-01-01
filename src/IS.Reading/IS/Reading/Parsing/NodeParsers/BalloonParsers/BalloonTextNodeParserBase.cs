@@ -16,25 +16,34 @@ public abstract class BalloonTextNodeParserBase : INodeParser
 
     public BalloonTextNodeParserBase(
         IElementParser elementParser,
-        IBalloonChildNodeParser childParser
+        IBalloonChildNodeParser childParser,
+        ISetNodeParser setNodeParser,
+        IUnsetNodeParser unsetNodeParser
     )
     {
         this.elementParser = elementParser;
         this.childParser = childParser;
         Settings = ElementParserSettings.AggregatedNonRepeat(childParser);
-        AggregationSettings = ElementParserSettings.Aggregated(childParser);
+        AggregationSettings = ElementParserSettings.Aggregated(childParser, setNodeParser, unsetNodeParser);
     }
 
     public BalloonTextNodeParserBase(
         IElementParser elementParser,
         IBalloonChildNodeParser childParser,
-        IMoodNodeParser moodNodeParser
+        IMoodNodeParser moodNodeParser,
+        ISetNodeParser setNodeParser,
+        IUnsetNodeParser unsetNodeParser
     )
     {
         this.elementParser = elementParser;
         this.childParser = childParser;
         Settings = ElementParserSettings.AggregatedNonRepeat(childParser);
-        AggregationSettings = ElementParserSettings.Aggregated(childParser, moodNodeParser);
+        AggregationSettings = ElementParserSettings.Aggregated(
+            childParser, 
+            moodNodeParser, 
+            setNodeParser,
+            unsetNodeParser
+        );
     }
 
     public string Name => childParser.Name;

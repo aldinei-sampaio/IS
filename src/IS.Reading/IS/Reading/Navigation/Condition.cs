@@ -1,4 +1,5 @@
-﻿using IS.Reading.State;
+﻿using IS.Reading.Conditions;
+using IS.Reading.Variables;
 
 namespace IS.Reading.Navigation;
 
@@ -34,6 +35,16 @@ public class Condition : ICondition
         };
     }
 
+    public bool EvaluateFor(string? value)
+    {
+        return Operator switch
+        {
+            ConditionType.Defined => value is not null,
+            ConditionType.Undefined => value is null,
+            _ => false
+        };
+    }
+
     public override string ToString()
     {
         var joinedNames = string.Join(",", VariableNames);
@@ -52,17 +63,32 @@ public class Condition : ICondition
         };
     }
 
+    private bool EvaluateFor(IVariableDictionary variables, string name)
+    {
+        var intValue = variables.Integers[name];
+        if (intValue.HasValue)
+            return EvaluateFor(intValue.Value);
+        return EvaluateFor(variables.Strings[name]);
+    }
+
     public bool Evaluate(IVariableDictionary variables)
     {
-        if (VariableNames.Length == 1)
-            return EvaluateFor(variables[VariableNames[0]]);
-
         var mustHaveDefined = Operator == ConditionType.Defined;
+
+        if (VariableNames.Length == 1)
+        {
+            if (mustHaveDefined)
+                return variables.IsSet(VariableNames[0]);
+
+            if (Operator == ConditionType.Undefined)
+                return !variables.IsSet(VariableNames[0]);
+
+            return EvaluateFor(variables, VariableNames[0]);
+        }
 
         foreach (var name in VariableNames)
         {
-            var value = variables[name];
-            if (value != 0)
+            if (variables.IsSet(name))
                 return mustHaveDefined;
         }
 

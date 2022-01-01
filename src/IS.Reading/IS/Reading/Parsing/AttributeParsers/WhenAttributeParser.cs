@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using IS.Reading.Parsing.ConditionParsers;
+using System.Xml;
 
 namespace IS.Reading.Parsing.AttributeParsers;
 
@@ -15,12 +16,12 @@ public class WhenAttributeParser : IWhenAttributeParser
 
     public IAttribute? Parse(XmlReader reader, IParsingContext parsingContext)
     {
-        var condition = conditionParser.Parse(reader.Value);
+        var result = conditionParser.Parse(reader.Value);
 
-        if (condition is not null)
-            return new WhenAttribute(condition);
+        if (result.Condition is not null)
+            return new WhenAttribute(result.Condition);
 
-        parsingContext.LogError(reader, "Condição 'when' inválida.");
+        parsingContext.LogError(reader, "Condição 'when' inválida." + result.Message);
         return null;
     }
 }

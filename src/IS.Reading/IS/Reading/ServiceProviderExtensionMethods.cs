@@ -2,6 +2,7 @@
 using IS.Reading.Navigation;
 using IS.Reading.Parsing;
 using IS.Reading.Parsing.AttributeParsers;
+using IS.Reading.Parsing.ConditionParsers;
 using IS.Reading.Parsing.NodeParsers;
 using IS.Reading.Parsing.NodeParsers.BackgroundParsers;
 using IS.Reading.Parsing.NodeParsers.BalloonParsers;
@@ -10,6 +11,7 @@ using IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 using IS.Reading.Parsing.NodeParsers.PersonParsers;
 using IS.Reading.Parsing.TextParsers;
 using IS.Reading.State;
+using IS.Reading.Variables;
 using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics.CodeAnalysis;
 
@@ -38,6 +40,7 @@ public static class ServiceProviderExtensionMethods
         services.AddSingleton<INameTextParser, NameTextParser>();
         services.AddSingleton<IMoodTextParser, MoodTextParser>();
         services.AddSingleton<IBalloonTextParser, BalloonTextParser>();
+        services.AddSingleton<IVarSetTextParser, VarSetTextParser>();
 
         // Node parsers
         services.AddSingleton<IMusicNodeParser, MusicNodeParser>();
@@ -48,6 +51,7 @@ public static class ServiceProviderExtensionMethods
         services.AddSingleton<IMoodNodeParser, MoodNodeParser>();
         services.AddSingleton<IPersonNodeParser, PersonNodeParser>();
         services.AddSingleton<IPersonTextNodeParser, PersonTextNodeParser>();
+        services.AddSingleton<ISetNodeParser, SetNodeParser>();
 
         services.AddSingleton<IBackgroundLeftNodeParser, BackgroundLeftNodeParser>();
         services.AddSingleton<IBackgroundRightNodeParser, BackgroundRightNodeParser>();

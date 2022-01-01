@@ -19,7 +19,9 @@ public class RootBlockParser : IRootBlockParser
         IProtagonistNodeParser protagonistNodeParser,
         IPersonNodeParser personNodeParser,
         INarrationNodeParser narrationNodeParser,
-        ITutorialNodeParser tutorialNodeParser
+        ITutorialNodeParser tutorialNodeParser,
+        ISetNodeParser setNodeParser,
+        IUnsetNodeParser unsetNodeParser
     )
     {
         this.elementParser = elementParser;
@@ -31,7 +33,9 @@ public class RootBlockParser : IRootBlockParser
             protagonistNodeParser,
             personNodeParser,
             narrationNodeParser,
-            tutorialNodeParser
+            tutorialNodeParser,
+            setNodeParser,
+            unsetNodeParser
         );
     }
 

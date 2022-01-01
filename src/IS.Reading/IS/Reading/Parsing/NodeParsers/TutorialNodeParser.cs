@@ -4,8 +4,13 @@ namespace IS.Reading.Parsing.NodeParsers;
 
 public class TutorialNodeParser : BalloonTextNodeParserBase, ITutorialNodeParser
 {
-    public TutorialNodeParser(IElementParser elementParser, ITutorialChildNodeParser childParser)
-        : base(elementParser, childParser)
+    public TutorialNodeParser(
+        IElementParser elementParser, 
+        ITutorialChildNodeParser childParser,
+        ISetNodeParser setNodeParser,
+        IUnsetNodeParser unsetNodeParser
+    )
+        : base(elementParser, childParser, setNodeParser, unsetNodeParser)
     {        
     }
 }

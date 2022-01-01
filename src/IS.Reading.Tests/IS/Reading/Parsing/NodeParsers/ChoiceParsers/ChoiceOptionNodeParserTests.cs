@@ -1,5 +1,5 @@
 ﻿using IS.Reading.Choices;
-using IS.Reading.Navigation;
+using IS.Reading.Conditions;
 using IS.Reading.Parsing.AttributeParsers;
 using IS.Reading.Parsing.NodeParsers.ChoiceOptionParsers;
 using IS.Reading.Parsing.TextParsers;

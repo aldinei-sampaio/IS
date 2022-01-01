@@ -1,4 +1,5 @@
-﻿using IS.Reading.Parsing.TextParsers;
+﻿using IS.Reading.Parsing.ConditionParsers;
+using IS.Reading.Parsing.TextParsers;
 using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers.ChoiceOptionParsers;
@@ -26,13 +27,13 @@ public class ChoiceOptionEnabledWhenNodeParser : IChoiceOptionEnabledWhenNodePar
         if (myContext.ParsedText is null)
             return;
 
-        var condition = conditionParser.Parse(myContext.ParsedText);
-        if (condition is null)
+        var result = conditionParser.Parse(myContext.ParsedText);
+        if (result.Condition is null)
         {
-            parsingContext.LogError(reader, "Condição inválida.");
+            parsingContext.LogError(reader, "Condição 'enabledwhen' inválida. " + result.Message);
             return;
         }
         var ctx = (IChoiceOptionParentParsingContext)parentParsingContext;
-        ctx.Option.EnabledWhen = condition;
+        ctx.Option.EnabledWhen = result.Condition;
     }
 }

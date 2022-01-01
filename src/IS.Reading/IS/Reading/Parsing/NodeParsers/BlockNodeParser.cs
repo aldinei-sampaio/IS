@@ -21,7 +21,9 @@ public class BlockNodeParser : IBlockNodeParser
         IProtagonistNodeParser protagonistNodeParser,
         IPersonNodeParser personNodeParser,
         INarrationNodeParser narrationNodeParser,
-        ITutorialNodeParser tutorialNodeParser
+        ITutorialNodeParser tutorialNodeParser,
+        ISetNodeParser setNodeParser,
+        IUnsetNodeParser unsetNodeParser
     )
     {
         this.elementParser = elementParser;
@@ -34,7 +36,9 @@ public class BlockNodeParser : IBlockNodeParser
             protagonistNodeParser,
             personNodeParser,
             narrationNodeParser,
-            tutorialNodeParser
+            tutorialNodeParser,
+            setNodeParser,
+            unsetNodeParser
         );
         Settings.ChildParsers.Add(this);
     }

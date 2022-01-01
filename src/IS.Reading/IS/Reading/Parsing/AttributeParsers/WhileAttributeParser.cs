@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using IS.Reading.Parsing.ConditionParsers;
+using System.Xml;
 
 namespace IS.Reading.Parsing.AttributeParsers;
 
@@ -15,12 +16,12 @@ public class WhileAttributeParser : IWhileAttributeParser
 
     public IAttribute? Parse(XmlReader reader, IParsingContext parsingContext)
     {
-        var condition = conditionParser.Parse(reader.Value);
+        var result = conditionParser.Parse(reader.Value);
 
-        if (condition is not null)
-            return new WhileAttribute(condition);
+        if (result.Condition is not null)
+            return new WhileAttribute(result.Condition);
 
-        parsingContext.LogError(reader, "Condição 'while' inválida.");
+        parsingContext.LogError(reader, "Condição 'while' inválida. " + result.Message);
         return null;
     }
 }

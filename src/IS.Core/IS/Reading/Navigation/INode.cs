@@ -1,4 +1,6 @@
-﻿namespace IS.Reading.Navigation;
+﻿using IS.Reading.Conditions;
+
+namespace IS.Reading.Navigation;
 
 public interface INode
 {

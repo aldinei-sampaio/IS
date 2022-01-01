@@ -1,27 +1,29 @@
-﻿namespace IS.Reading.State;
+﻿namespace IS.Reading.Variables;
 
-public class VariableDictionary : IVariableDictionary
+public class IntegerDictionary : IIntegerDictionary
 {
     private readonly Dictionary<string, int> dic = new(StringComparer.OrdinalIgnoreCase);
 
     public int Count => dic.Count;
 
-    public int this[string name]
+    public int? this[string name]
     {
         get {
             if (dic.TryGetValue(name, out var value))
                 return value;
-            return 0;
+            return null;
         }
         set
         {
-            if (value == 0)
+            if (value is null)
             {
                 if (dic.ContainsKey(name))
                     dic.Remove(name);
                 return;
             }
-            dic[name] = value;
+            dic[name] = value.Value;
         }
     }
+
+    public bool IsSet(string name) => dic.ContainsKey(name);
 }

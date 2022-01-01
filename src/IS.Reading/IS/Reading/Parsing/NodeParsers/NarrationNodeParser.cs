@@ -4,8 +4,13 @@ namespace IS.Reading.Parsing.NodeParsers;
 
 public class NarrationNodeParser : BalloonTextNodeParserBase, INarrationNodeParser
 {
-    public NarrationNodeParser(IElementParser elementParser, INarrationChildNodeParser childParser)
-        : base(elementParser, childParser)
-    {        
+    public NarrationNodeParser(
+        IElementParser elementParser, 
+        INarrationChildNodeParser childParser, 
+        ISetNodeParser setNodeParser, 
+        IUnsetNodeParser unsetNodeParser
+    )
+        : base(elementParser, childParser, setNodeParser, unsetNodeParser)
+    {
     }
 }

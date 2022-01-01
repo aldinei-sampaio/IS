@@ -1,6 +1,6 @@
-﻿using IS.Reading.State;
+﻿using IS.Reading.Variables;
 
-namespace IS.Reading.Navigation
+namespace IS.Reading.Conditions
 {
     public interface ICondition
     {

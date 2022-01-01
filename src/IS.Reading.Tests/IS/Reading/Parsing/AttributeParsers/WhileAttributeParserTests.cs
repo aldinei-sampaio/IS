@@ -1,4 +1,5 @@
-﻿using IS.Reading.Navigation;
+﻿using IS.Reading.Conditions;
+using IS.Reading.Parsing.ConditionParsers;
 using System.Xml;
 
 namespace IS.Reading.Parsing.AttributeParsers;

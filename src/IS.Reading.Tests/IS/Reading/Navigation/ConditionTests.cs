@@ -1,5 +1,5 @@
 ﻿using IS.Reading.Parsing;
-using IS.Reading.State;
+using IS.Reading.Variables;
 
 namespace IS.Reading.Navigation;
 

@@ -20,7 +20,9 @@ public class PersonNodeParser : IPersonNodeParser
         ISpeechNodeParser speechNodeParser,
         IThoughtNodeParser thoughtNodeParser,
         IMoodNodeParser moodNodeParser,
-        IPauseNodeParser pauseNodeParser
+        IPauseNodeParser pauseNodeParser,
+        ISetNodeParser setNodeParser,
+        IUnsetNodeParser unsetNodeParser
     )
     {
         this.elementParser = elementParser;
@@ -31,7 +33,9 @@ public class PersonNodeParser : IPersonNodeParser
             speechNodeParser, 
             thoughtNodeParser,
             moodNodeParser,
-            pauseNodeParser
+            pauseNodeParser,
+            setNodeParser,
+            unsetNodeParser
         );
     }
 
