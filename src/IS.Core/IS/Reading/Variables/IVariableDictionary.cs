@@ -2,9 +2,7 @@
 
 public interface IVariableDictionary
 {
-    IStringDictionary Strings { get; }
-    IIntegerDictionary Integers { get; }
+    object? this[string name] { get; set; }
     int Count { get; }
-    void Unset(string name);
     bool IsSet(string name);
 }

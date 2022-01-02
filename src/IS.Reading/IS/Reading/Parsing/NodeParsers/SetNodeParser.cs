@@ -1,5 +1,4 @@
-﻿using IS.Reading.Navigation;
-using IS.Reading.Nodes;
+﻿using IS.Reading.Nodes;
 using IS.Reading.Parsing.TextParsers;
 using IS.Reading.Variables;
 using System.Text.RegularExpressions;
@@ -58,7 +57,7 @@ public class SetNodeParser : ISetNodeParser
         var op = match.Groups["op"].Value;
         var value = int.Parse(match.Groups["value"].Value);
 
-        return new IntegerSet(name, -value);
+        return new VarSet(name, -value);
     }
 
     private static IVarSet? TryCreateIntegerNonNegativeSetVarSet(string parsedText)
@@ -77,7 +76,7 @@ public class SetNodeParser : ISetNodeParser
         if (op == "-=")
             return new IntegerIncrement(name, -value);
 
-        return new IntegerSet(name, value);
+        return new VarSet(name, value);
     }
 
     private static IVarSet? TryCreateIntegerIncrementVarSet(string parsedText)
@@ -101,6 +100,6 @@ public class SetNodeParser : ISetNodeParser
         var name = match.Groups["name"].Value;
         var value = match.Groups["value"].Value;
 
-        return new StringSet(name, value);
+        return new VarSet(name, value);
     }
 }

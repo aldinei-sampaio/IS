@@ -1,53 +1,30 @@
 ﻿namespace IS.Reading.Variables;
 
-public class VariableDictionary : IVariableDictionary, IIntegerDictionary, IStringDictionary
+public class VariableDictionary : IVariableDictionary
 {
-    private readonly IIntegerDictionary integerDictionary;
-    private readonly IStringDictionary stringDictionary;
+    private readonly Dictionary<string, object> dic = new(StringComparer.OrdinalIgnoreCase);
 
-    public VariableDictionary(IIntegerDictionary integerDictionary, IStringDictionary stringDictionary)
-    {
-        this.integerDictionary = integerDictionary;
-        this.stringDictionary = stringDictionary;
-    }
-
-    int? IIntegerDictionary.this[string name] { 
-        get => integerDictionary[name]; 
+    public object? this[string name] {
+        get
+        {
+            if (dic.TryGetValue(name, out object? value))
+                return value;
+            return null;
+        }
         set {
-            stringDictionary[name] = null;
-            integerDictionary[name] = value;
+            if (value is null)
+            {
+                if (dic.ContainsKey(name))
+                    dic.Remove(name);
+            }
+            else
+            {
+                dic[name] = value;
+            }
         } 
     }
 
-    string? IStringDictionary.this[string name] {
-        get => stringDictionary[name];
-        set
-        {
-            integerDictionary[name] = null;
-            stringDictionary[name] = value;
-        }
-    }
+    public int Count => dic.Count;
 
-    public IStringDictionary Strings => this;
-
-    public IIntegerDictionary Integers => this;
-
-    public int Count => Strings.Count + Integers.Count;
-
-    int IIntegerDictionary.Count => stringDictionary.Count;
-
-    bool IIntegerDictionary.IsSet(string name) => integerDictionary.IsSet(name);
-
-    int IStringDictionary.Count => integerDictionary.Count;
-
-    bool IStringDictionary.IsSet(string name) => stringDictionary.IsSet(name);
-
-    public void Unset(string name)
-    {
-        integerDictionary[name] = null;
-        stringDictionary[name] = null;
-    }
-
-    public bool IsSet(string name)
-        => integerDictionary.IsSet(name) || stringDictionary.IsSet(name);
+    public bool IsSet(string name) => dic.ContainsKey(name);
 }

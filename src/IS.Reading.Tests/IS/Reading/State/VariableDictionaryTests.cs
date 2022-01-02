@@ -1,4 +1,6 @@
-﻿namespace IS.Reading.State;
+﻿using IS.Reading.Variables;
+
+namespace IS.Reading.State;
 
 public class VariableDictionaryTests
 {

@@ -11,8 +11,9 @@ public class IntegerIncrement : IIntegerIncrement
 
     public IVarSet Execute(IVariableDictionary variables)
     {
-        var oldValue = variables.Integers[Name];
-        variables.Integers[Name] = (oldValue ?? 0) + Increment;
+        var oldValue = variables[Name];
+        var intValue = oldValue as int?;
+        variables[Name] = (intValue ?? 0) + Increment;
         return new ReversedIntegerIncrement(Name, Increment, oldValue);
     }
 }

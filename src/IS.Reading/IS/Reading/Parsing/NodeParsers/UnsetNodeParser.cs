@@ -32,7 +32,7 @@ public class UnsetNodeParser : IUnsetNodeParser
         if (parsedText is null)
             return;
 
-        var varSet = new VarUnset(parsedText);
+        var varSet = new VarSet(parsedText, null);
 
         parentParsingContext.AddNode(new VarSetNode(varSet));
     }
