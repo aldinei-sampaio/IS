@@ -67,7 +67,7 @@ public class ChoiceOptionEnabledWhenNodeParserTest
     [Fact]
     public async Task ShouldLogErrorWhenParsedTextIsNotAValidCondition()
     {
-        const string message = "Condição inválida.";
+        const string message = "Condição EnabledWhen inválida. Gibberish";
 
         var reader = A.Dummy<XmlReader>();
         var context = A.Fake<IParsingContext>(i => i.Strict());
@@ -75,8 +75,12 @@ public class ChoiceOptionEnabledWhenNodeParserTest
 
         var parentContext = A.Fake<IChoiceOptionParentParsingContext>(i => i.Strict());
 
+        var parsedCondition = A.Dummy<IParsedCondition>();
+        A.CallTo(() => parsedCondition.Condition).Returns(null);
+        A.CallTo(() => parsedCondition.Message).Returns("Gibberish");
+
         var condition = A.Fake<ICondition>(i => i.Strict());
-        A.CallTo(() => conditionParser.Parse("gibberish")).Returns(null);
+        A.CallTo(() => conditionParser.Parse("gibberish")).Returns(parsedCondition);
 
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
             .Invokes(i => i.GetArgument<IParentParsingContext>(2).ParsedText = "gibberish");

@@ -26,24 +26,25 @@ public class WhileAttributeParserTests
 
         var sut = new WhileAttributeParser(parser);
         var result = sut.Parse(reader, context);
-        result.Should().NotBeNull();
         result.Should().BeOfType<WhileAttribute>()
-            .Which.Condition.Should().BeSameAs(parsedCondition);
+            .Which.Condition.Should().BeSameAs(parsedCondition.Condition);
     }
 
     [Fact]
     public void InvalidCondition()
     {
-        const string message = "Condição 'while' inválida.";
+        const string message = "Condição 'while' inválida. Gibberish";
 
         var reader = CreateReader("<t while=\"abc\" />");
         var context = A.Fake<IParsingContext>(i => i.Strict());
         A.CallTo(() => context.LogError(reader, message)).DoesNothing();
 
-        var condition = A.Dummy<ICondition>();
+        var parsedCondition = A.Fake<IParsedCondition>(i => i.Strict());
+        A.CallTo(() => parsedCondition.Condition).Returns(null);
+        A.CallTo(() => parsedCondition.Message).Returns("Gibberish");
 
         var parser = A.Fake<IConditionParser>(i => i.Strict());
-        A.CallTo(() => parser.Parse("abc")).Returns(null);
+        A.CallTo(() => parser.Parse("abc")).Returns(parsedCondition);
 
         var sut = new WhileAttributeParser(parser);
         var result = sut.Parse(reader, context);

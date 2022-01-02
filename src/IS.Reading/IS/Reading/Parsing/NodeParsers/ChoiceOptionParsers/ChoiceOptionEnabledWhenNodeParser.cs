@@ -30,7 +30,7 @@ public class ChoiceOptionEnabledWhenNodeParser : IChoiceOptionEnabledWhenNodePar
         var result = conditionParser.Parse(myContext.ParsedText);
         if (result.Condition is null)
         {
-            parsingContext.LogError(reader, "Condição 'enabledwhen' inválida. " + result.Message);
+            parsingContext.LogError(reader, "Condição EnabledWhen inválida. " + result.Message);
             return;
         }
         var ctx = (IChoiceOptionParentParsingContext)parentParsingContext;

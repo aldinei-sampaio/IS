@@ -33,16 +33,18 @@ public class WhenAttributeParserTests
     [Fact]
     public void InvalidCondition()
     {
-        const string message = "Condição 'when' inválida.";
+        const string message = "Condição 'when' inválida. Gibberish";
 
         var reader = CreateReader("<t when=\"abc\" />");
         var context = A.Fake<IParsingContext>(i => i.Strict());
         A.CallTo(() => context.LogError(reader, message)).DoesNothing();
 
-        var condition = A.Dummy<ICondition>();
+        var parsedCondition = A.Dummy<IParsedCondition>();
+        A.CallTo(() => parsedCondition.Condition).Returns(null);
+        A.CallTo(() => parsedCondition.Message).Returns("Gibberish");
 
         var parser = A.Fake<IConditionParser>(i => i.Strict());
-        A.CallTo(() => parser.Parse("abc")).Returns(null);
+        A.CallTo(() => parser.Parse("abc")).Returns(parsedCondition);
 
         var sut = new WhenAttributeParser(parser);
         var result = sut.Parse(reader, context);

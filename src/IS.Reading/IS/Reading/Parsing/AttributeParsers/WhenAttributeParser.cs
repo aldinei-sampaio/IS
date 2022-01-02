@@ -21,7 +21,7 @@ public class WhenAttributeParser : IWhenAttributeParser
         if (result.Condition is not null)
             return new WhenAttribute(result.Condition);
 
-        parsingContext.LogError(reader, "Condição 'when' inválida." + result.Message);
+        parsingContext.LogError(reader, "Condição 'when' inválida. " + result.Message);
         return null;
     }
 }
