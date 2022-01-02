@@ -154,6 +154,11 @@ public class WordReader
                 WordType = WordType.Different;
                 Word = span[0..1].ToString();
                 return true;
+            case ',':
+                currentPosition++;
+                WordType = WordType.Comma;
+                Word = span[0..1].ToString();
+                return true;
             default:
                 WordType = WordType.Invalid;
                 Word = span[0..1].ToString();
@@ -246,32 +251,80 @@ public class WordReader
 
     private bool CheckForKeyWords(ReadOnlySpan<char> span)
     {
-        if (span.Length == 2 && span[0] == 'o' && span[1] == 'r')
+        if (span.Length == 3)
         {
-            WordType = WordType.Or;
-            Word = span.ToString();
-            return true;
+            if (span[0] == 'o' &&
+                span[1] == 'r')
+            {
+                WordType = WordType.Or;
+                Word = span.ToString();
+                return true;
+            }
+
+            if (span[0] == 'i')
+            {
+                if (span[1] == 'n')
+                {
+                    WordType = WordType.In;
+                    Word = span.ToString();
+                    return true;
+                }
+                if (span[1] == 's')
+                {
+                    WordType = WordType.Is;
+                    Word = span.ToString();
+                    return true;
+                }
+            }
         }
 
         if (span.Length == 3)
         {
-            if (span[0] == 'a' && span[1] == 'n' && span[2] == 'd')
+            if (span[0] == 'a' && 
+                span[1] == 'n' && 
+                span[2] == 'd')
             {
                 WordType = WordType.And;
                 Word = span.ToString();
                 return true;
             }
 
-            if (span[0] == 'n' && span[1] == 'o' && span[2] == 't')
+            if (span[0] == 'n' && 
+                span[1] == 'o' && 
+                span[2] == 't')
             {
-                WordType = WordType.None;
+                WordType = WordType.Not;
                 Word = span.ToString();
                 return true;
             }
+        }
+
+        if (span.Length == 4 &&
+            span[0] == 'n' &&
+            span[1] == 'u' &&
+            span[2] == 'l' &&
+            span[3] == 'l')
+        {
+            WordType = WordType.Null;
+            Word = span.ToString();
+            return true;
+        }
+
+        if (span.Length == 7 &&
+            span[0] == 'b' &&
+            span[1] == 'e' &&
+            span[2] == 't' &&
+            span[3] == 'w' &&
+            span[4] == 'e' &&
+            span[5] == 'e' &&
+            span[6] == 'n')
+        {
+            WordType = WordType.Between;
+            Word = span.ToString();
+            return true;
         }
 
         Word = span.ToString();
         return true;
     }
 }
-

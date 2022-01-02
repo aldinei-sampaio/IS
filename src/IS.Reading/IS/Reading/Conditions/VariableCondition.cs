@@ -17,4 +17,6 @@ public class VariableCondition : IConditionKeyword
 
         return null;
     }
+
+    public void WriteTo(TextWriter textWriter) => textWriter.Write(Name);
 }

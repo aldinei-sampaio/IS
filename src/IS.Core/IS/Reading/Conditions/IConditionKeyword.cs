@@ -2,7 +2,7 @@
 
 namespace IS.Reading.Conditions;
 
-public interface IConditionKeyword
+public interface IConditionKeyword : IWritable
 {
     abstract object? Evaluate(IVariableDictionary variables);
 }

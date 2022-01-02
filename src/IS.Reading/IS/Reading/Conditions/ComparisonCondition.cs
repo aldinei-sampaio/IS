@@ -12,4 +12,5 @@ public abstract class ComparisonCondition : ICondition
         Right = right;
     }
     public abstract bool Evaluate(IVariableDictionary variables);
+    public abstract void WriteTo(TextWriter textWriter);
 }

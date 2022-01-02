@@ -1,9 +1,8 @@
 ﻿using IS.Reading.Variables;
 
-namespace IS.Reading.Conditions
+namespace IS.Reading.Conditions;
+
+public interface ICondition : IWritable
 {
-    public interface ICondition
-    {
-        bool Evaluate(IVariableDictionary variables);
-    }
+    bool Evaluate(IVariableDictionary variables);
 }

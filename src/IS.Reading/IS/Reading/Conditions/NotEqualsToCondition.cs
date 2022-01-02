@@ -20,4 +20,11 @@ public class NotEqualsToCondition : ComparisonCondition
 
         return leftValue.CompareTo(rightValue) != 0;
     }
+
+    public override void WriteTo(TextWriter textWriter)
+    {
+        Left.WriteTo(textWriter);
+        textWriter.Write(" != ");
+        Right.WriteTo(textWriter);
+    }
 }

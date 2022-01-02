@@ -14,4 +14,13 @@ public class OrCondition : ICondition
 
     public bool Evaluate(IVariableDictionary variables)
         => Left.Evaluate(variables) || Right.Evaluate(variables);
+
+    public void WriteTo(TextWriter textWriter)
+    {
+        textWriter.Write("(");
+        Left.WriteTo(textWriter);
+        textWriter.Write(") Or (");
+        Right.WriteTo(textWriter);
+        textWriter.Write(")");
+    }
 }

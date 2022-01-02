@@ -17,6 +17,11 @@ public enum WordType
     GreaterThan,
     EqualOrGreaterThan,
     LowerThan,
-    EqualOrLowerThan
+    EqualOrLowerThan,
+    In,
+    Between,
+    Comma,
+    Is,
+    Null
 }
 

@@ -8,11 +8,11 @@ public class ConditionParser : IConditionParser
     {
         var reader = new WordReader(text);
         var messages = new List<string>();
-        var condition = ReadRoot(reader, messages);
+        var condition = ReadRoot(reader, messages, false);
         return new ParsedCondition(condition, string.Join("\r\n", messages));
     }
 
-    private static ICondition? ReadRoot(WordReader reader, List<string> messages)
+    private static ICondition? ReadRoot(WordReader reader, List<string> messages, bool allowCloseParenthesys)
     {
         if (!reader.Read())
         {
@@ -44,12 +44,12 @@ public class ConditionParser : IConditionParser
                         messages.Add("Era esperado um operador.");
                         return null;
                     }
-                    current = ReadRoot(reader, messages);
+                    current = ReadRoot(reader, messages, true);
                     if (current is null)
                         return null;
                     break;
                 case WordType.CloseParenthesys:
-                    if (current is null)
+                    if (!allowCloseParenthesys || current is null)
                     {
                         messages.Add("Fecha parênteses não esperado.");
                         return null;
@@ -62,7 +62,7 @@ public class ConditionParser : IConditionParser
                             messages.Add("Operador 'And' não esperado.");
                             return null;
                         }
-                        var right = ReadRoot(reader, messages);
+                        var right = ReadRoot(reader, messages, false);
                         if (right is null)
                             return null;
                         current = new AndCondition(current, right);
@@ -75,7 +75,7 @@ public class ConditionParser : IConditionParser
                             messages.Add("Operador 'Or' não esperado.");
                             return null;
                         }
-                        var right = ReadRoot(reader, messages);
+                        var right = ReadRoot(reader, messages, false);
                         if (right is null)
                             return null;
                         current = new OrCondition(current, right);
@@ -88,7 +88,7 @@ public class ConditionParser : IConditionParser
                             messages.Add("Operador 'Not' não esperado.");
                             return null;
                         }
-                        var right = ReadRoot(reader, messages);
+                        var right = ReadRoot(reader, messages, false);
                         if (right is null)
                             return null;
                         current = new NotCondition(right);
@@ -198,9 +198,132 @@ public class ConditionParser : IConditionParser
                         return null;
                     return new EqualOrLowerThanCondition(left, right);
                 }
+            case WordType.In:
+                return ReadInCondition(left, false, reader, messages);
+
+            case WordType.Between:
+                return ReadBetweenCondition(left, false, reader, messages);
+
+            case WordType.Not:
+                {
+                    if (!ReadExpectingNotBeTheEnd(reader, messages))
+                        return null;
+
+                    if (reader.WordType == WordType.In)
+                        return ReadInCondition(left, true, reader, messages);
+
+                    if (reader.WordType == WordType.Between)
+                        return ReadBetweenCondition(left, true, reader, messages);
+
+                    messages.Add("Era esperado In ou Between.");
+                    return null;
+                }
+            case WordType.Is:
+                return ReadNullCondition(left, reader, messages);
+
             default:
                 messages.Add("Era esperado um operador de comparação.");
                 return null;
         }
+    }
+
+    private static ICondition? ReadNullCondition(IConditionKeyword operand, WordReader reader, List<string> messages)
+    {
+        if (!ReadExpectingNotBeTheEnd(reader, messages))
+            return null;
+
+        if (reader.WordType == WordType.Null)
+            return new IsNullCondition(operand);
+
+        if (reader.WordType != WordType.Not)
+        {
+            messages.Add("Era esperado Null ou Not Null.");
+            return null;
+        }
+
+        if (!ReadExpectingNotBeTheEnd(reader, messages))
+            return null;
+
+        if (reader.WordType == WordType.Null)
+            return new IsNotNullCondition(operand);
+
+        messages.Add("Era esperado Null.");
+        return null;
+    }
+
+    private static ICondition? ReadBetweenCondition(IConditionKeyword operand, bool negated, WordReader reader, List<string> messages)
+    {
+        var min = ReadNextKeyword(reader, messages);
+        if (min is null)
+            return null;
+
+        if (!ReadExpectingNotBeTheEnd(reader, messages))
+            return null;
+
+        if (reader.WordType != WordType.And)
+        {
+            messages.Add("Condição Between mal formada.");
+            return null;
+        }
+
+        var max = ReadNextKeyword(reader, messages);
+        if (max is null)
+            return null;
+
+        if (negated)
+            return new NotBetweenCondition(operand, min, max);
+
+        return new BetweenCondition(operand, min, max);
+    }
+
+    private static ICondition? ReadInCondition(IConditionKeyword operand, bool negated, WordReader reader, List<string> messages)
+    {
+        if (!ReadExpectingNotBeTheEnd(reader, messages))
+            return null;
+
+        if (reader.WordType != WordType.OpenParenthesys)
+        {
+            if (negated)
+                messages.Add("Condição Not In mal formada.");
+            else
+                messages.Add("Condição In mal formada.");
+            return null;
+        }
+
+        var values = new List<IConditionKeyword>();
+        IConditionKeyword? value;
+
+        for (; ; )
+        {
+            value = ReadNextKeyword(reader, messages);
+            if (value is null)
+                return null;
+            values.Add(value);
+
+            if (!ReadExpectingNotBeTheEnd(reader, messages))
+                return null;
+
+            if (reader.WordType == WordType.CloseParenthesys)
+                break;
+
+            if (reader.WordType != WordType.Comma)
+            {
+                messages.Add("Condição In mal formada.");
+                return null;
+            }
+        }
+
+        if (negated)
+            return new NotInCondition(operand, values);
+
+        return new InCondition(operand, values);
+    }
+
+    private static bool ReadExpectingNotBeTheEnd(WordReader reader, List<string> messages)
+    {
+        if (reader.Read())
+            return true;
+        messages.Add("Fim inesperado da expressão.");
+        return false;
     }
 }

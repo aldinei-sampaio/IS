@@ -9,4 +9,11 @@ public class NotCondition : ICondition
 
     public bool Evaluate(IVariableDictionary variables)
         => !Condition.Evaluate(variables);
+
+    public void WriteTo(TextWriter textWriter)
+    {
+        textWriter.Write("Not (");
+        Condition.WriteTo(textWriter);
+        textWriter.Write(")");
+    }
 }
