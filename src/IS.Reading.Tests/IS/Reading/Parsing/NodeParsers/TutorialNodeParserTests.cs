@@ -9,9 +9,11 @@ public class TutorialNodeParserTests
     {
         var elementParser = A.Dummy<IElementParser>();
         var tutorialChildNodeParser = Helper.FakeParser<ITutorialChildNodeParser>("tomorrow");
-        var sut = new TutorialNodeParser(elementParser, tutorialChildNodeParser);
+        var setNodeParser = Helper.FakeParser<ISetNodeParser>("set");
+        var unsetNodeParser = Helper.FakeParser<IUnsetNodeParser>("unset");
+        var sut = new TutorialNodeParser(elementParser, tutorialChildNodeParser, setNodeParser, unsetNodeParser);
         sut.Name.Should().Be("tomorrow");
         sut.Settings.ShouldBeAggregatedNonRepeat(tutorialChildNodeParser);
-        sut.AggregationSettings.ShouldBeAggregated(tutorialChildNodeParser);
+        sut.AggregationSettings.ShouldBeAggregated(tutorialChildNodeParser, setNodeParser, unsetNodeParser);
     }
 }

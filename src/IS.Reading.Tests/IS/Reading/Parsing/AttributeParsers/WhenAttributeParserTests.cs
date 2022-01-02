@@ -19,15 +19,15 @@ public class WhenAttributeParserTests
         var reader = CreateReader("<t when=\"abc\" />");
         var context = A.Fake<IParsingContext>(i => i.Strict());
 
-        var condition = A.Dummy<ICondition>();
+        var parsedCondition = A.Dummy<IParsedCondition>();
 
         var parser = A.Fake<IConditionParser>(i => i.Strict());
-        A.CallTo(() => parser.Parse("abc")).Returns(condition);
+        A.CallTo(() => parser.Parse("abc")).Returns(parsedCondition);
 
         var sut = new WhenAttributeParser(parser);
         var result = sut.Parse(reader, context);
-        result.Should().NotBeNull();
-        result.Should().BeOfType<WhenAttribute>().Which.Condition.Should().BeSameAs(condition);
+        result.Should().BeOfType<WhenAttribute>()
+            .Which.Condition.Should().BeSameAs(parsedCondition.Condition);
     }
 
     [Fact]

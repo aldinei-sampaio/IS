@@ -16,6 +16,8 @@ public class RootBlockParserTests
     private readonly IPersonNodeParser personNodeParser;
     private readonly INarrationNodeParser narrationNodeParser;
     private readonly ITutorialNodeParser tutorialNodeParser;
+    private readonly ISetNodeParser setNodeParser;
+    private readonly IUnsetNodeParser unsetNodeParser;
     private readonly RootBlockParser sut;
 
     public RootBlockParserTests()
@@ -32,6 +34,8 @@ public class RootBlockParserTests
         personNodeParser = Helper.FakeParser<IPersonNodeParser>("person");
         narrationNodeParser = Helper.FakeParser<INarrationNodeParser>("narration");
         tutorialNodeParser = Helper.FakeParser<ITutorialNodeParser>("tutorial");
+        setNodeParser = Helper.FakeParser<ISetNodeParser>("set");
+        unsetNodeParser = Helper.FakeParser<IUnsetNodeParser>("unset");
 
         sut = new(
             elementParser, 
@@ -42,24 +46,27 @@ public class RootBlockParserTests
             protagonistNodeParser,
             personNodeParser,
             narrationNodeParser,
-            tutorialNodeParser
+            tutorialNodeParser,
+            setNodeParser,
+            unsetNodeParser
         );
     }
 
     [Fact]
     public void Initialization()
     {
-        sut.Settings.AttributeParsers.Count.Should().Be(0);
-        sut.Settings.ChildParsers["music"].Should().BeSameAs(musicNodeParser);
-        sut.Settings.ChildParsers["background"].Should().BeSameAs(backgroundNodeParser);
-        sut.Settings.ChildParsers["do"].Should().BeSameAs(blockNodeParser);
-        sut.Settings.ChildParsers["pause"].Should().BeSameAs(pauseNodeParser);
-        sut.Settings.ChildParsers["protagonist"].Should().BeSameAs(protagonistNodeParser);
-        sut.Settings.ChildParsers["person"].Should().BeSameAs(personNodeParser);
-        sut.Settings.ChildParsers["narration"].Should().BeSameAs(narrationNodeParser);
-        sut.Settings.ChildParsers["tutorial"].Should().BeSameAs(tutorialNodeParser);
-        sut.Settings.ChildParsers.Count.Should().Be(8);
-        sut.Settings.TextParser.Should().BeNull();
+        sut.Settings.ShouldBeNormal(
+            musicNodeParser,
+            backgroundNodeParser,
+            blockNodeParser,
+            pauseNodeParser,
+            protagonistNodeParser,
+            personNodeParser,
+            narrationNodeParser,
+            tutorialNodeParser,
+            setNodeParser,
+            unsetNodeParser
+        );
     }
 
     [Fact]

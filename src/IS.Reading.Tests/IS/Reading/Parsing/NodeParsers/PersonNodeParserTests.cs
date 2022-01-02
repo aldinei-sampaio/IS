@@ -13,6 +13,8 @@ public class PersonNodeParserTests
     private readonly IThoughtNodeParser thoughtNodeParser;
     private readonly IMoodNodeParser moodNodeParser;
     private readonly IPauseNodeParser pauseNodeParser;
+    private readonly ISetNodeParser setNodeParser;
+    private readonly IUnsetNodeParser unsetNodeParser;
     private readonly PersonNodeParser sut;
     
     public PersonNodeParserTests()
@@ -23,7 +25,18 @@ public class PersonNodeParserTests
         thoughtNodeParser = Helper.FakeParser<IThoughtNodeParser>("thought");
         moodNodeParser = Helper.FakeParser<IMoodNodeParser>("mood");
         pauseNodeParser = Helper.FakeParser<IPauseNodeParser>("pause");
-        sut = new(elementParser, personTextNodeParser, speechNodeParser, thoughtNodeParser, moodNodeParser, pauseNodeParser);
+        setNodeParser = Helper.FakeParser<ISetNodeParser>("set");
+        unsetNodeParser = Helper.FakeParser<IUnsetNodeParser>("unset");
+        sut = new(
+            elementParser, 
+            personTextNodeParser, 
+            speechNodeParser, 
+            thoughtNodeParser, 
+            moodNodeParser, 
+            pauseNodeParser,
+            setNodeParser,
+            unsetNodeParser
+        );
     }
 
     [Fact]
@@ -31,7 +44,14 @@ public class PersonNodeParserTests
     {
         sut.Name.Should().Be("person");
         sut.Settings.ShouldBeAggregatedNonRepeat(personTextNodeParser);
-        sut.AggregationSettings.ShouldBeAggregated(speechNodeParser, thoughtNodeParser, moodNodeParser, pauseNodeParser);
+        sut.AggregationSettings.ShouldBeAggregated(
+            speechNodeParser, 
+            thoughtNodeParser, 
+            moodNodeParser, 
+            pauseNodeParser, 
+            setNodeParser, 
+            unsetNodeParser
+        );
         sut.DismissMoodNode.Should().BeEquivalentTo(new { MoodType = (MoodType?)null });
     }
 

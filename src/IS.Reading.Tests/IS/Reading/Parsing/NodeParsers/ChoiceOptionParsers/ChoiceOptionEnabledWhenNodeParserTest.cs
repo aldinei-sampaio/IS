@@ -34,11 +34,11 @@ public class ChoiceOptionEnabledWhenNodeParserTest
         var reader = A.Dummy<XmlReader>();
         var context = A.Fake<IParsingContext>(i => i.Strict());
 
-        var condition = A.Fake<ICondition>(i => i.Strict());
-        A.CallTo(() => conditionParser.Parse("condição")).Returns(condition);
+        var parsedCondition = A.Dummy<IParsedCondition>();
+        A.CallTo(() => conditionParser.Parse("condição")).Returns(parsedCondition);
 
         var optionNode = A.Fake<IChoiceOptionNodeSetter>(i => i.Strict());
-        A.CallToSet(() => optionNode.EnabledWhen).To(condition).DoesNothing();
+        A.CallToSet(() => optionNode.EnabledWhen).To(parsedCondition.Condition).DoesNothing();
 
         var parentContext = A.Fake<IChoiceOptionParentParsingContext>(i => i.Strict());
         A.CallTo(() => parentContext.Option).Returns(optionNode);
@@ -48,7 +48,7 @@ public class ChoiceOptionEnabledWhenNodeParserTest
 
         await sut.ParseAsync(reader, context, parentContext);
 
-        A.CallToSet(() => optionNode.EnabledWhen).To(condition).MustHaveHappenedOnceExactly();
+        A.CallToSet(() => optionNode.EnabledWhen).To(parsedCondition.Condition).MustHaveHappenedOnceExactly();
     }
 
     [Fact]

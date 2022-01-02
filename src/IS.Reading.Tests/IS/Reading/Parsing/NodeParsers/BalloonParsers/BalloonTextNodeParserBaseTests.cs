@@ -8,14 +8,21 @@ public class BalloonTextNodeParserBaseTests
 {
     private class TestClass : BalloonTextNodeParserBase
     {
-        public TestClass(IElementParser elementParser, IBalloonChildNodeParser balloonTextChildNodeParser) 
-            : base(elementParser, balloonTextChildNodeParser)
+        public TestClass(
+            IElementParser elementParser, 
+            IBalloonChildNodeParser balloonTextChildNodeParser,
+            ISetNodeParser setNodeParser,
+            IUnsetNodeParser unsetNodeParser
+        ) 
+            : base(elementParser, balloonTextChildNodeParser, setNodeParser, unsetNodeParser)
         {
         }
     }
 
     private readonly IElementParser elementParser;
     private readonly IBalloonChildNodeParser balloonTextChildNodeParser;
+    private readonly ISetNodeParser setNodeParser;
+    private readonly IUnsetNodeParser unsetNodeParser;
     private readonly TestClass sut;
 
     public BalloonTextNodeParserBaseTests()
@@ -23,8 +30,10 @@ public class BalloonTextNodeParserBaseTests
         elementParser = A.Fake<IElementParser>(i => i.Strict());
         balloonTextChildNodeParser = Helper.FakeParser<IBalloonChildNodeParser>("abc");
         A.CallTo(() => balloonTextChildNodeParser.BalloonType).Returns(BalloonType.Speech);
+        setNodeParser = Helper.FakeParser<ISetNodeParser>("set");
+        unsetNodeParser = Helper.FakeParser<IUnsetNodeParser>("unset");
 
-        sut = new(elementParser, balloonTextChildNodeParser);
+        sut = new(elementParser, balloonTextChildNodeParser, setNodeParser, unsetNodeParser);
     }
 
     [Fact]

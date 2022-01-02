@@ -9,10 +9,12 @@ public class SpeechNodeParserTests
     {
         var elementParser = A.Dummy<IElementParser>();
         var speechChildNodeParser = Helper.FakeParser<ISpeechChildNodeParser>("bizantino");
+        var setNodeParser = Helper.FakeParser<ISetNodeParser>("set");
+        var unsetNodeParser = Helper.FakeParser<IUnsetNodeParser>("unset");
         var moodNodeParser = A.Dummy<IMoodNodeParser>();
-        var sut = new SpeechNodeParser(elementParser, speechChildNodeParser, moodNodeParser);
+        var sut = new SpeechNodeParser(elementParser, speechChildNodeParser, moodNodeParser, setNodeParser, unsetNodeParser);
         sut.Name.Should().Be("bizantino");
         sut.Settings.ShouldBeAggregatedNonRepeat(speechChildNodeParser);
-        sut.AggregationSettings.ShouldBeAggregated(speechChildNodeParser, moodNodeParser);
+        sut.AggregationSettings.ShouldBeAggregated(speechChildNodeParser, moodNodeParser, setNodeParser, unsetNodeParser);
     }
 }

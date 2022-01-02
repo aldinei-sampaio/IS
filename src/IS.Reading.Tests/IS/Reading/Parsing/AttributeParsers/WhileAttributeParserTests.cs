@@ -19,15 +19,16 @@ public class WhileAttributeParserTests
         var reader = CreateReader("<t while=\"abc\" />");
         var context = A.Fake<IParsingContext>(i => i.Strict());
 
-        var condition = A.Dummy<ICondition>();
+        var parsedCondition = A.Dummy<IParsedCondition>();
 
         var parser = A.Fake<IConditionParser>(i => i.Strict());
-        A.CallTo(() => parser.Parse("abc")).Returns(condition);
+        A.CallTo(() => parser.Parse("abc")).Returns(parsedCondition);
 
         var sut = new WhileAttributeParser(parser);
         var result = sut.Parse(reader, context);
         result.Should().NotBeNull();
-        result.Should().BeOfType<WhileAttribute>().Which.Condition.Should().BeSameAs(condition);
+        result.Should().BeOfType<WhileAttribute>()
+            .Which.Condition.Should().BeSameAs(parsedCondition);
     }
 
     [Fact]

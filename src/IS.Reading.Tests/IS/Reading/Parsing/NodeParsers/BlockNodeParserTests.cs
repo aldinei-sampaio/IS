@@ -21,6 +21,8 @@ public class BlockNodeParserTests
     private readonly IPersonNodeParser personNodeParser;
     private readonly INarrationNodeParser narrationNodeParser;
     private readonly ITutorialNodeParser tutorialNodeParser;
+    private readonly ISetNodeParser setNodeParser;
+    private readonly IUnsetNodeParser unsetNodeParser;
     private readonly BlockNodeParser sut;
 
     public BlockNodeParserTests()
@@ -38,6 +40,8 @@ public class BlockNodeParserTests
         personNodeParser = Helper.FakeParser<IPersonNodeParser>("person");
         narrationNodeParser = Helper.FakeParser<INarrationNodeParser>("narration");
         tutorialNodeParser = Helper.FakeParser<ITutorialNodeParser>("tutorial");
+        setNodeParser = Helper.FakeParser<ISetNodeParser>("set");
+        unsetNodeParser = Helper.FakeParser<IUnsetNodeParser>("unset");
 
         sut = new(
             elementParser, 
@@ -49,7 +53,9 @@ public class BlockNodeParserTests
             protagonistNodeParser,
             personNodeParser,
             narrationNodeParser,
-            tutorialNodeParser
+            tutorialNodeParser,
+            setNodeParser,
+            unsetNodeParser
         );
     }
 
@@ -67,7 +73,9 @@ public class BlockNodeParserTests
             protagonistNodeParser,
             personNodeParser,
             tutorialNodeParser,
-            narrationNodeParser
+            narrationNodeParser,
+            setNodeParser,
+            unsetNodeParser
         );
     }
 
