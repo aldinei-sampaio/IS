@@ -56,6 +56,7 @@ public class WordReader
                 WordType = WordType.CloseParenthesys;
                 Word = span[0].ToString();
                 return true;
+            case '-':
             case >= '0' and <= '9':
                 return ReadNumber(span);
             case '\'':

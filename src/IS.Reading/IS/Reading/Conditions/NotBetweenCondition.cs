@@ -2,7 +2,7 @@
 
 namespace IS.Reading.Conditions;
 
-public class NotBetweenCondition : ICondition
+public class NotBetweenCondition : WritableBase, ICondition
 {
     public IConditionKeyword Operand { get; }
     public IConditionKeyword Min { get; }
@@ -32,7 +32,7 @@ public class NotBetweenCondition : ICondition
         return actual.CompareTo(maxValue) > 0;
     }
 
-    public void WriteTo(TextWriter textWriter)
+    public override void WriteTo(TextWriter textWriter)
     {
         Operand.WriteTo(textWriter);
         textWriter.Write(" Not Between ");

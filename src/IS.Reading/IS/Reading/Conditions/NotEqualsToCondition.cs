@@ -2,7 +2,7 @@
 
 namespace IS.Reading.Conditions;
 
-public class NotEqualsToCondition : ComparisonCondition
+public class NotEqualsToCondition : ComparisonConditionBase
 {
     public NotEqualsToCondition(IConditionKeyword left, IConditionKeyword right) : base(left, right)
     {

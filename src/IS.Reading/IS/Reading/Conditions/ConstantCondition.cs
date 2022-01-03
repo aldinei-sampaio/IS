@@ -2,14 +2,20 @@
 
 namespace IS.Reading.Conditions;
 
-public class ConstantCondition : IConditionKeyword
+public class ConstantCondition : WritableBase, IConditionKeyword
 {
-    public object Value { get; }
-    public ConstantCondition(object value) => Value = value;
+    public object? Value { get; }
+    public ConstantCondition(object? value) => Value = value;
     public object? Evaluate(IVariableDictionary variables) => Value;
 
-    public void WriteTo(TextWriter textWriter)
+    public override void WriteTo(TextWriter textWriter)
     {
+        if (Value is null)
+        {
+            textWriter.Write("Null");
+            return;
+        }
+
         if (Value is string srt)
         {
             textWriter.Write('"');
@@ -17,6 +23,7 @@ public class ConstantCondition : IConditionKeyword
             textWriter.Write('"');
             return;
         }
+
         textWriter.Write(Value.ToString());
     }
 }

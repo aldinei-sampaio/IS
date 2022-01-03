@@ -2,7 +2,7 @@
 
 namespace IS.Reading.Conditions;
 
-public class EqualOrLowerThanCondition : ComparisonCondition
+public class EqualOrLowerThanCondition : ComparisonConditionBase
 {
     public EqualOrLowerThanCondition(IConditionKeyword left, IConditionKeyword right) : base(left, right)
     {
@@ -10,13 +10,13 @@ public class EqualOrLowerThanCondition : ComparisonCondition
 
     public override bool Evaluate(IVariableDictionary variables)
     {
-        if (Right.Evaluate(variables) is not IComparable rightValue)
+        if (Left.Evaluate(variables) is not IComparable leftValue)
             return true;
 
-        if (Left.Evaluate(variables) is not IComparable leftValue)
+        if (Right.Evaluate(variables) is not IComparable rightValue)
             return false;
 
-        return leftValue.CompareTo(rightValue) <= 0;
+        return leftValue.GetType() == rightValue.GetType() && leftValue.CompareTo(rightValue) <= 0;
     }
 
     public override void WriteTo(TextWriter textWriter)

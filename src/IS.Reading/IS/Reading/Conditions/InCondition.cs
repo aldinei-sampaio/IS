@@ -2,7 +2,7 @@
 
 namespace IS.Reading.Conditions;
 
-public class InCondition : ICondition
+public class InCondition : WritableBase, ICondition
 {
     public IConditionKeyword Operand { get; }
     public IEnumerable<IConditionKeyword> Values { get; }
@@ -16,13 +16,13 @@ public class InCondition : ICondition
         var actual = Operand.Evaluate(variables);
 
         foreach (var expected in Values)
-            if (Helper.AreEqual(expected, actual))
+            if (Helper.AreEqual(expected.Evaluate(variables), actual))
                 return true;
         
         return false;
     }
 
-    public void WriteTo(TextWriter textWriter)
+    public override void WriteTo(TextWriter textWriter)
     {
         Operand.WriteTo(textWriter);
         textWriter.Write(" In (");

@@ -2,7 +2,7 @@
 
 namespace IS.Reading.Conditions;
 
-public class EqualOrGreaterThanCondition : ComparisonCondition
+public class EqualOrGreaterThanCondition : ComparisonConditionBase
 {
     public EqualOrGreaterThanCondition(IConditionKeyword left, IConditionKeyword right) : base(left, right)
     {
@@ -16,7 +16,7 @@ public class EqualOrGreaterThanCondition : ComparisonCondition
         if (Right.Evaluate(variables) is not IComparable rightValue)
             return false;
 
-        return leftValue.CompareTo(rightValue) >= 0;
+        return leftValue.GetType() == rightValue.GetType() && leftValue.CompareTo(rightValue) >= 0;
     }
 
     public override void WriteTo(TextWriter textWriter)

@@ -2,7 +2,7 @@
 
 namespace IS.Reading.Conditions;
 
-public class LowerThanCondition : ComparisonCondition
+public class LowerThanCondition : ComparisonConditionBase
 {
     public LowerThanCondition(IConditionKeyword left, IConditionKeyword right) : base(left, right)
     {

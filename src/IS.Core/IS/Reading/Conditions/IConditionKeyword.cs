@@ -4,5 +4,5 @@ namespace IS.Reading.Conditions;
 
 public interface IConditionKeyword : IWritable
 {
-    abstract object? Evaluate(IVariableDictionary variables);
+    object? Evaluate(IVariableDictionary variables);
 }

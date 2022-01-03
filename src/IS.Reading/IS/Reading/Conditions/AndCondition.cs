@@ -2,7 +2,7 @@
 
 namespace IS.Reading.Conditions;
 
-public class AndCondition : ICondition
+public class AndCondition : WritableBase, ICondition
 {
     public ICondition Left { get; }
     public ICondition Right { get; }
@@ -15,7 +15,7 @@ public class AndCondition : ICondition
     public bool Evaluate(IVariableDictionary variables)
         => Left.Evaluate(variables) && Right.Evaluate(variables);
 
-    public void WriteTo(TextWriter textWriter)
+    public override void WriteTo(TextWriter textWriter)
     {
         textWriter.Write("(");
         Left.WriteTo(textWriter);

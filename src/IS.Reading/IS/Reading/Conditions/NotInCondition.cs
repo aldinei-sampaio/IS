@@ -2,7 +2,7 @@
 
 namespace IS.Reading.Conditions;
 
-public class NotInCondition : ICondition
+public class NotInCondition : WritableBase, ICondition
 {
     public IConditionKeyword Operand { get; }
     public IEnumerable<IConditionKeyword> Values { get; }
@@ -22,7 +22,7 @@ public class NotInCondition : ICondition
         return true;
     }
 
-    public void WriteTo(TextWriter textWriter)
+    public override void WriteTo(TextWriter textWriter)
     {
         Operand.WriteTo(textWriter);
         textWriter.Write(" Not In (");

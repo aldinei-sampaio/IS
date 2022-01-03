@@ -2,7 +2,7 @@
 
 namespace IS.Reading.Conditions;
 
-public class BetweenCondition : ICondition
+public class BetweenCondition : WritableBase, ICondition
 {
     public IConditionKeyword Operand { get; }
     public IConditionKeyword Min { get; }
@@ -25,14 +25,14 @@ public class BetweenCondition : ICondition
 
         if (minValue is not null)
         {
-            if (actual.CompareTo(minValue) < 0)
+            if (actual.GetType() != minValue.GetType() || actual.CompareTo(minValue) < 0)
                 return false;
         }
 
-        return actual.CompareTo(maxValue) <= 0;
+        return actual.GetType() == maxValue.GetType() && actual.CompareTo(maxValue) <= 0;
     }
 
-    public void WriteTo(TextWriter textWriter)
+    public override void WriteTo(TextWriter textWriter)
     {
         Operand.WriteTo(textWriter);
         textWriter.Write(" Between ");

@@ -2,15 +2,14 @@
 
 namespace IS.Reading.Conditions;
 
-public abstract class ComparisonCondition : ICondition
+public abstract class ComparisonConditionBase : WritableBase, ICondition
 {
     public IConditionKeyword Left { get; }
     public IConditionKeyword Right { get; }
-    public ComparisonCondition(IConditionKeyword left, IConditionKeyword right)
+    public ComparisonConditionBase(IConditionKeyword left, IConditionKeyword right)
     {
         Left = left;
         Right = right;
     }
     public abstract bool Evaluate(IVariableDictionary variables);
-    public abstract void WriteTo(TextWriter textWriter);
 }
