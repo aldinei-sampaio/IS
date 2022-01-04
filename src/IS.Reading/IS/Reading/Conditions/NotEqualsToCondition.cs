@@ -18,7 +18,7 @@ public class NotEqualsToCondition : ComparisonConditionBase
         if (rightValue is null)
             return true;
 
-        return leftValue.CompareTo(rightValue) != 0;
+        return leftValue.GetType() == rightValue.GetType() && leftValue.CompareTo(rightValue) != 0;
     }
 
     public override void WriteTo(TextWriter textWriter)

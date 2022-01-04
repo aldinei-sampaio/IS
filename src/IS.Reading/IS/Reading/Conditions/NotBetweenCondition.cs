@@ -25,11 +25,14 @@ public class NotBetweenCondition : WritableBase, ICondition
 
         if (minValue is not null)
         {
+            if (actual.GetType() != minValue.GetType())
+                return false;
+
             if (actual.CompareTo(minValue) < 0)
                 return true;
         }
 
-        return actual.CompareTo(maxValue) > 0;
+        return actual.GetType() == maxValue.GetType() && actual.CompareTo(maxValue) > 0;
     }
 
     public override void WriteTo(TextWriter textWriter)

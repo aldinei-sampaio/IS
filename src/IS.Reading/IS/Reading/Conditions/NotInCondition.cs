@@ -15,8 +15,8 @@ public class NotInCondition : WritableBase, ICondition
     {
         var actual = Operand.Evaluate(variables);
 
-        foreach (var expected in Values)
-            if (!Helper.AreEqual(expected, actual))
+        foreach (var value in Values)
+            if (Helper.AreEqual(value.Evaluate(variables), actual))
                 return false;
         
         return true;

@@ -61,6 +61,11 @@ public class WordReader
                 return ReadNumber(span);
             case '\'':
                 return ReadString(span);
+            case ',':
+                currentPosition++;
+                WordType = WordType.Comma;
+                Word = span[0].ToString();
+                return true;
             case >= 'a' and <= 'z':
             case >= 'A' and <= 'Z':
             case '_':
@@ -155,11 +160,6 @@ public class WordReader
                 WordType = WordType.Different;
                 Word = span[0..1].ToString();
                 return true;
-            case ',':
-                currentPosition++;
-                WordType = WordType.Comma;
-                Word = span[0..1].ToString();
-                return true;
             default:
                 WordType = WordType.Invalid;
                 Word = span[0..1].ToString();
@@ -194,6 +194,7 @@ public class WordReader
                     currentPosition++;
                     continue;
                 case ' ':
+                case ',':
                 case '>':
                 case '<':
                 case '=':
@@ -228,6 +229,7 @@ public class WordReader
                     currentPosition++;
                     continue;
                 case ' ':
+                case ',':
                 case '>':
                 case '<':
                 case '=':
@@ -252,7 +254,7 @@ public class WordReader
 
     private bool CheckForKeyWords(ReadOnlySpan<char> span)
     {
-        if (span.Length == 3)
+        if (span.Length == 2)
         {
             if (span[0] == 'o' &&
                 span[1] == 'r')
