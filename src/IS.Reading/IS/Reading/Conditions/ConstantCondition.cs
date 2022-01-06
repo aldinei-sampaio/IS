@@ -18,9 +18,9 @@ public class ConstantCondition : WritableBase, IConditionKeyword
 
         if (Value is string srt)
         {
-            textWriter.Write('"');
+            textWriter.Write('\'');
             textWriter.Write(srt);
-            textWriter.Write('"');
+            textWriter.Write('\'');
             return;
         }
 

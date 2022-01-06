@@ -2,5 +2,5 @@
 
 public interface IConditionParser
 {
-    IParsedCondition Parse(string expression);
+    IParsedCondition Parse(string text);
 }

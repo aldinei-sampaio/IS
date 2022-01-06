@@ -1,6 +1,6 @@
 ﻿namespace IS.Reading.Parsing.ConditionParsers;
 
-public class WordReader
+public class WordReader : IWordReader
 {
     private readonly string text;
     private int currentPosition = 0;

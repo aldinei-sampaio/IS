@@ -22,8 +22,8 @@ public class ConstantConditionTests
 
     [Theory]
     [InlineData(null, "Null")]
-    [InlineData("abc", "\"abc\"")]
-    [InlineData("", "\"\"")]
+    [InlineData("abc", "'abc'")]
+    [InlineData("", "''")]
     [InlineData(123, "123")]
     [InlineData(-234, "-234")]
     public void ToStringTest(object value, string expected)

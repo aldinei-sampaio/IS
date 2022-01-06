@@ -4,15 +4,22 @@ namespace IS.Reading.Parsing.ConditionParsers;
 
 public class ConditionParser : IConditionParser
 {
+    private readonly IWordReaderFactory wordReaderFactory;
+
+    public ConditionParser(IWordReaderFactory wordReaderFactory)
+    {
+        this.wordReaderFactory = wordReaderFactory;
+    }
+
     public IParsedCondition Parse(string text)
     {
-        var reader = new WordReader(text);
+        var reader = wordReaderFactory.Create(text);
         var messages = new List<string>();
         var condition = ReadRoot(reader, messages, false);
         return new ParsedCondition(condition, string.Join("\r\n", messages));
     }
 
-    private static ICondition? ReadRoot(WordReader reader, List<string> messages, bool allowCloseParenthesys)
+    private static ICondition? ReadRoot(IWordReader reader, List<string> messages, bool allowCloseParenthesys)
     {
         if (!reader.Read())
         {
@@ -100,7 +107,7 @@ public class ConditionParser : IConditionParser
 
             }
         }
-        while (!reader.AtEnd);
+        while (!reader.Read());
 
         if (current is null)
         {
@@ -111,7 +118,7 @@ public class ConditionParser : IConditionParser
         return current;
     }
 
-    private static IConditionKeyword? ReadKeyword(WordReader reader, List<string> messages)
+    private static IConditionKeyword? ReadKeyword(IWordReader reader, List<string> messages)
     {
         if (reader.WordType == WordType.Identifier)
             return new VariableCondition(reader.Word);
@@ -132,7 +139,7 @@ public class ConditionParser : IConditionParser
         return null;
     }
 
-    private static IConditionKeyword? ReadNextKeyword(WordReader reader, List<string> messages)
+    private static IConditionKeyword? ReadNextKeyword(IWordReader reader, List<string> messages)
     {
         if (!reader.Read())
         {
@@ -142,7 +149,7 @@ public class ConditionParser : IConditionParser
         return ReadKeyword(reader, messages);
     }
 
-    private static ICondition? ReadCondition(WordReader reader, List<string> messages)
+    private static ICondition? ReadCondition(IWordReader reader, List<string> messages)
     {
         var left = ReadKeyword(reader, messages);
         if (left is null)
@@ -227,7 +234,7 @@ public class ConditionParser : IConditionParser
         }
     }
 
-    private static ICondition? ReadNullCondition(IConditionKeyword operand, WordReader reader, List<string> messages)
+    private static ICondition? ReadNullCondition(IConditionKeyword operand, IWordReader reader, List<string> messages)
     {
         if (!ReadExpectingNotBeTheEnd(reader, messages))
             return null;
@@ -251,7 +258,7 @@ public class ConditionParser : IConditionParser
         return null;
     }
 
-    private static ICondition? ReadBetweenCondition(IConditionKeyword operand, bool negated, WordReader reader, List<string> messages)
+    private static ICondition? ReadBetweenCondition(IConditionKeyword operand, bool negated, IWordReader reader, List<string> messages)
     {
         var min = ReadNextKeyword(reader, messages);
         if (min is null)
@@ -276,7 +283,7 @@ public class ConditionParser : IConditionParser
         return new BetweenCondition(operand, min, max);
     }
 
-    private static ICondition? ReadInCondition(IConditionKeyword operand, bool negated, WordReader reader, List<string> messages)
+    private static ICondition? ReadInCondition(IConditionKeyword operand, bool negated, IWordReader reader, List<string> messages)
     {
         if (!ReadExpectingNotBeTheEnd(reader, messages))
             return null;
@@ -319,7 +326,7 @@ public class ConditionParser : IConditionParser
         return new InCondition(operand, values);
     }
 
-    private static bool ReadExpectingNotBeTheEnd(WordReader reader, List<string> messages)
+    private static bool ReadExpectingNotBeTheEnd(IWordReader reader, List<string> messages)
     {
         if (reader.Read())
             return true;
