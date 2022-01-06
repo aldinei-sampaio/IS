@@ -70,6 +70,123 @@ public class WordReaderTests
         sut.Read().Should().BeFalse();
     }
 
+    [Fact]
+    public void Empty()
+    {
+        var sut = new WordReader("");
+        sut.Read().Should().BeFalse();
+        sut.AtEnd.Should().BeTrue();
+    }
+
+    [Theory]
+    [InlineData("+")]
+    [InlineData("\"")]
+    [InlineData(">+")]
+    [InlineData("<+")]
+    [InlineData("!")]
+    [InlineData("!+")]
+    [InlineData("1+")]
+    [InlineData("a+")]
+    [InlineData("'")]
+    public void Invalid(string text)
+    {
+        var sut = new WordReader(text);
+        NextWord(sut, WordType.Invalid);
+        sut.AtEnd.Should().BeTrue();
+    }
+
+    [Theory]
+    [InlineData(">", WordType.GreaterThan)]
+    [InlineData("<", WordType.LowerThan)]
+    public void EndWith(string text, WordType wordType)
+    {
+        var sut = new WordReader(text);
+        NextWord(sut, wordType);
+        sut.Read().Should().BeFalse();
+    }
+
+    [Theory]
+    [InlineData("ab")]
+    [InlineData("ii")]
+    [InlineData("zzz")]
+    [InlineData("Abc")]
+    [InlineData("Zyx")]
+    [InlineData("_ab")]
+    [InlineData("a_b")]
+    [InlineData("Abc_Bde")]
+    public void Identifiers(string text)
+    {
+        var sut = new WordReader(text);
+        NextWord(sut, WordType.Identifier, text.ToLower());
+        sut.Read().Should().BeFalse();
+    }
+
+    [Theory]
+    [InlineData("<a")]
+    [InlineData("<z")]
+    [InlineData("<A")]
+    [InlineData("<Z")]
+    [InlineData("<0")]
+    [InlineData("<9")]
+    [InlineData("<''")]
+    [InlineData("<_")]
+    [InlineData("< a")]
+    public void LowerThan(string text)
+    {
+        var sut = new WordReader(text);
+        NextWord(sut, WordType.LowerThan);
+        sut.Read().Should().BeTrue();
+        sut.Read().Should().BeFalse();
+    }
+
+    [Theory]
+    [InlineData(">a")]
+    [InlineData(">z")]
+    [InlineData(">A")]
+    [InlineData(">Z")]
+    [InlineData(">0")]
+    [InlineData(">9")]
+    [InlineData(">''")]
+    [InlineData(">_")]
+    [InlineData("> a")]
+    public void GreaterThan(string text)
+    {
+        var sut = new WordReader(text);
+        NextWord(sut, WordType.GreaterThan);
+        sut.Read().Should().BeTrue();
+        sut.Read().Should().BeFalse();
+    }
+
+    [Theory]
+    [InlineData("1234")]
+    [InlineData("1234 a")]
+    [InlineData("1234>")]
+    [InlineData("1234!")]
+    [InlineData("1234<")]
+    [InlineData("1234=")]
+    [InlineData("1234,")]
+    [InlineData("1234)")]
+    public void NumberEnding(string text)
+    {
+        var sut = new WordReader(text);
+        NextWord(sut, WordType.Number);
+    }
+
+    [Theory]
+    [InlineData("abc")]
+    [InlineData("abc a")]
+    [InlineData("abc>")]
+    [InlineData("abc!")]
+    [InlineData("abc<")]
+    [InlineData("abc=")]
+    [InlineData("abc,")]
+    [InlineData("abc)")]
+    public void IdentifierEnding(string text)
+    {
+        var sut = new WordReader(text);
+        NextWord(sut, WordType.Identifier);
+    }
+
     private static void NextWord(WordReader sut, WordType wordType, string word = null)
     {
         sut.Read().Should().BeTrue();
