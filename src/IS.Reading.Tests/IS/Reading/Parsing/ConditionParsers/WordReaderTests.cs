@@ -11,9 +11,9 @@ public class WordReaderTests
     public void IdentifierEqualsIdentifier(string text, string identifier1, string identifier2)
     {
         var sut = new WordReader(text);
-        NextWord(sut, WordType.Identifier, identifier1);
+        NextWord(sut, WordType.Variable, identifier1);
         NextWord(sut, WordType.Equals);
-        NextWord(sut, WordType.Identifier, identifier2);
+        NextWord(sut, WordType.Variable, identifier2);
         sut.Read().Should().BeFalse();
     }
 
@@ -44,12 +44,12 @@ public class WordReaderTests
     {
         var sut = new WordReader("= != < > <= >= <> ( )");
         NextWord(sut, WordType.Equals);
-        NextWord(sut, WordType.Different);
+        NextWord(sut, WordType.NotEqualsTo);
         NextWord(sut, WordType.LowerThan);
         NextWord(sut, WordType.GreaterThan);
         NextWord(sut, WordType.EqualOrLowerThan);
         NextWord(sut, WordType.EqualOrGreaterThan);
-        NextWord(sut, WordType.Different);
+        NextWord(sut, WordType.NotEqualsTo);
         NextWord(sut, WordType.OpenParenthesys);
         NextWord(sut, WordType.CloseParenthesys);
         sut.Read().Should().BeFalse();
@@ -117,7 +117,7 @@ public class WordReaderTests
     public void Identifiers(string text)
     {
         var sut = new WordReader(text);
-        NextWord(sut, WordType.Identifier, text.ToLower());
+        NextWord(sut, WordType.Variable, text.ToLower());
         sut.Read().Should().BeFalse();
     }
 
@@ -184,7 +184,7 @@ public class WordReaderTests
     public void IdentifierEnding(string text)
     {
         var sut = new WordReader(text);
-        NextWord(sut, WordType.Identifier);
+        NextWord(sut, WordType.Variable);
     }
 
     private static void NextWord(WordReader sut, WordType wordType, string word = null)

@@ -69,7 +69,7 @@ public class WordReader : IWordReader
             case >= 'a' and <= 'z':
             case >= 'A' and <= 'Z':
             case '_':
-                return ReadIdentifier(span);
+                return ReadVariableOrKeyword(span);
         }
 
         WordType = WordType.Invalid;
@@ -151,7 +151,7 @@ public class WordReader : IWordReader
                 return true;
             case '>':
                 currentPosition++;
-                WordType = WordType.Different;
+                WordType = WordType.NotEqualsTo;
                 Word = span[0..1].ToString();
                 return true;
             case '_':
@@ -174,7 +174,7 @@ public class WordReader : IWordReader
         if (span.Length > 1 && span[1] == '=')
         {
             currentPosition += 2;
-            WordType = WordType.Different;
+            WordType = WordType.NotEqualsTo;
             Word = span[0..1].ToString();
             return true;
         }
@@ -215,10 +215,10 @@ public class WordReader : IWordReader
         return true;
     }
 
-    private bool ReadIdentifier(ReadOnlySpan<char> span)
+    private bool ReadVariableOrKeyword(ReadOnlySpan<char> span)
     {
         currentPosition++;
-        WordType = WordType.Identifier;
+        WordType = WordType.Variable;
 
         for (var n = 1; n < span.Length; n++)
         {
@@ -246,6 +246,7 @@ public class WordReader : IWordReader
                     return true;
             }
         }
+
         {
             currentPosition++;
             Span<char> destination = new char[span.Length];

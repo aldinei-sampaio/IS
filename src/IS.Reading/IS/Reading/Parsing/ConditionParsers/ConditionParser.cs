@@ -15,11 +15,11 @@ public class ConditionParser : IConditionParser
     {
         var reader = wordReaderFactory.Create(text);
         var messages = new List<string>();
-        var condition = ReadRoot(reader, messages, false);
+        var condition = ReadRoot(reader, messages, false, false);
         return new ParsedCondition(condition, string.Join("\r\n", messages));
     }
 
-    private static ICondition? ReadRoot(IWordReader reader, List<string> messages, bool allowCloseParenthesys)
+    private static ICondition? ReadRoot(IWordReader reader, List<string> messages, bool allowCloseParenthesys, bool singleCondition)
     {
         if (!reader.Read())
         {
@@ -33,7 +33,7 @@ public class ConditionParser : IConditionParser
         {
             switch (reader.WordType)
             {
-                case WordType.Identifier:
+                case WordType.Variable:
                 case WordType.String:
                 case WordType.Number:
                     if (current is not null)
@@ -42,8 +42,8 @@ public class ConditionParser : IConditionParser
                         return null;
                     }
                     current = ReadCondition(reader, messages);
-                    if (current is null)
-                        return null;
+                    if (singleCondition || current is null)
+                        return current;
                     break;
                 case WordType.OpenParenthesys:
                     if (current is not null)
@@ -51,7 +51,7 @@ public class ConditionParser : IConditionParser
                         messages.Add("Era esperado um operador.");
                         return null;
                     }
-                    current = ReadRoot(reader, messages, true);
+                    current = ReadRoot(reader, messages, true, false);
                     if (current is null)
                         return null;
                     break;
@@ -69,10 +69,12 @@ public class ConditionParser : IConditionParser
                             messages.Add("Operador 'And' não esperado.");
                             return null;
                         }
-                        var right = ReadRoot(reader, messages, false);
+                        var right = ReadRoot(reader, messages, allowCloseParenthesys, true);
                         if (right is null)
                             return null;
                         current = new AndCondition(current, right);
+                        if (allowCloseParenthesys && reader.WordType == WordType.CloseParenthesys)
+                            return current;
                         break;
                     }
                 case WordType.Or:
@@ -82,10 +84,12 @@ public class ConditionParser : IConditionParser
                             messages.Add("Operador 'Or' não esperado.");
                             return null;
                         }
-                        var right = ReadRoot(reader, messages, false);
+                        var right = ReadRoot(reader, messages, allowCloseParenthesys, true);
                         if (right is null)
                             return null;
                         current = new OrCondition(current, right);
+                        if (allowCloseParenthesys && reader.WordType == WordType.CloseParenthesys)
+                            return current;
                         break;
                     }
                 case WordType.Not:
@@ -95,7 +99,7 @@ public class ConditionParser : IConditionParser
                             messages.Add("Operador 'Not' não esperado.");
                             return null;
                         }
-                        var right = ReadRoot(reader, messages, false);
+                        var right = ReadRoot(reader, messages, false, true);
                         if (right is null)
                             return null;
                         current = new NotCondition(right);
@@ -107,7 +111,7 @@ public class ConditionParser : IConditionParser
 
             }
         }
-        while (!reader.Read());
+        while (reader.Read());
 
         if (current is null)
         {
@@ -120,7 +124,10 @@ public class ConditionParser : IConditionParser
 
     private static IConditionKeyword? ReadKeyword(IWordReader reader, List<string> messages)
     {
-        if (reader.WordType == WordType.Identifier)
+        if (reader.WordType == WordType.Null)
+            return new ConstantCondition(null);
+
+        if (reader.WordType == WordType.Variable)
             return new VariableCondition(reader.Word);
 
         if (reader.WordType == WordType.String)
@@ -170,7 +177,7 @@ public class ConditionParser : IConditionParser
                         return null;
                     return new EqualsToCondition(left, right);
                 }
-            case WordType.Different:
+            case WordType.NotEqualsTo:
                 {
                     var right = ReadNextKeyword(reader, messages);
                     if (right is null)
