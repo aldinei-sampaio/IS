@@ -2,19 +2,20 @@
 
 public class WordReader : IWordReader
 {
-    private readonly string text;
+    public string Text { get; }
+
     private int currentPosition = 0;
 
     public WordReader(string text)
     {
-        this.text = text;
+        this.Text = text;
     }
 
     public WordType WordType { get; private set; } = WordType.None;
 
     public string Word { get; private set; } = string.Empty;
 
-    public bool AtEnd => WordType == WordType.Invalid || currentPosition >= text.Length;
+    public bool AtEnd => WordType == WordType.Invalid || currentPosition >= Text.Length;
 
     public bool Read()
     {
@@ -24,14 +25,14 @@ public class WordReader : IWordReader
         if (AtEnd)
             return false;
 
-        while (text[currentPosition] == ' ')
+        while (Text[currentPosition] == ' ')
         {
             currentPosition++;
-            if (currentPosition >= text.Length)
+            if (currentPosition >= Text.Length)
                 return false;
         }
 
-        var span = text.AsSpan(currentPosition);
+        var span = Text.AsSpan(currentPosition);
 
         switch (span[0])
         {

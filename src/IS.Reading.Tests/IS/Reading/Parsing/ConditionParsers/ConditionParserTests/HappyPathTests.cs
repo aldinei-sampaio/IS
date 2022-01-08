@@ -392,4 +392,60 @@ public class HappyPathTests
         };
         tester.Test<NotCondition>("Not ((a = 0) Or (a = 1))");
     }
+
+    [Fact]
+    public void Parenthesys6()
+    {
+        var tester = new ConditionParserTester
+        {
+            WordTypes = new()
+            {
+                WordType.Variable,
+                WordType.Equals,
+                WordType.Number,
+                WordType.Or,
+                WordType.OpenParenthesys,
+                WordType.Variable,
+                WordType.Equals,
+                WordType.Number,
+                WordType.And,
+                WordType.Variable,
+                WordType.Equals,
+                WordType.Number,
+                WordType.CloseParenthesys
+            },
+            Words = new() { "a", "", "1", "", "", "b", "", "1", "", "c", "", "1" }
+        };
+        tester.Test<OrCondition>("(a = 1) Or ((b = 1) And (c = 1))");
+    }
+
+    [Fact]
+    public void Parenthesys7()
+    {
+        var tester = new ConditionParserTester
+        {
+            WordTypes = new()
+            {
+                WordType.Variable,
+                WordType.Equals,
+                WordType.String,
+                WordType.Or,
+                WordType.OpenParenthesys,
+                WordType.Variable,
+                WordType.Is,
+                WordType.Not,
+                WordType.Null,
+                WordType.And,
+                WordType.Not,
+                WordType.Variable,
+                WordType.Between,
+                WordType.Number,
+                WordType.And,
+                WordType.Number,
+                WordType.CloseParenthesys
+            },
+            Words = new() { "a", "", "x", "", "", "b", "", "", "", "", "", "c", "", "1", "", "5", "" }
+        };
+        tester.Test<OrCondition>("(a = 'x') Or ((b Is Not Null) And (Not (c Between 1 And 5)))");
+    }
 }

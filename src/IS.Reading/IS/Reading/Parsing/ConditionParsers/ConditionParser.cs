@@ -4,7 +4,20 @@ namespace IS.Reading.Parsing.ConditionParsers;
 
 public class ConditionParser : IConditionParser
 {
-    private const string UnexpectedExpressionEnd = "Fim inesperado da expressão.";
+    internal const string UnexpectedExpressionEnd = "Fim inesperado da expressão.";
+    internal const string MissingLogicalOperator = "É esperado um operador lógico (And/Or) ao invés de '{0}'.";
+    internal const string MisplacedKeyword = "'{0}' não é válido nesse ponto da expressão.";
+    internal const string InvalidNumber = "O valor '{0}' não é um número válido.";
+    internal const string InvalidTokenAfterNot = "Após o 'Not' é esperado 'In' ou 'Between' ao invés de '{0}'.";
+    internal const string InvalidTokenAfterIs = "Após o 'Is' é esperado 'Null' ou 'Not Null' ao invés de '{0}'.";
+    internal const string InvalidTokenAfterIsNot = "Após o 'Is Not' é esperado 'Null' ao invés de '{0}'.";
+    internal const string InvalidTokenAfterIn = "Após o 'In' é esperado '(' ao invés de '{0}'.";
+    internal const string InvalidTokenAfterInValue = "Após um valor do 'In' é esperado ',' ou ')' ao invés de '{0}'.";
+    internal const string InvalidToken = "A expressão '{0}' não representa uma palavra chave, valor ou operador válido.";
+    internal const string InvalidOperand = "Era esperada uma variável ou uma constante ao invés de '{0}'.";
+    internal const string InvalidOperator = "Era esperado um operador de comparação ao invés de '{0}'.";
+    internal const string BetweenWithoutAnd = "Era esperado um 'And' entre os valores da cláusula 'Between', ao invés de '{0}'.";
+
     private readonly IWordReaderFactory wordReaderFactory;
 
     public ConditionParser(IWordReaderFactory wordReaderFactory)
@@ -34,13 +47,16 @@ public class ConditionParser : IConditionParser
         {
             switch (reader.WordType)
             {
+                case WordType.Invalid:
+                    messages.Add(string.Format(InvalidToken, reader.Word));
+                    return null;
                 case WordType.Variable:
                 case WordType.String:
                 case WordType.Number:
                 case WordType.Null:
                     if (current is not null)
                     {
-                        messages.Add("É esperado um operador lógico (And/Or) entre duas expressões.");
+                        messages.Add(string.Format(MissingLogicalOperator, reader.Word));
                         return null;
                     }
                     current = ReadCondition(reader, messages);
@@ -50,7 +66,7 @@ public class ConditionParser : IConditionParser
                 case WordType.OpenParenthesys:
                     if (current is not null)
                     {
-                        messages.Add("É esperado um operador lógico (And/Or/Not) antes do abre parênteses.");
+                        messages.Add(string.Format(MissingLogicalOperator, reader.Word));
                         return null;
                     }
                     current = ReadRoot(reader, messages, true, false);
@@ -60,7 +76,7 @@ public class ConditionParser : IConditionParser
                 case WordType.CloseParenthesys:
                     if (!allowCloseParenthesys || current is null)
                     {
-                        messages.Add($"'{reader.Word}' não é válido nesse ponto da expressão.");
+                        messages.Add(string.Format(MisplacedKeyword, reader.Word));
                         return null;
                     }
                     return current;
@@ -68,7 +84,7 @@ public class ConditionParser : IConditionParser
                     {
                         if (current is null)
                         {
-                            messages.Add($"'{reader.Word}' não é válido nesse ponto da expressão.");
+                            messages.Add(string.Format(MisplacedKeyword, reader.Word));
                             return null;
                         }
                         var right = ReadRoot(reader, messages, allowCloseParenthesys, true);
@@ -83,7 +99,7 @@ public class ConditionParser : IConditionParser
                     {
                         if (current is null)
                         {
-                            messages.Add($"'{reader.Word}' não é válido nesse ponto da expressão.");
+                            messages.Add(string.Format(MisplacedKeyword, reader.Word));
                             return null;
                         }
                         var right = ReadRoot(reader, messages, allowCloseParenthesys, true);
@@ -98,7 +114,7 @@ public class ConditionParser : IConditionParser
                     {
                         if (current is not null)
                         {
-                            messages.Add($"'{reader.Word}' não é válido nesse ponto da expressão.");
+                            messages.Add(string.Format(MissingLogicalOperator, reader.Word));
                             return null;
                         }
                         var right = ReadRoot(reader, messages, false, true);
@@ -108,7 +124,7 @@ public class ConditionParser : IConditionParser
                         break;
                     }
                 default:
-                    messages.Add($"'{reader.Word}' não é válido nesse ponto da expressão.");
+                    messages.Add(string.Format(MisplacedKeyword, reader.Word));
                     return null;
             }
         }
@@ -139,11 +155,11 @@ public class ConditionParser : IConditionParser
             if (int.TryParse(reader.Word, out var number))
                 return new ConstantCondition(number);
 
-            messages.Add("Número inválido.");
+            messages.Add(string.Format(InvalidNumber, reader.Word));
             return null;
         }
 
-        messages.Add("Era esperada uma variável ou uma constante.");
+        messages.Add(string.Format(InvalidOperand, reader.Word));
         return null;
     }
 
@@ -154,6 +170,13 @@ public class ConditionParser : IConditionParser
             messages.Add(UnexpectedExpressionEnd);
             return null;
         }
+
+        if (reader.WordType == WordType.Invalid)
+        {
+            messages.Add(string.Format(InvalidToken, reader.Word));
+            return null;
+        }
+
         return ReadKeyword(reader, messages);
     }
 
@@ -171,6 +194,9 @@ public class ConditionParser : IConditionParser
 
         switch (reader.WordType)
         {
+            case WordType.Invalid:
+                messages.Add(string.Format(InvalidToken, reader.Word));
+                return null;
             case WordType.Equals:
                 {
                     var right = ReadNextKeyword(reader, messages);
@@ -230,14 +256,14 @@ public class ConditionParser : IConditionParser
                     if (reader.WordType == WordType.Between)
                         return ReadBetweenCondition(left, true, reader, messages);
 
-                    messages.Add("Era esperado In ou Between.");
+                    messages.Add(string.Format(InvalidTokenAfterNot, reader.Word));
                     return null;
                 }
             case WordType.Is:
                 return ReadNullCondition(left, reader, messages);
 
             default:
-                messages.Add("Era esperado um operador de comparação.");
+                messages.Add(string.Format(InvalidOperator, reader.Word));
                 return null;
         }
     }
@@ -252,7 +278,7 @@ public class ConditionParser : IConditionParser
 
         if (reader.WordType != WordType.Not)
         {
-            messages.Add("Era esperado Null ou Not Null.");
+            messages.Add(string.Format(InvalidTokenAfterIs, reader.Word));
             return null;
         }
 
@@ -262,7 +288,7 @@ public class ConditionParser : IConditionParser
         if (reader.WordType == WordType.Null)
             return new IsNotNullCondition(operand);
 
-        messages.Add("Era esperado Null.");
+        messages.Add(string.Format(InvalidTokenAfterIsNot, reader.Word));
         return null;
     }
 
@@ -277,7 +303,7 @@ public class ConditionParser : IConditionParser
 
         if (reader.WordType != WordType.And)
         {
-            messages.Add("Condição Between mal formada.");
+            messages.Add(string.Format(BetweenWithoutAnd, reader.Word));
             return null;
         }
 
@@ -298,10 +324,7 @@ public class ConditionParser : IConditionParser
 
         if (reader.WordType != WordType.OpenParenthesys)
         {
-            if (negated)
-                messages.Add("Condição Not In mal formada.");
-            else
-                messages.Add("Condição In mal formada.");
+            messages.Add(string.Format(InvalidTokenAfterIn, reader.Word));
             return null;
         }
 
@@ -323,7 +346,7 @@ public class ConditionParser : IConditionParser
 
             if (reader.WordType != WordType.Comma)
             {
-                messages.Add("Condição In mal formada.");
+                messages.Add(string.Format(InvalidTokenAfterInValue, reader.Word));
                 return null;
             }
         }
@@ -336,9 +359,18 @@ public class ConditionParser : IConditionParser
 
     private static bool ReadExpectingNotBeTheEnd(IWordReader reader, List<string> messages)
     {
-        if (reader.Read())
-            return true;
-        messages.Add(UnexpectedExpressionEnd);
-        return false;
+        if (!reader.Read())
+        {
+            messages.Add(UnexpectedExpressionEnd);
+            return false;
+        }
+
+        if (reader.WordType == WordType.Invalid)
+        {
+            messages.Add(string.Format(InvalidToken, reader.Word));
+            return false;
+        }
+
+        return true;
     }
 }
