@@ -4,6 +4,7 @@ namespace IS.Reading.Parsing.ConditionParsers;
 
 public class ConditionParser : IConditionParser
 {
+    private const string UnexpectedExpressionEnd = "Fim inesperado da expressão.";
     private readonly IWordReaderFactory wordReaderFactory;
 
     public ConditionParser(IWordReaderFactory wordReaderFactory)
@@ -23,7 +24,7 @@ public class ConditionParser : IConditionParser
     {
         if (!reader.Read())
         {
-            messages.Add("Condição vazia.");
+            messages.Add(UnexpectedExpressionEnd);
             return null;
         }
 
@@ -36,9 +37,10 @@ public class ConditionParser : IConditionParser
                 case WordType.Variable:
                 case WordType.String:
                 case WordType.Number:
+                case WordType.Null:
                     if (current is not null)
                     {
-                        messages.Add("Era esperado um operador.");
+                        messages.Add("É esperado um operador lógico (And/Or) entre duas expressões.");
                         return null;
                     }
                     current = ReadCondition(reader, messages);
@@ -48,7 +50,7 @@ public class ConditionParser : IConditionParser
                 case WordType.OpenParenthesys:
                     if (current is not null)
                     {
-                        messages.Add("Era esperado um operador.");
+                        messages.Add("É esperado um operador lógico (And/Or/Not) antes do abre parênteses.");
                         return null;
                     }
                     current = ReadRoot(reader, messages, true, false);
@@ -58,7 +60,7 @@ public class ConditionParser : IConditionParser
                 case WordType.CloseParenthesys:
                     if (!allowCloseParenthesys || current is null)
                     {
-                        messages.Add("Fecha parênteses não esperado.");
+                        messages.Add($"'{reader.Word}' não é válido nesse ponto da expressão.");
                         return null;
                     }
                     return current;
@@ -66,7 +68,7 @@ public class ConditionParser : IConditionParser
                     {
                         if (current is null)
                         {
-                            messages.Add("Operador 'And' não esperado.");
+                            messages.Add($"'{reader.Word}' não é válido nesse ponto da expressão.");
                             return null;
                         }
                         var right = ReadRoot(reader, messages, allowCloseParenthesys, true);
@@ -81,7 +83,7 @@ public class ConditionParser : IConditionParser
                     {
                         if (current is null)
                         {
-                            messages.Add("Operador 'Or' não esperado.");
+                            messages.Add($"'{reader.Word}' não é válido nesse ponto da expressão.");
                             return null;
                         }
                         var right = ReadRoot(reader, messages, allowCloseParenthesys, true);
@@ -96,7 +98,7 @@ public class ConditionParser : IConditionParser
                     {
                         if (current is not null)
                         {
-                            messages.Add("Operador 'Not' não esperado.");
+                            messages.Add($"'{reader.Word}' não é válido nesse ponto da expressão.");
                             return null;
                         }
                         var right = ReadRoot(reader, messages, false, true);
@@ -106,16 +108,15 @@ public class ConditionParser : IConditionParser
                         break;
                     }
                 default:
-                    messages.Add("Expressão inválida.");
+                    messages.Add($"'{reader.Word}' não é válido nesse ponto da expressão.");
                     return null;
-
             }
         }
         while (reader.Read());
 
-        if (current is null)
+        if (allowCloseParenthesys || current is null)
         {
-            messages.Add("Fim inesperado da expressão.");
+            messages.Add(UnexpectedExpressionEnd);
             return null;
         }
 
@@ -150,7 +151,7 @@ public class ConditionParser : IConditionParser
     {
         if (!reader.Read())
         {
-            messages.Add("Era esperada uma variável ou uma constante.");
+            messages.Add(UnexpectedExpressionEnd);
             return null;
         }
         return ReadKeyword(reader, messages);
@@ -164,7 +165,7 @@ public class ConditionParser : IConditionParser
 
         if (!reader.Read())
         {
-            messages.Add("Era esperado um operador de comparação.");
+            messages.Add(UnexpectedExpressionEnd);
             return null;
         }
 
@@ -337,7 +338,7 @@ public class ConditionParser : IConditionParser
     {
         if (reader.Read())
             return true;
-        messages.Add("Fim inesperado da expressão.");
+        messages.Add(UnexpectedExpressionEnd);
         return false;
     }
 }
