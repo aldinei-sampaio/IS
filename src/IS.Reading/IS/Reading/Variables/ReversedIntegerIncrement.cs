@@ -16,4 +16,7 @@ public class ReversedIntegerIncrement : IIntegerIncrement
         variables[Name] = OldValue;
         return new IntegerIncrement(Name, Increment);
     }
+
+    public override string ToString()
+        => VarSetHelper.ToString(Name, OldValue);
 }

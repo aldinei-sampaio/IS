@@ -1,4 +1,6 @@
-﻿namespace IS.Reading.Variables;
+﻿using System.Text;
+
+namespace IS.Reading.Variables;
 
 public class IntegerIncrement : IIntegerIncrement
 {
@@ -12,8 +14,45 @@ public class IntegerIncrement : IIntegerIncrement
     public IVarSet Execute(IVariableDictionary variables)
     {
         var oldValue = variables[Name];
-        var intValue = oldValue as int?;
-        variables[Name] = (intValue ?? 0) + Increment;
+        var intOldValue = (oldValue as int?) ?? 0;
+        var intNewValue = unchecked(intOldValue + Increment);
+
+        if (Increment > 0)
+        {
+            if (intNewValue < intOldValue)
+                intNewValue = int.MaxValue;
+        }
+        else
+        {
+            if (intNewValue > intOldValue)
+                intNewValue = int.MinValue;
+        }
+
+        variables[Name] = intNewValue;
         return new ReversedIntegerIncrement(Name, Increment, oldValue);
+    }
+
+    public override string ToString()
+    {
+        var builder = new StringBuilder();
+        builder.Append(Name);
+        switch (Increment)
+        {
+            case 1:
+                builder.Append("++");
+                break;
+            case -1:
+                builder.Append("--");
+                break;
+            case < 0:
+                builder.Append("-=");
+                builder.Append(Increment.ToString("#;#"));
+                break;
+            default:
+                builder.Append("+=");
+                builder.Append(Increment.ToString());
+                break;
+        }
+        return builder.ToString();
     }
 }

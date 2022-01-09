@@ -15,4 +15,7 @@ public class VarSet : IVarSet
         variables[Name] = Value;
         return new VarSet(Name, oldValue);
     }
+
+    public override string ToString()
+        => VarSetHelper.ToString(Name, Value);
 }
