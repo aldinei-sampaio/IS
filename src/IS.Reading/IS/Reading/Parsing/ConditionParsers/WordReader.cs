@@ -22,6 +22,43 @@ public class WordReader : IWordReader
         Word = string.Empty;
         WordType = WordType.None;
 
+        if (!PrepareForReading())
+            return false;
+
+        var span = Text.AsSpan(currentPosition);
+
+        switch (span[0])
+        {
+            case '=':
+                return ReadSingleCharToken(span, WordType.Equals);
+            case '!':
+                return ReadDifferent(span);
+            case '<':
+                return ReadLowerThan(span);
+            case '>':
+                return ReadGreaterThan(span);
+            case '(':
+                return ReadSingleCharToken(span, WordType.OpenParenthesys);
+            case ')':
+                return ReadSingleCharToken(span, WordType.CloseParenthesys);
+            case '-':
+            case >= '0' and <= '9':
+                return ReadNumber(span);
+            case '\'':
+                return ReadString(span);
+            case ',':
+                return ReadSingleCharToken(span, WordType.Comma);
+            case >= 'a' and <= 'z':
+            case >= 'A' and <= 'Z':
+            case '_':
+                return ReadVariableOrKeyword(span);
+            default:
+                return ReadSingleCharToken(span, WordType.Invalid);
+        }
+    }
+
+    private bool PrepareForReading()
+    {
         if (AtEnd)
             return false;
 
@@ -31,49 +68,13 @@ public class WordReader : IWordReader
             if (currentPosition >= Text.Length)
                 return false;
         }
+        return true;
+    }
 
-        var span = Text.AsSpan(currentPosition);
-
-        switch (span[0])
-        {
-            case '=':
-                currentPosition++;
-                WordType = WordType.Equals;
-                Word = span[0].ToString();
-                return true;
-            case '!':
-                return ReadDifferent(span);
-            case '<':
-                return ReadLowerThan(span);
-            case '>':
-                return ReadGreaterThan(span);
-            case '(':
-                currentPosition++;
-                WordType = WordType.OpenParenthesys;
-                Word = span[0].ToString();
-                return true;
-            case ')':
-                currentPosition++;
-                WordType = WordType.CloseParenthesys;
-                Word = span[0].ToString();
-                return true;
-            case '-':
-            case >= '0' and <= '9':
-                return ReadNumber(span);
-            case '\'':
-                return ReadString(span);
-            case ',':
-                currentPosition++;
-                WordType = WordType.Comma;
-                Word = span[0].ToString();
-                return true;
-            case >= 'a' and <= 'z':
-            case >= 'A' and <= 'Z':
-            case '_':
-                return ReadVariableOrKeyword(span);
-        }
-
-        WordType = WordType.Invalid;
+    private bool ReadSingleCharToken(ReadOnlySpan<char> span, WordType wordType)
+    {
+        currentPosition++;
+        WordType = wordType;
         Word = span[0].ToString();
         return true;
     }
@@ -256,82 +257,93 @@ public class WordReader : IWordReader
         }
     }
 
+    private bool ReadKeyWord(ReadOnlySpan<char> span, WordType wordType)
+    {
+        WordType = wordType;
+        Word = span.ToString();
+        return true;
+    }
+
     private bool CheckForKeyWords(ReadOnlySpan<char> span)
     {
         switch (span.Length)
         {
             case 2:
-                if (span[0] == 'o' &&
-                    span[1] == 'r')
-                {
-                    WordType = WordType.Or;
-                    Word = span.ToString();
+                if (CheckFor2CharKeyWords(span))
                     return true;
-                }
 
-                if (span[0] == 'i')
-                {
-                    if (span[1] == 'n')
-                    {
-                        WordType = WordType.In;
-                        Word = span.ToString();
-                        return true;
-                    }
-                    if (span[1] == 's')
-                    {
-                        WordType = WordType.Is;
-                        Word = span.ToString();
-                        return true;
-                    }
-                }
                 break;
             case 3:
-                if (span[0] == 'a' && 
-                    span[1] == 'n' && 
-                    span[2] == 'd')
-                {
-                    WordType = WordType.And;
-                    Word = span.ToString();
+                if (CheckFor3CharKeyWords(span))
                     return true;
-                }
 
-                if (span[0] == 'n' && 
-                    span[1] == 'o' && 
-                    span[2] == 't')
-                {
-                    WordType = WordType.Not;
-                    Word = span.ToString();
-                    return true;
-                }
                 break;
             case 4:
-                if (span[0] == 'n' &&
-                    span[1] == 'u' &&
-                    span[2] == 'l' &&
-                    span[3] == 'l')
-                {
-                    WordType = WordType.Null;
-                    Word = span.ToString();
+                if (CheckFor4CharKeyWords(span))
                     return true;
-                }
+
                 break;
             case 7:
-                if (span[0] == 'b' &&
+                if (CheckFor7CharKeyWords(span))
+                    return true;
+
+                break;
+        }
+
+        Word = span.ToString();
+        return true;
+    }
+
+    private bool CheckFor2CharKeyWords(ReadOnlySpan<char> span)
+    {
+        if (span[0] == 'o' && span[1] == 'r')
+            return ReadKeyWord(span, WordType.Or);
+
+        if (span[0] != 'i')
+            return false;
+
+        if (span[1] == 'n')
+            return ReadKeyWord(span, WordType.In);
+
+        if (span[1] == 's')
+            return ReadKeyWord(span, WordType.Is);
+
+        return false;
+    }
+
+    private bool CheckFor3CharKeyWords(ReadOnlySpan<char> span)
+    {
+        if (span[0] == 'a' && span[1] == 'n' && span[2] == 'd')
+            return ReadKeyWord(span, WordType.And);
+
+        if (span[0] == 'n' && span[1] == 'o' && span[2] == 't')
+            return ReadKeyWord(span, WordType.Not);
+
+        return false;
+    }
+
+    private bool CheckFor4CharKeyWords(ReadOnlySpan<char> span)
+    {
+        if (span[0] == 'n' &&
+                   span[1] == 'u' &&
+                   span[2] == 'l' &&
+                   span[3] == 'l')
+            return ReadKeyWord(span, WordType.Null);
+
+        return false;
+    }
+
+    private bool CheckFor7CharKeyWords(ReadOnlySpan<char> span)
+    {
+        if (span[0] == 'b' &&
                     span[1] == 'e' &&
                     span[2] == 't' &&
                     span[3] == 'w' &&
                     span[4] == 'e' &&
                     span[5] == 'e' &&
                     span[6] == 'n')
-                {
-                    WordType = WordType.Between;
-                    Word = span.ToString();
-                    return true;
-                }
-                break;
-        }
+            return ReadKeyWord(span, WordType.Between);
 
-        Word = span.ToString();
-        return true;
+        return false;
     }
 }
