@@ -77,8 +77,7 @@ public class RootBlockParserTests
             .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(parsed));
 
         var result = await sut.ParseAsync(reader, context);
-        result.ForwardQueue.Dequeue().Should().BeSameAs(parsed);
-        result.ForwardQueue.Count().Should().Be(0);
+        result.Should().ContainSingle().Which.Should().BeSameAs(parsed);
     }
 
     [Fact]
@@ -88,7 +87,7 @@ public class RootBlockParserTests
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).DoesNothing();
 
         var result = await sut.ParseAsync(reader, context);
-        result.ShouldBeEmpty();
+        result.Should().BeEmpty();
 
         A.CallTo(() => context.LogError(reader, "Elemento filho era esperado.")).MustHaveHappenedOnceExactly();
     }

@@ -2,23 +2,19 @@
 
 public class Block : IBlock
 {
-    public Queue<INode> ForwardQueue { get; }
+    public IReadOnlyList<INode> Nodes { get; }
 
     public Stack<INode> ForwardStack { get; } = new();
 
     public Stack<INode> BackwardStack { get; } = new();
 
-    public INode? Current { get; set; } = null;
+    public int? CurrentNodeIndex { get; set; }
 
-    public Block(IEnumerable<INode> nodes)
-    {
-        ForwardQueue = new(nodes);
-    }
+    public INode? CurrentNode { get; set; }
+
+    public Block(IReadOnlyList<INode> nodes)
+        => Nodes = nodes;
 
     public Block(INode node1, INode node2)
-    {
-        ForwardQueue = new();
-        ForwardQueue.Enqueue(node1);
-        ForwardQueue.Enqueue(node2);
-    }
+        => Nodes = new List<INode> { node1, node2 };
 }

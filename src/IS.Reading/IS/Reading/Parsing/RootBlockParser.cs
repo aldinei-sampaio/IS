@@ -39,7 +39,7 @@ public class RootBlockParser : IRootBlockParser
         );
     }
 
-    public async Task<IBlock> ParseAsync(XmlReader reader, IParsingContext parsingContext)
+    public async Task<List<INode>> ParseAsync(XmlReader reader, IParsingContext parsingContext)
     {
         var context = new BlockParentParsingContext();
 
@@ -48,6 +48,6 @@ public class RootBlockParser : IRootBlockParser
         if (context.Nodes.Count == 0)
             parsingContext.LogError(reader, "Elemento filho era esperado.");
 
-        return new Block(context.Nodes);
+        return context.Nodes;
     }
 }

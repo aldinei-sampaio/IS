@@ -8,12 +8,15 @@ public class BackAndForthTester
     public INavigationContext Context { get; }
     public BlockNavigator Navigator { get; }
 
-    private List<string> log = new();
+    private readonly List<string> log = new();
+
+    private readonly List<INode> nodes = new();
 
     public BackAndForthTester()
     {
         Navigator = new BlockNavigator();
         Block = A.Dummy<IBlock>();
+        A.CallTo(() => Block.Nodes).Returns(nodes);
         Context = A.Dummy<INavigationContext>();
     }
 
@@ -37,22 +40,18 @@ public class BackAndForthTester
         var item = (TestNode)await Navigator.MoveAsync(Block, Context, forward);
         var actualName = item?.Name;
         actualName.Should().Be(expectedName);
-        Block.Current.Should().BeSameAs(item);
+        Block.CurrentNode.Should().BeSameAs(item);
     }
 
     public void AddNode(string normalName, string reversedName)
-    {
-        var node = new TestNode(normalName, reversedName, null, null);
-        Block.ForwardQueue.Enqueue(node);
-    }
+        => nodes.Add(new TestNode(normalName, reversedName, null, null));
 
     public void AddNode(string normalName, string reversedName, Func<bool> condition)
     {
         var conditionObject = A.Fake<ICondition>();
         A.CallTo(() => conditionObject.Evaluate(Context.Variables)).ReturnsLazily(() => condition.Invoke());
 
-        var node = new TestNode(normalName, reversedName, conditionObject, null);
-        Block.ForwardQueue.Enqueue(node);
+        nodes.Add(new TestNode(normalName, reversedName, conditionObject, null));
     }
 
     public void AddLoggedNode(string normalName, string reversedName, Func<bool> condition = null)
@@ -64,8 +63,7 @@ public class BackAndForthTester
             A.CallTo(() => conditionObject.Evaluate(Context.Variables)).ReturnsLazily(() => condition.Invoke());
         }
 
-        var node = new TestNode(normalName, reversedName, conditionObject, log);
-        Block.ForwardQueue.Enqueue(node);
+        nodes.Add(new TestNode(normalName, reversedName, conditionObject, log));
     }
 }
 

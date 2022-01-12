@@ -125,13 +125,14 @@ public class BackgroundNodeParserTests
 
         await sut.ParseAsync(reader, context, parentContext);
 
-        var node = parentContext.Nodes.Should().ContainSingle()
+        parentContext.Nodes.Should().ContainSingle()
             .Which.Should().BeOfType<BlockNode>()
-            .Which; 
-
-        node.When.Should().BeSameAs(when);
-        node.While.Should().BeNull();
-        node.ChildBlock.ForwardQueue.Dequeue().Should().BeSameAs(parsedNode);
+            .Which.ShouldSatisfy(i =>
+            {
+                i.When.Should().BeSameAs(when);
+                i.While.Should().BeNull();
+                i.ChildBlock.Nodes.Should().ContainSingle().Which.Should().BeSameAs(parsedNode);
+            });
     }
 
     [Fact]

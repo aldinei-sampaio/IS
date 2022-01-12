@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
+﻿namespace IS.Reading.Navigation;
 
-namespace IS.Reading.Navigation
+public interface IBlock
 {
-    public interface IBlock
-    {
-        Queue<INode> ForwardQueue { get; }
-        Stack<INode> ForwardStack { get; }
-        Stack<INode> BackwardStack { get; }
-        INode? Current { get; set; }
-    }
+    IReadOnlyList<INode> Nodes { get; }
+    Stack<INode> BackwardStack { get; }
+    int? CurrentNodeIndex { get; set; }
+    INode? CurrentNode { get; set; }
 }

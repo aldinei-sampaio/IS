@@ -25,7 +25,6 @@ public class BlockNavigator : IBlockNavigator
         await LeaveCurrentNodeAsync(block, context);
 
         var item = GetNextValidNode(block, context);
-        block.Current = item;
 
         if (item is null)
             return null;
@@ -39,22 +38,27 @@ public class BlockNavigator : IBlockNavigator
 
     private static async Task LeaveCurrentNodeAsync(IBlock block, INavigationContext context)
     {
-        if (block.Current is null)
+        if (block.CurrentNode is null)
             return;
 
-        await block.Current.LeaveAsync(context);
-        block.Current = null;
+        await block.CurrentNode.LeaveAsync(context);
     }
 
     private static INode? GetNextNode(IBlock block)
     {
-        if (block.ForwardStack.TryPop(out var stackItem))
-            return stackItem;
+        var nextIndex = block.CurrentNodeIndex.HasValue ? block.CurrentNodeIndex.Value + 1 : 0;
+        if (nextIndex >= block.Nodes.Count)
+        {
+            block.CurrentNodeIndex = null;
+            block.CurrentNode = null;
+            return null;
+        }
 
-        if (block.ForwardQueue.TryDequeue(out var queueItem))
-            return queueItem;
+        var node = block.Nodes[nextIndex];
 
-        return null;
+        block.CurrentNodeIndex = nextIndex;
+        block.CurrentNode = node;
+        return node;
     }
 
     private static INode? GetNextValidNode(IBlock block, INavigationContext context)
@@ -77,29 +81,36 @@ public class BlockNavigator : IBlockNavigator
         await LeaveCurrentNodeAsync(block, context);
 
         var item = GetValidPreviousNode(block);
-        block.Current = item;
 
         if (item is null)
             return null;
 
-        var reversed = await item.EnterAsync(context);
-        if (reversed is not null)
-            block.ForwardStack.Push(reversed);
+        await item.EnterAsync(context);
 
         return item;
     }
 
     private static INode? GetValidPreviousNode(IBlock block)
     {
+        var index = block.CurrentNodeIndex ?? block.Nodes.Count;
+
         for (; ; )
         {
             if (!block.BackwardStack.TryPop(out var item))
+            {
+                block.CurrentNodeIndex = null;
+                block.CurrentNode = null;
                 return null;
+            }
 
-            if (item is not BlockedNode blocked)
+            index--;
+
+            if (item is not BlockedNode)
+            {
+                block.CurrentNodeIndex = index;
+                block.CurrentNode = item;
                 return item;
-
-            block.ForwardStack.Push(blocked.OriginalNode);
+            }
         }
     }
 }

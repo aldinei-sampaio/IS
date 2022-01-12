@@ -30,7 +30,7 @@ public class StoryboardParser : IStoryboardParser
             throw new ParsingException(context.ToString()!);
 
         foreach(var node in context.DismissNodes.Reverse())
-            parsed.ForwardQueue.Enqueue(node);
+            parsed.Add(node);
 
         var sceneNavigator = serviceProvider.GetRequiredService<ISceneNavigator>();
         var eventManager = serviceProvider.GetRequiredService<IEventManager>();
@@ -38,7 +38,7 @@ public class StoryboardParser : IStoryboardParser
         var navigationState = serviceProvider.GetRequiredService<INavigationState>();
         var variableDictionary = serviceProvider.GetRequiredService<IVariableDictionary>();
 
-        var navigationContext = new NavigationContext(parsed, eventManager, randomizer, navigationState, variableDictionary);
+        var navigationContext = new NavigationContext(new Block(parsed), eventManager, randomizer, navigationState, variableDictionary);
         return new Storyboard(navigationContext, sceneNavigator, eventManager);
     }
 }

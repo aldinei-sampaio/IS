@@ -8,11 +8,12 @@ public class BackAndForthTests
         var tester = new BackAndForthTester();
         tester.AddNode("normal", "reversed");
 
-        for (var n = 1; n <= 3; n++)
-        {
-            await tester.MoveAsync(true, "normal", null);
-            await tester.MoveAsync(false, "reversed", null);
-        }
+        await tester.MoveAsync(true, "normal", null);
+        await tester.MoveAsync(false, "reversed", null);
+        await tester.MoveAsync(true, "normal", null);
+        await tester.MoveAsync(false, "reversed", null);
+        await tester.MoveAsync(true, "normal", null);
+        await tester.MoveAsync(false, "reversed", null);
     }
 
     [Fact]
@@ -21,16 +22,12 @@ public class BackAndForthTests
         var tester = new BackAndForthTester();
         tester.AddNode("normal", "reversed");
 
-        for (var n = 1; n <= 3; n++)
-        {
-            await tester.MoveAsync(true, "normal");
-            await tester.MoveAsync(false, "reversed", null);
-            await tester.MoveAsync(true, "normal", null);
-
-            await tester.MoveAsync(false, "reversed");
-            await tester.MoveAsync(true, "normal", null);
-            await tester.MoveAsync(false, "reversed", null);
-        }
+        await tester.MoveAsync(true, "normal");
+        await tester.MoveAsync(false, "reversed", null);
+        await tester.MoveAsync(true, "normal", null);
+        await tester.MoveAsync(false, "reversed");
+        await tester.MoveAsync(true, "normal", null);
+        await tester.MoveAsync(false, "reversed", null);
     }
 
     [Fact]

@@ -3,6 +3,7 @@
 public class QueueTests
 {
     private readonly IBlock block;
+    private readonly List<INode> nodes = new();
     private readonly INavigationContext context;
     private readonly BlockNavigator sut;
 
@@ -10,6 +11,7 @@ public class QueueTests
     {
         sut = new();
         block = A.Dummy<IBlock>();
+        A.CallTo(() => block.Nodes).Returns(nodes);
         context = A.Dummy<INavigationContext>();
     }
 
@@ -24,50 +26,50 @@ public class QueueTests
     public async Task SingleNode()
     {
         var node = FakeNode(context);
-        block.ForwardQueue.Enqueue(node);
+        nodes.Add(node);
 
-        CheckQueueCount(1, 0, 0);
+        block.BackwardStack.Count.Should().Be(0);
 
         await TestNextAsync(node);
-        CheckQueueCount(0, 0, 1);
+        block.BackwardStack.Count.Should().Be(1);
 
         await TestNextAsync(null);
-        CheckQueueCount(0, 0, 1);
+        block.BackwardStack.Count.Should().Be(1);
 
         await TestPreviousAsync(node);
-        CheckQueueCount(0, 1, 0);
+        block.BackwardStack.Count.Should().Be(0);
 
         await TestPreviousAsync(null);
-        CheckQueueCount(0, 1, 0);
+        block.BackwardStack.Count.Should().Be(0);
     }
 
     [Fact]
     public async Task TwoNodes()
     {
         var node1 = FakeNode(context);
-        block.ForwardQueue.Enqueue(node1);
+        nodes.Add(node1);
         var node2 = FakeNode(context);
-        block.ForwardQueue.Enqueue(node2);
+        nodes.Add(node2);
 
-        CheckQueueCount(2, 0, 0);
+        block.BackwardStack.Count.Should().Be(0);
 
         await TestNextAsync(node1);
-        CheckQueueCount(1, 0, 1);
+        block.BackwardStack.Count.Should().Be(1);
 
         await TestNextAsync(node2);
-        CheckQueueCount(0, 0, 2);
+        block.BackwardStack.Count.Should().Be(2);
 
         await TestNextAsync(null);
-        CheckQueueCount(0, 0, 2);
+        block.BackwardStack.Count.Should().Be(2);
 
         await TestPreviousAsync(node2);
-        CheckQueueCount(0, 1, 1);
+        block.BackwardStack.Count.Should().Be(1);
 
         await TestPreviousAsync(node1);
-        CheckQueueCount(0, 2, 0);
+        block.BackwardStack.Count.Should().Be(0);
 
         await TestPreviousAsync(null);
-        CheckQueueCount(0, 2, 0);
+        block.BackwardStack.Count.Should().Be(0);
     }
 
     private async Task TestPreviousAsync(INode node)
@@ -82,12 +84,5 @@ public class QueueTests
         A.CallTo(() => node.When).Returns(null);
         A.CallTo(() => node.EnterAsync(context)).Returns(node);
         return node;
-    }
-
-    private void CheckQueueCount(int forwardQueueCount, int forwardStackCount, int backwardStackCount)
-    {
-        block.ForwardQueue.Count.Should().Be(forwardQueueCount);
-        block.ForwardStack.Count.Should().Be(forwardStackCount);
-        block.BackwardStack.Count.Should().Be(backwardStackCount);
     }
 }
