@@ -3,7 +3,7 @@
 public class BackAndForthTests
 {
     [Fact]
-    public async void SingleNode()
+    public async Task SingleNode()
     {
         var tester = new BackAndForthTester();
         tester.AddNode("normal", "reversed");
@@ -17,7 +17,58 @@ public class BackAndForthTests
     }
 
     [Fact]
-    public async void SingleNode_BackAndForth()
+    public async Task CorrectSequenceOnMovePrevious()
+    {
+        var tester = new BackAndForthTester();
+        tester.AddNode("normal", "reversed");
+
+        await tester.MoveAsync(true, "normal");
+        tester.Block.CurrentNodeIndex.Should().Be(0);
+
+        await tester.MoveAsync(true, null);
+        tester.Block.CurrentNodeIndex.Should().BeNull();
+
+        await tester.MoveAsync(false, "reversed");
+        tester.Block.CurrentNodeIndex.Should().BeNull();
+
+        await tester.MoveAsync(true, "normal");
+        tester.Block.CurrentNodeIndex.Should().Be(0);
+
+        await tester.MoveAsync(false, "reversed");
+        tester.Block.CurrentNodeIndex.Should().BeNull();
+
+        await tester.MoveAsync(false, null);
+        tester.Block.CurrentNodeIndex.Should().BeNull();
+
+        await tester.MoveAsync(true, "normal");
+        tester.Block.CurrentNodeIndex.Should().Be(0);
+
+        await tester.MoveAsync(true, null);
+        tester.Block.CurrentNodeIndex.Should().BeNull();
+    }
+
+    [Fact]
+    public async Task CorrectSequenceOnMovePreviousWithThreeNodes()
+    {
+        var tester = new BackAndForthTester();
+        tester.AddNode("n1", "r1");
+        tester.AddNode("n2", "r2");
+        tester.AddNode("n3", "r3");
+
+        await tester.MoveAsync(true, "n1", "n2", "n3", null);
+        tester.Block.CurrentNodeIndex.Should().BeNull();
+
+        await tester.MoveAsync(false, "r3");
+        tester.Block.CurrentNodeIndex.Should().Be(1);
+
+        await tester.MoveAsync(false, "r2");
+        tester.Block.CurrentNodeIndex.Should().Be(0);
+
+        await tester.MoveAsync(true, "n2", "n3", null);
+    }
+
+    [Fact]
+    public async Task SingleNode_BackAndForth()
     {
         var tester = new BackAndForthTester();
         tester.AddNode("normal", "reversed");
@@ -31,7 +82,7 @@ public class BackAndForthTests
     }
 
     [Fact]
-    public async void TwoNodes()
+    public async Task TwoNodes()
     {
         var tester = new BackAndForthTester();
         tester.AddNode("n1", "r1");
@@ -45,7 +96,7 @@ public class BackAndForthTests
     }
 
     [Fact]
-    public async void TwoNodes_BackAndForth()
+    public async Task TwoNodes_BackAndForth()
     {
         var tester = new BackAndForthTester();
         tester.AddNode("n1", "r1");
@@ -68,7 +119,7 @@ public class BackAndForthTests
     }
 
     [Fact]
-    public async void ThreeNodes()
+    public async Task ThreeNodes()
     {
         var tester = new BackAndForthTester();
         tester.AddNode("n1", "r1");
@@ -83,7 +134,7 @@ public class BackAndForthTests
     }
 
     [Fact]
-    public async void ThreeNodes_BackAndForth()
+    public async Task ThreeNodes_BackAndForth()
     {
         var tester = new BackAndForthTester();
         tester.AddNode("n1", "r1");

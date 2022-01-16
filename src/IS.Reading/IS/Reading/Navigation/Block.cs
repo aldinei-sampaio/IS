@@ -4,8 +4,6 @@ public class Block : IBlock
 {
     public IReadOnlyList<INode> Nodes { get; }
 
-    public Stack<INode> ForwardStack { get; } = new();
-
     public Stack<INode> BackwardStack { get; } = new();
 
     public int? CurrentNodeIndex { get; set; }

@@ -4,12 +4,6 @@ public class BlockNavigator : IBlockNavigator
 {
     private class BlockedNode : INode
     {
-        public INode OriginalNode { get; }
-
-        public BlockedNode(INode originalNode)
-        {
-            OriginalNode = originalNode;
-        }
     }
 
     public async Task<INode?> MoveAsync(IBlock block, INavigationContext context, bool forward)
@@ -72,7 +66,7 @@ public class BlockNavigator : IBlockNavigator
             if (item.When == null || item.When.Evaluate(context.Variables))
                 return item;
 
-            block.BackwardStack.Push(new BlockedNode(item));
+            block.BackwardStack.Push(new BlockedNode());
         }
     }
 
@@ -92,7 +86,7 @@ public class BlockNavigator : IBlockNavigator
 
     private static INode? GetValidPreviousNode(IBlock block)
     {
-        var index = block.CurrentNodeIndex ?? block.Nodes.Count;
+        var index = block.CurrentNodeIndex ?? (block.Nodes.Count - 1);
 
         for (; ; )
         {
@@ -107,7 +101,7 @@ public class BlockNavigator : IBlockNavigator
 
             if (item is not BlockedNode)
             {
-                block.CurrentNodeIndex = index;
+                block.CurrentNodeIndex = index >= 0 ? index : null;
                 block.CurrentNode = item;
                 return item;
             }
