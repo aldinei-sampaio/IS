@@ -48,7 +48,7 @@ public class BalloonTextNodeParserBaseTests
     public async Task NoAggregation()
     {
         var parentContext = new FakeParentParsingContext();
-        var context = A.Dummy<IParsingContext>();
+        var context = Helper.FakeParsingContext();
         var reader = A.Dummy<XmlReader>();
         A.CallTo(() => reader.ReadState).Returns(ReadState.Interactive);
 
@@ -74,7 +74,7 @@ public class BalloonTextNodeParserBaseTests
     public async Task Aggregation()
     {
         var parentContext = new FakeParentParsingContext();
-        var context = A.Dummy<IParsingContext>();
+        var context = Helper.FakeParsingContext();
         var reader = A.Dummy<XmlReader>();
         A.CallTo(() => reader.ReadState).Returns(ReadState.Interactive);
 
@@ -102,7 +102,7 @@ public class BalloonTextNodeParserBaseTests
     public async Task NonPauseNodesShouldNotBeAtEndOfBalloonNode()
     {
         var parentContext = new FakeParentParsingContext();
-        var context = A.Dummy<IParsingContext>();
+        var context = Helper.FakeParsingContext();
         var reader = A.Dummy<XmlReader>();
         A.CallTo(() => reader.ReadState).Returns(ReadState.Interactive);
 
@@ -132,7 +132,7 @@ public class BalloonTextNodeParserBaseTests
     public async Task ShouldNotTryAggregateAtEndOfElement()
     {
         var parentContext = new FakeParentParsingContext();
-        var context = A.Dummy<IParsingContext>();
+        var context = Helper.FakeParsingContext();
         var reader = A.Dummy<XmlReader>();
         A.CallTo(() => reader.ReadState).Returns(ReadState.Interactive);
 

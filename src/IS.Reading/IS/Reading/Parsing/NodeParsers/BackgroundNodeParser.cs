@@ -48,7 +48,7 @@ public class BackgroundNodeParser : IBackgroundNodeParser
         if (!string.IsNullOrWhiteSpace(context.ParsedText))
         {
             var state = new BackgroundState(context.ParsedText, BackgroundType.Image, BackgroundPosition.Left);
-            var block = new Block(
+            var block = parsingContext.BlockFactory.Create(
                 new BackgroundNode(state, null),
                 new ScrollNode(null)
             );
@@ -63,8 +63,11 @@ public class BackgroundNodeParser : IBackgroundNodeParser
             return;
         }
 
-        parentParsingContext.AddNode(new BlockNode(new Block(context.Nodes), context.When, null));
-        parsingContext.RegisterDismissNode(DismissNode);
+        {
+            var block = parsingContext.BlockFactory.Create(context.Nodes);
+            parentParsingContext.AddNode(new BlockNode(block, context.When, null));
+            parsingContext.RegisterDismissNode(DismissNode);
+        }
     }
 
     public INode DismissNode { get; } 

@@ -59,8 +59,11 @@ public class PersonNodeParserTests
     public async Task ParseAsyncShouldReturnAPersonNode()
     {
         var reader = A.Dummy<XmlReader>();
-        var context = A.Dummy<IParsingContext>();
+        var context = Helper.FakeParsingContext();
         var parentContext = new FakeParentParsingContext();
+
+        var sceneContext = A.Dummy<IParsingSceneContext>();
+        A.CallTo(() => context.SceneContext).Returns(sceneContext);
 
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
             .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).ParsedText = "lorenipsum");

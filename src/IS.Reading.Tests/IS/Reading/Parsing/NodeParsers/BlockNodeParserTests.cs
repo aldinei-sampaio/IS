@@ -29,7 +29,7 @@ public class BlockNodeParserTests
     {
         reader = A.Dummy<XmlReader>();
 
-        context = A.Fake<IParsingContext>(i => i.Strict());
+        context = Helper.FakeParsingContext();
         elementParser = A.Fake<IElementParser>(i => i.Strict());
         whenAttributeParser = Helper.FakeParser<IWhenAttributeParser>("when");
         whileAttributeParser = Helper.FakeParser<IWhileAttributeParser>("while");

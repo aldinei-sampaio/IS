@@ -28,7 +28,7 @@ public class BackgroundNodeParserTests
     public BackgroundNodeParserTests()
     {
         reader = A.Dummy<XmlReader>();
-        context = A.Fake<IParsingContext>(i => i.Strict());
+        context = Helper.FakeParsingContext();
         elementParser = A.Fake<IElementParser>(i => i.Strict());
 
         backgroundImageTextParser = A.Dummy<IBackgroundImageTextParser>();

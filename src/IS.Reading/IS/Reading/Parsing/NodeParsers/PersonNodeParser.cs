@@ -74,7 +74,8 @@ public class PersonNodeParser : IPersonNodeParser
         myContext.Nodes.Insert(0, InitializeMoodNode);
         myContext.Nodes.Add(DismissMoodNode);
 
-        var node = new PersonNode(parsedText, new Block(myContext.Nodes));
+        var block = parsingContext.BlockFactory.Create(myContext.Nodes);
+        var node = new PersonNode(parsedText, block);
         parentParsingContext.AddNode(node);
     }
 

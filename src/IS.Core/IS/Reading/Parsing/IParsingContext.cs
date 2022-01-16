@@ -10,4 +10,5 @@ public interface IParsingContext
     void RegisterDismissNode(INode node);
     IEnumerable<INode> DismissNodes { get; }
     IParsingSceneContext SceneContext { get; }
+    IBlockFactory BlockFactory { get; }
 }

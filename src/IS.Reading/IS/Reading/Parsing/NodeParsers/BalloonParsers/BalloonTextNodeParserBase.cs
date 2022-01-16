@@ -72,7 +72,8 @@ public abstract class BalloonTextNodeParserBase : INodeParser
             return;
         }
 
-        var node = new BalloonNode(childParser.BalloonType, new Block(myContext.Nodes));
+        var block = parsingContext.BlockFactory.Create(myContext.Nodes);
+        var node = new BalloonNode(childParser.BalloonType, block);
         parentParsingContext.AddNode(node);
         
         while (nonPauseNodes.TryPop(out var nonPauseNode))

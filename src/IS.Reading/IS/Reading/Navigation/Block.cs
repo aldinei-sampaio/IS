@@ -2,6 +2,8 @@
 
 public class Block : IBlock
 {
+    public int Id { get; }
+
     public IReadOnlyList<INode> Nodes { get; }
 
     public Stack<INode> BackwardStack { get; } = new();
@@ -10,9 +12,6 @@ public class Block : IBlock
 
     public INode? CurrentNode { get; set; }
 
-    public Block(IReadOnlyList<INode> nodes)
-        => Nodes = nodes;
-
-    public Block(INode node1, INode node2)
-        => Nodes = new List<INode> { node1, node2 };
+    public Block(int id, IReadOnlyList<INode> nodes)
+        => (Id, Nodes) = (id, nodes);
 }

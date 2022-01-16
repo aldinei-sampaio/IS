@@ -6,17 +6,29 @@ namespace IS.Reading.Parsing;
 
 public class ParsingContextTests
 {
-    [Fact]
-    public void SceneContext()
+    private readonly IBlockFactory blockFactory;
+    private readonly IParsingSceneContext parsingSceneContext;
+    private readonly ParsingContext sut;
+
+    public ParsingContextTests()
     {
-        var sut = new ParsingContext();
-        sut.SceneContext.Should().BeEquivalentTo(new {HasMood = false, HasMusic = false});
+        blockFactory = A.Dummy<IBlockFactory>();
+        parsingSceneContext = A.Dummy<ParsingSceneContext>();
+        sut = new(blockFactory, parsingSceneContext);
+    }
+
+    [Fact]
+    public void Initialization()
+    {
+        sut.BlockFactory.Should().BeSameAs(blockFactory);
+        sut.SceneContext.Should().BeSameAs(parsingSceneContext);
+        sut.IsSuccess.Should().BeTrue();
+        sut.DismissNodes.Should().BeEmpty();
     }
 
     [Fact]
     public void IsSuccessShouldReturnFalseAfterLogError()
     {
-        var sut = new ParsingContext();
         sut.IsSuccess.Should().BeTrue();
 
         using var reader = XmlReader.Create(new StringReader("<teste />"));
@@ -34,8 +46,6 @@ public class ParsingContextTests
         using var reader = XmlReader.Create(new StringReader(xml));
         reader.MoveToContent();
 
-        var sut = new ParsingContext();
-
         while(reader.Read())
         {
             if (reader.NodeType == XmlNodeType.Element)
@@ -49,7 +59,6 @@ public class ParsingContextTests
     [Fact]
     public void MaxNumberOfErrorsExceeded()
     {
-        var sut = new ParsingContext();
         sut.IsSuccess.Should().BeTrue();
 
         using var reader = XmlReader.Create(new StringReader("<teste />"));
@@ -72,7 +81,6 @@ public class ParsingContextTests
     [Fact]
     public void DismissNodes()
     {
-        var sut = new ParsingContext();
         sut.DismissNodes.Should().BeEmpty();
 
         var node = A.Dummy<INode>();

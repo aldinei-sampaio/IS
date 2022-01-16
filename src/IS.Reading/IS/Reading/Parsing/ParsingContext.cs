@@ -10,7 +10,15 @@ public class ParsingContext : IParsingContext
     private readonly StringBuilder stringBuilder = new();
     private int errorCount = 0;
 
-    public IParsingSceneContext SceneContext { get; set; } = new ParsingSceneContext();
+    public ParsingContext(IBlockFactory blockFactory, IParsingSceneContext parsingSceneContext)
+    {
+        BlockFactory = blockFactory;
+        SceneContext = parsingSceneContext;
+    }
+
+    public IBlockFactory BlockFactory { get; }
+
+    public IParsingSceneContext SceneContext { get; }
 
     public bool IsSuccess => errorCount == 0;
 

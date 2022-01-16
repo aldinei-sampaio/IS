@@ -4,6 +4,14 @@ using IS.Reading.Variables;
 
 namespace IS.Reading.Navigation;
 
+//public interface IBlockState
+//{
+//    Stack<INode> BackwardStack { get; }
+//    int? CurrentNodeIndex { get; set; }
+//    INode? CurrentNode { get; set; }
+//    IReadOnlyList<IBlockState> Nodes { get; }
+//}
+
 public interface INavigationContext
 {
     IVariableDictionary Variables { get; }

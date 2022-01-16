@@ -10,6 +10,7 @@ public class StoryboardParserTests
 {
     private readonly List<INode> dismissNodes;
     private readonly IParsingContext parsingContext;
+    private readonly IBlockFactory blockFactory;
     private readonly IRootBlockParser rootBlockParser;
     private readonly ISceneNavigator sceneNavigator;
     private readonly IEventManager eventManager;
@@ -20,10 +21,12 @@ public class StoryboardParserTests
 
     public StoryboardParserTests()
     {
+        blockFactory = new FakeBlockFactory();
         dismissNodes = new();
         parsingContext = A.Fake<IParsingContext>(i => i.Strict());
         A.CallTo(() => parsingContext.RegisterDismissNode(A<INode>.Ignored))
             .Invokes(i => dismissNodes.Add(i.Arguments.Get<INode>(0)));
+        A.CallTo(() => parsingContext.BlockFactory).Returns(blockFactory);
 
         rootBlockParser = A.Fake<IRootBlockParser>(i => i.Strict());
         sceneNavigator = A.Fake<ISceneNavigator>(i => i.Strict());

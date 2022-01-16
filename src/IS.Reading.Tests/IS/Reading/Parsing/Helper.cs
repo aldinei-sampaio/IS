@@ -25,4 +25,12 @@ public static class Helper
         return reader;
     }
 
+    public static IParsingContext FakeParsingContext()
+    {
+        var blockFactory = new FakeBlockFactory();
+        var context = A.Fake<IParsingContext>(i => i.Strict());
+        A.CallTo(() => context.BlockFactory).Returns(blockFactory);
+        return context;
+    }
+
 }

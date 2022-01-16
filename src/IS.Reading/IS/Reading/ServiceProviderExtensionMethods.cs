@@ -93,6 +93,8 @@ public static class ServiceProviderExtensionMethods
 
         // Transient
         services.AddTransient<IEventManager, EventManager>();
+        services.AddTransient<IBlockFactory, BlockFactory>();
+        services.AddTransient<IParsingSceneContext, ParsingSceneContext>();
         services.AddTransient<IParsingContext, ParsingContext>();
         services.AddTransient<INavigationState, NavigationState>();
         services.AddTransient<IVariableDictionary, VariableDictionary>();
