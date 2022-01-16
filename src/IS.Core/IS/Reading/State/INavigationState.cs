@@ -7,4 +7,7 @@ public interface INavigationState
     string? PersonName { get; set; }
     MoodType? MoodType { get; set; }
     string? MusicName { get; set; }
+    int? CurrentBlockId { get; set; }
+    int CurrentIteration { get; set; }
+    IBlockStateDictionary BlockStates { get; }
 }

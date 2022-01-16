@@ -24,6 +24,7 @@ public static class ServiceProviderExtensionMethods
     {
         // Auxiliar
         services.AddSingleton<IRandomizer, Randomizer>();
+        services.AddSingleton<IBlockStateFactory, BlockStateFactory>();
 
         // Auxiliar parsers
         services.AddSingleton<IWordReaderFactory, WordReaderFactory>();
@@ -98,6 +99,8 @@ public static class ServiceProviderExtensionMethods
         services.AddTransient<IParsingContext, ParsingContext>();
         services.AddTransient<INavigationState, NavigationState>();
         services.AddTransient<IVariableDictionary, VariableDictionary>();
+        services.AddTransient<IBlockState, BlockState>();
+        services.AddTransient<IBlockStateDictionary, BlockStateDictionary>();
 
         return services;
     }
