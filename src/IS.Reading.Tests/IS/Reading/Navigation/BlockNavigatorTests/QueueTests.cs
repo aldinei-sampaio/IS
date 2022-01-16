@@ -1,8 +1,11 @@
-﻿namespace IS.Reading.Navigation.BlockNavigatorTests;
+﻿using IS.Reading.State;
+
+namespace IS.Reading.Navigation.BlockNavigatorTests;
 
 public class QueueTests
 {
     private readonly IBlock block;
+    private readonly IBlockState blockState;
     private readonly List<INode> nodes = new();
     private readonly INavigationContext context;
     private readonly BlockNavigator sut;
@@ -13,6 +16,8 @@ public class QueueTests
         block = A.Dummy<IBlock>();
         A.CallTo(() => block.Nodes).Returns(nodes);
         context = A.Dummy<INavigationContext>();
+        blockState = A.Dummy<IBlockState>();
+        A.CallTo(() => context.State.BlockStates[0, 0]).Returns(blockState);
     }
 
     [Fact]
@@ -28,19 +33,19 @@ public class QueueTests
         var node = FakeNode(context);
         nodes.Add(node);
 
-        block.BackwardStack.Count.Should().Be(0);
+        blockState.BackwardStack.Count.Should().Be(0);
 
         await TestNextAsync(node);
-        block.BackwardStack.Count.Should().Be(1);
+        blockState.BackwardStack.Count.Should().Be(1);
 
         await TestNextAsync(null);
-        block.BackwardStack.Count.Should().Be(1);
+        blockState.BackwardStack.Count.Should().Be(1);
 
         await TestPreviousAsync(node);
-        block.BackwardStack.Count.Should().Be(0);
+        blockState.BackwardStack.Count.Should().Be(0);
 
         await TestPreviousAsync(null);
-        block.BackwardStack.Count.Should().Be(0);
+        blockState.BackwardStack.Count.Should().Be(0);
     }
 
     [Fact]
@@ -51,25 +56,25 @@ public class QueueTests
         var node2 = FakeNode(context);
         nodes.Add(node2);
 
-        block.BackwardStack.Count.Should().Be(0);
+        blockState.BackwardStack.Count.Should().Be(0);
 
         await TestNextAsync(node1);
-        block.BackwardStack.Count.Should().Be(1);
+        blockState.BackwardStack.Count.Should().Be(1);
 
         await TestNextAsync(node2);
-        block.BackwardStack.Count.Should().Be(2);
+        blockState.BackwardStack.Count.Should().Be(2);
 
         await TestNextAsync(null);
-        block.BackwardStack.Count.Should().Be(2);
+        blockState.BackwardStack.Count.Should().Be(2);
 
         await TestPreviousAsync(node2);
-        block.BackwardStack.Count.Should().Be(1);
+        blockState.BackwardStack.Count.Should().Be(1);
 
         await TestPreviousAsync(node1);
-        block.BackwardStack.Count.Should().Be(0);
+        blockState.BackwardStack.Count.Should().Be(0);
 
         await TestPreviousAsync(null);
-        block.BackwardStack.Count.Should().Be(0);
+        blockState.BackwardStack.Count.Should().Be(0);
     }
 
     private async Task TestPreviousAsync(INode node)

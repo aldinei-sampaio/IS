@@ -1,15 +1,16 @@
 ﻿using IS.Reading.Conditions;
+using IS.Reading.State;
 
 namespace IS.Reading.Navigation.BlockNavigatorTests;
 
 public class BackAndForthTester
 {
     public IBlock Block { get; }
+    public IBlockState BlockState { get; }
     public INavigationContext Context { get; }
     public BlockNavigator Navigator { get; }
-
+    
     private readonly List<string> log = new();
-
     private readonly List<INode> nodes = new();
 
     public BackAndForthTester()
@@ -18,6 +19,8 @@ public class BackAndForthTester
         Block = A.Dummy<IBlock>();
         A.CallTo(() => Block.Nodes).Returns(nodes);
         Context = A.Dummy<INavigationContext>();
+        BlockState = A.Dummy<IBlockState>();
+        A.CallTo(() => Context.State.BlockStates[0, 0]).Returns(BlockState);
     }
 
     public void CheckLog(params string[] expectedLogEntries)
@@ -40,7 +43,7 @@ public class BackAndForthTester
         var item = (TestNode)await Navigator.MoveAsync(Block, Context, forward);
         var actualName = item?.Name;
         actualName.Should().Be(expectedName);
-        Block.CurrentNode.Should().BeSameAs(item);
+        BlockState.CurrentNode.Should().BeSameAs(item);
     }
 
     public void AddNode(string normalName, string reversedName)

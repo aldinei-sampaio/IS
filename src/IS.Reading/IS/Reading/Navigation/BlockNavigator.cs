@@ -1,4 +1,6 @@
-﻿namespace IS.Reading.Navigation;
+﻿using IS.Reading.State;
+
+namespace IS.Reading.Navigation;
 
 public class BlockNavigator : IBlockNavigator
 {
@@ -8,73 +10,75 @@ public class BlockNavigator : IBlockNavigator
 
     public async Task<INode?> MoveAsync(IBlock block, INavigationContext context, bool forward)
     {
+        context.State.CurrentBlockId = block.Id;
+        var blockState = context.State.BlockStates[block.Id, 0];
         if (forward)
-            return await MoveNextAsync(block, context);
+            return await MoveNextAsync(block, context, blockState);
         else
-            return await MovePreviousAsync(block, context);
+            return await MovePreviousAsync(block, context, blockState);
     }
 
-    private static async Task<INode?> MoveNextAsync(IBlock block, INavigationContext context)
+    private static async Task<INode?> MoveNextAsync(IBlock block, INavigationContext context, IBlockState blockState)
     {
-        await LeaveCurrentNodeAsync(block, context);
+        await LeaveCurrentNodeAsync(blockState, context);
 
-        var item = GetNextValidNode(block, context);
+        var item = GetNextValidNode(block, context, blockState);
 
         if (item is null)
             return null;
 
         var reverse = await item.EnterAsync(context);
         if (reverse is not null)
-            block.BackwardStack.Push(reverse);
+            blockState.BackwardStack.Push(reverse);
 
         return item;
     }
 
-    private static async Task LeaveCurrentNodeAsync(IBlock block, INavigationContext context)
+    private static async Task LeaveCurrentNodeAsync(IBlockState blockState, INavigationContext context)
     {
-        if (block.CurrentNode is null)
+        if (blockState.CurrentNode is null)
             return;
 
-        await block.CurrentNode.LeaveAsync(context);
+        await blockState.CurrentNode.LeaveAsync(context);
     }
 
-    private static INode? GetNextNode(IBlock block)
+    private static INode? GetNextNode(IBlock block, IBlockState blockState)
     {
-        var nextIndex = block.CurrentNodeIndex.HasValue ? block.CurrentNodeIndex.Value + 1 : 0;
+        var nextIndex = blockState.CurrentNodeIndex.HasValue ? blockState.CurrentNodeIndex.Value + 1 : 0;
         if (nextIndex >= block.Nodes.Count)
         {
-            block.CurrentNodeIndex = null;
-            block.CurrentNode = null;
+            blockState.CurrentNodeIndex = null;
+            blockState.CurrentNode = null;
             return null;
         }
 
         var node = block.Nodes[nextIndex];
 
-        block.CurrentNodeIndex = nextIndex;
-        block.CurrentNode = node;
+        blockState.CurrentNodeIndex = nextIndex;
+        blockState.CurrentNode = node;
         return node;
     }
 
-    private static INode? GetNextValidNode(IBlock block, INavigationContext context)
+    private static INode? GetNextValidNode(IBlock block, INavigationContext context, IBlockState blockState)
     {
         for (; ; )
         {
-            var item = GetNextNode(block);
+            var item = GetNextNode(block, blockState);
             if (item == null)
                 return null;
 
             if (item.When == null || item.When.Evaluate(context.Variables))
                 return item;
 
-            block.BackwardStack.Push(new BlockedNode());
+            blockState.BackwardStack.Push(new BlockedNode());
         }
     }
 
-    private static async Task<INode?> MovePreviousAsync(IBlock block, INavigationContext context)
+    private static async Task<INode?> MovePreviousAsync(IBlock block, INavigationContext context, IBlockState blockState)
     {
-        await LeaveCurrentNodeAsync(block, context);
+        await LeaveCurrentNodeAsync(blockState, context);
 
-        var item = GetValidPreviousNode(block);
+        var item = GetValidPreviousNode(block, blockState);
 
         if (item is null)
             return null;
@@ -84,16 +88,16 @@ public class BlockNavigator : IBlockNavigator
         return item;
     }
 
-    private static INode? GetValidPreviousNode(IBlock block)
+    private static INode? GetValidPreviousNode(IBlock block, IBlockState blockState)
     {
-        var index = block.CurrentNodeIndex ?? (block.Nodes.Count - 1);
+        var index = blockState.CurrentNodeIndex ?? (block.Nodes.Count - 1);
 
         for (; ; )
         {
-            if (!block.BackwardStack.TryPop(out var item))
+            if (!blockState.BackwardStack.TryPop(out var item))
             {
-                block.CurrentNodeIndex = null;
-                block.CurrentNode = null;
+                blockState.CurrentNodeIndex = null;
+                blockState.CurrentNode = null;
                 return null;
             }
 
@@ -101,8 +105,8 @@ public class BlockNavigator : IBlockNavigator
 
             if (item is not BlockedNode)
             {
-                block.CurrentNodeIndex = index >= 0 ? index : null;
-                block.CurrentNode = item;
+                blockState.CurrentNodeIndex = index >= 0 ? index : null;
+                blockState.CurrentNode = item;
                 return item;
             }
         }
