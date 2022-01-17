@@ -13,12 +13,12 @@ public class BalloonTextNode : IPauseNode
     public BalloonTextNode(string text, BalloonType ballonType, IChoiceNode? choiceNode)
         => (Text, BalloonType, ChoiceNode) = (text, ballonType, choiceNode);
 
-    public async Task<INode> EnterAsync(INavigationContext context)
+    public async Task<object?> EnterAsync(INavigationContext context)
     {
         var choice = CreateChoice(ChoiceNode, context);
         var @event = new BalloonTextEvent(Text, BalloonType, context.State.IsProtagonist(), choice);
         await context.Events.InvokeAsync<IBalloonTextEvent>(@event);
-        return this;
+        return null;
     }
 
     private static IChoice? CreateChoice(IChoiceNode? choiceNode, INavigationContext context)

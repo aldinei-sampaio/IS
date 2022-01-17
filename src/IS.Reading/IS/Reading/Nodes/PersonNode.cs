@@ -15,13 +15,22 @@ namespace IS.Reading.Nodes
         private static bool IsProtagonist(INavigationContext context, string name)
             => name == context.State.ProtagonistName;
 
-        public async Task<INode> EnterAsync(INavigationContext context)
+        public static async Task<object?> ApplyStateAsync(INavigationContext context, string personName)
         {
-            var @event = new PersonEnterEvent(PersonName, IsProtagonist(context, PersonName));
+            var @event = new PersonEnterEvent(personName, IsProtagonist(context, personName));
             await context.Events.InvokeAsync<IPersonEnterEvent>(@event);
-            context.State.PersonName = PersonName;
+            context.State.PersonName = personName;
             context.State.MoodType = null;
-            return this;
+            return null;
+        }
+
+        public Task<object?> EnterAsync(INavigationContext context)
+            => ApplyStateAsync(context, PersonName);
+
+        public async Task EnterAsync(INavigationContext context, object? state)
+        {
+            if (state is string personName)
+                await ApplyStateAsync(context, personName);
         }
 
         public async Task LeaveAsync(INavigationContext context)

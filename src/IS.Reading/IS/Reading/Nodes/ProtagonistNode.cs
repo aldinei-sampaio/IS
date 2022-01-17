@@ -13,15 +13,21 @@ public class ProtagonistNode : INode
 
     public ICondition? When { get; }
 
-    public async Task<INode> EnterAsync(INavigationContext context)
+    public static async Task<object?> ApplyStateAsync(INavigationContext context, string? protagonistName)
     {
         var oldName = context.State.ProtagonistName;
-        if (oldName == ProtagonistName)
-            return this;
+        if (oldName == protagonistName)
+            return null;
 
-        await context.Events.InvokeAsync<IProtagonistChangeEvent>(new ProtagonistChangeEvent(ProtagonistName));
-        context.State.ProtagonistName = ProtagonistName;
+        await context.Events.InvokeAsync<IProtagonistChangeEvent>(new ProtagonistChangeEvent(protagonistName));
+        context.State.ProtagonistName = protagonistName;
 
-        return new ProtagonistNode(oldName, When);
+        return oldName;
     }
+
+    public Task<object?> EnterAsync(INavigationContext context)
+        => ApplyStateAsync(context, ProtagonistName);
+
+    public Task EnterAsync(INavigationContext context, object? state)
+        => ApplyStateAsync(context, state as string);
 }

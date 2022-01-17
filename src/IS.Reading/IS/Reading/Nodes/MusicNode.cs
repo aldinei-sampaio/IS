@@ -13,15 +13,21 @@ public class MusicNode : INode
 
     public ICondition? When { get; }
 
-    public async Task<INode> EnterAsync(INavigationContext context)
+    public static async Task<object?> ApplyStateAsync(INavigationContext context, string? musicName)
     {
         var oldName = context.State.MusicName;
-        if (oldName == MusicName)
-            return this;
+        if (oldName == musicName)
+            return null;
 
-        await context.Events.InvokeAsync<IMusicChangeEvent>(new MusicChangeEvent(MusicName));
-        context.State.MusicName = MusicName;
+        await context.Events.InvokeAsync<IMusicChangeEvent>(new MusicChangeEvent(musicName));
+        context.State.MusicName = musicName;
 
-        return new MusicNode(oldName, When);
+        return oldName;
     }
+
+    public Task<object?> EnterAsync(INavigationContext context)
+        => ApplyStateAsync(context, MusicName);
+
+    public Task EnterAsync(INavigationContext context, object? state)
+        => ApplyStateAsync(context, state as string);
 }

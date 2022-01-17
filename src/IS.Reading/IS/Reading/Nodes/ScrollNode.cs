@@ -12,12 +12,12 @@ namespace IS.Reading.Nodes
 
         public ICondition? When { get; }
 
-        public async Task<INode> EnterAsync(INavigationContext context)
+        public async Task<object?> EnterAsync(INavigationContext context)
         {
             var oldState = context.State.Background;
 
             if (oldState.Type != BackgroundType.Image || oldState.Position == BackgroundPosition.Undefined)
-                return this;
+                return null;
 
             var newPosition = oldState.Position == BackgroundPosition.Right ? BackgroundPosition.Left : BackgroundPosition.Right;
             var newState = new BackgroundState(oldState.Name, oldState.Type, newPosition);
@@ -25,7 +25,7 @@ namespace IS.Reading.Nodes
             await context.Events.InvokeAsync<IBackgroundScrollEvent>(new BackgroundScrollEvent(newPosition));
             context.State.Background = newState;
 
-            return this;
+            return null;
         }
     }
 }

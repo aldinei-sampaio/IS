@@ -14,15 +14,26 @@ public class BackgroundNode : INode
 
     public ICondition? When { get; }
 
-    public async Task<INode> EnterAsync(INavigationContext context)
+    private static async Task ApplyStateAsync(INavigationContext context, IBackgroundState state)
+    {
+        await context.Events.InvokeAsync<IBackgroundChangeEvent>(new BackgroundChangeEvent(state));
+        context.State.Background = state;
+    }
+
+    public async Task<object?> EnterAsync(INavigationContext context)
     {
         var oldState = context.State.Background;
         if (oldState == State)
-            return this;
+            return null;
 
-        await context.Events.InvokeAsync<IBackgroundChangeEvent>(new BackgroundChangeEvent(State));
-        context.State.Background = State;
+        await ApplyStateAsync(context, State);
 
-        return new BackgroundNode(oldState, When);
+        return oldState;
+    }
+
+    public async Task EnterAsync(INavigationContext context, object? state)
+    {
+        if (state is IBackgroundState backgroundState)
+            await ApplyStateAsync(context, backgroundState);
     }
 }

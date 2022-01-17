@@ -10,9 +10,16 @@ public class VarSetNode : INode
     public VarSetNode(IVarSet varSet)
         => VarSet = varSet;
 
-    public Task<INode> EnterAsync(INavigationContext context)
+    private static Task<object?> Evaluate(INavigationContext context, IVarSet varSet)
+        => Task.FromResult<object?>(varSet.Execute(context.Variables));
+
+    public Task<object?> EnterAsync(INavigationContext context)
+        => Evaluate(context, VarSet);
+
+    public Task EnterAsync(INavigationContext context, object? state)
     {
-        var reversed = VarSet.Execute(context.Variables);
-        return Task.FromResult<INode>(new VarSetNode(reversed));
+        if (state is IVarSet varSet)
+            Evaluate(context, varSet);
+        return Task.CompletedTask;
     }
 }

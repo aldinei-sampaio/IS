@@ -13,10 +13,13 @@ namespace IS.Reading.Nodes
 
         public TimeSpan Duration { get; }
 
-        public async Task<INode> EnterAsync(INavigationContext context)
+        public async Task<object?> EnterAsync(INavigationContext context)
         {
             await context.Events.InvokeAsync<ITimedPauseEvent>(new TimedPauseEvent(Duration));
-            return this;
+            return null;
         }
+
+        public Task EnterAsync(INavigationContext context, object? state)
+            => Task.CompletedTask;
     }
 }

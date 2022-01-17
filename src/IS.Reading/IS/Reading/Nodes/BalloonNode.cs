@@ -12,11 +12,11 @@ public class BalloonNode : INode
 
     public IBlock? ChildBlock { get; }
 
-    public async Task<INode> EnterAsync(INavigationContext context)
+    public async Task<object?> EnterAsync(INavigationContext context)
     {
         var @event = new BalloonOpenEvent(BallonType, context.State.IsProtagonist());
         await context.Events.InvokeAsync<IBalloonOpenEvent>(@event);
-        return this;
+        return null;
     }
 
     public async Task LeaveAsync(INavigationContext context)
