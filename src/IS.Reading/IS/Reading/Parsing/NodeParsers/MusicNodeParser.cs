@@ -47,5 +47,5 @@ public class MusicNodeParser : IMusicNodeParser
     }
 
     public INode DismissNode { get; } 
-        = new DismissNode<MusicNode>(new(null, null));
+        = new MusicNode(null, null);
 }

@@ -24,7 +24,7 @@ public class BackgroundNode : INode
     {
         var oldState = context.State.Background;
         if (oldState == State)
-            return null;
+            return oldState;
 
         await ApplyStateAsync(context, State);
 

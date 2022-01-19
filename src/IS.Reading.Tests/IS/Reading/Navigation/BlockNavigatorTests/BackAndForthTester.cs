@@ -41,8 +41,7 @@ public class BackAndForthTester
     private async Task DoMoveAsync(bool forward, string expectedName)
     {
         var item = (TestNode)await Navigator.MoveAsync(Block, Context, forward);
-        var actualName = item?.Name;
-        actualName.Should().Be(expectedName);
+        item?.LastEnteredName.Should().Be(expectedName);
         BlockState.CurrentNode.Should().BeSameAs(item);
     }
 

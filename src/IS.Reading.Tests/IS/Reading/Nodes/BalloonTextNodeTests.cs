@@ -60,7 +60,7 @@ public class BalloonTextNodeTests
         var invoker = new TestInvoker(context);
 
         var ret = await sut.EnterAsync(context);
-        ret.Should().BeSameAs(sut);
+        ret.Should().BeNull();
 
         invoker.ShouldContainSingle<IBalloonTextEvent>(
             i => i.Should().BeEquivalentTo(new

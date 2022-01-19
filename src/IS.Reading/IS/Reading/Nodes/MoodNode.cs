@@ -15,7 +15,7 @@ public class MoodNode : INode
         var oldState = context.State.MoodType;
 
         if (oldState == moodType)
-            return null;
+            return oldState;
 
         if (moodType.HasValue)
         {
@@ -28,7 +28,7 @@ public class MoodNode : INode
 
         context.State.MoodType = moodType;
 
-        return moodType;
+        return oldState;
     }
 
     public Task<object?> EnterAsync(INavigationContext context)

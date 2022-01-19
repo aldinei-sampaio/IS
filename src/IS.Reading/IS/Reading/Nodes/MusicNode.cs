@@ -17,7 +17,7 @@ public class MusicNode : INode
     {
         var oldName = context.State.MusicName;
         if (oldName == musicName)
-            return null;
+            return oldName;
 
         await context.Events.InvokeAsync<IMusicChangeEvent>(new MusicChangeEvent(musicName));
         context.State.MusicName = musicName;

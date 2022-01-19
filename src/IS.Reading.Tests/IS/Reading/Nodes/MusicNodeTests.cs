@@ -17,7 +17,7 @@ public class MusicNodeTests
     }
 
     [Fact]
-    public async Task OnEnterAsyncShouldReturnReversedNode()
+    public async Task OnEnterAsyncShouldReturnLastMusicName()
     {
         var context = A.Dummy<INavigationContext>();
         context.State.MusicName = "enigma";
@@ -25,8 +25,7 @@ public class MusicNodeTests
         var sut = new MusicNode("free_mind", null);
 
         var ret = await sut.EnterAsync(context);
-        ret.Should().BeOfType<MusicNode>()
-            .Which.MusicName.Should().Be("enigma");
+        ret.Should().Be("enigma");
     }
 
     [Fact]
@@ -67,7 +66,7 @@ public class MusicNodeTests
 
         var sut = new MusicNode("crime_fighter", null);
         var ret = await sut.EnterAsync(context);
-        ret.Should().BeSameAs(sut);
+        ret.Should().Be("crime_fighter");
 
         invoker.Count.Should().Be(0);
     }

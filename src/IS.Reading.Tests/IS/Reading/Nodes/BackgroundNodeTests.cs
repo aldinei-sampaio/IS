@@ -47,13 +47,10 @@ public class BackgroundNodeTests
     }
 
     [Fact]
-    public async Task EnterAsyncShouldReturnAReversalNode()
+    public async Task EnterAsyncShouldReturnPreviousState()
     {
         var ret = await sut.EnterAsync(context);
-
-        var retNode = ret.Should().BeOfType<BackgroundNode>().Which;
-        retNode.State.Should().BeSameAs(initialState);
-        retNode.When.Should().BeSameAs(when);
+        ret.Should().BeSameAs(initialState);
     }
 
     [Fact]
@@ -68,11 +65,11 @@ public class BackgroundNodeTests
     }
 
     [Fact]
-    public async Task ShouldReturnSelfIfThereIsNoChangeInBackground()
+    public async Task ShouldReturnPreviousStateEvenIfThereIsNoChangeInBackground()
     {
         context.State.Background = newState;
         var ret = await sut.EnterAsync(context);
-        ret.Should().BeSameAs(sut);    
+        ret.Should().BeSameAs(newState);
     }
 
     [Fact]

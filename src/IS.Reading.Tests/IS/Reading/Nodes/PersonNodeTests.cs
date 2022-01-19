@@ -31,7 +31,7 @@ public class PersonNodeTests
         var sut = new PersonNode(personName, childBlock);
 
         var ret = await sut.EnterAsync(context);
-        ret.Should().BeSameAs(sut);
+        ret.Should().BeNull();
 
         invoker.ShouldContainSingle<IPersonEnterEvent>(
             i => i.Should().BeEquivalentTo(new { PersonName = personName, IsProtagonist = isProtagonist })
@@ -48,7 +48,7 @@ public class PersonNodeTests
         var sut = new PersonNode("amaterasu", childBlock);
 
         var ret = await sut.EnterAsync(context);
-        ret.Should().BeSameAs(sut);
+        ret.Should().BeNull();
 
         context.State.PersonName.Should().Be("amaterasu");
     }

@@ -31,7 +31,7 @@ public class BackgroundEventTests
 
             await tester.BackwardAsync("bg right: fundo2");
             await tester.BackwardAsync("bg scroll", "bg color: white");
-            await tester.BackwardAsync("bg color: black", "pause: 250", "bg left: fundo1");
+            await tester.BackwardAsync("bg color: black", "bg left: fundo1");
             await tester.BackwardEndAsync("bg scroll", "bg empty");
         }
     }

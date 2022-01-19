@@ -40,5 +40,5 @@ public class ProtagonistNodeParser : IProtagonistNodeParser
     }
 
     public INode DismissNode { get; } 
-        = new DismissNode<ProtagonistNode>(new(null, null));
+        = new ProtagonistNode(null, null);
 }

@@ -17,7 +17,7 @@ public class ProtagonistNodeTests
     }
 
     [Fact]
-    public async Task OnEnterAsyncShouldReturnReversedNode()
+    public async Task OnEnterAsyncShouldReturnPreviousProtagonistName()
     {
         var context = A.Dummy<INavigationContext>();
         context.State.ProtagonistName = "rúcula";
@@ -25,8 +25,7 @@ public class ProtagonistNodeTests
         var sut = new ProtagonistNode("almeirão", null);
 
         var ret = await sut.EnterAsync(context);
-        ret.Should().BeOfType<ProtagonistNode>()
-            .Which.ProtagonistName.Should().Be("rúcula");
+        ret.Should().Be("rúcula");
     }
 
     [Theory]
@@ -75,7 +74,7 @@ public class ProtagonistNodeTests
 
         var sut = new ProtagonistNode(value, null);
         var ret = await sut.EnterAsync(context);
-        ret.Should().BeSameAs(sut);
+        ret.Should().Be(value);
 
         invoker.Count.Should().Be(0);
     }

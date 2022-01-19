@@ -5,13 +5,12 @@ namespace IS.Reading.Navigation.BlockNavigatorTests;
 public class TestNode : INode
 {
     private readonly List<string> log;
+    private readonly string reversedName;
 
     public TestNode(string name, string reversedName, ICondition condition, List<string> log) 
         : this(name, condition, log)
     {
-        var reversed = new TestNode(reversedName, null, log);
-        reversed.Reversed = this;
-        Reversed = reversed;
+        this.reversedName = reversedName;
     }
 
     private TestNode(string name, ICondition condition, List<string> log)
@@ -23,23 +22,31 @@ public class TestNode : INode
 
     public string Name { get; }
 
-    public INode Reversed { get; internal set; }
-
     public ICondition When { get; }
 
     public ICondition While { get; }
 
     public IBlock ChildBlock => null;
 
-    public Task<INode> EnterAsync(INavigationContext context)
+    public string LastEnteredName { get; private set; }
+
+    public Task<object> EnterAsync(INavigationContext context)
     {
+        LastEnteredName = Name;
         log?.Add($"Enter:{Name}");
-        return Task.FromResult(Reversed);
+        return Task.FromResult((object)reversedName);
+    }
+
+    public Task EnterAsync(INavigationContext context, object state)
+    {
+        LastEnteredName = (string)state;
+        log?.Add($"Enter:{state}");
+        return Task.CompletedTask;
     }
 
     public Task LeaveAsync(INavigationContext context)
     {
-        log?.Add($"Leave:{Name}");
+        log?.Add($"Leave:{LastEnteredName}");
         return Task.CompletedTask;
     }
 }

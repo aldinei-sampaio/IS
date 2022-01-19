@@ -28,13 +28,14 @@ public class MoodNodeTests
         var context = A.Dummy<INavigationContext>();
         context.State.PersonName = personName;
         context.State.ProtagonistName = protagonist;
+        context.State.MoodType = null;
 
         var invoker = new TestInvoker(context);
 
         var sut = new MoodNode(moodType);
 
         var ret = await sut.EnterAsync(context);
-        ret.Should().BeOfType<MoodNode>().And.BeEquivalentTo(new { MoodType = (MoodType?)null });
+        ret.Should().BeNull();
 
         invoker.ShouldContainSingle<IMoodChangeEvent>(
             i => i.Should().BeEquivalentTo(new
@@ -57,13 +58,13 @@ public class MoodNodeTests
         var sut = new MoodNode(MoodType.Normal);
 
         var ret = await sut.EnterAsync(context);
-        ret.Should().BeOfType<MoodNode>().And.BeEquivalentTo(new { MoodType = (MoodType?)null });
+        ret.Should().BeNull();
 
         invoker.Count.Should().Be(0);
     }
 
     [Fact]
-    public async Task OnEnterShouldReturnMoonNodeWithPreviousMood()
+    public async Task OnEnterShouldReturnPreviousMood()
     {
         var context = A.Dummy<INavigationContext>();
         context.State.MoodType = MoodType.Surprised;
@@ -74,7 +75,7 @@ public class MoodNodeTests
         var sut = new MoodNode(MoodType.Happy);
         var ret = await sut.EnterAsync(context);
         
-        ret.Should().BeOfType<MoodNode>().And.BeEquivalentTo(new { MoodType = MoodType.Surprised });
+        ret.Should().Be(MoodType.Surprised);
 
         invoker.ShouldContainSingle<IMoodChangeEvent>(
             i => i.Should().BeEquivalentTo(new
@@ -111,7 +112,7 @@ public class MoodNodeTests
         var sut = new MoodNode(MoodType.Happy);
 
         var ret = await sut.EnterAsync(context);
-        ret.Should().BeSameAs(sut);
+        ret.Should().Be(MoodType.Happy);
 
         invoker.Count.Should().Be(0);
     }

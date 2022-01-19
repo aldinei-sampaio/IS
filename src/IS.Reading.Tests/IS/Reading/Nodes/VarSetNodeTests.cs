@@ -21,7 +21,7 @@ public class VarSetNodeTests
     }
 
     [Fact]
-    public async Task OnEnterAsyncShouldReturnReversedNode()
+    public async Task OnEnterAsyncShouldReturnReversedVarSet()
     {
         var context = A.Fake<INavigationContext>(i => i.Strict());
         var dic = A.Dummy<IVariableDictionary>();
@@ -32,7 +32,6 @@ public class VarSetNodeTests
 
         var reversedNode = await sut.EnterAsync(context);
 
-        reversedNode.Should().BeOfType<VarSetNode>()
-            .Which.VarSet.Should().BeSameAs(reversedVarSet);
+        reversedNode.Should().BeSameAs(reversedVarSet);
     }
 }

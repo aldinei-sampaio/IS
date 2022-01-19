@@ -76,10 +76,11 @@ public class ProtagonistNodeParserTests
     [Fact]
     public void DismissNodeShouldClearProtagonist()
     {
-        var node = sut.DismissNode;
-        var dismiss = node.Should().BeOfType<DismissNode<ProtagonistNode>>().Which;
-        var protagNode = dismiss.ChangeNode.Should().BeOfType<ProtagonistNode>().Which;
-        protagNode.ProtagonistName.Should().BeNull();
-        protagNode.When.Should().BeNull();
+        sut.DismissNode.Should().BeOfType<ProtagonistNode>()
+            .Which.Should().BeEquivalentTo(new
+            {
+                ProtagonistName = (string)null,
+                When = (ICondition)null,
+            });
     }
 }

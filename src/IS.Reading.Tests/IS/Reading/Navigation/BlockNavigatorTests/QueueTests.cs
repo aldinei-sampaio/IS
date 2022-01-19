@@ -16,7 +16,11 @@ public class QueueTests
         block = A.Dummy<IBlock>();
         A.CallTo(() => block.Nodes).Returns(nodes);
         context = A.Dummy<INavigationContext>();
+        context.CurrentNode = null;
+        
         blockState = A.Dummy<IBlockState>();
+        blockState.CurrentNode = null;
+        blockState.CurrentNodeIndex = null;
         A.CallTo(() => context.State.BlockStates[0, 0]).Returns(blockState);
     }
 
@@ -30,7 +34,7 @@ public class QueueTests
     [Fact]
     public async Task SingleNode()
     {
-        var node = FakeNode(context);
+        var node = FakeNode(context, "N1");
         nodes.Add(node);
 
         blockState.BackwardStack.Count.Should().Be(0);
@@ -51,9 +55,9 @@ public class QueueTests
     [Fact]
     public async Task TwoNodes()
     {
-        var node1 = FakeNode(context);
+        var node1 = FakeNode(context, "N1");
         nodes.Add(node1);
-        var node2 = FakeNode(context);
+        var node2 = FakeNode(context, "N2");
         nodes.Add(node2);
 
         blockState.BackwardStack.Count.Should().Be(0);
@@ -78,16 +82,25 @@ public class QueueTests
     }
 
     private async Task TestPreviousAsync(INode node)
-        => (await sut.MoveAsync(block, context, false)).Should().BeSameAs(node);
+    {
+        await sut.MoveAsync(block, context, false);
+        blockState.CurrentNode.Should().BeSameAs(node);
+    }
 
     private async Task TestNextAsync(INode node)
-        => (await sut.MoveAsync(block, context, true)).Should().BeSameAs(node);
-
-    private static INode FakeNode(INavigationContext context)
     {
-        var node = A.Fake<INode>();
+        await sut.MoveAsync(block, context, true);
+        blockState.CurrentNode.Should().BeSameAs(node);
+    }
+
+    private static INode FakeNode(INavigationContext context, string name)
+    {
+        var node = A.Fake<INode>(i => i.Strict());
         A.CallTo(() => node.When).Returns(null);
-        A.CallTo(() => node.EnterAsync(context)).Returns(node);
+        A.CallTo(() => node.EnterAsync(context)).Returns(Task.FromResult<object>(null));
+        A.CallTo(() => node.EnterAsync(context, null)).DoesNothing();
+        A.CallTo(() => node.LeaveAsync(context)).DoesNothing();
+        A.CallTo(() => node.ToString()).Returns(name);
         return node;
     }
 }

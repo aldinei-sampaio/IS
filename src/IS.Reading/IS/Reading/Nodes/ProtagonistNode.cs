@@ -17,7 +17,7 @@ public class ProtagonistNode : INode
     {
         var oldName = context.State.ProtagonistName;
         if (oldName == protagonistName)
-            return null;
+            return oldName;
 
         await context.Events.InvokeAsync<IProtagonistChangeEvent>(new ProtagonistChangeEvent(protagonistName));
         context.State.ProtagonistName = protagonistName;

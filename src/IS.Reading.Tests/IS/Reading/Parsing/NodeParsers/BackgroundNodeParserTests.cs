@@ -65,8 +65,8 @@ public class BackgroundNodeParserTests
             pauseNodeParser
         );
 
-        sut.DismissNode.Should().BeOfType<DismissNode<BackgroundNode>>()
-            .Which.ChangeNode.Should().BeEquivalentTo(new
+        sut.DismissNode.Should().BeOfType<BackgroundNode>()
+            .Which.Should().BeEquivalentTo(new
             {
                 State = BackgroundState.Empty,
                 When = (ICondition)null

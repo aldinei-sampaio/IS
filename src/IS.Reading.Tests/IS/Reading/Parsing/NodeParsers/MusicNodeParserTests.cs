@@ -52,10 +52,12 @@ public class MusicNodeParserTests
         await sut.ParseAsync(reader, context, parentContext);
 
         var node = parentContext.Nodes.Should().ContainSingle()
-            .Which.Should().BeOfType<MusicNode>().Which;            
-
-        node.MusicName.Should().Be(musicName);
-        node.When.Should().BeSameAs(when);
+            .Which.Should().BeOfType<MusicNode>()
+            .Which.Should().BeEquivalentTo(new
+            {
+                MusicName = musicName,
+                When = when
+            });
 
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).MustHaveHappenedOnceExactly();
     }
@@ -76,11 +78,12 @@ public class MusicNodeParserTests
     [Fact]
     public void DismissNodeShouldClearMusic()
     {
-        var node = sut.DismissNode;
-        var dismiss = node.Should().BeOfType<DismissNode<MusicNode>>().Which;
-        var protagNode = dismiss.ChangeNode.Should().BeOfType<MusicNode>().Which;
-        protagNode.MusicName.Should().BeNull();
-        protagNode.When.Should().BeNull();
+        sut.DismissNode.Should().BeOfType<MusicNode>()
+            .Which.Should().BeEquivalentTo(new
+            {
+                MusicName = (string)null,
+                When = (ICondition)null
+            });
     }
 
     [Fact]

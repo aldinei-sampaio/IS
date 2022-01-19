@@ -4,7 +4,7 @@ namespace IS.Reading.State;
 
 public class BlockState : IBlockState
 {
-    public Stack<INode> BackwardStack { get; } = new();
+    public Stack<object?> BackwardStack { get; } = new();
 
     public int? CurrentNodeIndex { get; set; }
 

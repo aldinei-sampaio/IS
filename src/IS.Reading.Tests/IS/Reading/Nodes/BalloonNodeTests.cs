@@ -28,7 +28,7 @@ public class BalloonNodeTests
         var sut = tester.BalloonNode;
 
         var ret = await sut.EnterAsync(tester.Context);
-        ret.Should().BeSameAs(sut);
+        ret.Should().BeNull();
 
         tester.Invoker.ShouldContainSingle<IBalloonOpenEvent>(
             i => i.Should().BeEquivalentTo(new

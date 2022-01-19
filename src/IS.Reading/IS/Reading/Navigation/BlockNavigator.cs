@@ -4,8 +4,12 @@ namespace IS.Reading.Navigation;
 
 public class BlockNavigator : IBlockNavigator
 {
-    private class BlockedNode : INode
+    private class BlockedNode
     {
+        public static BlockedNode Instance { get; } = new BlockedNode();
+        private BlockedNode()
+        {
+        }
     }
 
     public async Task<INode?> MoveAsync(IBlock block, INavigationContext context, bool forward)
@@ -27,9 +31,8 @@ public class BlockNavigator : IBlockNavigator
         if (item is null)
             return null;
 
-        var reverse = await item.EnterAsync(context);
-        if (reverse is not null)
-            blockState.BackwardStack.Push(reverse);
+        var reverseState = await item.EnterAsync(context);
+        blockState.BackwardStack.Push(reverseState);
 
         return item;
     }
@@ -70,7 +73,7 @@ public class BlockNavigator : IBlockNavigator
             if (item.When == null || item.When.Evaluate(context.Variables))
                 return item;
 
-            blockState.BackwardStack.Push(new BlockedNode());
+            blockState.BackwardStack.Push(BlockedNode.Instance);
         }
     }
 
@@ -78,37 +81,30 @@ public class BlockNavigator : IBlockNavigator
     {
         await LeaveCurrentNodeAsync(blockState, context);
 
-        var item = GetValidPreviousNode(block, blockState);
-
-        if (item is null)
-            return null;
-
-        await item.EnterAsync(context);
-
-        return item;
-    }
-
-    private static INode? GetValidPreviousNode(IBlock block, IBlockState blockState)
-    {
         var index = blockState.CurrentNodeIndex ?? (block.Nodes.Count - 1);
 
         for (; ; )
         {
-            if (!blockState.BackwardStack.TryPop(out var item))
+            if (!blockState.BackwardStack.TryPop(out var state))
             {
                 blockState.CurrentNodeIndex = null;
                 blockState.CurrentNode = null;
                 return null;
             }
 
-            index--;
-
-            if (item is not BlockedNode)
+            if (state is not BlockedNode)
             {
-                blockState.CurrentNodeIndex = index >= 0 ? index : null;
-                blockState.CurrentNode = item;
-                return item;
+                var node = block.Nodes[index];
+
+                blockState.CurrentNodeIndex = blockState.CurrentNodeIndex = index > 0 ? index - 1: null;
+                blockState.CurrentNode = node;
+
+                await node.EnterAsync(context, state);
+
+                return node;
             }
+
+            index--;
         }
     }
 }
