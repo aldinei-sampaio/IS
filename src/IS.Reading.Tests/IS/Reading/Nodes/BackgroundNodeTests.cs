@@ -79,4 +79,23 @@ public class BackgroundNodeTests
         await sut.EnterAsync(context);
         context.State.Background.Should().BeSameAs(newState);
     }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("Abc")]
+    [InlineData(123)]
+    public async Task ShouldDoNothingWhenStateArgIsNotBackgroundState(object stateArg)
+    {
+        var invoker = new TestInvoker(context);
+        await sut.EnterAsync(context, stateArg);
+        invoker.Count.Should().Be(0);
+    }
+
+    [Fact]
+    public async Task ShouldRaiseEventWhenStateArgIsBackgroundState()
+    {
+        var invoker = new TestInvoker(context);
+        await sut.EnterAsync(context, newState);
+        invoker.ShouldContainSingle<IBackgroundChangeEvent>(i => i.State.Should().BeSameAs(newState));
+    }
 }

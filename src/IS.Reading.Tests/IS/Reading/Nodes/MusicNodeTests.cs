@@ -70,4 +70,22 @@ public class MusicNodeTests
 
         invoker.Count.Should().Be(0);
     }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("helloworld")]
+    public async Task ShouldRaiseEventWithStateArg(string stateArg)
+    {
+        var context = A.Dummy<INavigationContext>();
+        context.State.MusicName = "theme";
+
+        var invoker = new TestInvoker(context);
+
+        var sut = new MusicNode("goodbye", null);
+        await sut.EnterAsync(context, stateArg);
+
+        invoker.ShouldContainSingle<IMusicChangeEvent>(
+            i => i.Should().BeEquivalentTo(new { MusicName = stateArg })
+        );
+    }
 }

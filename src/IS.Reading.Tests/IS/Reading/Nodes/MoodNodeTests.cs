@@ -116,4 +116,32 @@ public class MoodNodeTests
 
         invoker.Count.Should().Be(0);
     }
+
+    [Theory]
+    [InlineData(MoodType.Surprised)]
+    [InlineData(MoodType.Sad)]
+    [InlineData(MoodType.Angry)]
+    [InlineData(MoodType.Normal)]
+    public async Task ShouldRaiseEventWithStateArg(MoodType moodType)
+    {
+        var context = A.Dummy<INavigationContext>();
+        context.State.PersonName = "alpha";
+        context.State.ProtagonistName = "alpha";
+        context.State.MoodType = MoodType.Happy;
+
+        var invoker = new TestInvoker(context);
+
+        var sut = new MoodNode(MoodType.Happy);
+
+        await sut.EnterAsync(context, moodType);
+
+        invoker.ShouldContainSingle<IMoodChangeEvent>(
+            i => i.Should().BeEquivalentTo(new
+            {
+                MoodType = moodType,
+                PersonName = "alpha",
+                IsProtagonist = true
+            })
+        );
+    }
 }

@@ -78,4 +78,24 @@ public class ProtagonistNodeTests
 
         invoker.Count.Should().Be(0);
     }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("gama")]
+    public async Task ShouldRaiseEventWithStateArg(string stageArg)
+    {
+        var context = A.Dummy<INavigationContext>();
+        context.State.ProtagonistName = "alpha";
+
+        var invoker = new TestInvoker(context);
+
+        var sut = new ProtagonistNode("beta", null);
+        await sut.EnterAsync(context, stageArg);
+
+        invoker.ShouldContainSingle<IProtagonistChangeEvent>(
+            i => i.Should().BeEquivalentTo(new { PersonName = stageArg })
+        );
+
+        context.State.ProtagonistName.Should().Be(stageArg);
+    }
 }
