@@ -2,5 +2,5 @@
 
 public interface IBlockStateDictionary
 {
-    IBlockIterationState this[int blockId, int iteration] { get; }
+    IBlockState this[int blockId] { get; }
 }

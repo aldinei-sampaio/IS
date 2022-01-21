@@ -6,7 +6,8 @@ namespace IS.Reading.Navigation.BlockNavigatorTests;
 public class BackAndForthTester
 {
     public IBlock Block { get; }
-    public IBlockIterationState BlockState { get; }
+    public IBlockState State { get; }
+    public IBlockIterationState IterationState { get; }
     public INavigationContext Context { get; }
     public BlockNavigator Navigator { get; }
     
@@ -19,8 +20,10 @@ public class BackAndForthTester
         Block = A.Dummy<IBlock>();
         A.CallTo(() => Block.Nodes).Returns(nodes);
         Context = A.Dummy<INavigationContext>();
-        BlockState = A.Dummy<IBlockIterationState>();
-        A.CallTo(() => Context.State.BlockStates[0, 0]).Returns(BlockState);
+        IterationState = A.Dummy<IBlockIterationState>();
+        State = A.Dummy<IBlockState>();
+        A.CallTo(() => State.GetCurrentIteration()).Returns(IterationState);
+        A.CallTo(() => Context.State.BlockStates[0]).Returns(State);
     }
 
     public void CheckLog(params string[] expectedLogEntries)
@@ -42,7 +45,7 @@ public class BackAndForthTester
     {
         var item = (TestNode)await Navigator.MoveAsync(Block, Context, forward);
         item?.LastEnteredName.Should().Be(expectedName);
-        BlockState.CurrentNode.Should().BeSameAs(item);
+        IterationState.CurrentNode.Should().BeSameAs(item);
     }
 
     public void AddNode(string normalName, string reversedName)

@@ -22,8 +22,6 @@ public class NavigationContext : INavigationContext
 
     public IRandomizer Randomizer { get; }
 
-    public int CurrentIteration { get; set; }
-
     public NavigationContext(
         IBlock rootBlock, 
         IEventInvoker events, 

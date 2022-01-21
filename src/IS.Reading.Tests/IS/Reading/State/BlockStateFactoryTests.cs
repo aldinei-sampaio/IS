@@ -15,8 +15,8 @@ public class BlockStateFactoryTests
     [Fact]
     public void Creation()
     {
-        var f1 = sut.Create();
-        var f2 = sut.Create();
+        var f1 = sut.CreateIterationState();
+        var f2 = sut.CreateIterationState();
 
         f1.Should().NotBeSameAs(f2);
         A.CallTo(() => serviceProvider.GetService(typeof(IBlockIterationState))).MustHaveHappenedTwiceExactly();

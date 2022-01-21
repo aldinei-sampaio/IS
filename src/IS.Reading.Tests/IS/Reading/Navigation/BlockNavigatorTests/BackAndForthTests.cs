@@ -23,28 +23,28 @@ public class BackAndForthTests
         tester.AddNode("normal", "reversed");
 
         await tester.MoveAsync(true, "normal");
-        tester.BlockState.CurrentNodeIndex.Should().Be(0);
+        tester.IterationState.CurrentNodeIndex.Should().Be(0);
 
         await tester.MoveAsync(true, null);
-        tester.BlockState.CurrentNodeIndex.Should().BeNull();
+        tester.IterationState.CurrentNodeIndex.Should().BeNull();
 
         await tester.MoveAsync(false, "reversed");
-        tester.BlockState.CurrentNodeIndex.Should().BeNull();
+        tester.IterationState.CurrentNodeIndex.Should().BeNull();
 
         await tester.MoveAsync(true, "normal");
-        tester.BlockState.CurrentNodeIndex.Should().Be(0);
+        tester.IterationState.CurrentNodeIndex.Should().Be(0);
 
         await tester.MoveAsync(false, "reversed");
-        tester.BlockState.CurrentNodeIndex.Should().BeNull();
+        tester.IterationState.CurrentNodeIndex.Should().BeNull();
 
         await tester.MoveAsync(false, null);
-        tester.BlockState.CurrentNodeIndex.Should().BeNull();
+        tester.IterationState.CurrentNodeIndex.Should().BeNull();
 
         await tester.MoveAsync(true, "normal");
-        tester.BlockState.CurrentNodeIndex.Should().Be(0);
+        tester.IterationState.CurrentNodeIndex.Should().Be(0);
 
         await tester.MoveAsync(true, null);
-        tester.BlockState.CurrentNodeIndex.Should().BeNull();
+        tester.IterationState.CurrentNodeIndex.Should().BeNull();
     }
 
     [Fact]
@@ -56,13 +56,13 @@ public class BackAndForthTests
         tester.AddNode("n3", "r3");
 
         await tester.MoveAsync(true, "n1", "n2", "n3", null);
-        tester.BlockState.CurrentNodeIndex.Should().BeNull();
+        tester.IterationState.CurrentNodeIndex.Should().BeNull();
 
         await tester.MoveAsync(false, "r3");
-        tester.BlockState.CurrentNodeIndex.Should().Be(1);
+        tester.IterationState.CurrentNodeIndex.Should().Be(1);
 
         await tester.MoveAsync(false, "r2");
-        tester.BlockState.CurrentNodeIndex.Should().Be(0);
+        tester.IterationState.CurrentNodeIndex.Should().Be(0);
 
         await tester.MoveAsync(true, "n2", "n3", null);
     }

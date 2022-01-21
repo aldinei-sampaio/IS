@@ -15,22 +15,22 @@ public class BlockNavigator : IBlockNavigator
     public async Task<INode?> MoveAsync(IBlock block, INavigationContext context, bool forward)
     {
         context.State.CurrentBlockId = block.Id;
+        var blockState = context.State.BlockStates[block.Id];
+
         for (; ; )
         {
-            var blockState = context.State.BlockStates[block.Id, context.CurrentIteration];
             if (forward)
             {
-                var node = await MoveNextAsync(block, context, blockState);
+                var node = await MoveNextAsync(block, context, blockState.GetCurrentIteration());
                 if (node is not null || block.While is null || !block.While.Evaluate(context.Variables))
                     return node;
-                context.CurrentIteration++;
+                blockState.MoveToNextIteration();
             }
             else
             {
-                var node = await MovePreviousAsync(block, context, blockState);
-                if (node is not null || block.While is null || context.CurrentIteration == 0)
+                var node = await MovePreviousAsync(block, context, blockState.GetCurrentIteration());
+                if (node is not null || block.While is null || !blockState.MoveToPreviousIteration())
                     return node;
-                context.CurrentIteration--;
             }
         }
     }
