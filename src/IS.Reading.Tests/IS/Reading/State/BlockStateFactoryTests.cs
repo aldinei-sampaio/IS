@@ -8,7 +8,7 @@ public class BlockStateFactoryTests
     public BlockStateFactoryTests()
     {
         serviceProvider = A.Fake<IServiceProvider>(i => i.Strict());
-        A.CallTo(() => serviceProvider.GetService(typeof(IBlockState))).ReturnsLazily(i => A.Dummy<IBlockState>());
+        A.CallTo(() => serviceProvider.GetService(typeof(IBlockIterationState))).ReturnsLazily(i => A.Dummy<IBlockIterationState>());
         sut = new BlockStateFactory(serviceProvider);
     }
 
@@ -19,6 +19,6 @@ public class BlockStateFactoryTests
         var f2 = sut.Create();
 
         f1.Should().NotBeSameAs(f2);
-        A.CallTo(() => serviceProvider.GetService(typeof(IBlockState))).MustHaveHappenedTwiceExactly();
+        A.CallTo(() => serviceProvider.GetService(typeof(IBlockIterationState))).MustHaveHappenedTwiceExactly();
     }
 }

@@ -8,7 +8,7 @@ public class BlockStateDictionaryTests
     public BlockStateDictionaryTests()
     {
         blockStateFactory = A.Fake<IBlockStateFactory>(i => i.Strict());
-        A.CallTo(() => blockStateFactory.Create()).ReturnsLazily(i => A.Dummy<IBlockState>());
+        A.CallTo(() => blockStateFactory.Create()).ReturnsLazily(i => A.Dummy<IBlockIterationState>());
         sut = new(blockStateFactory);
     }
 

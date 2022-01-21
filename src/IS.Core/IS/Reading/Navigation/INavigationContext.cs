@@ -14,4 +14,5 @@ public interface INavigationContext
     IBlock? CurrentBlock { get; set; }
     INode? CurrentNode { get; set; }
     IRandomizer Randomizer { get; }
+    int CurrentIteration { get; set; }
 }

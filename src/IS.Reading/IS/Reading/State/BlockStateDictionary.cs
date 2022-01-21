@@ -2,13 +2,13 @@
 
 public class BlockStateDictionary : IBlockStateDictionary
 {
-    private readonly Dictionary<int, List<IBlockState>> dic = new();
+    private readonly Dictionary<int, List<IBlockIterationState>> dic = new();
     private readonly IBlockStateFactory blockStateFactory;
 
     public BlockStateDictionary(IBlockStateFactory blockStateFactory)
         => this.blockStateFactory = blockStateFactory;
 
-    public IBlockState this[int blockId, int iteration]
+    public IBlockIterationState this[int blockId, int iteration]
     {
         get
         {
@@ -18,12 +18,12 @@ public class BlockStateDictionary : IBlockStateDictionary
             if (iteration < 0)
                 throw new ArgumentOutOfRangeException(nameof(iteration));
 
-            List<IBlockState>? list = null;
+            List<IBlockIterationState>? list = null;
 
             lock (dic) {
                 if (!dic.TryGetValue(blockId, out list))
                 {
-                    list = new List<IBlockState>();
+                    list = new List<IBlockIterationState>();
                     dic[blockId] = list;
                 }
             }

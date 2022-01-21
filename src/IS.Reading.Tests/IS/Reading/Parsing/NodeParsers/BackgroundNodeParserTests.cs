@@ -90,7 +90,6 @@ public class BackgroundNodeParserTests
 
         parentContext.ShouldContainSingle<BlockNode>(i => {
             i.When.Should().BeSameAs(when);
-            i.While.Should().BeNull();
             i.ChildBlock.ShouldContain(
                 i => i.Should().BeOfType<BackgroundNode>().Which.ShouldSatisfy(j =>
                 {
@@ -130,7 +129,6 @@ public class BackgroundNodeParserTests
             .Which.ShouldSatisfy(i =>
             {
                 i.When.Should().BeSameAs(when);
-                i.While.Should().BeNull();
                 i.ChildBlock.Nodes.Should().ContainSingle().Which.Should().BeSameAs(parsedNode);
             });
     }

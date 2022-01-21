@@ -8,6 +8,5 @@ public interface INode
     Task EnterAsync(INavigationContext context, object? state) => EnterAsync(context);
     Task LeaveAsync(INavigationContext context) => Task.CompletedTask;
     ICondition? When => null;
-    ICondition? While => null;
     IBlock? ChildBlock => null;
 }

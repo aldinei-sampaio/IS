@@ -5,7 +5,7 @@ namespace IS.Reading.Navigation.BlockNavigatorTests;
 public class QueueTests
 {
     private readonly IBlock block;
-    private readonly IBlockState blockState;
+    private readonly IBlockIterationState blockState;
     private readonly List<INode> nodes = new();
     private readonly INavigationContext context;
     private readonly BlockNavigator sut;
@@ -18,7 +18,7 @@ public class QueueTests
         context = A.Dummy<INavigationContext>();
         context.CurrentNode = null;
         
-        blockState = A.Dummy<IBlockState>();
+        blockState = A.Dummy<IBlockIterationState>();
         blockState.CurrentNode = null;
         blockState.CurrentNodeIndex = null;
         A.CallTo(() => context.State.BlockStates[0, 0]).Returns(blockState);
@@ -101,6 +101,7 @@ public class QueueTests
         A.CallTo(() => node.EnterAsync(context, null)).DoesNothing();
         A.CallTo(() => node.LeaveAsync(context)).DoesNothing();
         A.CallTo(() => node.ToString()).Returns(name);
+        A.CallTo(() => node.ChildBlock).Returns(null);
         return node;
     }
 }

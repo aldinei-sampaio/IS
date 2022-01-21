@@ -2,7 +2,7 @@
 
 namespace IS.Reading.State;
 
-public interface IBlockState
+public interface IBlockIterationState
 {
     Stack<object?> BackwardStack { get; }
     int? CurrentNodeIndex { get; set; }

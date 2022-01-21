@@ -6,7 +6,7 @@ namespace IS.Reading.Navigation.BlockNavigatorTests;
 public class BackAndForthTester
 {
     public IBlock Block { get; }
-    public IBlockState BlockState { get; }
+    public IBlockIterationState BlockState { get; }
     public INavigationContext Context { get; }
     public BlockNavigator Navigator { get; }
     
@@ -19,7 +19,7 @@ public class BackAndForthTester
         Block = A.Dummy<IBlock>();
         A.CallTo(() => Block.Nodes).Returns(nodes);
         Context = A.Dummy<INavigationContext>();
-        BlockState = A.Dummy<IBlockState>();
+        BlockState = A.Dummy<IBlockIterationState>();
         A.CallTo(() => Context.State.BlockStates[0, 0]).Returns(BlockState);
     }
 

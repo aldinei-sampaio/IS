@@ -99,7 +99,7 @@ public static class ServiceProviderExtensionMethods
         services.AddTransient<IParsingContext, ParsingContext>();
         services.AddTransient<INavigationState, NavigationState>();
         services.AddTransient<IVariableDictionary, VariableDictionary>();
-        services.AddTransient<IBlockState, BlockState>();
+        services.AddTransient<IBlockIterationState, BlockIterationState>();
         services.AddTransient<IBlockStateDictionary, BlockStateDictionary>();
 
         return services;

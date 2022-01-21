@@ -15,14 +15,27 @@ public class BlockNavigator : IBlockNavigator
     public async Task<INode?> MoveAsync(IBlock block, INavigationContext context, bool forward)
     {
         context.State.CurrentBlockId = block.Id;
-        var blockState = context.State.BlockStates[block.Id, 0];
-        if (forward)
-            return await MoveNextAsync(block, context, blockState);
-        else
-            return await MovePreviousAsync(block, context, blockState);
+        for (; ; )
+        {
+            var blockState = context.State.BlockStates[block.Id, context.CurrentIteration];
+            if (forward)
+            {
+                var node = await MoveNextAsync(block, context, blockState);
+                if (node is not null || block.While is null || !block.While.Evaluate(context.Variables))
+                    return node;
+                context.CurrentIteration++;
+            }
+            else
+            {
+                var node = await MovePreviousAsync(block, context, blockState);
+                if (node is not null || block.While is null || context.CurrentIteration == 0)
+                    return node;
+                context.CurrentIteration--;
+            }
+        }
     }
 
-    private static async Task<INode?> MoveNextAsync(IBlock block, INavigationContext context, IBlockState blockState)
+    private static async Task<INode?> MoveNextAsync(IBlock block, INavigationContext context, IBlockIterationState blockState)
     {
         await LeaveCurrentNodeAsync(blockState, context);
 
@@ -37,7 +50,7 @@ public class BlockNavigator : IBlockNavigator
         return item;
     }
 
-    private static async Task LeaveCurrentNodeAsync(IBlockState blockState, INavigationContext context)
+    private static async Task LeaveCurrentNodeAsync(IBlockIterationState blockState, INavigationContext context)
     {
         if (blockState.CurrentNode is null)
             return;
@@ -45,7 +58,7 @@ public class BlockNavigator : IBlockNavigator
         await blockState.CurrentNode.LeaveAsync(context);
     }
 
-    private static INode? GetNextNode(IBlock block, IBlockState blockState)
+    private static INode? GetNextNode(IBlock block, IBlockIterationState blockState)
     {
         var nextIndex = blockState.CurrentNodeIndex.HasValue ? blockState.CurrentNodeIndex.Value + 1 : 0;
         if (nextIndex >= block.Nodes.Count)
@@ -62,7 +75,7 @@ public class BlockNavigator : IBlockNavigator
         return node;
     }
 
-    private static INode? GetNextValidNode(IBlock block, INavigationContext context, IBlockState blockState)
+    private static INode? GetNextValidNode(IBlock block, INavigationContext context, IBlockIterationState blockState)
     {
         for (; ; )
         {
@@ -71,13 +84,16 @@ public class BlockNavigator : IBlockNavigator
                 return null;
 
             if (item.When == null || item.When.Evaluate(context.Variables))
-                return item;
+            { 
+                if (item.ChildBlock is null || item.ChildBlock.While is null || item.ChildBlock.While.Evaluate(context.Variables))
+                    return item;
+            }
 
             blockState.BackwardStack.Push(BlockedNode.Instance);
         }
     }
 
-    private static async Task<INode?> MovePreviousAsync(IBlock block, INavigationContext context, IBlockState blockState)
+    private static async Task<INode?> MovePreviousAsync(IBlock block, INavigationContext context, IBlockIterationState blockState)
     {
         await LeaveCurrentNodeAsync(blockState, context);
 

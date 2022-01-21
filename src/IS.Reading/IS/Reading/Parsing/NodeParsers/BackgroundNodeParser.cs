@@ -52,7 +52,7 @@ public class BackgroundNodeParser : IBackgroundNodeParser
                 new BackgroundNode(state, null),
                 new ScrollNode(null)
             );
-            parentParsingContext.AddNode(new BlockNode(block, context.When, null));
+            parentParsingContext.AddNode(new BlockNode(block, context.When));
             parsingContext.RegisterDismissNode(DismissNode);
             return;
         }
@@ -65,7 +65,7 @@ public class BackgroundNodeParser : IBackgroundNodeParser
 
         {
             var block = parsingContext.BlockFactory.Create(context.Nodes);
-            parentParsingContext.AddNode(new BlockNode(block, context.When, null));
+            parentParsingContext.AddNode(new BlockNode(block, context.When));
             parsingContext.RegisterDismissNode(DismissNode);
         }
     }

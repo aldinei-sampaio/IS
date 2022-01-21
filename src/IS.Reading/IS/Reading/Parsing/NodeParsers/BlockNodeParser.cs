@@ -56,8 +56,8 @@ public class BlockNodeParser : IBlockNodeParser
             return;
         }
 
-        var block = parsingContext.BlockFactory.Create(myContext.Nodes);
-        var node = new BlockNode(block, myContext.When, myContext.While);
+        var block = parsingContext.BlockFactory.Create(myContext.Nodes, myContext.While);
+        var node = new BlockNode(block, myContext.When);
         parentParsingContext.AddNode(node);
     }
 }

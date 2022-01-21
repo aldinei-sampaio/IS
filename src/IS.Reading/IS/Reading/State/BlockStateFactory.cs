@@ -9,6 +9,6 @@ public class BlockStateFactory : IBlockStateFactory
     public BlockStateFactory(IServiceProvider serviceProvider)
         => this.serviceProvider = serviceProvider;
 
-    public IBlockState Create() 
-        => serviceProvider.GetRequiredService<IBlockState>();
+    public IBlockIterationState Create() 
+        => serviceProvider.GetRequiredService<IBlockIterationState>();
 }

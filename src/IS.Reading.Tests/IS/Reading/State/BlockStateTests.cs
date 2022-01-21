@@ -7,7 +7,7 @@ public class BlockStateTests
     [Fact]
     public void Initialization()
     {
-        var sut = new BlockState();
+        var sut = new BlockIterationState();
         sut.CurrentNode.Should().BeNull();
         sut.CurrentNodeIndex.Should().BeNull();
         sut.BackwardStack.Count.Should().Be(0);
@@ -18,7 +18,7 @@ public class BlockStateTests
     {
         var node = A.Dummy<INode>();
 
-        var sut = new BlockState
+        var sut = new BlockIterationState
         {
             CurrentNodeIndex = 157,
             CurrentNode = node

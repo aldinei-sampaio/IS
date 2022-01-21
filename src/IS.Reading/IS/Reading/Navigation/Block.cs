@@ -1,4 +1,6 @@
-﻿namespace IS.Reading.Navigation;
+﻿using IS.Reading.Conditions;
+
+namespace IS.Reading.Navigation;
 
 public class Block : IBlock
 {
@@ -6,6 +8,8 @@ public class Block : IBlock
 
     public IReadOnlyList<INode> Nodes { get; }
 
-    public Block(int id, IReadOnlyList<INode> nodes)
-        => (Id, Nodes) = (id, nodes);
+    public ICondition? While { get; }
+
+    public Block(int id, IReadOnlyList<INode> nodes, ICondition? @while)
+        => (Id, Nodes, While) = (id, nodes, @while);
 }

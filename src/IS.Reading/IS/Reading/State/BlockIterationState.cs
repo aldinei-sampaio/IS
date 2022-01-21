@@ -2,7 +2,7 @@
 
 namespace IS.Reading.State;
 
-public class BlockState : IBlockState
+public class BlockIterationState : IBlockIterationState
 {
     public Stack<object?> BackwardStack { get; } = new();
 

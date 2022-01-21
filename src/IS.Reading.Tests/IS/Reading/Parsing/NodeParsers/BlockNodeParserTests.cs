@@ -99,8 +99,8 @@ public class BlockNodeParserTests
         parentContext.ShouldContainSingle<BlockNode>(i =>
         {
             i.When.Should().BeSameAs(when);
-            i.While.Should().BeSameAs(@while);
             i.ChildBlock.ShouldContainOnly(parsedNode);
+            i.ChildBlock.While.Should().BeSameAs(@while);
         });
     }
 

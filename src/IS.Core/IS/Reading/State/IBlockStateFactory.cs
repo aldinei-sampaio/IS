@@ -2,5 +2,5 @@
 
 public interface IBlockStateFactory
 {
-    IBlockState Create();
+    IBlockIterationState Create();
 }
