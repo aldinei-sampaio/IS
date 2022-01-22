@@ -5,11 +5,11 @@ public class EnterLeaveTests
     [Fact]
     public async Task EmptyBlock()
     {
-        var tester = new BackAndForthTester();
+        var tester = new NavigatorTester();
         await CheckEmptyBlockAsync(tester);
     }
 
-    private static async Task CheckEmptyBlockAsync(BackAndForthTester tester)
+    private static async Task CheckEmptyBlockAsync(NavigatorTester tester)
     {
         await tester.MoveAsync(true, null);
         tester.CheckLog();
@@ -20,12 +20,12 @@ public class EnterLeaveTests
     [Fact]
     public async Task SingleNode()
     {
-        var tester = new BackAndForthTester();
+        var tester = new NavigatorTester();
         tester.AddLoggedNode("normal", "reversed");
         await CheckSingleNodeAsync(tester);
     }
 
-    private static async Task CheckSingleNodeAsync(BackAndForthTester tester)
+    private static async Task CheckSingleNodeAsync(NavigatorTester tester)
     {
         await tester.MoveAsync(true, "normal");
         tester.CheckLog("Enter:normal");
@@ -52,7 +52,7 @@ public class EnterLeaveTests
     [Fact]
     public async Task Condition_SingleNode()
     {
-        var tester = new BackAndForthTester();
+        var tester = new NavigatorTester();
         var isValid = false;
         tester.AddLoggedNode("normal", "reversed", () => isValid);
 
@@ -68,7 +68,7 @@ public class EnterLeaveTests
     [Fact]
     public async Task BackAndForth()
     {
-        var tester = new BackAndForthTester();
+        var tester = new NavigatorTester();
         tester.AddLoggedNode("n1", "r1");
         tester.AddLoggedNode("n2", "r2");
         tester.AddLoggedNode("n3", "r3");

@@ -32,14 +32,23 @@ public class StoryboardParser : IStoryboardParser
         foreach(var node in context.DismissNodes.Reverse())
             parsed.Add(node);
 
-        var block = context.BlockFactory.Create(parsed);
+        var rootBlock = context.BlockFactory.Create(parsed);
+        var rootBlockState = serviceProvider.GetRequiredService<IBlockState>();
         var sceneNavigator = serviceProvider.GetRequiredService<ISceneNavigator>();
         var eventManager = serviceProvider.GetRequiredService<IEventManager>();
         var randomizer = serviceProvider.GetRequiredService<IRandomizer>();
         var navigationState = serviceProvider.GetRequiredService<INavigationState>();
         var variableDictionary = serviceProvider.GetRequiredService<IVariableDictionary>();
 
-        var navigationContext = new NavigationContext(block, eventManager, randomizer, navigationState, variableDictionary);
+        var navigationContext = new NavigationContext(
+            rootBlock, 
+            rootBlockState, 
+            eventManager, 
+            randomizer, 
+            navigationState, 
+            variableDictionary
+        );
+
         return new Storyboard(navigationContext, sceneNavigator, eventManager);
     }
 }

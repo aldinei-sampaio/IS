@@ -9,15 +9,24 @@ public class NavigationContextTests
     [Fact]
     public void Initialization()
     {
-        var block = A.Dummy<IBlock>();
+        var rootBlock = A.Dummy<IBlock>();
+        var rootBlockState = A.Dummy<IBlockState>();
         var eventInvoker = A.Dummy<IEventInvoker>();
         var randomizer = A.Dummy<IRandomizer>();
         var navigationState = A.Dummy<INavigationState>();
         var variableDictionary = A.Dummy<IVariableDictionary>();
 
-        var sut = new NavigationContext(block, eventInvoker, randomizer, navigationState, variableDictionary);
+        var sut = new NavigationContext(
+            rootBlock, 
+            rootBlockState, 
+            eventInvoker, 
+            randomizer, 
+            navigationState, 
+            variableDictionary
+        );
 
-        sut.RootBlock.Should().BeSameAs(block);
+        sut.RootBlock.Should().BeSameAs(rootBlock);
+        sut.RootBlockState.Should().BeSameAs(rootBlockState);
         sut.Events.Should().BeSameAs(eventInvoker);
         sut.EnteredBlocks.Should().HaveCount(0);
         sut.State.Should().BeSameAs(navigationState);

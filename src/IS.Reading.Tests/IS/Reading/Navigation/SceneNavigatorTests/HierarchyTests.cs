@@ -8,7 +8,9 @@ public class HierarchyTests
         var navigationContext = A.Dummy<INavigationContext>();
 
         var blockNavigator = A.Fake<IBlockNavigator>(i => i.Strict());
-        A.CallTo(() => blockNavigator.MoveAsync(null, null, true)).WithAnyArguments().Returns((INode)null);
+        A.CallTo(() => blockNavigator.MoveAsync(null, null, null, true))
+            .WithAnyArguments()
+            .Returns((INode)null);
 
         var sut = new SceneNavigator(blockNavigator);
 
@@ -22,7 +24,7 @@ public class HierarchyTests
     public async Task EmptyWithTester(bool forward)
     {
         var tester = new HierarchyTester();
-        tester.MoveWithArgs(forward, tester.RootBlock).MustReturn(null);
+        tester.ConfigureMove(forward, null);
         await tester.MoveAsync(forward, null);
     }
 
@@ -34,7 +36,7 @@ public class HierarchyTests
         var tester = new HierarchyTester();
 
         var block1 = tester.RootBlock;
-        var block2 = A.Dummy<IBlock>();
+        var block2 = tester.CreateDummyBlock();
 
         var node1 = HierarchyTester.CreateNode("node1", block2);
         var node2 = HierarchyTester.CreatePauseNode("node2");
@@ -54,8 +56,8 @@ public class HierarchyTests
         var tester = new HierarchyTester();
 
         var block1 = tester.RootBlock;
-        var block2 = A.Dummy<IBlock>();
-        var block3 = A.Dummy<IBlock>();
+        var block2 = tester.CreateDummyBlock();
+        var block3 = tester.CreateDummyBlock();
 
         var blockNode1 = HierarchyTester.CreateNode("blockNode1", block2);
         var blockNode2 = HierarchyTester.CreateNode("blockNode2", block3);
@@ -81,9 +83,9 @@ public class HierarchyTests
         var tester = new HierarchyTester();
 
         var block1 = tester.RootBlock;
-        var block2 = A.Dummy<IBlock>();
-        var block3 = A.Dummy<IBlock>();
-        var block4 = A.Dummy<IBlock>();
+        var block2 = tester.CreateDummyBlock();
+        var block3 = tester.CreateDummyBlock();
+        var block4 = tester.CreateDummyBlock();
 
         var blockNode1 = HierarchyTester.CreateNode("blockNode1", block2);
         var blockNode2 = HierarchyTester.CreateNode("blockNode2", block3);

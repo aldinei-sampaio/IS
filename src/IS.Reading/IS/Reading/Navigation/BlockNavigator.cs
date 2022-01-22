@@ -12,10 +12,9 @@ public class BlockNavigator : IBlockNavigator
         }
     }
 
-    public async Task<INode?> MoveAsync(IBlock block, INavigationContext context, bool forward)
+    public async Task<INode?> MoveAsync(IBlock block, IBlockState blockState, INavigationContext context, bool forward)
     {
         context.State.CurrentBlockId = block.Id;
-        var blockState = context.State.BlockStates[block.Id];
 
         for (; ; )
         {
@@ -29,6 +28,7 @@ public class BlockNavigator : IBlockNavigator
             else
             {
                 var node = await MovePreviousAsync(block, context, blockState.GetCurrentIteration());
+
                 if (node is not null || block.While is null || !blockState.MoveToPreviousIteration())
                     return node;
             }

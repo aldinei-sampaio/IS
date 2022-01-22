@@ -5,7 +5,7 @@ public class BackAndForthTests
     [Fact]
     public async Task SingleNode()
     {
-        var tester = new BackAndForthTester();
+        var tester = new NavigatorTester();
         tester.AddNode("normal", "reversed");
 
         await tester.MoveAsync(true, "normal", null);
@@ -19,50 +19,50 @@ public class BackAndForthTests
     [Fact]
     public async Task CorrectSequenceOnMovePrevious()
     {
-        var tester = new BackAndForthTester();
+        var tester = new NavigatorTester();
         tester.AddNode("normal", "reversed");
 
         await tester.MoveAsync(true, "normal");
-        tester.IterationState.CurrentNodeIndex.Should().Be(0);
+        tester.CurrentNodeIndex.Should().Be(0);
 
         await tester.MoveAsync(true, null);
-        tester.IterationState.CurrentNodeIndex.Should().BeNull();
+        tester.CurrentNodeIndex.Should().BeNull();
 
         await tester.MoveAsync(false, "reversed");
-        tester.IterationState.CurrentNodeIndex.Should().BeNull();
+        tester.CurrentNodeIndex.Should().BeNull();
 
         await tester.MoveAsync(true, "normal");
-        tester.IterationState.CurrentNodeIndex.Should().Be(0);
+        tester.CurrentNodeIndex.Should().Be(0);
 
         await tester.MoveAsync(false, "reversed");
-        tester.IterationState.CurrentNodeIndex.Should().BeNull();
+        tester.CurrentNodeIndex.Should().BeNull();
 
         await tester.MoveAsync(false, null);
-        tester.IterationState.CurrentNodeIndex.Should().BeNull();
+        tester.CurrentNodeIndex.Should().BeNull();
 
         await tester.MoveAsync(true, "normal");
-        tester.IterationState.CurrentNodeIndex.Should().Be(0);
+        tester.CurrentNodeIndex.Should().Be(0);
 
         await tester.MoveAsync(true, null);
-        tester.IterationState.CurrentNodeIndex.Should().BeNull();
+        tester.CurrentNodeIndex.Should().BeNull();
     }
 
     [Fact]
     public async Task CorrectSequenceOnMovePreviousWithThreeNodes()
     {
-        var tester = new BackAndForthTester();
+        var tester = new NavigatorTester();
         tester.AddNode("n1", "r1");
         tester.AddNode("n2", "r2");
         tester.AddNode("n3", "r3");
 
         await tester.MoveAsync(true, "n1", "n2", "n3", null);
-        tester.IterationState.CurrentNodeIndex.Should().BeNull();
+        tester.CurrentNodeIndex.Should().BeNull();
 
         await tester.MoveAsync(false, "r3");
-        tester.IterationState.CurrentNodeIndex.Should().Be(1);
+        tester.CurrentNodeIndex.Should().Be(1);
 
         await tester.MoveAsync(false, "r2");
-        tester.IterationState.CurrentNodeIndex.Should().Be(0);
+        tester.CurrentNodeIndex.Should().Be(0);
 
         await tester.MoveAsync(true, "n2", "n3", null);
     }
@@ -70,7 +70,7 @@ public class BackAndForthTests
     [Fact]
     public async Task SingleNode_BackAndForth()
     {
-        var tester = new BackAndForthTester();
+        var tester = new NavigatorTester();
         tester.AddNode("normal", "reversed");
 
         await tester.MoveAsync(true, "normal");
@@ -84,7 +84,7 @@ public class BackAndForthTests
     [Fact]
     public async Task TwoNodes()
     {
-        var tester = new BackAndForthTester();
+        var tester = new NavigatorTester();
         tester.AddNode("n1", "r1");
         tester.AddNode("n2", "r2");
 
@@ -98,7 +98,7 @@ public class BackAndForthTests
     [Fact]
     public async Task TwoNodes_BackAndForth()
     {
-        var tester = new BackAndForthTester();
+        var tester = new NavigatorTester();
         tester.AddNode("n1", "r1");
         tester.AddNode("n2", "r2");
 
@@ -121,7 +121,7 @@ public class BackAndForthTests
     [Fact]
     public async Task ThreeNodes()
     {
-        var tester = new BackAndForthTester();
+        var tester = new NavigatorTester();
         tester.AddNode("n1", "r1");
         tester.AddNode("n2", "r2");
         tester.AddNode("n3", "r3");
@@ -136,7 +136,7 @@ public class BackAndForthTests
     [Fact]
     public async Task ThreeNodes_BackAndForth()
     {
-        var tester = new BackAndForthTester();
+        var tester = new NavigatorTester();
         tester.AddNode("n1", "r1");
         tester.AddNode("n2", "r2");
         tester.AddNode("n3", "r3");

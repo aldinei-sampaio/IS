@@ -2,18 +2,18 @@
 
 namespace IS.Reading.Navigation.BlockNavigatorTests;
 
-public class TestNode : INode
+public class FakeNode : INode
 {
     private readonly List<string> log;
     private readonly string reversedName;
 
-    public TestNode(string name, string reversedName, ICondition condition, List<string> log) 
+    public FakeNode(string name, string reversedName, ICondition condition, List<string> log) 
         : this(name, condition, log)
     {
         this.reversedName = reversedName;
     }
 
-    private TestNode(string name, ICondition condition, List<string> log)
+    private FakeNode(string name, ICondition condition, List<string> log)
     {
         Name = name;
         When = condition;
@@ -24,9 +24,7 @@ public class TestNode : INode
 
     public ICondition When { get; }
 
-    public ICondition While { get; }
-
-    public IBlock ChildBlock => null;
+    public IBlock ChildBlock { get; private set; } = null;
 
     public string LastEnteredName { get; private set; }
 
@@ -48,5 +46,12 @@ public class TestNode : INode
     {
         log?.Add($"Leave:{LastEnteredName}");
         return Task.CompletedTask;
+    }
+
+    public void ConfigureChildBlock(Action<IBlock> configurator)
+    {
+        var block = A.Dummy<IBlock>();
+        configurator(block);
+        ChildBlock = block;
     }
 }

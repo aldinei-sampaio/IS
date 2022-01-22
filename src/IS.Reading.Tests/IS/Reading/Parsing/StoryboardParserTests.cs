@@ -17,6 +17,7 @@ public class StoryboardParserTests
     private readonly IRandomizer randomizer;
     private readonly INavigationState navigationState;
     private readonly IVariableDictionary variableDictionary;
+    private readonly IBlockState blockState;
     private readonly StoryboardParser sut;
 
     public StoryboardParserTests()
@@ -34,6 +35,7 @@ public class StoryboardParserTests
         randomizer = A.Fake<IRandomizer>(i => i.Strict());
         navigationState = A.Fake<INavigationState>(i => i.Strict());
         variableDictionary = A.Fake<IVariableDictionary>(i => i.Strict());
+        blockState = A.Fake<IBlockState>(i => i.Strict());
 
         var serviceProvider = A.Fake<IServiceProvider>(i => i.Strict());
         A.CallTo(() => serviceProvider.GetService(typeof(IParsingContext))).Returns(parsingContext);
@@ -43,6 +45,7 @@ public class StoryboardParserTests
         A.CallTo(() => serviceProvider.GetService(typeof(IRandomizer))).Returns(randomizer);
         A.CallTo(() => serviceProvider.GetService(typeof(INavigationState))).Returns(navigationState);
         A.CallTo(() => serviceProvider.GetService(typeof(IVariableDictionary))).Returns(variableDictionary);
+        A.CallTo(() => serviceProvider.GetService(typeof(IBlockState))).Returns(blockState);
         sut = new StoryboardParser(serviceProvider);
     }
 
@@ -60,6 +63,7 @@ public class StoryboardParserTests
         result.Should().NotBeNull();
         result.Events.Should().BeSameAs(eventManager);
         result.NavigationContext.RootBlock.Nodes.Should().BeSameAs(nodes);
+        result.NavigationContext.RootBlockState.Should().BeSameAs(blockState);
         result.NavigationContext.EnteredBlocks.Should().BeEmpty();
         result.NavigationContext.CurrentBlock.Should().BeNull();
         result.NavigationContext.CurrentNode.Should().BeNull();

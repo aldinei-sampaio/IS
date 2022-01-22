@@ -14,7 +14,11 @@ public class NavigationContext : INavigationContext
 
     public Stack<IBlock> EnteredBlocks { get; } = new();
 
+    public Stack<IBlockState> EnteredBlockStates { get; } = new();
+
     public IBlock? CurrentBlock { get; set; }
+
+    public IBlockState? CurrentBlockState { get; set; }
 
     public INode? CurrentNode { get; set; }
 
@@ -22,8 +26,11 @@ public class NavigationContext : INavigationContext
 
     public IRandomizer Randomizer { get; }
 
+    public IBlockState RootBlockState { get; }
+
     public NavigationContext(
         IBlock rootBlock, 
+        IBlockState rootBlockState,
         IEventInvoker events, 
         IRandomizer randomizer, 
         INavigationState navigationState,
@@ -31,6 +38,7 @@ public class NavigationContext : INavigationContext
     )
     {
         RootBlock = rootBlock;
+        RootBlockState = rootBlockState;
         Events = events;
         Randomizer = randomizer;
         State = navigationState;

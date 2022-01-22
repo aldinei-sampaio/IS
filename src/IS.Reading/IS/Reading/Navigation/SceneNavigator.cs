@@ -1,4 +1,6 @@
-﻿namespace IS.Reading.Navigation;
+﻿using IS.Reading.State;
+
+namespace IS.Reading.Navigation;
 
 public class SceneNavigator : ISceneNavigator
 {
@@ -10,13 +12,17 @@ public class SceneNavigator : ISceneNavigator
     public async Task<bool> MoveAsync(INavigationContext context, bool forward)
     {
         if (context.CurrentBlock is null)
+        {
             context.CurrentBlock = context.RootBlock;
+            context.CurrentBlockState = context.RootBlockState;
+        }
 
         var block = context.CurrentBlock;
+        var blockState = context.CurrentBlockState;
 
         for (; ; )
         {
-            var item = await blockNavigator.MoveAsync(block, context, forward);
+            var item = await blockNavigator.MoveAsync(block, blockState, context, forward);
 
             if (item is null)
             {
@@ -29,6 +35,8 @@ public class SceneNavigator : ISceneNavigator
 
                 block = parentBlock;
                 context.CurrentBlock = parentBlock;
+                blockState = context.EnteredBlockStates.Pop();
+                context.CurrentBlockState = blockState;
                 continue;
             }
 
@@ -37,6 +45,11 @@ public class SceneNavigator : ISceneNavigator
                 block = item.ChildBlock;
                 context.EnteredBlocks.Push(context.CurrentBlock);
                 context.CurrentBlock = block;
+
+                context.EnteredBlockStates.Push(blockState);
+                blockState = blockState.GetCurrentIteration().Children[block.Id];
+                context.CurrentBlockState = blockState;
+
                 continue;
             }
 

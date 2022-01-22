@@ -3,27 +3,26 @@ using IS.Reading.State;
 
 namespace IS.Reading.Navigation.BlockNavigatorTests;
 
-public class BackAndForthTester
+public class NavigatorTester
 {
     public IBlock Block { get; }
-    public IBlockState State { get; }
-    public IBlockIterationState IterationState { get; }
+    public IBlockState BlockState { get; }
     public INavigationContext Context { get; }
     public BlockNavigator Navigator { get; }
     
     private readonly List<string> log = new();
     private readonly List<INode> nodes = new();
 
-    public BackAndForthTester()
+    public int? CurrentNodeIndex => BlockState.GetCurrentIteration().CurrentNodeIndex;
+
+    public NavigatorTester()
     {
         Navigator = new BlockNavigator();
         Block = A.Dummy<IBlock>();
         A.CallTo(() => Block.Nodes).Returns(nodes);
         Context = A.Dummy<INavigationContext>();
-        IterationState = A.Dummy<IBlockIterationState>();
-        State = A.Dummy<IBlockState>();
-        A.CallTo(() => State.GetCurrentIteration()).Returns(IterationState);
-        A.CallTo(() => Context.State.BlockStates[0]).Returns(State);
+        BlockState = new FakeBlockState();
+        A.CallTo(() => Context.RootBlockState).Returns(BlockState);
     }
 
     public void CheckLog(params string[] expectedLogEntries)
@@ -43,20 +42,24 @@ public class BackAndForthTester
 
     private async Task DoMoveAsync(bool forward, string expectedName)
     {
-        var item = (TestNode)await Navigator.MoveAsync(Block, Context, forward);
+        var item = (FakeNode)await Navigator.MoveAsync(Block, BlockState, Context, forward);
         item?.LastEnteredName.Should().Be(expectedName);
-        IterationState.CurrentNode.Should().BeSameAs(item);
+        BlockState.GetCurrentIteration().CurrentNode.Should().BeSameAs(item);
     }
 
-    public void AddNode(string normalName, string reversedName)
-        => nodes.Add(new TestNode(normalName, reversedName, null, null));
+    public FakeNode AddNode(string normalName, string reversedName)
+    {
+        var node = new FakeNode(normalName, reversedName, null, null);
+        nodes.Add(node);
+        return node;
+    }
 
     public void AddNode(string normalName, string reversedName, Func<bool> condition)
     {
         var conditionObject = A.Fake<ICondition>();
         A.CallTo(() => conditionObject.Evaluate(Context.Variables)).ReturnsLazily(() => condition.Invoke());
 
-        nodes.Add(new TestNode(normalName, reversedName, conditionObject, null));
+        nodes.Add(new FakeNode(normalName, reversedName, conditionObject, null));
     }
 
     public void AddLoggedNode(string normalName, string reversedName, Func<bool> condition = null)
@@ -68,7 +71,7 @@ public class BackAndForthTester
             A.CallTo(() => conditionObject.Evaluate(Context.Variables)).ReturnsLazily(() => condition.Invoke());
         }
 
-        nodes.Add(new TestNode(normalName, reversedName, conditionObject, log));
+        nodes.Add(new FakeNode(normalName, reversedName, conditionObject, log));
     }
 }
 

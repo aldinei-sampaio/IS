@@ -5,7 +5,7 @@ public class ConditionTests
     [Fact]
     public async void SingleNode()
     {
-        var tester = new BackAndForthTester();
+        var tester = new NavigatorTester();
         var isValid = false;        
         tester.AddNode("normal", "reversed", () => isValid);
 
@@ -23,7 +23,7 @@ public class ConditionTests
     [Fact]
     public async void ConditionsShouldNotAffectBackwardsMotion()
     {
-        var tester = new BackAndForthTester();
+        var tester = new NavigatorTester();
         var isValid = false;
         tester.AddNode("normal", "reversed", () => isValid);
 
@@ -40,7 +40,7 @@ public class ConditionTests
     [Fact]
     public async void SingleNode_BackAndForth()
     {
-        var tester = new BackAndForthTester();
+        var tester = new NavigatorTester();
         var isValid = false;
         tester.AddNode("normal", "reversed", () => isValid);
 
@@ -66,7 +66,7 @@ public class ConditionTests
     [Fact]
     public async void TwoNodes()
     {
-        var tester = new BackAndForthTester();
+        var tester = new NavigatorTester();
         var isValid = false;
         tester.AddNode("n1", "r1", () => isValid);
         tester.AddNode("n2", "r2");
@@ -88,7 +88,7 @@ public class ConditionTests
     [Fact]
     public async void TwoNodes_BackAndForth()
     {
-        var tester = new BackAndForthTester();
+        var tester = new NavigatorTester();
         var isValid = false;
         tester.AddNode("n1", "r1");
         tester.AddNode("n2", "r2", () => isValid);
@@ -119,7 +119,7 @@ public class ConditionTests
     [Fact]
     public async void ThreeNodes()
     {
-        var tester = new BackAndForthTester();
+        var tester = new NavigatorTester();
         var isValid1 = false;
         tester.AddNode("n1", "r1", () => isValid1);
         var isValid2 = false;

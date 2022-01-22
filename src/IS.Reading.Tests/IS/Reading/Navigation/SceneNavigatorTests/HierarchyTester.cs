@@ -1,4 +1,6 @@
-﻿namespace IS.Reading.Navigation.SceneNavigatorTests;
+﻿using IS.Reading.State;
+
+namespace IS.Reading.Navigation.SceneNavigatorTests;
 
 public class HierarchyTester
 {
@@ -6,19 +8,36 @@ public class HierarchyTester
     private readonly IBlockNavigator blockNavigator = A.Fake<IBlockNavigator>(i => i.Strict());
     private readonly SceneNavigator sut;
 
-    public IBlock RootBlock => navigationContext.CurrentBlock;
+    public IBlock RootBlock { get; }
+    public IBlockState RootBlockState { get; } = new FakeBlockState();
 
     public HierarchyTester()
     {
+        RootBlock = CreateDummyBlock();
+        navigationContext.CurrentBlock = null;
+        A.CallTo(() => navigationContext.RootBlock).Returns(RootBlock);
+        A.CallTo(() => navigationContext.RootBlockState).Returns(RootBlockState);
         sut = new(blockNavigator);
     }
+
+    private int blockId;
+    public IBlock CreateDummyBlock()
+    {
+        var block = A.Dummy<IBlock>();
+        A.CallTo(() => block.ToString()).Returns($"FakeBlock {blockId}");
+        A.CallTo(() => block.Id).Returns(blockId++);
+        return block;
+    }
+
+    public void ConfigureMove(bool forward, params INode[] nodes)
+        => ConfigureMove(forward, RootBlock, nodes);
 
     private void ConfigureMove(bool forward, IBlock block, params INode[] nodes)
     {
         if (nodes is null)
             nodes = new INode[] { null };
 
-        A.CallTo(() => blockNavigator.MoveAsync(block, navigationContext, forward))
+        A.CallTo(() => blockNavigator.MoveAsync(block, A<IBlockState>.Ignored, navigationContext, forward))
             .ReturnsNextFromSequence(nodes);
     }
 
@@ -43,7 +62,7 @@ public class HierarchyTester
     }
 
     public ConfigureBuilder MoveWithArgs(bool forward, IBlock block)
-        => new ConfigureBuilder(this, forward, block);
+        => new(this, forward, block);
 
     public class ConfigureBuilder
     {

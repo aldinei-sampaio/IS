@@ -24,7 +24,6 @@ public class QueueTests
         blockIterationState.CurrentNodeIndex = null;
         blockState = A.Dummy<IBlockState>();
         A.CallTo(() => blockState.GetCurrentIteration()).Returns(blockIterationState);
-        A.CallTo(() => context.State.BlockStates[0]).Returns(blockState);
     }
 
     [Fact]
@@ -86,13 +85,13 @@ public class QueueTests
 
     private async Task TestPreviousAsync(INode node)
     {
-        await sut.MoveAsync(block, context, false);
+        await sut.MoveAsync(block, blockState, context, false);
         blockIterationState.CurrentNode.Should().BeSameAs(node);
     }
 
     private async Task TestNextAsync(INode node)
     {
-        await sut.MoveAsync(block, context, true);
+        await sut.MoveAsync(block, blockState, context, true);
         blockIterationState.CurrentNode.Should().BeSameAs(node);
     }
 

@@ -9,5 +9,4 @@ public interface INavigationState
     string? MusicName { get; set; }
     int? CurrentBlockId { get; set; }
     int CurrentIteration { get; set; }
-    IBlockStateDictionary BlockStates { get; }
 }

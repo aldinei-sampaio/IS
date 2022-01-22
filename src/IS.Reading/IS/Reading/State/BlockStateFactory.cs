@@ -14,4 +14,7 @@ public class BlockStateFactory : IBlockStateFactory
 
     public IBlockState CreateState()
         => serviceProvider.GetRequiredService<IBlockState>();
+
+    public IBlockStateDictionary CreateStateDictionary()
+        => serviceProvider.GetRequiredService<IBlockStateDictionary>();
 }

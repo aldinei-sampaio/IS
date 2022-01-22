@@ -4,4 +4,5 @@ public interface IBlockStateFactory
 {
     IBlockIterationState CreateIterationState();
     IBlockState CreateState();
+    IBlockStateDictionary CreateStateDictionary();
 }

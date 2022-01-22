@@ -1,4 +1,6 @@
-﻿namespace IS.Reading.Navigation.SceneNavigatorTests;
+﻿using IS.Reading.State;
+
+namespace IS.Reading.Navigation.SceneNavigatorTests;
 
 public class BackAndForthTester
 {
@@ -23,13 +25,13 @@ public class BackAndForthTester
         var blockNavigator = A.Fake<IBlockNavigator>(i => i.Strict());
         if (!forward.HasValue || forward.Value)
         {
-            A.CallTo(() => blockNavigator.MoveAsync(A<IBlock>.Ignored, navigationContext, true))
+            A.CallTo(() => blockNavigator.MoveAsync(A<IBlock>.Ignored, A<IBlockState>.Ignored, navigationContext, true))
                 .WithAnyArguments()
                 .ReturnsLazily(callback);
         }
         if (!forward.HasValue || !forward.Value)
         {
-            A.CallTo(() => blockNavigator.MoveAsync(A<IBlock>.Ignored, navigationContext, false))
+            A.CallTo(() => blockNavigator.MoveAsync(A<IBlock>.Ignored, A<IBlockState>.Ignored, navigationContext, false))
                 .WithAnyArguments()
                 .ReturnsLazily(callback);
         }
