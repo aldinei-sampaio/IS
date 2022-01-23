@@ -3,5 +3,5 @@
 public interface IVarSet
 {
     string Name { get; }
-    IVarSet Execute(IVariableDictionary variables);
+    object? Execute(IVariableDictionary variables);
 }

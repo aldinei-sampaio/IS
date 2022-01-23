@@ -11,7 +11,7 @@ public class IntegerIncrement : IIntegerIncrement
 
     public string Name { get; }
 
-    public IVarSet Execute(IVariableDictionary variables)
+    public object? Execute(IVariableDictionary variables)
     {
         var oldValue = variables[Name];
         var intOldValue = (oldValue as int?) ?? 0;
@@ -29,7 +29,7 @@ public class IntegerIncrement : IIntegerIncrement
         }
 
         variables[Name] = intNewValue;
-        return new ReversedIntegerIncrement(Name, Increment, oldValue);
+        return oldValue;
     }
 
     public override string ToString()

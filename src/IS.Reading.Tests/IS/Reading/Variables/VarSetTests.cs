@@ -51,7 +51,7 @@ public class VarSetTests
     [InlineData("epsilon", -131, "abc")]
     [InlineData("pi", "abc", "def")]
     [InlineData("rho", "abc", int.MaxValue)]
-    public void ExecuteShouldReturnReversedVarSet(string name, object oldValue, object value)
+    public void ExecuteShouldReturnOldValue(string name, object oldValue, object value)
     {
         var variables = A.Dummy<IVariableDictionary>();
         A.CallTo(() => variables[name]).Returns(oldValue);
@@ -59,12 +59,7 @@ public class VarSetTests
         var sut = new VarSet(name, value);
         var result = sut.Execute(variables);
 
-        result.Should().BeOfType<VarSet>()
-            .Which.Should().BeEquivalentTo(new
-            {
-                Name = name,
-                Value = oldValue
-            });
+        result.Should().Be(oldValue);
     }
 
     [Theory]

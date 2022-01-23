@@ -9,11 +9,11 @@ public class VarSet : IVarSet
 
     public string Name { get; }
 
-    public IVarSet Execute(IVariableDictionary variables)
+    public object? Execute(IVariableDictionary variables)
     {
         var oldValue = variables[Name];
         variables[Name] = Value;
-        return new VarSet(Name, oldValue);
+        return oldValue;
     }
 
     public override string ToString()

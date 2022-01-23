@@ -46,13 +46,7 @@ public class IntegerIncrementTests
         var sut = new IntegerIncrement(varName, increment);
         var reversed = sut.Execute(variables);
 
-        reversed.Should().BeOfType<ReversedIntegerIncrement>()
-            .Which.Should().BeEquivalentTo(new
-            {
-                Name = varName,
-                Increment = increment,
-                OldValue = currentValue
-            });
+        reversed.Should().Be(currentValue);
 
         A.CallTo(() => variables[varName]).MustHaveHappenedOnceExactly();
         A.CallToSet(() => variables[varName]).To(expectedResult).MustHaveHappenedOnceExactly();

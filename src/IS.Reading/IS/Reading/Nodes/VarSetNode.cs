@@ -10,16 +10,15 @@ public class VarSetNode : INode
     public VarSetNode(IVarSet varSet)
         => VarSet = varSet;
 
-    private static Task<object?> Evaluate(INavigationContext context, IVarSet varSet)
-        => Task.FromResult<object?>(varSet.Execute(context.Variables));
-
     public Task<object?> EnterAsync(INavigationContext context)
-        => Evaluate(context, VarSet);
+        => Task.FromResult(VarSet.Execute(context.Variables));
 
     public Task EnterAsync(INavigationContext context, object? state)
     {
-        if (state is IVarSet varSet)
-            Evaluate(context, varSet);
+        if (state is not null && state is not string && state is not int)
+            throw new ArgumentException($"Argumento 'state' inválido: {state}", nameof(state));
+
+        context.Variables[VarSet.Name] = state;
         return Task.CompletedTask;
     }
 }

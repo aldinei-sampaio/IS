@@ -36,18 +36,33 @@ public class VarSetNodeTests
         A.CallTo(() => varSet.Execute(dic)).MustHaveHappenedOnceExactly();
     }
 
-    [Fact]
-    public async Task ShouldRaiseEventWithStateArg()
+    [Theory]
+    [InlineData(null)]
+    [InlineData("abc")]
+    [InlineData(123)]
+    public async Task ShouldSetValueToStateArg(object stageArg)
     {
         var context = A.Fake<INavigationContext>(i => i.Strict());
         var dic = A.Dummy<IVariableDictionary>();
         A.CallTo(() => context.Variables).Returns(dic);
 
-        var stageArg = A.Dummy<IVarSet>();
-        A.CallTo(() => stageArg.Execute(dic)).Returns(null);
+        var varName = "Alpha";
+
+        A.CallTo(() => varSet.Name).Returns(varName);
+        A.CallToSet(() => context.Variables[varName]).To(stageArg).DoesNothing();
 
         await sut.EnterAsync(context, stageArg);
 
-        A.CallTo(() => stageArg.Execute(dic)).MustHaveHappenedOnceExactly();
+        A.CallToSet(() => context.Variables[varName]).To(stageArg).MustHaveHappenedOnceExactly();
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    [InlineData(128.982)]
+    public async Task InvalidValuesForStageArg(object value)
+    {
+        var context = A.Dummy<INavigationContext>();
+        await Assert.ThrowsAsync<ArgumentException>(() => sut.EnterAsync(context, value));
     }
 }
