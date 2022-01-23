@@ -12,10 +12,10 @@ public class SceneNavigator : ISceneNavigator
     public async Task<bool> MoveAsync(INavigationContext context, bool forward)
     {
         if (context.CurrentBlock is null)
-        {
             context.CurrentBlock = context.RootBlock;
+
+        if (context.CurrentBlockState is null)
             context.CurrentBlockState = context.RootBlockState;
-        }
 
         var block = context.CurrentBlock;
         var blockState = context.CurrentBlockState;

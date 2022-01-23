@@ -1,58 +1,96 @@
-﻿using IS.Reading.Navigation;
-
-namespace IS.Reading.State;
+﻿namespace IS.Reading.State;
 
 public class BlockStateTests
 {
-    private readonly IBlockStateFactory blockStateFactory;
-    private readonly BlockIterationState sut;
-
-    public BlockStateTests()
+    [Fact]
+    public void GetCurrentIterationShouldCreateNewWhenCalledTheFirstTime()
     {
-        blockStateFactory = A.Fake<IBlockStateFactory>(i => i.Strict());
-        sut = new BlockIterationState(blockStateFactory);
+        var blockIterationState = A.Dummy<IBlockIterationState>();
+        var blockStateFactory = A.Fake<IBlockStateFactory>(i => i.Strict());
+
+        var sut = new BlockState(blockStateFactory);
+
+        A.CallTo(() => blockStateFactory.CreateIterationState()).Returns(blockIterationState);
+
+        sut.GetCurrentIteration().Should().BeSameAs(blockIterationState);
+
+        A.CallTo(() => blockStateFactory.CreateIterationState()).MustHaveHappenedOnceExactly();
     }
 
     [Fact]
-    public void Initialization()
+    public void GetCurrentItemShouldReturnSameObjectWhenCalledRepeatedly()
     {
-        sut.CurrentNode.Should().BeNull();
-        sut.CurrentNodeIndex.Should().BeNull();
-        sut.BackwardStack.Count.Should().Be(0);
+        var blockIterationState = A.Dummy<IBlockIterationState>();
+        var blockStateFactory = A.Fake<IBlockStateFactory>(i => i.Strict());
+
+        var sut = new BlockState(blockStateFactory);
+
+        A.CallTo(() => blockStateFactory.CreateIterationState()).Returns(blockIterationState);
+
+        sut.GetCurrentIteration().Should().BeSameAs(blockIterationState);
+        sut.GetCurrentIteration().Should().BeSameAs(blockIterationState);
+        sut.GetCurrentIteration().Should().BeSameAs(blockIterationState);
+        sut.GetCurrentIteration().Should().BeSameAs(blockIterationState);
+        sut.GetCurrentIteration().Should().BeSameAs(blockIterationState);
+        
+        A.CallTo(() => blockStateFactory.CreateIterationState()).MustHaveHappenedOnceExactly();
     }
 
     [Fact]
-    public void ReadWriteProperties()
+    public void MoveToNextIterationShouldInitializeCurrentIteration()
     {
-        var node = A.Dummy<INode>();
+        var blockIterationState = A.Dummy<IBlockIterationState>();
+        var blockStateFactory = A.Fake<IBlockStateFactory>(i => i.Strict());
 
-        sut.CurrentNodeIndex = 157;
-        sut.CurrentNode = node;
+        var sut = new BlockState(blockStateFactory);
 
-        sut.CurrentNodeIndex.Should().Be(157);
-        sut.CurrentNode.Should().BeSameAs(node);
+        A.CallTo(() => blockStateFactory.CreateIterationState()).Returns(blockIterationState);
+
+        sut.MoveToNextIteration();
+
+        A.CallTo(() => blockStateFactory.CreateIterationState()).MustHaveHappenedOnceExactly();
+
+        sut.GetCurrentIteration().Should().BeSameAs(blockIterationState);
+
+        A.CallTo(() => blockStateFactory.CreateIterationState()).MustHaveHappenedOnceExactly();
     }
 
     [Fact]
-    public void InitializeChildren()
+    public void MoveToNextAndMoveToPreviousIteration()
     {
-        var dic = A.Dummy<IBlockStateDictionary>();
-        A.CallTo(() => blockStateFactory.CreateStateDictionary()).Returns(dic);
+        var state1 = A.Dummy<IBlockIterationState>();
+        var state2 = A.Dummy<IBlockIterationState>();
+        var state3 = A.Dummy<IBlockIterationState>();
 
-        sut.Children.Should().BeSameAs(dic);
+        var blockStateFactory = A.Fake<IBlockStateFactory>(i => i.Strict());
+        A.CallTo(() => blockStateFactory.CreateIterationState())
+            .ReturnsNextFromSequence(state1, state2, state3);
 
-        A.CallTo(() => blockStateFactory.CreateStateDictionary()).MustHaveHappenedOnceExactly();
+        var sut = new BlockState(blockStateFactory);
+        sut.GetCurrentIteration().Should().BeSameAs(state1);
+        sut.MoveToNextIteration();
+        sut.GetCurrentIteration().Should().BeSameAs(state2);
+        sut.MoveToPreviousIteration().Should().BeTrue();
+        sut.GetCurrentIteration().Should().BeSameAs(state1);
+        sut.MoveToPreviousIteration().Should().BeFalse();
+        sut.GetCurrentIteration().Should().BeSameAs(state3);
     }
 
     [Fact]
-    public void DoubleCallShouldNotReinitializeChildren()
+    public void MoveToPreviousShouldWorkWhenCalledMultipleTimes()
     {
-        var dic = A.Dummy<IBlockStateDictionary>();
-        A.CallTo(() => blockStateFactory.CreateStateDictionary()).Returns(dic);
+        var blockIterationState = A.Dummy<IBlockIterationState>();
+        var blockStateFactory = A.Fake<IBlockStateFactory>(i => i.Strict());
+        A.CallTo(() => blockStateFactory.CreateIterationState()).Returns(blockIterationState);
 
-        sut.Children.Should().BeSameAs(dic);
-        sut.Children.Should().BeSameAs(dic);
+        var sut = new BlockState(blockStateFactory);
 
-        A.CallTo(() => blockStateFactory.CreateStateDictionary()).MustHaveHappenedOnceExactly();
+        sut.MoveToPreviousIteration().Should().BeFalse();
+        sut.MoveToPreviousIteration().Should().BeFalse();
+        sut.MoveToPreviousIteration().Should().BeFalse();
+
+        sut.GetCurrentIteration().Should().BeSameAs(blockIterationState);
+
+        A.CallTo(() => blockStateFactory.CreateIterationState()).MustHaveHappenedOnceExactly();
     }
 }

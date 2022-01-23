@@ -15,6 +15,7 @@ public class HierarchyTester
     {
         RootBlock = CreateDummyBlock();
         navigationContext.CurrentBlock = null;
+        navigationContext.CurrentBlockState = null;
         A.CallTo(() => navigationContext.RootBlock).Returns(RootBlock);
         A.CallTo(() => navigationContext.RootBlockState).Returns(RootBlockState);
         sut = new(blockNavigator);

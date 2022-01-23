@@ -1,4 +1,6 @@
-﻿namespace IS.Reading.Navigation;
+﻿using IS.Reading.Conditions;
+
+namespace IS.Reading.Navigation;
 
 public class BlockFactoryTests
 {
@@ -22,5 +24,18 @@ public class BlockFactoryTests
         var result = sut.Create(n1, n2);
 
         result.Nodes.Should().BeEquivalentTo(new [] { n1, n2 });
+    }
+
+    [Fact]
+    public void While()
+    {
+        var nodes = new List<INode>();
+        var @while = A.Dummy<ICondition>();
+
+        var sut = new BlockFactory();
+        var result = sut.Create(nodes, @while);
+
+        result.Nodes.Should().BeSameAs(nodes);
+        result.While.Should().BeSameAs(@while);
     }
 }
