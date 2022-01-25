@@ -1,13 +1,16 @@
-﻿namespace IS.Reading.Parsing.NodeParsers.BalloonParsers;
+﻿using IS.Reading.Variables;
+
+namespace IS.Reading.Parsing.NodeParsers.BalloonParsers;
 
 public class ThoughtChildNodeParser : BalloonChildNodeParserBase, IThoughtChildNodeParser
 {
     public ThoughtChildNodeParser(
-        IElementParser elementParser, 
+        IElementParser elementParser,
+        ITextSourceParser textSourceParser,
         IThoughtTextNodeParser thoughtTextNodeParser, 
         IChoiceNodeParser choiceNodeParser
     ) 
-    : base(elementParser, thoughtTextNodeParser, choiceNodeParser)
+    : base(elementParser, textSourceParser, thoughtTextNodeParser, choiceNodeParser)
     {
     }
 }

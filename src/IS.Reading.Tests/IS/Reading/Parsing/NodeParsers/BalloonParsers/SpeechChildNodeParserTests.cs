@@ -1,4 +1,6 @@
-﻿namespace IS.Reading.Parsing.NodeParsers.BalloonParsers;
+﻿using IS.Reading.Variables;
+
+namespace IS.Reading.Parsing.NodeParsers.BalloonParsers;
 
 public class SpeechChildNodeParserTests
 {
@@ -9,8 +11,9 @@ public class SpeechChildNodeParserTests
         var speechTextNodeParser = Helper.FakeParser<ISpeechTextNodeParser>("speech");
         A.CallTo(() => speechTextNodeParser.BalloonType).Returns(BalloonType.Speech);
         var choiceNodeParser = Helper.FakeParser<IChoiceNodeParser>("choice");
+        var textSourceParser = A.Dummy<ITextSourceParser>();
 
-        var sut = new SpeechChildNodeParser(elementParser, speechTextNodeParser, choiceNodeParser);
+        var sut = new SpeechChildNodeParser(elementParser, textSourceParser, speechTextNodeParser, choiceNodeParser);
         sut.Name.Should().Be("speech");
         sut.BalloonType.Should().Be(BalloonType.Speech);
         sut.Settings.ShouldBeAggregatedNonRepeat(speechTextNodeParser);

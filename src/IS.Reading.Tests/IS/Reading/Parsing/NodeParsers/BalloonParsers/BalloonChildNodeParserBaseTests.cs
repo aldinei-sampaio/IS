@@ -1,4 +1,5 @@
 ﻿using IS.Reading.Nodes;
+using IS.Reading.Variables;
 using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers.BalloonParsers;
@@ -7,25 +8,40 @@ public class BalloonChildNodeParserBaseTests
 {
     private class TestClass : BalloonChildNodeParserBase
     {
-        public TestClass(IElementParser elementParser, IBalloonTextNodeParser balloonTextNodeParser, IChoiceNodeParser choiceNodeParser) 
-            : base(elementParser, balloonTextNodeParser, choiceNodeParser)
+        public TestClass(
+            IElementParser elementParser, 
+            ITextSourceParser textSourceParser, 
+            IBalloonTextNodeParser balloonTextNodeParser, 
+            IChoiceNodeParser choiceNodeParser
+        ) 
+            : base(elementParser, textSourceParser, balloonTextNodeParser, choiceNodeParser)
         {
         }
     }
 
     private readonly IElementParser elementParser;
+    private readonly ITextSourceParser textSourceParser;
     private readonly IBalloonTextNodeParser balloonTextNodeParser;
     private readonly IChoiceNodeParser choiceNodeParser;
     private readonly BalloonType balloonType = BalloonType.Narration;
+    private readonly ITextSource textSource;
     private readonly TestClass sut;
 
     public BalloonChildNodeParserBaseTests()
     {
+        textSource = A.Dummy<ITextSource>();
+        var textSourceParserResult = A.Fake<ITextSourceParserResult>(i => i.Strict());
+        A.CallTo(() => textSourceParserResult.IsError).Returns(false);
+        A.CallTo(() => textSourceParserResult.TextSource).Returns(textSource);
+
+        textSourceParser = A.Fake<ITextSourceParser>(i => i.Strict());
+        A.CallTo(() => textSourceParser.Parse(A<string>.Ignored)).Returns(textSourceParserResult);
+
         elementParser = A.Fake<IElementParser>(i => i.Strict());
         balloonTextNodeParser = Helper.FakeParser<IBalloonTextNodeParser>("xyz");
         A.CallTo(() => balloonTextNodeParser.BalloonType).Returns(balloonType);
         choiceNodeParser = Helper.FakeParser<IChoiceNodeParser>("choice");
-        sut = new (elementParser, balloonTextNodeParser, choiceNodeParser);
+        sut = new (elementParser, textSourceParser, balloonTextNodeParser, choiceNodeParser);
     }
 
     [Fact]
@@ -53,7 +69,7 @@ public class BalloonChildNodeParserBaseTests
         await sut.ParseAsync(reader, context, parentContext);
 
         parentContext.ShouldContainSingle<BalloonTextNode>(i => {
-            i.Text.Should().Be("abc");
+            i.TextSource.Should().BeSameAs(textSource);
             i.BalloonType.Should().Be(balloonType);
         });
     }

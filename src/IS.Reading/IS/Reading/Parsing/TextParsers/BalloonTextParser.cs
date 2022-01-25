@@ -1,4 +1,6 @@
-﻿using System.Xml;
+﻿using IS.Reading.Variables;
+using System.Text;
+using System.Xml;
 
 namespace IS.Reading.Parsing.TextParsers;
 
@@ -8,8 +10,6 @@ public class BalloonTextParser : IBalloonTextParser
     {
         if (string.IsNullOrWhiteSpace(value))
             return null;
-
-        // TODO: Replace character names and other variables
 
         return value;
     }

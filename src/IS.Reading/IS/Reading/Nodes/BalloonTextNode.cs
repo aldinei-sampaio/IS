@@ -1,22 +1,24 @@
 ﻿using IS.Reading.Choices;
 using IS.Reading.Events;
 using IS.Reading.Navigation;
+using IS.Reading.Variables;
 
 namespace IS.Reading.Nodes;
 
 public class BalloonTextNode : IPauseNode
 {
-    public string Text { get; }
+    public ITextSource TextSource { get; }
     public BalloonType BalloonType { get; }
     public IChoiceNode? ChoiceNode { get; }
 
-    public BalloonTextNode(string text, BalloonType ballonType, IChoiceNode? choiceNode)
-        => (Text, BalloonType, ChoiceNode) = (text, ballonType, choiceNode);
+    public BalloonTextNode(ITextSource textSource, BalloonType ballonType, IChoiceNode? choiceNode)
+        => (TextSource, BalloonType, ChoiceNode) = (textSource, ballonType, choiceNode);
 
     public async Task<object?> EnterAsync(INavigationContext context)
     {
+        var text = TextSource.ToString(context.Variables);
         var choice = CreateChoice(ChoiceNode, context);
-        var @event = new BalloonTextEvent(Text, BalloonType, context.State.IsProtagonist(), choice);
+        var @event = new BalloonTextEvent(text, BalloonType, context.State.IsProtagonist(), choice);
         await context.Events.InvokeAsync<IBalloonTextEvent>(@event);
         return null;
     }

@@ -12,6 +12,9 @@ public class BalloonTextNodeTests
     private readonly IVariableDictionary variables;
     private readonly INavigationState state;
     private readonly INavigationContext context;
+    private readonly ITextSource textSource;
+
+    private const string balloonText = "alabama";
 
     public BalloonTextNodeTests()
     {
@@ -20,6 +23,9 @@ public class BalloonTextNodeTests
         context = A.Fake<INavigationContext>(i => i.Strict());
         A.CallTo(() => context.State).Returns(state);
         A.CallTo(() => context.Variables).Returns(variables);
+
+        textSource = A.Dummy<ITextSource>();
+        A.CallTo(() => textSource.ToString(variables)).Returns(balloonText);
     }
 
     public static IEnumerable<object[]> GetBalloonTypes()
@@ -29,9 +35,8 @@ public class BalloonTextNodeTests
     [MemberData(nameof(GetBalloonTypes))]
     public void Initialization(BalloonType balloonType)
     {
-        var text = "Gibberish";
-        var sut = new BalloonTextNode(text, balloonType, null);
-        sut.Text.Should().Be(text);
+        var sut = new BalloonTextNode(textSource, balloonType, null);
+        sut.TextSource.Should().Be(textSource);
         sut.BalloonType.Should().Be(balloonType);
         sut.ChoiceNode.Should().BeNull();
     }
@@ -40,23 +45,19 @@ public class BalloonTextNodeTests
     public void InitializeChoiceNode()
     {
         var choiceNode = A.Dummy<IChoiceNode>();
-        var sut = new BalloonTextNode("abc", BalloonType.Narration, choiceNode);
+        var sut = new BalloonTextNode(textSource, BalloonType.Narration, choiceNode);
         sut.ChoiceNode.Should().BeSameAs(choiceNode);
     }
 
     [Theory]
-    [InlineData(BalloonType.Narration, false, "Loren Ipsun")]
-    [InlineData(BalloonType.Speech, true, "Shenanigans")]
-    public async Task OnEnterAsyncShouldRaiseEvent(BalloonType balloonType, bool isProtagonist, string text)
+    [InlineData(BalloonType.Narration, false)]
+    [InlineData(BalloonType.Speech, true)]
+    public async Task OnEnterAsyncShouldRaiseEvent(BalloonType balloonType, bool isProtagonist)
     {
-        var state = A.Dummy<INavigationState>();
         state.PersonName = "alpha";
         state.ProtagonistName = isProtagonist ? "alpha" : "beta";
 
-        var context = A.Fake<INavigationContext>(i => i.Strict());
-        A.CallTo(() => context.State).Returns(state);
-
-        var sut = new BalloonTextNode(text, balloonType, null);
+        var sut = new BalloonTextNode(textSource, balloonType, null);
         var invoker = new TestInvoker(context);
 
         var ret = await sut.EnterAsync(context);
@@ -65,7 +66,7 @@ public class BalloonTextNodeTests
         invoker.ShouldContainSingle<IBalloonTextEvent>(
             i => i.Should().BeEquivalentTo(new
             {
-                Text = text,
+                Text = balloonText,
                 BalloonType = balloonType,
                 IsProtagonist = isProtagonist,
                 Choice = (IChoice)null
@@ -90,7 +91,7 @@ public class BalloonTextNodeTests
             }
         };
 
-        var sut = new BalloonTextNode("...", BalloonType.Speech, choiceNode);
+        var sut = new BalloonTextNode(textSource, BalloonType.Speech, choiceNode);
         var invoker = new TestInvoker(context);
 
         await sut.EnterAsync(context);
@@ -98,7 +99,7 @@ public class BalloonTextNodeTests
         invoker.ShouldContainSingle<IBalloonTextEvent>(
             i => i.Should().BeEquivalentTo(new
             {
-                Text = "...",
+                Text = balloonText,
                 BalloonType = BalloonType.Speech,
                 IsProtagonist = false,
                 Choice = new
@@ -135,7 +136,7 @@ public class BalloonTextNodeTests
             }
         };
 
-        var sut = new BalloonTextNode("...", BalloonType.Speech, choiceNode);
+        var sut = new BalloonTextNode(textSource, BalloonType.Speech, choiceNode);
         var invoker = new TestInvoker(context);
 
         await sut.EnterAsync(context);
@@ -143,7 +144,7 @@ public class BalloonTextNodeTests
         invoker.ShouldContainSingle<IBalloonTextEvent>(
             i => i.Should().BeEquivalentTo(new
             {
-                Text = "...",
+                Text = balloonText,
                 BalloonType = BalloonType.Speech,
                 IsProtagonist = true,
                 Choice = new
@@ -182,7 +183,7 @@ public class BalloonTextNodeTests
             }
         };
 
-        var sut = new BalloonTextNode("....", BalloonType.Thought, choiceNode);
+        var sut = new BalloonTextNode(textSource, BalloonType.Thought, choiceNode);
         var invoker = new TestInvoker(context);
 
         await sut.EnterAsync(context);
@@ -190,7 +191,7 @@ public class BalloonTextNodeTests
         invoker.ShouldContainSingle<IBalloonTextEvent>(
             i => i.Should().BeEquivalentTo(new
             {
-                Text = "....",
+                Text = balloonText,
                 BalloonType = BalloonType.Thought,
                 IsProtagonist = true,
                 Choice = new
@@ -217,7 +218,7 @@ public class BalloonTextNodeTests
 
         var choiceNode = new TestChoiceNode { Options = new() };
 
-        var sut = new BalloonTextNode("Então...", BalloonType.Tutorial, choiceNode);
+        var sut = new BalloonTextNode(textSource, BalloonType.Tutorial, choiceNode);
         var invoker = new TestInvoker(context);
 
         await sut.EnterAsync(context);
@@ -225,7 +226,7 @@ public class BalloonTextNodeTests
         invoker.ShouldContainSingle<IBalloonTextEvent>(
             i => i.Should().BeEquivalentTo(new
             {
-                Text = "Então...",
+                Text = balloonText,
                 BalloonType = BalloonType.Tutorial,
                 IsProtagonist = true,
                 Choice = (IChoice)null
@@ -248,7 +249,7 @@ public class BalloonTextNodeTests
             }
         };
 
-        var sut = new BalloonTextNode("Opções", BalloonType.Narration, choiceNode);
+        var sut = new BalloonTextNode(textSource, BalloonType.Narration, choiceNode);
         var invoker = new TestInvoker(context);
 
         await sut.EnterAsync(context);
@@ -256,7 +257,7 @@ public class BalloonTextNodeTests
         invoker.ShouldContainSingle<IBalloonTextEvent>(
             i => i.Should().BeEquivalentTo(new
             {
-                Text = "Opções",
+                Text = balloonText,
                 BalloonType = BalloonType.Narration,
                 IsProtagonist = true,
                 Choice = (IChoice)null
@@ -279,7 +280,7 @@ public class BalloonTextNodeTests
             }
         };
 
-        var sut = new BalloonTextNode("...", BalloonType.Speech, choiceNode);
+        var sut = new BalloonTextNode(textSource, BalloonType.Speech, choiceNode);
         var invoker = new TestInvoker(context);
 
         await sut.EnterAsync(context);
@@ -287,7 +288,7 @@ public class BalloonTextNodeTests
         invoker.ShouldContainSingle<IBalloonTextEvent>(
             i => i.Should().BeEquivalentTo(new
             {
-                Text = "...",
+                Text = balloonText,
                 BalloonType = BalloonType.Speech,
                 IsProtagonist = true,
                 Choice = (IChoice)null
@@ -319,7 +320,7 @@ public class BalloonTextNodeTests
         A.CallTo(() => randomizer.Shuffle(A<List<IChoiceOption>>.Ignored)).Returns(shuffled);
         A.CallTo(() => context.Randomizer).Returns(randomizer);
 
-        var sut = new BalloonTextNode("...", BalloonType.Speech, choiceNode);
+        var sut = new BalloonTextNode(textSource, BalloonType.Speech, choiceNode);
         var invoker = new TestInvoker(context);
 
         await sut.EnterAsync(context);
@@ -327,7 +328,7 @@ public class BalloonTextNodeTests
         invoker.ShouldContainSingle<IBalloonTextEvent>(
             i => i.Should().BeEquivalentTo(new
             {
-                Text = "...",
+                Text = balloonText,
                 BalloonType = BalloonType.Speech,
                 IsProtagonist = true,
                 Choice = new

@@ -31,6 +31,7 @@ public static class ServiceProviderExtensionMethods
         services.AddSingleton<IConditionParser, ConditionParser>();
         services.AddSingleton<IElementParser, ElementParser>();
         services.AddSingleton<IVarSetParser, VarSetParser>();
+        services.AddSingleton<ITextSourceParser, InterpolatorParser>();
 
         // Attribute parsers
         services.AddSingleton<IWhenAttributeParser, WhenAttributeParser>();
