@@ -2,12 +2,12 @@
 
 public struct TextSource : ITextSource
 {
-    public IInterpolator? Parsed { get; } = null;
+    public IInterpolator? Interpolator { get; } = null;
 
     public string? Text { get; } = null;
 
-    public TextSource(IInterpolator parsed)
-        => Parsed = parsed;
+    public TextSource(IInterpolator interpolator)
+        => Interpolator = interpolator;
     
     public TextSource(string text)
         => Text = text;
@@ -17,8 +17,19 @@ public struct TextSource : ITextSource
         if (Text is not null)
             return Text;
 
-        if (Parsed is not null)
-            return Parsed.Interpolate(variables);
+        if (Interpolator is not null)
+            return Interpolator.ToString(variables);
+
+        throw new InvalidOperationException("Estrutura não inicializada.");
+    }
+
+    public override string? ToString()
+    {
+        if (Text is not null)
+            return Text;
+
+        if (Interpolator is not null)
+            return Interpolator.ToString();
 
         throw new InvalidOperationException("Estrutura não inicializada.");
     }

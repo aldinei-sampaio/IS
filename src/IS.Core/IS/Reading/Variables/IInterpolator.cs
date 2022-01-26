@@ -3,5 +3,5 @@
 public interface IInterpolator
 {
     IEnumerable<IInterpolatedValue> Values { get; }
-    string Interpolate(IVariableDictionary variables);
+    string ToString(IVariableDictionary variables);
 }

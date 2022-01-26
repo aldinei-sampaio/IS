@@ -6,32 +6,27 @@ public class Interpolator : IInterpolator
 {
     public IEnumerable<IInterpolatedValue> Values { get; }
 
-    public int AproxLenght { get; }
+    public int AproxLength { get; }
 
-    public Interpolator(IEnumerable<IInterpolatedValue> values, int aproxLenght)
+    public Interpolator(IEnumerable<IInterpolatedValue> values, int aproxLength)
     {
         Values = values;
-        AproxLenght = aproxLenght;
+        AproxLength = aproxLength;
     }
 
-    public string Interpolate(IVariableDictionary variables)
+    public string ToString(IVariableDictionary variables)
     {
-        var builder = new StringBuilder(AproxLenght);
+        var builder = new StringBuilder(AproxLength);
         foreach(var item in Values)
-        {
-            if (item.IsVariable)
-            {
-                var value = variables[item.Value];
-                if (value is string s)
-                    builder.Append(s);
-                else if (value is int i)
-                    builder.Append(i);                    
-            }
-            else
-            {
-                builder.Append(item.Value);
-            }
-        }
+            builder.Append(item.ToString(variables));
+        return builder.ToString();
+    }
+
+    public override string ToString()
+    {
+        var builder = new StringBuilder(AproxLength);
+        foreach (var item in Values)
+            builder.Append(item.ToString());
         return builder.ToString();
     }
 }
