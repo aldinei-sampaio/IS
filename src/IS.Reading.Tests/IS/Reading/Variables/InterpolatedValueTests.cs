@@ -3,15 +3,28 @@
 public class InterpolatedValueTests
 {
     [Theory]
-    [InlineData("alpha", true, "{alpha}")]
-    [InlineData("omega", false, "omega")]
-    public void Initialization(string value, bool isVariable, string toString)
+    [InlineData("alpha", true)]
+    [InlineData("omega", false)]
+    [InlineData("{", false)]
+    [InlineData("}", false)]
+    public void Initialization(string value, bool isVariable)
     {
         var sut = new InterpolatedValue(value, isVariable);
         sut.Value.Should().Be(value);
         sut.IsVariable.Should().Be(isVariable);
+    }
+
+    [Theory]
+    [InlineData("alpha", true, "{alpha}")]
+    [InlineData("omega", false, "omega")]
+    [InlineData("{", false, "{{")]
+    [InlineData("}", false, "}}")]
+    public void ToStringWithoutVariables(string value, bool isVariable, string toString)
+    {
+        var sut = new InterpolatedValue(value, isVariable);
         sut.ToString().Should().Be(toString);
     }
+
 
     [Theory]
     [InlineData("alpha", true, "omega")]

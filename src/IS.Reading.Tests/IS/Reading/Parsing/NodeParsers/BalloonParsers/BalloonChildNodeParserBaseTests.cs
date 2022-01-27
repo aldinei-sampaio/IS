@@ -109,4 +109,31 @@ public class BalloonChildNodeParserBaseTests
 
         A.CallTo(() => context.SceneContext).MustHaveHappenedOnceExactly();
     }
+
+    [Fact]
+    public async Task ShouldLogTextSourceParsingError()
+    {
+        var errorMessage = "Erro proposital.";
+        var reader = A.Dummy<XmlReader>();
+        var parentContext = new FakeParentParsingContext();
+
+        var parsingResult = A.Dummy<ITextSourceParserResult>();
+        A.CallTo(() => parsingResult.IsError).Returns(true);
+        A.CallTo(() => parsingResult.ErrorMessage).Returns(errorMessage);
+
+        A.CallTo(() => textSourceParser.Parse("abc")).Returns(parsingResult);
+
+        var context = A.Fake<IParsingContext>(i => i.Strict());
+        A.CallTo(() => context.LogError(reader, errorMessage)).DoesNothing();
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).ParsedText = "abc");
+
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.AggregationSettings))
+            .DoesNothing();
+
+        await sut.ParseAsync(reader, context, parentContext);
+
+        A.CallTo(() => context.LogError(reader, errorMessage)).MustHaveHappenedOnceExactly();
+    }
 }

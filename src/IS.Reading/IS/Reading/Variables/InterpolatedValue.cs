@@ -25,6 +25,17 @@ public struct InterpolatedValue : IInterpolatedValue
         return string.Empty;
     }
 
-    public override string ToString() 
-        => IsVariable ? $"{{{Value}}}" : Value;
+    public override string ToString()
+    { 
+        if (IsVariable)
+            return $"{{{Value}}}";
+
+        if (Value == "{")
+            return "{{";
+
+        if (Value == "}")
+            return "}}";
+
+        return Value;
+    }
 }

@@ -1,7 +1,13 @@
-﻿namespace IS.Reading.Variables;
+﻿using System.Text.RegularExpressions;
+
+namespace IS.Reading.Variables;
 
 public class TextSourceParser : ITextSourceParser
 {
+    public const string MissingOpeningCurlyBraces = "'}' sem um '{' correspondente.";
+    public const string MissingClosingCurlyBraces = "'{' sem um '}' correspondente.";
+    public const string InvalidVariableName = "Nome de variável inválido: '{0}'";
+
     public ITextSourceParserResult Parse(string text)
     {
         const char varPrefix = '{';
@@ -14,7 +20,7 @@ public class TextSourceParser : ITextSourceParser
         var n = span.IndexOfAny(varPrefix, varSuffix);
         if (n == -1)
             return new TextSourceParserResult(new TextSource(text));
-        
+
         var list = new List<IInterpolatedValue>();
 
         for (; ; )
@@ -25,10 +31,10 @@ public class TextSourceParser : ITextSourceParser
             if (span[n] == varSuffix)
             {
                 if (!IsPrefixed(span, n + 1, varSuffix))
-                    return new TextSourceParserResult("'}' sem um '{' correspondente.");
+                    return new TextSourceParserResult(MissingOpeningCurlyBraces);
 
                 list.Add(new InterpolatedValue(varSuffixString, false));
-                span = span[(n + 1)..];
+                span = span[(n + 2)..];
             }
             else
             {
@@ -42,9 +48,16 @@ public class TextSourceParser : ITextSourceParser
                     span = span[(n + 1)..];
                     var m = span.IndexOfAny(varPrefix, varSuffix);
                     if (m == -1 || span[m] == varPrefix)
-                        return new TextSourceParserResult("'{' sem um '}' correspondente.");
+                        return new TextSourceParserResult(MissingClosingCurlyBraces);
 
-                    list.Add(new InterpolatedValue(span[..m].ToString(), true));
+                    if (m > 0)
+                    {
+                        var variableName = span[..m].ToString();
+                        if (!Regex.IsMatch(variableName, "^[A-Za-z][A-Za-z0-9_]*$"))
+                            return new TextSourceParserResult(string.Format(InvalidVariableName, variableName));
+
+                        list.Add(new InterpolatedValue(variableName, true));
+                    }
                     span = span[(m + 1)..];
                 }
             }
@@ -60,12 +73,15 @@ public class TextSourceParser : ITextSourceParser
             }
         }
 
+        if (list.Count == 0)
+            return new TextSourceParserResult(new TextSource(string.Empty));
+
         return new TextSourceParserResult(new TextSource(new Interpolator(list, text.Length)));
     }
 
     private static bool IsPrefixed(ReadOnlySpan<char> span, int n, char c)
-    { 
-        if (n >= (span.Length - 1))
+    {
+        if (n >= span.Length)
             return false;
 
         return span[n] == c;
