@@ -39,7 +39,7 @@ public class RootBlockParser : IRootBlockParser
         );
     }
 
-    public async Task<List<INode>> ParseAsync(XmlReader reader, IParsingContext parsingContext)
+    public async Task<List<INode>> ParseAsync(IDocumentReader reader, IParsingContext parsingContext)
     {
         var context = new BlockParentParsingContext();
 

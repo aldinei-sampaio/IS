@@ -8,10 +8,8 @@ public class MusicNode : INode
 {
     public string? MusicName { get; }
 
-    public MusicNode(string? musicName, ICondition? when)
-        => (MusicName, When) = (musicName, when);
-
-    public ICondition? When { get; }
+    public MusicNode(string? musicName)
+        => (MusicName) = (musicName);
 
     public static async Task<object?> ApplyStateAsync(INavigationContext context, string? musicName)
     {

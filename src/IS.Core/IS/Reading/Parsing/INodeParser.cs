@@ -5,5 +5,5 @@ namespace IS.Reading.Parsing;
 
 public interface INodeParser : IParser
 {
-    Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext);
+    Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext);
 }

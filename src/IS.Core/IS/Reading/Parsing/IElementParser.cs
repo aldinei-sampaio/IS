@@ -5,7 +5,7 @@ namespace IS.Reading.Parsing;
 public interface IElementParser
 {
     Task ParseAsync(
-        XmlReader reader, 
+        IDocumentReader reader, 
         IParsingContext parsingContext, 
         IParentParsingContext parentParsingContext, 
         IElementParserSettings settings

@@ -8,44 +8,34 @@ namespace IS.Reading.Parsing.NodeParsers;
 
 public class MusicNodeParser : IMusicNodeParser
 {
-    private readonly IElementParser elementParser;
+    private readonly INameTextParser nameTextParser;
 
-    public IElementParserSettings Settings { get; }
-
-    public MusicNodeParser(
-        IElementParser elementParser,
-        IWhenAttributeParser whenAttributeParser,
-        INameTextParser nameTextParser
-    )
-    {
-        this.elementParser = elementParser;
-        Settings = ElementParserSettings.Normal(whenAttributeParser, nameTextParser);
-    }
+    public MusicNodeParser(INameTextParser nameTextParser)
+        => this.nameTextParser = nameTextParser;
 
     public string Name => "music";
 
-    public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
+    public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var myContext = new TextParentParsingContext();
-        await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
-
-        var parsedText = myContext.ParsedText;
-
-        if (parsedText is null)
-            return;
+        var parsed = nameTextParser.Parse(reader, parsingContext, reader.Argument);
+        if (parsed is null)
+            return Task.CompletedTask;
 
         if (parsingContext.SceneContext.HasMusic)
         {
             parsingContext.LogError(reader, "Mais de uma definição de música para a mesma cena.");
-            return;
+            return Task.CompletedTask;
         }
+
         parsingContext.SceneContext.HasMusic = true;
 
-        var node = new MusicNode(parsedText.Length == 0 ? null : parsedText, myContext.When);
+        var node = new MusicNode(parsed.Length == 0 ? null : parsed);
         parentParsingContext.AddNode(node);
         parsingContext.RegisterDismissNode(DismissNode);
+
+        return Task.CompletedTask;
     }
 
     public INode DismissNode { get; } 
-        = new MusicNode(null, null);
+        = new MusicNode(null);
 }

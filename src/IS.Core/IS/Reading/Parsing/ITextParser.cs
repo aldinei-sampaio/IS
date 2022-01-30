@@ -1,8 +1,6 @@
-﻿using System.Xml;
-
-namespace IS.Reading.Parsing;
+﻿namespace IS.Reading.Parsing;
 
 public interface ITextParser
 {
-    string? Parse(XmlReader reader, IParsingContext parsingContext, string value);
+    string? Parse(IDocumentReader reader, IParsingContext parsingContext, string value);
 }

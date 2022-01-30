@@ -7,6 +7,6 @@ namespace IS.Reading.Parsing
     {
         IElementParserSettings Settings { get; }
 
-        Task<List<INode>> ParseAsync(XmlReader reader, IParsingContext parsingContext);
+        Task<List<INode>> ParseAsync(IDocumentReader reader, IParsingContext parsingContext);
     }
 }
