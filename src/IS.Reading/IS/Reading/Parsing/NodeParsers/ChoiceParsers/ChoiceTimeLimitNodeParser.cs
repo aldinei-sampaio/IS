@@ -1,4 +1,4 @@
-﻿using IS.Reading.Parsing.TextParsers;
+﻿using IS.Reading.Parsing.ArgumentParsers;
 using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
@@ -9,7 +9,7 @@ public class ChoiceTimeLimitNodeParser : IChoiceTimeLimitNodeParser
 
     public IElementParserSettings Settings { get; }
 
-    public ChoiceTimeLimitNodeParser(IElementParser elementParser, IIntegerTextParser textParser)
+    public ChoiceTimeLimitNodeParser(IElementParser elementParser, IIntegerArgumentParser textParser)
     {
         this.elementParser = elementParser;
         Settings = ElementParserSettings.Normal(textParser);

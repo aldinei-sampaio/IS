@@ -1,20 +1,19 @@
-﻿using IS.Reading.Navigation;
+﻿using IS.Reading.Conditions;
 using IS.Reading.Nodes;
-using IS.Reading.Parsing.AttributeParsers;
-using System.Xml;
+using IS.Reading.Parsing.ConditionParsers;
 
 namespace IS.Reading.Parsing.NodeParsers;
 
 public class BlockNodeParser : IBlockNodeParser
 {
     private readonly IElementParser elementParser;
+    private readonly IConditionParser conditionParser;
 
     public IElementParserSettings Settings { get; }
 
     public BlockNodeParser(
         IElementParser elementParser,
-        IWhenAttributeParser whenAttributeParser,
-        IWhileAttributeParser whileAttributeParser,
+        IConditionParser conditionParser,
         IMusicNodeParser musicNodeParser,
         IBackgroundNodeParser backgroundNodeParser,
         IPauseNodeParser pauseNodeParser,
@@ -27,9 +26,9 @@ public class BlockNodeParser : IBlockNodeParser
     )
     {
         this.elementParser = elementParser;
+        this.conditionParser = conditionParser;
+
         Settings = ElementParserSettings.Normal(
-            whenAttributeParser, 
-            whileAttributeParser,
             musicNodeParser,
             backgroundNodeParser,
             pauseNodeParser,
@@ -40,14 +39,31 @@ public class BlockNodeParser : IBlockNodeParser
             setNodeParser,
             unsetNodeParser
         );
+
         Settings.ChildParsers.Add(this);
     }
 
     public string Name => "do";
 
-    public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
+    public string? NameRegex => "(if|while)";
+
+    public async Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var myContext = new BlockParentParsingContext();
+        if (string.IsNullOrWhiteSpace(reader.Argument))
+        {
+            parsingContext.LogError(reader, "Era esperada uma condição");
+            return;
+        }
+
+        var result = conditionParser.Parse(reader.Argument);
+
+        if (result.Condition is null)
+        {
+            parsingContext.LogError(reader, result.Message);
+            return;
+        }
+
+        var myContext = new ParentParsingContext();
         await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
 
         if (myContext.Nodes.Count == 0)
@@ -56,8 +72,16 @@ public class BlockNodeParser : IBlockNodeParser
             return;
         }
 
-        var block = parsingContext.BlockFactory.Create(myContext.Nodes, myContext.While);
-        var node = new BlockNode(block, myContext.When);
+        ICondition? when = null;
+        ICondition? @while = null;
+
+        if (string.Compare(reader.ElementName, "if", true) == 0)
+            when = result.Condition;
+        else
+            @while = result.Condition;
+
+        var block = parsingContext.BlockFactory.Create(myContext.Nodes, @while);
+        var node = new BlockNode(block, @when);
         parentParsingContext.AddNode(node);
     }
 }

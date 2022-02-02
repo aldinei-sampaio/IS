@@ -1,4 +1,4 @@
-﻿using IS.Reading.Parsing.TextParsers;
+﻿using IS.Reading.Parsing.ArgumentParsers;
 
 namespace IS.Reading.Parsing.NodeParsers.PersonParsers;
 

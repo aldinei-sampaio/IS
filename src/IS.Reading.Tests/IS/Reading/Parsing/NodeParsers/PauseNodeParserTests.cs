@@ -1,7 +1,7 @@
 ﻿using IS.Reading.Conditions;
 using IS.Reading.Nodes;
 using IS.Reading.Parsing.AttributeParsers;
-using IS.Reading.Parsing.TextParsers;
+using IS.Reading.Parsing.ArgumentParsers;
 using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers;
@@ -14,7 +14,7 @@ public class PauseNodeParserTests
     private readonly FakeParentParsingContext parentContext = new();
     private readonly IElementParser elementParser;
     private readonly IWhenAttributeParser whenAttributeParser;
-    private readonly IIntegerTextParser integerTextParser;
+    private readonly IIntegerArgumentParser integerTextParser;
     private readonly PauseNodeParser sut;
 
     public PauseNodeParserTests()
@@ -27,7 +27,7 @@ public class PauseNodeParserTests
 
         elementParser = A.Fake<IElementParser>(i => i.Strict());
         whenAttributeParser = Helper.FakeParser<IWhenAttributeParser>("when");
-        integerTextParser = A.Fake<IIntegerTextParser>();
+        integerTextParser = A.Fake<IIntegerArgumentParser>();
 
         sut = new(elementParser, whenAttributeParser, integerTextParser);
     }

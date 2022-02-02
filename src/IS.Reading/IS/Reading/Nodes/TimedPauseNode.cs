@@ -6,10 +6,8 @@ namespace IS.Reading.Nodes
 {
     public class TimedPauseNode : ITimedPauseNode
     {
-        public TimedPauseNode(TimeSpan duration, ICondition? when)
-            => (Duration, When) = (duration, when);
-
-        public ICondition? When { get; }
+        public TimedPauseNode(TimeSpan duration)
+            => Duration = duration;
 
         public TimeSpan Duration { get; }
 

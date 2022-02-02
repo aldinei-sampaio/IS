@@ -1,4 +1,4 @@
-﻿using IS.Reading.Parsing.TextParsers;
+﻿using IS.Reading.Parsing.ArgumentParsers;
 using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
@@ -7,12 +7,12 @@ public class ChoiceTimeLimitNodeParserTests
 {
     private readonly ChoiceTimeLimitNodeParser sut;
     private readonly IElementParser elementParser;
-    private readonly IIntegerTextParser integerTextParser;
+    private readonly IIntegerArgumentParser integerTextParser;
 
     public ChoiceTimeLimitNodeParserTests()
     {
         elementParser = A.Fake<IElementParser>(i => i.Strict());
-        integerTextParser = A.Dummy<IIntegerTextParser>();
+        integerTextParser = A.Dummy<IIntegerArgumentParser>();
         sut = new(elementParser, integerTextParser);
     }
 

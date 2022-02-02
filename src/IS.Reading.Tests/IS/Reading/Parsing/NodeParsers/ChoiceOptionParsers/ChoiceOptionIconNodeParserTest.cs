@@ -1,5 +1,5 @@
 ﻿using IS.Reading.Choices;
-using IS.Reading.Parsing.TextParsers;
+using IS.Reading.Parsing.ArgumentParsers;
 using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers.ChoiceOptionParsers;

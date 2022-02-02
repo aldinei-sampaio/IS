@@ -8,6 +8,7 @@ public class DocumentLineReader : IDisposable
     private const int halfLength = bufferLength / 2;
 
     private char[] buffer = new char[bufferLength];
+    private int bytesRead = 0;
     private int bufferIndex = 0;
 
     public DocumentLineReader(TextReader textReader)
@@ -25,24 +26,25 @@ public class DocumentLineReader : IDisposable
             Memory<char> mem;
             if (bufferIndex > halfLength)
             {
-                var charsToMove = bufferIndex - halfLength;
+                var charsToMove = bytesRead - bufferIndex - 1;
 
                 for (var n = 0; n < charsToMove; n++)
                     buffer[n] = buffer[n + halfLength];
                 bufferIndex = 0;
                 var read = await textReader.ReadBlockAsync(buffer, halfLength, halfLength);
+                bytesRead = charsToMove + read;
                 mem = buffer.AsMemory(0, read > 0 ? read : charsToMove);
             }
             else if (bufferIndex == -1)
             {
                 mem = buffer.AsMemory();
-                await textReader.ReadBlockAsync(mem);
-                if (mem.Length == 0)
+                bytesRead = await textReader.ReadBlockAsync(mem);
+                if (bytesRead == 0)
                     return null;
             }
             else
             {
-                mem = buffer.AsMemory(bufferIndex);
+                mem = buffer.AsMemory(bufferIndex, bytesRead - bufferIndex - 1);
             }
 
             var lineStart = GetLineStart(mem.Span);

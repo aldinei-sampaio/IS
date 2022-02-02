@@ -9,7 +9,7 @@ using IS.Reading.Parsing.NodeParsers.BalloonParsers;
 using IS.Reading.Parsing.NodeParsers.ChoiceOptionParsers;
 using IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 using IS.Reading.Parsing.NodeParsers.PersonParsers;
-using IS.Reading.Parsing.TextParsers;
+using IS.Reading.Parsing.ArgumentParsers;
 using IS.Reading.State;
 using IS.Reading.Variables;
 using Microsoft.Extensions.DependencyInjection;
@@ -40,7 +40,7 @@ public static class ServiceProviderExtensionMethods
         // Text parsers
         services.AddSingleton<IColorTextParser, ColorTextParser>();
         services.AddSingleton<IBackgroundImageTextParser, BackgroundImageTextParser>();
-        services.AddSingleton<IIntegerTextParser, IntegerTextParser>();
+        services.AddSingleton<IIntegerArgumentParser, IntegerArgumentParser>();
         services.AddSingleton<INameTextParser, NameTextParser>();
         services.AddSingleton<IMoodTextParser, MoodTextParser>();
         services.AddSingleton<IBalloonTextParser, BalloonTextParser>();

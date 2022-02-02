@@ -1,6 +1,6 @@
 ﻿using IS.Reading.Navigation;
 using IS.Reading.Nodes;
-using IS.Reading.Parsing.TextParsers;
+using IS.Reading.Parsing.ArgumentParsers;
 using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers.PersonParsers;

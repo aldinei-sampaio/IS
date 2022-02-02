@@ -7,11 +7,6 @@ namespace IS.Reading.Nodes
 {
     public class ScrollNode : INode
     {
-        public ScrollNode(ICondition? when)
-            => When = when;
-
-        public ICondition? When { get; }
-
         public async Task<object?> EnterAsync(INavigationContext context)
         {
             var oldState = context.State.Background;

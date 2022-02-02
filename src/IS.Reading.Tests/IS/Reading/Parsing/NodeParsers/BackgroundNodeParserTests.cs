@@ -3,7 +3,7 @@ using IS.Reading.Navigation;
 using IS.Reading.Nodes;
 using IS.Reading.Parsing.AttributeParsers;
 using IS.Reading.Parsing.NodeParsers.BackgroundParsers;
-using IS.Reading.Parsing.TextParsers;
+using IS.Reading.Parsing.ArgumentParsers;
 using IS.Reading.State;
 using System.Xml;
 

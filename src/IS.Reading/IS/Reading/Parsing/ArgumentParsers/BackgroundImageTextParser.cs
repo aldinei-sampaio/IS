@@ -1,11 +1,10 @@
 ﻿using System.Text.RegularExpressions;
-using System.Xml;
 
-namespace IS.Reading.Parsing.TextParsers;
+namespace IS.Reading.Parsing.ArgumentParsers;
 
 public class BackgroundImageTextParser : IBackgroundImageTextParser
 {
-    public string? Parse(XmlReader reader, IParsingContext parsingContext, string value)
+    public string? Parse(IDocumentReader reader, IParsingContext parsingContext, string value)
     {
         if (string.IsNullOrWhiteSpace(value))
             return null;

@@ -1,4 +1,4 @@
-﻿namespace IS.Reading.Parsing.TextParsers;
+﻿namespace IS.Reading.Parsing.ArgumentParsers;
 
 public interface IBalloonTextParser : ITextParser
 {

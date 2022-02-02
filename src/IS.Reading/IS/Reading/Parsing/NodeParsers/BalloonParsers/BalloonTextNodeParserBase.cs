@@ -50,7 +50,7 @@ public abstract class BalloonTextNodeParserBase : INodeParser
 
     public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var myContext = new BlockParentParsingContext();
+        var myContext = new ParentParsingContext();
         await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
 
         if (reader.ReadState != ReadState.EndOfFile)

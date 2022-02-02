@@ -1,16 +1,16 @@
-﻿using IS.Reading.Parsing.NodeParsers.BalloonParsers;
+﻿namespace IS.Reading.Parsing.NodeParsers;
 
-namespace IS.Reading.Parsing.NodeParsers;
-
-public class TutorialNodeParser : BalloonTextNodeParserBase, ITutorialNodeParser
+public class TutorialNodeParser : BalloonNodeParserBase, ITutorialNodeParser
 {
+    public override string Name => "tutorial";
+
+    public override BalloonType BalloonType => BalloonType.Narration;
+
     public TutorialNodeParser(
-        IElementParser elementParser, 
-        ITutorialChildNodeParser childParser,
-        ISetNodeParser setNodeParser,
-        IUnsetNodeParser unsetNodeParser
-    )
-        : base(elementParser, childParser, setNodeParser, unsetNodeParser)
-    {        
+        IElementParser elementParser,
+        IBalloonTextNodeParser balloonTextNodeParser,
+        ISetNodeParser setNodeParser
+    ) : base(elementParser, balloonTextNodeParser, setNodeParser)
+    {
     }
 }

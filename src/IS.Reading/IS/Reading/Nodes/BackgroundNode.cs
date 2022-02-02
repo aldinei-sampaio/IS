@@ -9,10 +9,8 @@ public class BackgroundNode : INode
 {
     public IBackgroundState State { get; }
 
-    public BackgroundNode(IBackgroundState state, ICondition? when)
-        => (State, When) = (state, when);
-
-    public ICondition? When { get; }
+    public BackgroundNode(IBackgroundState state)
+        => State = state;
 
     private static async Task ApplyStateAsync(INavigationContext context, IBackgroundState state)
     {

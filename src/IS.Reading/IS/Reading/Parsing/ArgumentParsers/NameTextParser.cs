@@ -1,11 +1,11 @@
 ﻿using System.Text;
 using System.Xml;
 
-namespace IS.Reading.Parsing.TextParsers;
+namespace IS.Reading.Parsing.ArgumentParsers;
 
 public class NameTextParser : INameTextParser
 {
-    public string? Parse(XmlReader reader, IParsingContext parsingContext, string value)
+    public string? Parse(IDocumentReader reader, IParsingContext parsingContext, string value)
     {
         if (string.IsNullOrWhiteSpace(value))
             return null;

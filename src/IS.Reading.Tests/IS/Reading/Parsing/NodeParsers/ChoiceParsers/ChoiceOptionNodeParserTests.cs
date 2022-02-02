@@ -2,7 +2,7 @@
 using IS.Reading.Conditions;
 using IS.Reading.Parsing.AttributeParsers;
 using IS.Reading.Parsing.NodeParsers.ChoiceOptionParsers;
-using IS.Reading.Parsing.TextParsers;
+using IS.Reading.Parsing.ArgumentParsers;
 using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;

@@ -4,6 +4,10 @@ namespace IS.Reading.Parsing.NodeParsers.BalloonParsers;
 
 public class BalloonChildParsingContext : IParentParsingContext
 {
-    public string? ParsedText { get; set; }
+    public BalloonType BalloonType { get; }
+
+    public BalloonChildParsingContext(BalloonType balloonType)
+        => BalloonType = balloonType;
+
     public ChoiceNode? ChoiceNode { get; set; }
 }

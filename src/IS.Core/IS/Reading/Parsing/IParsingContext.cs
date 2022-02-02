@@ -5,7 +5,7 @@ namespace IS.Reading.Parsing;
 
 public interface IParsingContext
 {
-    void LogError(IDocumentReader xmlReader, string message);
+    void LogError(IDocumentReader documentReader, string message);
     bool IsSuccess { get; }
     void RegisterDismissNode(INode node);
     IEnumerable<INode> DismissNodes { get; }

@@ -1,23 +1,20 @@
-﻿using IS.Reading.Conditions;
-using IS.Reading.Navigation;
+﻿using IS.Reading.Navigation;
 using IS.Reading.Nodes;
-using IS.Reading.Parsing.AttributeParsers;
+using IS.Reading.Parsing.ArgumentParsers;
 using IS.Reading.Parsing.NodeParsers.BackgroundParsers;
-using IS.Reading.Parsing.TextParsers;
 using IS.Reading.State;
-using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers;
 
 public class BackgroundNodeParser : IBackgroundNodeParser
 {
     private readonly IElementParser elementParser;
+    private readonly IBackgroundImageTextParser backgroundImageTextParser;
 
     public IElementParserSettings Settings { get; }
 
     public BackgroundNodeParser(
         IElementParser elementParser,
-        IWhenAttributeParser whenAttributeParser,
         IBackgroundImageTextParser backgroundImageTextParser,
         IBackgroundColorNodeParser backgroundColorNodeParser,
         IBackgroundLeftNodeParser backgroundLeftNodeParser,
@@ -27,8 +24,8 @@ public class BackgroundNodeParser : IBackgroundNodeParser
     )
     {
         this.elementParser = elementParser;
-        Settings = ElementParserSettings.Normal(
-            whenAttributeParser, 
+        this.backgroundImageTextParser = backgroundImageTextParser;
+        Settings = ElementParserSettings.Aggregated(
             backgroundImageTextParser,
             backgroundColorNodeParser,
             backgroundLeftNodeParser,
@@ -40,22 +37,22 @@ public class BackgroundNodeParser : IBackgroundNodeParser
 
     public string Name => "background";
 
-    public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
+    public async Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var context = new BackgroundContext();
-        await elementParser.ParseAsync(reader, parsingContext, context, Settings);
+        var context = new ParentParsingContext();
 
-        if (!string.IsNullOrWhiteSpace(context.ParsedText))
+        if (!string.IsNullOrWhiteSpace(reader.Argument))
         {
-            var state = new BackgroundState(context.ParsedText, BackgroundType.Image, BackgroundPosition.Left);
-            var block = parsingContext.BlockFactory.Create(
-                new BackgroundNode(state, null),
-                new ScrollNode(null)
-            );
-            parentParsingContext.AddNode(new BlockNode(block, context.When));
-            parsingContext.RegisterDismissNode(DismissNode);
-            return;
+            var result = backgroundImageTextParser.Parse(reader, parsingContext, reader.Argument);
+            if (result is not null)
+            {
+                var state = new BackgroundState(result, BackgroundType.Image, BackgroundPosition.Left);
+                context.AddNode(new BackgroundNode(state));
+                context.AddNode(new ScrollNode());
+            }
         }
+
+        await elementParser.ParseAsync(reader, parsingContext, context, Settings);
 
         if (context.Nodes.Count == 0)
         {
@@ -63,24 +60,12 @@ public class BackgroundNodeParser : IBackgroundNodeParser
             return;
         }
 
-        {
-            var block = parsingContext.BlockFactory.Create(context.Nodes);
-            parentParsingContext.AddNode(new BlockNode(block, context.When));
-            parsingContext.RegisterDismissNode(DismissNode);
-        }
+        var block = parsingContext.BlockFactory.Create(context.Nodes);
+        parentParsingContext.AddNode(new BlockNode(block, null));
+        parsingContext.RegisterDismissNode(DismissNode);
     }
 
     public INode DismissNode { get; } 
-        = new BackgroundNode(BackgroundState.Empty, null);
-
-    public class BackgroundContext : IParentParsingContext
-    {
-        public List<INode> Nodes { get; } = new();
-
-        public void AddNode(INode node)
-            => Nodes.Add(node);
-
-        public string? ParsedText { get; set; }
-        public ICondition? When { get; set; }
-    }
+        = new BackgroundNode(BackgroundState.Empty);
+   
 }

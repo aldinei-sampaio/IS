@@ -1,6 +1,6 @@
 ﻿using System.Xml;
 
-namespace IS.Reading.Parsing.TextParsers;
+namespace IS.Reading.Parsing.ArgumentParsers;
 
 public class IntegerTextParserTests
 {
@@ -20,7 +20,7 @@ public class IntegerTextParserTests
         var reader = A.Dummy<XmlReader>();
         var context = A.Dummy<IParsingContext>();
 
-        var sut = new IntegerTextParser();
+        var sut = new IntegerArgumentParser();
         var actual = sut.Parse(reader, context, value);
         actual.Should().Be(expected);
     }
@@ -40,7 +40,7 @@ public class IntegerTextParserTests
         var context = A.Fake<IParsingContext>(i => i.Strict());
         A.CallTo(() => context.LogError(reader, message)).DoesNothing();
 
-        var sut = new IntegerTextParser();
+        var sut = new IntegerArgumentParser();
         var actual = sut.Parse(reader, context, value);
         actual.Should().BeNull();
 
@@ -59,7 +59,7 @@ public class IntegerTextParserTests
         var reader = A.Dummy<XmlReader>();
         var context = A.Fake<IParsingContext>(i => i.Strict());
 
-        var sut = new IntegerTextParser();
+        var sut = new IntegerArgumentParser();
         var actual = sut.Parse(reader, context, value);
         actual.Should().Be(string.Empty);
     }

@@ -1,6 +1,6 @@
 ﻿using System.Xml;
 
-namespace IS.Reading.Parsing.TextParsers;
+namespace IS.Reading.Parsing.ArgumentParsers;
 
 public class BackgroundImageTextParserTests
 {

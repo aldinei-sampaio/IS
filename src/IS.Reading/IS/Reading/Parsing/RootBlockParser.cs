@@ -41,7 +41,7 @@ public class RootBlockParser : IRootBlockParser
 
     public async Task<List<INode>> ParseAsync(IDocumentReader reader, IParsingContext parsingContext)
     {
-        var context = new BlockParentParsingContext();
+        var context = new ParentParsingContext();
 
         await elementParser.ParseAsync(reader, parsingContext, context, Settings);
 

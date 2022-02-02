@@ -1,59 +1,33 @@
 ﻿using IS.Reading.Nodes;
-using IS.Reading.Parsing.AttributeParsers;
-using IS.Reading.Parsing.TextParsers;
-using System.Xml;
+using IS.Reading.Parsing.ArgumentParsers;
 
 namespace IS.Reading.Parsing.NodeParsers;
 
 public class PauseNodeParser : IPauseNodeParser
 {
-    private readonly IElementParser elementParser;
+    private readonly IIntegerArgumentParser integerTextParser;
 
-    public IElementParserSettings Settings { get; }
-
-    public PauseNodeParser(
-        IElementParser elementParser, 
-        IWhenAttributeParser whenAttributeParser,
-        IIntegerTextParser integerTextParser
-    )
-    {
-        this.elementParser = elementParser;
-        Settings = ElementParserSettings.Normal(whenAttributeParser, integerTextParser);
-    }
+    public PauseNodeParser(IIntegerArgumentParser integerTextParser)
+        => this.integerTextParser = integerTextParser;
 
     public string Name => "pause";
 
-    public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
+    public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var myContext = new TextParentParsingContext();
-        await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
-
-        var parsedText = myContext.ParsedText;
-
         parsingContext.SceneContext.Reset();
 
-        if (string.IsNullOrWhiteSpace(parsedText))
+        if (!string.IsNullOrWhiteSpace(reader.Argument))
         {
-            var node = new PauseNode(myContext.When);
-            parentParsingContext.AddNode(node);
-            return;
+            var result = integerTextParser.Parse(reader, parsingContext, reader.Argument, 1, 5000);
+            if (result.HasValue)
+            {
+                var timedPauseNode = new TimedPauseNode(TimeSpan.FromMilliseconds(result.Value));
+                parentParsingContext.AddNode(timedPauseNode);
+                return Task.CompletedTask;
+            }
         }
 
-        var value = int.Parse(parsedText);
-
-        if (value <= 0)
-        {
-            parsingContext.LogError(reader, "O tempo de espera precisa ser maior que zero.");
-            return;
-        }
-
-        if (value > 5000)
-        {
-            parsingContext.LogError(reader, "O tempo de espera não pode ser maior que 5000.");
-            return;
-        }
-
-        var timedPauseNode = new TimedPauseNode(TimeSpan.FromMilliseconds(value), myContext.When);
-        parentParsingContext.AddNode(timedPauseNode);
+        parentParsingContext.AddNode(new PauseNode());
+        return Task.CompletedTask;
     }
 }
