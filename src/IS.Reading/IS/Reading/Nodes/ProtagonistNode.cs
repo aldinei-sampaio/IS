@@ -8,10 +8,8 @@ public class ProtagonistNode : INode
 {
     public string? ProtagonistName { get; }
 
-    public ProtagonistNode(string? personName, ICondition? when)
-        => (ProtagonistName, When) = (personName, when);
-
-    public ICondition? When { get; }
+    public ProtagonistNode(string? personName)
+        => ProtagonistName = personName;
 
     public static async Task<object?> ApplyStateAsync(INavigationContext context, string? protagonistName)
     {

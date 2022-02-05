@@ -7,4 +7,3 @@ public class BalloonParsingContext : ParentParsingContext
     public BalloonParsingContext(BalloonType balloonType)
         => BalloonType = balloonType;
 }
-

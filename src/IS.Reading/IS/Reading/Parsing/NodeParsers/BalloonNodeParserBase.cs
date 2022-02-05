@@ -11,12 +11,11 @@ public abstract class BalloonNodeParserBase : IAggregateNodeParser
 
     public BalloonNodeParserBase(
         IElementParser elementParser,
-        IBalloonTextNodeParser balloonTextNodeParser,
-        ISetNodeParser setNodeParser
+        params object[] parsers
     )
     {
         this.elementParser = elementParser;
-        Settings = ElementParserSettings.Aggregated(balloonTextNodeParser, setNodeParser);
+        Settings = ElementParserSettings.Aggregated(parsers);
     }
 
     public abstract string Name { get; }

@@ -1,30 +1,31 @@
 ﻿using IS.Reading.Parsing.ArgumentParsers;
-using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 
 public class ChoiceDefaultNodeParser : IChoiceDefaultNodeParser
 {
-    private readonly IElementParser elementParser;
+    private readonly INameTextParser textParser;
 
-    public IElementParserSettings Settings { get; }
-
-    public ChoiceDefaultNodeParser(IElementParser elementParser, INameTextParser textParser)
-    {
-        this.elementParser = elementParser;
-        Settings = ElementParserSettings.Normal(textParser);
-    }
+    public ChoiceDefaultNodeParser(INameTextParser textParser)
+        => this.textParser = textParser;
 
     public string Name => "default";
 
-    public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
+    public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var myContext = new TextParentParsingContext();
-        await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
-        if (myContext.ParsedText is null)
-            return;
+        if (string.IsNullOrWhiteSpace(reader.Argument))
+        {
+            parsingContext.LogError(reader, "A opção padrão não foi informada.");
+            return Task.CompletedTask;
+        }
+
+        var parsed = textParser.Parse(reader, parsingContext, reader.Argument);
+        if (parsed is null)
+            return Task.CompletedTask;
 
         var ctx = (ChoiceParentParsingContext)parentParsingContext;
-        ctx.Choice.Default = myContext.ParsedText;
+        ctx.Choice.Default = parsed;
+
+        return Task.CompletedTask;
     }
 }

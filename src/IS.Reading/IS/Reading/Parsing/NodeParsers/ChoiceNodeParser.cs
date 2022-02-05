@@ -1,7 +1,6 @@
 ﻿using IS.Reading.Parsing.NodeParsers.ChoiceParsers;
-using System.Xml;
 
-namespace IS.Reading.Parsing.NodeParsers.BalloonParsers;
+namespace IS.Reading.Parsing.NodeParsers;
 
 public class ChoiceNodeParser : IChoiceNodeParser
 {
@@ -27,7 +26,7 @@ public class ChoiceNodeParser : IChoiceNodeParser
 
     public string Name => "choice";
 
-    public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
+    public async Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
         var myContext = new ChoiceParentParsingContext();
         await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);

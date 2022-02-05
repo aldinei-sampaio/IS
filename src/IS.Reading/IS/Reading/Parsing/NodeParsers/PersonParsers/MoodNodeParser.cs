@@ -1,43 +1,34 @@
 ﻿using IS.Reading.Nodes;
-using IS.Reading.Parsing.ArgumentParsers;
-using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers.PersonParsers;
 
 public class MoodNodeParser : IMoodNodeParser
 {
-    private readonly IElementParser elementParser;
+    public string Name => "#";
 
-    public IElementParserSettings Settings { get; }
-
-    public MoodNodeParser(
-        IElementParser elementParser, 
-        IMoodTextParser moodTextParser
-    )
+    public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        this.elementParser = elementParser;
-        Settings = ElementParserSettings.Normal(moodTextParser);
-    }
+        if (string.IsNullOrWhiteSpace(reader.Argument))
+        {
+            parsingContext.LogError(reader, "O humor não foi informado.");
+            return Task.CompletedTask;
+        }
 
-    public string Name => "mood";
-
-    public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
-    {
-        var myContext = new TextParentParsingContext();
-        await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
-
-        var parsedText = myContext.ParsedText;
-        if (parsedText is null)
-            return;
+        if (!Enum.TryParse<MoodType>(reader.Argument, out var moodType))
+        {
+            parsingContext.LogError(reader, $"O valor '{reader.Argument}' não representa uma emoção válida.");
+            return Task.CompletedTask;
+        }
 
         if (parsingContext.SceneContext.HasMood)
         {
             parsingContext.LogError(reader, "Mais de uma definição de humor para a mesma cena.");
-            return;
+            return Task.CompletedTask;
         }
+
         parsingContext.SceneContext.HasMood = true;
 
-        var moodType = Enum.Parse<MoodType>(parsedText);
         parentParsingContext.AddNode(new MoodNode(moodType));
+        return Task.CompletedTask;
     }
 }

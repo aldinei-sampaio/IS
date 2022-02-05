@@ -1,44 +1,37 @@
 ﻿using IS.Reading.Navigation;
 using IS.Reading.Nodes;
-using IS.Reading.Parsing.AttributeParsers;
 using IS.Reading.Parsing.ArgumentParsers;
-using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers;
 
 public class ProtagonistNodeParser : IProtagonistNodeParser
 {
-    private readonly IElementParser elementParser;
+    private readonly INameTextParser nameTextParser;
 
-    public IElementParserSettings Settings { get; }
-
-    public ProtagonistNodeParser(
-        IElementParser elementParser,
-        IWhenAttributeParser whenAttributeParser,
-        INameTextParser nameTextParser
-    )
-    {
-        this.elementParser = elementParser;
-        Settings = ElementParserSettings.Normal(whenAttributeParser, nameTextParser);
-    }
+    public ProtagonistNodeParser(INameTextParser nameTextParser)
+        => this.nameTextParser = nameTextParser;
 
     public string Name => "protagonist";
 
-    public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
+    public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var myContext = new TextParentParsingContext();
-        await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
+        if (string.IsNullOrWhiteSpace(reader.Argument))
+        {
+            parsingContext.LogError(reader, "O nome do protagonista não foi informado.");
+            return Task.CompletedTask;
+        }
 
-        var parsedText = myContext.ParsedText;
+        var result = nameTextParser.Parse(reader, parsingContext, reader.Argument);
+        if (result is null)
+            return Task.CompletedTask;
 
-        if (parsedText is null)
-            return;
-
-        var node = new ProtagonistNode(parsedText.Length == 0 ? null : parsedText, myContext.When);
+        var node = new ProtagonistNode(result.Length == 0 ? null : result);
         parentParsingContext.AddNode(node);
         parsingContext.RegisterDismissNode(DismissNode);
+
+        return Task.CompletedTask;
     }
 
     public INode DismissNode { get; } 
-        = new ProtagonistNode(null, null);
+        = new ProtagonistNode(null);
 }

@@ -21,8 +21,7 @@ public class BlockNodeParser : IBlockNodeParser
         IPersonNodeParser personNodeParser,
         INarrationNodeParser narrationNodeParser,
         ITutorialNodeParser tutorialNodeParser,
-        ISetNodeParser setNodeParser,
-        IUnsetNodeParser unsetNodeParser
+        ISetNodeParser setNodeParser
     )
     {
         this.elementParser = elementParser;
@@ -36,14 +35,13 @@ public class BlockNodeParser : IBlockNodeParser
             personNodeParser,
             narrationNodeParser,
             tutorialNodeParser,
-            setNodeParser,
-            unsetNodeParser
+            setNodeParser
         );
 
         Settings.ChildParsers.Add(this);
     }
 
-    public string Name => "do";
+    public string Name => string.Empty;
 
     public string? NameRegex => "(if|while)";
 

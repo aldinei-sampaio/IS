@@ -50,7 +50,10 @@ namespace IS.Reading.Parsing;
 ///   
 ///   @ john
 ///   # surprised
-///   * Nunca vi ela assim antes. Deve ser sério.   
+///   thought
+///   - Nunca vi ela assim antes. Deve ser sério.
+///   
+///   speech
 ///   # normal
 ///   - Sabe que pode falar comigo, não é?
 ///   - Sempre estarei aqui por você.
@@ -66,7 +69,8 @@ namespace IS.Reading.Parsing;
 ///   else
 ///     # angry
 ///   end
-///   * Eu vou dizer...
+///   thought
+///   - Eu vou dizer...
 /// 
 ///   ? selection
 ///     timeout 8
@@ -96,14 +100,16 @@ namespace IS.Reading.Parsing;
 ///   end
 ///   
 ///   if selection == 'a'
-///     * Será que isso está correto?
-///     mood sad
-///     thought Não sei se deveria prosseguir com isso...
+///     thought
+///     - Será que isso está correto?
+///     # sad
+///     - Não sei se deveria prosseguir com isso...
 ///   end
 ///   
 ///   if selection == 'b'
-///     mood angry
-///     thought Isso não está indo conforme o previsto.
+///     # angry
+///     thought 
+///     - Isso não está indo conforme o previsto.
 ///   end
 /// end
 /// </code>
