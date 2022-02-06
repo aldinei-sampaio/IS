@@ -12,6 +12,6 @@ public class ChoiceOptionTests
         sut.Text.Should().Be(text);
         sut.IsEnabled.Should().Be(isEnabled);
         sut.ImageName.Should().Be(imageName);
-        sut.HelpText.Should().Be(helpText);
+        sut.Tip.Should().Be(helpText);
     }
 }

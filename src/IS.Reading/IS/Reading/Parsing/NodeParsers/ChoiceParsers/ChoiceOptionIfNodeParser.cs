@@ -2,7 +2,7 @@
 
 namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 
-public class ChoiceIfNodeParser : IChoiceIfNodeParser
+public class ChoiceOptionIfNodeParser : IChoiceOptionIfNodeParser
 {
     private readonly IElementParser elementParser;
     private readonly IConditionParser conditionParser;
@@ -10,31 +10,31 @@ public class ChoiceIfNodeParser : IChoiceIfNodeParser
     public IElementParserSettings IfBlockSettings { get; }
     public IElementParserSettings ElseBlockSettings { get; }
 
-    public ChoiceIfNodeParser(
+    public ChoiceOptionIfNodeParser(
         IElementParser elementParser,
         IConditionParser conditionParser,
-        IChoiceDefaultNodeParser defaultNodeParser,
-        IChoiceRandomOrderNodeParser randomOrderNodeParser,
-        IChoiceTimeLimitNodeParser timeLimitNodeParser,
-        IChoiceOptionNodeParser optionNodeParser
+        IChoiceOptionTextNodeParser choiceOptionTextNodeParser,
+        IChoiceOptionDisabledNodeParser choiceOptionDisabledNodeParser,
+        IChoiceOptionIconNodeParser choiceOptionIconNodeParser,
+        IChoiceOptionTipNodeParser choiceOptionHelpTextNodeParser
     )
     {
         this.elementParser = elementParser;
         this.conditionParser = conditionParser;
 
         IfBlockSettings = ElementParserSettings.IfBlock(
-            defaultNodeParser,
-            randomOrderNodeParser,
-            timeLimitNodeParser,
-            optionNodeParser,
+            choiceOptionTextNodeParser,
+            choiceOptionDisabledNodeParser,
+            choiceOptionIconNodeParser,
+            choiceOptionHelpTextNodeParser,
             this
         );
 
         ElseBlockSettings = ElementParserSettings.Block(
-            defaultNodeParser,
-            randomOrderNodeParser,
-            timeLimitNodeParser,
-            optionNodeParser,
+            choiceOptionTextNodeParser,
+            choiceOptionDisabledNodeParser,
+            choiceOptionIconNodeParser,
+            choiceOptionHelpTextNodeParser,
             this
         );
     }
@@ -55,8 +55,8 @@ public class ChoiceIfNodeParser : IChoiceIfNodeParser
             return;
         }
 
-        var ifContext = new ChoiceParentParsingContext();
-        var elseContext = new ChoiceParentParsingContext();
+        var ifContext = new ChoiceOptionParentParsingContext();
+        var elseContext = new ChoiceOptionParentParsingContext();
 
         await elementParser.ParseAsync(reader, parsingContext, ifContext, IfBlockSettings);
 
@@ -70,7 +70,7 @@ public class ChoiceIfNodeParser : IChoiceIfNodeParser
                 return;
         }
 
-        var ctx = (ChoiceParentParsingContext)parentParsingContext;
+        var ctx = (ChoiceOptionParentParsingContext)parentParsingContext;
         ctx.AddDecision(parsingResult.Value, ifContext.Builders, elseContext.Builders);
     }
 }

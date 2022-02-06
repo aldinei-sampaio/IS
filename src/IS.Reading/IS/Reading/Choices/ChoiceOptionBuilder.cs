@@ -14,7 +14,7 @@ public class ChoiceOptionBuilder : IBuilder<IChoicePrototype>
         public string Text { get; set; } = string.Empty;
         public bool IsEnabled { get; set; }
         public string? ImageName { get; set; }
-        public string? HelpText { get; set; }
+        public string? Tip { get; set; }
     }
 
     public string Key { get; }
@@ -37,7 +37,7 @@ public class ChoiceOptionBuilder : IBuilder<IChoicePrototype>
             optionPrototype.Text,
             optionPrototype.IsEnabled,
             optionPrototype.ImageName,
-            optionPrototype.HelpText
+            optionPrototype.Tip
         ));
     }
 }

@@ -3,13 +3,13 @@ using IS.Reading.Variables;
 
 namespace IS.Reading.Choices;
 
-public class ChoiceOptionHelpTextBuilder : IBuilder<IChoiceOptionPrototype>
+public class ChoiceOptionTipBuilder : IBuilder<IChoiceOptionPrototype>
 {
     private readonly ITextSource textSource;
 
-    public ChoiceOptionHelpTextBuilder(ITextSource textSource)
+    public ChoiceOptionTipBuilder(ITextSource textSource)
         => this.textSource = textSource;
 
     public void Build(IChoiceOptionPrototype prototype, INavigationContext context)
-        => prototype.HelpText = textSource.ToString(context.Variables);
+        => prototype.Tip = textSource.ToString(context.Variables);
 }

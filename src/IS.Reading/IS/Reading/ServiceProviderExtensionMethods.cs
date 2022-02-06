@@ -40,17 +40,18 @@ public static class ServiceProviderExtensionMethods
         services.AddSingleton<IMusicNodeParser, MusicNodeParser>();
         services.AddSingleton<IProtagonistNodeParser, ProtagonistNodeParser>();
         services.AddSingleton<IPauseNodeParser, PauseNodeParser>();
-        services.AddSingleton<IBackgroundNodeParser, BackgroundNodeParser>();
         services.AddSingleton<IBlockNodeParser, BlockNodeParser>();
         services.AddSingleton<IMoodNodeParser, MoodNodeParser>();
         services.AddSingleton<IPersonNodeParser, PersonNodeParser>();
         services.AddSingleton<ISetNodeParser, SetNodeParser>();
 
+        services.AddSingleton<IBackgroundNodeParser, BackgroundNodeParser>();
         services.AddSingleton<IBackgroundLeftNodeParser, BackgroundLeftNodeParser>();
         services.AddSingleton<IBackgroundRightNodeParser, BackgroundRightNodeParser>();
         services.AddSingleton<IBackgroundColorNodeParser, BackgroundColorNodeParser>();
         services.AddSingleton<IBackgroundScrollNodeParser, BackgroundScrollNodeParser>();
 
+        services.AddSingleton<IBalloonTextNodeParser, BalloonTextNodeParser>();
         services.AddSingleton<ISpeechNodeParser, SpeechNodeParser>();
         services.AddSingleton<IThoughtNodeParser, ThoughtNodeParser>();
         services.AddSingleton<INarrationNodeParser, NarrationNodeParser>();
@@ -59,11 +60,15 @@ public static class ServiceProviderExtensionMethods
         services.AddSingleton<IChoiceNodeParser, ChoiceNodeParser>();
         services.AddSingleton<IChoiceDefaultNodeParser, ChoiceDefaultNodeParser>();
         services.AddSingleton<IChoiceTimeLimitNodeParser, ChoiceTimeLimitNodeParser>();
+        services.AddSingleton<IChoiceRandomOrderNodeParser, ChoiceRandomOrderNodeParser>();
+        services.AddSingleton<IChoiceIfNodeParser, ChoiceIfNodeParser>();
+
         services.AddSingleton<IChoiceOptionNodeParser, ChoiceOptionNodeParser>();
         services.AddSingleton<IChoiceOptionDisabledNodeParser, ChoiceOptionDisabledNodeParser>();
         services.AddSingleton<IChoiceOptionIconNodeParser, ChoiceOptionIconNodeParser>();
         services.AddSingleton<IChoiceOptionTextNodeParser, ChoiceOptionTextNodeParser>();
-        services.AddSingleton<IChoiceOptionHelpTextNodeParser, ChoiceOptionHelpTextNodeParser>();
+        services.AddSingleton<IChoiceOptionTipNodeParser, ChoiceOptionTipNodeParser>();
+        services.AddSingleton<IChoiceOptionIfNodeParser, ChoiceOptionIfNodeParser>();
 
         // Storyboard parsers
         services.AddSingleton<IRootBlockParser, RootBlockParser>();

@@ -15,7 +15,9 @@ public class ChoiceOptionNodeParser : IChoiceOptionNodeParser
         ITextSourceParser textSourceParser,
         IChoiceOptionTextNodeParser choiceOptionTextNodeParser,
         IChoiceOptionDisabledNodeParser choiceOptionDisabledNodeParser,
-        IChoiceOptionIconNodeParser choiceOptionIconNodeParser
+        IChoiceOptionIconNodeParser choiceOptionIconNodeParser,
+        IChoiceOptionTipNodeParser choiceOptionHelpTextNodeParser,
+        IChoiceOptionIfNodeParser choiceOptionIfNodeParser
     )
     {
         this.elementParser = elementParser;
@@ -23,7 +25,9 @@ public class ChoiceOptionNodeParser : IChoiceOptionNodeParser
         Settings = ElementParserSettings.Block(
             choiceOptionTextNodeParser,
             choiceOptionDisabledNodeParser,
-            choiceOptionIconNodeParser
+            choiceOptionIconNodeParser,
+            choiceOptionHelpTextNodeParser,
+            choiceOptionIfNodeParser
         );
     }
 

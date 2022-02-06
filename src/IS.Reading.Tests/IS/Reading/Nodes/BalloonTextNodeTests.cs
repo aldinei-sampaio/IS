@@ -380,6 +380,6 @@ public static class IChoiceExtensionMethods
         option.Text.Should().Be(text);
         option.IsEnabled.Should().Be(isEnabled);
         option.ImageName.Should().Be(imageName);
-        option.HelpText.Should().Be(helpText);
+        option.Tip.Should().Be(helpText);
     }
 }

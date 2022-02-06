@@ -6,7 +6,7 @@ public class ChoiceOption : IChoiceOption
     public string Text { get; }
     public bool IsEnabled { get; }
     public string? ImageName { get; }
-    public string? HelpText { get; }
+    public string? Tip { get; }
     
     public ChoiceOption(string key, string text, bool isEnabled, string? imageName, string? helpText)
     {
@@ -14,6 +14,6 @@ public class ChoiceOption : IChoiceOption
         Text = text;
         IsEnabled = isEnabled;
         ImageName = imageName;
-        HelpText = helpText;
+        Tip = helpText;
     }
 }

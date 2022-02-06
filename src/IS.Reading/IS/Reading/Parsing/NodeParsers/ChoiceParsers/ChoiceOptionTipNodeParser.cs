@@ -3,19 +3,22 @@ using IS.Reading.Variables;
 
 namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 
-public class ChoiceOptionTextNodeParser : IChoiceOptionTextNodeParser
+public class ChoiceOptionTipNodeParser : IChoiceOptionTipNodeParser
 {
     private readonly ITextSourceParser textSourceParser;
 
-    public ChoiceOptionTextNodeParser(ITextSourceParser textSourceParser)
+    public ChoiceOptionTipNodeParser(ITextSourceParser textSourceParser)
         => this.textSourceParser = textSourceParser;
 
     public bool IsArgumentRequired => true;
 
-    public string Name => "text";
+    public string Name => "tip";
 
     public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
+        if (string.IsNullOrEmpty(reader.Argument))
+            throw new InvalidOperationException();
+
         var parseResult = textSourceParser.Parse(reader.Argument);
         if (!parseResult.IsOk)
         {
@@ -24,7 +27,7 @@ public class ChoiceOptionTextNodeParser : IChoiceOptionTextNodeParser
         }
 
         var ctx = (ChoiceOptionParentParsingContext)parentParsingContext;
-        ctx.Builders.Add(new ChoiceOptionTextBuilder(parseResult.Value));
+        ctx.Builders.Add(new ChoiceOptionTipBuilder(parseResult.Value));
         return Task.CompletedTask;
     }
 }

@@ -6,5 +6,5 @@ public interface IChoiceOption
     string Text { get; }
     bool IsEnabled { get; }
     string? ImageName { get; }
-    string? HelpText { get; }
+    string? Tip { get; }
 }

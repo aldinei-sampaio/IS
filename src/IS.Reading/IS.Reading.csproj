@@ -21,8 +21,4 @@
 	  <ProjectReference Include="..\IS.Core\IS.Core.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="IS\Reading\ChoiceBuilders\" />
-	</ItemGroup>
-
 </Project>
