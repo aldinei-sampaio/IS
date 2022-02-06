@@ -1,7 +1,7 @@
 ﻿using IS.Reading.Conditions;
-using IS.Reading.Variables;
+using IS.Reading.Navigation;
 
-namespace IS.Reading.Choices.Builders;
+namespace IS.Reading.Choices;
 
 public class BuilderDecision<T> : IBuilder<T>
 {
@@ -20,10 +20,10 @@ public class BuilderDecision<T> : IBuilder<T>
     public IEnumerable<IBuilder<T>> IfBlock { get; }
     public IEnumerable<IBuilder<T>> ElseBlock { get; }
 
-    public void Build(T prototype, IVariableDictionary variables)
+    public void Build(T prototype, INavigationContext context)
     {
-        var block = Condition.Evaluate(variables) ? IfBlock : ElseBlock;
+        var block = Condition.Evaluate(context.Variables) ? IfBlock : ElseBlock;
         foreach (var item in block)
-            item.Build(prototype, variables);
+            item.Build(prototype, context);
     }
 }

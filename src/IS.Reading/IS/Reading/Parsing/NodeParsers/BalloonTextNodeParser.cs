@@ -1,5 +1,4 @@
 ﻿using IS.Reading.Nodes;
-using IS.Reading.Parsing.NodeParsers.BalloonParsers;
 using IS.Reading.Variables;
 
 namespace IS.Reading.Parsing.NodeParsers;
@@ -18,31 +17,30 @@ public class BalloonTextNodeParser : IBalloonTextNodeParser
         Settings = ElementParserSettings.AggregatedNonRepeat(choiceNodeParser);
     }
 
+    public bool IsArgumentRequired => true;
+
     public string Name => "-";
 
     public async Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
+        if (string.IsNullOrWhiteSpace(reader.Argument))
+            throw new InvalidOperationException();
+
         if (parentParsingContext is not BalloonParsingContext balloonParentContext)
             throw new ArgumentException($"Argumento '{nameof(balloonParentContext)}' precisa ser do tipo '{nameof(BalloonParsingContext)}'.", nameof(parentParsingContext));
 
-        if (string.IsNullOrWhiteSpace(reader.Argument))
-        {
-            parsingContext.LogError(reader, "Texto do diálogo não informado.");
-            return;
-        }
-
         var textSourceParsingResult = textSourceParser.Parse(reader.Argument);
-        if (textSourceParsingResult.IsError)
+        if (!textSourceParsingResult.IsOk)
         {
             parsingContext.LogError(reader, textSourceParsingResult.ErrorMessage);
             return;
         }
-        var textSource = textSourceParsingResult.TextSource;
+        var textSource = textSourceParsingResult.Value;
 
         var myContext = new BalloonChildParsingContext(balloonParentContext.BalloonType);
         await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
 
-        var node = new BalloonTextNode(textSource, balloonParentContext.BalloonType, myContext.ChoiceNode);
+        var node = new BalloonTextNode(textSource, balloonParentContext.BalloonType, myContext.ChoiceBuilder);
         parentParsingContext.AddNode(node);
 
         parsingContext.SceneContext.Reset();

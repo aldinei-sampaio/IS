@@ -2,5 +2,5 @@
 
 public interface ITextSourceParser
 {
-    public ITextSourceParserResult Parse(string text);
+    Result<ITextSource> Parse(string value);
 }

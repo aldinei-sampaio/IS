@@ -96,12 +96,12 @@ public class BlockNodeParserTests
 
         await sut.ParseAsync(reader, context, parentContext);
 
-        parentContext.ShouldContainSingle<BlockNode>(i =>
+        parentContext.ShouldContainSingle<BlockNode>((Action<BlockNode>)(i =>
         {
             i.When.Should().BeSameAs(when);
             i.ChildBlock.ShouldContainOnly(parsedNode);
             i.ChildBlock.While.Should().BeSameAs(@while);
-        });
+        }));
     }
 
     [Fact]

@@ -1,21 +1,17 @@
 ﻿using System.Text.RegularExpressions;
-using System.Xml;
 
 namespace IS.Reading.Parsing.ArgumentParsers;
 
 public class ColorTextParser : IColorTextParser
 {
-    public string? Parse(XmlReader reader, IParsingContext parsingContext, string value)
+    public Result<string> Parse(string value)
     {
         if (string.IsNullOrWhiteSpace(value))
-            return string.Empty;
+            return Result.Fail<string>("Era esperado um argumento com a cor.");
 
         if (!Regex.IsMatch(value, @"^(#[a-f0-9]{6}|black|green|silver|gray|olive|white|yellow|maroon|navy|red|blue|purple|teal|fuchsia|aqua)$", RegexOptions.IgnoreCase))
-        {
-            parsingContext.LogError(reader, $"O texto '{value}' não representa uma cor válida.");
-            return null;
-        }
+            return Result.Fail<string>($"O texto '{value}' não representa uma cor válida.");
 
-        return value.ToLower();
+        return Result.Ok(value.ToLower());
     }
 }

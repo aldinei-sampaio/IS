@@ -1,6 +1,6 @@
-﻿using IS.Reading.Variables;
+﻿using IS.Reading.Navigation;
 
-namespace IS.Reading.Choices.Builders;
+namespace IS.Reading.Choices;
 
 public class BuilderPropertySetter<T> : IBuilder<T>
 {
@@ -9,6 +9,6 @@ public class BuilderPropertySetter<T> : IBuilder<T>
 
     public Action<T> BuildAction { get; }
 
-    public void Build(T prototype, IVariableDictionary variables)
+    public void Build(T prototype, INavigationContext context)
         => BuildAction(prototype);
 }

@@ -10,6 +10,8 @@ public class SetNodeParser : ISetNodeParser
     public SetNodeParser(IVarSetParser varSetParser)
         => this.varSetParser = varSetParser;
 
+    public bool IsArgumentRequired => true;
+
     public string Name => "set";
 
     public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
@@ -22,10 +24,10 @@ public class SetNodeParser : ISetNodeParser
 
         var varSet = varSetParser.Parse(reader.Argument);
 
-        if (varSet is null)
-            parsingContext.LogError(reader, "Expressão de atribuição de variável inválida.");
+        if (varSet.IsOk)
+            parentParsingContext.AddNode(new VarSetNode(varSet.Value));
         else
-            parentParsingContext.AddNode(new VarSetNode(varSet));
+            parsingContext.LogError(reader, varSet.ErrorMessage);
 
         return Task.CompletedTask;
     }

@@ -11,6 +11,8 @@ public class ProtagonistNodeParser : IProtagonistNodeParser
     public ProtagonistNodeParser(INameTextParser nameTextParser)
         => this.nameTextParser = nameTextParser;
 
+    public bool IsArgumentRequired => true;
+
     public string Name => "protagonist";
 
     public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
@@ -21,11 +23,14 @@ public class ProtagonistNodeParser : IProtagonistNodeParser
             return Task.CompletedTask;
         }
 
-        var result = nameTextParser.Parse(reader, parsingContext, reader.Argument);
-        if (result is null)
+        var result = nameTextParser.Parse(reader.Argument);
+        if (!result.IsOk)
+        {
+            parsingContext.LogError(reader, result.ErrorMessage);
             return Task.CompletedTask;
+        }
 
-        var node = new ProtagonistNode(result.Length == 0 ? null : result);
+        var node = new ProtagonistNode(result.Value.Length == 0 ? null : result.Value);
         parentParsingContext.AddNode(node);
         parsingContext.RegisterDismissNode(DismissNode);
 

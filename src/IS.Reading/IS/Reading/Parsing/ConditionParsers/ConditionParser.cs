@@ -21,60 +21,51 @@ public class ConditionParser : IConditionParser
     private readonly IWordReaderFactory wordReaderFactory;
 
     public ConditionParser(IWordReaderFactory wordReaderFactory)
-    {
-        this.wordReaderFactory = wordReaderFactory;
-    }
+        => this.wordReaderFactory = wordReaderFactory;
 
-    public IParsedCondition Parse(string text)
+    public Result<ICondition> Parse(string text)
     {
+        if (string.IsNullOrWhiteSpace(text))
+            return Result.Fail<ICondition>("Era esperado um argumento com uma condição.");
+
         var reader = wordReaderFactory.Create(text);
-        var messages = new List<string>();
-        var condition = ReadRoot(reader, messages, false, false);
-        return new ParsedCondition(condition, string.Join("\r\n", messages));
+        return ReadRoot(reader, false, false);
     }
 
-    private static ICondition? ReadingError(IWordReader reader, List<string> messages, string message)
-    {
-        messages.Add(string.Format(message, reader.Word));
-        return null;
-    }
+    private static Result<ICondition> ReadingError(IWordReader reader, string message)
+        => Result.Fail<ICondition>(string.Format(message, reader.Word));
 
     private class ReadRootContext
     {
         public IWordReader Reader { get; }
-        public List<string> Messages { get; }
         public bool AllowCloseParenthesys { get; }
         public bool SingleCondition { get; }
 
-        public ReadRootContext(IWordReader reader, List<string> messages, bool allowCloseParenthesys, bool singleCondition)
+        public ReadRootContext(IWordReader reader, bool allowCloseParenthesys, bool singleCondition)
         {
             Reader = reader;
-            Messages = messages;
             SingleCondition = singleCondition;
             AllowCloseParenthesys = allowCloseParenthesys;
         }
 
-        public ICondition? Current { get; set; }
+        public Result<ICondition>? Current { get; set; }
 
         public bool ShouldReturnCurrent { get; set; }
     }
 
-    private static ICondition? ReadRoot(IWordReader reader, List<string> messages, bool allowCloseParenthesys, bool singleCondition)
+    private static Result<ICondition> ReadRoot(IWordReader reader, bool allowCloseParenthesys, bool singleCondition)
     {
         if (!reader.Read())
-        {
-            messages.Add(UnexpectedExpressionEnd);
-            return null;
-        }
+            return Result.Fail<ICondition>(UnexpectedExpressionEnd);
 
-        var context = new ReadRootContext(reader, messages, allowCloseParenthesys, singleCondition);
+        var context = new ReadRootContext(reader, allowCloseParenthesys, singleCondition);
 
         do
         {
             switch (reader.WordType)
             {
                 case WordType.Invalid:
-                    return ReadingError(reader, messages, InvalidToken);
+                    return ReadingError(reader, InvalidToken);
 
                 case WordType.Variable:
                 case WordType.String:
@@ -104,33 +95,30 @@ public class ConditionParser : IConditionParser
                     break;
 
                 default:
-                    return ReadingError(reader, messages, MisplacedKeyword);
+                    return ReadingError(reader, MisplacedKeyword);
             }
 
             if (context.ShouldReturnCurrent)
-                return context.Current;
+                return context.Current!.Value;
         }
         while (reader.Read());
 
-        if (context.AllowCloseParenthesys || context.Current is null)
-        {
-            messages.Add(UnexpectedExpressionEnd);
-            return null;
-        }
+        if (context.AllowCloseParenthesys || !context.Current.HasValue)
+            return Result.Fail<ICondition>(UnexpectedExpressionEnd);
 
-        return context.Current;
+        return context.Current.Value;
     }
 
     private static void ReadRootVariableOrConstant(ReadRootContext context)
     {
         if (context.Current is not null)
         {
-            context.Current = ReadingError(context.Reader, context.Messages, MissingLogicalOperator);
+            context.Current = ReadingError(context.Reader, MissingLogicalOperator);
             context.ShouldReturnCurrent = true;
             return;
         }
 
-        context.Current = ReadCondition(context.Reader, context.Messages);
+        context.Current = ReadCondition(context.Reader);
 
         if (context.SingleCondition || context.Current is null)
             context.ShouldReturnCurrent = true;
@@ -140,19 +128,19 @@ public class ConditionParser : IConditionParser
     {
         if (context.Current is not null)
         {
-            context.Current = ReadingError(context.Reader, context.Messages, MissingLogicalOperator);
+            context.Current = ReadingError(context.Reader, MissingLogicalOperator);
             context.ShouldReturnCurrent = true;
             return;
         }
 
-        context.Current = ReadRoot(context.Reader, context.Messages, true, false);
+        context.Current = ReadRoot(context.Reader, true, false);
         context.ShouldReturnCurrent = context.Current is null;
     }
 
     private static void ReadRootCloseParenthesys(ReadRootContext context)
     {
         if (!context.AllowCloseParenthesys || context.Current is null)
-            context.Current = ReadingError(context.Reader, context.Messages, MisplacedKeyword);
+            context.Current = ReadingError(context.Reader, MisplacedKeyword);
 
         context.ShouldReturnCurrent = true;
     }
@@ -161,20 +149,20 @@ public class ConditionParser : IConditionParser
     {
         if (context.Current is null)
         {
-            context.Current = ReadingError(context.Reader, context.Messages, MisplacedKeyword);
+            context.Current = ReadingError(context.Reader, MisplacedKeyword);
             context.ShouldReturnCurrent = true;
             return;
         }
 
-        var right = ReadRoot(context.Reader, context.Messages, context.AllowCloseParenthesys, true);
-        if (right is null)
+        var right = ReadRoot(context.Reader, context.AllowCloseParenthesys, true);
+        if (!right.IsOk)
         {
-            context.Current = null;
+            context.Current = right;
             context.ShouldReturnCurrent = true;
             return;
         }
 
-        context.Current = factory.Invoke(context.Current, right);
+        context.Current = Result.Ok(factory.Invoke(context.Current.Value.Value, right.Value));
 
         if (context.AllowCloseParenthesys && context.Reader.WordType == WordType.CloseParenthesys)
             context.ShouldReturnCurrent = true;
@@ -184,252 +172,202 @@ public class ConditionParser : IConditionParser
     {
         if (context.Current is not null)
         {
-            context.Current = ReadingError(context.Reader, context.Messages, MissingLogicalOperator);
+            context.Current = ReadingError(context.Reader, MissingLogicalOperator);
             context.ShouldReturnCurrent = true;
             return;
         }
 
-        var right = ReadRoot(context.Reader, context.Messages, false, true);
-        if (right is null)
+        var right = ReadRoot(context.Reader, false, true);
+        if (!right.IsOk)
         {
-            context.Current = null;
+            context.Current = right;
             context.ShouldReturnCurrent = true;
             return;
         }
 
-        context.Current = new NotCondition(right);
+        context.Current = Result.Ok<ICondition>(new NotCondition(right.Value));
     }
 
-    private static IConditionKeyword? ReadKeyword(IWordReader reader, List<string> messages)
+    private static Result<IConditionKeyword> ReadKeyword(IWordReader reader)
     {
         if (reader.WordType == WordType.Null)
-            return new ConstantCondition(null);
+            return Result.Ok<IConditionKeyword>(new ConstantCondition(null));
 
         if (reader.WordType == WordType.Variable)
-            return new VariableCondition(reader.Word);
+            return Result.Ok<IConditionKeyword>(new VariableCondition(reader.Word));
 
         if (reader.WordType == WordType.String)
-            return new ConstantCondition(reader.Word);
+            return Result.Ok<IConditionKeyword>(new ConstantCondition(reader.Word));
 
         if (reader.WordType == WordType.Number)
         {
             if (int.TryParse(reader.Word, out var number))
-                return new ConstantCondition(number);
+                return Result.Ok<IConditionKeyword>(new ConstantCondition(number));
 
-            messages.Add(string.Format(InvalidNumber, reader.Word));
-            return null;
+            return Result.Fail<IConditionKeyword>(string.Format(InvalidNumber, reader.Word));
         }
 
-        messages.Add(string.Format(InvalidOperand, reader.Word));
-        return null;
+        return Result.Fail<IConditionKeyword>(string.Format(InvalidOperand, reader.Word));
     }
 
-    private static IConditionKeyword? ReadNextKeyword(IWordReader reader, List<string> messages)
+    private static Result<IConditionKeyword> ReadNextKeyword(IWordReader reader)
     {
         if (!reader.Read())
-        {
-            messages.Add(UnexpectedExpressionEnd);
-            return null;
-        }
+            return Result.Fail<IConditionKeyword>(UnexpectedExpressionEnd);
 
         if (reader.WordType == WordType.Invalid)
-        {
-            messages.Add(string.Format(InvalidToken, reader.Word));
-            return null;
-        }
+            return Result.Fail<IConditionKeyword>(string.Format(InvalidToken, reader.Word));
 
-        return ReadKeyword(reader, messages);
+        return ReadKeyword(reader);
     }
 
-    private static ICondition? ReadCondition(IWordReader reader, List<string> messages)
+    private static Result<ICondition> ReadCondition(IWordReader reader)
     {
-        var left = ReadKeyword(reader, messages);
-        if (left is null)
-            return null;
+        var result = ReadKeyword(reader);
+        if (!result.IsOk)
+            return Result.Fail<ICondition>(result.ErrorMessage);
+
+        var left = result.Value;
 
         if (!reader.Read())
+            return Result.Fail<ICondition>(UnexpectedExpressionEnd);
+
+        return reader.WordType switch
         {
-            messages.Add(UnexpectedExpressionEnd);
-            return null;
-        }
-
-        switch (reader.WordType)
-        {
-            case WordType.Invalid:
-                messages.Add(string.Format(InvalidToken, reader.Word));
-                return null;
-
-            case WordType.Equals:
-                return ReadOperator(reader, messages, left, (l, r) => new EqualsToCondition(l, r));
-
-            case WordType.NotEqualsTo:
-                return ReadOperator(reader, messages, left, (l, r) => new NotEqualsToCondition(l, r));
-
-            case WordType.GreaterThan:
-                return ReadOperator(reader, messages, left, (l, r) => new GreaterThanCondition(l, r));
-
-            case WordType.LowerThan:
-                return ReadOperator(reader, messages, left, (l, r) => new LowerThanCondition(l, r));
-
-            case WordType.EqualOrGreaterThan:
-                return ReadOperator(reader, messages, left, (l, r) => new EqualOrGreaterThanCondition(l, r));
-
-            case WordType.EqualOrLowerThan:
-                return ReadOperator(reader, messages, left, (l, r) => new EqualOrLowerThanCondition(l, r));
-
-            case WordType.In:
-                return ReadInCondition(left, false, reader, messages);
-
-            case WordType.Between:
-                return ReadBetweenCondition(left, false, reader, messages);
-
-            case WordType.Not:
-                return ReadNotOperator(reader, messages, left);
-
-            case WordType.Is:
-                return ReadNullCondition(left, reader, messages);
-
-            default:
-                messages.Add(string.Format(InvalidOperator, reader.Word));
-                return null;
-        }
+            WordType.Invalid => ReadingError(reader, InvalidToken),
+            WordType.Equals => ReadOperator(reader, left, (l, r) => new EqualsToCondition(l, r)),
+            WordType.NotEqualsTo => ReadOperator(reader, left, (l, r) => new NotEqualsToCondition(l, r)),
+            WordType.GreaterThan => ReadOperator(reader, left, (l, r) => new GreaterThanCondition(l, r)),
+            WordType.LowerThan => ReadOperator(reader, left, (l, r) => new LowerThanCondition(l, r)),
+            WordType.EqualOrGreaterThan => ReadOperator(reader, left, (l, r) => new EqualOrGreaterThanCondition(l, r)),
+            WordType.EqualOrLowerThan => ReadOperator(reader, left, (l, r) => new EqualOrLowerThanCondition(l, r)),
+            WordType.In => ReadInCondition(left, false, reader),
+            WordType.Between => ReadBetweenCondition(left, false, reader),
+            WordType.Not => ReadNotOperator(reader, left),
+            WordType.Is => ReadNullCondition(left, reader),
+            _ => ReadingError(reader, InvalidOperator),
+        };
     }
 
-    private static ICondition? ReadNotOperator(
+    private static Result<ICondition> ReadNotOperator(
         IWordReader reader,
-        List<string> messages,
         IConditionKeyword left
     )
     {
-        if (!ReadExpectingNotBeTheEnd(reader, messages))
-            return null;
+        var errorMessage = ReadExpectingNotBeTheEnd(reader);
+        if (errorMessage is not null)
+            return Result.Fail<ICondition>(errorMessage);
 
         if (reader.WordType == WordType.In)
-            return ReadInCondition(left, true, reader, messages);
+            return ReadInCondition(left, true, reader);
 
         if (reader.WordType == WordType.Between)
-            return ReadBetweenCondition(left, true, reader, messages);
+            return ReadBetweenCondition(left, true, reader);
 
-        messages.Add(string.Format(InvalidTokenAfterNot, reader.Word));
-        return null;
+        return ReadingError(reader, InvalidTokenAfterNot);
     }
 
-    private static ICondition? ReadOperator(
+    private static Result<ICondition> ReadOperator(
         IWordReader reader, 
-        List<string> messages, 
         IConditionKeyword left, 
         Func<IConditionKeyword, IConditionKeyword, ICondition> factory
     )
     {
-        var right = ReadNextKeyword(reader, messages);
-        if (right is null)
-            return null;
-        return factory.Invoke(left, right);
+        var right = ReadNextKeyword(reader);
+        if (!right.IsOk)
+            return Result.Fail<ICondition>(right.ErrorMessage);
+        return Result.Ok(factory.Invoke(left, right.Value));
     }
 
-    private static ICondition? ReadNullCondition(IConditionKeyword operand, IWordReader reader, List<string> messages)
+    private static Result<ICondition> ReadNullCondition(IConditionKeyword operand, IWordReader reader)
     {
-        if (!ReadExpectingNotBeTheEnd(reader, messages))
-            return null;
+        var errorMessage = ReadExpectingNotBeTheEnd(reader);
+        if (errorMessage is not null)
+            return Result.Fail<ICondition>(errorMessage);
 
         if (reader.WordType == WordType.Null)
-            return new IsNullCondition(operand);
+            return Result.Ok<ICondition>(new IsNullCondition(operand));
 
         if (reader.WordType != WordType.Not)
-        {
-            messages.Add(string.Format(InvalidTokenAfterIs, reader.Word));
-            return null;
-        }
+            return ReadingError(reader, InvalidTokenAfterIs);
 
-        if (!ReadExpectingNotBeTheEnd(reader, messages))
-            return null;
+        errorMessage = ReadExpectingNotBeTheEnd(reader);
+        if (errorMessage is not null)
+            return Result.Fail<ICondition>(errorMessage);
 
         if (reader.WordType == WordType.Null)
-            return new IsNotNullCondition(operand);
+            return Result.Ok<ICondition>(new IsNotNullCondition(operand));
 
-        messages.Add(string.Format(InvalidTokenAfterIsNot, reader.Word));
-        return null;
+        return ReadingError(reader, InvalidTokenAfterIsNot);
     }
 
-    private static ICondition? ReadBetweenCondition(IConditionKeyword operand, bool negated, IWordReader reader, List<string> messages)
+    private static Result<ICondition> ReadBetweenCondition(IConditionKeyword operand, bool negated, IWordReader reader)
     {
-        var min = ReadNextKeyword(reader, messages);
-        if (min is null)
-            return null;
+        var min = ReadNextKeyword(reader);
+        if (!min.IsOk)
+            return Result.Fail<ICondition>(min.ErrorMessage);
 
-        if (!ReadExpectingNotBeTheEnd(reader, messages))
-            return null;
+        var errorMessage = ReadExpectingNotBeTheEnd(reader);
+        if (errorMessage is not null)
+            return Result.Fail<ICondition>(errorMessage);
 
         if (reader.WordType != WordType.And)
-        {
-            messages.Add(string.Format(BetweenWithoutAnd, reader.Word));
-            return null;
-        }
+            return ReadingError(reader, BetweenWithoutAnd);
 
-        var max = ReadNextKeyword(reader, messages);
-        if (max is null)
-            return null;
+        var max = ReadNextKeyword(reader);
+        if (!max.IsOk)
+            return Result.Fail<ICondition>(max.ErrorMessage);
 
         if (negated)
-            return new NotBetweenCondition(operand, min, max);
+            return Result.Ok<ICondition>(new NotBetweenCondition(operand, min.Value, max.Value));
 
-        return new BetweenCondition(operand, min, max);
+        return Result.Ok<ICondition>(new BetweenCondition(operand, min.Value, max.Value));
     }
 
-    private static ICondition? ReadInCondition(IConditionKeyword operand, bool negated, IWordReader reader, List<string> messages)
+    private static Result<ICondition> ReadInCondition(IConditionKeyword operand, bool negated, IWordReader reader)
     {
-        if (!ReadExpectingNotBeTheEnd(reader, messages))
-            return null;
+        var errorMessage = ReadExpectingNotBeTheEnd(reader);
+        if (errorMessage is not null)
+            return Result.Fail<ICondition>(errorMessage);
 
         if (reader.WordType != WordType.OpenParenthesys)
-        {
-            messages.Add(string.Format(InvalidTokenAfterIn, reader.Word));
-            return null;
-        }
+            return ReadingError(reader, InvalidTokenAfterIn);
 
         var values = new List<IConditionKeyword>();
-        IConditionKeyword? value;
+        Result<IConditionKeyword> value;
 
         for (; ; )
         {
-            value = ReadNextKeyword(reader, messages);
-            if (value is null)
-                return null;
-            values.Add(value);
+            value = ReadNextKeyword(reader);
+            if (!value.IsOk)
+                return Result.Fail<ICondition>(value.ErrorMessage);
+            values.Add(value.Value);
 
-            if (!ReadExpectingNotBeTheEnd(reader, messages))
-                return null;
+            errorMessage = ReadExpectingNotBeTheEnd(reader);
+            if (errorMessage is not null)
+                return Result.Fail<ICondition>(errorMessage);
 
             if (reader.WordType == WordType.CloseParenthesys)
                 break;
 
             if (reader.WordType != WordType.Comma)
-            {
-                messages.Add(string.Format(InvalidTokenAfterInValue, reader.Word));
-                return null;
-            }
+                return ReadingError(reader, InvalidTokenAfterInValue);
         }
 
         if (negated)
-            return new NotInCondition(operand, values);
+            return Result.Ok<ICondition>(new NotInCondition(operand, values));
 
-        return new InCondition(operand, values);
+        return Result.Ok<ICondition>(new InCondition(operand, values));
     }
 
-    private static bool ReadExpectingNotBeTheEnd(IWordReader reader, List<string> messages)
+    private static string? ReadExpectingNotBeTheEnd(IWordReader reader)
     {
         if (!reader.Read())
-        {
-            messages.Add(UnexpectedExpressionEnd);
-            return false;
-        }
+            return UnexpectedExpressionEnd;
 
         if (reader.WordType == WordType.Invalid)
-        {
-            messages.Add(string.Format(InvalidToken, reader.Word));
-            return false;
-        }
+            return string.Format(InvalidToken, reader.Word);
 
-        return true;
+        return null;
     }
 }

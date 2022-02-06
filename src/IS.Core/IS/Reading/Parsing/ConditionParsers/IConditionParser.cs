@@ -1,6 +1,8 @@
-﻿namespace IS.Reading.Parsing.ConditionParsers;
+﻿using IS.Reading.Conditions;
+
+namespace IS.Reading.Parsing.ConditionParsers;
 
 public interface IConditionParser
 {
-    IParsedCondition Parse(string text);
+    Result<ICondition> Parse(string value);
 }

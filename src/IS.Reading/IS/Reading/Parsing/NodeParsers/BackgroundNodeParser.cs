@@ -26,7 +26,6 @@ public class BackgroundNodeParser : IBackgroundNodeParser
         this.elementParser = elementParser;
         this.backgroundImageTextParser = backgroundImageTextParser;
         Settings = ElementParserSettings.Aggregated(
-            backgroundImageTextParser,
             backgroundColorNodeParser,
             backgroundLeftNodeParser,
             backgroundRightNodeParser,
@@ -34,6 +33,8 @@ public class BackgroundNodeParser : IBackgroundNodeParser
             pauseNodeParser
         );
     }
+
+    public bool IsArgumentRequired => false;
 
     public string Name => "background";
 
@@ -43,13 +44,16 @@ public class BackgroundNodeParser : IBackgroundNodeParser
 
         if (!string.IsNullOrWhiteSpace(reader.Argument))
         {
-            var result = backgroundImageTextParser.Parse(reader, parsingContext, reader.Argument);
-            if (result is not null)
+            var result = backgroundImageTextParser.Parse(reader.Argument);
+            if (!result.IsOk)
             {
-                var state = new BackgroundState(result, BackgroundType.Image, BackgroundPosition.Left);
-                context.AddNode(new BackgroundNode(state));
-                context.AddNode(new ScrollNode());
+                parsingContext.LogError(reader, result.ErrorMessage);
+                return;
             }
+
+            var state = new BackgroundState(result.Value, BackgroundType.Image, BackgroundPosition.Left);
+            context.AddNode(new BackgroundNode(state));
+            context.AddNode(new ScrollNode());
         }
 
         await elementParser.ParseAsync(reader, parsingContext, context, Settings);
@@ -61,7 +65,7 @@ public class BackgroundNodeParser : IBackgroundNodeParser
         }
 
         var block = parsingContext.BlockFactory.Create(context.Nodes);
-        parentParsingContext.AddNode(new BlockNode(block, null));
+        parentParsingContext.AddNode(new BlockNode(block));
         parsingContext.RegisterDismissNode(DismissNode);
     }
 

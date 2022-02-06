@@ -10,6 +10,8 @@ public class PauseNodeParser : IPauseNodeParser
     public PauseNodeParser(IIntegerArgumentParser integerTextParser)
         => this.integerTextParser = integerTextParser;
 
+    public bool IsArgumentRequired => false;
+
     public string Name => "pause";
 
     public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
@@ -18,13 +20,16 @@ public class PauseNodeParser : IPauseNodeParser
 
         if (!string.IsNullOrWhiteSpace(reader.Argument))
         {
-            var result = integerTextParser.Parse(reader, parsingContext, reader.Argument, 1, 5000);
-            if (result.HasValue)
+            var result = integerTextParser.Parse(reader.Argument, 1, 5000);
+            if (!result.IsOk)
             {
-                var timedPauseNode = new TimedPauseNode(TimeSpan.FromMilliseconds(result.Value));
-                parentParsingContext.AddNode(timedPauseNode);
+                parsingContext.LogError(reader, result.ErrorMessage);
                 return Task.CompletedTask;
             }
+
+            var timedPauseNode = new TimedPauseNode(TimeSpan.FromMilliseconds(result.Value));
+            parentParsingContext.AddNode(timedPauseNode);
+            return Task.CompletedTask;
         }
 
         parentParsingContext.AddNode(new PauseNode());

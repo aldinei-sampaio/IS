@@ -2,7 +2,6 @@
 
 namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 
-public class ChoiceParentParsingContext : IParentParsingContext
+public class ChoiceParentParsingContext : ChoiceParentParsingContextBase<IChoicePrototype>
 {
-    public ChoiceNode Choice { get; set; } = new();
 }

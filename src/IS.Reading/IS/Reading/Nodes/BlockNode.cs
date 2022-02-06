@@ -1,15 +1,11 @@
-﻿using IS.Reading.Conditions;
-using IS.Reading.Navigation;
+﻿using IS.Reading.Navigation;
 
-namespace IS.Reading.Nodes
+namespace IS.Reading.Nodes;
+
+public class BlockNode : INode
 {
-    public class BlockNode : INode
-    {
-        public BlockNode(IBlock childBlock, ICondition? when)
-            => (ChildBlock, When) = (childBlock, when);
+    public BlockNode(IBlock childBlock)
+        => ChildBlock = childBlock;
 
-        public ICondition? When { get; }
-
-        public IBlock? ChildBlock { get; }
-    }
+    public IBlock? ChildBlock { get; }
 }

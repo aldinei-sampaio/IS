@@ -1,8 +1,6 @@
 ﻿using IS.Reading.Navigation;
 using IS.Reading.Nodes;
-using IS.Reading.Parsing.AttributeParsers;
 using IS.Reading.Parsing.ArgumentParsers;
-using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers;
 
@@ -13,13 +11,18 @@ public class MusicNodeParser : IMusicNodeParser
     public MusicNodeParser(INameTextParser nameTextParser)
         => this.nameTextParser = nameTextParser;
 
+    public bool IsArgumentRequired => true;
+
     public string Name => "music";
 
     public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var parsed = nameTextParser.Parse(reader, parsingContext, reader.Argument);
-        if (parsed is null)
+        var parsed = nameTextParser.Parse(reader.Argument);
+        if (!parsed.IsOk)
+        {
+            parsingContext.LogError(reader, parsed.ErrorMessage);
             return Task.CompletedTask;
+        }
 
         if (parsingContext.SceneContext.HasMusic)
         {
@@ -29,7 +32,7 @@ public class MusicNodeParser : IMusicNodeParser
 
         parsingContext.SceneContext.HasMusic = true;
 
-        var node = new MusicNode(parsed.Length == 0 ? null : parsed);
+        var node = new MusicNode(parsed.Value.Length == 0 ? null : parsed.Value);
         parentParsingContext.AddNode(node);
         parsingContext.RegisterDismissNode(DismissNode);
 

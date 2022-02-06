@@ -1,26 +1,23 @@
-﻿using System.Xml;
+﻿using IS.Reading.Choices;
 
 namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 
 public class ChoiceRandomOrderNodeParser : IChoiceRandomOrderNodeParser
 {
-    private readonly IElementParser elementParser;
-
-    public IElementParserSettings Settings { get; }
-
-    public ChoiceRandomOrderNodeParser(IElementParser elementParser)
-    {
-        this.elementParser = elementParser;
-        Settings = ElementParserSettings.Normal();
-    }
+    public bool IsArgumentRequired => false;
 
     public string Name => "randomorder";
 
-    public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
+    public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var myContext = new TextParentParsingContext();
-        await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
+        if (!string.IsNullOrEmpty(reader.Argument))
+        {
+            parsingContext.LogError(reader, "O comando 'randomorder' não suporta argumentos.");
+            return Task.CompletedTask;
+        }
+
         var ctx = (ChoiceParentParsingContext)parentParsingContext;
-        ctx.Choice.RandomOrder = true;
+        ctx.AddSetter(i => i.RandomOrder = true);
+        return Task.CompletedTask;
     }
 }

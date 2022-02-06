@@ -1,40 +1,36 @@
-﻿using IS.Reading.Parsing.ArgumentParsers;
-using System.Xml;
+﻿using IS.Reading.Choices;
+using IS.Reading.Parsing.ArgumentParsers;
 
 namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 
 public class ChoiceTimeLimitNodeParser : IChoiceTimeLimitNodeParser
 {
-    private readonly IElementParser elementParser;
+    private readonly IIntegerArgumentParser integerParser;
 
-    public IElementParserSettings Settings { get; }
+    public ChoiceTimeLimitNodeParser(IIntegerArgumentParser integerParser)
+        => this.integerParser = integerParser;
 
-    public ChoiceTimeLimitNodeParser(IElementParser elementParser, IIntegerArgumentParser textParser)
-    {
-        this.elementParser = elementParser;
-        Settings = ElementParserSettings.Normal(textParser);
-    }
+    public bool IsArgumentRequired => true;
 
     public string Name => "timelimit";
 
-    public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
+    public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var myContext = new TextParentParsingContext();
-        await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
-        if (myContext.ParsedText is null)
-            return;
+        if (string.IsNullOrEmpty(reader.Argument))
+            throw new InvalidOperationException();
 
-        var value = int.Parse(myContext.ParsedText);
-        if (value < 1)
-            return;
-
-        if (value > 30000)
+        var valueParsingResult = integerParser.Parse(reader.Argument, 1, 30000);
+        if (!valueParsingResult.IsOk)
         {
-            parsingContext.LogError(reader, "O limite de tempo não pode ser maior que 30 segundos.");
-            return;
+            parsingContext.LogError(reader, valueParsingResult.ErrorMessage);
+            return Task.CompletedTask;
         }
 
+        var timeLimit = TimeSpan.FromSeconds(valueParsingResult.Value);
+
         var ctx = (ChoiceParentParsingContext)parentParsingContext;
-        ctx.Choice.TimeLimit = TimeSpan.FromMilliseconds(value);
+        ctx.AddSetter(i => i.TimeLimit = timeLimit);
+        
+        return Task.CompletedTask;
     }
 }

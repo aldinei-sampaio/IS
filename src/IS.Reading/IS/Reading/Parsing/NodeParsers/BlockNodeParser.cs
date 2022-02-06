@@ -9,7 +9,9 @@ public class BlockNodeParser : IBlockNodeParser
     private readonly IElementParser elementParser;
     private readonly IConditionParser conditionParser;
 
-    public IElementParserSettings Settings { get; }
+    public IElementParserSettings IfBlockSettings { get; }
+
+    public IElementParserSettings BlockSettings { get; }
 
     public BlockNodeParser(
         IElementParser elementParser,
@@ -27,7 +29,8 @@ public class BlockNodeParser : IBlockNodeParser
         this.elementParser = elementParser;
         this.conditionParser = conditionParser;
 
-        Settings = ElementParserSettings.Normal(
+        var nodeParsers = new INodeParser[]
+        {
             musicNodeParser,
             backgroundNodeParser,
             pauseNodeParser,
@@ -35,11 +38,15 @@ public class BlockNodeParser : IBlockNodeParser
             personNodeParser,
             narrationNodeParser,
             tutorialNodeParser,
-            setNodeParser
-        );
+            setNodeParser,
+            this
+        };
 
-        Settings.ChildParsers.Add(this);
+        IfBlockSettings = ElementParserSettings.IfBlock(nodeParsers);
+        BlockSettings = ElementParserSettings.Block(nodeParsers);
     }
+
+    public bool IsArgumentRequired => true;
 
     public string Name => string.Empty;
 
@@ -47,39 +54,60 @@ public class BlockNodeParser : IBlockNodeParser
 
     public async Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        if (string.IsNullOrWhiteSpace(reader.Argument))
-        {
-            parsingContext.LogError(reader, "Era esperada uma condição");
-            return;
-        }
-
         var result = conditionParser.Parse(reader.Argument);
 
-        if (result.Condition is null)
+        if (!result.IsOk)
         {
-            parsingContext.LogError(reader, result.Message);
+            parsingContext.LogError(reader, result.ErrorMessage);
             return;
         }
-
-        var myContext = new ParentParsingContext();
-        await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
-
-        if (myContext.Nodes.Count == 0)
-        {
-            parsingContext.LogError(reader, "Elemento filho era esperado.");
-            return;
-        }
-
-        ICondition? when = null;
-        ICondition? @while = null;
 
         if (string.Compare(reader.ElementName, "if", true) == 0)
-            when = result.Condition;
+            await ParseIfAsync(result.Value, reader, parsingContext, parentParsingContext);
         else
-            @while = result.Condition;
+            await ParseWhileAsync(result.Value, reader, parsingContext, parentParsingContext);
+    }
 
-        var block = parsingContext.BlockFactory.Create(myContext.Nodes, @while);
-        var node = new BlockNode(block, @when);
-        parentParsingContext.AddNode(node);
+    private async Task ParseIfAsync(
+        ICondition condition,
+        IDocumentReader reader, 
+        IParsingContext parsingContext, 
+        IParentParsingContext parentParsingContext
+    )
+    {
+        var ifContext = new ParentParsingContext();
+        var elseContext = new ParentParsingContext();
+        await elementParser.ParseAsync(reader, parsingContext, ifContext, IfBlockSettings);
+
+        if (!parsingContext.IsSuccess)
+            return;
+        
+        if (!reader.AtEnd && string.Compare(reader.ElementName, "else", true) == 0)
+            await elementParser.ParseAsync(reader, parsingContext, elseContext, BlockSettings);
+
+        if (!parsingContext.IsSuccess)
+            return;
+
+        var ifBlock = parsingContext.BlockFactory.Create(ifContext.Nodes);
+        var elseBlock = parsingContext.BlockFactory.Create(elseContext.Nodes);
+
+        parentParsingContext.AddNode(new IfNode(condition, ifBlock, elseBlock));
+    }
+
+    private async Task ParseWhileAsync(
+        ICondition condition,
+        IDocumentReader reader,
+        IParsingContext parsingContext,
+        IParentParsingContext parentParsingContext
+    )
+    {
+        var myContext = new ParentParsingContext();
+        await elementParser.ParseAsync(reader, parsingContext, myContext, BlockSettings);
+
+        if (!parsingContext.IsSuccess)
+            return;
+
+        var block = parsingContext.BlockFactory.Create(myContext.Nodes, condition);
+        parentParsingContext.AddNode(new BlockNode(block));
     }
 }

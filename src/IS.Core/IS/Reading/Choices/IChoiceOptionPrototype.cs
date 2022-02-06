@@ -1,4 +1,4 @@
-﻿namespace IS.Reading.Choices.Builders;
+﻿namespace IS.Reading.Choices;
 
 public interface IChoiceOptionPrototype : IChoiceOption
 {

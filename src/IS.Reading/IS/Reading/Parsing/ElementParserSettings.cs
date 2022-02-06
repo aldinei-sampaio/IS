@@ -6,59 +6,52 @@ public class ElementParserSettings : IElementParserSettings
     {
     }
 
-    public ITextParser? TextParser { get; private set; }
-
-    public IParserDictionary<IAttributeParser> AttributeParsers { get; } = new ParserDictionary<IAttributeParser>();
-
     public IParserDictionary<INodeParser> ChildParsers { get; } = new ParserDictionary<INodeParser>();
 
     public bool ExitOnUnknownNode { get; private set; }
 
+    public bool ExitOnElse { get; private set; }
+
+    public bool IsBlock { get; private set; }
+
     public bool NoRepeatNode { get; private set; }
 
-    public static ElementParserSettings Normal(params object[] parsers)
+    public static ElementParserSettings IfBlock(params INodeParser[] parsers)
+    {
+        var settings = Block(parsers);
+        settings.ExitOnElse = true;
+        settings.IsBlock = true;
+        return settings;
+    }
+
+    public static ElementParserSettings Block(params INodeParser[] parsers)
+    {
+        var settings = NoBlock(parsers);
+        settings.IsBlock = true;
+        return settings;
+    }
+
+    public static ElementParserSettings NoBlock(params INodeParser[] parsers)
     { 
         var settings = new ElementParserSettings();
 
         foreach (var parser in parsers)
-        {
-            switch(parser)
-            {
-                case IAttributeParser attributeParser:
-                    settings.AttributeParsers.Add(attributeParser);
-                    break;
-                case INodeParser nodeParser:
-                    settings.ChildParsers.Add(nodeParser);
-                    break;
-                case ITextParser textParser:
-                    settings.TextParser = textParser;
-                    break;
-                default:
-                    throw new ArgumentException($"Argumento do tipo '{parser.GetType().Name}' não é válido.");
-            }
-        }
+            settings.ChildParsers.Add(parser);
 
         return settings;
     }
 
-    public static ElementParserSettings NonRepeat(params object[] parsers)
+    public static ElementParserSettings Aggregated(params INodeParser[] parsers)
     {
-        var settings = Normal(parsers);
-        settings.NoRepeatNode = true;
+        var settings = NoBlock(parsers);
+        settings.ExitOnUnknownNode = true;
         return settings;
     }
 
-    public static ElementParserSettings AggregatedNonRepeat(params object[] parsers)
+    public static ElementParserSettings AggregatedNonRepeat(params INodeParser[] parsers)
     {
         var settings = Aggregated(parsers);
         settings.NoRepeatNode = true;
-        return settings;
-    }
-
-    public static ElementParserSettings Aggregated(params object[] parsers)
-    {
-        var settings = Normal(parsers);
-        settings.ExitOnUnknownNode = true;
         return settings;
     }
 }

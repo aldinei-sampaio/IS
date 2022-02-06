@@ -1,22 +1,20 @@
 ﻿using System.Text;
-using System.Xml;
 
 namespace IS.Reading.Parsing.ArgumentParsers;
 
 public class NameTextParser : INameTextParser
 {
-    public string? Parse(IDocumentReader reader, IParsingContext parsingContext, string value)
+    public Result<string> Parse(string value)
     {
         if (string.IsNullOrWhiteSpace(value))
-            return null;
+            return Result.Fail<string>("Era esperado um argumento.");
 
         var result = Format(value);
 
-        if (result.Length <= 64)
-            return result;
+        if (result.Length > 64)
+            return Result.Fail<string>($"O texto contém {result.Length} caracteres, o que excede a quantidade máxima de 64.");
 
-        parsingContext.LogError(reader, $"O texto contém {result.Length} caracteres, o que excede a quantidade máxima de 64.");
-        return null;
+        return Result.Ok(result);
     }
 
     private static string Format(string value)

@@ -8,5 +8,5 @@ public class BalloonChildParsingContext : BalloonParsingContext
     {
     }
 
-    public IChoiceNode? ChoiceNode { get; set; }
+    public IChoiceBuilder? ChoiceBuilder { get; set; }
 }

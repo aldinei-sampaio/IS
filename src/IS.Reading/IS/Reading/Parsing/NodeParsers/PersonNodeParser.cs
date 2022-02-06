@@ -32,19 +32,18 @@ public class PersonNodeParser : IPersonNodeParser
         );
     }
 
+    public bool IsArgumentRequired => true;
+
     public string Name => "@";
 
     public async Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        if (string.IsNullOrWhiteSpace(reader.Argument))
+        var parsedName = nameTextParser.Parse(reader.Argument);
+        if (!parsedName.IsOk)
         {
-            parsingContext.LogError(reader, "Era esperado o nome do personagem.");
+            parsingContext.LogError(reader, parsedName.ErrorMessage);
             return;
         }
-
-        var name = nameTextParser.Parse(reader, parsingContext, reader.Argument);
-        if (name is null)
-            return;
 
         var myContext = new ParentParsingContext();
         await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
@@ -62,7 +61,7 @@ public class PersonNodeParser : IPersonNodeParser
         myContext.Nodes.Add(DismissMoodNode);
 
         var block = parsingContext.BlockFactory.Create(myContext.Nodes);
-        var node = new PersonNode(name, block);
+        var node = new PersonNode(parsedName.Value, block);
         parentParsingContext.AddNode(node);
     }
 

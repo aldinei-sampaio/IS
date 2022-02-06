@@ -1,45 +1,32 @@
 ﻿using IS.Reading.Nodes;
-using IS.Reading.Parsing.AttributeParsers;
 using IS.Reading.Parsing.ArgumentParsers;
 using IS.Reading.State;
-using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers.BackgroundParsers;
 
 public class BackgroundColorNodeParser : IBackgroundColorNodeParser
 {
-    private readonly IElementParser elementParser;
-    
-    public IElementParserSettings Settings { get; }
+    private readonly IColorTextParser colorTextParser;
 
-    public BackgroundColorNodeParser(
-        IElementParser elementParser, 
-        IWhenAttributeParser whenAttributeParser,
-        IColorTextParser colorTextParser
-    )
-    {
-        this.elementParser = elementParser;
-        Settings = ElementParserSettings.Normal(whenAttributeParser, colorTextParser);
-    }
+    public BackgroundColorNodeParser(IColorTextParser colorTextParser)
+        => this.colorTextParser = colorTextParser;
+
+    public bool IsArgumentRequired => true;
 
     public string Name => "color";
 
-    public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
+    public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var myContext = new TextParentParsingContext(); 
-        await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
-
-        if (myContext.ParsedText is null)
-            return;
-
-        if (myContext.ParsedText.Length == 0)
+        var parsed = colorTextParser.Parse(reader.Argument);
+        if (!parsed.IsOk)
         {
-            parsingContext.LogError(reader, "Era esperado o nome da cor.");
-            return;
+            parsingContext.LogError(reader, parsed.ErrorMessage);
+            return Task.CompletedTask;
         }
 
-        var state = new BackgroundState(myContext.ParsedText, BackgroundType.Color, BackgroundPosition.Undefined);
-        var node = new BackgroundNode(state, myContext.When);
-        parentParsingContext.AddNode(node);
+        var state = new BackgroundState(parsed.Value, BackgroundType.Color, BackgroundPosition.Undefined);
+        parentParsingContext.AddNode(new BackgroundNode(state));
+
+        return Task.CompletedTask;
     }
 }

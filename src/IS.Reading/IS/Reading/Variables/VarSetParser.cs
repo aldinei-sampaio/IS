@@ -4,14 +4,19 @@ namespace IS.Reading.Variables;
 
 public class VarSetParser : IVarSetParser
 {
-    public IVarSet? Parse(string expression)
+    public Result<IVarSet> Parse(string expression)
     {
         if (string.IsNullOrWhiteSpace(expression))
-            return null;
+            return Result.Fail<IVarSet>("Expressão não informada.");
 
-        return TryCreateIntegerSetVarSet(expression)
+        var result = TryCreateIntegerSetVarSet(expression)
             ?? TryCreateIntegerIncrementVarSet(expression)
             ?? TryCreateStringVarSet(expression);
+
+        if (result is null)
+            return Result.Fail<IVarSet>("Expressão de atribuição inválida.");
+
+        return Result.Ok(result);
     }
 
     private static IVarSet? TryCreateIntegerSetVarSet(string parsedText)

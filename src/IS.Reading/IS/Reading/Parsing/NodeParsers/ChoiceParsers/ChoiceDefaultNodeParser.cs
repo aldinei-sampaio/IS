@@ -9,22 +9,21 @@ public class ChoiceDefaultNodeParser : IChoiceDefaultNodeParser
     public ChoiceDefaultNodeParser(INameTextParser textParser)
         => this.textParser = textParser;
 
+    public bool IsArgumentRequired => true;
+
     public string Name => "default";
 
     public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        if (string.IsNullOrWhiteSpace(reader.Argument))
+        var result = textParser.Parse(reader.Argument);
+        if (!result.IsOk)
         {
-            parsingContext.LogError(reader, "A opção padrão não foi informada.");
+            parsingContext.LogError(reader, result.ErrorMessage);
             return Task.CompletedTask;
         }
 
-        var parsed = textParser.Parse(reader, parsingContext, reader.Argument);
-        if (parsed is null)
-            return Task.CompletedTask;
-
         var ctx = (ChoiceParentParsingContext)parentParsingContext;
-        ctx.Choice.Default = parsed;
+        ctx.AddSetter(i => i.Default = result.Value);
 
         return Task.CompletedTask;
     }

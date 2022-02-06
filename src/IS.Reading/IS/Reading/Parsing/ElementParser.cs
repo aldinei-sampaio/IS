@@ -18,14 +18,33 @@ public class ElementParser : IElementParser
 
         while (!reader.AtEnd)
         {
+            if (settings.ExitOnElse)
+            {
+                if (string.Compare(reader.ElementName, "else", true) == 0)
+                    return;
+            }
+
             if (!TryGetParser(reader, parsingContext, settings, processed, out var parser))
             {
                 if (settings.ExitOnUnknownNode)
                     return;
+
+                if (settings.IsBlock && string.Compare(reader.ElementName, "end", true) == 0)
+                    return;
+
+                parsingContext.LogError(reader, $"Elemento não reconhecido: '{reader.ElementName}'");
+                return;
             }
-            else if (!await ParseElementAsync(reader, parsingContext, parentParsingContext, parser))
+            else
             {
-                continue;
+                if (parser.IsArgumentRequired && string.IsNullOrEmpty(reader.Argument))
+                {
+                    parsingContext.LogError(reader, $"O comando '{reader.ElementName}' requer um argumento.");
+                    return;
+                }
+
+                if (!await ParseElementAsync(reader, parsingContext, parentParsingContext, settings, parser))
+                    continue;
             }
 
             await reader.ReadAsync();
@@ -53,7 +72,7 @@ public class ElementParser : IElementParser
         {
             if (!settings.ExitOnUnknownNode)
                 parsingContext.LogError(reader, $"Elemento repetido: {reader.ElementName}");
-            
+
             return false;
         }
 
@@ -64,6 +83,7 @@ public class ElementParser : IElementParser
         IDocumentReader reader,
         IParsingContext parsingContext,
         IParentParsingContext parentParsingContext,
+        IElementParserSettings settings,
         INodeParser parser
     )
     {
@@ -73,8 +93,15 @@ public class ElementParser : IElementParser
             return false;
         }
 
-        using var childReader = reader.ReadSubtree();
-        await parser.ParseAsync(childReader, parsingContext, parentParsingContext);
+        if (settings.IsBlock)
+        {
+            using var childReader = reader.ReadSubtree();
+            await parser.ParseAsync(childReader, parsingContext, parentParsingContext);
+        }
+        else
+        {
+            await parser.ParseAsync(reader, parsingContext, parentParsingContext);
+        }
 
         return true;
     }

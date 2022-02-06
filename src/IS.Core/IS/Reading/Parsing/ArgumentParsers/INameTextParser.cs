@@ -1,5 +1,6 @@
 ﻿namespace IS.Reading.Parsing.ArgumentParsers;
 
-public interface INameTextParser : ITextParser
+public interface INameTextParser
 {
+    Result<string> Parse(string value);
 }

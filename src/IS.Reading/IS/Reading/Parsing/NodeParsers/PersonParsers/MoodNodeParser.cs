@@ -4,6 +4,8 @@ namespace IS.Reading.Parsing.NodeParsers.PersonParsers;
 
 public class MoodNodeParser : IMoodNodeParser
 {
+    public bool IsArgumentRequired => true;
+
     public string Name => "#";
 
     public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)

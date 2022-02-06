@@ -1,45 +1,32 @@
 ﻿using IS.Reading.Nodes;
-using IS.Reading.Parsing.AttributeParsers;
 using IS.Reading.Parsing.ArgumentParsers;
 using IS.Reading.State;
-using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers.BackgroundParsers;
 
 public class BackgroundRightNodeParser : IBackgroundRightNodeParser
 {
-    private readonly IElementParser elementParser;
+    private readonly IBackgroundImageTextParser backgroundImageTextParser;
 
-    public IElementParserSettings Settings { get; }
+    public BackgroundRightNodeParser(IBackgroundImageTextParser backgroundImageTextParser)
+        => this.backgroundImageTextParser = backgroundImageTextParser;
 
-    public BackgroundRightNodeParser(
-        IElementParser elementParser,
-        IWhenAttributeParser whenAttributeParser,
-        IBackgroundImageTextParser backgroundImageTextParser
-    )
-    {
-        this.elementParser = elementParser;
-        Settings = ElementParserSettings.Normal(whenAttributeParser, backgroundImageTextParser);
-    }
+    public bool IsArgumentRequired => true;
 
     public string Name => "right";
 
-    public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
+    public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var myContext = new TextParentParsingContext();
-        await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
-
-        if (myContext.ParsedText is null)
-            return;
-
-        if (myContext.ParsedText.Length == 0)
+        var result = backgroundImageTextParser.Parse(reader.Argument);
+        if (!result.IsOk)
         {
-            parsingContext.LogError(reader, "Era esperado o nome da imagem.");
-            return;
+            parsingContext.LogError(reader, result.ErrorMessage);
+            return Task.CompletedTask;
         }
 
-        var state = new BackgroundState(myContext.ParsedText, BackgroundType.Image, BackgroundPosition.Right);
-        var node = new BackgroundNode(state, myContext.When);
+        var state = new BackgroundState(result.Value, BackgroundType.Image, BackgroundPosition.Right);
+        var node = new BackgroundNode(state);
         parentParsingContext.AddNode(node);
+        return Task.CompletedTask;
     }
 }

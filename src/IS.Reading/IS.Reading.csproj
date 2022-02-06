@@ -23,7 +23,6 @@
 
 	<ItemGroup>
 	  <Folder Include="IS\Reading\ChoiceBuilders\" />
-	  <Folder Include="IS\Reading\Parsing\AttributeParsers\" />
 	</ItemGroup>
 
 </Project>

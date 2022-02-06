@@ -7,4 +7,8 @@
     <RootNamespace></RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="IS\Reading\Parsing\NodeParsers\ChoiceOptionParsers\" />
+  </ItemGroup>
+
 </Project>

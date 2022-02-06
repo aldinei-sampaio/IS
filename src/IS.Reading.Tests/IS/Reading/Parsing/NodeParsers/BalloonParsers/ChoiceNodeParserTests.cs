@@ -48,13 +48,13 @@ public class ChoiceNodeParserTests
 
         await sut.ParseAsync(reader, context, parentContext);
 
-        parentContext.ChoiceNode.Should().NotBeNull();
-        parentContext.ChoiceNode.TimeLimit.Should().BeNull();
-        parentContext.ChoiceNode.Default.Should().BeNull();
-        parentContext.ChoiceNode.RandomOrder.Should().BeFalse();
-        parentContext.ChoiceNode.Options.Count.Should().Be(2);
-        parentContext.ChoiceNode.Options[0].Should().BeSameAs(optionNode1);
-        parentContext.ChoiceNode.Options[1].Should().BeSameAs(optionNode2);
+        parentContext.ChoiceBuilder.Should().NotBeNull();
+        parentContext.ChoiceBuilder.TimeLimit.Should().BeNull();
+        parentContext.ChoiceBuilder.Default.Should().BeNull();
+        parentContext.ChoiceBuilder.RandomOrder.Should().BeFalse();
+        parentContext.ChoiceBuilder.Options.Count.Should().Be(2);
+        parentContext.ChoiceBuilder.Options[0].Should().BeSameAs(optionNode1);
+        parentContext.ChoiceBuilder.Options[1].Should().BeSameAs(optionNode2);
     }
 
     [Fact]
@@ -77,12 +77,12 @@ public class ChoiceNodeParserTests
 
         await sut.ParseAsync(reader, context, parentContext);
 
-        parentContext.ChoiceNode.Should().NotBeNull();
-        parentContext.ChoiceNode.TimeLimit.Should().Be(TimeSpan.FromSeconds(8));
-        parentContext.ChoiceNode.Default.Should().Be("a");
-        parentContext.ChoiceNode.RandomOrder.Should().BeTrue();
-        parentContext.ChoiceNode.Options.Count.Should().Be(1);
-        parentContext.ChoiceNode.Options[0].Should().BeSameAs(optionNode1);
+        parentContext.ChoiceBuilder.Should().NotBeNull();
+        parentContext.ChoiceBuilder.TimeLimit.Should().Be(TimeSpan.FromSeconds(8));
+        parentContext.ChoiceBuilder.Default.Should().Be("a");
+        parentContext.ChoiceBuilder.RandomOrder.Should().BeTrue();
+        parentContext.ChoiceBuilder.Options.Count.Should().Be(1);
+        parentContext.ChoiceBuilder.Options[0].Should().BeSameAs(optionNode1);
     }
 
     [Fact]
@@ -103,7 +103,7 @@ public class ChoiceNodeParserTests
 
         await sut.ParseAsync(reader, context, parentContext);
 
-        parentContext.ChoiceNode.Should().BeNull();
+        parentContext.ChoiceBuilder.Should().BeNull();
 
         A.CallTo(() => context.LogError(reader, message)).MustHaveHappenedOnceExactly();
     }

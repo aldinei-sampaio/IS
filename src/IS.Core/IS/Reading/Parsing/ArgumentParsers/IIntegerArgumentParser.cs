@@ -2,5 +2,5 @@
 
 public interface IIntegerArgumentParser
 {
-    int? Parse(IDocumentReader reader, IParsingContext parsingContext, string value, int minValue, int maxValue);
+    Result<int> Parse(string value, int minValue, int maxValue);
 }

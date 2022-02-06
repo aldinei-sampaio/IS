@@ -2,5 +2,5 @@
 
 public interface IVarSetParser
 {
-    IVarSet? Parse(string expression);
+    Result<IVarSet> Parse(string value);
 }

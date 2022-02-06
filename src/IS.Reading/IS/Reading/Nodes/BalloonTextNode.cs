@@ -9,43 +9,17 @@ public class BalloonTextNode : IPauseNode
 {
     public ITextSource TextSource { get; }
     public BalloonType BalloonType { get; }
-    public IChoiceNode? ChoiceNode { get; }
+    public IChoiceBuilder? ChoiceBuilder { get; }
 
-    public BalloonTextNode(ITextSource textSource, BalloonType ballonType, IChoiceNode? choiceNode)
-        => (TextSource, BalloonType, ChoiceNode) = (textSource, ballonType, choiceNode);
+    public BalloonTextNode(ITextSource textSource, BalloonType ballonType, IChoiceBuilder? choiceBuilder)
+        => (TextSource, BalloonType, ChoiceBuilder) = (textSource, ballonType, choiceBuilder);
 
     public async Task<object?> EnterAsync(INavigationContext context)
     {
         var text = TextSource.ToString(context.Variables);
-        var choice = CreateChoice(ChoiceNode, context);
+        var choice = ChoiceBuilder?.Build(context);
         var @event = new BalloonTextEvent(text, BalloonType, context.State.IsProtagonist(), choice);
         await context.Events.InvokeAsync<IBalloonTextEvent>(@event);
         return null;
-    }
-
-    private static IChoice? CreateChoice(IChoiceNode? choiceNode, INavigationContext context)
-    {
-        if (choiceNode is null)
-            return null;
-
-        var options = new List<IChoiceOption>();
-        foreach(var option in choiceNode.Options)
-        {
-            if (option.VisibleWhen is not null && !option.VisibleWhen.Evaluate(context.Variables))
-                continue;
-
-            var isEnabled = option.EnabledWhen is null || option.EnabledWhen.Evaluate(context.Variables);
-            var text = isEnabled ? option.Text : option.DisabledText ?? option.Text;
-
-            options.Add(new ChoiceOption(option.Key, text, isEnabled, option.ImageName, option.HelpText));
-        }
-
-        if (options.Count == 0 || options.All(i => !i.IsEnabled))
-            return null;
-
-        if (choiceNode.RandomOrder)
-            options = context.Randomizer.Shuffle(options);
-
-        return new Choice(options, choiceNode.TimeLimit, choiceNode.Default);
     }
 }

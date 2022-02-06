@@ -1,56 +1,64 @@
-﻿using IS.Reading.Parsing.AttributeParsers;
-using IS.Reading.Parsing.NodeParsers.ChoiceOptionParsers;
-using IS.Reading.Parsing.ArgumentParsers;
-using System.Xml;
+﻿using IS.Reading.Choices;
+using IS.Reading.Variables;
 
 namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 
 public class ChoiceOptionNodeParser : IChoiceOptionNodeParser
 {
     private readonly IElementParser elementParser;
+    private readonly ITextSourceParser textSourceParser;
 
     public IElementParserSettings Settings { get; }
 
     public ChoiceOptionNodeParser(
         IElementParser elementParser,
-        IWhenAttributeParser whenAttributeParser,
-        IBalloonTextParser balloonTextParser,
+        ITextSourceParser textSourceParser,
         IChoiceOptionTextNodeParser choiceOptionTextNodeParser,
-        IChoiceOptionEnabledWhenNodeParser choiceOptionEnabledWhenNodeParser,
-        IChoiceOptionDisabledTextNodeParser choiceOptionDisabledTextNodeParser,
+        IChoiceOptionDisabledNodeParser choiceOptionDisabledNodeParser,
         IChoiceOptionIconNodeParser choiceOptionIconNodeParser
     )
     {
         this.elementParser = elementParser;
-
-        Settings = ElementParserSettings.NonRepeat(
-            whenAttributeParser,
-            balloonTextParser,
+        this.textSourceParser = textSourceParser;
+        Settings = ElementParserSettings.Block(
             choiceOptionTextNodeParser,
-            choiceOptionEnabledWhenNodeParser,
-            choiceOptionDisabledTextNodeParser,
+            choiceOptionDisabledNodeParser,
             choiceOptionIconNodeParser
         );
     }
+
+    public bool IsArgumentRequired => false;
 
     public string Name => string.Empty;
 
     public string? NameRegex => "^[a-z]$";
 
-    public async Task ParseAsync(XmlReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
+    public async Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
+        var key = reader.ElementName;
         var myContext = new ChoiceOptionParentParsingContext();
-        myContext.Option.Key = reader.LocalName;
-
-        await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
-
-        if (string.IsNullOrWhiteSpace(myContext.Option.Text))
+        
+        if (string.IsNullOrEmpty(reader.Argument))
         {
-            parsingContext.LogError(reader, "O texto da opção não foi informado.");
-            return;
+            await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
+            if (!parsingContext.IsSuccess)
+                return;
+        }
+        else
+        {
+            var textSourceParsingResult = textSourceParser.Parse(reader.Argument);
+            if (!textSourceParsingResult.IsOk)
+            {
+                parsingContext.LogError(reader, textSourceParsingResult.ErrorMessage);
+                return;
+            }
+
+            myContext.Builders.Add(new ChoiceOptionTextBuilder(textSourceParsingResult.Value));
         }
 
+        var builder = new ChoiceOptionBuilder(key, myContext.Builders);
+
         var ctx = (ChoiceParentParsingContext)parentParsingContext;
-        ctx.Choice.Options.Add(myContext.Option);
+        ctx.Builders.Add(builder);
     }
 }

@@ -1,6 +1,5 @@
 ﻿using IS.Reading.Navigation;
 using IS.Reading.Parsing.NodeParsers;
-using System.Xml;
 
 namespace IS.Reading.Parsing;
 
@@ -20,12 +19,11 @@ public class RootBlockParser : IRootBlockParser
         IPersonNodeParser personNodeParser,
         INarrationNodeParser narrationNodeParser,
         ITutorialNodeParser tutorialNodeParser,
-        ISetNodeParser setNodeParser,
-        IUnsetNodeParser unsetNodeParser
+        ISetNodeParser setNodeParser
     )
     {
         this.elementParser = elementParser;
-        Settings = ElementParserSettings.Normal(
+        Settings = ElementParserSettings.NoBlock(
             musicNodeParser,
             backgroundNodeParser,
             blockNodeParser,
@@ -34,8 +32,7 @@ public class RootBlockParser : IRootBlockParser
             personNodeParser,
             narrationNodeParser,
             tutorialNodeParser,
-            setNodeParser,
-            unsetNodeParser
+            setNodeParser
         );
     }
 

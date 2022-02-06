@@ -26,7 +26,7 @@ public class ParsingContext : IParsingContext
 
     private readonly List<INode> dismissNodes = new();
 
-    public void LogError(XmlReader xmlReader, string message)
+    public void LogError(IDocumentReader reader, string message)
     {
         if (errorCount >= MaxErrorCount)
             return;
@@ -36,12 +36,9 @@ public class ParsingContext : IParsingContext
         if (stringBuilder.Length > 0)
             stringBuilder.AppendLine();
 
-        if (xmlReader is IXmlLineInfo info)
-        {
-            stringBuilder.Append($"Linha ");
-            stringBuilder.Append(info.LineNumber);
-            stringBuilder.Append(": ");
-        }
+        stringBuilder.Append($"Linha ");
+        stringBuilder.Append(reader.CurrentLineIndex);
+        stringBuilder.Append(": ");
 
         stringBuilder.Append(message);
 
