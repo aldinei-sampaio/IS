@@ -2,5 +2,5 @@
 
 public interface IRandomizer
 {
-    List<T> Shuffle<T>(IEnumerable<T> list);
+    IEnumerable<T> Shuffle<T>(IEnumerable<T> list);
 }

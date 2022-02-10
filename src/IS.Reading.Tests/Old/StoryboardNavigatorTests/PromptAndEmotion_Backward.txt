@@ -1,9 +1,0 @@
-﻿-- previous --
-OnProtagonistArrive()
-OnProtagonistMoodChange(angry)
-OnPromptOpen()
-OnProtagonistThoughtOpen()
-OnProtagonistThoughtChange(...)
--- previous --
-OnProtagonistThoughtClose()
-OnProtagonistLeave()

@@ -13,7 +13,7 @@ public class Randomizer : IRandomizer
     private static Random GetRandom()
         => local ??= new Random(unchecked(Environment.TickCount * 31 + Environment.CurrentManagedThreadId));
 
-    public List<T> Shuffle<T>(IEnumerable<T> source)
+    public IEnumerable<T> Shuffle<T>(IEnumerable<T> source)
     {
         var random = GetRandom();
         return source.OrderBy(i => random.NextDouble()).ToList();

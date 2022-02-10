@@ -35,7 +35,7 @@ public class ChoiceBuilder : IChoiceBuilder
 
         var options = prototype.Options;
 
-        if (!options.Any())
+        if (!options.Any(i => i.IsEnabled))
             return null;
 
         if (prototype.RandomOrder)
