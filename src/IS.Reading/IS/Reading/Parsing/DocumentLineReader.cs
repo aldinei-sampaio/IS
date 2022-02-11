@@ -1,5 +1,12 @@
 ﻿namespace IS.Reading.Parsing;
 
+public class LineTooLongException : Exception
+{
+    public LineTooLongException(int lineIndex) : base($"Linha {lineIndex}: Linha muito longa.")
+    {
+    }
+}
+
 public class DocumentLineReader : IDisposable
 {
     private readonly TextReader textReader;
@@ -35,16 +42,20 @@ public class DocumentLineReader : IDisposable
                 bytesRead = charsToMove + read;
                 mem = buffer.AsMemory(0, read > 0 ? read : charsToMove);
             }
-            else if (bufferIndex == -1)
+            else if (bufferIndex == bytesRead)
             {
-                mem = buffer.AsMemory();
-                bytesRead = await textReader.ReadBlockAsync(mem);
+                if (bytesRead > 0 && bytesRead < bufferLength)
+                    return null;
+
+                bytesRead = await textReader.ReadBlockAsync(buffer, 0, bufferLength);
                 if (bytesRead == 0)
                     return null;
+
+                mem = buffer.AsMemory(0, bytesRead);
             }
             else
             {
-                mem = buffer.AsMemory(bufferIndex, bytesRead - bufferIndex - 1);
+                mem = buffer.AsMemory(bufferIndex, bytesRead - bufferIndex);
             }
 
             var lineStart = GetLineStart(mem.Span);
@@ -60,7 +71,7 @@ public class DocumentLineReader : IDisposable
             }
             else
             {
-                bufferIndex = -1;
+                bufferIndex = bytesRead;
             }
         }
     }
@@ -74,10 +85,10 @@ public class DocumentLineReader : IDisposable
 
         if (n == -1)
         {
-            if (mem.Length >= bufferLength)
-                throw new Exception("Linha muito longa.");
+            if (mem.Length >= halfLength)
+                throw new LineTooLongException(CurrentLineIndex + 1);
 
-            bufferIndex = -1;
+            bufferIndex = bytesRead;
             return mem.Trim();
         }
 
