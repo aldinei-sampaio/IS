@@ -5,11 +5,11 @@ namespace IS.Reading.Choices;
 
 public class ChoiceOptionTipBuilder : IBuilder<IChoiceOptionPrototype>
 {
-    private readonly ITextSource textSource;
+    public ITextSource TextSource { get; }
 
     public ChoiceOptionTipBuilder(ITextSource textSource)
-        => this.textSource = textSource;
+        => this.TextSource = textSource;
 
     public void Build(IChoiceOptionPrototype prototype, INavigationContext context)
-        => prototype.Tip = textSource.ToString(context.Variables);
+        => prototype.Tip = TextSource.Build(context.Variables);
 }

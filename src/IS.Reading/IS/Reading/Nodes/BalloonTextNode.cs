@@ -16,7 +16,7 @@ public class BalloonTextNode : IPauseNode
 
     public async Task<object?> EnterAsync(INavigationContext context)
     {
-        var text = TextSource.ToString(context.Variables);
+        var text = TextSource.Build(context.Variables);
         var choice = ChoiceBuilder?.Build(context);
         var @event = new BalloonTextEvent(text, BalloonType, context.State.IsProtagonist(), choice);
         await context.Events.InvokeAsync<IBalloonTextEvent>(@event);

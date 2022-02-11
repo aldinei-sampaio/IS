@@ -2,5 +2,5 @@
 
 public interface ITextSource
 {
-    string ToString(IVariableDictionary variables);
+    string Build(IVariableDictionary variables);
 }

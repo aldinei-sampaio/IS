@@ -12,7 +12,7 @@ public struct TextSource : ITextSource
     public TextSource(string text)
         => Text = text;
 
-    public string ToString(IVariableDictionary variables)
+    public string Build(IVariableDictionary variables)
     {
         if (Text is not null)
             return Text;
