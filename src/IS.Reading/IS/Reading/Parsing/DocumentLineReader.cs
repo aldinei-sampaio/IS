@@ -3,8 +3,9 @@
 public class LineTooLongException : Exception
 {
     public LineTooLongException(int lineIndex) : base($"Linha {lineIndex}: Linha muito longa.")
-    {
-    }
+        => LineIndex = lineIndex;
+
+    public int LineIndex { get; }
 }
 
 public class DocumentLineReader : IDisposable
@@ -23,8 +24,8 @@ public class DocumentLineReader : IDisposable
 
     public void Dispose()
         => textReader.Dispose();
-    
-    public int CurrentLineIndex { get; private set; }
+
+    public int CurrentLineIndex { get; private set; } = 1;
 
     private async Task<Memory<char>> RefillBufferAsync()
     {
@@ -66,25 +67,19 @@ public class DocumentLineReader : IDisposable
                 mem = buffer.AsMemory(bufferIndex, bytesRead - bufferIndex);
             }
 
-            var lineStart = GetLineStart(mem.Span);
+            var isFinalBuffer = bytesRead < bufferLength;
+            var lineStart = GetLineStart(mem.Span, isFinalBuffer);
             if (lineStart >= 0)
             {
                 bufferIndex += lineStart;
-
-                Memory<char> line;
-
-                if (bufferIndex > halfLength)
-                {
+                mem = mem[lineStart..];
+                if (mem.Length <= halfLength)
                     mem = await RefillBufferAsync();
-                    line = ReadLine(mem);
-                }
-                else
-                {
-                    line = ReadLine(mem[lineStart..]);
-                }
-
-                CurrentLineIndex++;
-                return line;
+                return ReadLine(mem);
+            }
+            else if (lineStart == -2)
+            {
+                bufferIndex += mem.Length - 1;
             }
             else
             {
@@ -101,17 +96,17 @@ public class DocumentLineReader : IDisposable
         if (n == -1)
         {
             if (mem.Length >= halfLength)
-                throw new LineTooLongException(CurrentLineIndex + 1);
+                throw new LineTooLongException(CurrentLineIndex);
 
             bufferIndex = bytesRead;
             return mem.TrimEnd();
         }
 
-        bufferIndex += n + 1;
+        bufferIndex += n;
         return mem[0..n].TrimEnd();
     }
 
-    private int GetLineStart(ReadOnlySpan<char> span)
+    private int GetLineStart(ReadOnlySpan<char> span, bool isFinalBuffer)
     {
         for(var n = 0; n < span.Length; n++)
         {
@@ -123,8 +118,15 @@ public class DocumentLineReader : IDisposable
                     case '\t':
                         break;
                     case '\r':
-                        if (n < span.Length - 1 && span[n + 1] == '\n')
+                        if (n == span.Length - 1)
+                        {
+                            if (!isFinalBuffer)
+                                return -2;
+                        }
+                        else if (span[n + 1] == '\n')
+                        {
                             n++;
+                        }
                         CurrentLineIndex++;
                         break;
                     case '\n':
