@@ -26,6 +26,21 @@ public class DocumentLineReader : IDisposable
     
     public int CurrentLineIndex { get; private set; }
 
+    private async Task<Memory<char>> RefillBufferAsync()
+    {
+        var charsToMove = bytesRead - bufferIndex;
+        var charsToRead = bufferLength - charsToMove;
+
+        for (var n = 0; n < charsToMove; n++)
+            buffer[n] = buffer[bufferIndex + n];
+
+        bufferIndex = 0;
+        var read = await textReader.ReadBlockAsync(buffer, charsToMove, charsToRead);
+        bytesRead = charsToMove + read;
+
+        return buffer.AsMemory(0, bytesRead);
+    }
+
     public async Task<Memory<char>?> ReadLineAsync()
     {
         for (; ; )
@@ -33,14 +48,7 @@ public class DocumentLineReader : IDisposable
             Memory<char> mem;
             if (bufferIndex > halfLength)
             {
-                var charsToMove = bytesRead - bufferIndex - 1;
-
-                for (var n = 0; n < charsToMove; n++)
-                    buffer[n] = buffer[n + halfLength];
-                bufferIndex = 0;
-                var read = await textReader.ReadBlockAsync(buffer, halfLength, halfLength);
-                bytesRead = charsToMove + read;
-                mem = buffer.AsMemory(0, read > 0 ? read : charsToMove);
+                mem = await RefillBufferAsync();
             }
             else if (bufferIndex == bytesRead)
             {
@@ -62,12 +70,21 @@ public class DocumentLineReader : IDisposable
             if (lineStart >= 0)
             {
                 bufferIndex += lineStart;
-                var line = ReadLine(mem[lineStart..]);
-                if (line.Length > 0)
+
+                Memory<char> line;
+
+                if (bufferIndex > halfLength)
                 {
-                    CurrentLineIndex++;
-                    return line;
+                    mem = await RefillBufferAsync();
+                    line = ReadLine(mem);
                 }
+                else
+                {
+                    line = ReadLine(mem[lineStart..]);
+                }
+
+                CurrentLineIndex++;
+                return line;
             }
             else
             {
@@ -76,11 +93,9 @@ public class DocumentLineReader : IDisposable
         }
     }
 
-
     private Memory<char> ReadLine(Memory<char> mem)
     {
         var span = mem.Span;
-
         var n = span.IndexOfAny('\r', '\n');
 
         if (n == -1)
@@ -89,31 +104,35 @@ public class DocumentLineReader : IDisposable
                 throw new LineTooLongException(CurrentLineIndex + 1);
 
             bufferIndex = bytesRead;
-            return mem.Trim();
+            return mem.TrimEnd();
         }
 
         bufferIndex += n + 1;
-        return mem[0..n].Trim();
+        return mem[0..n].TrimEnd();
     }
 
     private int GetLineStart(ReadOnlySpan<char> span)
     {
         for(var n = 0; n < span.Length; n++)
         {
-            switch (span[n])
+            var c = span[n];
+            if (char.GetUnicodeCategory(c) != System.Globalization.UnicodeCategory.SpaceSeparator)
             {
-                case ' ':
-                    break;
-                case '\r':
-                    if (n < span.Length - 1 && span[n + 1] == '\n')
-                        n++;
-                    CurrentLineIndex++;
-                    break;
-                case '\n':
-                    CurrentLineIndex++;
-                    break;
-                default:
-                    return n;
+                switch (c)
+                {
+                    case '\t':
+                        break;
+                    case '\r':
+                        if (n < span.Length - 1 && span[n + 1] == '\n')
+                            n++;
+                        CurrentLineIndex++;
+                        break;
+                    case '\n':
+                        CurrentLineIndex++;
+                        break;
+                    default:
+                        return n;
+                }
             }
         }
         return -1;

@@ -1,4 +1,6 @@
-﻿namespace IS.Reading.Parsing;
+﻿using System.Text;
+
+namespace IS.Reading.Parsing;
 
 public class DocumentLineReaderTests
 {
@@ -69,5 +71,75 @@ public class DocumentLineReaderTests
         await tester.NextLineShouldBe("Linha 2");
         await tester.NextLineShouldBe("Linha 3");
         await tester.ShouldBeEnd();
+    }    
+
+    [Fact]
+    public async Task BigText()
+    {
+        var builder = new StringBuilder();
+        for (var n = 0; n < 30; n++)
+            builder.Append("1234567890");
+
+        var baseLine = builder.ToString();
+
+        for (var n = 0; n < 9; n++)
+        {
+            builder.AppendLine();
+            builder.Append(baseLine);
+        }
+
+        var text = builder.ToString();
+
+        var tester = new Tester(text);
+
+        await tester.NextLineShouldBe(baseLine);
+        await tester.NextLineShouldBe(baseLine);
+        await tester.NextLineShouldBe(baseLine);
+        await tester.NextLineShouldBe(baseLine);
+        await tester.NextLineShouldBe(baseLine);
+        await tester.NextLineShouldBe(baseLine);
+        await tester.NextLineShouldBe(baseLine);
+        await tester.NextLineShouldBe(baseLine);
+        await tester.NextLineShouldBe(baseLine);
+        await tester.NextLineShouldBe(baseLine);
+
+        await tester.ShouldBeEnd();
     }
+
+    [Fact]
+    public async Task RefillForLineStart()
+    {
+        throw new NotImplementedException();
+    }
+
+    [Fact]
+    public async Task IgnoreEmptyLine()
+    {
+        throw new NotImplementedException();
+    }
+
+    [Fact]
+    public async Task IgnoreEmptyLine()
+    {
+        throw new NotImplementedException();
+    }
+
+    [Fact]
+    public async Task LineTooLong()
+    {
+        throw new NotImplementedException();
+    }
+
+    [Fact]
+    public async Task IgnoreIndentation()
+    {
+        throw new NotImplementedException();
+    }
+
+    [Fact]
+    public async Task IgnoreEmptyLine()
+    {
+        throw new NotImplementedException();
+    }
+
 }
