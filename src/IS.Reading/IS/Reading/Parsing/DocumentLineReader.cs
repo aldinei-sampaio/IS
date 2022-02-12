@@ -1,4 +1,6 @@
-﻿namespace IS.Reading.Parsing;
+﻿using System.Buffers;
+
+namespace IS.Reading.Parsing;
 
 public class LineTooLongException : Exception
 {
@@ -8,14 +10,14 @@ public class LineTooLongException : Exception
     public int LineIndex { get; }
 }
 
-public class DocumentLineReader : IDisposable
+public sealed class DocumentLineReader : IDisposable
 {
     private readonly TextReader textReader;
 
     private const int bufferLength = 1024;
     private const int halfLength = bufferLength / 2;
 
-    private char[] buffer = new char[bufferLength];
+    private readonly char[] buffer = ArrayPool<char>.Shared.Rent(bufferLength);
     private int bytesRead = 0;
     private int bufferIndex = 0;
 
@@ -23,7 +25,10 @@ public class DocumentLineReader : IDisposable
         => this.textReader = textReader;
 
     public void Dispose()
-        => textReader.Dispose();
+    {
+        textReader.Dispose();
+        ArrayPool<char>.Shared.Return(buffer);
+    }
 
     public int CurrentLineIndex { get; private set; } = 1;
 

@@ -22,7 +22,7 @@ public class ChoiceIfNodeParser : IChoiceIfNodeParser
         this.elementParser = elementParser;
         this.conditionParser = conditionParser;
 
-        IfBlockSettings = ElementParserSettings.IfBlock(
+        IfBlockSettings = new ElementParserSettings.IfBlock(
             defaultNodeParser,
             randomOrderNodeParser,
             timeLimitNodeParser,
@@ -30,7 +30,7 @@ public class ChoiceIfNodeParser : IChoiceIfNodeParser
             this
         );
 
-        ElseBlockSettings = ElementParserSettings.Block(
+        ElseBlockSettings = new ElementParserSettings.Block(
             defaultNodeParser,
             randomOrderNodeParser,
             timeLimitNodeParser,

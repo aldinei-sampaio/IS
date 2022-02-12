@@ -23,7 +23,7 @@ public class RootBlockParser : IRootBlockParser
     )
     {
         this.elementParser = elementParser;
-        Settings = ElementParserSettings.NoBlock(
+        Settings = new ElementParserSettings.NoBlock(
             musicNodeParser,
             backgroundNodeParser,
             blockNodeParser,

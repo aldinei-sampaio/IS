@@ -23,7 +23,7 @@ public class PersonNodeParser : IPersonNodeParser
     {
         this.elementParser = elementParser;
         this.nameTextParser = nameTextParser;
-        Settings = ElementParserSettings.Aggregated(
+        Settings = new ElementParserSettings.Aggregated(
             speechNodeParser, 
             thoughtNodeParser,
             moodNodeParser,

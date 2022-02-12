@@ -22,7 +22,7 @@ public class ChoiceOptionNodeParser : IChoiceOptionNodeParser
     {
         this.elementParser = elementParser;
         this.textSourceParser = textSourceParser;
-        Settings = ElementParserSettings.Block(
+        Settings = new ElementParserSettings.Block(
             choiceOptionTextNodeParser,
             choiceOptionDisabledNodeParser,
             choiceOptionIconNodeParser,

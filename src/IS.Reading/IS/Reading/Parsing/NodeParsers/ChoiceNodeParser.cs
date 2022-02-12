@@ -22,7 +22,7 @@ public class ChoiceNodeParser : IChoiceNodeParser
     {
         this.elementParser = elementParser;
         this.nameTextParser = nameTextParser;
-        Settings = ElementParserSettings.Block(
+        Settings = new ElementParserSettings.Block(
             timeLimitNodeParser,
             defaultNodeParser,
             randomOrderNodeParser,

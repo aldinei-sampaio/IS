@@ -1,8 +1,7 @@
 ﻿using IS.Reading.Navigation;
 
-namespace IS.Reading.Nodes
+namespace IS.Reading.Nodes;
+
+public class PauseNode : IPauseNode
 {
-    public class PauseNode : IPauseNode
-    {
-    }
 }

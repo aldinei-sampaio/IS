@@ -15,7 +15,7 @@ public abstract class BalloonNodeParserBase : IAggregateNodeParser
     )
     {
         this.elementParser = elementParser;
-        Settings = ElementParserSettings.Aggregated(parsers);
+        Settings = new ElementParserSettings.Aggregated(parsers);
     }
 
     public bool IsArgumentRequired => false;

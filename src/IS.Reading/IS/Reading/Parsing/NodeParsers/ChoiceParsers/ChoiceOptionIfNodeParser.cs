@@ -22,7 +22,7 @@ public class ChoiceOptionIfNodeParser : IChoiceOptionIfNodeParser
         this.elementParser = elementParser;
         this.conditionParser = conditionParser;
 
-        IfBlockSettings = ElementParserSettings.IfBlock(
+        IfBlockSettings = new ElementParserSettings.IfBlock(
             choiceOptionTextNodeParser,
             choiceOptionDisabledNodeParser,
             choiceOptionIconNodeParser,
@@ -30,7 +30,7 @@ public class ChoiceOptionIfNodeParser : IChoiceOptionIfNodeParser
             this
         );
 
-        ElseBlockSettings = ElementParserSettings.Block(
+        ElseBlockSettings = new ElementParserSettings.Block(
             choiceOptionTextNodeParser,
             choiceOptionDisabledNodeParser,
             choiceOptionIconNodeParser,

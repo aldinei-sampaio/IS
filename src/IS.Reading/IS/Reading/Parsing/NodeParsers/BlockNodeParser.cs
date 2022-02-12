@@ -42,8 +42,8 @@ public class BlockNodeParser : IBlockNodeParser
             this
         };
 
-        IfBlockSettings = ElementParserSettings.IfBlock(nodeParsers);
-        BlockSettings = ElementParserSettings.Block(nodeParsers);
+        IfBlockSettings = new ElementParserSettings.IfBlock(nodeParsers);
+        BlockSettings = new ElementParserSettings.Block(nodeParsers);
     }
 
     public bool IsArgumentRequired => true;

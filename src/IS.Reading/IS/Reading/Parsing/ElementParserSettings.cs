@@ -1,57 +1,67 @@
 ﻿namespace IS.Reading.Parsing;
 
-public class ElementParserSettings : IElementParserSettings
+public abstract class ElementParserSettings
 {
-    private ElementParserSettings()
+    protected ElementParserSettings(INodeParser[] parsers)
     {
+        foreach (var parser in parsers)
+            ChildParsers.Add(parser);
     }
 
     public IParserDictionary<INodeParser> ChildParsers { get; } = new ParserDictionary<INodeParser>();
 
-    public bool ExitOnUnknownNode { get; private set; }
-
-    public bool ExitOnElse { get; private set; }
-
-    public bool IsBlock { get; private set; }
-
-    public bool NoRepeatNode { get; private set; }
-
-    public static ElementParserSettings IfBlock(params INodeParser[] parsers)
+    public class Block : ElementParserSettings, IElementParserSettings
     {
-        var settings = Block(parsers);
-        settings.ExitOnElse = true;
-        settings.IsBlock = true;
-        return settings;
+        public Block(params INodeParser[] parsers) : base(parsers)
+        {
+        }
+        public bool ExitOnUnknownNode => false;
+        public bool ExitOnElse => false;
+        public bool IsBlock => true;
+        public bool NoRepeatNode => false;
     }
 
-    public static ElementParserSettings Block(params INodeParser[] parsers)
+    public class NoBlock : ElementParserSettings, IElementParserSettings
     {
-        var settings = NoBlock(parsers);
-        settings.IsBlock = true;
-        return settings;
+        public NoBlock(params INodeParser[] parsers) : base(parsers)
+        {
+        }
+        public bool ExitOnUnknownNode => false;
+        public bool ExitOnElse => false;
+        public bool IsBlock => false;
+        public bool NoRepeatNode => false;
     }
 
-    public static ElementParserSettings NoBlock(params INodeParser[] parsers)
-    { 
-        var settings = new ElementParserSettings();
-
-        foreach (var parser in parsers)
-            settings.ChildParsers.Add(parser);
-
-        return settings;
+    public class IfBlock : ElementParserSettings, IElementParserSettings
+    {
+        public IfBlock(params INodeParser[] parsers) : base(parsers)
+        {
+        }
+        public bool ExitOnUnknownNode => false;
+        public bool ExitOnElse => true;
+        public bool IsBlock => true;
+        public bool NoRepeatNode => false;
     }
 
-    public static ElementParserSettings Aggregated(params INodeParser[] parsers)
+    public class Aggregated : ElementParserSettings, IElementParserSettings
     {
-        var settings = NoBlock(parsers);
-        settings.ExitOnUnknownNode = true;
-        return settings;
+        public Aggregated(params INodeParser[] parsers) : base(parsers)
+        {
+        }
+        public bool ExitOnUnknownNode => true;
+        public bool ExitOnElse => false;
+        public bool IsBlock => false;
+        public bool NoRepeatNode => false;
     }
 
-    public static ElementParserSettings AggregatedNonRepeat(params INodeParser[] parsers)
+    public class AggregatedNonRepeat : ElementParserSettings, IElementParserSettings
     {
-        var settings = Aggregated(parsers);
-        settings.NoRepeatNode = true;
-        return settings;
+        public AggregatedNonRepeat(params INodeParser[] parsers) : base(parsers)
+        {
+        }
+        public bool ExitOnUnknownNode => true;
+        public bool ExitOnElse => false;
+        public bool IsBlock => false;
+        public bool NoRepeatNode => true;
     }
 }

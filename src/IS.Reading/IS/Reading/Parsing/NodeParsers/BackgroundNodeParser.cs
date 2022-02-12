@@ -25,7 +25,7 @@ public class BackgroundNodeParser : IBackgroundNodeParser
     {
         this.elementParser = elementParser;
         this.backgroundImageTextParser = backgroundImageTextParser;
-        Settings = ElementParserSettings.Aggregated(
+        Settings = new ElementParserSettings.Aggregated(
             backgroundColorNodeParser,
             backgroundLeftNodeParser,
             backgroundRightNodeParser,

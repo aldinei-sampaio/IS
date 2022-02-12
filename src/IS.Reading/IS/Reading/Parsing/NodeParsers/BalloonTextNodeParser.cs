@@ -14,7 +14,7 @@ public class BalloonTextNodeParser : IBalloonTextNodeParser
     {
         this.elementParser = elementParser;
         this.textSourceParser = textSourceParser;
-        Settings = ElementParserSettings.AggregatedNonRepeat(choiceNodeParser);
+        Settings = new ElementParserSettings.AggregatedNonRepeat(choiceNodeParser);
     }
 
     public bool IsArgumentRequired => true;
