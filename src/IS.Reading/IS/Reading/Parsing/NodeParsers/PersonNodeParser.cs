@@ -7,13 +7,13 @@ namespace IS.Reading.Parsing.NodeParsers;
 public class PersonNodeParser : IPersonNodeParser
 {
     private readonly IElementParser elementParser;
-    private readonly INameTextParser nameTextParser;
+    private readonly INameArgumentParser nameTextParser;
 
     public IElementParserSettings Settings { get; }
 
     public PersonNodeParser(
         IElementParser elementParser, 
-        INameTextParser nameTextParser,
+        INameArgumentParser nameTextParser,
         ISpeechNodeParser speechNodeParser,
         IThoughtNodeParser thoughtNodeParser,
         IMoodNodeParser moodNodeParser,

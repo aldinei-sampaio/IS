@@ -2,7 +2,7 @@
 
 namespace IS.Reading.Parsing.ArgumentParsers;
 
-public class NameTextParser : INameTextParser
+public class NameArgumentParser : INameArgumentParser
 {
     public Result<string> Parse(string value)
     {

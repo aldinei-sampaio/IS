@@ -9,13 +9,13 @@ namespace IS.Reading.Parsing.NodeParsers;
 public class BackgroundNodeParser : IBackgroundNodeParser
 {
     private readonly IElementParser elementParser;
-    private readonly IBackgroundImageTextParser backgroundImageTextParser;
+    private readonly IImageArgumentParser backgroundImageTextParser;
 
     public IElementParserSettings Settings { get; }
 
     public BackgroundNodeParser(
         IElementParser elementParser,
-        IBackgroundImageTextParser backgroundImageTextParser,
+        IImageArgumentParser backgroundImageTextParser,
         IBackgroundColorNodeParser backgroundColorNodeParser,
         IBackgroundLeftNodeParser backgroundLeftNodeParser,
         IBackgroundRightNodeParser backgroundRightNodeParser,

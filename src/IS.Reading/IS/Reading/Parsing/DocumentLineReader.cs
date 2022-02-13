@@ -10,7 +10,7 @@ public class LineTooLongException : Exception
     public int LineIndex { get; }
 }
 
-public sealed class DocumentLineReader : IDisposable
+public sealed class DocumentLineReader : IDocumentLineReader
 {
     private readonly TextReader textReader;
 
@@ -80,7 +80,10 @@ public sealed class DocumentLineReader : IDisposable
                 mem = mem[lineStart..];
                 if (mem.Length <= halfLength)
                     mem = await RefillBufferAsync();
-                return ReadLine(mem);
+                var line = ReadLine(mem);
+
+                if (!IsComment(line))
+                    return line;
             }
             else if (lineStart == -2)
             {
@@ -92,6 +95,9 @@ public sealed class DocumentLineReader : IDisposable
             }
         }
     }
+
+    private static bool IsComment(Memory<char> line)
+        => line.Span[0] == '\'';
 
     private Memory<char> ReadLine(Memory<char> mem)
     {
@@ -113,7 +119,7 @@ public sealed class DocumentLineReader : IDisposable
 
     private int GetLineStart(ReadOnlySpan<char> span, bool isFinalBuffer)
     {
-        for(var n = 0; n < span.Length; n++)
+        for (var n = 0; n < span.Length; n++)
         {
             var c = span[n];
             if (char.GetUnicodeCategory(c) != System.Globalization.UnicodeCategory.SpaceSeparator)

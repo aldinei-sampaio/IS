@@ -279,4 +279,16 @@ public class DocumentLineReaderTests
         await tester.NextLineShouldBe(2, "abc");
         await tester.ShouldBeEnd();
     }
+
+    [Theory]
+    [InlineData("\na\n\nb\nc")]
+    [InlineData("' Storybasic 1.0\na\n'---------\nb\nc\n  ' comentário1\n  ' comentário 2")]
+    public async Task IgnoreCommentedLines(string text)
+    {
+        using var tester = new Tester(text);
+        await tester.NextLineShouldBe(2, "a");
+        await tester.NextLineShouldBe(4, "b");
+        await tester.NextLineShouldBe(5, "c");
+        await tester.ShouldBeEnd();
+    }
 }

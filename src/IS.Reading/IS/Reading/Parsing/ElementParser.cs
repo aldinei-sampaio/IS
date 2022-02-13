@@ -16,10 +16,10 @@ public class ElementParser : IElementParser
 
         do
         {
-            if (settings.ExitOnElse && string.Compare(reader.ElementName, "else", true) == 0)
+            if (settings.ExitOnElse && string.Compare(reader.Command, "else", true) == 0)
                 return;
 
-            if (settings.ExitOnEnd && string.Compare(reader.ElementName, "end", true) == 0)
+            if (settings.ExitOnEnd && string.Compare(reader.Command, "end", true) == 0)
                 return;
 
             var parser = GetParser(reader, parsingContext, settings, processed);
@@ -41,19 +41,19 @@ public class ElementParser : IElementParser
         HashSet<INodeParser>? processed
     )
     {
-        var parser = settings.ChildParsers[reader.ElementName];
+        var parser = settings.ChildParsers[reader.Command];
         
         if (parser is null || (processed is not null && !processed.Add(parser)))
         {
             if (!settings.ExitOnUnknownNode)
-                parsingContext.LogError(reader, $"Comando não reconhecido: '{reader.ElementName}'.");
+                parsingContext.LogError(reader, $"Comando não reconhecido: '{reader.Command}'.");
 
             return null;
         }
 
         if (parser.IsArgumentRequired && string.IsNullOrEmpty(reader.Argument))
         {
-            parsingContext.LogError(reader, $"O comando '{reader.ElementName}' requer um argumento.");
+            parsingContext.LogError(reader, $"O comando '{reader.Command}' requer um argumento.");
             return null;
         }
 

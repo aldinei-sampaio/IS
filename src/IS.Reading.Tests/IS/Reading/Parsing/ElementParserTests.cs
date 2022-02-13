@@ -38,7 +38,7 @@ public class ElementParserTests
         var errorMessage = $"Comando não reconhecido: '{command}'.";
 
         A.CallTo(() => reader.ReadAsync()).Returns(true);
-        A.CallTo(() => reader.ElementName).Returns(command);
+        A.CallTo(() => reader.Command).Returns(command);
         A.CallTo(() => childParsers[command]).Returns(null);
         A.CallTo(() => context.LogError(reader, errorMessage)).DoesNothing();
 
@@ -58,7 +58,7 @@ public class ElementParserTests
         A.CallTo(() => settings.ExitOnElse).Returns(true);
 
         A.CallTo(() => reader.ReadAsync()).Returns(true);
-        A.CallTo(() => reader.ElementName).Returns(command);
+        A.CallTo(() => reader.Command).Returns(command);
 
         await sut.ParseAsync(reader, context, parentContext, settings);
 
@@ -74,7 +74,7 @@ public class ElementParserTests
         A.CallTo(() => settings.ExitOnEnd).Returns(true);
 
         A.CallTo(() => reader.ReadAsync()).Returns(true);
-        A.CallTo(() => reader.ElementName).Returns(command);
+        A.CallTo(() => reader.Command).Returns(command);
 
         await sut.ParseAsync(reader, context, parentContext, settings);
 
@@ -89,7 +89,7 @@ public class ElementParserTests
         var command = "alpha";
 
         A.CallTo(() => reader.ReadAsync()).Returns(true);
-        A.CallTo(() => reader.ElementName).Returns(command);
+        A.CallTo(() => reader.Command).Returns(command);
         A.CallTo(() => childParsers[command]).Returns(null);
 
         await sut.ParseAsync(reader, context, parentContext, settings);
@@ -111,7 +111,7 @@ public class ElementParserTests
         A.CallTo(() => childParsers[command]).Returns(parser);
 
         A.CallTo(() => reader.ReadAsync()).Returns(true);
-        A.CallTo(() => reader.ElementName).Returns(command);
+        A.CallTo(() => reader.Command).Returns(command);
         A.CallTo(() => reader.Argument).Returns(string.Empty);
 
         await sut.ParseAsync(reader, context, parentContext, settings);
@@ -135,7 +135,7 @@ public class ElementParserTests
 
         A.CallTo(() => reader.ReadAsync()).ReturnsNextFromSequence(true, true);
         A.CallTo(() => reader.AtEnd).ReturnsNextFromSequence(true);
-        A.CallTo(() => reader.ElementName).Returns(command);
+        A.CallTo(() => reader.Command).Returns(command);
 
         await sut.ParseAsync(reader, context, parentContext, settings);
 
@@ -155,7 +155,7 @@ public class ElementParserTests
 
         A.CallTo(() => reader.ReadAsync()).ReturnsNextFromSequence(true);
         A.CallTo(() => reader.AtEnd).ReturnsNextFromSequence(true);
-        A.CallTo(() => reader.ElementName).Returns(command);
+        A.CallTo(() => reader.Command).Returns(command);
 
         await sut.ParseAsync(reader, context, parentContext, settings);
 
@@ -177,7 +177,7 @@ public class ElementParserTests
             .Invokes(i => SwitchCurrentCommand())
             .ReturnsNextFromSequence(true, true, false);
         A.CallTo(() => reader.AtEnd).ReturnsNextFromSequence(false, true);
-        A.CallTo(() => reader.ElementName).ReturnsLazily(i => currentCommand);
+        A.CallTo(() => reader.Command).ReturnsLazily(i => currentCommand);
 
         await sut.ParseAsync(reader, context, parentContext, settings);
 

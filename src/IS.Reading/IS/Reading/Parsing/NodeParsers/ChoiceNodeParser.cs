@@ -7,13 +7,13 @@ namespace IS.Reading.Parsing.NodeParsers;
 public class ChoiceNodeParser : IChoiceNodeParser
 {
     private readonly IElementParser elementParser;
-    private readonly INameTextParser nameTextParser;
+    private readonly INameArgumentParser nameTextParser;
 
     public IElementParserSettings Settings { get; }
 
     public ChoiceNodeParser(
         IElementParser elementParser,
-        INameTextParser nameTextParser,
+        INameArgumentParser nameTextParser,
         IChoiceTimeLimitNodeParser timeLimitNodeParser,
         IChoiceDefaultNodeParser defaultNodeParser,
         IChoiceRandomOrderNodeParser randomOrderNodeParser,

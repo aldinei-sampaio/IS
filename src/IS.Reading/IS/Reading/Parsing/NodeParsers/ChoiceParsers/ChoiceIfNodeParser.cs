@@ -63,7 +63,7 @@ public class ChoiceIfNodeParser : IChoiceIfNodeParser
         if (!parsingContext.IsSuccess)
             return;
 
-        if (!reader.AtEnd && string.Compare(reader.ElementName, "else", true) == 0)
+        if (!reader.AtEnd && string.Compare(reader.Command, "else", true) == 0)
         {
             await elementParser.ParseAsync(reader, parsingContext, elseContext, ElseBlockSettings);
             if (!parsingContext.IsSuccess)

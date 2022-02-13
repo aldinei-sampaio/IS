@@ -1,11 +1,10 @@
 ﻿using IS.Reading.Navigation;
-using System.Xml;
 
 namespace IS.Reading.Parsing.NodeParsers;
 
 public class RootBlockParserTests
 {
-    private readonly XmlReader reader;
+    private readonly IDocumentReader reader;
     private readonly IParsingContext context;
     private readonly IElementParser elementParser;
     private readonly IMusicNodeParser musicNodeParser;
@@ -17,12 +16,11 @@ public class RootBlockParserTests
     private readonly INarrationNodeParser narrationNodeParser;
     private readonly ITutorialNodeParser tutorialNodeParser;
     private readonly ISetNodeParser setNodeParser;
-    private readonly IUnsetNodeParser unsetNodeParser;
     private readonly RootBlockParser sut;
 
     public RootBlockParserTests()
     {
-        reader = A.Dummy<XmlReader>();
+        reader = A.Dummy<IDocumentReader>();
         context = A.Fake<IParsingContext>(i => i.Strict());
         elementParser = A.Fake<IElementParser>(i => i.Strict());
 
@@ -35,7 +33,6 @@ public class RootBlockParserTests
         narrationNodeParser = Helper.FakeParser<INarrationNodeParser>("narration");
         tutorialNodeParser = Helper.FakeParser<ITutorialNodeParser>("tutorial");
         setNodeParser = Helper.FakeParser<ISetNodeParser>("set");
-        unsetNodeParser = Helper.FakeParser<IUnsetNodeParser>("unset");
 
         sut = new(
             elementParser, 
@@ -47,15 +44,15 @@ public class RootBlockParserTests
             personNodeParser,
             narrationNodeParser,
             tutorialNodeParser,
-            setNodeParser,
-            unsetNodeParser
+            setNodeParser
         );
     }
 
     [Fact]
     public void Initialization()
     {
-        sut.Settings.ShouldBeNormal(
+        sut.Settings.Should().BeOfType<ElementParserSettings.NoBlock>();
+        sut.Settings.ShouldContainOnly(
             musicNodeParser,
             backgroundNodeParser,
             blockNodeParser,
@@ -64,8 +61,7 @@ public class RootBlockParserTests
             personNodeParser,
             narrationNodeParser,
             tutorialNodeParser,
-            setNodeParser,
-            unsetNodeParser
+            setNodeParser
         );
     }
 

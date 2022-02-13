@@ -11,16 +11,13 @@ public class StoryboardParser : IStoryboardParser
     private readonly IServiceProvider serviceProvider;
 
     public StoryboardParser(IServiceProvider serviceProvider)
-    {
-        this.serviceProvider = serviceProvider;
-    }
+        => this.serviceProvider = serviceProvider;
 
     public async Task<IStoryboard> ParseAsync(IDocumentReader reader)
     {
-        var context = serviceProvider.GetRequiredService<IParsingContext>();
-
         using (reader)
         {
+            var context = serviceProvider.GetRequiredService<IParsingContext>();
             var rootBlockParser = serviceProvider.GetRequiredService<IRootBlockParser>();
 
             var parsed = await rootBlockParser.ParseAsync(reader, context);

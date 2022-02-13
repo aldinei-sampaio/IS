@@ -2,7 +2,7 @@
 
 namespace IS.Reading.Parsing.ArgumentParsers;
 
-public class BackgroundImageTextParser : IBackgroundImageTextParser
+public class ImageArgumentParser : IImageArgumentParser
 {
     public Result<string> Parse(string value)
     {

@@ -2,12 +2,12 @@
 using IS.Reading.Navigation;
 using IS.Reading.State;
 using IS.Reading.Variables;
-using System.Xml;
 
 namespace IS.Reading.Parsing;
 
 public class StoryboardParserTests
 {
+    private readonly IDocumentReader reader;
     private readonly List<INode> dismissNodes;
     private readonly IParsingContext parsingContext;
     private readonly IBlockFactory blockFactory;
@@ -22,6 +22,8 @@ public class StoryboardParserTests
 
     public StoryboardParserTests()
     {
+        reader = A.Dummy<IDocumentReader>();
+
         blockFactory = new FakeBlockFactory();
         dismissNodes = new();
         parsingContext = A.Fake<IParsingContext>(i => i.Strict());
@@ -52,73 +54,57 @@ public class StoryboardParserTests
     [Fact]
     public async Task SimpleParsing()
     {
-        var reader = new StringReader("<storyboard />");
         var nodes = new List<INode>();
         A.CallTo(() => parsingContext.IsSuccess).Returns(true);
         A.CallTo(() => parsingContext.DismissNodes).Returns(Enumerable.Empty<INode>());
-        A.CallTo(() => rootBlockParser.ParseAsync(A<XmlReader>.Ignored, parsingContext)).Returns(nodes);
+        A.CallTo(() => rootBlockParser.ParseAsync(reader, parsingContext)).Returns(nodes);
 
-        var result = (Storyboard)await sut.ParseAsync(reader);
+        var result = await sut.ParseAsync(reader);
 
-        result.Should().NotBeNull();
-        result.Events.Should().BeSameAs(eventManager);
-        result.NavigationContext.RootBlock.Nodes.Should().BeSameAs(nodes);
-        result.NavigationContext.RootBlockState.Should().BeSameAs(blockState);
-        result.NavigationContext.EnteredBlocks.Should().BeEmpty();
-        result.NavigationContext.CurrentBlock.Should().BeNull();
-        result.NavigationContext.CurrentNode.Should().BeNull();
+        result.Should().BeOfType<Storyboard>()
+            .Which.ShouldSatisfy(i =>
+            {
+                i.Events.Should().BeSameAs(eventManager);
+                i.EventManager.Should().BeSameAs(eventManager);
+                i.SceneNavigator.Should().BeSameAs(sceneNavigator);
+                i.NavigationContext.ShouldSatisfy(i =>
+                {
+                    i.Variables.Should().BeSameAs(variableDictionary);
+                    i.State.Should().BeSameAs(navigationState);
+                    i.Events.Should().BeSameAs(eventManager);
+                    i.RootBlock.Nodes.Should().BeSameAs(nodes);
+                    i.EnteredBlocks.Should().BeEmpty();
+                    i.EnteredBlockStates.Should().BeEmpty();
+                    i.CurrentBlock.Should().BeNull();
+                    i.RootBlockState.Should().BeSameAs(blockState);
+                    i.CurrentNode.Should().BeNull();
+                    i.Randomizer.Should().BeSameAs(randomizer);
+                    i.RootBlockState.Should().BeSameAs(blockState);
+                });                
+            });
     }
 
     [Fact]
-    public async Task XmlReaderArgument()
+    public async Task RootBlockNodes()
     {
-        var reader = new StringReader("<storyboard><abc /></storyboard>");
         var nodes = new List<INode>();
 
         A.CallTo(() => parsingContext.IsSuccess).Returns(true);
         A.CallTo(() => parsingContext.DismissNodes).Returns(Enumerable.Empty<INode>());
-        A.CallTo(() => rootBlockParser.ParseAsync(A<XmlReader>.Ignored, parsingContext))
-            .ReturnsLazily(async i =>
-            {
-                var reader = i.GetArgument<XmlReader>(0);
-                var context = i.GetArgument<IParsingContext>(1);
+        A.CallTo(() => rootBlockParser.ParseAsync(reader, parsingContext)).Returns(nodes);
 
-                reader.ReadState.Should().Be(ReadState.Initial);
-                await reader.MoveToContentAsync();
-                (await reader.ReadAsync()).Should().BeTrue();
-                reader.LocalName.Should().Be("abc");
-                (await reader.ReadAsync()).Should().BeTrue();
-                reader.NodeType.Should().Be(XmlNodeType.EndElement);
-                (await reader.ReadAsync()).Should().BeFalse();
+        var result = await sut.ParseAsync(reader);
 
-                return nodes;
-            });
-
-        var result = (Storyboard)await sut.ParseAsync(reader);
-
-        result.Should().NotBeNull();
-        result.NavigationContext.RootBlock.Nodes.Should().BeSameAs(nodes);
+        result.Should().BeOfType<Storyboard>()
+            .Which.NavigationContext.RootBlock.Nodes.Should().BeSameAs(nodes);
     }
 
     [Fact]
     public async Task ContextArgument()
     {
-        var reader = new StringReader("<storyboard />");
-
         A.CallTo(() => parsingContext.IsSuccess).Returns(false);
         A.CallTo(() => parsingContext.ToString()).Returns("Erro proposital");
-        A.CallTo(() => parsingContext.LogError(A<XmlReader>.Ignored, "Erro proposital")).DoesNothing();
-
-        A.CallTo(() => rootBlockParser.ParseAsync(A<XmlReader>.Ignored, parsingContext))
-            .ReturnsLazily(i =>
-            {
-                var reader = i.GetArgument<XmlReader>(0);
-                var context = i.GetArgument<IParsingContext>(1);
-
-                context.LogError(reader, "Erro proposital");
-
-                return Task.FromResult(new List<INode>());
-            });
+        A.CallTo(() => rootBlockParser.ParseAsync(reader, parsingContext)).Returns(new List<INode>());
 
         var ex = await Assert.ThrowsAsync<ParsingException>(
             () => sut.ParseAsync(reader)
@@ -130,8 +116,6 @@ public class StoryboardParserTests
     [Fact]
     public async Task DismissNodesShouldBeAppendedToEndOfTheStoryboard()
     {
-        var reader = new StringReader("<storyboard><abc /></storyboard>");
-
         var normalNode = A.Dummy<INode>();
         var dismissNode = A.Dummy<INode>();
 
@@ -139,19 +123,17 @@ public class StoryboardParserTests
 
         A.CallTo(() => parsingContext.DismissNodes).Returns(new[] {dismissNode});
         A.CallTo(() => parsingContext.IsSuccess).Returns(true);
-        A.CallTo(() => rootBlockParser.ParseAsync(A<XmlReader>.Ignored, parsingContext)).Returns(nodes);
+        A.CallTo(() => rootBlockParser.ParseAsync(reader, parsingContext)).Returns(nodes);
 
-        var result = (Storyboard)await sut.ParseAsync(reader);
+        var result = await sut.ParseAsync(reader);
 
-        result.Should().NotBeNull();
-        result.NavigationContext.RootBlock.ShouldBeEquivalentTo(normalNode, dismissNode);
+        result.Should().BeOfType<Storyboard>()
+            .Which.NavigationContext.RootBlock.ShouldBeEquivalentTo(normalNode, dismissNode);
     }
 
     [Fact]
     public async Task DismissNodesShouldBeReversed()
     {
-        var reader = new StringReader("<storyboard><abc /></storyboard>");
-
         var normalNode = A.Dummy<INode>();
         var dismissNode1 = A.Dummy<INode>();
         var dismissNode2 = A.Dummy<INode>();
@@ -160,10 +142,11 @@ public class StoryboardParserTests
 
         A.CallTo(() => parsingContext.DismissNodes).Returns(new[] { dismissNode1, dismissNode2 });
         A.CallTo(() => parsingContext.IsSuccess).Returns(true);
-        A.CallTo(() => rootBlockParser.ParseAsync(A<XmlReader>.Ignored, parsingContext)).Returns(nodes);
+        A.CallTo(() => rootBlockParser.ParseAsync(reader, parsingContext)).Returns(nodes);
 
-        var result = (Storyboard)await sut.ParseAsync(reader);
+        var result = await sut.ParseAsync(reader);
 
-        result.NavigationContext.RootBlock.ShouldBeEquivalentTo(normalNode, dismissNode2, dismissNode1);
+        result.Should().BeOfType<Storyboard>()
+            .Which.NavigationContext.RootBlock.ShouldBeEquivalentTo(normalNode, dismissNode2, dismissNode1);
     }
 }

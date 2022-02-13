@@ -2,7 +2,7 @@
 
 namespace IS.Reading.Parsing.ArgumentParsers;
 
-public class ColorTextParser : IColorTextParser
+public class ColorArgumentParser : IColorArgumentParser
 {
     public Result<string> Parse(string value)
     {

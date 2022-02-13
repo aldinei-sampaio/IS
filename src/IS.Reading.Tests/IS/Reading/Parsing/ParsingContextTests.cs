@@ -1,6 +1,5 @@
 ﻿using IS.Reading.Navigation;
 using System.Text;
-using System.Xml;
 
 namespace IS.Reading.Parsing;
 
@@ -29,10 +28,10 @@ public class ParsingContextTests
     [Fact]
     public void IsSuccessShouldReturnFalseAfterLogError()
     {
-        sut.IsSuccess.Should().BeTrue();
+        var reader = A.Fake<IDocumentReader>(i => i.Strict());
+        A.CallTo(() => reader.CurrentLineIndex).Returns(1);
 
-        using var reader = XmlReader.Create(new StringReader("<teste />"));
-        reader.MoveToContent();
+        sut.IsSuccess.Should().BeTrue();
         sut.LogError(reader, "Erro");
 
         sut.IsSuccess.Should().BeFalse();
@@ -42,15 +41,11 @@ public class ParsingContextTests
     [Fact]
     public void LineNumberInErrorMessages()
     {
-        var xml = "<a>\r\n<b />\r\n<c /></a>";
-        using var reader = XmlReader.Create(new StringReader(xml));
-        reader.MoveToContent();
+        var reader = A.Fake<IDocumentReader>(i => i.Strict());
+        A.CallTo(() => reader.CurrentLineIndex).ReturnsNextFromSequence(2, 3);
 
-        while(reader.Read())
-        {
-            if (reader.NodeType == XmlNodeType.Element)
-                sut.LogError(reader, reader.LocalName);
-        }
+        sut.LogError(reader, "b");
+        sut.LogError(reader, "c");
 
         sut.IsSuccess.Should().BeFalse();
         sut.ToString().Should().Be($"Linha 2: b{Environment.NewLine}Linha 3: c");
@@ -59,10 +54,10 @@ public class ParsingContextTests
     [Fact]
     public void MaxNumberOfErrorsExceeded()
     {
-        sut.IsSuccess.Should().BeTrue();
+        var reader = A.Fake<IDocumentReader>(i => i.Strict());
+        A.CallTo(() => reader.CurrentLineIndex).Returns(1);
 
-        using var reader = XmlReader.Create(new StringReader("<teste />"));
-        reader.MoveToContent();
+        sut.IsSuccess.Should().BeTrue();
 
         for (var n = 1; n <= 11; n++)
             sut.LogError(reader, "Erro");

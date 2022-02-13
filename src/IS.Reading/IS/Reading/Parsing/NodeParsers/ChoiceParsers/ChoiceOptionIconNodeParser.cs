@@ -4,9 +4,9 @@ namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 
 public class ChoiceOptionIconNodeParser : IChoiceOptionIconNodeParser
 {
-    private readonly INameTextParser nameTextParser;
+    private readonly INameArgumentParser nameTextParser;
 
-    public ChoiceOptionIconNodeParser(INameTextParser nameTextParser)
+    public ChoiceOptionIconNodeParser(INameArgumentParser nameTextParser)
         => this.nameTextParser = nameTextParser;
 
     public bool IsArgumentRequired => true;

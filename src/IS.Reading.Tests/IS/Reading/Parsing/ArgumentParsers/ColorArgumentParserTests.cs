@@ -1,8 +1,6 @@
-﻿using System.Xml;
+﻿namespace IS.Reading.Parsing.ArgumentParsers;
 
-namespace IS.Reading.Parsing.ArgumentParsers;
-
-public class ColorTextParserTests
+public class ColorArgumentParserTests
 {
     [Theory]
     [InlineData("black", "black")]
@@ -25,12 +23,10 @@ public class ColorTextParserTests
     [InlineData("#f2f2F2", "#f2f2f2")]
     public void Parse(string value, string expected)
     {
-        var reader = A.Dummy<XmlReader>();
-        var context = A.Dummy<IParsingContext>();
-
-        var sut = new ColorTextParser();
-        var actual = sut.Parse(reader, context, value);
-        actual.Should().Be(expected);
+        var sut = new ColorArgumentParser();
+        var result = sut.Parse(value);
+        result.IsOk.Should().BeTrue();
+        result.Value.Should().Be(expected);
     }
 
     [Theory]
@@ -42,15 +38,10 @@ public class ColorTextParserTests
     {
         var message = $"O texto '{value}' não representa uma cor válida.";
 
-        var reader = A.Dummy<XmlReader>();
-        var context = A.Fake<IParsingContext>(i => i.Strict());
-        A.CallTo(() => context.LogError(reader, message)).DoesNothing();
-
-        var sut = new ColorTextParser();
-        var actual = sut.Parse(reader, context, value);
-        actual.Should().BeNull();
-
-        A.CallTo(() => context.LogError(reader, message)).MustHaveHappenedOnceExactly();
+        var sut = new ColorArgumentParser();
+        var result = sut.Parse(value);
+        result.IsOk.Should().BeFalse();
+        result.ErrorMessage.Should().Be(message);
     }
 
     [Theory]
@@ -62,11 +53,11 @@ public class ColorTextParserTests
     [InlineData("\t")]
     public void Empty(string value)
     {
-        var reader = A.Dummy<XmlReader>();
-        var context = A.Fake<IParsingContext>(i => i.Strict());
+        var message = "Era esperado um argumento com a cor.";
 
-        var sut = new ColorTextParser();
-        var actual = sut.Parse(reader, context, value);
-        actual.Should().Be(string.Empty);
+        var sut = new ColorArgumentParser();
+        var result = sut.Parse(value);
+        result.IsOk.Should().BeFalse();
+        result.ErrorMessage.Should().Be(message);
     }
 }

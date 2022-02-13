@@ -6,9 +6,9 @@ namespace IS.Reading.Parsing.NodeParsers;
 
 public class MusicNodeParser : IMusicNodeParser
 {
-    private readonly INameTextParser nameTextParser;
+    private readonly INameArgumentParser nameTextParser;
 
-    public MusicNodeParser(INameTextParser nameTextParser)
+    public MusicNodeParser(INameArgumentParser nameTextParser)
         => this.nameTextParser = nameTextParser;
 
     public bool IsArgumentRequired => true;

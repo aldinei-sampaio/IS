@@ -1,8 +1,6 @@
-﻿using System.Xml;
+﻿namespace IS.Reading.Parsing.ArgumentParsers;
 
-namespace IS.Reading.Parsing.ArgumentParsers;
-
-public class BackgroundImageTextParserTests
+public class ImageArgumentParserTests
 {
     [Theory]
     [InlineData("abc", "abc")]
@@ -19,12 +17,18 @@ public class BackgroundImageTextParserTests
     [InlineData("    ", null)]
     public void Parse(string value, string expected)
     {
-        var reader = A.Dummy<XmlReader>();
-        var context = A.Dummy<IParsingContext>();
+        var sut = new ImageArgumentParser();
+        var result = sut.Parse(value);
 
-        var sut = new BackgroundImageTextParser();
-        var actual = sut.Parse(reader, context, value);
-        actual.Should().Be(expected);
+        if (expected is null)
+        {
+            result.IsOk.Should().BeFalse();
+        }
+        else
+        {
+            result.IsOk.Should().BeTrue();
+            result.Value.Should().Be(expected);
+        }
     }
     
     [Theory]
@@ -55,15 +59,10 @@ public class BackgroundImageTextParserTests
     {
         var message = $"O texto '{value}' contém caracteres inválidos.";
 
-        var reader = A.Dummy<XmlReader>();
-        var context = A.Fake<IParsingContext>();
-        A.CallTo(() => context.LogError(reader, message)).DoesNothing();
-
-        var sut = new BackgroundImageTextParser();
-        var actual = sut.Parse(reader, context, value);
-        actual.Should().BeNull();
-
-        A.CallTo(() => context.LogError(reader, message)).MustHaveHappenedOnceExactly();
+        var sut = new ImageArgumentParser();
+        var result = sut.Parse(value);
+        result.IsOk.Should().BeFalse();
+        result.ErrorMessage.Should().Be(message);
     }
 
     [Fact]
@@ -72,14 +71,9 @@ public class BackgroundImageTextParserTests
         var value = "12345678901234567890123456789012345678901234567890123456789012345";
         var message = $"O texto contém 65 caracteres, o que excede a quantidade máxima de 64.";
 
-        var reader = A.Dummy<XmlReader>();
-        var context = A.Fake<IParsingContext>();
-        A.CallTo(() => context.LogError(reader, message)).DoesNothing();
-
-        var sut = new BackgroundImageTextParser();
-        var actual = sut.Parse(reader, context, value);
-        actual.Should().BeNull();
-
-        A.CallTo(() => context.LogError(reader, message)).MustHaveHappenedOnceExactly();
+        var sut = new ImageArgumentParser();
+        var result = sut.Parse(value);
+        result.IsOk.Should().BeFalse();
+        result.ErrorMessage.Should().Be(message);
     }
 }

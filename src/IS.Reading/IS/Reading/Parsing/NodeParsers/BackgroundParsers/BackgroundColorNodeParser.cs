@@ -6,9 +6,9 @@ namespace IS.Reading.Parsing.NodeParsers.BackgroundParsers;
 
 public class BackgroundColorNodeParser : IBackgroundColorNodeParser
 {
-    private readonly IColorTextParser colorTextParser;
+    private readonly IColorArgumentParser colorTextParser;
 
-    public BackgroundColorNodeParser(IColorTextParser colorTextParser)
+    public BackgroundColorNodeParser(IColorArgumentParser colorTextParser)
         => this.colorTextParser = colorTextParser;
 
     public bool IsArgumentRequired => true;

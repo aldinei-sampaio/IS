@@ -39,7 +39,7 @@ public class ChoiceOptionNodeParser : IChoiceOptionNodeParser
 
     public async Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var key = reader.ElementName;
+        var key = reader.Command;
         var myContext = new ChoiceOptionParentParsingContext();
         
         if (string.IsNullOrEmpty(reader.Argument))

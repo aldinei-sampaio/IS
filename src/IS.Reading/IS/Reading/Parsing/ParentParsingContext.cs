@@ -1,6 +1,6 @@
 ﻿using IS.Reading.Navigation;
 
-namespace IS.Reading.Parsing.NodeParsers;
+namespace IS.Reading.Parsing;
 
 public class ParentParsingContext : IParentParsingContext
 {

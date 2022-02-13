@@ -6,9 +6,9 @@ namespace IS.Reading.Parsing.NodeParsers.BackgroundParsers;
 
 public class BackgroundRightNodeParser : IBackgroundRightNodeParser
 {
-    private readonly IBackgroundImageTextParser backgroundImageTextParser;
+    private readonly IImageArgumentParser backgroundImageTextParser;
 
-    public BackgroundRightNodeParser(IBackgroundImageTextParser backgroundImageTextParser)
+    public BackgroundRightNodeParser(IImageArgumentParser backgroundImageTextParser)
         => this.backgroundImageTextParser = backgroundImageTextParser;
 
     public bool IsArgumentRequired => true;

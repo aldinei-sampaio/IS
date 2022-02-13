@@ -31,10 +31,10 @@ public static class ServiceProviderExtensionMethods
         services.AddSingleton<ITextSourceParser, TextSourceParser>();
 
         // Text parsers
-        services.AddSingleton<IColorTextParser, ColorTextParser>();
-        services.AddSingleton<IBackgroundImageTextParser, BackgroundImageTextParser>();
+        services.AddSingleton<IColorArgumentParser, ColorArgumentParser>();
+        services.AddSingleton<IImageArgumentParser, ImageArgumentParser>();
         services.AddSingleton<IIntegerArgumentParser, IntegerArgumentParser>();
-        services.AddSingleton<INameTextParser, NameTextParser>();
+        services.AddSingleton<INameArgumentParser, NameArgumentParser>();
 
         // Node parsers
         services.AddSingleton<IMusicNodeParser, MusicNodeParser>();

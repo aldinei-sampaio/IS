@@ -6,9 +6,9 @@ namespace IS.Reading.Parsing.NodeParsers;
 
 public class ProtagonistNodeParser : IProtagonistNodeParser
 {
-    private readonly INameTextParser nameTextParser;
+    private readonly INameArgumentParser nameTextParser;
 
-    public ProtagonistNodeParser(INameTextParser nameTextParser)
+    public ProtagonistNodeParser(INameArgumentParser nameTextParser)
         => this.nameTextParser = nameTextParser;
 
     public bool IsArgumentRequired => true;

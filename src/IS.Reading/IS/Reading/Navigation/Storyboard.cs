@@ -4,23 +4,24 @@ namespace IS.Reading.Navigation;
 
 public class Storyboard : IStoryboard
 {
-    private readonly ISceneNavigator sceneNavigator;
-    private readonly IEventManager eventManager;
+    public ISceneNavigator SceneNavigator { get; }
+
+    public IEventManager EventManager { get; }
 
     public Storyboard(INavigationContext navigationContext, ISceneNavigator sceneNavigator, IEventManager eventManager)
     {
         NavigationContext = navigationContext;
-        this.eventManager = eventManager;
-        this.sceneNavigator = sceneNavigator;
+        EventManager = eventManager;
+        SceneNavigator = sceneNavigator;
     }
 
     public INavigationContext NavigationContext { get; }
 
-    public IEventSubscriber Events => eventManager;
+    public IEventSubscriber Events => EventManager;
 
     public Task<bool> MoveAsync(bool forward)
-        => sceneNavigator.MoveAsync(NavigationContext, forward);
+        => SceneNavigator.MoveAsync(NavigationContext, forward);
 
     public void Dispose()
-        => eventManager.Dispose();
+        => EventManager.Dispose();
 }

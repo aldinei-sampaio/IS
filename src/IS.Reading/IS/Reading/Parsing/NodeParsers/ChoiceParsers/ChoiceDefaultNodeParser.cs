@@ -4,9 +4,9 @@ namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 
 public class ChoiceDefaultNodeParser : IChoiceDefaultNodeParser
 {
-    private readonly INameTextParser textParser;
+    private readonly INameArgumentParser textParser;
 
-    public ChoiceDefaultNodeParser(INameTextParser textParser)
+    public ChoiceDefaultNodeParser(INameArgumentParser textParser)
         => this.textParser = textParser;
 
     public bool IsArgumentRequired => true;

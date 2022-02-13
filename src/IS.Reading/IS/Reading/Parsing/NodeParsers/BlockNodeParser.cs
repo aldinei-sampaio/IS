@@ -62,7 +62,7 @@ public class BlockNodeParser : IBlockNodeParser
             return;
         }
 
-        if (string.Compare(reader.ElementName, "if", true) == 0)
+        if (string.Compare(reader.Command, "if", true) == 0)
             await ParseIfAsync(result.Value, reader, parsingContext, parentParsingContext);
         else
             await ParseWhileAsync(result.Value, reader, parsingContext, parentParsingContext);
@@ -78,13 +78,12 @@ public class BlockNodeParser : IBlockNodeParser
         var ifContext = new ParentParsingContext();
         var elseContext = new ParentParsingContext();
 
-        using (var subReader = reader.ReadSubtree())
-            await elementParser.ParseAsync(subReader, parsingContext, ifContext, IfBlockSettings);
+        await elementParser.ParseAsync(reader, parsingContext, ifContext, IfBlockSettings);
 
         if (!parsingContext.IsSuccess)
             return;
         
-        if (!reader.AtEnd && string.Compare(reader.ElementName, "else", true) == 0)
+        if (!reader.AtEnd && string.Compare(reader.Command, "else", true) == 0)
             await elementParser.ParseAsync(reader, parsingContext, elseContext, BlockSettings);
 
         if (!parsingContext.IsSuccess)
@@ -105,8 +104,7 @@ public class BlockNodeParser : IBlockNodeParser
     {
         var myContext = new ParentParsingContext();
 
-        using (var subReader = reader.ReadSubtree())
-            await elementParser.ParseAsync(subReader, parsingContext, myContext, BlockSettings);
+        await elementParser.ParseAsync(reader, parsingContext, myContext, BlockSettings);
 
         if (!parsingContext.IsSuccess)
             return;

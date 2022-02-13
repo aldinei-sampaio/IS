@@ -4,7 +4,7 @@ namespace IS.Reading.Parsing;
 
 /// <remarks>
 /// <code>
-/// storybasic 1.0
+/// ' storybasic 1.0
 ///
 /// set john = 'John'
 /// set jane = 'Jane'
@@ -81,20 +81,14 @@ namespace IS.Reading.Parsing;
 ///     else
 ///       a Se é isso que você quer...
 ///     end
-///     b 
-///       icon heart
-///       text Vamos para casa
-///     end
+///     b Vamos para casa
+///     icon heart
 ///     if (dinheiro > 100)
-///       c 
-///         icon heart
-///         text Que tal a gente ir comer alguma coisa?
-///       end
+///       c Que tal a gente ir comer alguma coisa?
+///       icon heart
 ///     else
-///       c 
-///         disabled
-///         text (Você não tem dinheiro suficiente)
-///       end
+///       c (Você não tem dinheiro suficiente)
+///       disabled
 ///     end
 ///     d ...
 ///   end
@@ -114,14 +108,14 @@ namespace IS.Reading.Parsing;
 /// end
 /// </code>
 /// </remarks>
-public class StbDocumentReader : IDocumentReader
+public sealed class StbDocumentReader : IDocumentReader
 {
-    private readonly DocumentLineReader reader;
+    private readonly IDocumentLineReader reader;
 
     private Memory<char>? currentLine;
 
-    public StbDocumentReader(TextReader textReader)  
-        => this.reader = new DocumentLineReader(textReader);
+    public StbDocumentReader(IDocumentLineReader reader)  
+        => this.reader = reader;
 
     public int CurrentLineIndex => reader.CurrentLineIndex;
 
@@ -129,7 +123,7 @@ public class StbDocumentReader : IDocumentReader
 
     public async Task<bool> ReadAsync()
     {
-        ElementName = string.Empty;
+        Command = string.Empty;
 
         currentLine = await reader.ReadLineAsync();
         if (currentLine is null)
@@ -150,106 +144,20 @@ public class StbDocumentReader : IDocumentReader
         var n = span.IndexOf(' ');
         if (n == -1)
         {
-            ElementName = span.ToString();
+            Command = span.ToString();
             Argument = string.Empty;
         }
         else
         {
-            ElementName = currentLine[..n].ToString();
+            Command = currentLine[..n].ToString();
             Argument = currentLine[(n + 1)..].ToString();
         }
     }
 
-
-    public IDocumentReader ReadSubtree()
-        => new SubReader(reader, ElementName, Argument);
-
     public bool AtEnd { get; private set; }
 
-    public string ElementName { get; private set; } = string.Empty;
+    public string Command { get; private set; } = string.Empty;
 
     public string Argument { get; private set; } = string.Empty;
-
-    private class SubReader : IDocumentReader
-    {
-        private readonly DocumentLineReader reader;
-
-        private Memory<char>? currentLine;
-
-        public SubReader(DocumentLineReader reader, string elementName, string argument)
-        { 
-            this.reader = reader;
-            this.ElementName = elementName;
-            this.Argument = argument;
-        }
-
-        public int CurrentLineIndex => reader.CurrentLineIndex;
-
-        public void Dispose()
-        {
-        }
-
-        public async Task<bool> ReadAsync()
-        {
-            ElementName = string.Empty;
-            Argument = string.Empty;
-
-            currentLine = await reader.ReadLineAsync();
-            if (currentLine is null)
-            {
-                AtEnd = true;
-                return false;
-            }
-
-            return ReadLine(currentLine.Value);
-        }
-
-        private static bool IsEnd(ReadOnlySpan<char> span)
-        {
-            if (span.Length != 3)
-                return false;
-
-            if (span[0] != 'E' && span[0] != 'e')
-                return false;
-
-            if (span[1] != 'n' && span[1] != 'n')
-                return false;
-
-            if (span[2] != 'd' && span[2] != 'd')
-                return false;
-
-            return true;
-        }
-
-        private bool ReadLine(Memory<char> currentLine)
-        {
-            var span = currentLine.Span;
-
-            if (IsEnd(span))
-                return false;
-
-            var n = span.IndexOf(' ');
-            if (n == -1)
-            {
-                ElementName = span.ToString();
-                Argument = string.Empty;
-            }
-            else
-            {
-                ElementName = currentLine[..n].ToString();
-                Argument = currentLine[(n + 1)..].ToString();
-            }
-            return true;
-        }
-
-        public IDocumentReader ReadSubtree()
-            => new SubReader(reader, ElementName, Argument);
-
-        public bool AtEnd { get; private set; }
-
-        public string ElementName { get; private set; } = string.Empty;
-
-        public string Argument { get; private set; } = string.Empty;
-    }
 }
 

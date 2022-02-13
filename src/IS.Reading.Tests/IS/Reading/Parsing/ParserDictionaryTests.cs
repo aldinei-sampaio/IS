@@ -21,11 +21,10 @@ public class ParserDictionaryTests
     }
 
     [Fact]
-    public void DefaultMethodShouldRaiseExceptionWhenKeyNotExists()
+    public void DefaultMethodShouldReturnNullWhenKeyNotExists()
     {
         var sut = new ParserDictionary<INodeParser>();
-        var ex = Assert.Throws<KeyNotFoundException>(() => sut["chaveinexistente"]);
-        ex.Message.Should().Be("Chave não encontrada: chaveinexistente");
+        sut["chaveinexistente"].Should().BeNull();
     }
 
     [Fact]
