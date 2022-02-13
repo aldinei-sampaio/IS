@@ -12,8 +12,8 @@ public class ElementParserSettingsTests
         sut.ShouldContainOnly(nodeParser1, nodeParser2);
         sut.Should().BeEquivalentTo(new
         {
-            IsBlock = false,
             NoRepeatNode = false,
+            ExitOnEnd = false,
             ExitOnUnknownNode = false,
             ExitOnElse = false
         });
@@ -29,8 +29,8 @@ public class ElementParserSettingsTests
         sut.ShouldContainOnly(nodeParser1, nodeParser2);
         sut.Should().BeEquivalentTo(new
         {
-            IsBlock = true,
             NoRepeatNode = false,
+            ExitOnEnd = true,
             ExitOnUnknownNode = false,
             ExitOnElse = false
         });
@@ -46,8 +46,8 @@ public class ElementParserSettingsTests
         sut.ShouldContainOnly(nodeParser1, nodeParser2);
         sut.Should().BeEquivalentTo(new
         {
-            IsBlock = true,
             NoRepeatNode = false,
+            ExitOnEnd = true,
             ExitOnUnknownNode = false,
             ExitOnElse = true
         });
@@ -63,8 +63,8 @@ public class ElementParserSettingsTests
         sut.ShouldContainOnly(nodeParser1, nodeParser2);
         sut.Should().BeEquivalentTo(new
         {
-            IsBlock = false,
             NoRepeatNode = true,
+            ExitOnEnd = false,
             ExitOnUnknownNode = true,
             ExitOnElse = false
         });
@@ -80,8 +80,8 @@ public class ElementParserSettingsTests
         sut.ShouldContainOnly(nodeParser1, nodeParser2);
         sut.Should().BeEquivalentTo(new
         {
-            IsBlock = false,
             NoRepeatNode = false,
+            ExitOnEnd = false,
             ExitOnUnknownNode = true,
             ExitOnElse = false
         });

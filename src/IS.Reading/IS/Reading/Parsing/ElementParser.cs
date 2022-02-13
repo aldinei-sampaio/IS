@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace IS.Reading.Parsing;
+﻿namespace IS.Reading.Parsing;
 
 public class ElementParser : IElementParser
 {
@@ -16,93 +14,49 @@ public class ElementParser : IElementParser
 
         var processed = settings.NoRepeatNode ? new HashSet<INodeParser>() : null;
 
-        while (!reader.AtEnd)
+        do
         {
-            if (settings.ExitOnElse)
-            {
-                if (string.Compare(reader.ElementName, "else", true) == 0)
-                    return;
-            }
-
-            if (!TryGetParser(reader, parsingContext, settings, processed, out var parser))
-            {
-                if (settings.ExitOnUnknownNode)
-                    return;
-
-                if (settings.IsBlock && string.Compare(reader.ElementName, "end", true) == 0)
-                    return;
-
-                parsingContext.LogError(reader, $"Elemento não reconhecido: '{reader.ElementName}'");
+            if (settings.ExitOnElse && string.Compare(reader.ElementName, "else", true) == 0)
                 return;
-            }
-            else
-            {
-                if (parser.IsArgumentRequired && string.IsNullOrEmpty(reader.Argument))
-                {
-                    parsingContext.LogError(reader, $"O comando '{reader.ElementName}' requer um argumento.");
-                    return;
-                }
 
-                if (!await ParseElementAsync(reader, parsingContext, parentParsingContext, settings, parser))
-                    continue;
-            }
+            if (settings.ExitOnEnd && string.Compare(reader.ElementName, "end", true) == 0)
+                return;
 
-            await reader.ReadAsync();
+            var parser = GetParser(reader, parsingContext, settings, processed);
+            if (parser is null)
+                return;
+
+            await parser.ParseAsync(reader, parsingContext, parentParsingContext);
+
+            if (parser is not IAggregateNodeParser)
+                await reader.ReadAsync();
         }
+        while (!reader.AtEnd);
     }
 
-    private static bool TryGetParser(
+    private static INodeParser? GetParser(
         IDocumentReader reader,
         IParsingContext parsingContext,
         IElementParserSettings settings,
-        HashSet<INodeParser>? processed,
-        [MaybeNullWhen(false)] out INodeParser parser
+        HashSet<INodeParser>? processed
     )
     {
-
-        if (!settings.ChildParsers.TryGet(reader.ElementName, out parser))
+        var parser = settings.ChildParsers[reader.ElementName];
+        
+        if (parser is null || (processed is not null && !processed.Add(parser)))
         {
             if (!settings.ExitOnUnknownNode)
-                parsingContext.LogError(reader, $"Elemento não reconhecido: {reader.ElementName}");
+                parsingContext.LogError(reader, $"Comando não reconhecido: '{reader.ElementName}'.");
 
-            return false;
+            return null;
         }
 
-        if (processed is not null && !processed.Add(parser))
+        if (parser.IsArgumentRequired && string.IsNullOrEmpty(reader.Argument))
         {
-            if (!settings.ExitOnUnknownNode)
-                parsingContext.LogError(reader, $"Elemento repetido: {reader.ElementName}");
-
-            return false;
+            parsingContext.LogError(reader, $"O comando '{reader.ElementName}' requer um argumento.");
+            return null;
         }
 
-        return true;
-    }
-
-    private static async Task<bool> ParseElementAsync(
-        IDocumentReader reader,
-        IParsingContext parsingContext,
-        IParentParsingContext parentParsingContext,
-        IElementParserSettings settings,
-        INodeParser parser
-    )
-    {
-        if (parser is IAggregateNodeParser)
-        {
-            await parser.ParseAsync(reader, parsingContext, parentParsingContext);
-            return false;
-        }
-
-        if (settings.IsBlock)
-        {
-            using var childReader = reader.ReadSubtree();
-            await parser.ParseAsync(childReader, parsingContext, parentParsingContext);
-        }
-        else
-        {
-            await parser.ParseAsync(reader, parsingContext, parentParsingContext);
-        }
-
-        return true;
+        return parser;
     }
 }

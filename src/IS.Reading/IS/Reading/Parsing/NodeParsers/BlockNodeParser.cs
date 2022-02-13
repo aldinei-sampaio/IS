@@ -77,7 +77,9 @@ public class BlockNodeParser : IBlockNodeParser
     {
         var ifContext = new ParentParsingContext();
         var elseContext = new ParentParsingContext();
-        await elementParser.ParseAsync(reader, parsingContext, ifContext, IfBlockSettings);
+
+        using (var subReader = reader.ReadSubtree())
+            await elementParser.ParseAsync(subReader, parsingContext, ifContext, IfBlockSettings);
 
         if (!parsingContext.IsSuccess)
             return;
@@ -102,7 +104,9 @@ public class BlockNodeParser : IBlockNodeParser
     )
     {
         var myContext = new ParentParsingContext();
-        await elementParser.ParseAsync(reader, parsingContext, myContext, BlockSettings);
+
+        using (var subReader = reader.ReadSubtree())
+            await elementParser.ParseAsync(subReader, parsingContext, myContext, BlockSettings);
 
         if (!parsingContext.IsSuccess)
             return;

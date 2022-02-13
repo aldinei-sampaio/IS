@@ -17,7 +17,7 @@ public abstract class ElementParserSettings
         }
         public bool ExitOnUnknownNode => false;
         public bool ExitOnElse => false;
-        public bool IsBlock => true;
+        public bool ExitOnEnd => true;
         public bool NoRepeatNode => false;
     }
 
@@ -28,7 +28,7 @@ public abstract class ElementParserSettings
         }
         public bool ExitOnUnknownNode => false;
         public bool ExitOnElse => false;
-        public bool IsBlock => false;
+        public bool ExitOnEnd => false;
         public bool NoRepeatNode => false;
     }
 
@@ -39,7 +39,7 @@ public abstract class ElementParserSettings
         }
         public bool ExitOnUnknownNode => false;
         public bool ExitOnElse => true;
-        public bool IsBlock => true;
+        public bool ExitOnEnd => true;
         public bool NoRepeatNode => false;
     }
 
@@ -50,7 +50,7 @@ public abstract class ElementParserSettings
         }
         public bool ExitOnUnknownNode => true;
         public bool ExitOnElse => false;
-        public bool IsBlock => false;
+        public bool ExitOnEnd => false;
         public bool NoRepeatNode => false;
     }
 
@@ -61,7 +61,7 @@ public abstract class ElementParserSettings
         }
         public bool ExitOnUnknownNode => true;
         public bool ExitOnElse => false;
-        public bool IsBlock => false;
+        public bool ExitOnEnd => false;
         public bool NoRepeatNode => true;
     }
 }

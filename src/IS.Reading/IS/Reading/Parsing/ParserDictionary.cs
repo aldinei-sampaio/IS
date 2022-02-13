@@ -9,13 +9,13 @@ public class ParserDictionary<T> : IParserDictionary<T> where T : IParser
 
     public int Count => dic.Count + ruleParsers.Count;
 
-    public T this[string key]
+    public T? this[string key]
     {
         get
         {
             if (TryGet(key, out var value))
                 return value;
-            throw new KeyNotFoundException($"Chave não encontrada: {key}");
+            return default;
         }
     }
 
