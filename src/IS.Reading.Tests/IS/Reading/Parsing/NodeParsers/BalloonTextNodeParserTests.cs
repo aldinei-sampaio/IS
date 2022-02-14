@@ -38,7 +38,7 @@ public class BalloonTextNodeParserTests
         sut.ElementParser.Should().BeSameAs(elementParser);
         sut.TextSourceParser.Should().BeSameAs(textSourceParser);
         sut.Settings.Should().BeOfType<ElementParserSettings.AggregatedNonRepeat>()
-            .Which.ShouldContainOnly(choiceNodeParser);
+            .Which.ChildParsers.Should().BeEquivalentTo(choiceNodeParser);
     }
 
     [Fact]

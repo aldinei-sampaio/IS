@@ -6,11 +6,9 @@ namespace IS.Reading.Parsing.NodeParsers;
 
 public class BlockNodeParser : IBlockNodeParser
 {
-    private readonly IElementParser elementParser;
-    private readonly IConditionParser conditionParser;
-
+    public IElementParser ElementParser { get; }
+    public IConditionParser ConditionParser { get; }
     public IElementParserSettings IfBlockSettings { get; }
-
     public IElementParserSettings BlockSettings { get; }
 
     public BlockNodeParser(
@@ -26,8 +24,8 @@ public class BlockNodeParser : IBlockNodeParser
         ISetNodeParser setNodeParser
     )
     {
-        this.elementParser = elementParser;
-        this.conditionParser = conditionParser;
+        ElementParser = elementParser;
+        ConditionParser = conditionParser;
 
         var nodeParsers = new INodeParser[]
         {
@@ -54,7 +52,7 @@ public class BlockNodeParser : IBlockNodeParser
 
     public async Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var result = conditionParser.Parse(reader.Argument);
+        var result = ConditionParser.Parse(reader.Argument);
 
         if (!result.IsOk)
         {
@@ -78,13 +76,13 @@ public class BlockNodeParser : IBlockNodeParser
         var ifContext = new ParentParsingContext();
         var elseContext = new ParentParsingContext();
 
-        await elementParser.ParseAsync(reader, parsingContext, ifContext, IfBlockSettings);
+        await ElementParser.ParseAsync(reader, parsingContext, ifContext, IfBlockSettings);
 
         if (!parsingContext.IsSuccess)
             return;
         
         if (!reader.AtEnd && string.Compare(reader.Command, "else", true) == 0)
-            await elementParser.ParseAsync(reader, parsingContext, elseContext, BlockSettings);
+            await ElementParser.ParseAsync(reader, parsingContext, elseContext, BlockSettings);
 
         if (!parsingContext.IsSuccess)
             return;
@@ -104,7 +102,7 @@ public class BlockNodeParser : IBlockNodeParser
     {
         var myContext = new ParentParsingContext();
 
-        await elementParser.ParseAsync(reader, parsingContext, myContext, BlockSettings);
+        await ElementParser.ParseAsync(reader, parsingContext, myContext, BlockSettings);
 
         if (!parsingContext.IsSuccess)
             return;

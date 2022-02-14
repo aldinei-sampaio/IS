@@ -10,14 +10,12 @@ public class ParserDictionaryTests
     {
         var parser = Helper.FakeParser<INodeParser>("alpha");
 
-        var sut = new ParserDictionary<INodeParser>();
-        sut.Add(parser);
+        var sut = new ParserDictionary<INodeParser> { parser };
 
         sut[lookFor].Should().BeSameAs(parser);
 
-        var result = sut.TryGet(lookFor, out var value);
-        result.Should().BeTrue();
-        value.Should().BeSameAs(parser);
+        var result = sut[lookFor];
+        result.Should().BeSameAs(parser);
     }
 
     [Fact]
@@ -36,14 +34,25 @@ public class ParserDictionaryTests
 
         var parser2 = Helper.FakeParser<IParser>("abc");
 
-        var sut = new ParserDictionary<IParser>();
-        sut.Add(parser1);
-        sut.Add(parser2);
+        var sut = new ParserDictionary<IParser> { parser1, parser2 };
 
         sut["a"].Should().Be(parser1);
         sut["b"].Should().Be(parser1);
         sut["c"].Should().Be(parser1);
         sut["z"].Should().Be(parser1);
         sut["abc"].Should().Be(parser2);
+    }
+
+    [Fact]
+    public void Enumeration()
+    {
+        var parser1 = Helper.FakeParser<INodeParser>("alpha");
+        var parser2 = Helper.FakeParser<INodeParser>("", "(a|b|c)");
+        var parser3 = Helper.FakeParser<INodeParser>("beta");
+        var parser4 = Helper.FakeParser<INodeParser>("", "(if|while)");
+
+        var sut = new ParserDictionary<INodeParser> { parser1, parser2, parser3, parser4 };
+
+        sut.Should().BeEquivalentTo(parser1, parser2, parser3, parser4);
     }
 }

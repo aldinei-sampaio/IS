@@ -1,4 +1,5 @@
-﻿using FluentAssertions.Execution;
+﻿using FluentAssertions.Collections;
+using FluentAssertions.Execution;
 using System.Runtime.CompilerServices;
 
 namespace IS;
@@ -13,6 +14,14 @@ internal static class FluentAssertionsExtensionMethods
     {
         using (new AssertionScope(context))
             predicate.Invoke(subject);
+    }
+
+    public static AndConstraint<GenericCollectionAssertions<T>> BeEquivalentTo<T>(
+        this GenericCollectionAssertions<T> assertions,
+        params T[] values
+    )
+    {
+        return assertions.BeEquivalentTo(values);
     }
 }
 

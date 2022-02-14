@@ -44,9 +44,10 @@ public class IfNodeTests
     }
 
     [Theory]
+    [InlineData(null)]
     [InlineData(true)]
     [InlineData(false)]
-    public async Task EnterAsyncWithState(bool stateValue)
+    public async Task EnterAsyncWithState(bool? stateValue)
     {
         var variableDictionary = A.Fake<IVariableDictionary>(i => i.Strict());
         var navigationContext = A.Fake<INavigationContext>(i => i.Strict());
@@ -60,6 +61,6 @@ public class IfNodeTests
         sut.ChildBlock.Should().BeNull();
         await sut.EnterAsync(navigationContext, stateValue);
 
-        sut.ChildBlock.Should().BeSameAs(stateValue ? ifBlock : elseBlock);
+        sut.ChildBlock.Should().BeSameAs((stateValue ?? true) ? ifBlock : elseBlock);
     }
 }

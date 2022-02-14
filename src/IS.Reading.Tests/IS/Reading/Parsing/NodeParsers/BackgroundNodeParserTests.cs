@@ -54,7 +54,7 @@ public class BackgroundNodeParserTests
         sut.ImageArgumentParser.Should().BeSameAs(imageArgumentParser);
 
         sut.Settings.Should().BeOfType<ElementParserSettings.Aggregated>()
-            .Which.ShouldContainOnly(
+            .Which.ChildParsers.Should().BeEquivalentTo(
                 backgroundLeftNodeParser,
                 backgroundRightNodeParser,
                 backgroundColorNodeParser,

@@ -9,7 +9,7 @@ public class ElementParserSettingsTests
         var nodeParser2 = Helper.FakeParser<INodeParser>("d");
 
         var sut = new ElementParserSettings.NoBlock(nodeParser1, nodeParser2);
-        sut.ShouldContainOnly(nodeParser1, nodeParser2);
+        sut.ChildParsers.Should().BeEquivalentTo(new[] { nodeParser1, nodeParser2 });
         sut.Should().BeEquivalentTo(new
         {
             NoRepeatNode = false,
@@ -26,7 +26,7 @@ public class ElementParserSettingsTests
         var nodeParser2 = Helper.FakeParser<INodeParser>("d");
 
         var sut = new ElementParserSettings.Block(nodeParser1, nodeParser2);
-        sut.ShouldContainOnly(nodeParser1, nodeParser2);
+        sut.ChildParsers.Should().BeEquivalentTo(new[] { nodeParser1, nodeParser2 });
         sut.Should().BeEquivalentTo(new
         {
             NoRepeatNode = false,
@@ -43,7 +43,7 @@ public class ElementParserSettingsTests
         var nodeParser2 = Helper.FakeParser<INodeParser>("d");
 
         var sut = new ElementParserSettings.IfBlock(nodeParser1, nodeParser2);
-        sut.ShouldContainOnly(nodeParser1, nodeParser2);
+        sut.ChildParsers.Should().BeEquivalentTo(new[] { nodeParser1, nodeParser2 });
         sut.Should().BeEquivalentTo(new
         {
             NoRepeatNode = false,
@@ -60,7 +60,7 @@ public class ElementParserSettingsTests
         var nodeParser2 = Helper.FakeParser<INodeParser>("d");
 
         var sut = new ElementParserSettings.AggregatedNonRepeat(nodeParser1, nodeParser2);
-        sut.ShouldContainOnly(nodeParser1, nodeParser2);
+        sut.ChildParsers.Should().BeEquivalentTo(new[] { nodeParser1, nodeParser2 });
         sut.Should().BeEquivalentTo(new
         {
             NoRepeatNode = true,
@@ -77,7 +77,7 @@ public class ElementParserSettingsTests
         var nodeParser2 = Helper.FakeParser<INodeParser>("d");
 
         var sut = new ElementParserSettings.Aggregated(nodeParser1, nodeParser2);
-        sut.ShouldContainOnly(nodeParser1, nodeParser2);
+        sut.ChildParsers.Should().BeEquivalentTo(new[] { nodeParser1, nodeParser2 });
         sut.Should().BeEquivalentTo(new
         {
             NoRepeatNode = false,

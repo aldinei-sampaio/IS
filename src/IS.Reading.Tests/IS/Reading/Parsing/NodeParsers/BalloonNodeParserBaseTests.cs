@@ -47,7 +47,7 @@ public class BalloonNodeParserBaseTests
         sut.Name.Should().Be("teste");
         sut.BalloonType.Should().Be(BalloonType.Speech);
         sut.Settings.Should().BeOfType<ElementParserSettings.Aggregated>()
-            .Which.ShouldContainOnly(parser1, parser2);
+            .Which.ChildParsers.Should().BeEquivalentTo(parser1, parser2);
     }
 
     [Fact]

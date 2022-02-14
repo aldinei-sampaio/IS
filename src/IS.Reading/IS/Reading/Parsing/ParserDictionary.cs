@@ -1,9 +1,11 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Collections;
+using System.Text.RegularExpressions;
 
 namespace IS.Reading.Parsing;
 
 public class ParserDictionary<T> : IParserDictionary<T> where T : IParser
 {
+    private readonly List<T> allParsers = new();
     private readonly Dictionary<string, T> dic = new(StringComparer.OrdinalIgnoreCase);
     private readonly List<T> ruleParsers = new();
 
@@ -13,31 +15,29 @@ public class ParserDictionary<T> : IParserDictionary<T> where T : IParser
     {
         get
         {
-            if (TryGet(key, out var value))
+            foreach (var item in ruleParsers)
+            {
+                if (Regex.IsMatch(key, item.NameRegex!))
+                    return item;
+            }
+
+            if (dic.TryGetValue(key, out var value))
                 return value;
+
             return default;
         }
     }
 
     public void Add(T value)
     {
+        allParsers.Add(value);
         if (string.IsNullOrEmpty(value.NameRegex))
             dic.Add(value.Name, value);
         else
             ruleParsers.Add(value);
     }
 
-    public bool TryGet(string key, out T value)
-    {
-        foreach(var item in ruleParsers)
-        {
-            if (Regex.IsMatch(key, item.NameRegex!))
-            {
-                value = item;
-                return true;
-            }
-        }
+    public IEnumerator<T> GetEnumerator() => allParsers.GetEnumerator();
 
-        return dic.TryGetValue(key, out value!);
-    }
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }

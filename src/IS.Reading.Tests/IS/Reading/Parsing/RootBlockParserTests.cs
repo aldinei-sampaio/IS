@@ -53,7 +53,7 @@ public class RootBlockParserTests
     public void Initialization()
     {
         sut.Settings.Should().BeOfType<ElementParserSettings.NoBlock>();
-        sut.Settings.ShouldContainOnly(
+        sut.Settings.ChildParsers.Should().BeEquivalentTo(
             musicNodeParser,
             backgroundNodeParser,
             blockNodeParser,
