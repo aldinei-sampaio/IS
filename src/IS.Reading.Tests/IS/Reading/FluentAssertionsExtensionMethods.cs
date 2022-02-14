@@ -1,12 +1,17 @@
 ﻿using FluentAssertions.Execution;
+using System.Runtime.CompilerServices;
 
 namespace IS;
 
 internal static class FluentAssertionsExtensionMethods
 {
-    public static void ShouldSatisfy<T>(this T subject, Action<T> predicate)
+    public static void ShouldSatisfy<T>(
+        this T subject, 
+        Action<T> predicate, 
+        [CallerArgumentExpression("subject")] string context = null
+    )
     {
-        using (new AssertionScope())
+        using (new AssertionScope(context))
             predicate.Invoke(subject);
     }
 }

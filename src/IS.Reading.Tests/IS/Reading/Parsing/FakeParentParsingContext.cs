@@ -1,5 +1,4 @@
-﻿using IS.Reading.Conditions;
-using IS.Reading.Navigation;
+﻿using IS.Reading.Navigation;
 
 namespace IS.Reading.Parsing;
 
@@ -7,17 +6,7 @@ public class FakeParentParsingContext : IParentParsingContext
 {
     public List<INode> Nodes { get; } = new();
     public void AddNode(INode node) => Nodes.Add(node);
-    public string ParsedText { get; set; } = null;
-    public ICondition When { get; set; } = null;
-    public ICondition While { get; set; } = null;
-
-    public void ShouldBeEmpty()
-    {
-        When.Should().BeNull();
-        While.Should().BeNull();
-        Nodes.Should().BeEmpty();
-        ParsedText.Should().BeNull();
-    }
+    public void ShouldBeEmpty() => Nodes.Should().BeEmpty();
 
     public void ShouldContainSingle<T>(Action<T> validator) where T : INode
     { 
@@ -28,4 +17,11 @@ public class FakeParentParsingContext : IParentParsingContext
 
     public void ShouldContainSingle(INode obj)
         => Nodes.Should().ContainSingle().Which.Should().BeSameAs(obj);
+
+    public void ShouldContain(params Action<INode>[] validators)
+    {
+        Nodes.Count().Should().Be(validators.Length);
+        for(var n = 0; n < validators.Length; n++)
+            Nodes[n].ShouldSatisfy(validators[n], $"Nodes[{n}]");
+    }
 }

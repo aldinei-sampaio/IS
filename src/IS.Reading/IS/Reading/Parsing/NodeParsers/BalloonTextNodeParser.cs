@@ -5,15 +5,14 @@ namespace IS.Reading.Parsing.NodeParsers;
 
 public class BalloonTextNodeParser : IBalloonTextNodeParser
 {
-    private readonly IElementParser elementParser;
-    private readonly ITextSourceParser textSourceParser;
-
+    public IElementParser ElementParser { get; }
+    public ITextSourceParser TextSourceParser { get; }
     public IElementParserSettings Settings { get; }
 
     public BalloonTextNodeParser(IElementParser elementParser, ITextSourceParser textSourceParser, IChoiceNodeParser choiceNodeParser)
     {
-        this.elementParser = elementParser;
-        this.textSourceParser = textSourceParser;
+        ElementParser = elementParser;
+        TextSourceParser = textSourceParser;
         Settings = new ElementParserSettings.AggregatedNonRepeat(choiceNodeParser);
     }
 
@@ -23,22 +22,21 @@ public class BalloonTextNodeParser : IBalloonTextNodeParser
 
     public async Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        if (string.IsNullOrWhiteSpace(reader.Argument))
-            throw new InvalidOperationException();
+        var balloonParentContext = (BalloonParsingContext)parentParsingContext;
 
-        if (parentParsingContext is not BalloonParsingContext balloonParentContext)
-            throw new ArgumentException($"Argumento '{nameof(balloonParentContext)}' precisa ser do tipo '{nameof(BalloonParsingContext)}'.", nameof(parentParsingContext));
-
-        var textSourceParsingResult = textSourceParser.Parse(reader.Argument);
-        if (!textSourceParsingResult.IsOk)
+        var result = TextSourceParser.Parse(reader.Argument);
+        if (!result.IsOk)
         {
-            parsingContext.LogError(reader, textSourceParsingResult.ErrorMessage);
+            parsingContext.LogError(reader, result.ErrorMessage);
             return;
         }
-        var textSource = textSourceParsingResult.Value;
+        var textSource = result.Value;
 
         var myContext = new BalloonChildParsingContext(balloonParentContext.BalloonType);
-        await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
+        await ElementParser.ParseAsync(reader, parsingContext, myContext, Settings);
+
+        if (!parsingContext.IsSuccess)
+            return;
 
         var node = new BalloonTextNode(textSource, balloonParentContext.BalloonType, myContext.ChoiceBuilder);
         parentParsingContext.AddNode(node);

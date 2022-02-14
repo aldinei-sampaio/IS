@@ -1,6 +1,7 @@
 ﻿using IS.Reading.Navigation;
+using IS.Reading.Parsing.NodeParsers;
 
-namespace IS.Reading.Parsing.NodeParsers;
+namespace IS.Reading.Parsing;
 
 public class RootBlockParserTests
 {

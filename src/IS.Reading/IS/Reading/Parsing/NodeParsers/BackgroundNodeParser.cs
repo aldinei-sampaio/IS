@@ -8,14 +8,13 @@ namespace IS.Reading.Parsing.NodeParsers;
 
 public class BackgroundNodeParser : IBackgroundNodeParser
 {
-    private readonly IElementParser elementParser;
-    private readonly IImageArgumentParser backgroundImageTextParser;
-
+    public IElementParser ElementParser { get; }
+    public IImageArgumentParser ImageArgumentParser { get; }
     public IElementParserSettings Settings { get; }
 
     public BackgroundNodeParser(
         IElementParser elementParser,
-        IImageArgumentParser backgroundImageTextParser,
+        IImageArgumentParser imageArgumentParser,
         IBackgroundColorNodeParser backgroundColorNodeParser,
         IBackgroundLeftNodeParser backgroundLeftNodeParser,
         IBackgroundRightNodeParser backgroundRightNodeParser,
@@ -23,8 +22,8 @@ public class BackgroundNodeParser : IBackgroundNodeParser
         IPauseNodeParser pauseNodeParser
     )
     {
-        this.elementParser = elementParser;
-        this.backgroundImageTextParser = backgroundImageTextParser;
+        ElementParser = elementParser;
+        ImageArgumentParser = imageArgumentParser;
         Settings = new ElementParserSettings.Aggregated(
             backgroundColorNodeParser,
             backgroundLeftNodeParser,
@@ -44,7 +43,7 @@ public class BackgroundNodeParser : IBackgroundNodeParser
 
         if (!string.IsNullOrWhiteSpace(reader.Argument))
         {
-            var result = backgroundImageTextParser.Parse(reader.Argument);
+            var result = ImageArgumentParser.Parse(reader.Argument);
             if (!result.IsOk)
             {
                 parsingContext.LogError(reader, result.ErrorMessage);
@@ -56,11 +55,14 @@ public class BackgroundNodeParser : IBackgroundNodeParser
             context.AddNode(new ScrollNode());
         }
 
-        await elementParser.ParseAsync(reader, parsingContext, context, Settings);
+        await ElementParser.ParseAsync(reader, parsingContext, context, Settings);
+
+        if (!parsingContext.IsSuccess)
+            return;
 
         if (context.Nodes.Count == 0)
         {
-            parsingContext.LogError(reader, "Nome de imagem ou elemento filho era esperado.");
+            parsingContext.LogError(reader, "O comando 'background' espera um parâmetro ou um ou mais comandos adicionais.");
             return;
         }
 

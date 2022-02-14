@@ -5,7 +5,7 @@ namespace IS.Reading.Parsing.NodeParsers;
 
 public abstract class BalloonNodeParserBase : IAggregateNodeParser
 {
-    private readonly IElementParser elementParser;
+    public IElementParser ElementParser { get; }
 
     public IElementParserSettings Settings { get; }
 
@@ -14,7 +14,7 @@ public abstract class BalloonNodeParserBase : IAggregateNodeParser
         params INodeParser[] parsers
     )
     {
-        this.elementParser = elementParser;
+        this.ElementParser = elementParser;
         Settings = new ElementParserSettings.Aggregated(parsers);
     }
 
@@ -27,21 +27,16 @@ public abstract class BalloonNodeParserBase : IAggregateNodeParser
     public async Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
         var myContext = new BalloonParsingContext(BalloonType);
-        await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
+        await ElementParser.ParseAsync(reader, parsingContext, myContext, Settings);
 
-        var nonPauseNodes = new Stack<INode>();
-        for (var n = myContext.Nodes.Count - 1; n >= 0; n--)
-        {
-            var currentNode = myContext.Nodes[n];
-            if (currentNode is IPauseNode)
-                break;
-            nonPauseNodes.Push(currentNode);
-            myContext.Nodes.RemoveAt(n);
-        }
+        if (!parsingContext.IsSuccess)
+            return;
 
-        if (nonPauseNodes.Count == myContext.Nodes.Count)
+        var extraNonPauseNodes = ExtractNonPauseNodesAfterLastPauseNode(myContext.Nodes);
+
+        if (myContext.Nodes.Count == 0)
         {
-            parsingContext.LogError(reader, "Era esperada ao menos uma linha de diálogo.");
+            parsingContext.LogError(reader, $"Era esperada ao menos uma linha de diálogo após o comando '{Name}'.");
             return;
         }
 
@@ -49,7 +44,21 @@ public abstract class BalloonNodeParserBase : IAggregateNodeParser
         var node = new BalloonNode(BalloonType, block);
         parentParsingContext.AddNode(node);
 
-        while (nonPauseNodes.TryPop(out var nonPauseNode))
+        while (extraNonPauseNodes.TryPop(out var nonPauseNode))
             parentParsingContext.AddNode(nonPauseNode);
+    }
+
+    private static Stack<INode> ExtractNonPauseNodesAfterLastPauseNode(List<INode> nodes)
+    {
+        var nonPauseNodes = new Stack<INode>();
+        for (var n = nodes.Count - 1; n >= 0; n--)
+        {
+            var currentNode = nodes[n];
+            if (currentNode is IPauseNode)
+                break;
+            nonPauseNodes.Push(currentNode);
+            nodes.RemoveAt(n);
+        }
+        return nonPauseNodes;
     }
 }

@@ -26,12 +26,12 @@ internal class ConditionParserTester : IWordReader
     public void Test<T>(string expected) where T : ICondition
     {
         var result = ExecuteParsing();
-        result.Message.Should().Be("");
-        result.Condition.Should().BeOfType<T>()
+        result.IsOk.Should().BeTrue();
+        result.Value.Should().BeOfType<T>()
             .Which.ToString().Should().Be(expected);
     }
 
-    private IParsedCondition ExecuteParsing()
+    private Result<ICondition> ExecuteParsing()
     {
         var wordReaderFactory = A.Fake<IWordReaderFactory>(i => i.Strict());
         A.CallTo(() => wordReaderFactory.Create("Gibberish")).Returns(this);
@@ -42,7 +42,7 @@ internal class ConditionParserTester : IWordReader
     public void TestError(string errorMessage)
     {
         var result = ExecuteParsing();
-        result.Condition.Should().BeNull();
-        result.Message.Should().Be(errorMessage);
+        result.IsOk.Should().BeFalse();
+        result.ErrorMessage.Should().Be(errorMessage);
     }
 }

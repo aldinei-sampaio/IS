@@ -6,6 +6,7 @@ public static class Helper
     {
         var parser = A.Fake<INodeParser>();
         A.CallTo(() => parser.Name).Returns(name);
+        A.CallTo(() => parser.NameRegex).Returns(null);
         return parser;
     }
 
@@ -13,6 +14,7 @@ public static class Helper
     {
         var parser = A.Fake<T>();
         A.CallTo(() => parser.Name).Returns(name);
+        A.CallTo(() => parser.NameRegex).Returns(null);
         return parser;
     }
 
