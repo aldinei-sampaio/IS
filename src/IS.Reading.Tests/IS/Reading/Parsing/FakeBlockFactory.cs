@@ -9,6 +9,7 @@ public class FakeBlockFactory : IBlockFactory
     {
         var block = A.Dummy<IBlock>();
         A.CallTo(() => block.Nodes).Returns(nodes);
+        A.CallTo(() => block.While).Returns(null);
         return block;
     }
 

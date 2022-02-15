@@ -15,6 +15,12 @@ public class FakeParentParsingContext : IParentParsingContext
             .Which.ShouldSatisfy(validator);
     }
 
+    public void ShouldContainSingle<T>() where T : INode
+    {
+        Nodes.Should().ContainSingle()
+            .Which.Should().BeOfType<T>();
+    }
+
     public void ShouldContainSingle(INode obj)
         => Nodes.Should().ContainSingle().Which.Should().BeSameAs(obj);
 

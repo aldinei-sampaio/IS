@@ -5,10 +5,13 @@ namespace IS.Reading.Parsing.NodeParsers;
 
 public class PauseNodeParser : IPauseNodeParser
 {
-    private readonly IIntegerArgumentParser integerTextParser;
+    public const int MinTimeout = 1;
+    public const int MaxTimeout = 5000;
 
-    public PauseNodeParser(IIntegerArgumentParser integerTextParser)
-        => this.integerTextParser = integerTextParser;
+    public IIntegerArgumentParser IntegerArgumentParser { get; }
+
+    public PauseNodeParser(IIntegerArgumentParser integerArgumentParser)
+        => IntegerArgumentParser = integerArgumentParser;
 
     public bool IsArgumentRequired => false;
 
@@ -16,22 +19,22 @@ public class PauseNodeParser : IPauseNodeParser
 
     public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        parsingContext.SceneContext.Reset();
-
         if (!string.IsNullOrWhiteSpace(reader.Argument))
         {
-            var result = integerTextParser.Parse(reader.Argument, 1, 5000);
+            var result = IntegerArgumentParser.Parse(reader.Argument, MinTimeout, MaxTimeout);
             if (!result.IsOk)
             {
                 parsingContext.LogError(reader, result.ErrorMessage);
                 return Task.CompletedTask;
             }
 
+            parsingContext.SceneContext.Reset();
             var timedPauseNode = new TimedPauseNode(TimeSpan.FromMilliseconds(result.Value));
             parentParsingContext.AddNode(timedPauseNode);
             return Task.CompletedTask;
         }
 
+        parsingContext.SceneContext.Reset();
         parentParsingContext.AddNode(new PauseNode());
         return Task.CompletedTask;
     }

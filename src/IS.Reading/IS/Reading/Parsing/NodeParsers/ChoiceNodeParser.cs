@@ -6,9 +6,8 @@ namespace IS.Reading.Parsing.NodeParsers;
 
 public class ChoiceNodeParser : IChoiceNodeParser
 {
-    private readonly IElementParser elementParser;
-    private readonly INameArgumentParser nameTextParser;
-
+    public IElementParser ElementParser { get; }
+    public INameArgumentParser NameArgumentParser { get; }
     public IElementParserSettings Settings { get; }
 
     public ChoiceNodeParser(
@@ -17,16 +16,18 @@ public class ChoiceNodeParser : IChoiceNodeParser
         IChoiceTimeLimitNodeParser timeLimitNodeParser,
         IChoiceDefaultNodeParser defaultNodeParser,
         IChoiceRandomOrderNodeParser randomOrderNodeParser,
-        IChoiceOptionNodeParser optionNodeParser
+        IChoiceOptionNodeParser optionNodeParser,
+        IChoiceIfNodeParser choiceIfNodeParser
     )
     {
-        this.elementParser = elementParser;
-        this.nameTextParser = nameTextParser;
+        ElementParser = elementParser;
+        NameArgumentParser = nameTextParser;
         Settings = new ElementParserSettings.Block(
             timeLimitNodeParser,
             defaultNodeParser,
             randomOrderNodeParser,
-            optionNodeParser
+            optionNodeParser,
+            choiceIfNodeParser
         );
     }
 
@@ -36,7 +37,7 @@ public class ChoiceNodeParser : IChoiceNodeParser
 
     public async Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var keyParsingResult = nameTextParser.Parse(reader.Argument);
+        var keyParsingResult = NameArgumentParser.Parse(reader.Argument);
         if (!keyParsingResult.IsOk)
         {
             parsingContext.LogError(reader, keyParsingResult.ErrorMessage);
@@ -44,13 +45,10 @@ public class ChoiceNodeParser : IChoiceNodeParser
         }
 
         var myContext = new ChoiceParentParsingContext();
-        await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
+        await ElementParser.ParseAsync(reader, parsingContext, myContext, Settings);
 
-        if (myContext.Builders.Count == 0)
-        {
-            parsingContext.LogError(reader, "Nenhuma opção informada.");
+        if (!parsingContext.IsSuccess || myContext.Builders.Count == 0)
             return;
-        }
 
         var ctx = (BalloonChildParsingContext)parentParsingContext;
         ctx.ChoiceBuilder = new ChoiceBuilder(keyParsingResult.Value, myContext.Builders);

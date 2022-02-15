@@ -6,10 +6,10 @@ namespace IS.Reading.Parsing.NodeParsers;
 
 public class MusicNodeParser : IMusicNodeParser
 {
-    private readonly INameArgumentParser nameTextParser;
+    public INameArgumentParser NameArgumentParser { get; }
 
-    public MusicNodeParser(INameArgumentParser nameTextParser)
-        => this.nameTextParser = nameTextParser;
+    public MusicNodeParser(INameArgumentParser nameArgumentParser)
+        => NameArgumentParser = nameArgumentParser;
 
     public bool IsArgumentRequired => true;
 
@@ -17,7 +17,7 @@ public class MusicNodeParser : IMusicNodeParser
 
     public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var parsed = nameTextParser.Parse(reader.Argument);
+        var parsed = NameArgumentParser.Parse(reader.Argument);
         if (!parsed.IsOk)
         {
             parsingContext.LogError(reader, parsed.ErrorMessage);
