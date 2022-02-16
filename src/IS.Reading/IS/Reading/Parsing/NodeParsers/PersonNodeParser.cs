@@ -6,14 +6,13 @@ namespace IS.Reading.Parsing.NodeParsers;
 
 public class PersonNodeParser : IPersonNodeParser
 {
-    private readonly IElementParser elementParser;
-    private readonly INameArgumentParser nameTextParser;
-
+    public IElementParser ElementParser { get; }
+    public INameArgumentParser NameArgumentParser { get; }
     public IElementParserSettings Settings { get; }
 
     public PersonNodeParser(
         IElementParser elementParser, 
-        INameArgumentParser nameTextParser,
+        INameArgumentParser nameArgumentParser,
         ISpeechNodeParser speechNodeParser,
         IThoughtNodeParser thoughtNodeParser,
         IMoodNodeParser moodNodeParser,
@@ -21,8 +20,8 @@ public class PersonNodeParser : IPersonNodeParser
         ISetNodeParser setNodeParser
     )
     {
-        this.elementParser = elementParser;
-        this.nameTextParser = nameTextParser;
+        this.ElementParser = elementParser;
+        this.NameArgumentParser = nameArgumentParser;
         Settings = new ElementParserSettings.Aggregated(
             speechNodeParser, 
             thoughtNodeParser,
@@ -38,7 +37,7 @@ public class PersonNodeParser : IPersonNodeParser
 
     public async Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var parsedName = nameTextParser.Parse(reader.Argument);
+        var parsedName = NameArgumentParser.Parse(reader.Argument);
         if (!parsedName.IsOk)
         {
             parsingContext.LogError(reader, parsedName.ErrorMessage);
@@ -46,17 +45,11 @@ public class PersonNodeParser : IPersonNodeParser
         }
 
         var myContext = new ParentParsingContext();
-        await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
+        await ElementParser.ParseAsync(reader, parsingContext, myContext, Settings);
 
-        if (myContext.Nodes.Count == 0)
+        if (!parsingContext.IsSuccess || myContext.Nodes.Count == 0)
             return;
-
-        if (parsingContext.SceneContext.HasMood)
-        {
-            parsingContext.LogError(reader, "Foi definido humor mas não foi definida uma fala ou pensamento correspondente.");
-            return;
-        }
-
+       
         myContext.Nodes.Insert(0, InitializeMoodNode);
         myContext.Nodes.Add(DismissMoodNode);
 

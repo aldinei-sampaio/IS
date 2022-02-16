@@ -6,31 +6,25 @@ namespace IS.Reading.Parsing.NodeParsers;
 
 public class ProtagonistNodeParser : IProtagonistNodeParser
 {
-    private readonly INameArgumentParser nameTextParser;
+    public INameArgumentParser NameArgumentParser { get; }
 
-    public ProtagonistNodeParser(INameArgumentParser nameTextParser)
-        => this.nameTextParser = nameTextParser;
+    public ProtagonistNodeParser(INameArgumentParser nameArgumentParser)
+        => NameArgumentParser = nameArgumentParser;
 
     public bool IsArgumentRequired => true;
 
-    public string Name => "protagonist";
+    public string Name => "mc";
 
     public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        if (string.IsNullOrWhiteSpace(reader.Argument))
-        {
-            parsingContext.LogError(reader, "O nome do protagonista não foi informado.");
-            return Task.CompletedTask;
-        }
-
-        var result = nameTextParser.Parse(reader.Argument);
+        var result = NameArgumentParser.Parse(reader.Argument);
         if (!result.IsOk)
         {
             parsingContext.LogError(reader, result.ErrorMessage);
             return Task.CompletedTask;
         }
 
-        var node = new ProtagonistNode(result.Value.Length == 0 ? null : result.Value);
+        var node = new ProtagonistNode(result.Value);
         parentParsingContext.AddNode(node);
         parsingContext.RegisterDismissNode(DismissNode);
 

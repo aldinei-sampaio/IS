@@ -5,10 +5,10 @@ namespace IS.Reading.Parsing.NodeParsers;
 
 public class SetNodeParser : ISetNodeParser
 {
-    private readonly IVarSetParser varSetParser;
+    public IVarSetParser VarSetParser { get; }
 
     public SetNodeParser(IVarSetParser varSetParser)
-        => this.varSetParser = varSetParser;
+        => VarSetParser = varSetParser;
 
     public bool IsArgumentRequired => true;
 
@@ -16,13 +16,7 @@ public class SetNodeParser : ISetNodeParser
 
     public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        if (string.IsNullOrWhiteSpace(reader.Argument))
-        {
-            parsingContext.LogError(reader, "Era esperada uma expressão de atribuição.");
-            return Task.CompletedTask;
-        }
-
-        var varSet = varSetParser.Parse(reader.Argument);
+        var varSet = VarSetParser.Parse(reader.Argument);
 
         if (varSet.IsOk)
             parentParsingContext.AddNode(new VarSetNode(varSet.Value));
