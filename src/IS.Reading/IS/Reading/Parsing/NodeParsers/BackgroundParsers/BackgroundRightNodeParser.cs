@@ -6,10 +6,10 @@ namespace IS.Reading.Parsing.NodeParsers.BackgroundParsers;
 
 public class BackgroundRightNodeParser : IBackgroundRightNodeParser
 {
-    private readonly IImageArgumentParser backgroundImageTextParser;
+    public IImageArgumentParser ImageArgumentParser { get; }
 
-    public BackgroundRightNodeParser(IImageArgumentParser backgroundImageTextParser)
-        => this.backgroundImageTextParser = backgroundImageTextParser;
+    public BackgroundRightNodeParser(IImageArgumentParser imageArgumentParser)
+        => ImageArgumentParser = imageArgumentParser;
 
     public bool IsArgumentRequired => true;
 
@@ -17,7 +17,7 @@ public class BackgroundRightNodeParser : IBackgroundRightNodeParser
 
     public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var result = backgroundImageTextParser.Parse(reader.Argument);
+        var result = ImageArgumentParser.Parse(reader.Argument);
         if (!result.IsOk)
         {
             parsingContext.LogError(reader, result.ErrorMessage);

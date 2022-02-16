@@ -6,10 +6,10 @@ namespace IS.Reading.Parsing.NodeParsers.BackgroundParsers;
 
 public class BackgroundColorNodeParser : IBackgroundColorNodeParser
 {
-    private readonly IColorArgumentParser colorTextParser;
+    public IColorArgumentParser ColorArgumentParser { get; }
 
-    public BackgroundColorNodeParser(IColorArgumentParser colorTextParser)
-        => this.colorTextParser = colorTextParser;
+    public BackgroundColorNodeParser(IColorArgumentParser colorArgumentParser)
+        => ColorArgumentParser = colorArgumentParser;
 
     public bool IsArgumentRequired => true;
 
@@ -17,7 +17,7 @@ public class BackgroundColorNodeParser : IBackgroundColorNodeParser
 
     public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var parsed = colorTextParser.Parse(reader.Argument);
+        var parsed = ColorArgumentParser.Parse(reader.Argument);
         if (!parsed.IsOk)
         {
             parsingContext.LogError(reader, parsed.ErrorMessage);

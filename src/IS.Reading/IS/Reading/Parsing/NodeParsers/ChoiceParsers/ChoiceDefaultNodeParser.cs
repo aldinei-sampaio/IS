@@ -1,13 +1,14 @@
-﻿using IS.Reading.Parsing.ArgumentParsers;
+﻿using IS.Reading.Choices;
+using IS.Reading.Parsing.ArgumentParsers;
 
 namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 
 public class ChoiceDefaultNodeParser : IChoiceDefaultNodeParser
 {
-    private readonly INameArgumentParser textParser;
+    public INameArgumentParser NameArgumentParser { get; }
 
-    public ChoiceDefaultNodeParser(INameArgumentParser textParser)
-        => this.textParser = textParser;
+    public ChoiceDefaultNodeParser(INameArgumentParser nameArgumentParser)
+        => NameArgumentParser = nameArgumentParser;
 
     public bool IsArgumentRequired => true;
 
@@ -15,7 +16,7 @@ public class ChoiceDefaultNodeParser : IChoiceDefaultNodeParser
 
     public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var result = textParser.Parse(reader.Argument);
+        var result = NameArgumentParser.Parse(reader.Argument);
         if (!result.IsOk)
         {
             parsingContext.LogError(reader, result.ErrorMessage);
@@ -23,7 +24,7 @@ public class ChoiceDefaultNodeParser : IChoiceDefaultNodeParser
         }
 
         var ctx = (ChoiceParentParsingContext)parentParsingContext;
-        ctx.AddSetter(i => i.Default = result.Value);
+        ctx.Builders.Add(new ChoiceDefaultSetter(result.Value));
 
         return Task.CompletedTask;
     }

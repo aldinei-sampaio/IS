@@ -17,7 +17,7 @@ public class ChoiceRandomOrderNodeParser : IChoiceRandomOrderNodeParser
         }
 
         var ctx = (ChoiceParentParsingContext)parentParsingContext;
-        ctx.AddSetter(i => i.RandomOrder = true);
+        ctx.Builders.Add(new ChoiceRandomOrderSetter(true));
         return Task.CompletedTask;
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
+﻿using IS.Reading.Choices;
+
+namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 
 public class ChoiceOptionDisabledNodeParser : IChoiceOptionDisabledNodeParser
 {
@@ -9,7 +11,7 @@ public class ChoiceOptionDisabledNodeParser : IChoiceOptionDisabledNodeParser
     public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
         var ctx = (ChoiceOptionParentParsingContext)parentParsingContext;
-        ctx.AddSetter(i => i.IsEnabled = false);
+        ctx.Builders.Add(new ChoiceOptionIsEnabledSetter(false));
         return Task.CompletedTask;
     }
 }

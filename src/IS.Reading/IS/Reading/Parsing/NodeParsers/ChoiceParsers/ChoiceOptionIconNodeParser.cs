@@ -1,4 +1,5 @@
-﻿using IS.Reading.Parsing.ArgumentParsers;
+﻿using IS.Reading.Choices;
+using IS.Reading.Parsing.ArgumentParsers;
 
 namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 
@@ -26,7 +27,7 @@ public class ChoiceOptionIconNodeParser : IChoiceOptionIconNodeParser
         }
 
         var ctx = (ChoiceOptionParentParsingContext)parentParsingContext;
-        ctx.AddSetter(i => i.ImageName = result.Value);
+        ctx.Builders.Add(new ChoiceOptionImageNameSetter(result.Value));
         return Task.CompletedTask;
     }
 }

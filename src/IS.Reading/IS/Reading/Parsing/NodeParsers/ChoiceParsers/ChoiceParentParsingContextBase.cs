@@ -7,9 +7,6 @@ public class ChoiceParentParsingContextBase<T> : IParentParsingContext
 {
     public List<IBuilder<T>> Builders { get; } = new();
 
-    public void AddSetter(Action<T> action)
-        => Builders.Add(new BuilderPropertySetter<T>(action));
-
     public void AddDecision(
         ICondition condition,
         IEnumerable<IBuilder<T>> ifBlock,

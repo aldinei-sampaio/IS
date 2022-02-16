@@ -57,7 +57,7 @@ public class ChoiceOptionNodeParser : IChoiceOptionNodeParser
                 return;
             }
 
-            myContext.Builders.Add(new ChoiceOptionTextBuilder(textSourceParsingResult.Value));
+            myContext.Builders.Add(new ChoiceOptionTextSetter(textSourceParsingResult.Value));
         }
 
         var builder = new ChoiceOptionBuilder(key, myContext.Builders);

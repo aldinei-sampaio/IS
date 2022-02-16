@@ -9,7 +9,7 @@ public class ChoiceOptionTextBuilderTests
     public void Initialization()
     {
         var textSource = A.Fake<ITextSource>(i => i.Strict());
-        var sut = new ChoiceOptionTextBuilder(textSource);
+        var sut = new ChoiceOptionTextSetter(textSource);
         sut.TextSource.Should().BeSameAs(textSource);
     }
 
@@ -26,7 +26,7 @@ public class ChoiceOptionTextBuilderTests
         var textSource = A.Fake<ITextSource>(i => i.Strict());
         A.CallTo(() => textSource.Build(variableDictionary)).Returns("omega");
 
-        var sut = new ChoiceOptionTextBuilder(textSource);
+        var sut = new ChoiceOptionTextSetter(textSource);
 
         sut.Build(prototype, navigationContext);
 

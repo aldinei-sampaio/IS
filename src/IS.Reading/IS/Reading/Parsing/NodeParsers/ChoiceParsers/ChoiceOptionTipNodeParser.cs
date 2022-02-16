@@ -27,7 +27,7 @@ public class ChoiceOptionTipNodeParser : IChoiceOptionTipNodeParser
         }
 
         var ctx = (ChoiceOptionParentParsingContext)parentParsingContext;
-        ctx.Builders.Add(new ChoiceOptionTipBuilder(parseResult.Value));
+        ctx.Builders.Add(new ChoiceOptionTipSetter(parseResult.Value));
         return Task.CompletedTask;
     }
 }

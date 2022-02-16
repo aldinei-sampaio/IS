@@ -9,7 +9,7 @@ public class ChoiceOptionTipBuilderTests
     public void Initialization()
     {
         var textSource = A.Fake<ITextSource>(i => i.Strict());
-        var sut = new ChoiceOptionTipBuilder(textSource);
+        var sut = new ChoiceOptionTipSetter(textSource);
         sut.TextSource.Should().BeSameAs(textSource);
     }
 
@@ -26,7 +26,7 @@ public class ChoiceOptionTipBuilderTests
         var textSource = A.Fake<ITextSource>(i => i.Strict());
         A.CallTo(() => textSource.Build(variableDictionary)).Returns("epsilon");
 
-        var sut = new ChoiceOptionTipBuilder(textSource);
+        var sut = new ChoiceOptionTipSetter(textSource);
 
         sut.Build(prototype, navigationContext);
 

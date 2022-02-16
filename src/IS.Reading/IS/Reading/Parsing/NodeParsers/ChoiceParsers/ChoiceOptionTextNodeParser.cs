@@ -24,7 +24,7 @@ public class ChoiceOptionTextNodeParser : IChoiceOptionTextNodeParser
         }
 
         var ctx = (ChoiceOptionParentParsingContext)parentParsingContext;
-        ctx.Builders.Add(new ChoiceOptionTextBuilder(parseResult.Value));
+        ctx.Builders.Add(new ChoiceOptionTextSetter(parseResult.Value));
         return Task.CompletedTask;
     }
 }

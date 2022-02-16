@@ -3,11 +3,11 @@ using IS.Reading.Variables;
 
 namespace IS.Reading.Choices;
 
-public class ChoiceOptionTextBuilder : IBuilder<IChoiceOptionPrototype>
+public class ChoiceOptionTextSetter : IBuilder<IChoiceOptionPrototype>
 {
     public ITextSource TextSource { get; }
 
-    public ChoiceOptionTextBuilder(ITextSource textSource)
+    public ChoiceOptionTextSetter(ITextSource textSource)
         => this.TextSource = textSource;
 
     public void Build(IChoiceOptionPrototype prototype, INavigationContext context)
