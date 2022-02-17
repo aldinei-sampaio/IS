@@ -5,10 +5,10 @@ namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 
 public class ChoiceOptionIconNodeParser : IChoiceOptionIconNodeParser
 {
-    private readonly INameArgumentParser nameTextParser;
+    public INameArgumentParser NameArgumentParser { get; }
 
     public ChoiceOptionIconNodeParser(INameArgumentParser nameTextParser)
-        => this.nameTextParser = nameTextParser;
+        => NameArgumentParser = nameTextParser;
 
     public bool IsArgumentRequired => true;
 
@@ -16,10 +16,7 @@ public class ChoiceOptionIconNodeParser : IChoiceOptionIconNodeParser
 
     public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        if (string.IsNullOrEmpty(reader.Argument))
-            throw new InvalidOperationException();
-
-        var result = nameTextParser.Parse(reader.Argument);
+        var result = NameArgumentParser.Parse(reader.Argument);
         if (!result.IsOk)
         {
             parsingContext.LogError(reader, result.ErrorMessage);

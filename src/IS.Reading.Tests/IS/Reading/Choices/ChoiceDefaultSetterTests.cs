@@ -27,5 +27,3 @@ public class ChoiceDefaultSetterTests
         A.CallToSet(() => prototype.Default).To(value).MustHaveHappenedOnceExactly();
     }
 }
-
-

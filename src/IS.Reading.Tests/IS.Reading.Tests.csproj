@@ -46,8 +46,4 @@
 	<ItemGroup>
 		<ProjectReference Include="..\IS.Reading\IS.Reading.csproj" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="IS\Reading\Parsing\NodeParsers\ChoiceParsers\" />
-	</ItemGroup>
 </Project>

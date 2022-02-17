@@ -4,9 +4,8 @@ namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 
 public class ChoiceIfNodeParser : IChoiceIfNodeParser
 {
-    private readonly IElementParser elementParser;
-    private readonly IConditionParser conditionParser;
-
+    public IElementParser ElementParser { get; }
+    public IConditionParser ConditionParser { get; }
     public IElementParserSettings IfBlockSettings { get; }
     public IElementParserSettings ElseBlockSettings { get; }
 
@@ -19,24 +18,20 @@ public class ChoiceIfNodeParser : IChoiceIfNodeParser
         IChoiceOptionNodeParser optionNodeParser
     )
     {
-        this.elementParser = elementParser;
-        this.conditionParser = conditionParser;
+        ElementParser = elementParser;
+        ConditionParser = conditionParser;
 
-        IfBlockSettings = new ElementParserSettings.IfBlock(
+        var parsers = new INodeParser[]
+        {
             defaultNodeParser,
             randomOrderNodeParser,
             timeLimitNodeParser,
             optionNodeParser,
             this
-        );
+        };
 
-        ElseBlockSettings = new ElementParserSettings.Block(
-            defaultNodeParser,
-            randomOrderNodeParser,
-            timeLimitNodeParser,
-            optionNodeParser,
-            this
-        );
+        IfBlockSettings = new ElementParserSettings.IfBlock(parsers);
+        ElseBlockSettings = new ElementParserSettings.Block(parsers);
     }
 
     public bool IsArgumentRequired => true;
@@ -45,10 +40,7 @@ public class ChoiceIfNodeParser : IChoiceIfNodeParser
 
     public async Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        if (string.IsNullOrEmpty(reader.Argument))
-            throw new InvalidOperationException();
-
-        var parsingResult = conditionParser.Parse(reader.Argument);
+        var parsingResult = ConditionParser.Parse(reader.Argument);
         if (!parsingResult.IsOk)
         {
             parsingContext.LogError(reader, parsingResult.ErrorMessage);
@@ -58,14 +50,14 @@ public class ChoiceIfNodeParser : IChoiceIfNodeParser
         var ifContext = new ChoiceParentParsingContext();
         var elseContext = new ChoiceParentParsingContext();
 
-        await elementParser.ParseAsync(reader, parsingContext, ifContext, IfBlockSettings);
+        await ElementParser.ParseAsync(reader, parsingContext, ifContext, IfBlockSettings);
 
-        if (!parsingContext.IsSuccess)
+        if (!parsingContext.IsSuccess || (ifContext.Builders.Count == 0 && elseContext.Builders.Count == 0))
             return;
 
         if (!reader.AtEnd && string.Compare(reader.Command, "else", true) == 0)
         {
-            await elementParser.ParseAsync(reader, parsingContext, elseContext, ElseBlockSettings);
+            await ElementParser.ParseAsync(reader, parsingContext, elseContext, ElseBlockSettings);
             if (!parsingContext.IsSuccess)
                 return;
         }

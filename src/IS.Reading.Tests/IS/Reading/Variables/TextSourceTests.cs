@@ -14,7 +14,7 @@ public class TextSourceTests
         sut.Text.Should().Be(value);
         sut.Interpolator.Should().BeNull();
         sut.ToString().Should().Be(value);
-        sut.ToString(variables).Should().Be(value);
+        sut.Build(variables).Should().Be(value);
     }
 
     [Theory]
@@ -33,7 +33,7 @@ public class TextSourceTests
         sut.Text.Should().BeNull();
         sut.Interpolator.Should().BeSameAs(interpolator);
         sut.ToString().Should().Be(value);
-        sut.ToString(variables).Should().Be(value);
+        sut.Build(variables).Should().Be(value);
     }
 
     [Fact]
@@ -45,6 +45,6 @@ public class TextSourceTests
         sut.Text.Should().BeNull();
         sut.Interpolator.Should().BeNull();
         Assert.Throws<InvalidOperationException>(() => sut.ToString());
-        Assert.Throws<InvalidOperationException>(() => sut.ToString(variables));
+        Assert.Throws<InvalidOperationException>(() => sut.Build(variables));
     }
 }

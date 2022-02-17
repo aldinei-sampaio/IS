@@ -16,8 +16,8 @@ public class TextSourceParserTests
 
         var sut = new TextSourceParser();
         var result = sut.Parse(text);
-        result.IsError.Should().BeFalse();
-        result.TextSource.ToString().Should().Be(expected);
+        result.IsOk.Should().BeTrue();
+        result.Value.ToString().Should().Be(expected);
     }
 
     [Theory]
@@ -37,7 +37,7 @@ public class TextSourceParserTests
     {
         var sut = new TextSourceParser();
         var result = sut.Parse(text);
-        result.IsError.Should().BeTrue();
+        result.IsOk.Should().BeFalse();
         result.ErrorMessage.Should().Be(errorMessage);
     }
 
@@ -52,8 +52,8 @@ public class TextSourceParserTests
 
         var sut = new TextSourceParser();
         var result = sut.Parse(text);
-        result.IsError.Should().BeFalse();
-        result.TextSource.Should().BeOfType<TextSource>()
+        result.IsOk.Should().BeTrue();
+        result.Value.Should().BeOfType<TextSource>()
             .Which.Text.Should().Be(expected);
     }
 
@@ -64,9 +64,9 @@ public class TextSourceParserTests
     {
         var sut = new TextSourceParser();
         var result = sut.Parse(text);
-        result.IsError.Should().BeFalse();
+        result.IsOk.Should().BeTrue();
 
-        result.TextSource.Should().BeOfType<TextSource>()
+        result.Value.Should().BeOfType<TextSource>()
             .Which.Interpolator.Should().BeOfType<Interpolator>()
             .Which.Values.Should().BeEquivalentTo(
                 interpolatorValues.Select(i => new { IsVariable = false, Value = i })
@@ -79,9 +79,9 @@ public class TextSourceParserTests
         var text = "{MC} empurrou {antagonist} da ponte.";
         var sut = new TextSourceParser();
         var result = sut.Parse(text);
-        result.IsError.Should().BeFalse();
+        result.IsOk.Should().BeTrue();
 
-        result.TextSource.Should().BeOfType<TextSource>()
+        result.Value.Should().BeOfType<TextSource>()
             .Which.Interpolator.Should().BeOfType<Interpolator>()
             .Which.Values.Should().BeEquivalentTo(new[]
             {

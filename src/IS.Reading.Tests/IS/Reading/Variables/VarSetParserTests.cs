@@ -41,7 +41,8 @@ public class VarSetParserTests
 
         var sut = new VarSetParser();
         var result = sut.Parse(expression);
-        result.Should().BeOfType<VarSet>()
+        result.IsOk.Should().BeTrue();
+        result.Value.Should().BeOfType<VarSet>()
             .Which.ToString().Should().Be(expected);
     }
 
@@ -71,14 +72,12 @@ public class VarSetParserTests
 
         var sut = new VarSetParser();
         var result = sut.Parse(expression);
-        result.Should().BeOfType<IntegerIncrement>()
+        result.IsOk.Should().BeTrue();
+        result.Value.Should().BeOfType<IntegerIncrement>()
             .Which.ToString().Should().Be(expected);
     }
 
     [Theory]
-    [InlineData(null)]
-    [InlineData("")]
-    [InlineData("   ")]
     [InlineData("alpha")]
     [InlineData("alpha=")]
     [InlineData("alpha=2147483648")]
@@ -101,6 +100,19 @@ public class VarSetParserTests
     {
         var sut = new VarSetParser();
         var result = sut.Parse(expression);
-        result.Should().BeNull();
+        result.IsOk.Should().BeFalse();
     }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData("   ")]
+    public void EmptyText(string expression)
+    {
+        var sut = new VarSetParser();
+        var result = sut.Parse(expression);
+        result.IsOk.Should().BeFalse();
+        result.ErrorMessage.Should().Be("Expressão não informada.");
+    }
+
 }

@@ -67,7 +67,7 @@ public class PersonNodeParserTests
     }
 
     [Fact]
-    public async Task ShouldLogNameParserError()
+    public async Task ShouldLogArgumentParserError()
     {
         var errorMessage = "Erro proposital.";
         var argument = "alabama";
