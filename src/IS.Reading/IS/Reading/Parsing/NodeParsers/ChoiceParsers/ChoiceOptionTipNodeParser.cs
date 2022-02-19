@@ -16,9 +16,6 @@ public class ChoiceOptionTipNodeParser : IChoiceOptionTipNodeParser
 
     public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        if (string.IsNullOrEmpty(reader.Argument))
-            throw new InvalidOperationException();
-
         var parseResult = TextSourceParser.Parse(reader.Argument);
         if (!parseResult.IsOk)
         {

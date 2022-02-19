@@ -4,7 +4,7 @@ public class ThoughtNodeParser : BalloonNodeParserBase, IThoughtNodeParser
 {
     public override string Name => "thought";
 
-    public override BalloonType BalloonType => BalloonType.Speech;
+    public override BalloonType BalloonType => BalloonType.Thought;
 
     public ThoughtNodeParser(
         IElementParser elementParser,

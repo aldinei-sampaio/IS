@@ -13,6 +13,7 @@ public class ThoughtNodeParserTests
 
         sut.Name.Should().Be("thought");
         sut.IsArgumentRequired.Should().BeFalse();
+        sut.BalloonType.Should().Be(BalloonType.Thought);
         sut.Settings.Should().BeOfType<ElementParserSettings.Aggregated>();
         sut.Settings.ChildParsers.Should().BeEquivalentTo(balloonTextNodeParser, moodNodeParser, setNodeParser);
     }

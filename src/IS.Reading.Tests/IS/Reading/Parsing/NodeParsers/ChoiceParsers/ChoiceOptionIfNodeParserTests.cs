@@ -106,7 +106,7 @@ public class ChoiceOptionIfNodeParserTests
 
         A.CallTo(() => documentReader.Argument).Returns(argument);
         A.CallTo(() => conditionParser.Parse(argument)).Returns(Result.Ok(condition));
-        A.CallTo(() => parsingContext.IsSuccess).Returns(false);
+        A.CallTo(() => parsingContext.IsSuccess).Returns(true);
         A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.IfBlockSettings))
             .DoesNothing();
         A.CallTo(() => documentReader.Command).Returns("end");
@@ -130,6 +130,33 @@ public class ChoiceOptionIfNodeParserTests
             .Invokes(i => i.GetArgument<ChoiceOptionParentParsingContext>(2).Builders.Add(builder));
         A.CallTo(() => documentReader.Command).Returns("end");
         A.CallTo(() => documentReader.AtEnd).Returns(false);
+
+        await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
+
+        parentParsingContext.Builders.Should().ContainSingle()
+            .Which.Should().BeOfType<BuilderDecision<IChoiceOptionPrototype>>()
+            .Which.ShouldSatisfy(i =>
+            {
+                i.Condition.Should().BeSameAs(condition);
+                i.IfBlock.Should().BeEquivalentTo(builder);
+                i.ElseBlock.Should().BeEmpty();
+            });
+    }
+
+    [Fact]
+    public async Task ParsingSuccessWithoutElseBecauseEndOfFile()
+    {
+        var argument = "alpha = 1";
+        var condition = A.Dummy<ICondition>();
+        var builder = A.Dummy<IBuilder<IChoiceOptionPrototype>>();
+
+        A.CallTo(() => documentReader.Argument).Returns(argument);
+        A.CallTo(() => conditionParser.Parse(argument)).Returns(Result.Ok(condition));
+        A.CallTo(() => parsingContext.IsSuccess).Returns(true);
+        A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.IfBlockSettings))
+            .Invokes(i => i.GetArgument<ChoiceOptionParentParsingContext>(2).Builders.Add(builder));
+        A.CallTo(() => documentReader.Command).Returns("else");
+        A.CallTo(() => documentReader.AtEnd).Returns(true);
 
         await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
 
@@ -171,6 +198,26 @@ public class ChoiceOptionIfNodeParserTests
                 i.IfBlock.Should().BeEquivalentTo(builder1);
                 i.ElseBlock.Should().BeEquivalentTo(builder2);
             });
+    }
+
+    [Fact]
+    public async Task ShouldExitOnIfParsingError()
+    {
+        var argument = "alpha = 1";
+        var condition = A.Dummy<ICondition>();
+        var builder1 = A.Dummy<IBuilder<IChoiceOptionPrototype>>();
+
+        A.CallTo(() => documentReader.Argument).Returns(argument);
+        A.CallTo(() => conditionParser.Parse(argument)).Returns(Result.Ok(condition));
+        A.CallTo(() => parsingContext.IsSuccess).Returns(false);
+        A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.IfBlockSettings))
+            .DoesNothing();
+        A.CallTo(() => documentReader.Command).Returns("else");
+        A.CallTo(() => documentReader.AtEnd).Returns(false);
+
+        await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
+
+        parentParsingContext.Builders.Should().BeEmpty();
     }
 
     [Fact]

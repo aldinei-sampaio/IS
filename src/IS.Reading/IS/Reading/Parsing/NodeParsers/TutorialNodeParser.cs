@@ -4,7 +4,7 @@ public class TutorialNodeParser : BalloonNodeParserBase, ITutorialNodeParser
 {
     public override string Name => "tutorial";
 
-    public override BalloonType BalloonType => BalloonType.Narration;
+    public override BalloonType BalloonType => BalloonType.Tutorial;
 
     public TutorialNodeParser(
         IElementParser elementParser,

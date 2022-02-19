@@ -12,6 +12,7 @@ public class NarrationNodeParserTests
 
         sut.Name.Should().Be("narration");
         sut.IsArgumentRequired.Should().BeFalse();
+        sut.BalloonType.Should().Be(BalloonType.Narration);
         sut.Settings.Should().BeOfType<ElementParserSettings.Aggregated>();
         sut.Settings.ChildParsers.Should().BeEquivalentTo(balloonTextNodeParser, setNodeParser);
     }

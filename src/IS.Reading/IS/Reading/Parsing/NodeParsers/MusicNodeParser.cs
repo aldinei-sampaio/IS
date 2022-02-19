@@ -32,7 +32,7 @@ public class MusicNodeParser : IMusicNodeParser
 
         parsingContext.SceneContext.HasMusic = true;
 
-        var node = new MusicNode(parsed.Value.Length == 0 ? null : parsed.Value);
+        var node = new MusicNode(parsed.Value);
         parentParsingContext.AddNode(node);
         parsingContext.RegisterDismissNode(DismissNode);
 

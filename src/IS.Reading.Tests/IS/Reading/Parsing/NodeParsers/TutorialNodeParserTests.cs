@@ -12,6 +12,7 @@ public class TutorialNodeParserTests
 
         sut.Name.Should().Be("tutorial");
         sut.IsArgumentRequired.Should().BeFalse();
+        sut.BalloonType.Should().Be(BalloonType.Tutorial);
         sut.Settings.Should().BeOfType<ElementParserSettings.Aggregated>();
         sut.Settings.ChildParsers.Should().BeEquivalentTo(balloonTextNodeParser, setNodeParser);
     }

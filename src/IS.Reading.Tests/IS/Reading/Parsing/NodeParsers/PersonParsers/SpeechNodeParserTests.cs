@@ -13,6 +13,7 @@ public class SpeechNodeParserTests
 
         sut.Name.Should().Be("speech");
         sut.IsArgumentRequired.Should().BeFalse();
+        sut.BalloonType.Should().Be(BalloonType.Speech);
         sut.Settings.Should().BeOfType<ElementParserSettings.Aggregated>();
         sut.Settings.ChildParsers.Should().BeEquivalentTo(balloonTextNodeParser, moodNodeParser, setNodeParser);
     }

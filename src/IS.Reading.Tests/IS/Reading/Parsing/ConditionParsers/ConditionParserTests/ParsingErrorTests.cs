@@ -3,6 +3,18 @@
 public class ParsingErrorTests
 {
     [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData(" ")]
+    public void EmptyText(string text)
+    {
+        var sut = new ConditionParser(A.Dummy<IWordReaderFactory>());
+        var result = sut.Parse(text);
+        result.IsOk.Should().BeFalse();
+        result.ErrorMessage.Should().Be("Era esperado um argumento com uma condição.");
+    }
+
+    [Theory]
     [InlineData(WordType.Or, "or")]
     [InlineData(WordType.And, "and")]
     [InlineData(WordType.CloseParenthesys, ")")]
