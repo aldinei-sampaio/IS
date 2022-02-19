@@ -5,10 +5,13 @@ namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 
 public class ChoiceTimeLimitNodeParser : IChoiceTimeLimitNodeParser
 {
-    private readonly IIntegerArgumentParser integerParser;
+    public const int MinValue = 1;
+    public const int MaxValue = 30000;
+
+    public IIntegerArgumentParser IntegerArgumentParser { get; }
 
     public ChoiceTimeLimitNodeParser(IIntegerArgumentParser integerParser)
-        => this.integerParser = integerParser;
+        => IntegerArgumentParser = integerParser;
 
     public bool IsArgumentRequired => true;
 
@@ -16,17 +19,14 @@ public class ChoiceTimeLimitNodeParser : IChoiceTimeLimitNodeParser
 
     public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        if (string.IsNullOrEmpty(reader.Argument))
-            throw new InvalidOperationException();
-
-        var valueParsingResult = integerParser.Parse(reader.Argument, 1, 30000);
+        var valueParsingResult = IntegerArgumentParser.Parse(reader.Argument, MinValue, MaxValue);
         if (!valueParsingResult.IsOk)
         {
             parsingContext.LogError(reader, valueParsingResult.ErrorMessage);
             return Task.CompletedTask;
         }
 
-        var timeLimit = TimeSpan.FromSeconds(valueParsingResult.Value);
+        var timeLimit = TimeSpan.FromMilliseconds(valueParsingResult.Value);
 
         var ctx = (ChoiceParentParsingContext)parentParsingContext;
         ctx.Builders.Add(new ChoiceTimeLimitSetter(timeLimit));

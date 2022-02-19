@@ -108,13 +108,13 @@ namespace IS.Reading.Parsing;
 /// end
 /// </code>
 /// </remarks>
-public sealed class StbDocumentReader : IDocumentReader
+public sealed class DocumentReader : IDocumentReader
 {
     private readonly IDocumentLineReader reader;
 
     private Memory<char>? currentLine;
 
-    public StbDocumentReader(IDocumentLineReader reader)  
+    public DocumentReader(IDocumentLineReader reader)  
         => this.reader = reader;
 
     public int CurrentLineIndex => reader.CurrentLineIndex;

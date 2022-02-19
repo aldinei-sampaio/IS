@@ -10,13 +10,13 @@ public class StoryboardEventTester
     private readonly List<string> received = new();
     private readonly IStoryboard storyboard;
 
-    public static async Task<StoryboardEventTester> CreateAsync(string xml)
+    public static async Task<StoryboardEventTester> CreateAsync(string stb)
     {
         var serviceCollection = new ServiceCollection();
         serviceCollection.AddISReading();
         var serviceProvider = serviceCollection.BuildServiceProvider();
         var parser = serviceProvider.GetRequiredService<IStoryboardParser>();
-        var storyboard = await parser.ParseAsync(new StringReader(xml));
+        var storyboard = await parser.ParseAsync(new DocumentReader(new DocumentLineReader(new StringReader(stb))));
         return new(storyboard);
     }
 

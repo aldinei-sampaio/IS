@@ -7,9 +7,9 @@ namespace IS.Reading.Parsing.NodeParsers;
 
 public class BlockNodeParserTests
 {
-    private readonly IDocumentReader reader;
-    private readonly IParsingContext context;
-    private readonly FakeParentParsingContext parentContext = new();
+    private readonly IDocumentReader documentReader;
+    private readonly IParsingContext parsingContext;
+    private readonly FakeParentParsingContext parentParsingContext = new();
     private readonly IElementParser elementParser;
     private readonly IMusicNodeParser musicNodeParser;
     private readonly IBackgroundNodeParser backgroundNodeParser;
@@ -24,9 +24,9 @@ public class BlockNodeParserTests
 
     public BlockNodeParserTests()
     {
-        reader = A.Dummy<IDocumentReader>();
+        documentReader = A.Dummy<IDocumentReader>();
 
-        context = Helper.FakeParsingContext();
+        parsingContext = Helper.FakeParsingContext();
         elementParser = A.Fake<IElementParser>(i => i.Strict(StrictFakeOptions.AllowToString));
         musicNodeParser = Helper.FakeParser<IMusicNodeParser>("music");
         backgroundNodeParser = Helper.FakeParser<IBackgroundNodeParser>("background");
@@ -80,26 +80,111 @@ public class BlockNodeParserTests
     }
 
     [Fact]
-    public async Task IfWithElse()
+    public async Task ShouldLogArgumentParsingError()
     {
-        A.CallTo(() => reader.AtEnd).Returns(false);
-        A.CallTo(() => reader.Command).ReturnsNextFromSequence("if", "else");
-        A.CallTo(() => reader.Argument).Returns("a = b");
-        A.CallTo(() => context.IsSuccess).Returns(true);
+        var errorMessage = "Erro proposital.";
+        var argument = "Gibberish";
+        A.CallTo(() => documentReader.Argument).Returns(argument);
+        A.CallTo(() => conditionParser.Parse(argument)).Returns(Result.Fail<ICondition>(errorMessage));
+        A.CallTo(() => parsingContext.LogError(documentReader, errorMessage)).DoesNothing();
+
+        await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
+
+        parentParsingContext.ShouldBeEmpty();
+        A.CallTo(() => parsingContext.LogError(documentReader, errorMessage)).MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task ShouldExitOnWhileBlockParsingError()
+    {
+        A.CallTo(() => documentReader.Command).Returns("while");
+        A.CallTo(() => documentReader.Argument).Returns("a = b");
+        A.CallTo(() => parsingContext.IsSuccess).Returns(false);
+
+        var condition = A.Dummy<ICondition>();
+        A.CallTo(() => conditionParser.Parse("a = b")).Returns(Result.Ok(condition));
+
+        var ifBlockNode = A.Dummy<INode>();
+        A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.BlockSettings))
+            .DoesNothing();
+
+        await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
+
+        parentParsingContext.ShouldBeEmpty();
+        A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.BlockSettings))
+            .MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task ShouldExitOnIfBlockParsingError()
+    {
+        A.CallTo(() => documentReader.Command).Returns("if");
+        A.CallTo(() => documentReader.Argument).Returns("a = b");
+        A.CallTo(() => parsingContext.IsSuccess).Returns(false);
+
+        var condition = A.Dummy<ICondition>();
+        A.CallTo(() => conditionParser.Parse("a = b")).Returns(Result.Ok(condition));
+
+        var ifBlockNode = A.Dummy<INode>();
+        A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.IfBlockSettings))
+            .DoesNothing();
+
+        await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
+
+        parentParsingContext.ShouldBeEmpty();
+        A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.IfBlockSettings))
+            .MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task ShouldExitOnElseBlockParsingError()
+    {
+        A.CallTo(() => documentReader.Command).ReturnsNextFromSequence("if", "else");
+        A.CallTo(() => documentReader.Argument).Returns("a = b");
+        A.CallTo(() => parsingContext.IsSuccess).ReturnsNextFromSequence(true, false);
+        A.CallTo(() => documentReader.AtEnd).Returns(false);
 
         var condition = A.Dummy<ICondition>();
         A.CallTo(() => conditionParser.Parse("a = b")).Returns(Result.Ok(condition));
 
         var ifBlockNode = A.Dummy<INode>();
         var elseBlockNode = A.Dummy<INode>();
-        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.IfBlockSettings))
+        A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.IfBlockSettings))
+            .DoesNothing();
+        A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.BlockSettings))
+            .DoesNothing();
+
+        await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
+
+        parentParsingContext.ShouldBeEmpty();
+
+        A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.IfBlockSettings))
+            .MustHaveHappenedOnceExactly();
+        A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.BlockSettings))
+            .MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task IfWithElse()
+    {
+        A.CallTo(() => documentReader.AtEnd).Returns(false);
+        A.CallTo(() => documentReader.Command).ReturnsNextFromSequence("if", "else");
+        A.CallTo(() => documentReader.Argument).Returns("a = b");
+        A.CallTo(() => parsingContext.IsSuccess).Returns(true);
+
+        var condition = A.Dummy<ICondition>();
+        A.CallTo(() => conditionParser.Parse("a = b")).Returns(Result.Ok(condition));
+
+        var ifBlockNode = A.Dummy<INode>();
+        var elseBlockNode = A.Dummy<INode>();
+        A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.IfBlockSettings))
             .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(ifBlockNode));
-        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.BlockSettings))
+        A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.BlockSettings))
             .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(elseBlockNode));
 
-        await sut.ParseAsync(reader, context, parentContext);
+        await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
 
-        parentContext.ShouldContainSingle<IfNode>(i =>
+        parentParsingContext.ShouldContainSingle<IfNode>(i =>
         {
             i.Condition.Should().BeSameAs(condition);
             i.IfBlock.ShouldContainOnly(ifBlockNode);
@@ -113,21 +198,49 @@ public class BlockNodeParserTests
     [Fact]
     public async Task IfWithoutElse()
     {
-        A.CallTo(() => reader.AtEnd).Returns(false);
-        A.CallTo(() => reader.Command).ReturnsNextFromSequence("if", "end");
-        A.CallTo(() => reader.Argument).Returns("a = b");
-        A.CallTo(() => context.IsSuccess).Returns(true);
+        A.CallTo(() => documentReader.AtEnd).Returns(false);
+        A.CallTo(() => documentReader.Command).ReturnsNextFromSequence("if", "end");
+        A.CallTo(() => documentReader.Argument).Returns("a = b");
+        A.CallTo(() => parsingContext.IsSuccess).Returns(true);
 
         var condition = A.Dummy<ICondition>();
         A.CallTo(() => conditionParser.Parse("a = b")).Returns(Result.Ok(condition));
 
         var ifBlockNode = A.Dummy<INode>();
-        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.IfBlockSettings))
+        A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.IfBlockSettings))
             .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(ifBlockNode));
 
-        await sut.ParseAsync(reader, context, parentContext);
+        await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
 
-        parentContext.ShouldContainSingle<IfNode>(i =>
+        parentParsingContext.ShouldContainSingle<IfNode>(i =>
+        {
+            i.Condition.Should().BeSameAs(condition);
+            i.IfBlock.ShouldContainOnly(ifBlockNode);
+            i.IfBlock.While.Should().BeNull();
+            i.ElseBlock.ShouldBeEmpty();
+            i.ElseBlock.While.Should().BeNull();
+            i.ChildBlock.Should().BeNull();
+        });
+    }
+
+    [Fact]
+    public async Task IfWithoutElseBecauseEndWasReached()
+    {
+        A.CallTo(() => documentReader.AtEnd).Returns(true);
+        A.CallTo(() => documentReader.Command).Returns("if");
+        A.CallTo(() => documentReader.Argument).Returns("a = b");
+        A.CallTo(() => parsingContext.IsSuccess).Returns(true);
+
+        var condition = A.Dummy<ICondition>();
+        A.CallTo(() => conditionParser.Parse("a = b")).Returns(Result.Ok(condition));
+
+        var ifBlockNode = A.Dummy<INode>();
+        A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.IfBlockSettings))
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(ifBlockNode));
+
+        await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
+
+        parentParsingContext.ShouldContainSingle<IfNode>(i =>
         {
             i.Condition.Should().BeSameAs(condition);
             i.IfBlock.ShouldContainOnly(ifBlockNode);
@@ -141,21 +254,21 @@ public class BlockNodeParserTests
     [Fact]
     public async Task While()
     {
-        A.CallTo(() => reader.AtEnd).Returns(false);
-        A.CallTo(() => reader.Command).Returns("while");
-        A.CallTo(() => reader.Argument).Returns("a = b");
-        A.CallTo(() => context.IsSuccess).Returns(true);
+        A.CallTo(() => documentReader.AtEnd).Returns(false);
+        A.CallTo(() => documentReader.Command).Returns("while");
+        A.CallTo(() => documentReader.Argument).Returns("a = b");
+        A.CallTo(() => parsingContext.IsSuccess).Returns(true);
 
         var condition = A.Dummy<ICondition>();
         A.CallTo(() => conditionParser.Parse("a = b")).Returns(Result.Ok(condition));
 
         var blockNode = A.Dummy<INode>();
-        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.BlockSettings))
+        A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.BlockSettings))
             .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(blockNode));
 
-        await sut.ParseAsync(reader, context, parentContext);
+        await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
 
-        parentContext.ShouldContainSingle<BlockNode>(i =>
+        parentParsingContext.ShouldContainSingle<BlockNode>(i =>
         {
             i.ChildBlock.While.Should().BeSameAs(condition);
             i.ChildBlock.ShouldContainOnly(blockNode);

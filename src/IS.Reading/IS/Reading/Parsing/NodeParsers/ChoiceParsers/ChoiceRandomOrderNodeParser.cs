@@ -12,7 +12,7 @@ public class ChoiceRandomOrderNodeParser : IChoiceRandomOrderNodeParser
     {
         if (!string.IsNullOrEmpty(reader.Argument))
         {
-            parsingContext.LogError(reader, "O comando 'randomorder' não suporta argumentos.");
+            parsingContext.LogError(reader, "O comando 'randomorder' não suporta argumento.");
             return Task.CompletedTask;
         }
 

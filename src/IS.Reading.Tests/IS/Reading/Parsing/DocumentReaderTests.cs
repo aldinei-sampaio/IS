@@ -1,6 +1,6 @@
 ﻿namespace IS.Reading.Parsing;
 
-public class StbDocumentReaderTests
+public class DocumentReaderTests
 {
     private class TestReader : IDocumentLineReader
     {
@@ -30,9 +30,9 @@ public class StbDocumentReaderTests
 
     private sealed class Tester : IDisposable
     {
-        private readonly StbDocumentReader sut;
+        private readonly DocumentReader sut;
         public Tester(params string[] lines)
-            => sut = new StbDocumentReader(new TestReader(lines));
+            => sut = new DocumentReader(new TestReader(lines));
 
         public void Dispose() => sut.Dispose();
 

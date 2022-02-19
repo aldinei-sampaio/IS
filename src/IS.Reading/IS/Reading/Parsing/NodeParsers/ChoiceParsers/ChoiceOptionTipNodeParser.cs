@@ -5,10 +5,10 @@ namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 
 public class ChoiceOptionTipNodeParser : IChoiceOptionTipNodeParser
 {
-    private readonly ITextSourceParser textSourceParser;
+    public ITextSourceParser TextSourceParser { get; }
 
     public ChoiceOptionTipNodeParser(ITextSourceParser textSourceParser)
-        => this.textSourceParser = textSourceParser;
+        => TextSourceParser = textSourceParser;
 
     public bool IsArgumentRequired => true;
 
@@ -19,7 +19,7 @@ public class ChoiceOptionTipNodeParser : IChoiceOptionTipNodeParser
         if (string.IsNullOrEmpty(reader.Argument))
             throw new InvalidOperationException();
 
-        var parseResult = textSourceParser.Parse(reader.Argument);
+        var parseResult = TextSourceParser.Parse(reader.Argument);
         if (!parseResult.IsOk)
         {
             parsingContext.LogError(reader, parseResult.ErrorMessage);

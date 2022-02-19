@@ -5,10 +5,10 @@ namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 
 public class ChoiceOptionTextNodeParser : IChoiceOptionTextNodeParser
 {
-    private readonly ITextSourceParser textSourceParser;
+    public ITextSourceParser TextSourceParser { get; }
 
     public ChoiceOptionTextNodeParser(ITextSourceParser textSourceParser)
-        => this.textSourceParser = textSourceParser;
+        => TextSourceParser = textSourceParser;
 
     public bool IsArgumentRequired => true;
 
@@ -16,7 +16,7 @@ public class ChoiceOptionTextNodeParser : IChoiceOptionTextNodeParser
 
     public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var parseResult = textSourceParser.Parse(reader.Argument);
+        var parseResult = TextSourceParser.Parse(reader.Argument);
         if (!parseResult.IsOk)
         {
             parsingContext.LogError(reader, parseResult.ErrorMessage);

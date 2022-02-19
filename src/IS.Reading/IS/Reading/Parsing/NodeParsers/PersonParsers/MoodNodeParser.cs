@@ -10,12 +10,6 @@ public class MoodNodeParser : IMoodNodeParser
 
     public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        if (string.IsNullOrWhiteSpace(reader.Argument))
-        {
-            parsingContext.LogError(reader, "O humor não foi informado.");
-            return Task.CompletedTask;
-        }
-
         if (!Enum.TryParse<MoodType>(reader.Argument, out var moodType))
         {
             parsingContext.LogError(reader, $"O valor '{reader.Argument}' não representa uma emoção válida.");

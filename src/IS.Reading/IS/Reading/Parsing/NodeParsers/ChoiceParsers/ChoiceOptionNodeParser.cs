@@ -5,9 +5,8 @@ namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 
 public class ChoiceOptionNodeParser : IChoiceOptionNodeParser
 {
-    private readonly IElementParser elementParser;
-    private readonly ITextSourceParser textSourceParser;
-
+    public IElementParser ElementParser { get; }
+    public ITextSourceParser TextSourceParser { get; }
     public IElementParserSettings Settings { get; }
 
     public ChoiceOptionNodeParser(
@@ -16,17 +15,17 @@ public class ChoiceOptionNodeParser : IChoiceOptionNodeParser
         IChoiceOptionTextNodeParser choiceOptionTextNodeParser,
         IChoiceOptionDisabledNodeParser choiceOptionDisabledNodeParser,
         IChoiceOptionIconNodeParser choiceOptionIconNodeParser,
-        IChoiceOptionTipNodeParser choiceOptionHelpTextNodeParser,
+        IChoiceOptionTipNodeParser choiceOptionTipNodeParser,
         IChoiceOptionIfNodeParser choiceOptionIfNodeParser
     )
     {
-        this.elementParser = elementParser;
-        this.textSourceParser = textSourceParser;
+        this.ElementParser = elementParser;
+        this.TextSourceParser = textSourceParser;
         Settings = new ElementParserSettings.Block(
             choiceOptionTextNodeParser,
             choiceOptionDisabledNodeParser,
             choiceOptionIconNodeParser,
-            choiceOptionHelpTextNodeParser,
+            choiceOptionTipNodeParser,
             choiceOptionIfNodeParser
         );
     }
@@ -44,13 +43,13 @@ public class ChoiceOptionNodeParser : IChoiceOptionNodeParser
         
         if (string.IsNullOrEmpty(reader.Argument))
         {
-            await elementParser.ParseAsync(reader, parsingContext, myContext, Settings);
-            if (!parsingContext.IsSuccess)
+            await ElementParser.ParseAsync(reader, parsingContext, myContext, Settings);
+            if (!parsingContext.IsSuccess || myContext.Builders.Count == 0)
                 return;
         }
         else
         {
-            var textSourceParsingResult = textSourceParser.Parse(reader.Argument);
+            var textSourceParsingResult = TextSourceParser.Parse(reader.Argument);
             if (!textSourceParsingResult.IsOk)
             {
                 parsingContext.LogError(reader, textSourceParsingResult.ErrorMessage);

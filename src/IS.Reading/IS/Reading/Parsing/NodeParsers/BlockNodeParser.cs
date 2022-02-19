@@ -80,12 +80,13 @@ public class BlockNodeParser : IBlockNodeParser
 
         if (!parsingContext.IsSuccess)
             return;
-        
-        if (!reader.AtEnd && string.Compare(reader.Command, "else", true) == 0)
-            await ElementParser.ParseAsync(reader, parsingContext, elseContext, BlockSettings);
 
-        if (!parsingContext.IsSuccess)
-            return;
+        if (!reader.AtEnd && string.Compare(reader.Command, "else", true) == 0)
+        {
+            await ElementParser.ParseAsync(reader, parsingContext, elseContext, BlockSettings);
+            if (!parsingContext.IsSuccess)
+                return;
+        }
 
         var ifBlock = parsingContext.BlockFactory.Create(ifContext.Nodes);
         var elseBlock = parsingContext.BlockFactory.Create(elseContext.Nodes);
