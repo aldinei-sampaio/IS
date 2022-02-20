@@ -93,6 +93,31 @@ public class ChoiceOptionBuilderTests
         });
     }
 
+    [Fact]
+    public void IsEnabledShouldBeTrueByDefault()
+    {
+        var items = new[] { new TestBuilder(i => i.Text = "abc") };
+
+        IChoiceOption option = null;
+
+        var choicePrototype = A.Fake<IChoicePrototype>(i => i.Strict());
+        A.CallTo(() => choicePrototype.Add(A<IChoiceOption>.Ignored))
+            .Invokes(i => option = i.GetArgument<IChoiceOption>(0));
+
+        var sut = new ChoiceOptionBuilder(key, items);
+
+        sut.Build(choicePrototype, navigationContext);
+
+        option.Should().BeEquivalentTo(new
+        {
+            Key = key,
+            Text = "abc",
+            IsEnabled = true,
+            ImageName = (string)null,
+            Tip = (string)null
+        });
+    }
+
     private class TestBuilder : IBuilder<IChoiceOptionPrototype>
     {
         private readonly Action<IChoiceOptionPrototype> action;

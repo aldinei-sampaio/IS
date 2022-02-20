@@ -9,4 +9,5 @@ public interface INavigationState
     string? MusicName { get; set; }
     int? CurrentBlockId { get; set; }
     int CurrentIteration { get; set; }
+    string? WaitingFor { get; set; }
 }

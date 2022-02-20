@@ -18,6 +18,8 @@ public class BalloonTextNode : IPauseNode
     {
         var text = TextSource.Build(context.Variables);
         var choice = ChoiceBuilder?.Build(context);
+        if (choice is not null)
+            context.State.WaitingFor = choice.Key;
         var @event = new BalloonTextEvent(text, BalloonType, context.State.IsMainCharacter(), choice);
         await context.Events.InvokeAsync<IBalloonTextEvent>(@event);
         return null;

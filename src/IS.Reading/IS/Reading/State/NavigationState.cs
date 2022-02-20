@@ -10,6 +10,7 @@ public class NavigationState : INavigationState
     public int? CurrentBlockId { get; set; }
     public int CurrentIteration { get; set; }
     public IBlockStateDictionary BlockStates { get; }
+    public string? WaitingFor { get; set; }
 
     public NavigationState(IBlockStateDictionary blockStates)
         => BlockStates = blockStates;

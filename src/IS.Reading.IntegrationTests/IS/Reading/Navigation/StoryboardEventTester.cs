@@ -20,6 +20,9 @@ public class StoryboardEventTester
         return new(storyboard);
     }
 
+    public void SetChoice(string value)
+        => Storyboard.SetChoice(value);
+
     private StoryboardEventTester(IStoryboard storyboard)
     {
         storyboard.Events.Subscribe(Handle);

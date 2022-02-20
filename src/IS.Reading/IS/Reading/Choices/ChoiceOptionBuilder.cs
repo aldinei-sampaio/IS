@@ -11,7 +11,7 @@ public class ChoiceOptionBuilder : IBuilder<IChoicePrototype>
 
         public string Key { get; }
         public string Text { get; set; } = string.Empty;
-        public bool IsEnabled { get; set; }
+        public bool IsEnabled { get; set; } = true;
         public string? ImageName { get; set; }
         public string? Tip { get; set; }
     }

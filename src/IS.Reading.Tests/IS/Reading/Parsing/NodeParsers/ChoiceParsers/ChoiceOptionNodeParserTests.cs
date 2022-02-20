@@ -47,7 +47,7 @@ public class ChoiceOptionNodeParserTests
     public void Initialization()
     {
         sut.Name.Should().Be(string.Empty);
-        sut.NameRegex.Should().Be("^[a-z]$");
+        sut.NameRegex.Should().Be(@"^[A-Za-z0-9_]+\)$");
         sut.IsArgumentRequired.Should().BeFalse();
         sut.ElementParser.Should().BeSameAs(elementParser);
         sut.TextSourceParser.Should().BeSameAs(textSourceParser);
@@ -82,7 +82,7 @@ public class ChoiceOptionNodeParserTests
         var argument = "Texto da opção";
         var textSource = A.Dummy<ITextSource>();
 
-        A.CallTo(() => documentReader.Command).Returns("a");
+        A.CallTo(() => documentReader.Command).Returns("a)");
         A.CallTo(() => documentReader.Argument).Returns(argument);
         A.CallTo(() => textSourceParser.Parse(argument)).Returns(Result.Ok(textSource));
 
@@ -95,10 +95,39 @@ public class ChoiceOptionNodeParserTests
             .Which.TextSource.Should().BeSameAs(textSource);
     }
 
+    [Theory]
+    [InlineData("a)", "a")]
+    [InlineData("A)", "a")]
+    [InlineData("b)", "b")]
+    [InlineData("B)", "b")]
+    [InlineData("y)", "y")]
+    [InlineData("Y)", "y")]
+    [InlineData("Z)", "z")]
+    [InlineData("z)", "z")]
+    [InlineData("0)", "0")]
+    [InlineData("9)", "9")]
+    [InlineData("Big_Value)", "big_value")]
+    [InlineData("0123456789)", "0123456789")]
+    public async Task OptionKeyParsing(string command, string key)
+    {
+        var argument = "Texto da opção";
+        var textSource = A.Dummy<ITextSource>();
+
+        A.CallTo(() => documentReader.Command).Returns(command);
+        A.CallTo(() => documentReader.Argument).Returns(argument);
+        A.CallTo(() => textSourceParser.Parse(argument)).Returns(Result.Ok(textSource));
+
+        await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
+
+        parentParsingContext.Builders.Should().ContainSingle()
+            .Which.Should().BeOfType<ChoiceOptionBuilder>()
+            .Which.Key.Should().Be(key);
+    }
+
     [Fact]
     public async Task ShouldExitOnElementParserError()
     {
-        A.CallTo(() => documentReader.Command).Returns("a");
+        A.CallTo(() => documentReader.Command).Returns("a)");
         A.CallTo(() => documentReader.Argument).Returns(string.Empty);
         A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.Settings))
             .DoesNothing();
@@ -112,7 +141,7 @@ public class ChoiceOptionNodeParserTests
     [Fact]
     public async Task ShouldExitIfAggregationParsingDoesNotProduceBuilders()
     {
-        A.CallTo(() => documentReader.Command).Returns("a");
+        A.CallTo(() => documentReader.Command).Returns("a)");
         A.CallTo(() => documentReader.Argument).Returns(string.Empty);
         A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.Settings))
             .DoesNothing();
@@ -128,7 +157,7 @@ public class ChoiceOptionNodeParserTests
     {
         var builder = A.Dummy<IBuilder<IChoiceOptionPrototype>>();
 
-        A.CallTo(() => documentReader.Command).Returns("a");
+        A.CallTo(() => documentReader.Command).Returns("a)");
         A.CallTo(() => documentReader.Argument).Returns(string.Empty);
         A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.Settings))
             .Invokes(i => i.GetArgument<ChoiceOptionParentParsingContext>(2).Builders.Add(builder));

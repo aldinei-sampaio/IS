@@ -23,6 +23,7 @@ public class NavigationStateTests
         sut.BlockStates.Should().BeSameAs(blockStateDictionary);
         sut.CurrentBlockId.Should().BeNull();
         sut.CurrentIteration.Should().Be(0);
+        sut.WaitingFor.Should().BeNull();
     }
 
     [Fact]
@@ -34,6 +35,7 @@ public class NavigationStateTests
         sut.MusicName = "music";
         sut.CurrentBlockId = 957;
         sut.CurrentIteration = 1;
+        sut.WaitingFor = "qualquercoisa";
 
         sut.MainCharacterName.Should().Be("agenor");
         sut.MoodType.Should().Be(MoodType.Happy);
@@ -41,5 +43,6 @@ public class NavigationStateTests
         sut.MusicName.Should().Be("music");
         sut.CurrentBlockId.Should().Be(957);
         sut.CurrentIteration.Should().Be(1);
+        sut.WaitingFor.Should().Be("qualquercoisa");
     }
 }

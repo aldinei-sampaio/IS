@@ -34,11 +34,11 @@ public class ChoiceOptionNodeParser : IChoiceOptionNodeParser
 
     public string Name => string.Empty;
 
-    public string? NameRegex => "^[a-z]$";
+    public string? NameRegex => /* lang=regex */ @"^[A-Za-z0-9_]+\)$";
 
     public async Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var key = reader.Command;
+        var key = reader.Command[0..^1].ToLower();
         var myContext = new ChoiceOptionParentParsingContext();
         
         if (string.IsNullOrEmpty(reader.Argument))
