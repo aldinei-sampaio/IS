@@ -5,17 +5,20 @@ public class DialogEventTests
     [Fact]
     public async Task TutorialAndNarration()
     {
-        var xml =
-@"<storyboard>
-    <tutorial>texto1</tutorial>
-    <tutorial>texto2</tutorial>
-    <narration>texto3</narration>
-    <narration>texto4</narration>
-    <tutorial>texto5</tutorial>
-    <narration>texto6</narration>
-</storyboard>";
+        var stb =
+@"' Storybasic 1.0
+tutorial
+- texto1
+- texto2
+narration
+- texto3
+- texto4
+tutorial
+- texto5
+narration
+- texto6";
 
-        var tester = await StoryboardEventTester.CreateAsync(xml);
+        var tester = await StoryboardEventTester.CreateAsync(stb);
 
         await tester.ForwardAsync("tutorial start", "tutorial: texto1");
         await tester.ForwardAsync("tutorial: texto2");
@@ -37,19 +40,22 @@ public class DialogEventTests
     [Fact]
     public async Task ProtagonistSpeechAndThought()
     {
-        var xml =
-@"<storyboard>
-    <protagonist>joara</protagonist>
-    <person>joara</person>
-    <speech>texto1</speech>
-    <speech>texto2</speech>
-    <thought>texto3</thought>
-    <speech>texto4</speech>
-    <thought>texto5</thought>
-    <thought>texto6</thought>
-</storyboard>";
+        var stb =
+@"' Storybasic 1.0
+mc joara
+@ joara
+speech
+- texto1
+- texto2
+thought
+- texto3
+speech
+- texto4
+thought
+- texto5
+- texto6";
 
-        var tester = await StoryboardEventTester.CreateAsync(xml);
+        var tester = await StoryboardEventTester.CreateAsync(stb);
 
         await tester.ForwardAsync("protagonist: joara", "person* enter: joara", "speech* start", "speech*: texto1");
         await tester.ForwardAsync("speech*: texto2");
@@ -71,18 +77,21 @@ public class DialogEventTests
     [Fact]
     public async Task InterlocutorSpeechAndThought()
     {
-        var xml =
-@"<storyboard>
-    <person>clodoaldo</person>
-    <speech>texto1</speech>
-    <speech>texto2</speech>
-    <thought>texto3</thought>
-    <speech>texto4</speech>
-    <thought>texto5</thought>
-    <thought>texto6</thought>
-</storyboard>";
-
-        var tester = await StoryboardEventTester.CreateAsync(xml);
+        var stb =
+@"' Storybasic 1.0
+@ clodoaldo
+speech
+- texto1
+- texto2
+thought
+- texto3
+speech
+- texto4
+thought
+- texto5
+- texto6";
+        
+        var tester = await StoryboardEventTester.CreateAsync(stb);
 
         await tester.ForwardAsync("person enter: clodoaldo", "speech start", "speech: texto1");
         await tester.ForwardAsync("speech: texto2");
@@ -104,25 +113,29 @@ public class DialogEventTests
     [Fact]
     public async Task SimpleTalk()
     {
-        var xml =
-@"<storyboard>
-    <protagonist>jane</protagonist>
-    <person>jane</person>
-    <speech>texto1</speech>
+        var stb =
+@"' Storybasic 1.0
+mc jane
 
-    <person>clara</person>
-    <speech>texto2</speech>
-    <speech>texto3</speech>
+@ jane
+speech
+- texto1
 
-    <person>jane</person>
-    <thought>texto4</thought>
-    <thought>texto5</thought>
+@ clara
+speech
+- texto2
+- texto3
 
-    <person>clara</person>
-    <thought>texto6</thought>
-</storyboard>";
+@ jane
+thought
+- texto4
+- texto5
 
-        var tester = await StoryboardEventTester.CreateAsync(xml);
+@ clara
+thought
+- texto6";
+
+        var tester = await StoryboardEventTester.CreateAsync(stb);
 
         await tester.ForwardAsync("protagonist: jane", "person* enter: jane", "speech* start", "speech*: texto1");
         await tester.ForwardAsync("speech* end", "person* leave: jane", "person enter: clara", "speech start", "speech: texto2");
@@ -144,21 +157,23 @@ public class DialogEventTests
     [Fact]
     public async Task ProtagonistMood()
     {
-        var xml =
-@"<storyboard>
-    <protagonist>jane</protagonist>
-    <person>jane</person>
-    <speech>texto1</speech>
+        var stb =
+@"' Storybasic 1.0
+mc jane
 
-    <mood>surprised</mood>
-    <speech>texto2</speech>
-    <speech>texto3</speech>
+@ jane
+speech
+- texto1
 
-    <mood>angry</mood>
-    <thought>texto5</thought>
-</storyboard>";
+# surprised
+- texto2
+- texto3
 
-        var tester = await StoryboardEventTester.CreateAsync(xml);
+# angry
+thought
+- texto5";
+
+        var tester = await StoryboardEventTester.CreateAsync(stb);
 
         await TestMood(tester);
         await TestMood(tester);
@@ -183,21 +198,22 @@ public class DialogEventTests
     [Fact]
     public async Task InterlocutorMood()
     {
-        var xml =
-@"<storyboard>
-    <person>lana</person>
-    <mood>normal</mood>
-    <speech>texto1</speech>
+        var stb =
+@"' Storybasic 1.0
+@ lana
+# normal
+speech
+- texto1
 
-    <mood>surprised</mood>
-    <speech>texto2</speech>
-    <speech>texto3</speech>
+# surprised
+- texto2
+- texto3
 
-    <mood>angry</mood>
-    <thought>texto5</thought>
-</storyboard>";
+# angry
+thought
+- texto5";
 
-        var tester = await StoryboardEventTester.CreateAsync(xml);
+        var tester = await StoryboardEventTester.CreateAsync(stb);
 
         await TestMood(tester);
         await TestMood(tester);

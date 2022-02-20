@@ -3,20 +3,22 @@
 public class BlockEventTests
 {
     [Fact]
-    public async Task DoWhen_FalseCondition()
+    public async Task If_FalseCondition()
     {
-        var xml =
-@"<storyboard>
-    <tutorial>texto1</tutorial>
-    <tutorial>texto2</tutorial>
-    <do when=""a=1"">
-        <narration>texto3</narration>
-        <narration>texto4</narration>
-    </do>
-    <tutorial>texto5</tutorial>
-</storyboard>";
+        var stb =
+@"' Storybasic 1.0
+tutorial
+- texto1
+- texto2
+if a = 1
+  narration
+  - texto3
+  - texto4
+end
+tutorial
+- texto5";
 
-        var tester = await StoryboardEventTester.CreateAsync(xml);
+        var tester = await StoryboardEventTester.CreateAsync(stb);
 
         await tester.ForwardAsync("tutorial start", "tutorial: texto1");
         await tester.ForwardAsync("tutorial: texto2");
@@ -30,21 +32,23 @@ public class BlockEventTests
     }
 
     [Fact]
-    public async Task TutorialAndNarration()
+    public async Task If_TrueCondition()
     {
-        var xml =
-@"<storyboard>
-    <tutorial>texto1</tutorial>
-    <tutorial>texto2</tutorial>
-    <set>a=1</set>
-    <do when=""a=1"">
-        <narration>texto3</narration>
-        <narration>texto4</narration>
-    </do>
-    <tutorial>texto5</tutorial>
-</storyboard>";
+        var stb =
+@"' Storybasic 1.0
+tutorial
+- texto1
+- texto2
+set a = 1
+if a = 1
+  narration
+  - texto3
+  - texto4
+end
+tutorial
+- texto5";
 
-        var tester = await StoryboardEventTester.CreateAsync(xml);
+        var tester = await StoryboardEventTester.CreateAsync(stb);
 
         await tester.ForwardAsync("tutorial start", "tutorial: texto1");
         await tester.ForwardAsync("tutorial: texto2");
@@ -62,18 +66,96 @@ public class BlockEventTests
     }
 
     [Fact]
-    public async Task DoWhile_FalseCondition()
+    public async Task IfElse_TrueCondition()
     {
-        var xml =
-@"<storyboard>
-    <tutorial>texto1</tutorial>
-    <do while=""a=1"">
-        <narration>texto2</narration>
-    </do>
-    <tutorial>texto3</tutorial>
-</storyboard>";
+        var stb =
+@"' Storybasic 1.0
+tutorial
+- texto1
+- texto2
+set a = 1
+if a = 1
+  narration
+  - texto3
+  - texto4
+else
+  narration
+  - texto4
+  - texto5
+end
+tutorial
+- texto5";
 
-        var tester = await StoryboardEventTester.CreateAsync(xml);
+        var tester = await StoryboardEventTester.CreateAsync(stb);
+
+        await tester.ForwardAsync("tutorial start", "tutorial: texto1");
+        await tester.ForwardAsync("tutorial: texto2");
+        await tester.ForwardAsync("tutorial end", "narration start", "narration: texto3");
+        await tester.ForwardAsync("narration: texto4");
+        await tester.ForwardAsync("narration end", "tutorial start", "tutorial: texto5");
+        await tester.ForwardEndAsync("tutorial end");
+
+        await tester.BackwardAsync("tutorial start", "tutorial: texto5");
+        await tester.BackwardAsync("tutorial end", "narration start", "narration: texto4");
+        await tester.BackwardAsync("narration: texto3");
+        await tester.BackwardAsync("narration end", "tutorial start", "tutorial: texto2");
+        await tester.BackwardAsync("tutorial: texto1");
+        await tester.BackwardEndAsync("tutorial end");
+    }
+
+    [Fact]
+    public async Task IfElse_FalseCondition()
+    {
+        var stb =
+@"' Storybasic 1.0
+tutorial
+- texto1
+- texto2
+set a = 2
+if a = 1
+  narration
+  - texto3
+  - texto4
+else
+  narration
+  - textoA
+  - textoB
+end
+tutorial
+- texto5";
+
+        var tester = await StoryboardEventTester.CreateAsync(stb);
+
+        await tester.ForwardAsync("tutorial start", "tutorial: texto1");
+        await tester.ForwardAsync("tutorial: texto2");
+        await tester.ForwardAsync("tutorial end", "narration start", "narration: textoA");
+        await tester.ForwardAsync("narration: textoB");
+        await tester.ForwardAsync("narration end", "tutorial start", "tutorial: texto5");
+        await tester.ForwardEndAsync("tutorial end");
+
+        await tester.BackwardAsync("tutorial start", "tutorial: texto5");
+        await tester.BackwardAsync("tutorial end", "narration start", "narration: textoB");
+        await tester.BackwardAsync("narration: textoA");
+        await tester.BackwardAsync("narration end", "tutorial start", "tutorial: texto2");
+        await tester.BackwardAsync("tutorial: texto1");
+        await tester.BackwardEndAsync("tutorial end");
+    }
+
+    [Fact]
+    public async Task While_FalseCondition()
+    {
+        var stb =
+@"' Storybasic 1.0
+tutorial
+- texto1
+while a = 1
+  narration
+  - texto2
+end
+tutorial
+- texto3";
+
+        var tester = await StoryboardEventTester.CreateAsync(stb);
 
         await tester.ForwardAsync("tutorial start", "tutorial: texto1");
         await tester.ForwardAsync("tutorial end", "tutorial start", "tutorial: texto3");
@@ -85,19 +167,21 @@ public class BlockEventTests
     }
 
     [Fact]
-    public async Task DoWhile()
+    public async Task While_TrueCondition()
     {
-        var xml =
-@"<storyboard>
-    <tutorial>texto1</tutorial>
-    <do while=""a!=3"">
-        <narration>texto2</narration>
-        <set>a++</set>
-    </do>
-    <tutorial>texto3</tutorial>
-</storyboard>";
+        var stb =
+@"' Storybasic 1.0
+tutorial
+- texto1
+while a != 3
+  narration
+  - texto2
+  set a++
+end
+tutorial
+- texto3";
 
-        var tester = await StoryboardEventTester.CreateAsync(xml);
+        var tester = await StoryboardEventTester.CreateAsync(stb);
 
         await tester.ForwardAsync("tutorial start", "tutorial: texto1");
         await tester.ForwardAsync("tutorial end", "narration start", "narration: texto2");
@@ -115,23 +199,26 @@ public class BlockEventTests
     }
 
     [Fact]
-    public async Task DoWhile_Concatenated()
+    public async Task While_Concatenated()
     {
-        var xml =
-@"<storyboard>
-    <tutorial>texto1</tutorial>
-    <do while=""a!=2"">
-        <narration>texto2</narration>
-        <set>a++</set>
-        <do while=""b!=2"">
-            <narration>texto3</narration>
-            <set>b++</set>
-        </do>
-    </do>
-    <tutorial>texto4</tutorial>
-</storyboard>";
+        var stb =
+@"' Storybasic 1.0
+tutorial
+- texto1
+while a != 2
+  narration
+  - texto2
+  set a++
+  while b != 2
+    narration
+    - texto3
+    set b++
+  end
+end
+tutorial
+- texto4";
 
-        var tester = await StoryboardEventTester.CreateAsync(xml);
+        var tester = await StoryboardEventTester.CreateAsync(stb);
 
         await tester.ForwardAsync("tutorial start", "tutorial: texto1");
         await tester.ForwardAsync("tutorial end", "narration start", "narration: texto2");

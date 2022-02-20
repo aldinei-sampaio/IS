@@ -58,16 +58,26 @@ public class MoodNodeParserTests
         A.CallTo(() => parsingContext.LogError(documentReader, errorMessage)).MustHaveHappenedOnceExactly();
     }
 
-    [Fact]
-    public async Task ParseAsyncShouldReturnMoodNode()
+    [Theory]
+    [InlineData("Normal", MoodType.Normal)]
+    [InlineData("normal", MoodType.Normal)]
+    [InlineData("Happy", MoodType.Happy)]
+    [InlineData("happy", MoodType.Happy)]
+    [InlineData("Angry", MoodType.Angry)]
+    [InlineData("angry", MoodType.Angry)]
+    [InlineData("Surprised", MoodType.Surprised)]
+    [InlineData("surprised", MoodType.Surprised)]
+    [InlineData("Sad", MoodType.Sad)]
+    [InlineData("sad", MoodType.Sad)]
+    public async Task ParseAsyncShouldReturnMoodNode(string argument, MoodType expected)
     {
-        A.CallTo(() => documentReader.Argument).Returns("Happy");
+        A.CallTo(() => documentReader.Argument).Returns(argument);
         A.CallTo(() => parsingSceneContext.HasMood).Returns(false);
         A.CallToSet(() => parsingSceneContext.HasMood).To(true).DoesNothing();
 
         await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
 
-        parentParsingContext.ShouldContainSingle<MoodNode>(i => i.MoodType.Should().Be(MoodType.Happy));
+        parentParsingContext.ShouldContainSingle<MoodNode>(i => i.MoodType.Should().Be(expected));
         A.CallToSet(() => parsingSceneContext.HasMood).To(true).MustHaveHappenedOnceExactly();
     }
 }

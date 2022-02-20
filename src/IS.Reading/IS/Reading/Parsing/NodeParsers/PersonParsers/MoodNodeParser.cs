@@ -10,7 +10,7 @@ public class MoodNodeParser : IMoodNodeParser
 
     public Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        if (!Enum.TryParse<MoodType>(reader.Argument, out var moodType))
+        if (!Enum.TryParse<MoodType>(reader.Argument, true, out var moodType))
         {
             parsingContext.LogError(reader, $"O valor '{reader.Argument}' não representa uma emoção válida.");
             return Task.CompletedTask;

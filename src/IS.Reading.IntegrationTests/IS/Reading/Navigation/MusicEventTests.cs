@@ -5,15 +5,14 @@ public class MusicEventTests
     [Fact]
     public async Task Music()
     {
-        var xml =
-@"<storyboard>
-    <music>open_sky</music>
-    <pause />
-    <music>never_look_back</music>
-    <pause />
-</storyboard>";
+        var stb =
+@"' Storybasic 1.0
+music open_sky
+pause
+music never_look_back
+pause";
 
-        var tester = await StoryboardEventTester.CreateAsync(xml);
+        var tester = await StoryboardEventTester.CreateAsync(stb);
 
         await tester.ForwardAsync("music: open_sky");
         await tester.ForwardAsync("music: never_look_back");

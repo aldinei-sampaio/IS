@@ -8,7 +8,7 @@ namespace IS.Reading.Navigation;
 public class StoryboardEventTester
 {
     private readonly List<string> received = new();
-    private readonly IStoryboard storyboard;
+    public IStoryboard Storyboard { get; }
 
     public static async Task<StoryboardEventTester> CreateAsync(string stb)
     {
@@ -23,7 +23,7 @@ public class StoryboardEventTester
     private StoryboardEventTester(IStoryboard storyboard)
     {
         storyboard.Events.Subscribe(Handle);
-        this.storyboard = storyboard;
+        this.Storyboard = storyboard;
     }
 
     private Task Handle(IReadingEvent @event)
@@ -33,16 +33,16 @@ public class StoryboardEventTester
     }
 
     public Task ForwardAsync(params string[] expectedEvents)
-        => Check(received, storyboard, true, false, expectedEvents);
+        => Check(received, Storyboard, true, false, expectedEvents);
 
     public Task ForwardEndAsync(params string[] expectedEvents)
-        => Check(received, storyboard, true, true, expectedEvents);
+        => Check(received, Storyboard, true, true, expectedEvents);
 
     public Task BackwardAsync(params string[] expectedEvents)
-        => Check(received, storyboard, false, false, expectedEvents);
+        => Check(received, Storyboard, false, false, expectedEvents);
 
     public Task BackwardEndAsync(params string[] expectedEvents)
-        => Check(received, storyboard, false, true, expectedEvents);
+        => Check(received, Storyboard, false, true, expectedEvents);
 
     public static async Task Check(List<string> received, IStoryboard storyboard, bool forward, bool atEnd, string[] expectedEvents)
     {
@@ -54,7 +54,7 @@ public class StoryboardEventTester
     private async Task<bool> LogAsync(StringBuilder builder, bool forward)
     {
         received.Clear();
-        var atEnd = !await storyboard.MoveAsync(forward);
+        var atEnd = !await Storyboard.MoveAsync(forward);
         if (atEnd)
         {
             if (forward)
