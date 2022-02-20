@@ -2,13 +2,13 @@
 
 public class BalloonCloseEvent : IBalloonCloseEvent
 {
-    public BalloonCloseEvent(BalloonType ballonType, bool isProtagonist)
-        => (BalloonType, IsProtagonist) = (ballonType, isProtagonist);
+    public BalloonCloseEvent(BalloonType ballonType, bool isMainCharacter)
+        => (BalloonType, IsMainCharacter) = (ballonType, isMainCharacter);
 
     public BalloonType BalloonType { get; }
 
-    public bool IsProtagonist { get; }
+    public bool IsMainCharacter { get; }
 
     public override string ToString()
-        => $"{BalloonType.ToString().ToLower()}{Helper.ProtagSymbol(BalloonType, IsProtagonist)} end";
+        => $"{BalloonType.ToString().ToLower()}{Helper.MainCharacterSymbol(BalloonType, IsMainCharacter)} end";
 }

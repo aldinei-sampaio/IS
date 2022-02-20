@@ -34,7 +34,7 @@ public class DialogEventTests
     }
 
     [Fact]
-    public async Task ProtagonistSpeechAndThought()
+    public async Task MainCharacterSpeechAndThought()
     {
         var stb =
 @"' Storybasic 1.0
@@ -49,21 +49,21 @@ mc joara
 
         var tester = await StoryboardEventTester.CreateAsync(stb);
 
-        await tester.ForwardAsync("protagonist: joara", "person* enter: joara", "speech* start", "speech*: texto1");
+        await tester.ForwardAsync("mc: joara", "person* enter: joara", "speech* start", "speech*: texto1");
         await tester.ForwardAsync("speech*: texto2");
         await tester.ForwardAsync("speech* end", "thought* start", "thought*: texto3");
         await tester.ForwardAsync("thought* end", "speech* start", "speech*: texto4");
         await tester.ForwardAsync("speech* end", "thought* start", "thought*: texto5");
         await tester.ForwardAsync("thought*: texto6");
-        await tester.ForwardEndAsync("thought* end", "person* leave: joara", "protagonist undefined");
+        await tester.ForwardEndAsync("thought* end", "person* leave: joara", "mc unset");
 
-        await tester.BackwardAsync("protagonist: joara", "person* enter: joara", "thought* start", "thought*: texto6");
+        await tester.BackwardAsync("mc: joara", "person* enter: joara", "thought* start", "thought*: texto6");
         await tester.BackwardAsync("thought*: texto5");
         await tester.BackwardAsync("thought* end", "speech* start", "speech*: texto4");
         await tester.BackwardAsync("speech* end", "thought* start", "thought*: texto3");
         await tester.BackwardAsync("thought* end", "speech* start", "speech*: texto2");
         await tester.BackwardAsync("speech*: texto1");
-        await tester.BackwardEndAsync("speech* end", "person* leave: joara", "protagonist undefined");
+        await tester.BackwardEndAsync("speech* end", "person* leave: joara", "mc unset");
     }
 
     [Fact]
@@ -121,25 +121,25 @@ mc jane
 
         var tester = await StoryboardEventTester.CreateAsync(stb);
 
-        await tester.ForwardAsync("protagonist: jane", "person* enter: jane", "speech* start", "speech*: texto1");
+        await tester.ForwardAsync("mc: jane", "person* enter: jane", "speech* start", "speech*: texto1");
         await tester.ForwardAsync("speech* end", "person* leave: jane", "person enter: clara", "speech start", "speech: texto2");
         await tester.ForwardAsync("speech: texto3");
         await tester.ForwardAsync("speech end", "person leave: clara", "person* enter: jane", "thought* start", "thought*: texto4");
         await tester.ForwardAsync("thought*: texto5");
         await tester.ForwardAsync("thought* end", "person* leave: jane", "person enter: clara", "thought start", "thought: texto6");
-        await tester.ForwardEndAsync("thought end", "person leave: clara", "protagonist undefined");
+        await tester.ForwardEndAsync("thought end", "person leave: clara", "mc unset");
 
-        await tester.BackwardAsync("protagonist: jane", "person enter: clara", "thought start", "thought: texto6");
+        await tester.BackwardAsync("mc: jane", "person enter: clara", "thought start", "thought: texto6");
         await tester.BackwardAsync("thought end", "person leave: clara", "person* enter: jane", "thought* start", "thought*: texto5");
         await tester.BackwardAsync("thought*: texto4");
         await tester.BackwardAsync("thought* end", "person* leave: jane", "person enter: clara", "speech start", "speech: texto3");
         await tester.BackwardAsync("speech: texto2");
         await tester.BackwardAsync("speech end", "person leave: clara", "person* enter: jane", "speech* start", "speech*: texto1");
-        await tester.BackwardEndAsync("speech* end", "person* leave: jane", "protagonist undefined");
+        await tester.BackwardEndAsync("speech* end", "person* leave: jane", "mc unset");
     }
 
     [Fact]
-    public async Task ProtagonistMood()
+    public async Task MainCharacterMood()
     {
         var stb =
 @"' Storybasic 1.0
@@ -163,17 +163,17 @@ mc jane
 
         static async Task TestMood(StoryboardEventTester tester)
         {
-            await tester.ForwardAsync("protagonist: jane", "person* enter: jane", "speech* start", "speech*: texto1");
+            await tester.ForwardAsync("mc: jane", "person* enter: jane", "speech* start", "speech*: texto1");
             await tester.ForwardAsync("mood* surprised: jane", "speech*: texto2");
             await tester.ForwardAsync("speech*: texto3");
             await tester.ForwardAsync("speech* end", "mood* angry: jane", "thought* start", "thought*: texto5");
-            await tester.ForwardEndAsync("thought* end", "person* leave: jane", "protagonist undefined");
+            await tester.ForwardEndAsync("thought* end", "person* leave: jane", "mc unset");
 
-            await tester.BackwardAsync("protagonist: jane", "person* enter: jane", "mood* angry: jane", "thought* start", "thought*: texto5");
+            await tester.BackwardAsync("mc: jane", "person* enter: jane", "mood* angry: jane", "thought* start", "thought*: texto5");
             await tester.BackwardAsync("thought* end", "mood* surprised: jane", "speech* start", "speech*: texto3");
             await tester.BackwardAsync("speech*: texto2");
             await tester.BackwardAsync("mood* normal: jane", "speech*: texto1");
-            await tester.BackwardEndAsync("speech* end", "person* leave: jane", "protagonist undefined");
+            await tester.BackwardEndAsync("speech* end", "person* leave: jane", "mc unset");
         }
     }
 

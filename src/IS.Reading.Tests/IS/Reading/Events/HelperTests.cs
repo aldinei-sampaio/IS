@@ -11,16 +11,16 @@ public class HelperTests
     [InlineData(BalloonType.Speech, false, "")]
     [InlineData(BalloonType.Thought, true, "*")]
     [InlineData(BalloonType.Thought, false, "")]
-    public void ProtagSymbol1(BalloonType balloonType, bool isProtagonist, string expected)
+    public void ProtagSymbol1(BalloonType balloonType, bool isMainCharacter, string expected)
     {
-        Helper.ProtagSymbol(balloonType, isProtagonist).Should().Be(expected);
+        Helper.MainCharacterSymbol(balloonType, isMainCharacter).Should().Be(expected);
     }
 
     [Theory]
     [InlineData(true, "*")]
     [InlineData(false, "")]
-    public void ProtagSymbol2(bool isProtagonist, string expected)
+    public void ProtagSymbol2(bool isMainCharacter, string expected)
     {
-        Helper.ProtagSymbol(isProtagonist).Should().Be(expected);
+        Helper.MainCharacterSymbol(isMainCharacter).Should().Be(expected);
     }
 }

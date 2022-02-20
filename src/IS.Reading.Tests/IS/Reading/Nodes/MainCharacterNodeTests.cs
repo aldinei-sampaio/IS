@@ -4,24 +4,24 @@ using IS.Reading.Navigation;
 
 namespace IS.Reading.Nodes;
 
-public class ProtagonistNodeTests
+public class MainCharacterNodeTests
 {
     [Fact]
     public void Initialization()
     {
         var personName = "alice";
         var when = A.Dummy<ICondition>();
-        var sut = new ProtagonistNode(personName);
-        sut.ProtagonistName.Should().Be(personName);
+        var sut = new MainCharacterNode(personName);
+        sut.MainCharacterName.Should().Be(personName);
     }
 
     [Fact]
-    public async Task OnEnterAsyncShouldReturnPreviousProtagonistName()
+    public async Task OnEnterAsyncShouldReturnPreviousMainCharacterName()
     {
         var context = A.Dummy<INavigationContext>();
-        context.State.ProtagonistName = "rúcula";
+        context.State.MainCharacterName = "rúcula";
 
-        var sut = new ProtagonistNode("almeirão");
+        var sut = new MainCharacterNode("almeirão");
 
         var ret = await sut.EnterAsync(context);
         ret.Should().Be("rúcula");
@@ -34,12 +34,12 @@ public class ProtagonistNodeTests
     public async Task OnEnterAsyncShouldUpdateState(string currentValue, string newValue)
     {
         var context = A.Dummy<INavigationContext>();
-        context.State.ProtagonistName = currentValue;
+        context.State.MainCharacterName = currentValue;
 
-        var sut = new ProtagonistNode(newValue);
+        var sut = new MainCharacterNode(newValue);
         await sut.EnterAsync(context);
 
-        context.State.ProtagonistName.Should().Be(newValue);
+        context.State.MainCharacterName.Should().Be(newValue);
     }
 
     [Theory]
@@ -49,14 +49,14 @@ public class ProtagonistNodeTests
     public async Task OnEnterShouldRaiseEvent(string currentValue, string newValue)
     {
         var context = A.Dummy<INavigationContext>();
-        context.State.ProtagonistName = currentValue;
+        context.State.MainCharacterName = currentValue;
 
         var invoker = new TestInvoker(context);
 
-        var sut = new ProtagonistNode(newValue);
+        var sut = new MainCharacterNode(newValue);
         await sut.EnterAsync(context);
 
-        invoker.ShouldContainSingle<IProtagonistChangeEvent>(
+        invoker.ShouldContainSingle<IMainCharacterChangeEvent>(
             i => i.Should().BeEquivalentTo(new { PersonName = newValue })
         );
     }
@@ -64,14 +64,14 @@ public class ProtagonistNodeTests
     [Theory]
     [InlineData(null)]
     [InlineData("omega")]
-    public async Task OnEnterAsyncShouldNotRaiseEventIfProtagonistWasNotChanged(string value)
+    public async Task OnEnterAsyncShouldNotRaiseEventIfMainCharacterWasNotChanged(string value)
     {
         var context = A.Dummy<INavigationContext>();
-        context.State.ProtagonistName = value;
+        context.State.MainCharacterName = value;
 
         var invoker = new TestInvoker(context);
 
-        var sut = new ProtagonistNode(value);
+        var sut = new MainCharacterNode(value);
         var ret = await sut.EnterAsync(context);
         ret.Should().Be(value);
 
@@ -84,17 +84,17 @@ public class ProtagonistNodeTests
     public async Task ShouldRaiseEventWithStateArg(string stageArg)
     {
         var context = A.Dummy<INavigationContext>();
-        context.State.ProtagonistName = "alpha";
+        context.State.MainCharacterName = "alpha";
 
         var invoker = new TestInvoker(context);
 
-        var sut = new ProtagonistNode("beta");
+        var sut = new MainCharacterNode("beta");
         await sut.EnterAsync(context, stageArg);
 
-        invoker.ShouldContainSingle<IProtagonistChangeEvent>(
+        invoker.ShouldContainSingle<IMainCharacterChangeEvent>(
             i => i.Should().BeEquivalentTo(new { PersonName = stageArg })
         );
 
-        context.State.ProtagonistName.Should().Be(stageArg);
+        context.State.MainCharacterName.Should().Be(stageArg);
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace IS.Reading.Events;
 
-public interface IProtagonistChangeEvent : IReadingEvent
+public interface IMainCharacterChangeEvent : IReadingEvent
 {
     string? PersonName { get; }
 }

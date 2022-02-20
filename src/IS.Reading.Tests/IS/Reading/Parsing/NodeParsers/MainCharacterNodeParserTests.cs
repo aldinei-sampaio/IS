@@ -3,16 +3,16 @@ using IS.Reading.Parsing.ArgumentParsers;
 
 namespace IS.Reading.Parsing.NodeParsers;
 
-public class ProtagonistNodeParserTests
+public class MainCharacterNodeParserTests
 {
     private readonly IDocumentReader documentReader;
     private readonly IParsingContext parsingContext;
     private readonly FakeParentParsingContext parentParsingContext;
 
     private readonly INameArgumentParser nameArgumentParser;
-    private readonly ProtagonistNodeParser sut;
+    private readonly MainCharacterNodeParser sut;
 
-    public ProtagonistNodeParserTests()
+    public MainCharacterNodeParserTests()
     {
         nameArgumentParser = A.Fake<INameArgumentParser>(i => i.Strict());
         sut = new(nameArgumentParser);
@@ -28,7 +28,7 @@ public class ProtagonistNodeParserTests
         sut.Name.Should().Be("mc");
         sut.IsArgumentRequired.Should().BeTrue();
         sut.NameArgumentParser.Should().BeSameAs(nameArgumentParser);
-        sut.DismissNode.Should().BeOfType<ProtagonistNode>().Which.ProtagonistName.Should().BeNull();
+        sut.DismissNode.Should().BeOfType<MainCharacterNode>().Which.MainCharacterName.Should().BeNull();
     }
 
     [Fact]
@@ -57,8 +57,8 @@ public class ProtagonistNodeParserTests
 
         await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
 
-        parentParsingContext.ShouldContainSingle<ProtagonistNode>(
-            i => i.ProtagonistName.Should().Be(parsed)
+        parentParsingContext.ShouldContainSingle<MainCharacterNode>(
+            i => i.MainCharacterName.Should().Be(parsed)
         );
 
         A.CallTo(() => parsingContext.RegisterDismissNode(sut.DismissNode)).MustHaveHappenedOnceExactly();

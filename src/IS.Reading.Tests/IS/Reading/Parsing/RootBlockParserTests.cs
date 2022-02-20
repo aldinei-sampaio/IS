@@ -12,7 +12,7 @@ public class RootBlockParserTests
     private readonly IBackgroundNodeParser backgroundNodeParser;
     private readonly IBlockNodeParser blockNodeParser;
     private readonly IPauseNodeParser pauseNodeParser;
-    private readonly IProtagonistNodeParser protagonistNodeParser;
+    private readonly IMainCharacterNodeParser mainCharacterNodeParser;
     private readonly IPersonNodeParser personNodeParser;
     private readonly INarrationNodeParser narrationNodeParser;
     private readonly ITutorialNodeParser tutorialNodeParser;
@@ -29,7 +29,7 @@ public class RootBlockParserTests
         blockNodeParser = Helper.FakeParser<IBlockNodeParser>("do");
         pauseNodeParser = Helper.FakeParser<IPauseNodeParser>("pause");
         musicNodeParser = Helper.FakeParser<IMusicNodeParser>("music");
-        protagonistNodeParser = Helper.FakeParser<IProtagonistNodeParser>("protagonist");
+        mainCharacterNodeParser = Helper.FakeParser<IMainCharacterNodeParser>("mc");
         personNodeParser = Helper.FakeParser<IPersonNodeParser>("person");
         narrationNodeParser = Helper.FakeParser<INarrationNodeParser>("narration");
         tutorialNodeParser = Helper.FakeParser<ITutorialNodeParser>("tutorial");
@@ -41,7 +41,7 @@ public class RootBlockParserTests
             backgroundNodeParser, 
             blockNodeParser,
             pauseNodeParser,
-            protagonistNodeParser,
+            mainCharacterNodeParser,
             personNodeParser,
             narrationNodeParser,
             tutorialNodeParser,
@@ -58,7 +58,7 @@ public class RootBlockParserTests
             backgroundNodeParser,
             blockNodeParser,
             pauseNodeParser,
-            protagonistNodeParser,
+            mainCharacterNodeParser,
             personNodeParser,
             narrationNodeParser,
             tutorialNodeParser,

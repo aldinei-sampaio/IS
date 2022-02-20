@@ -1,13 +1,13 @@
 ﻿namespace IS.Reading.Events;
 
-public class ProtagonistChangeEventTests
+public class MainCharacterChangeEventTests
 {
     [Theory]
-    [InlineData("abc", "protagonist: abc")]
-    [InlineData(null, "protagonist undefined")]
+    [InlineData("abc", "mc: abc")]
+    [InlineData(null, "mc unset")]
     public void Initialization(string personName, string description)
     {
-        var sut = new ProtagonistChangeEvent(personName);
+        var sut = new MainCharacterChangeEvent(personName);
         sut.PersonName.Should().Be(personName);
         sut.ToString().Should().Be(description);
     }

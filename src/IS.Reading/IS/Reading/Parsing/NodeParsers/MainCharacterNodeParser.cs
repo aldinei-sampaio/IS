@@ -4,11 +4,11 @@ using IS.Reading.Parsing.ArgumentParsers;
 
 namespace IS.Reading.Parsing.NodeParsers;
 
-public class ProtagonistNodeParser : IProtagonistNodeParser
+public class MainCharacterNodeParser : IMainCharacterNodeParser
 {
     public INameArgumentParser NameArgumentParser { get; }
 
-    public ProtagonistNodeParser(INameArgumentParser nameArgumentParser)
+    public MainCharacterNodeParser(INameArgumentParser nameArgumentParser)
         => NameArgumentParser = nameArgumentParser;
 
     public bool IsArgumentRequired => true;
@@ -24,7 +24,7 @@ public class ProtagonistNodeParser : IProtagonistNodeParser
             return Task.CompletedTask;
         }
 
-        var node = new ProtagonistNode(result.Value);
+        var node = new MainCharacterNode(result.Value);
         parentParsingContext.AddNode(node);
         parsingContext.RegisterDismissNode(DismissNode);
 
@@ -32,5 +32,5 @@ public class ProtagonistNodeParser : IProtagonistNodeParser
     }
 
     public INode DismissNode { get; } 
-        = new ProtagonistNode(null);
+        = new MainCharacterNode(null);
 }

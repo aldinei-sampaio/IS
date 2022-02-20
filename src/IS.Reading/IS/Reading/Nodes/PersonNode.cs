@@ -12,12 +12,12 @@ public class PersonNode : INode
 
     public IBlock? ChildBlock { get; }
 
-    private static bool IsProtagonist(INavigationContext context, string name)
-        => name == context.State.ProtagonistName;
+    private static bool IsMainCharacter(INavigationContext context, string name)
+        => name == context.State.MainCharacterName;
 
     public async Task<object?> EnterAsync(INavigationContext context)
     {
-        var @event = new PersonEnterEvent(PersonName, IsProtagonist(context, PersonName));
+        var @event = new PersonEnterEvent(PersonName, IsMainCharacter(context, PersonName));
         await context.Events.InvokeAsync<IPersonEnterEvent>(@event);
         context.State.PersonName = PersonName;
         context.State.MoodType = null;
@@ -26,7 +26,7 @@ public class PersonNode : INode
 
     public async Task LeaveAsync(INavigationContext context)
     {
-        var @event = new PersonLeaveEvent(PersonName, IsProtagonist(context, PersonName));
+        var @event = new PersonLeaveEvent(PersonName, IsMainCharacter(context, PersonName));
         await context.Events.InvokeAsync<IPersonLeaveEvent>(@event);
         context.State.MoodType = null;
         context.State.PersonName = null;

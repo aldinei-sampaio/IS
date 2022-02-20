@@ -14,14 +14,14 @@ public class BalloonNode : INode
 
     public async Task<object?> EnterAsync(INavigationContext context)
     {
-        var @event = new BalloonOpenEvent(BallonType, context.State.IsProtagonist());
+        var @event = new BalloonOpenEvent(BallonType, context.State.IsMainCharacter());
         await context.Events.InvokeAsync<IBalloonOpenEvent>(@event);
         return null;
     }
 
     public async Task LeaveAsync(INavigationContext context)
     {
-        var @event = new BalloonCloseEvent(BallonType, context.State.IsProtagonist());
+        var @event = new BalloonCloseEvent(BallonType, context.State.IsMainCharacter());
         await context.Events.InvokeAsync<IBalloonCloseEvent>(@event);
         return;
     }

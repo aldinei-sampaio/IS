@@ -22,9 +22,9 @@ public class BalloonNodeTests
     [Theory]
     [InlineData(BalloonType.Narration, false)]
     [InlineData(BalloonType.Speech, true)]
-    public async Task OnEnterAsyncShouldRaiseEvent(BalloonType balloonType, bool isProtagonist)
+    public async Task OnEnterAsyncShouldRaiseEvent(BalloonType balloonType, bool isMainCharacter)
     {
-        var tester = new Tester(balloonType, isProtagonist);
+        var tester = new Tester(balloonType, isMainCharacter);
         var sut = tester.BalloonNode;
 
         var ret = await sut.EnterAsync(tester.Context);
@@ -34,7 +34,7 @@ public class BalloonNodeTests
             i => i.Should().BeEquivalentTo(new
             {
                 BalloonType = balloonType,
-                IsProtagonist = isProtagonist
+                IsMainCharacter = isMainCharacter
             })
         );
     }
@@ -42,9 +42,9 @@ public class BalloonNodeTests
     [Theory]
     [InlineData(BalloonType.Narration, false)]
     [InlineData(BalloonType.Speech, true)]
-    public async Task OnLeaveAsyncShouldRaiseEvent(BalloonType balloonType, bool isProtagonist)
+    public async Task OnLeaveAsyncShouldRaiseEvent(BalloonType balloonType, bool isMainCharacter)
     {
-        var tester = new Tester(balloonType, isProtagonist);
+        var tester = new Tester(balloonType, isMainCharacter);
         var sut = tester.BalloonNode;
 
         await sut.LeaveAsync(tester.Context);
@@ -53,7 +53,7 @@ public class BalloonNodeTests
             i => i.Should().BeEquivalentTo(new
             {
                 BalloonType = balloonType,
-                IsProtagonist = isProtagonist
+                IsMainCharacter = isMainCharacter
             })
         );
     }
@@ -64,11 +64,11 @@ public class BalloonNodeTests
         public TestInvoker Invoker { get; }
         public INavigationContext Context { get; }
 
-        public Tester(BalloonType balloonType, bool isProtagonist)
+        public Tester(BalloonType balloonType, bool isMainCharacter)
         {
             var state = A.Dummy<INavigationState>();
             state.PersonName = "alpha";
-            state.ProtagonistName = isProtagonist ? "alpha" : "beta";
+            state.MainCharacterName = isMainCharacter ? "alpha" : "beta";
 
             var context = A.Fake<INavigationContext>(i => i.Strict());
             A.CallTo(() => context.State).Returns(state);

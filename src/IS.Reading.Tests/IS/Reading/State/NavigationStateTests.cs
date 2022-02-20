@@ -16,7 +16,7 @@ public class NavigationStateTests
     {
         sut.Background.Should().NotBeNull();
         sut.Background.Should().BeSameAs(BackgroundState.Empty);        
-        sut.ProtagonistName.Should().BeNull();
+        sut.MainCharacterName.Should().BeNull();
         sut.MoodType.Should().BeNull();
         sut.PersonName.Should().BeNull();
         sut.MusicName.Should().BeNull();
@@ -28,14 +28,14 @@ public class NavigationStateTests
     [Fact]
     public void ReadWriteProperties()
     {
-        sut.ProtagonistName = "protagonist";
+        sut.MainCharacterName = "agenor";
         sut.MoodType = MoodType.Happy;
         sut.PersonName = "person";
         sut.MusicName = "music";
         sut.CurrentBlockId = 957;
         sut.CurrentIteration = 1;
 
-        sut.ProtagonistName.Should().Be("protagonist");
+        sut.MainCharacterName.Should().Be("agenor");
         sut.MoodType.Should().Be(MoodType.Happy);
         sut.PersonName.Should().Be("person");
         sut.MusicName.Should().Be("music");

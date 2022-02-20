@@ -3,5 +3,5 @@
 public interface IBalloonOpenEvent : IReadingEvent
 {
     BalloonType BalloonType { get; }
-    bool IsProtagonist { get; }
+    bool IsMainCharacter { get; }
 }

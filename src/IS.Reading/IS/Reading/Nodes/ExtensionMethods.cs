@@ -4,10 +4,10 @@ namespace IS.Reading.Nodes;
 
 internal static class ExtensionMethods
 {
-    public static bool IsProtagonist(this INavigationState state)
+    public static bool IsMainCharacter(this INavigationState state)
     {
-        if (state.PersonName is null || state.ProtagonistName is null)
+        if (state.PersonName is null || state.MainCharacterName is null)
             return false;
-        return state.PersonName == state.ProtagonistName;
+        return state.PersonName == state.MainCharacterName;
     }
 }

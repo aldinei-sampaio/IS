@@ -2,13 +2,13 @@
 
 public class PersonLeaveEvent : IPersonLeaveEvent
 {
-    public PersonLeaveEvent(string name, bool isProtagonist)
-        => (PersonName, IsProtagonist) = (name, isProtagonist);
+    public PersonLeaveEvent(string name, bool isMainCharacter)
+        => (PersonName, IsMainCharacter) = (name, isMainCharacter);
 
     public string PersonName { get; }
 
-    public bool IsProtagonist { get; }
+    public bool IsMainCharacter { get; }
 
     public override string ToString()
-        => $"person{Helper.ProtagSymbol(IsProtagonist)} leave: {PersonName}";
+        => $"person{Helper.MainCharacterSymbol(IsMainCharacter)} leave: {PersonName}";
 }

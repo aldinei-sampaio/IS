@@ -2,13 +2,13 @@
 
 public class PersonEnterEvent : IPersonEnterEvent
 {
-    public PersonEnterEvent(string name, bool isProtagonist)
-        => (PersonName, IsProtagonist) = (name, isProtagonist);
+    public PersonEnterEvent(string name, bool isMainCharacter)
+        => (PersonName, IsMainCharacter) = (name, isMainCharacter);
 
     public string PersonName { get; }
 
-    public bool IsProtagonist { get; }
+    public bool IsMainCharacter { get; }
 
     public override string ToString()
-        => $"person{Helper.ProtagSymbol(IsProtagonist)} enter: {PersonName}";
+        => $"person{Helper.MainCharacterSymbol(IsMainCharacter)} enter: {PersonName}";
 }

@@ -51,10 +51,10 @@ public class BalloonTextNodeTests
     [Theory]
     [InlineData(BalloonType.Narration, false)]
     [InlineData(BalloonType.Speech, true)]
-    public async Task OnEnterAsyncShouldRaiseEvent(BalloonType balloonType, bool isProtagonist)
+    public async Task OnEnterAsyncShouldRaiseEvent(BalloonType balloonType, bool isMainCharacter)
     {
         state.PersonName = "alpha";
-        state.ProtagonistName = isProtagonist ? "alpha" : "beta";
+        state.MainCharacterName = isMainCharacter ? "alpha" : "beta";
 
         var sut = new BalloonTextNode(textSource, balloonType, null);
         var invoker = new TestInvoker(context);
@@ -67,7 +67,7 @@ public class BalloonTextNodeTests
             {
                 Text = balloonText,
                 BalloonType = balloonType,
-                IsProtagonist = isProtagonist,
+                IsMainCharacter = isMainCharacter,
                 Choice = (IChoice)null
             })
         );
@@ -77,7 +77,7 @@ public class BalloonTextNodeTests
     public async Task OnEnterAsyncWithChoice()
     {
         state.PersonName = "mu";
-        state.ProtagonistName = "pi";
+        state.MainCharacterName = "pi";
 
         var choice = A.Dummy<IChoice>();
         var choiceBuilder = A.Fake<IChoiceBuilder>(i => i.Strict());
@@ -93,7 +93,7 @@ public class BalloonTextNodeTests
             {
                 Text = balloonText,
                 BalloonType = BalloonType.Speech,
-                IsProtagonist = false,
+                IsMainCharacter = false,
                 Choice = choice
             })
         );

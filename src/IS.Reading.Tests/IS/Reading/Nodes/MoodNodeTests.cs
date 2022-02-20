@@ -20,13 +20,13 @@ public class MoodNodeTests
     [InlineData(MoodType.Surprised, "alpha", "beta")]
     [InlineData(MoodType.Sad, "alpha", "alpha")]
     [InlineData(MoodType.Happy, "beta", "beta")]
-    public async Task OnEnterAsyncShouldRaiseEvent(MoodType moodType, string personName, string protagonist)
+    public async Task OnEnterAsyncShouldRaiseEvent(MoodType moodType, string personName, string mainCharacterName)
     {
-        var isProtagonist = personName == protagonist;
+        var isMainCharacter = personName == mainCharacterName;
 
         var context = A.Dummy<INavigationContext>();
         context.State.PersonName = personName;
-        context.State.ProtagonistName = protagonist;
+        context.State.MainCharacterName = mainCharacterName;
         context.State.MoodType = null;
 
         var invoker = new TestInvoker(context);
@@ -41,7 +41,7 @@ public class MoodNodeTests
             {
                 MoodType = moodType,
                 PersonName = personName,
-                IsProtagonist = isProtagonist
+                IsMainCharacter = isMainCharacter
             })
         );
     }
@@ -81,7 +81,7 @@ public class MoodNodeTests
             {
                 MoodType = MoodType.Happy,
                 PersonName = "abc",
-                IsProtagonist = false
+                IsMainCharacter = false
             })
         );
     }
@@ -125,7 +125,7 @@ public class MoodNodeTests
     {
         var context = A.Dummy<INavigationContext>();
         context.State.PersonName = "alpha";
-        context.State.ProtagonistName = "alpha";
+        context.State.MainCharacterName = "alpha";
         context.State.MoodType = MoodType.Happy;
 
         var invoker = new TestInvoker(context);
@@ -139,7 +139,7 @@ public class MoodNodeTests
             {
                 MoodType = moodType,
                 PersonName = "alpha",
-                IsProtagonist = true
+                IsMainCharacter = true
             })
         );
     }

@@ -11,11 +11,11 @@ public class BalloonOpenEventTests
     [InlineData(BalloonType.Speech, true, "speech* start")]
     [InlineData(BalloonType.Thought, false, "thought start")]
     [InlineData(BalloonType.Thought, true, "thought* start")]
-    public void Initialization(BalloonType balloonType, bool isProtagonist, string description)
+    public void Initialization(BalloonType balloonType, bool isMainCharacter, string description)
     {
-        var sut = new BalloonOpenEvent(balloonType, isProtagonist);
+        var sut = new BalloonOpenEvent(balloonType, isMainCharacter);
         sut.BalloonType.Should().Be(balloonType);
-        sut.IsProtagonist.Should().Be(isProtagonist);
+        sut.IsMainCharacter.Should().Be(isMainCharacter);
         sut.ToString().Should().Be(description);
     }
 }

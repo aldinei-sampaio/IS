@@ -18,12 +18,12 @@ public class PersonNodeTests
     [InlineData("alpha", "beta")]
     [InlineData("alpha", "alpha")]
     [InlineData("beta", "beta")]
-    public async Task OnEnterAsyncShouldRaiseEvent(string personName, string protagonist)
+    public async Task OnEnterAsyncShouldRaiseEvent(string personName, string mainCharacterName)
     {
-        var isProtagonist = personName == protagonist;
+        var isMainCharacter = personName == mainCharacterName;
 
         var context = A.Dummy<INavigationContext>();
-        context.State.ProtagonistName = protagonist;
+        context.State.MainCharacterName = mainCharacterName;
 
         var invoker = new TestInvoker(context);
 
@@ -34,7 +34,7 @@ public class PersonNodeTests
         ret.Should().BeNull();
 
         invoker.ShouldContainSingle<IPersonEnterEvent>(
-            i => i.Should().BeEquivalentTo(new { PersonName = personName, IsProtagonist = isProtagonist })
+            i => i.Should().BeEquivalentTo(new { PersonName = personName, IsMainCharacter = isMainCharacter })
         );
     }
 
@@ -57,12 +57,12 @@ public class PersonNodeTests
     [InlineData("alpha", "beta")]
     [InlineData("alpha", "alpha")]
     [InlineData("beta", "beta")]
-    public async Task OnLeaveAsyncShouldRaiseEvent(string personName, string protagonist)
+    public async Task OnLeaveAsyncShouldRaiseEvent(string personName, string mainCharacterName)
     {
-        var isProtagonist = personName == protagonist;
+        var isMainCharacter = personName == mainCharacterName;
 
         var context = A.Dummy<INavigationContext>();
-        context.State.ProtagonistName = protagonist;
+        context.State.MainCharacterName = mainCharacterName;
 
         var invoker = new TestInvoker(context);
 
@@ -72,7 +72,7 @@ public class PersonNodeTests
         await sut.LeaveAsync(context);
 
         invoker.ShouldContainSingle<IPersonLeaveEvent>(
-            i => i.Should().BeEquivalentTo(new { PersonName = personName, IsProtagonist = isProtagonist })
+            i => i.Should().BeEquivalentTo(new { PersonName = personName, IsMainCharacter = isMainCharacter })
         );
     }
 

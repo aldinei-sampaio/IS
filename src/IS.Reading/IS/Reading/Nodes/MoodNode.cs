@@ -21,7 +21,7 @@ public class MoodNode : INode
         {
             if (oldState.HasValue || moodType.Value != Reading.MoodType.Normal)
             {
-                var @event = new MoodChangeEvent(context.State.PersonName!, context.State.IsProtagonist(), moodType.Value);
+                var @event = new MoodChangeEvent(context.State.PersonName!, context.State.IsMainCharacter(), moodType.Value);
                 await context.Events.InvokeAsync<IMoodChangeEvent>(@event);
             }
         }

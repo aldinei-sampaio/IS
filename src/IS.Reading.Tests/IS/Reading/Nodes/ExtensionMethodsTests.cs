@@ -10,11 +10,11 @@ public class ExtensionMethodsTests
     [InlineData("alpha", null, false)]
     [InlineData("alpha", "beta", false)]
     [InlineData("alpha", "alpha", true)]
-    public void IsProtagonist(string personName, string protagonistName, bool expected)
+    public void IsMainCharacter(string personName, string mainCharacterName, bool expected)
     {
         var state = A.Dummy<INavigationState>();
         state.PersonName = personName;
-        state.ProtagonistName = protagonistName;
-        state.IsProtagonist().Should().Be(expected);
+        state.MainCharacterName = mainCharacterName;
+        state.IsMainCharacter().Should().Be(expected);
     }
 }

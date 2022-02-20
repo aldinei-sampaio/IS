@@ -5,11 +5,11 @@ public class PersonEnterEventTests
     [Theory]
     [InlineData("abc", false, "person enter: abc")]
     [InlineData("DEF", true, "person* enter: DEF")]
-    public void Initialization(string personName, bool isProtagonist, string description)
+    public void Initialization(string personName, bool isMainCharacter, string description)
     {
-        var sut = new PersonEnterEvent(personName, isProtagonist);
+        var sut = new PersonEnterEvent(personName, isMainCharacter);
         sut.PersonName.Should().Be(personName);
-        sut.IsProtagonist.Should().Be(isProtagonist);
+        sut.IsMainCharacter.Should().Be(isMainCharacter);
         sut.ToString().Should().Be(description);
     }
 }

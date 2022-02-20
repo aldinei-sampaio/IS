@@ -2,6 +2,6 @@
 
 public interface IPersonEnterEvent : IReadingEvent
 {
-    bool IsProtagonist { get; }
+    bool IsMainCharacter { get; }
     string PersonName { get; }
 }

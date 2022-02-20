@@ -8,11 +8,11 @@ public class MoodChangeEventTests
     [InlineData("Ghi", MoodType.Surprised, true, "mood* surprised: Ghi")]
     [InlineData("jKl", MoodType.Angry, false, "mood angry: jKl")]
     [InlineData("mnO", MoodType.Happy, true, "mood* happy: mnO")]
-    public void Initialization(string personName, MoodType moodType, bool isProtagonist, string description)
+    public void Initialization(string personName, MoodType moodType, bool isMainCharacter, string description)
     {
-        var sut = new MoodChangeEvent(personName, isProtagonist, moodType);
+        var sut = new MoodChangeEvent(personName, isMainCharacter, moodType);
         sut.PersonName.Should().Be(personName);
-        sut.IsProtagonist.Should().Be(isProtagonist);
+        sut.IsMainCharacter.Should().Be(isMainCharacter);
         sut.MoodType.Should().Be(moodType);
         sut.ToString().Should().Be(description);
     }

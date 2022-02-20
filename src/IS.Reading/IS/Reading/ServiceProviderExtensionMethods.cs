@@ -38,7 +38,7 @@ public static class ServiceProviderExtensionMethods
 
         // Node parsers
         services.AddSingleton<IMusicNodeParser, MusicNodeParser>();
-        services.AddSingleton<IProtagonistNodeParser, ProtagonistNodeParser>();
+        services.AddSingleton<IMainCharacterNodeParser, MainCharacterNodeParser>();
         services.AddSingleton<IPauseNodeParser, PauseNodeParser>();
         services.AddSingleton<IBlockNodeParser, BlockNodeParser>();
         services.AddSingleton<IMoodNodeParser, MoodNodeParser>();

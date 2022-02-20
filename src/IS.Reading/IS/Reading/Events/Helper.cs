@@ -2,18 +2,18 @@
 
 internal static class Helper
 {
-    public static string ProtagSymbol(BalloonType balloonType, bool isProtagonist)
+    public static string MainCharacterSymbol(BalloonType balloonType, bool isMainCharacter)
     { 
         switch (balloonType)
         {
             case BalloonType.Speech:
             case BalloonType.Thought:
-                return ProtagSymbol(isProtagonist);
+                return MainCharacterSymbol(isMainCharacter);
             default:
                 return string.Empty;
         }
     }
 
-    public static string ProtagSymbol(bool isProtagonist)
-        => isProtagonist ? "*" : string.Empty;
+    public static string MainCharacterSymbol(bool isMainCharacter)
+        => isMainCharacter ? "*" : string.Empty;
 }
