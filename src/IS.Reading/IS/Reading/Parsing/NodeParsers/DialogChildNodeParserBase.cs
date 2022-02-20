@@ -3,13 +3,13 @@ using IS.Reading.Variables;
 
 namespace IS.Reading.Parsing.NodeParsers;
 
-public class BalloonTextNodeParser : IBalloonTextNodeParser
+public abstract class DialogChildNodeParserBase : IAggregateNodeParser
 {
     public IElementParser ElementParser { get; }
     public ITextSourceParser TextSourceParser { get; }
     public IElementParserSettings Settings { get; }
 
-    public BalloonTextNodeParser(IElementParser elementParser, ITextSourceParser textSourceParser, IChoiceNodeParser choiceNodeParser)
+    public DialogChildNodeParserBase(IElementParser elementParser, ITextSourceParser textSourceParser, IChoiceNodeParser choiceNodeParser)
     {
         ElementParser = elementParser;
         TextSourceParser = textSourceParser;
@@ -18,12 +18,10 @@ public class BalloonTextNodeParser : IBalloonTextNodeParser
 
     public bool IsArgumentRequired => true;
 
-    public string Name => "-";
+    public abstract string Name { get; }
 
     public async Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
-        var balloonParentContext = (BalloonParsingContext)parentParsingContext;
-
         var result = TextSourceParser.Parse(reader.Argument);
         if (!result.IsOk)
         {
@@ -32,16 +30,17 @@ public class BalloonTextNodeParser : IBalloonTextNodeParser
         }
         var textSource = result.Value;
 
-        var myContext = new BalloonChildParsingContext(balloonParentContext.BalloonType);
+        var balloonType = ((BalloonParsingContext)parentParsingContext).BalloonType;
+
+        var myContext = new BalloonChildParsingContext(balloonType);
         await ElementParser.ParseAsync(reader, parsingContext, myContext, Settings);
 
         if (!parsingContext.IsSuccess)
             return;
 
-        var node = new BalloonTextNode(textSource, balloonParentContext.BalloonType, myContext.ChoiceBuilder);
+        var node = new BalloonTextNode(textSource, balloonType, myContext.ChoiceBuilder);
         parentParsingContext.AddNode(node);
 
         parsingContext.SceneContext.Reset();
     }
 }
-

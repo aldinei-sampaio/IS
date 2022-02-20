@@ -51,11 +51,14 @@ public static class ServiceProviderExtensionMethods
         services.AddSingleton<IBackgroundColorNodeParser, BackgroundColorNodeParser>();
         services.AddSingleton<IBackgroundScrollNodeParser, BackgroundScrollNodeParser>();
 
-        services.AddSingleton<IBalloonTextNodeParser, BalloonTextNodeParser>();
         services.AddSingleton<ISpeechNodeParser, SpeechNodeParser>();
+        services.AddSingleton<ISpeechChildNodeParser, SpeechChildNodeParser>();
         services.AddSingleton<IThoughtNodeParser, ThoughtNodeParser>();
+        services.AddSingleton<IThoughtChildNodeParser, ThoughtChildNodeParser>();
         services.AddSingleton<INarrationNodeParser, NarrationNodeParser>();
+        services.AddSingleton<INarrationChildNodeParser, NarrationChildNodeParser>();
         services.AddSingleton<ITutorialNodeParser, TutorialNodeParser>();
+        services.AddSingleton<ITutorialChildNodeParser, TutorialChildNodeParser>();
 
         services.AddSingleton<IChoiceNodeParser, ChoiceNodeParser>();
         services.AddSingleton<IChoiceDefaultNodeParser, ChoiceDefaultNodeParser>();

@@ -9,7 +9,7 @@ public class ElementParser : IElementParser
         IElementParserSettings settings
     )
     {
-        if (!await reader.ReadAsync())
+        if (!settings.ParseCurrent && !await reader.ReadAsync())
             return;
 
         var processed = settings.NoRepeatNode ? new HashSet<INodeParser>() : null;

@@ -1,18 +1,18 @@
 ﻿namespace IS.Reading.Parsing.NodeParsers.PersonParsers;
 
-public class ThoughtNodeParser : BalloonNodeParserBase, IThoughtNodeParser
+public class ThoughtNodeParser : DialogNodeParserBase, IThoughtNodeParser
 {
-    public override string Name => "thought";
+    public override string Name => "*";
 
     public override BalloonType BalloonType => BalloonType.Thought;
 
     public ThoughtNodeParser(
         IElementParser elementParser,
-        IBalloonTextNodeParser balloonTextNodeParser,
+        IThoughtChildNodeParser thoughtChildNodeParser,
         IMoodNodeParser moodNodeParser,
         ISetNodeParser setNodeParser
     )
-        : base(elementParser, balloonTextNodeParser, moodNodeParser, setNodeParser)
+        : base(elementParser, thoughtChildNodeParser, moodNodeParser, setNodeParser)
     {
     }
 }

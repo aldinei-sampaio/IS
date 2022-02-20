@@ -1,18 +1,18 @@
 ﻿namespace IS.Reading.Parsing.NodeParsers.PersonParsers;
 
-public class SpeechNodeParser : BalloonNodeParserBase, ISpeechNodeParser
+public class SpeechNodeParser : DialogNodeParserBase, ISpeechNodeParser
 {
-    public override string Name => "speech";
+    public override string Name => "-";
 
     public override BalloonType BalloonType => BalloonType.Speech;
 
     public SpeechNodeParser(
         IElementParser elementParser, 
-        IBalloonTextNodeParser balloonTextNodeParser, 
+        ISpeechChildNodeParser speechChildNodeParser, 
         IMoodNodeParser moodNodeParser, 
         ISetNodeParser setNodeParser
     ) 
-        : base(elementParser, balloonTextNodeParser, moodNodeParser, setNodeParser)
+        : base(elementParser, speechChildNodeParser, moodNodeParser, setNodeParser)
     {
     }
 }

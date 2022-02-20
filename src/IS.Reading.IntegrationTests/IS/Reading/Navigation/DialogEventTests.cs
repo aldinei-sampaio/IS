@@ -7,16 +7,12 @@ public class DialogEventTests
     {
         var stb =
 @"' Storybasic 1.0
-tutorial
-- texto1
-- texto2
-narration
-- texto3
-- texto4
-tutorial
-- texto5
-narration
-- texto6";
+! texto1
+! texto2
+> texto3
+> texto4
+! texto5
+> texto6";
 
         var tester = await StoryboardEventTester.CreateAsync(stb);
 
@@ -44,16 +40,12 @@ narration
 @"' Storybasic 1.0
 mc joara
 @ joara
-speech
 - texto1
 - texto2
-thought
-- texto3
-speech
+* texto3
 - texto4
-thought
-- texto5
-- texto6";
+* texto5
+* texto6";
 
         var tester = await StoryboardEventTester.CreateAsync(stb);
 
@@ -80,16 +72,12 @@ thought
         var stb =
 @"' Storybasic 1.0
 @ clodoaldo
-speech
 - texto1
 - texto2
-thought
-- texto3
-speech
+* texto3
 - texto4
-thought
-- texto5
-- texto6";
+* texto5
+* texto6";
         
         var tester = await StoryboardEventTester.CreateAsync(stb);
 
@@ -118,22 +106,18 @@ thought
 mc jane
 
 @ jane
-speech
 - texto1
 
 @ clara
-speech
 - texto2
 - texto3
 
 @ jane
-thought
-- texto4
-- texto5
+* texto4
+* texto5
 
 @ clara
-thought
-- texto6";
+* texto6";
 
         var tester = await StoryboardEventTester.CreateAsync(stb);
 
@@ -162,7 +146,6 @@ thought
 mc jane
 
 @ jane
-speech
 - texto1
 
 # surprised
@@ -170,8 +153,7 @@ speech
 - texto3
 
 # angry
-thought
-- texto5";
+* texto5";
 
         var tester = await StoryboardEventTester.CreateAsync(stb);
 
@@ -202,7 +184,6 @@ thought
 @"' Storybasic 1.0
 @ lana
 # normal
-speech
 - texto1
 
 # surprised
@@ -210,8 +191,7 @@ speech
 - texto3
 
 # angry
-thought
-- texto5";
+* texto5";
 
         var tester = await StoryboardEventTester.CreateAsync(stb);
 

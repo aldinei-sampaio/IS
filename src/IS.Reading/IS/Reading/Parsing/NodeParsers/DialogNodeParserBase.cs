@@ -3,22 +3,19 @@ using IS.Reading.Nodes;
 
 namespace IS.Reading.Parsing.NodeParsers;
 
-public abstract class BalloonNodeParserBase : IAggregateNodeParser
+public abstract class DialogNodeParserBase : IAggregateNodeParser
 {
     public IElementParser ElementParser { get; }
 
     public IElementParserSettings Settings { get; }
 
-    public BalloonNodeParserBase(
-        IElementParser elementParser,
-        params INodeParser[] parsers
-    )
+    public DialogNodeParserBase(IElementParser elementParser, params INodeParser[] nodes)
     {
-        this.ElementParser = elementParser;
-        Settings = new ElementParserSettings.Aggregated(parsers);
+        ElementParser = elementParser;
+        Settings = new ElementParserSettings.AggregatedCurrent(nodes);
     }
 
-    public bool IsArgumentRequired => false;
+    public bool IsArgumentRequired => true;
 
     public abstract string Name { get; }
 

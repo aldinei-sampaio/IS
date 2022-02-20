@@ -1,16 +1,16 @@
 ﻿namespace IS.Reading.Parsing.NodeParsers;
 
-public class TutorialNodeParser : BalloonNodeParserBase, ITutorialNodeParser
+public class TutorialNodeParser : DialogNodeParserBase, ITutorialNodeParser
 {
-    public override string Name => "tutorial";
+    public override string Name => "!";
 
     public override BalloonType BalloonType => BalloonType.Tutorial;
 
     public TutorialNodeParser(
         IElementParser elementParser,
-        IBalloonTextNodeParser balloonTextNodeParser,
+        ITutorialChildNodeParser tutorialChildNodeParser,
         ISetNodeParser setNodeParser
-    ) : base(elementParser, balloonTextNodeParser, setNodeParser)
+    ) : base(elementParser, tutorialChildNodeParser, setNodeParser)
     {
     }
 }

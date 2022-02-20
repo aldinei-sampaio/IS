@@ -1,16 +1,16 @@
 ﻿namespace IS.Reading.Parsing.NodeParsers;
 
-public class NarrationNodeParser : BalloonNodeParserBase, INarrationNodeParser
+public class NarrationNodeParser : DialogNodeParserBase, INarrationNodeParser
 {
-    public override string Name => "narration";
+    public override string Name => ">";
 
     public override BalloonType BalloonType => BalloonType.Narration;
 
     public NarrationNodeParser(
         IElementParser elementParser,
-        IBalloonTextNodeParser balloonTextNodeParser,
+        INarrationChildNodeParser narrationChildNodeParser,
         ISetNodeParser setNodeParser
-    ) : base(elementParser, balloonTextNodeParser, setNodeParser)
+    ) : base(elementParser, narrationChildNodeParser, setNodeParser)
     {
     }
 }

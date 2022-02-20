@@ -7,4 +7,5 @@ public interface IElementParserSettings
     bool ExitOnEnd { get; }
     bool ExitOnElse { get; }
     bool NoRepeatNode { get; }
+    bool ParseCurrent { get; }
 }

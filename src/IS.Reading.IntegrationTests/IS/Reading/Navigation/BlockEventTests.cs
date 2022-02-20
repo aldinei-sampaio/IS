@@ -7,16 +7,13 @@ public class BlockEventTests
     {
         var stb =
 @"' Storybasic 1.0
-tutorial
-- texto1
-- texto2
+! texto1
+! texto2
 if a = 1
-  narration
-  - texto3
-  - texto4
+  > texto3
+  > texto4
 end
-tutorial
-- texto5";
+! texto5";
 
         var tester = await StoryboardEventTester.CreateAsync(stb);
 
@@ -36,17 +33,14 @@ tutorial
     {
         var stb =
 @"' Storybasic 1.0
-tutorial
-- texto1
-- texto2
+! texto1
+! texto2
 set a = 1
 if a = 1
-  narration
-  - texto3
-  - texto4
+  > texto3
+  > texto4
 end
-tutorial
-- texto5";
+! texto5";
 
         var tester = await StoryboardEventTester.CreateAsync(stb);
 
@@ -70,21 +64,17 @@ tutorial
     {
         var stb =
 @"' Storybasic 1.0
-tutorial
-- texto1
-- texto2
+! texto1
+! texto2
 set a = 1
 if a = 1
-  narration
-  - texto3
-  - texto4
+  > texto3
+  > texto4
 else
-  narration
-  - texto4
-  - texto5
+  > texto4
+  > texto5
 end
-tutorial
-- texto5";
+! texto5";
 
         var tester = await StoryboardEventTester.CreateAsync(stb);
 
@@ -108,21 +98,17 @@ tutorial
     {
         var stb =
 @"' Storybasic 1.0
-tutorial
-- texto1
-- texto2
+! texto1
+! texto2
 set a = 2
 if a = 1
-  narration
-  - texto3
-  - texto4
+  > texto3
+  > texto4
 else
-  narration
-  - textoA
-  - textoB
+  > textoA
+  > textoB
 end
-tutorial
-- texto5";
+! texto5";
 
         var tester = await StoryboardEventTester.CreateAsync(stb);
 
@@ -146,14 +132,11 @@ tutorial
     {
         var stb =
 @"' Storybasic 1.0
-tutorial
-- texto1
+! texto1
 while a = 1
-  narration
-  - texto2
+  > texto2
 end
-tutorial
-- texto3";
+! texto3";
 
         var tester = await StoryboardEventTester.CreateAsync(stb);
 
@@ -171,15 +154,12 @@ tutorial
     {
         var stb =
 @"' Storybasic 1.0
-tutorial
-- texto1
+! texto1
 while a != 3
-  narration
-  - texto2
+  > texto2
   set a++
 end
-tutorial
-- texto3";
+! texto3";
 
         var tester = await StoryboardEventTester.CreateAsync(stb);
 
@@ -203,20 +183,16 @@ tutorial
     {
         var stb =
 @"' Storybasic 1.0
-tutorial
-- texto1
+! texto1
 while a != 2
-  narration
-  - texto2
+  > texto2
   set a++
   while b != 2
-    narration
-    - texto3
+    > texto3
     set b++
   end
 end
-tutorial
-- texto4";
+! texto4";
 
         var tester = await StoryboardEventTester.CreateAsync(stb);
 
