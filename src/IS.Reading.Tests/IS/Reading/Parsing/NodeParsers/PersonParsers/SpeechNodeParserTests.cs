@@ -6,15 +6,15 @@ public class SpeechNodeParserTests
     public void Initialization()
     {
         var elementParser = A.Dummy<IElementParser>();
-        var balloonTextNodeParser = Helper.FakeParser<IBalloonTextNodeParser>("-");
+        var balloonTextNodeParser = Helper.FakeParser<ISpeechChildNodeParser>("-");
         var moodNodeParser = Helper.FakeParser<IMoodNodeParser>("#");
         var setNodeParser = Helper.FakeParser<ISetNodeParser>("set");
         var sut = new SpeechNodeParser(elementParser, balloonTextNodeParser, moodNodeParser, setNodeParser);
 
-        sut.Name.Should().Be("speech");
-        sut.IsArgumentRequired.Should().BeFalse();
+        sut.Name.Should().Be("-");
+        sut.IsArgumentRequired.Should().BeTrue();
         sut.BalloonType.Should().Be(BalloonType.Speech);
-        sut.Settings.Should().BeOfType<ElementParserSettings.Aggregated>();
+        sut.Settings.Should().BeOfType<ElementParserSettings.AggregatedCurrent>();
         sut.Settings.ChildParsers.Should().BeEquivalentTo(balloonTextNodeParser, moodNodeParser, setNodeParser);
     }
 }

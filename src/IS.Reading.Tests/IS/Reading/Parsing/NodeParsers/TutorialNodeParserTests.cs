@@ -6,14 +6,14 @@ public class TutorialNodeParserTests
     public void Initialization()
     {
         var elementParser = A.Dummy<IElementParser>();
-        var balloonTextNodeParser = Helper.FakeParser<IBalloonTextNodeParser>("-");
+        var childNodeParser = Helper.FakeParser<ITutorialChildNodeParser>("-");
         var setNodeParser = Helper.FakeParser<ISetNodeParser>("set");
-        var sut = new TutorialNodeParser(elementParser, balloonTextNodeParser, setNodeParser);
+        var sut = new TutorialNodeParser(elementParser, childNodeParser, setNodeParser);
 
-        sut.Name.Should().Be("tutorial");
-        sut.IsArgumentRequired.Should().BeFalse();
+        sut.Name.Should().Be("!");
+        sut.IsArgumentRequired.Should().BeTrue();
         sut.BalloonType.Should().Be(BalloonType.Tutorial);
-        sut.Settings.Should().BeOfType<ElementParserSettings.Aggregated>();
-        sut.Settings.ChildParsers.Should().BeEquivalentTo(balloonTextNodeParser, setNodeParser);
+        sut.Settings.Should().BeOfType<ElementParserSettings.AggregatedCurrent>();
+        sut.Settings.ChildParsers.Should().BeEquivalentTo(childNodeParser, setNodeParser);
     }
 }

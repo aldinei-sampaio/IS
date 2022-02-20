@@ -31,12 +31,6 @@ public abstract class DialogNodeParserBase : IAggregateNodeParser
 
         var extraNonPauseNodes = ExtractNonPauseNodesAfterLastPauseNode(myContext.Nodes);
 
-        if (myContext.Nodes.Count == 0)
-        {
-            parsingContext.LogError(reader, $"Era esperada ao menos uma linha de diálogo após o comando '{Name}'.");
-            return;
-        }
-
         var block = parsingContext.BlockFactory.Create(myContext.Nodes);
         var node = new BalloonNode(BalloonType, block);
         parentParsingContext.AddNode(node);

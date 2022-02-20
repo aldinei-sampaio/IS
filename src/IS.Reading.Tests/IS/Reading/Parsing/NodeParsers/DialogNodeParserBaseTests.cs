@@ -3,9 +3,9 @@ using IS.Reading.Nodes;
 
 namespace IS.Reading.Parsing.NodeParsers;
 
-public class BalloonNodeParserBaseTests
+public class DialogNodeParserBaseTests
 {
-    private class TestImplementation : BalloonNodeParserBase
+    private class TestImplementation : DialogNodeParserBase
     {
         public TestImplementation(IElementParser elementParser, params INodeParser[] parsers) : base(elementParser, parsers)
         {
@@ -25,7 +25,7 @@ public class BalloonNodeParserBaseTests
     private readonly IBlockFactory blockFactory;
     private readonly TestImplementation sut;
 
-    public BalloonNodeParserBaseTests()
+    public DialogNodeParserBaseTests()
     {
         elementParser = A.Dummy<IElementParser>();
         parser1 = Helper.FakeParser<INodeParser>("alpha");
@@ -45,8 +45,9 @@ public class BalloonNodeParserBaseTests
     {
         sut.ElementParser.Should().BeSameAs(elementParser);
         sut.Name.Should().Be("teste");
+        sut.IsArgumentRequired.Should().BeTrue();
         sut.BalloonType.Should().Be(BalloonType.Speech);
-        sut.Settings.Should().BeOfType<ElementParserSettings.Aggregated>()
+        sut.Settings.Should().BeOfType<ElementParserSettings.AggregatedCurrent>()
             .Which.ChildParsers.Should().BeEquivalentTo(parser1, parser2);
     }
 
@@ -60,20 +61,6 @@ public class BalloonNodeParserBaseTests
 
         parentContext.ShouldBeEmpty();
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).MustHaveHappenedOnceExactly();
-    }
-
-    [Fact]
-    public async Task NoAggregatedNodesFound()
-    {
-        var errorMessage = "Era esperada ao menos uma linha de diálogo após o comando 'teste'.";
-
-        A.CallTo(() => context.IsSuccess).Returns(true);
-        A.CallTo(() => context.LogError(reader, errorMessage)).DoesNothing();
-        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).DoesNothing();
-
-        await sut.ParseAsync(reader, context, parentContext);
-
-        A.CallTo(() => context.LogError(reader, errorMessage)).MustHaveHappenedOnceExactly();
     }
 
     [Fact]
@@ -155,28 +142,6 @@ public class BalloonNodeParserBaseTests
                 pauseNode3
             );
         });
-    }
-
-    [Fact]
-    public async Task OnlyNonPauseNodes()
-    {
-        var errorMessage = "Era esperada ao menos uma linha de diálogo após o comando 'teste'.";
-        
-        var nonPauseNode1 = A.Dummy<INode>();
-        var nonPauseNode2 = A.Dummy<INode>();
-
-        A.CallTo(() => context.IsSuccess).Returns(true);
-        A.CallTo(() => context.LogError(reader, errorMessage)).DoesNothing();
-        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
-            .Invokes(i => {
-                var parentContext = i.GetArgument<IParentParsingContext>(2);
-                parentContext.AddNode(nonPauseNode1);
-                parentContext.AddNode(nonPauseNode2);
-            });
-
-        await sut.ParseAsync(reader, context, parentContext);
-
-        A.CallTo(() => context.LogError(reader, errorMessage)).MustHaveHappenedOnceExactly();
     }
 
     [Fact]

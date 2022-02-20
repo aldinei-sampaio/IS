@@ -6,14 +6,14 @@ public class NarrationNodeParserTests
     public void Initialization()
     {
         var elementParser = A.Dummy<IElementParser>();
-        var balloonTextNodeParser = Helper.FakeParser<IBalloonTextNodeParser>("-");
+        var childNodeParser = Helper.FakeParser<INarrationChildNodeParser>("-");
         var setNodeParser = Helper.FakeParser<ISetNodeParser>("set");
-        var sut = new NarrationNodeParser(elementParser, balloonTextNodeParser, setNodeParser);
+        var sut = new NarrationNodeParser(elementParser, childNodeParser, setNodeParser);
 
-        sut.Name.Should().Be("narration");
-        sut.IsArgumentRequired.Should().BeFalse();
+        sut.Name.Should().Be(">");
+        sut.IsArgumentRequired.Should().BeTrue();
         sut.BalloonType.Should().Be(BalloonType.Narration);
-        sut.Settings.Should().BeOfType<ElementParserSettings.Aggregated>();
-        sut.Settings.ChildParsers.Should().BeEquivalentTo(balloonTextNodeParser, setNodeParser);
+        sut.Settings.Should().BeOfType<ElementParserSettings.AggregatedCurrent>();
+        sut.Settings.ChildParsers.Should().BeEquivalentTo(childNodeParser, setNodeParser);
     }
 }

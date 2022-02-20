@@ -15,7 +15,8 @@ public class ElementParserSettingsTests
             NoRepeatNode = false,
             ExitOnEnd = false,
             ExitOnUnknownNode = false,
-            ExitOnElse = false
+            ExitOnElse = false,
+            ParseCurrent = false
         });
     }
 
@@ -32,7 +33,8 @@ public class ElementParserSettingsTests
             NoRepeatNode = false,
             ExitOnEnd = true,
             ExitOnUnknownNode = false,
-            ExitOnElse = false
+            ExitOnElse = false,
+            ParseCurrent = false
         });
     }
 
@@ -49,7 +51,8 @@ public class ElementParserSettingsTests
             NoRepeatNode = false,
             ExitOnEnd = true,
             ExitOnUnknownNode = false,
-            ExitOnElse = true
+            ExitOnElse = true,
+            ParseCurrent = false
         });
     }
 
@@ -66,7 +69,8 @@ public class ElementParserSettingsTests
             NoRepeatNode = true,
             ExitOnEnd = false,
             ExitOnUnknownNode = true,
-            ExitOnElse = false
+            ExitOnElse = false,
+            ParseCurrent = false
         });
     }
 
@@ -83,7 +87,27 @@ public class ElementParserSettingsTests
             NoRepeatNode = false,
             ExitOnEnd = false,
             ExitOnUnknownNode = true,
-            ExitOnElse = false
+            ExitOnElse = false,
+            ParseCurrent = false
+        });
+    }
+
+    [Fact]
+    public void AggregatedCurrent()
+    {
+        var nodeParser1 = Helper.FakeParser<INodeParser>("c");
+        var nodeParser2 = Helper.FakeParser<INodeParser>("d");
+        var parsers = new[] { nodeParser1, nodeParser2 };
+
+        var sut = new ElementParserSettings.AggregatedCurrent(parsers);
+        sut.ChildParsers.Should().BeEquivalentTo(parsers);
+        sut.Should().BeEquivalentTo(new
+        {
+            NoRepeatNode = false,
+            ExitOnEnd = false,
+            ExitOnUnknownNode = true,
+            ExitOnElse = false,
+            ParseCurrent = true
         });
     }
 }

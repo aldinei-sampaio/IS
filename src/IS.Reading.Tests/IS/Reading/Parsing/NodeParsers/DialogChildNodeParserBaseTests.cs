@@ -4,19 +4,33 @@ using IS.Reading.Variables;
 
 namespace IS.Reading.Parsing.NodeParsers;
 
-public class BalloonTextNodeParserTests
+public class DialogChildNodeParserBaseTests
 {
+    private class TestClass : DialogChildNodeParserBase
+    {
+        public TestClass(
+            IElementParser elementParser, 
+            ITextSourceParser textSourceParser, 
+            IChoiceNodeParser choiceNodeParser
+        )
+            : base(elementParser, textSourceParser, choiceNodeParser)
+        {
+        }
+
+        public override string Name => "omega";
+    }
+
     private readonly IElementParser elementParser;
     private readonly ITextSourceParser textSourceParser;
     private readonly IChoiceNodeParser choiceNodeParser;
-    private readonly BalloonTextNodeParser sut;
+    private readonly TestClass sut;
 
     private readonly IDocumentReader documentReader;
     private readonly IParsingContext parsingContext;
     private readonly BalloonParsingContext parentParsingContext;
     private readonly IParsingSceneContext parsingSceneContext;
 
-    public BalloonTextNodeParserTests()
+    public DialogChildNodeParserBaseTests()
     {
         elementParser = A.Fake<IElementParser>(i => i.Strict());
         textSourceParser = A.Fake<ITextSourceParser>(i => i.Strict());
@@ -33,7 +47,7 @@ public class BalloonTextNodeParserTests
     [Fact]
     public void Initialization()
     {
-        sut.Name.Should().Be("-");
+        sut.Name.Should().Be("omega");
         sut.IsArgumentRequired.Should().BeTrue();
         sut.ElementParser.Should().BeSameAs(elementParser);
         sut.TextSourceParser.Should().BeSameAs(textSourceParser);
