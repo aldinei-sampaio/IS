@@ -53,6 +53,9 @@ public class ElementParserTests
     [InlineData("else")]
     [InlineData("ELSE")]
     [InlineData("Else")]
+    [InlineData("elseif")]
+    [InlineData("ELSEIF")]
+    [InlineData("ElseIf")]
     public async Task ExitOnElse(string command)
     {
         A.CallTo(() => settings.ExitOnElse).Returns(true);

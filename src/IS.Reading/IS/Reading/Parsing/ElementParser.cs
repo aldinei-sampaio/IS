@@ -2,6 +2,12 @@
 
 public class ElementParser : IElementParser
 {
+    private static bool IsElse(string command)
+        => string.Compare(command, "else", true) == 0 || string.Compare(command, "elseif", true) == 0;
+
+    private static bool IsEnd(string command)
+        => string.Compare(command, "end", true) == 0;
+
     public async Task ParseAsync(
         IDocumentReader reader, 
         IParsingContext parsingContext,
@@ -16,10 +22,10 @@ public class ElementParser : IElementParser
 
         do
         {
-            if (settings.ExitOnElse && string.Compare(reader.Command, "else", true) == 0)
+            if (settings.ExitOnElse && IsElse(reader.Command))
                 return;
 
-            if (settings.ExitOnEnd && string.Compare(reader.Command, "end", true) == 0)
+            if (settings.ExitOnEnd && IsEnd(reader.Command))
                 return;
 
             var parser = GetParser(reader, parsingContext, settings, processed);

@@ -16,7 +16,7 @@ public class ChoiceRandomOrderNodeParser : IChoiceRandomOrderNodeParser
             return Task.CompletedTask;
         }
 
-        var ctx = (ChoiceParentParsingContext)parentParsingContext;
+        var ctx = (BuilderParentParsingContext<IChoicePrototype>)parentParsingContext;
         ctx.Builders.Add(new ChoiceRandomOrderSetter(true));
         return Task.CompletedTask;
     }

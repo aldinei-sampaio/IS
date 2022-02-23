@@ -39,7 +39,7 @@ public class ChoiceOptionNodeParser : IChoiceOptionNodeParser
     public async Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
     {
         var key = reader.Command[0..^1].ToLower();
-        var myContext = new ChoiceOptionParentParsingContext();
+        var myContext = new BuilderParentParsingContext<IChoiceOptionPrototype>();
         
         if (string.IsNullOrEmpty(reader.Argument))
         {
@@ -61,7 +61,7 @@ public class ChoiceOptionNodeParser : IChoiceOptionNodeParser
 
         var builder = new ChoiceOptionBuilder(key, myContext.Builders);
 
-        var ctx = (ChoiceParentParsingContext)parentParsingContext;
+        var ctx = (BuilderParentParsingContext<IChoicePrototype>)parentParsingContext;
         ctx.Builders.Add(builder);
     }
 }

@@ -8,7 +8,7 @@ public class ChoiceRandomOrderNodeParserTests
 
     private readonly IDocumentReader documentReader;
     private readonly IParsingContext parsingContext;
-    private readonly ChoiceParentParsingContext parentParsingContext;
+    private readonly BuilderParentParsingContext<IChoicePrototype> parentParsingContext;
 
     public ChoiceRandomOrderNodeParserTests()
     {
@@ -16,7 +16,7 @@ public class ChoiceRandomOrderNodeParserTests
 
         documentReader = A.Fake<IDocumentReader>(i => i.Strict());
         parsingContext = Helper.FakeParsingContext();
-        parentParsingContext = new ChoiceParentParsingContext();
+        parentParsingContext = new();
     }
 
     [Fact]

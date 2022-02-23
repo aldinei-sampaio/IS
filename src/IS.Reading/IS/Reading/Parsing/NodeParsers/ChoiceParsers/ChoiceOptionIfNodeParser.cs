@@ -1,14 +1,10 @@
-﻿using IS.Reading.Parsing.ConditionParsers;
+﻿using IS.Reading.Choices;
+using IS.Reading.Parsing.ConditionParsers;
 
 namespace IS.Reading.Parsing.NodeParsers.ChoiceParsers;
 
-public class ChoiceOptionIfNodeParser : IChoiceOptionIfNodeParser
+public class ChoiceOptionIfNodeParser : BuilderIfNodeParserBase<IChoiceOptionPrototype>, IChoiceOptionIfNodeParser
 {
-    public IElementParser ElementParser { get; }
-    public IConditionParser ConditionParser { get; }
-    public IElementParserSettings IfBlockSettings { get; }
-    public IElementParserSettings ElseBlockSettings { get; }
-
     public ChoiceOptionIfNodeParser(
         IElementParser elementParser,
         IConditionParser conditionParser,
@@ -18,8 +14,8 @@ public class ChoiceOptionIfNodeParser : IChoiceOptionIfNodeParser
         IChoiceOptionTipNodeParser choiceOptionTipNodeParser
     )
     {
-        this.ElementParser = elementParser;
-        this.ConditionParser = conditionParser;
+        ElementParser = elementParser;
+        ConditionParser = conditionParser;
 
         IfBlockSettings = new ElementParserSettings.IfBlock(
             choiceOptionTextNodeParser,
@@ -36,37 +32,5 @@ public class ChoiceOptionIfNodeParser : IChoiceOptionIfNodeParser
             choiceOptionTipNodeParser,
             this
         );
-    }
-
-    public bool IsArgumentRequired => true;
-
-    public string Name => "if";
-
-    public async Task ParseAsync(IDocumentReader reader, IParsingContext parsingContext, IParentParsingContext parentParsingContext)
-    {
-        var parsingResult = ConditionParser.Parse(reader.Argument);
-        if (!parsingResult.IsOk)
-        {
-            parsingContext.LogError(reader, parsingResult.ErrorMessage);
-            return;
-        }
-
-        var ifContext = new ChoiceOptionParentParsingContext();
-        var elseContext = new ChoiceOptionParentParsingContext();
-
-        await ElementParser.ParseAsync(reader, parsingContext, ifContext, IfBlockSettings);
-
-        if (!parsingContext.IsSuccess || (ifContext.Builders.Count == 0 && elseContext.Builders.Count == 0))
-            return;
-
-        if (!reader.AtEnd && string.Compare(reader.Command, "else", true) == 0)
-        {
-            await ElementParser.ParseAsync(reader, parsingContext, elseContext, ElseBlockSettings);
-            if (!parsingContext.IsSuccess)
-                return;
-        }
-
-        var ctx = (ChoiceOptionParentParsingContext)parentParsingContext;
-        ctx.AddDecision(parsingResult.Value, ifContext.Builders, elseContext.Builders);
     }
 }

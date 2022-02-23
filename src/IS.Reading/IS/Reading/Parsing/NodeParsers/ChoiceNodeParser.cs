@@ -44,7 +44,7 @@ public class ChoiceNodeParser : IChoiceNodeParser
             return;
         }
 
-        var myContext = new ChoiceParentParsingContext();
+        var myContext = new BuilderParentParsingContext<IChoicePrototype>();
         await ElementParser.ParseAsync(reader, parsingContext, myContext, Settings);
 
         if (!parsingContext.IsSuccess || myContext.Builders.Count == 0)

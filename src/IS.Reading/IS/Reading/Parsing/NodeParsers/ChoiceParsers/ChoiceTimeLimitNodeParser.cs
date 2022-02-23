@@ -28,7 +28,7 @@ public class ChoiceTimeLimitNodeParser : IChoiceTimeLimitNodeParser
 
         var timeLimit = TimeSpan.FromMilliseconds(valueParsingResult.Value);
 
-        var ctx = (ChoiceParentParsingContext)parentParsingContext;
+        var ctx = (BuilderParentParsingContext<IChoicePrototype>)parentParsingContext;
         ctx.Builders.Add(new ChoiceTimeLimitSetter(timeLimit));
         
         return Task.CompletedTask;

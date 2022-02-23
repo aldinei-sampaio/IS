@@ -10,7 +10,7 @@ public class ChoiceOptionTextNodeParserTests
 
     private readonly IDocumentReader documentReader;
     private readonly IParsingContext parsingContext;
-    private readonly ChoiceOptionParentParsingContext parentParsingContext;
+    private readonly BuilderParentParsingContext<IChoiceOptionPrototype> parentParsingContext;
 
     public ChoiceOptionTextNodeParserTests()
     {
@@ -19,7 +19,7 @@ public class ChoiceOptionTextNodeParserTests
 
         documentReader = A.Fake<IDocumentReader>(i => i.Strict());
         parsingContext = Helper.FakeParsingContext();
-        parentParsingContext = new ChoiceOptionParentParsingContext();
+        parentParsingContext = new();
     }
 
     [Fact]

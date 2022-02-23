@@ -16,7 +16,7 @@ public class ChoiceOptionNodeParserTests
 
     private readonly IDocumentReader documentReader;
     private readonly IParsingContext parsingContext;
-    private readonly ChoiceParentParsingContext parentParsingContext;
+    private readonly BuilderParentParsingContext<IChoicePrototype> parentParsingContext;
 
     public ChoiceOptionNodeParserTests()
     {
@@ -40,7 +40,7 @@ public class ChoiceOptionNodeParserTests
 
         documentReader = A.Fake<IDocumentReader>(i => i.Strict());
         parsingContext = Helper.FakeParsingContext();
-        parentParsingContext = new ChoiceParentParsingContext();
+        parentParsingContext = new();
     }
 
     [Fact]
@@ -160,7 +160,7 @@ public class ChoiceOptionNodeParserTests
         A.CallTo(() => documentReader.Command).Returns("a)");
         A.CallTo(() => documentReader.Argument).Returns(string.Empty);
         A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.Settings))
-            .Invokes(i => i.GetArgument<ChoiceOptionParentParsingContext>(2).Builders.Add(builder));
+            .Invokes(i => i.GetOptionContext().Builders.Add(builder));
         A.CallTo(() => parsingContext.IsSuccess).Returns(true);
 
         await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);

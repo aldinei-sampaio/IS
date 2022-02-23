@@ -15,7 +15,7 @@ public class ChoiceOptionDisabledNodeParser : IChoiceOptionDisabledNodeParser
             parsingContext.LogError(reader, "O comando 'disabled' não suporta argumento.");
             return Task.CompletedTask;
         }
-        var ctx = (ChoiceOptionParentParsingContext)parentParsingContext;
+        var ctx = (BuilderParentParsingContext<IChoiceOptionPrototype>)parentParsingContext;
         ctx.Builders.Add(new ChoiceOptionIsEnabledSetter(false));
         return Task.CompletedTask;
     }

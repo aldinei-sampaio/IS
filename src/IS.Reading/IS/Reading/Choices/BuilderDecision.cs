@@ -1,28 +1,37 @@
-﻿using IS.Reading.Conditions;
-using IS.Reading.Navigation;
+﻿using IS.Reading.Navigation;
 
 namespace IS.Reading.Choices;
 
 public class BuilderDecision<T> : IBuilder<T>
 {
     public BuilderDecision(
-        ICondition condition,
-        IEnumerable<IBuilder<T>> ifBlock,
+        IEnumerable<IBuilderDecisionItem<T>> items,
         IEnumerable<IBuilder<T>> elseBlock
     )
     {
-        Condition = condition;
-        IfBlock = ifBlock;
+        Items = items;
         ElseBlock = elseBlock;
     }
 
-    public ICondition Condition { get; set; }
-    public IEnumerable<IBuilder<T>> IfBlock { get; }
+    public IEnumerable<IBuilderDecisionItem<T>> Items { get; }
+
     public IEnumerable<IBuilder<T>> ElseBlock { get; }
 
     public void Build(T prototype, INavigationContext context)
     {
-        var block = Condition.Evaluate(context.Variables) ? IfBlock : ElseBlock;
+        IEnumerable<IBuilder<T>>? block = null;
+        foreach(var item in Items)
+        {
+            if (item.Condition.Evaluate(context.Variables))
+            {
+                block = item.Block;
+                break;
+            }
+        }
+
+        if (block is null)
+            block = ElseBlock;
+
         foreach (var item in block)
             item.Build(prototype, context);
     }

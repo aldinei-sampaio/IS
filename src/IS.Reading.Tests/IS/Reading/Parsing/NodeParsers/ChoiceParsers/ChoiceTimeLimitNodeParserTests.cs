@@ -10,7 +10,7 @@ public class ChoiceTimeLimitNodeParserTests
 
     private readonly IDocumentReader documentReader;
     private readonly IParsingContext parsingContext;
-    private readonly ChoiceParentParsingContext parentParsingContext;
+    private readonly BuilderParentParsingContext<IChoicePrototype> parentParsingContext;
 
     public ChoiceTimeLimitNodeParserTests()
     {
@@ -19,7 +19,7 @@ public class ChoiceTimeLimitNodeParserTests
 
         documentReader = A.Fake<IDocumentReader>(i => i.Strict());
         parsingContext = Helper.FakeParsingContext();
-        parentParsingContext = new ChoiceParentParsingContext();
+        parentParsingContext = new();
     }
 
     [Fact]

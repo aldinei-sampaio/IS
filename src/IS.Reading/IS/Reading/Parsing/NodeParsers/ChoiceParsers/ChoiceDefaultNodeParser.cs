@@ -23,7 +23,7 @@ public class ChoiceDefaultNodeParser : IChoiceDefaultNodeParser
             return Task.CompletedTask;
         }
 
-        var ctx = (ChoiceParentParsingContext)parentParsingContext;
+        var ctx = (BuilderParentParsingContext<IChoicePrototype>)parentParsingContext;
         ctx.Builders.Add(new ChoiceDefaultSetter(result.Value));
 
         return Task.CompletedTask;

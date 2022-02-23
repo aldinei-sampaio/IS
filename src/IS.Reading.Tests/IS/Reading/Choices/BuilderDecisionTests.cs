@@ -6,20 +6,59 @@ namespace IS.Reading.Choices;
 
 public class BuilderDecisionTests
 {
+    private class TestStruct
+    {
+        public ICondition Condition1 { get; }
+        public ICondition Condition2 { get; }
+        public ICondition Condition3 { get; }
+        public IBuilder<string> Builder1 { get; }
+        public IBuilder<string> Builder2 { get; }
+        public IBuilder<string> Builder3 { get; }
+        public IBuilderDecisionItem<string> BuilderDecisionItem1 { get; }
+        public IBuilderDecisionItem<string> BuilderDecisionItem2 { get; }
+        public IBuilderDecisionItem<string> BuilderDecisionItem3 { get; }
+        public IEnumerable<IBuilderDecisionItem<string>> IfItems { get; }
+        public IBuilder<string> ElseBuilder { get; }
+        public IEnumerable<IBuilder<string>> ElseItems { get; }
+
+        public TestStruct()
+        {
+            Condition1 = A.Fake<ICondition>(i => i.Strict());
+            Condition2 = A.Fake<ICondition>(i => i.Strict());
+            Condition3 = A.Fake<ICondition>(i => i.Strict());
+
+            Builder1 = A.Fake<IBuilder<string>>(i => i.Strict());
+            Builder2 = A.Fake<IBuilder<string>>(i => i.Strict());
+            Builder3 = A.Fake<IBuilder<string>>(i => i.Strict());
+
+            BuilderDecisionItem1 = A.Fake<IBuilderDecisionItem<string>>(i => i.Strict());
+            BuilderDecisionItem2 = A.Fake<IBuilderDecisionItem<string>>(i => i.Strict());
+            BuilderDecisionItem3 = A.Fake<IBuilderDecisionItem<string>>(i => i.Strict());
+
+            A.CallTo(() => BuilderDecisionItem1.Condition).Returns(Condition1);
+            A.CallTo(() => BuilderDecisionItem2.Condition).Returns(Condition2);
+            A.CallTo(() => BuilderDecisionItem3.Condition).Returns(Condition3);
+
+            A.CallTo(() => BuilderDecisionItem1.Block).Returns(new[] { Builder1 });
+            A.CallTo(() => BuilderDecisionItem2.Block).Returns(new[] { Builder2 });
+            A.CallTo(() => BuilderDecisionItem3.Block).Returns(new[] { Builder3 });
+
+            IfItems = new[] { BuilderDecisionItem1, BuilderDecisionItem2, BuilderDecisionItem3 };
+            
+            ElseBuilder = A.Fake<IBuilder<string>>(i => i.Strict());
+            ElseItems = new[] { ElseBuilder };
+        }
+
+        public BuilderDecision<string> CreateSut()
+            => new(IfItems, ElseItems);
+    }
+
     private readonly INavigationContext navigationContext;
     private readonly IVariableDictionary variableDictionary;
     private readonly string prototype;
 
-    private readonly ICondition condition;
-    private readonly IBuilder<string> builder1;
-    private readonly IBuilder<string> builder2;
-    private readonly IBuilder<string> builder3;
-    private readonly IBuilder<string> builder4;
-    private readonly IBuilder<string> builder5;
-    private readonly IEnumerable<IBuilder<string>> ifBlock;
-    private readonly IEnumerable<IBuilder<string>> elseBlock;
+    private readonly TestStruct struc;
     private readonly BuilderDecision<string> sut;
-
 
     public BuilderDecisionTests()
     {
@@ -28,55 +67,72 @@ public class BuilderDecisionTests
         A.CallTo(() => navigationContext.Variables).Returns(variableDictionary);
         prototype = "Objeto que está sendo construído (não faz sentido ser string, mas isso não faz diferença para estes testes)";
 
-        condition = A.Fake<ICondition>(i => i.Strict());
-
-        builder1 = A.Fake<IBuilder<string>>(i => i.Strict());
-        builder2 = A.Fake<IBuilder<string>>(i => i.Strict());
-        ifBlock = new[] { builder1, builder2 };
-
-        builder3 = A.Fake<IBuilder<string>>(i => i.Strict());
-        builder4 = A.Fake<IBuilder<string>>(i => i.Strict());
-        builder5 = A.Fake<IBuilder<string>>(i => i.Strict());
-        elseBlock = new[] { builder3, builder4, builder5 };
-
-        sut = new BuilderDecision<string>(condition, ifBlock, elseBlock);
+        struc = new();
+        sut = struc.CreateSut();
     }
 
     [Fact]
     public void Initialization()
     {
-        sut.Condition.Should().BeSameAs(condition);
-        sut.IfBlock.Should().BeSameAs(ifBlock);
-        sut.ElseBlock.Should().BeSameAs(elseBlock);
+        sut.Items.Should().BeSameAs(struc.IfItems);
+        sut.ElseBlock.Should().BeSameAs(struc.ElseItems);
     }
 
     [Fact]
-    public void TrueCondition()
+    public void FirstConditionTrue()
     {
-        A.CallTo(() => condition.Evaluate(variableDictionary)).Returns(true);
-
-        A.CallTo(() => builder1.Build(prototype, navigationContext)).DoesNothing();
-        A.CallTo(() => builder2.Build(prototype, navigationContext)).DoesNothing();
+        A.CallTo(() => struc.Condition1.Evaluate(variableDictionary)).Returns(true);
+        A.CallTo(() => struc.Builder1.Build(prototype, navigationContext)).DoesNothing();
 
         sut.Build(prototype, navigationContext);
 
-        A.CallTo(() => builder1.Build(prototype, navigationContext)).MustHaveHappenedOnceExactly();
-        A.CallTo(() => builder2.Build(prototype, navigationContext)).MustHaveHappenedOnceExactly();
+        A.CallTo(() => struc.Condition1.Evaluate(variableDictionary)).MustHaveHappenedOnceExactly();
+        A.CallTo(() => struc.Builder1.Build(prototype, navigationContext)).MustHaveHappenedOnceExactly();
     }
 
     [Fact]
-    public void FalseCondition()
+    public void SecondConditionTrue()
     {
-        A.CallTo(() => condition.Evaluate(variableDictionary)).Returns(false);
-
-        A.CallTo(() => builder3.Build(prototype, navigationContext)).DoesNothing();
-        A.CallTo(() => builder4.Build(prototype, navigationContext)).DoesNothing();
-        A.CallTo(() => builder5.Build(prototype, navigationContext)).DoesNothing();
+        A.CallTo(() => struc.Condition1.Evaluate(variableDictionary)).Returns(false);
+        A.CallTo(() => struc.Condition2.Evaluate(variableDictionary)).Returns(true);
+        A.CallTo(() => struc.Builder2.Build(prototype, navigationContext)).DoesNothing();
 
         sut.Build(prototype, navigationContext);
 
-        A.CallTo(() => builder3.Build(prototype, navigationContext)).MustHaveHappenedOnceExactly();
-        A.CallTo(() => builder4.Build(prototype, navigationContext)).MustHaveHappenedOnceExactly();
-        A.CallTo(() => builder5.Build(prototype, navigationContext)).MustHaveHappenedOnceExactly();
+        A.CallTo(() => struc.Condition1.Evaluate(variableDictionary)).MustHaveHappenedOnceExactly();
+        A.CallTo(() => struc.Condition2.Evaluate(variableDictionary)).MustHaveHappenedOnceExactly();
+        A.CallTo(() => struc.Builder2.Build(prototype, navigationContext)).MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public void ThirdConditionTrue()
+    {
+        A.CallTo(() => struc.Condition1.Evaluate(variableDictionary)).Returns(false);
+        A.CallTo(() => struc.Condition2.Evaluate(variableDictionary)).Returns(false);
+        A.CallTo(() => struc.Condition3.Evaluate(variableDictionary)).Returns(true);
+        A.CallTo(() => struc.Builder3.Build(prototype, navigationContext)).DoesNothing();
+
+        sut.Build(prototype, navigationContext);
+
+        A.CallTo(() => struc.Condition1.Evaluate(variableDictionary)).MustHaveHappenedOnceExactly();
+        A.CallTo(() => struc.Condition2.Evaluate(variableDictionary)).MustHaveHappenedOnceExactly();
+        A.CallTo(() => struc.Condition3.Evaluate(variableDictionary)).MustHaveHappenedOnceExactly();
+        A.CallTo(() => struc.Builder3.Build(prototype, navigationContext)).MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public void AllConditionsFalse()
+    {
+        A.CallTo(() => struc.Condition1.Evaluate(variableDictionary)).Returns(false);
+        A.CallTo(() => struc.Condition2.Evaluate(variableDictionary)).Returns(false);
+        A.CallTo(() => struc.Condition3.Evaluate(variableDictionary)).Returns(false);
+        A.CallTo(() => struc.ElseBuilder.Build(prototype, navigationContext)).DoesNothing();
+
+        sut.Build(prototype, navigationContext);
+
+        A.CallTo(() => struc.Condition1.Evaluate(variableDictionary)).MustHaveHappenedOnceExactly();
+        A.CallTo(() => struc.Condition2.Evaluate(variableDictionary)).MustHaveHappenedOnceExactly();
+        A.CallTo(() => struc.Condition3.Evaluate(variableDictionary)).MustHaveHappenedOnceExactly();
+        A.CallTo(() => struc.ElseBuilder.Build(prototype, navigationContext)).MustHaveHappenedOnceExactly();
     }
 }

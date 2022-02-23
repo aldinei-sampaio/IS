@@ -130,7 +130,7 @@ public class ChoiceNodeParserTests
         A.CallTo(() => context.IsSuccess).Returns(true);
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
             .Invokes(i => {
-                var ctx = i.GetArgument<ChoiceParentParsingContext>(2);
+                var ctx = i.GetChoiceContext();
                 ctx.Builders.Add(builder1);
                 ctx.Builders.Add(builder2);
             });

@@ -23,7 +23,7 @@ public class ChoiceOptionIconNodeParser : IChoiceOptionIconNodeParser
             return Task.CompletedTask;
         }
 
-        var ctx = (ChoiceOptionParentParsingContext)parentParsingContext;
+        var ctx = (BuilderParentParsingContext<IChoiceOptionPrototype>)parentParsingContext;
         ctx.Builders.Add(new ChoiceOptionImageNameSetter(result.Value));
         return Task.CompletedTask;
     }
