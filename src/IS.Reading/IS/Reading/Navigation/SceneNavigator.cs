@@ -20,7 +20,7 @@ public class SceneNavigator : ISceneNavigator
         var block = context.CurrentBlock;
         var blockState = context.CurrentBlockState;
 
-        for (; ; )
+        while (true)
         {
             var item = await blockNavigator.MoveAsync(block, blockState, context, forward);
 

@@ -30,6 +30,5 @@ public class PersonNode : INode
         await context.Events.InvokeAsync<IPersonLeaveEvent>(@event);
         context.State.MoodType = null;
         context.State.PersonName = null;
-        return;
     }
 }

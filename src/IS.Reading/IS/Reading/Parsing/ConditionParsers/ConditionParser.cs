@@ -336,7 +336,7 @@ public class ConditionParser : IConditionParser
         var values = new List<IConditionKeyword>();
         Result<IConditionKeyword> value;
 
-        for (; ; )
+        while (true)
         {
             value = ReadNextKeyword(reader);
             if (!value.IsOk)

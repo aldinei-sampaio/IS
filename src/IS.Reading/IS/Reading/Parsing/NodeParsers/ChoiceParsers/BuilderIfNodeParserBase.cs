@@ -18,7 +18,7 @@ public abstract class BuilderIfNodeParserBase<T> : INodeParser
     {
         var elseContext = new BuilderParentParsingContext<T>();
         var items = new List<IBuilderDecisionItem<T>>();
-        for (; ; )
+        while (true)
         {
             var parsingResult = ConditionParser.Parse(reader.Argument);
             if (!parsingResult.IsOk)

@@ -15,8 +15,7 @@ public class EventManager : IEventManager
 
     public async Task InvokeAsync<T>(T @event) where T : IReadingEvent
     {
-        if (allSubscriptions.Count > 0)
-            await Task.WhenAll(allSubscriptions.Select(i => i.Invoke(@event)));
+        await Task.WhenAll(allSubscriptions.Select(i => i.Invoke(@event)));
 
         if (!individualSubscriptions.TryGetValue(typeof(T), out var list))
             return;

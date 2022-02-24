@@ -49,7 +49,7 @@ public sealed class DocumentLineReader : IDocumentLineReader
 
     public async Task<Memory<char>?> ReadLineAsync()
     {
-        for (; ; )
+        while (true)
         {
             Memory<char> mem;
             if (bufferIndex > halfLength)

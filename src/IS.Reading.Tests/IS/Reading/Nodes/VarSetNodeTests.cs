@@ -63,6 +63,7 @@ public class VarSetNodeTests
     public async Task InvalidValuesForStageArg(object value)
     {
         var context = A.Dummy<INavigationContext>();
-        await Assert.ThrowsAsync<ArgumentException>(() => sut.EnterAsync(context, value));
+        var ex = await Assert.ThrowsAsync<ArgumentException>(() => sut.EnterAsync(context, value));
+        ex.Message.Should().Be($"Valor inválido: {value} (Parameter 'state')");
     }
 }

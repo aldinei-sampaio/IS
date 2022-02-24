@@ -12,6 +12,21 @@ public class EventManagerTests
     }
 
     [Fact]
+    public async Task SubscribeAll()
+    {
+        var helper = new TestHelper();
+
+        var sut = new EventManager();
+        sut.Subscribe(i => helper.HandleAsync(i));
+
+        await sut.InvokeAsync(new TestEvent1 { Name = "e1" });
+        await sut.InvokeAsync(new TestEvent1 { Name = "e2" });
+        await sut.InvokeAsync(new TestEvent2 { Name = "e3" });
+
+        helper.Check("TestEvent1:e1 TestEvent1:e2 TestEvent2:e3 ");
+    }
+
+    [Fact]
     public async Task SingleHandler()
     {
         var helper = new TestHelper();

@@ -23,6 +23,5 @@ public class BalloonNode : INode
     {
         var @event = new BalloonCloseEvent(BallonType, context.State.IsMainCharacter());
         await context.Events.InvokeAsync<IBalloonCloseEvent>(@event);
-        return;
     }
 }

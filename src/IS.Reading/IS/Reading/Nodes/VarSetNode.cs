@@ -16,7 +16,7 @@ public class VarSetNode : INode
     public Task EnterAsync(INavigationContext context, object? state)
     {
         if (state is not null && state is not string && state is not int)
-            throw new ArgumentException($"Argumento 'state' inválido: {state}", nameof(state));
+            throw new ArgumentException($"Valor inválido: {state}", nameof(state));
 
         context.Variables[VarSet.Name] = state;
         return Task.CompletedTask;

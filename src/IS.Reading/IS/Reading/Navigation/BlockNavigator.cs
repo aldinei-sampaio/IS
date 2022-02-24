@@ -16,16 +16,19 @@ public class BlockNavigator : IBlockNavigator
     {
         context.State.CurrentBlockId = block.Id;
 
-        for (; ; )
+        if (forward)
         {
-            if (forward)
+            while (true)
             {
                 var node = await MoveNextAsync(block, context, blockState.GetCurrentIteration());
                 if (node is not null || block.While is null || !block.While.Evaluate(context.Variables))
                     return node;
                 blockState.MoveToNextIteration();
             }
-            else
+        }
+        else
+        {
+            while (true)
             {
                 var node = await MovePreviousAsync(block, context, blockState.GetCurrentIteration());
 
@@ -77,7 +80,7 @@ public class BlockNavigator : IBlockNavigator
 
     private static INode? GetNextValidNode(IBlock block, INavigationContext context, IBlockIterationState blockState)
     {
-        for (; ; )
+        while (true)
         {
             var item = GetNextNode(block, blockState);
             if (item == null)
@@ -99,7 +102,7 @@ public class BlockNavigator : IBlockNavigator
 
         var index = blockState.CurrentNodeIndex ?? (block.Nodes.Count - 1);
 
-        for (; ; )
+        while (true)
         {
             if (!blockState.BackwardStack.TryPop(out var state))
             {

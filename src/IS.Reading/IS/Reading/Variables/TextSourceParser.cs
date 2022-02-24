@@ -23,7 +23,7 @@ public class TextSourceParser : ITextSourceParser
 
         var list = new List<IInterpolatedValue>();
 
-        for (; ; )
+        while (true)
         {
             if (n > 0)
                 list.Add(new InterpolatedValue(span[..n].ToString(), false));
