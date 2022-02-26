@@ -8,15 +8,8 @@ public class RootBlockParserTests
     private readonly IDocumentReader reader;
     private readonly IParsingContext context;
     private readonly IElementParser elementParser;
-    private readonly IMusicNodeParser musicNodeParser;
-    private readonly IBackgroundNodeParser backgroundNodeParser;
-    private readonly IBlockNodeParser blockNodeParser;
-    private readonly IPauseNodeParser pauseNodeParser;
-    private readonly IMainCharacterNodeParser mainCharacterNodeParser;
-    private readonly IPersonNodeParser personNodeParser;
-    private readonly INarrationNodeParser narrationNodeParser;
-    private readonly ITutorialNodeParser tutorialNodeParser;
-    private readonly ISetNodeParser setNodeParser;
+    private readonly IElementParserSettings elementParserSettings;
+    private readonly IElementParserSettingsFactory elementParserSettingsFactory;
     private readonly RootBlockParser sut;
 
     public RootBlockParserTests()
@@ -24,53 +17,25 @@ public class RootBlockParserTests
         reader = A.Dummy<IDocumentReader>();
         context = A.Fake<IParsingContext>(i => i.Strict());
         elementParser = A.Fake<IElementParser>(i => i.Strict());
+        elementParserSettings = A.Fake<IElementParserSettings>(i => i.Strict());
+        elementParserSettingsFactory = A.Fake<IElementParserSettingsFactory>(i => i.Strict());
+        A.CallTo(() => elementParserSettingsFactory.NoBlock).Returns(elementParserSettings);
 
-        backgroundNodeParser = Helper.FakeParser<IBackgroundNodeParser>("background");
-        blockNodeParser = Helper.FakeParser<IBlockNodeParser>("do");
-        pauseNodeParser = Helper.FakeParser<IPauseNodeParser>("pause");
-        musicNodeParser = Helper.FakeParser<IMusicNodeParser>("music");
-        mainCharacterNodeParser = Helper.FakeParser<IMainCharacterNodeParser>("mc");
-        personNodeParser = Helper.FakeParser<IPersonNodeParser>("person");
-        narrationNodeParser = Helper.FakeParser<INarrationNodeParser>("narration");
-        tutorialNodeParser = Helper.FakeParser<ITutorialNodeParser>("tutorial");
-        setNodeParser = Helper.FakeParser<ISetNodeParser>("set");
-
-        sut = new(
-            elementParser, 
-            musicNodeParser,
-            backgroundNodeParser, 
-            blockNodeParser,
-            pauseNodeParser,
-            mainCharacterNodeParser,
-            personNodeParser,
-            narrationNodeParser,
-            tutorialNodeParser,
-            setNodeParser
-        );
+        sut = new(elementParser, elementParserSettingsFactory);
     }
 
     [Fact]
     public void Initialization()
     {
-        sut.Settings.Should().BeOfType<ElementParserSettings.NoBlock>();
-        sut.Settings.ChildParsers.Should().BeEquivalentTo(
-            musicNodeParser,
-            backgroundNodeParser,
-            blockNodeParser,
-            pauseNodeParser,
-            mainCharacterNodeParser,
-            personNodeParser,
-            narrationNodeParser,
-            tutorialNodeParser,
-            setNodeParser
-        );
+        sut.ElementParser.Should().BeSameAs(elementParser);
+        sut.ElementParserSettingsFactory.Should().BeSameAs(elementParserSettingsFactory);
     }
 
     [Fact]
     public async Task SimpleParsing()
     {
         var parsed = A.Dummy<INode>();
-        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, elementParserSettings))
             .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(parsed));
 
         var result = await sut.ParseAsync(reader, context);
@@ -81,7 +46,7 @@ public class RootBlockParserTests
     public async Task Empty()
     {
         A.CallTo(() => context.LogError(reader, "Elemento filho era esperado.")).DoesNothing();
-        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).DoesNothing();
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, elementParserSettings)).DoesNothing();
 
         var result = await sut.ParseAsync(reader, context);
         result.Should().BeEmpty();

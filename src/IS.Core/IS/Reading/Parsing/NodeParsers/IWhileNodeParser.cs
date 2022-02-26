@@ -1,5 +1,5 @@
 ﻿namespace IS.Reading.Parsing.NodeParsers;
 
-public interface IBlockNodeParser : INodeParser
+public interface IWhileNodeParser : INodeParser
 {
 }

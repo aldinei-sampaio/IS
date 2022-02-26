@@ -5,30 +5,36 @@ namespace IS.Reading.Nodes;
 
 public class IfNode : INode
 {
-    public IfNode(ICondition condition, IBlock ifBlock, IBlock elseBlock)
+    public IfNode(IReadOnlyList<IDecisionBlock> decisionBlocks, IBlock elseBlock)
     {
-        Condition = condition;
-        IfBlock = ifBlock;
+        DecisionBlocks = decisionBlocks;
         ElseBlock = elseBlock;
     }
 
-    public ICondition Condition { get; }
-    public IBlock IfBlock { get; }
-    public IBlock ElseBlock { get; }
-    
+    public IReadOnlyList<IDecisionBlock> DecisionBlocks { get; }
+    public IBlock ElseBlock { get; }    
     public IBlock? ChildBlock { get; private set; }
 
     public Task<object?> EnterAsync(INavigationContext context)
     {
-        var evaluation = Condition.Evaluate(context.Variables);
-        ChildBlock = evaluation ? IfBlock : ElseBlock;
-        return Task.FromResult<object?>(evaluation);
+        var variableDictionary = context.Variables;
+        int? blockIndex = null;
+        for(var n = 0; n < DecisionBlocks.Count; n++)
+        {
+            if (DecisionBlocks[n].Condition.Evaluate(variableDictionary))
+            {
+                blockIndex = n;
+                break;
+            }
+        }
+        ChildBlock = blockIndex.HasValue ? DecisionBlocks[blockIndex.Value].Block : ElseBlock;
+        return Task.FromResult<object?>(blockIndex);
     }
 
     public Task EnterAsync(INavigationContext context, object? state)
     {
-        var evaluation = (state as bool?) ?? true;
-        ChildBlock = evaluation ? IfBlock : ElseBlock;
-        return Task.FromResult<object?>(evaluation);
+        var blockIndex = state as int?;
+        ChildBlock = blockIndex.HasValue ? DecisionBlocks[blockIndex.Value].Block : ElseBlock;
+        return Task.CompletedTask;
     }
 }

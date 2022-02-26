@@ -29,8 +29,9 @@ public static class ServiceProviderExtensionMethods
         services.AddSingleton<IElementParser, ElementParser>();
         services.AddSingleton<IVarSetParser, VarSetParser>();
         services.AddSingleton<ITextSourceParser, TextSourceParser>();
+        services.AddSingleton<IElementParserSettingsFactory, ElementParserSettingsFactory>();
 
-        // Text parsers
+        // Argument parsers
         services.AddSingleton<IColorArgumentParser, ColorArgumentParser>();
         services.AddSingleton<IImageArgumentParser, ImageArgumentParser>();
         services.AddSingleton<IIntegerArgumentParser, IntegerArgumentParser>();
@@ -40,10 +41,11 @@ public static class ServiceProviderExtensionMethods
         services.AddSingleton<IMusicNodeParser, MusicNodeParser>();
         services.AddSingleton<IMainCharacterNodeParser, MainCharacterNodeParser>();
         services.AddSingleton<IPauseNodeParser, PauseNodeParser>();
-        services.AddSingleton<IBlockNodeParser, BlockNodeParser>();
         services.AddSingleton<IMoodNodeParser, MoodNodeParser>();
         services.AddSingleton<IPersonNodeParser, PersonNodeParser>();
         services.AddSingleton<ISetNodeParser, SetNodeParser>();
+        services.AddSingleton<IIfNodeParser, IfNodeParser>();
+        services.AddSingleton<IWhileNodeParser, WhileNodeParser>();
 
         services.AddSingleton<IBackgroundNodeParser, BackgroundNodeParser>();
         services.AddSingleton<IBackgroundLeftNodeParser, BackgroundLeftNodeParser>();
