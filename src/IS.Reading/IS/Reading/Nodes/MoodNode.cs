@@ -8,7 +8,7 @@ public class MoodNode : INode
     public MoodType? MoodType { get; }
 
     public MoodNode(MoodType? moodType)
-        => (MoodType) = (moodType);
+        => MoodType = moodType;
 
     private static async Task<object?> ApplyStateAsync(INavigationContext context, MoodType? moodType)
     {

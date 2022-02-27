@@ -11,6 +11,7 @@ public class NavigationState : INavigationState
     public int CurrentIteration { get; set; }
     public IBlockStateDictionary BlockStates { get; }
     public string? WaitingFor { get; set; }
+    public string? Title { get; set; }
 
     public NavigationState(IBlockStateDictionary blockStates)
         => BlockStates = blockStates;

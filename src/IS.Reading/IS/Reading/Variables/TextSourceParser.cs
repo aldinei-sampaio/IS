@@ -76,6 +76,14 @@ public class TextSourceParser : ITextSourceParser
         if (list.Count == 0)
             return Result.Ok<ITextSource>(new StringTextSource(string.Empty));
 
+        if (list.Count == 1)
+        {
+            if (list[0].IsVariable)
+                return Result.Ok<ITextSource>(new VariableTextSource(list[0].Value));
+            else
+                return Result.Ok<ITextSource>(new StringTextSource(list[0].Value));
+        }
+
         return Result.Ok<ITextSource>(new InterpolatedTextSource(list, text.Length));
     }
 

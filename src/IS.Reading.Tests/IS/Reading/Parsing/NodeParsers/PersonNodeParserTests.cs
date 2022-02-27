@@ -129,10 +129,12 @@ public class PersonNodeParserTests
         await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
 
         parentParsingContext.ShouldContainSingle<PersonNode>(
-            i => i.ChildBlock.ShouldBeEquivalentTo(
-                sut.InitializeMoodNode,
-                dummyNode,
-                sut.DismissMoodNode
+            i => i.ChildBlock.ShouldContain(
+                i => i.Should().BeSameAs(sut.InitializeMoodNode),
+                i => i.Should().BeOfType<BalloonTitleNode>().Which.TextSource.ToString().Should().Be("{joe}"),
+                i => i.Should().BeSameAs(dummyNode),
+                i => i.Should().BeSameAs(sut.DismissTitleNode),
+                i => i.Should().BeSameAs(sut.DismissMoodNode)
             )
         );
     }

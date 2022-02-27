@@ -10,4 +10,5 @@ public interface INavigationState
     int? CurrentBlockId { get; set; }
     int CurrentIteration { get; set; }
     string? WaitingFor { get; set; }
+    string? Title { get; set; }
 }

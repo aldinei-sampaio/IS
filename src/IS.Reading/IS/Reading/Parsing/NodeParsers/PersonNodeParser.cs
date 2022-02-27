@@ -1,6 +1,8 @@
-﻿using IS.Reading.Nodes;
+﻿using IS.Reading.Navigation;
+using IS.Reading.Nodes;
 using IS.Reading.Parsing.ArgumentParsers;
 using IS.Reading.Parsing.NodeParsers.PersonParsers;
+using IS.Reading.Variables;
 
 namespace IS.Reading.Parsing.NodeParsers;
 
@@ -17,7 +19,8 @@ public class PersonNodeParser : IPersonNodeParser
         IThoughtNodeParser thoughtNodeParser,
         IMoodNodeParser moodNodeParser,
         IPauseNodeParser pauseNodeParser,
-        ISetNodeParser setNodeParser
+        ISetNodeParser setNodeParser,
+        ITitleNodeParser titleNodeParser
     )
     {
         this.ElementParser = elementParser;
@@ -27,7 +30,8 @@ public class PersonNodeParser : IPersonNodeParser
             thoughtNodeParser,
             moodNodeParser,
             pauseNodeParser,
-            setNodeParser
+            setNodeParser,
+            titleNodeParser
         );
     }
 
@@ -49,8 +53,17 @@ public class PersonNodeParser : IPersonNodeParser
 
         if (!parsingContext.IsSuccess || myContext.Nodes.Count == 0)
             return;
-       
-        myContext.Nodes.Insert(0, InitializeMoodNode);
+
+        if (!HasCustomNode<BalloonTitleNode>(myContext.Nodes))
+        {
+            var title = new VariableTextSource(parsedName.Value);
+            myContext.Nodes.Insert(0, new BalloonTitleNode(title));
+        }
+
+        if (!HasCustomNode<MoodNode>(myContext.Nodes))
+            myContext.Nodes.Insert(0, InitializeMoodNode);
+
+        myContext.Nodes.Add(DismissTitleNode);
         myContext.Nodes.Add(DismissMoodNode);
 
         var block = parsingContext.BlockFactory.Create(myContext.Nodes);
@@ -58,6 +71,33 @@ public class PersonNodeParser : IPersonNodeParser
         parentParsingContext.AddNode(node);
     }
 
+    private static bool HasCustomNode<T>(IEnumerable<INode> nodes) where T : INode
+    {
+        return Check(nodes) ?? false;
+
+        static bool? Check(IEnumerable<INode> nodes)
+        {
+            foreach (var node in nodes)
+            {
+                if (node is IPauseNode)
+                    return false;
+
+                if (node is T)
+                    return true;
+
+                if (node.ChildBlock is not null)
+                {
+                    var result = Check(node.ChildBlock.Nodes);
+                    if (result.HasValue)
+                        return result;
+                }
+            }
+
+            return null;
+        }
+    }
+
     public MoodNode InitializeMoodNode { get; } = new MoodNode(MoodType.Normal);
     public MoodNode DismissMoodNode { get; } = new MoodNode(null);
+    public BalloonTitleNode DismissTitleNode { get; } = new BalloonTitleNode(null);
 }
