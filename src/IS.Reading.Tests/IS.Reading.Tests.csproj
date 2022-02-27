@@ -9,6 +9,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="IS\Reading\Nodes\InputNodeTests.cs~RF1a892355.TMP" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Using Include="System" />
 		<Using Include="System.Threading.Tasks" />
 		<Using Include="System.Collections.Generic" />

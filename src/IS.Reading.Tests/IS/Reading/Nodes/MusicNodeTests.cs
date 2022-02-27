@@ -3,7 +3,6 @@ using IS.Reading.Events;
 using IS.Reading.Navigation;
 
 namespace IS.Reading.Nodes;
-
 public class MusicNodeTests
 {
     [Fact]

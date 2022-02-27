@@ -1,5 +1,4 @@
-﻿using IS.Reading.Conditions;
-using IS.Reading.Events;
+﻿using IS.Reading.Events;
 using IS.Reading.Navigation;
 
 namespace IS.Reading.Nodes;
@@ -10,7 +9,6 @@ public class MainCharacterNodeTests
     public void Initialization()
     {
         var personName = "alice";
-        var when = A.Dummy<ICondition>();
         var sut = new MainCharacterNode(personName);
         sut.MainCharacterName.Should().Be(personName);
     }

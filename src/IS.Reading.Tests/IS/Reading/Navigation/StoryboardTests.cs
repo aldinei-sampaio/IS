@@ -88,7 +88,7 @@ public class StoryboardTests
         A.CallTo(() => navigationState.WaitingFor).Returns(null);
 
         var ex = Assert.Throws<InvalidOperationException>(
-            () => sut.SetChoice("test")
+            () => sut.Input("test")
         );
 
         ex.Message.Should().Be("Valor de escolha não é esperado neste momento.");
@@ -106,7 +106,7 @@ public class StoryboardTests
         A.CallTo(() => navigationState.WaitingFor).Returns(variableName);
         A.CallToSet(() => navigationState.WaitingFor).To((string)null).DoesNothing();
 
-        sut.SetChoice(variableValue);
+        sut.Input(variableValue);
 
         A.CallToSet(() => variableDictionary[variableName]).To(variableValue).MustHaveHappenedOnceExactly();
         A.CallToSet(() => navigationState.WaitingFor).To((string)null).MustHaveHappenedOnceExactly();

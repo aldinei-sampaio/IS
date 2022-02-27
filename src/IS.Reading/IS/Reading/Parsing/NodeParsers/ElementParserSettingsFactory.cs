@@ -33,6 +33,7 @@ public class ElementParserSettingsFactory : IElementParserSettingsFactory
             serviceProvider.GetRequiredService<INarrationNodeParser>(),
             serviceProvider.GetRequiredService<ITutorialNodeParser>(),
             serviceProvider.GetRequiredService<ISetNodeParser>(),
+            serviceProvider.GetRequiredService<IInputNodeParser>(),
             serviceProvider.GetRequiredService<IIfNodeParser>(),
             serviceProvider.GetRequiredService<IWhileNodeParser>()
         };

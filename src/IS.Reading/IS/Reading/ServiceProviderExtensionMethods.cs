@@ -11,6 +11,7 @@ using IS.Reading.State;
 using IS.Reading.Variables;
 using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics.CodeAnalysis;
+using IS.Reading.Parsing.NodeParsers.InputParsers;
 
 namespace IS.Reading;
 
@@ -74,6 +75,12 @@ public static class ServiceProviderExtensionMethods
         services.AddSingleton<IChoiceOptionTextNodeParser, ChoiceOptionTextNodeParser>();
         services.AddSingleton<IChoiceOptionTipNodeParser, ChoiceOptionTipNodeParser>();
         services.AddSingleton<IChoiceOptionIfNodeParser, ChoiceOptionIfNodeParser>();
+
+        services.AddSingleton<IInputNodeParser, InputNodeParser>();
+        services.AddSingleton<IInputTitleNodeParser, InputTitleNodeParser>();
+        services.AddSingleton<IInputTextNodeParser, InputTextNodeParser>();
+        services.AddSingleton<IInputLenNodeParser, InputLenNodeParser>();
+        services.AddSingleton<IInputConfNodeParser, InputConfNodeParser>();
 
         // Storyboard parsers
         services.AddSingleton<IRootBlockParser, RootBlockParser>();

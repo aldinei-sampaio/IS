@@ -56,7 +56,7 @@ public class DialogChildNodeParserBaseTests
     }
 
     [Fact]
-    public async Task ShouldExitOnTextSourceParserError()
+    public async Task ShouldLogArgumentParserError()
     {
         var errorMessage = "Erro proposital.";
         var argument = "Gibberish";

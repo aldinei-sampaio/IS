@@ -7,22 +7,19 @@ public class FakeNode : INode
     private readonly List<string> log;
     private readonly string reversedName;
 
-    public FakeNode(string name, string reversedName, ICondition condition, List<string> log) 
-        : this(name, condition, log)
+    public FakeNode(string name, string reversedName, List<string> log) 
+        : this(name, log)
     {
         this.reversedName = reversedName;
     }
 
-    private FakeNode(string name, ICondition condition, List<string> log)
+    private FakeNode(string name, List<string> log)
     {
         Name = name;
-        When = condition;
         this.log = log;
     }
 
     public string Name { get; }
-
-    public ICondition When { get; }
 
     public IBlock ChildBlock { get; private set; } = null;
 

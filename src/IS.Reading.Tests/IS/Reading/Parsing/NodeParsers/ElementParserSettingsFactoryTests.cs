@@ -10,6 +10,7 @@ public class ElementParserSettingsFactoryTests
     private readonly INarrationNodeParser narrationNodeParser;
     private readonly ITutorialNodeParser tutorialNodeParser;
     private readonly ISetNodeParser setNodeParser;
+    private readonly IInputNodeParser inputNodeParser;
     private readonly IIfNodeParser ifNodeParser;
     private readonly IWhileNodeParser whileNodeParser;
     private readonly IServiceProvider serviceProvider;
@@ -25,6 +26,7 @@ public class ElementParserSettingsFactoryTests
         narrationNodeParser = Helper.FakeParser<INarrationNodeParser>("narration");
         tutorialNodeParser = Helper.FakeParser<ITutorialNodeParser>("tutorial");
         setNodeParser = Helper.FakeParser<ISetNodeParser>("set");
+        inputNodeParser = Helper.FakeParser<IInputNodeParser>("input");
         ifNodeParser = Helper.FakeParser<IIfNodeParser>("if");
         whileNodeParser = Helper.FakeParser<IWhileNodeParser>("while");
 
@@ -37,6 +39,7 @@ public class ElementParserSettingsFactoryTests
         A.CallTo(() => serviceProvider.GetService(typeof(INarrationNodeParser))).Returns(narrationNodeParser);
         A.CallTo(() => serviceProvider.GetService(typeof(ITutorialNodeParser))).Returns(tutorialNodeParser);
         A.CallTo(() => serviceProvider.GetService(typeof(ISetNodeParser))).Returns(setNodeParser);
+        A.CallTo(() => serviceProvider.GetService(typeof(IInputNodeParser))).Returns(inputNodeParser);
         A.CallTo(() => serviceProvider.GetService(typeof(IIfNodeParser))).Returns(ifNodeParser);
         A.CallTo(() => serviceProvider.GetService(typeof(IWhileNodeParser))).Returns(whileNodeParser);
 
@@ -56,6 +59,7 @@ public class ElementParserSettingsFactoryTests
             narrationNodeParser,
             tutorialNodeParser,
             setNodeParser,
+            inputNodeParser,
             ifNodeParser,
             whileNodeParser
         };

@@ -1,6 +1,6 @@
 ﻿namespace IS.Reading.Events;
 
-public class EventManager : IEventManager
+public sealed class EventManager : IEventManager
 {
     private readonly Dictionary<Type, List<object>> individualSubscriptions = new();
     private readonly List<Func<IReadingEvent, Task>> allSubscriptions = new();

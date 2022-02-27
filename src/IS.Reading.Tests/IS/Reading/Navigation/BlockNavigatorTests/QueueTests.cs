@@ -98,7 +98,6 @@ public class QueueTests
     private static INode FakeNode(INavigationContext context, string name)
     {
         var node = A.Fake<INode>(i => i.Strict());
-        A.CallTo(() => node.When).Returns(null);
         A.CallTo(() => node.EnterAsync(context)).Returns(Task.FromResult<object>(null));
         A.CallTo(() => node.EnterAsync(context, null)).DoesNothing();
         A.CallTo(() => node.LeaveAsync(context)).DoesNothing();

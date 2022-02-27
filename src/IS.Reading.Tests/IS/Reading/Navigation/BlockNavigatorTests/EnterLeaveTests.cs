@@ -53,14 +53,7 @@ public class EnterLeaveTests
     public async Task Condition_SingleNode()
     {
         var tester = new NavigatorTester();
-        var isValid = false;
-        tester.AddLoggedNode("normal", "reversed", () => isValid);
-
-        isValid = false;
-
-        await CheckEmptyBlockAsync(tester);
-
-        isValid = true;
+        tester.AddLoggedNode("normal", "reversed");
 
         await CheckSingleNodeAsync(tester);
     }

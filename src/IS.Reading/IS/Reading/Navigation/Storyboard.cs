@@ -34,7 +34,7 @@ public class Storyboard : IStoryboard
 
     public bool IsWaitingForChoice => NavigationContext.State.WaitingFor is not null;
 
-    public void SetChoice(string value)
+    public void Input(string value)
     {
         if (NavigationContext.State.WaitingFor is null)
             throw new InvalidOperationException("Valor de escolha não é esperado neste momento.");

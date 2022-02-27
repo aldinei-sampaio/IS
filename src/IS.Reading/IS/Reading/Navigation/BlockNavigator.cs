@@ -86,11 +86,8 @@ public class BlockNavigator : IBlockNavigator
             if (item == null)
                 return null;
 
-            if (item.When == null || item.When.Evaluate(context.Variables))
-            { 
-                if (item.ChildBlock is null || item.ChildBlock.While is null || item.ChildBlock.While.Evaluate(context.Variables))
-                    return item;
-            }
+            if (item.ChildBlock is null || item.ChildBlock.While is null || item.ChildBlock.While.Evaluate(context.Variables))
+                return item;
 
             blockState.BackwardStack.Push(BlockedNode.Instance);
         }

@@ -49,29 +49,14 @@ public class NavigatorTester
 
     public FakeNode AddNode(string normalName, string reversedName)
     {
-        var node = new FakeNode(normalName, reversedName, null, null);
+        var node = new FakeNode(normalName, reversedName, null);
         nodes.Add(node);
         return node;
     }
 
-    public void AddNode(string normalName, string reversedName, Func<bool> condition)
+    public void AddLoggedNode(string normalName, string reversedName)
     {
-        var conditionObject = A.Fake<ICondition>();
-        A.CallTo(() => conditionObject.Evaluate(Context.Variables)).ReturnsLazily(() => condition.Invoke());
-
-        nodes.Add(new FakeNode(normalName, reversedName, conditionObject, null));
-    }
-
-    public void AddLoggedNode(string normalName, string reversedName, Func<bool> condition = null)
-    {
-        ICondition conditionObject = null;
-        if (condition is not null)
-        {
-            conditionObject = A.Fake<ICondition>();
-            A.CallTo(() => conditionObject.Evaluate(Context.Variables)).ReturnsLazily(() => condition.Invoke());
-        }
-
-        nodes.Add(new FakeNode(normalName, reversedName, conditionObject, log));
+        nodes.Add(new FakeNode(normalName, reversedName, log));
     }
 }
 

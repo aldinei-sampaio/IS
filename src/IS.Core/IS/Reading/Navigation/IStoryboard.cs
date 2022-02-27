@@ -8,7 +8,7 @@ public interface IStoryboard : IDisposable
     bool IsWaitingForChoice { get; }
 
     Task<bool> MoveAsync(bool forward);
-    void SetChoice(string value);
+    void Input(string value);
     // TODO: Task LoadStateAsync(Stream stream);
     // TODO: Task SaveStateAsync(Stream stream);
 }

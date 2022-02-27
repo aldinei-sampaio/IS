@@ -8,6 +8,7 @@ namespace IS.Reading.Navigation;
 public class StoryboardEventTester
 {
     private readonly List<string> received = new();
+    private IReadingEvent lastEvent;
     public IStoryboard Storyboard { get; }
 
     public static async Task<StoryboardEventTester> CreateAsync(string stb)
@@ -20,8 +21,14 @@ public class StoryboardEventTester
         return new(storyboard);
     }
 
-    public void SetChoice(string value)
-        => Storyboard.SetChoice(value);
+    public void Input(string value)
+        => Storyboard.Input(value);
+
+    public T LastEvent<T>() where T : IReadingEvent
+    {
+        lastEvent.Should().BeAssignableTo<T>();
+        return (T)lastEvent;
+    }
 
     private StoryboardEventTester(IStoryboard storyboard)
     {
@@ -31,6 +38,7 @@ public class StoryboardEventTester
 
     private Task Handle(IReadingEvent @event)
     {
+        lastEvent = @event;
         received.Add(@event.ToString());
         return Task.CompletedTask;
     }
