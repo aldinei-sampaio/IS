@@ -53,7 +53,7 @@ public class TextSourceParserTests
         var sut = new TextSourceParser();
         var result = sut.Parse(text);
         result.IsOk.Should().BeTrue();
-        result.Value.Should().BeOfType<TextSource>()
+        result.Value.Should().BeOfType<StringTextSource>()
             .Which.Text.Should().Be(expected);
     }
 
@@ -66,8 +66,7 @@ public class TextSourceParserTests
         var result = sut.Parse(text);
         result.IsOk.Should().BeTrue();
 
-        result.Value.Should().BeOfType<TextSource>()
-            .Which.Interpolator.Should().BeOfType<Interpolator>()
+        result.Value.Should().BeOfType<InterpolatedTextSource>()
             .Which.Values.Should().BeEquivalentTo(
                 interpolatorValues.Select(i => new { IsVariable = false, Value = i })
             );
@@ -81,8 +80,7 @@ public class TextSourceParserTests
         var result = sut.Parse(text);
         result.IsOk.Should().BeTrue();
 
-        result.Value.Should().BeOfType<TextSource>()
-            .Which.Interpolator.Should().BeOfType<Interpolator>()
+        result.Value.Should().BeOfType<InterpolatedTextSource>()
             .Which.Values.Should().BeEquivalentTo(new[]
             {
                 new { IsVariable = true, Value = "MC" },

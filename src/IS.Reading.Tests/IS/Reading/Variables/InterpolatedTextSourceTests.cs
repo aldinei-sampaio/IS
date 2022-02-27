@@ -1,13 +1,13 @@
 ﻿namespace IS.Reading.Variables;
 
-public class InterpolatorTests
+public class InterpolatedTextSourceTests
 {
     [Fact]
     public void Initialization()
     {
         var values = Enumerable.Empty<IInterpolatedValue>();
         var aproxLength = 12345;
-        var sut = new Interpolator(values, aproxLength);
+        var sut = new InterpolatedTextSource(values, aproxLength);
         sut.Values.Should().BeSameAs(values);
         sut.AproxLength.Should().Be(aproxLength);
     }
@@ -28,8 +28,8 @@ public class InterpolatorTests
             return value;
         });
 
-        var sut = new Interpolator(values, aproxLength);
-        sut.ToString(variables).Should().Be(expected);
+        var sut = new InterpolatedTextSource(values, aproxLength);
+        sut.Build(variables).Should().Be(expected);
     }
 
     [Theory]
@@ -46,7 +46,7 @@ public class InterpolatorTests
             return value;
         });
 
-        var sut = new Interpolator(values, aproxLength);
+        var sut = new InterpolatedTextSource(values, aproxLength);
         sut.ToString().Should().Be(expected);
     }
 }

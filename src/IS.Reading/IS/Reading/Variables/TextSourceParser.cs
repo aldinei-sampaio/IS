@@ -19,7 +19,7 @@ public class TextSourceParser : ITextSourceParser
 
         var n = span.IndexOfAny(varPrefix, varSuffix);
         if (n == -1)
-            return Result.Ok<ITextSource>(new TextSource(text));
+            return Result.Ok<ITextSource>(new StringTextSource(text));
 
         var list = new List<IInterpolatedValue>();
 
@@ -74,9 +74,9 @@ public class TextSourceParser : ITextSourceParser
         }
 
         if (list.Count == 0)
-            return Result.Ok<ITextSource>(new TextSource(string.Empty));
+            return Result.Ok<ITextSource>(new StringTextSource(string.Empty));
 
-        return Result.Ok<ITextSource>(new TextSource(new Interpolator(list, text.Length)));
+        return Result.Ok<ITextSource>(new InterpolatedTextSource(list, text.Length));
     }
 
     private static bool IsPrefixed(ReadOnlySpan<char> span, int n, char c)
