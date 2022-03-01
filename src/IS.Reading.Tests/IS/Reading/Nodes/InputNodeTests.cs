@@ -53,7 +53,7 @@ public class InputNodeTests
 
         state.Should().Be(oldValue);
 
-        invoker.ShouldContainSingle<IInputEvent>(i => i.Should().BeSameAs(@event));
+        invoker.ShouldHadReceived<IInputEvent>(i => i.Should().BeSameAs(@event));
         A.CallToSet(() => navigationState.WaitingFor).To(key).MustHaveHappenedOnceExactly();
     }
 
@@ -73,7 +73,7 @@ public class InputNodeTests
 
         await sut.EnterAsync(navigationContext, oldValue);
 
-        invoker.ShouldContainSingle<IInputEvent>(i => i.Should().BeSameAs(@event));
+        invoker.ShouldHadReceived<IInputEvent>(i => i.Should().BeSameAs(@event));
         A.CallToSet(() => navigationState.WaitingFor).To(key).MustHaveHappenedOnceExactly();
         A.CallToSet(() => variableDictionary[key]).To(oldValue).MustHaveHappenedOnceExactly();
     }

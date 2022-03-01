@@ -1,4 +1,6 @@
-﻿namespace IS.Reading.Variables;
+﻿using System.Text;
+
+namespace IS.Reading.Variables;
 
 public struct StringTextSource : ITextSource
 {
@@ -11,5 +13,17 @@ public struct StringTextSource : ITextSource
         => Text;
 
     public override string ToString() 
-        => Text;
+    {
+        if (Text.IndexOfAny(new[] {'{', '}'}) < 0)
+            return Text;
+
+        var builder = new StringBuilder(Text.Length);
+        foreach(var c in Text)
+        {
+            builder.Append(c);
+            if (c == '{' || c == '}')
+                builder.Append(c);
+        }
+        return builder.ToString();
+    }
 }

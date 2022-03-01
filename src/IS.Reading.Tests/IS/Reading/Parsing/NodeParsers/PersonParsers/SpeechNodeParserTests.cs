@@ -9,12 +9,13 @@ public class SpeechNodeParserTests
         var balloonTextNodeParser = Helper.FakeParser<ISpeechChildNodeParser>("-");
         var moodNodeParser = Helper.FakeParser<IMoodNodeParser>("#");
         var setNodeParser = Helper.FakeParser<ISetNodeParser>("set");
-        var sut = new SpeechNodeParser(elementParser, balloonTextNodeParser, moodNodeParser, setNodeParser);
+        var titleNodeParser = Helper.FakeParser<ITitleNodeParser>("title");
+        var sut = new SpeechNodeParser(elementParser, balloonTextNodeParser, moodNodeParser, setNodeParser, titleNodeParser);
 
         sut.Name.Should().Be("-");
         sut.IsArgumentRequired.Should().BeTrue();
         sut.BalloonType.Should().Be(BalloonType.Speech);
         sut.Settings.Should().BeOfType<ElementParserSettings.AggregatedCurrent>();
-        sut.Settings.ChildParsers.Should().BeEquivalentTo(balloonTextNodeParser, moodNodeParser, setNodeParser);
+        sut.Settings.ChildParsers.Should().BeEquivalentTo(balloonTextNodeParser, moodNodeParser, setNodeParser, titleNodeParser);
     }
 }

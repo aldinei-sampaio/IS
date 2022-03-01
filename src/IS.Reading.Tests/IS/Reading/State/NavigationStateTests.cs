@@ -24,6 +24,7 @@ public class NavigationStateTests
         sut.CurrentBlockId.Should().BeNull();
         sut.CurrentIteration.Should().Be(0);
         sut.WaitingFor.Should().BeNull();
+        sut.Title.Should().BeNull();
     }
 
     [Fact]
@@ -36,6 +37,7 @@ public class NavigationStateTests
         sut.CurrentBlockId = 957;
         sut.CurrentIteration = 1;
         sut.WaitingFor = "qualquercoisa";
+        sut.Title = "Aquilino";
 
         sut.MainCharacterName.Should().Be("agenor");
         sut.MoodType.Should().Be(MoodType.Happy);
@@ -44,5 +46,6 @@ public class NavigationStateTests
         sut.CurrentBlockId.Should().Be(957);
         sut.CurrentIteration.Should().Be(1);
         sut.WaitingFor.Should().Be("qualquercoisa");
+        sut.Title.Should().Be("Aquilino");
     }
 }

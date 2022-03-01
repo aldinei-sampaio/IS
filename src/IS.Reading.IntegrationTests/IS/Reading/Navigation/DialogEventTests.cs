@@ -214,4 +214,43 @@ mc jane
             await tester.BackwardEndAsync("speech end", "person leave: lana");
         }
     }
+
+    [Fact]
+    public async Task Title()
+    {
+        var stb =
+@"' Storybasic 1.0
+@ lana
+title ???
+- texto1
+
+# surprised
+title Lana
+- texto2
+- texto3
+
+# angry
+* texto5";
+
+        var tester = await StoryboardEventTester.CreateAsync(stb);
+
+        await TestMood(tester);
+        await TestMood(tester);
+        await TestMood(tester);
+
+        static async Task TestMood(StoryboardEventTester tester)
+        {
+            await tester.ForwardAsync("person enter: lana", "title: ???", "speech start", "speech: texto1");
+            await tester.ForwardAsync("mood surprised: lana", "title: Lana", "speech: texto2");
+            await tester.ForwardAsync("speech: texto3");
+            await tester.ForwardAsync("speech end", "mood angry: lana", "thought start", "thought: texto5");
+            await tester.ForwardEndAsync("thought end", "person leave: lana");
+
+            await tester.BackwardAsync("person enter: lana", "mood angry: lana", "title: Lana", "thought start", "thought: texto5");
+            await tester.BackwardAsync("thought end", "mood surprised: lana", "speech start", "speech: texto3");
+            await tester.BackwardAsync("speech: texto2");
+            await tester.BackwardAsync("mood normal: lana", "title: ???", "speech: texto1");
+            await tester.BackwardEndAsync("speech end", "person leave: lana");
+        }
+    }
 }

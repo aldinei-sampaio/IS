@@ -32,7 +32,7 @@ public class BackgroundNodeTests
     {
         var invoker = new TestInvoker(context);
         await sut.EnterAsync(context);
-        invoker.ShouldContainSingle<IBackgroundChangeEvent>(i => i.State.Should().BeSameAs(newState));
+        invoker.ShouldHadReceived<IBackgroundChangeEvent>(i => i.State.Should().BeSameAs(newState));
     }
 
     [Fact]
@@ -57,7 +57,7 @@ public class BackgroundNodeTests
         context.State.Background = newState;
         await sut.EnterAsync(context);
 
-        invoker.Count.Should().Be(0);
+        invoker.HadReceivedEvent.Should().BeFalse();
     }
 
     [Fact]
@@ -84,7 +84,7 @@ public class BackgroundNodeTests
     {
         var invoker = new TestInvoker(context);
         await sut.EnterAsync(context, stateArg);
-        invoker.Count.Should().Be(0);
+        invoker.HadReceivedEvent.Should().BeFalse();
     }
 
     [Fact]
@@ -92,6 +92,6 @@ public class BackgroundNodeTests
     {
         var invoker = new TestInvoker(context);
         await sut.EnterAsync(context, newState);
-        invoker.ShouldContainSingle<IBackgroundChangeEvent>(i => i.State.Should().BeSameAs(newState));
+        invoker.ShouldHadReceived<IBackgroundChangeEvent>(i => i.State.Should().BeSameAs(newState));
     }
 }

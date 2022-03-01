@@ -10,9 +10,10 @@ public class ThoughtNodeParser : DialogNodeParserBase, IThoughtNodeParser
         IElementParser elementParser,
         IThoughtChildNodeParser thoughtChildNodeParser,
         IMoodNodeParser moodNodeParser,
-        ISetNodeParser setNodeParser
+        ISetNodeParser setNodeParser,
+        ITitleNodeParser titleNodeParser
     )
-        : base(elementParser, thoughtChildNodeParser, moodNodeParser, setNodeParser)
+        : base(elementParser, thoughtChildNodeParser, moodNodeParser, setNodeParser, titleNodeParser)
     {
     }
 }

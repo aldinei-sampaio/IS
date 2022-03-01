@@ -3,21 +3,43 @@
 public class TextSourceParserTests
 {
     [Theory]
-    [InlineData("")]
-    [InlineData("Hello, World!")]
+    [InlineData("", "")]
+    [InlineData("Hello, World!", "Hello, World!")]
     [InlineData("{}", "")]
+    [InlineData("{{abc}}", "{abc}")]
+    public void ShouldReturnStringTextSourceWhenThereIsNoVariables(string argument, string expected)
+    {
+        var sut = new TextSourceParser();
+        var result = sut.Parse(argument);
+        result.IsOk.Should().BeTrue();
+        result.Value.Should().BeOfType<StringTextSource>()
+            .Which.Text.Should().Be(expected);
+    }
+
+    [Theory]
+    [InlineData("{a}", "a")]
+    [InlineData("{alpha}", "alpha")]
+    [InlineData("{beta}", "beta")]
+    public void ShouldReturnVariableTextSourceWhenThereIsASingleVariableAndNoText(string argument, string expected)
+    {
+        var sut = new TextSourceParser();
+        var result = sut.Parse(argument);
+        result.IsOk.Should().BeTrue();
+        result.Value.Should().BeOfType<VariableTextSource>()
+            .Which.VariableName.Should().Be(expected);
+    }
+
+    [Theory]
     [InlineData("Prezado sr. {Nome}")]
     [InlineData("{Area} {DDD} {Fone}")]
-    [InlineData("{{abc}}")]
-    public void Success(string text, string expected = null)
+    [InlineData("{{IstoNaoEhVariavel}} {IstoEhVariavel}")]
+    public void ShouldReturnInterpolatedTextSourceWhenThereIsVariablesAndText(string text)
     {
-        if (expected is null)
-            expected = text;
-
         var sut = new TextSourceParser();
         var result = sut.Parse(text);
         result.IsOk.Should().BeTrue();
-        result.Value.ToString().Should().Be(expected);
+        result.Value.Should().BeOfType<InterpolatedTextSource>()
+            .Which.ToString().Should().Be(text);
     }
 
     [Theory]
@@ -39,37 +61,6 @@ public class TextSourceParserTests
         var result = sut.Parse(text);
         result.IsOk.Should().BeFalse();
         result.ErrorMessage.Should().Be(errorMessage);
-    }
-
-    [Theory]
-    [InlineData("")]
-    [InlineData("Hello, World!")]
-    [InlineData("{}", "")]
-    public void NoInterpolator(string text, string expected = null)
-    {
-        if (expected is null)
-            expected = text;
-
-        var sut = new TextSourceParser();
-        var result = sut.Parse(text);
-        result.IsOk.Should().BeTrue();
-        result.Value.Should().BeOfType<StringTextSource>()
-            .Which.Text.Should().Be(expected);
-    }
-
-    [Theory]
-    [InlineData("{{abc}}", "{", "abc", "}")]
-    [InlineData("abc {{def}} ghi", "abc ", "{", "def", "}", " ghi")]
-    public void InterpolatorWithoutVariables(string text, params string[] interpolatorValues)
-    {
-        var sut = new TextSourceParser();
-        var result = sut.Parse(text);
-        result.IsOk.Should().BeTrue();
-
-        result.Value.Should().BeOfType<InterpolatedTextSource>()
-            .Which.Values.Should().BeEquivalentTo(
-                interpolatorValues.Select(i => new { IsVariable = false, Value = i })
-            );
     }
 
     [Fact]

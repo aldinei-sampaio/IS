@@ -62,7 +62,7 @@ public class BalloonTextNodeTests
         var ret = await sut.EnterAsync(context);
         ret.Should().BeNull();
 
-        invoker.ShouldContainSingle<IBalloonTextEvent>(
+        invoker.ShouldHadReceived<IBalloonTextEvent>(
             i => i.Should().BeEquivalentTo(new
             {
                 Text = balloonText,
@@ -88,7 +88,7 @@ public class BalloonTextNodeTests
 
         await sut.EnterAsync(context);
 
-        invoker.ShouldContainSingle<IBalloonTextEvent>(
+        invoker.ShouldHadReceived<IBalloonTextEvent>(
             i => i.Should().BeEquivalentTo(new
             {
                 Text = balloonText,

@@ -11,11 +11,11 @@ public class BalloonTitleNode : INode
 
     public ITextSource? TextSource { get; }
 
-    private static async Task<object?> ApplyStateAsync(INavigationContext context, string? newValue)
+    protected virtual async Task<object?> ApplyStateAsync(INavigationContext context, string? newValue)
     {
         var oldValue = context.State.Title;
 
-        if (oldValue == newValue)
+        if (oldValue == newValue || (oldValue is null && string.IsNullOrEmpty(newValue)))
             return oldValue;
 
         if (newValue is not null)

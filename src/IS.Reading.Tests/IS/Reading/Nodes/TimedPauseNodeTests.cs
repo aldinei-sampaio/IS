@@ -25,7 +25,7 @@ public class TimedPauseNodeTests
         var ret = await sut.EnterAsync(context);
         ret.Should().BeNull();
 
-        invoker.ShouldContainSingle<ITimedPauseEvent>(
+        invoker.ShouldHadReceived<ITimedPauseEvent>(
             i => i.Should().BeEquivalentTo(new { Duration = duration })
         );
     }
@@ -41,6 +41,6 @@ public class TimedPauseNodeTests
         var sut = new TimedPauseNode(duration);
         await sut.EnterAsync(context, null);
 
-        invoker.Count.Should().Be(0);
+        invoker.HadReceivedEvent.Should().BeFalse();
     }
 }

@@ -54,7 +54,7 @@ public class MainCharacterNodeTests
         var sut = new MainCharacterNode(newValue);
         await sut.EnterAsync(context);
 
-        invoker.ShouldContainSingle<IMainCharacterChangeEvent>(
+        invoker.ShouldHadReceived<IMainCharacterChangeEvent>(
             i => i.Should().BeEquivalentTo(new { PersonName = newValue })
         );
     }
@@ -73,7 +73,7 @@ public class MainCharacterNodeTests
         var ret = await sut.EnterAsync(context);
         ret.Should().Be(value);
 
-        invoker.Count.Should().Be(0);
+        invoker.HadReceivedEvent.Should().BeFalse();
     }
 
     [Theory]
@@ -89,7 +89,7 @@ public class MainCharacterNodeTests
         var sut = new MainCharacterNode("beta");
         await sut.EnterAsync(context, stageArg);
 
-        invoker.ShouldContainSingle<IMainCharacterChangeEvent>(
+        invoker.ShouldHadReceived<IMainCharacterChangeEvent>(
             i => i.Should().BeEquivalentTo(new { PersonName = stageArg })
         );
 

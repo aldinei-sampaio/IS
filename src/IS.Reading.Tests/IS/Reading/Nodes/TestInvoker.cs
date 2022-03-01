@@ -7,9 +7,7 @@ namespace IS.Reading.Nodes;
 public class TestInvoker : IEventInvoker
 {
     public TestInvoker(INavigationContext context)
-    {
-        A.CallTo(() => context.Events).Returns(this);
-    }
+        => A.CallTo(() => context.Events).Returns(this);
 
     private readonly List<IReadingEvent> invoked = new();
     
@@ -22,7 +20,9 @@ public class TestInvoker : IEventInvoker
         return Task.CompletedTask;
     }
 
-    public void ShouldContainSingle<T>(Action<T> validation) where T : IReadingEvent
+    public bool HadReceivedEvent => invoked.Count > 0;
+    
+    public void ShouldHadReceived<T>(Action<T> validation) where T : IReadingEvent
     {
         using (new AssertionScope())
             validation.Invoke(Single<T>());
@@ -34,8 +34,6 @@ public class TestInvoker : IEventInvoker
         invokedTypes[0].Should().BeSameAs(typeof(T));
         return (T)invoked[0];
     }
-
-    public int Count => invoked.Count;
 
     public void Clear()
     {

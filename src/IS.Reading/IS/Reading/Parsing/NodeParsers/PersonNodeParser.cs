@@ -73,28 +73,16 @@ public class PersonNodeParser : IPersonNodeParser
 
     private static bool HasCustomNode<T>(IEnumerable<INode> nodes) where T : INode
     {
-        return Check(nodes) ?? false;
-
-        static bool? Check(IEnumerable<INode> nodes)
+        foreach (var node in nodes)
         {
-            foreach (var node in nodes)
-            {
-                if (node is IPauseNode)
-                    return false;
+            if (node is IPauseNode || node.ChildBlock is not null)
+                return false;
 
-                if (node is T)
-                    return true;
-
-                if (node.ChildBlock is not null)
-                {
-                    var result = Check(node.ChildBlock.Nodes);
-                    if (result.HasValue)
-                        return result;
-                }
-            }
-
-            return null;
+            if (node is T)
+                return true;
         }
+
+        return false;
     }
 
     public MoodNode InitializeMoodNode { get; } = new MoodNode(MoodType.Normal);

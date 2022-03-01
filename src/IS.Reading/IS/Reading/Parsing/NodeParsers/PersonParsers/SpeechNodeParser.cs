@@ -10,9 +10,10 @@ public class SpeechNodeParser : DialogNodeParserBase, ISpeechNodeParser
         IElementParser elementParser, 
         ISpeechChildNodeParser speechChildNodeParser, 
         IMoodNodeParser moodNodeParser, 
-        ISetNodeParser setNodeParser
+        ISetNodeParser setNodeParser,
+        ITitleNodeParser titleNodeParser
     ) 
-        : base(elementParser, speechChildNodeParser, moodNodeParser, setNodeParser)
+        : base(elementParser, speechChildNodeParser, moodNodeParser, setNodeParser, titleNodeParser)
     {
     }
 }

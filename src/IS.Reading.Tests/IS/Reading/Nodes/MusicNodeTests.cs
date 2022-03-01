@@ -36,7 +36,7 @@ public class MusicNodeTests
         var sut = new MusicNode("goodbye");
         await sut.EnterAsync(context);
 
-        invoker.ShouldContainSingle<IMusicChangeEvent>(
+        invoker.ShouldHadReceived<IMusicChangeEvent>(
             i => i.Should().BeEquivalentTo(new { MusicName = "goodbye" })
         );
     }
@@ -65,7 +65,7 @@ public class MusicNodeTests
         var ret = await sut.EnterAsync(context);
         ret.Should().Be("crime_fighter");
 
-        invoker.Count.Should().Be(0);
+        invoker.HadReceivedEvent.Should().BeFalse();
     }
 
     [Theory]
@@ -81,7 +81,7 @@ public class MusicNodeTests
         var sut = new MusicNode("goodbye");
         await sut.EnterAsync(context, stateArg);
 
-        invoker.ShouldContainSingle<IMusicChangeEvent>(
+        invoker.ShouldHadReceived<IMusicChangeEvent>(
             i => i.Should().BeEquivalentTo(new { MusicName = stateArg })
         );
     }

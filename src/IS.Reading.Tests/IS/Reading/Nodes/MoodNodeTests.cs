@@ -36,7 +36,7 @@ public class MoodNodeTests
         var ret = await sut.EnterAsync(context);
         ret.Should().BeNull();
 
-        invoker.ShouldContainSingle<IMoodChangeEvent>(
+        invoker.ShouldHadReceived<IMoodChangeEvent>(
             i => i.Should().BeEquivalentTo(new
             {
                 MoodType = moodType,
@@ -59,7 +59,7 @@ public class MoodNodeTests
         var ret = await sut.EnterAsync(context);
         ret.Should().BeNull();
 
-        invoker.Count.Should().Be(0);
+        invoker.HadReceivedEvent.Should().BeFalse();
     }
 
     [Fact]
@@ -76,7 +76,7 @@ public class MoodNodeTests
         
         ret.Should().Be(MoodType.Surprised);
 
-        invoker.ShouldContainSingle<IMoodChangeEvent>(
+        invoker.ShouldHadReceived<IMoodChangeEvent>(
             i => i.Should().BeEquivalentTo(new
             {
                 MoodType = MoodType.Happy,
@@ -113,7 +113,7 @@ public class MoodNodeTests
         var ret = await sut.EnterAsync(context);
         ret.Should().Be(MoodType.Happy);
 
-        invoker.Count.Should().Be(0);
+        invoker.HadReceivedEvent.Should().BeFalse();
     }
 
     [Theory]
@@ -134,7 +134,7 @@ public class MoodNodeTests
 
         await sut.EnterAsync(context, moodType);
 
-        invoker.ShouldContainSingle<IMoodChangeEvent>(
+        invoker.ShouldHadReceived<IMoodChangeEvent>(
             i => i.Should().BeEquivalentTo(new
             {
                 MoodType = moodType,

@@ -8,5 +8,5 @@ public class BalloonTitleEvent : IBalloonTitleEvent
     public string Text { get; }
 
     public override string ToString()
-        => $"title: {Text}";
+        => string.IsNullOrEmpty(Text) ? "title unset" : $"title: {Text}";
 }

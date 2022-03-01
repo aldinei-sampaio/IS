@@ -23,7 +23,7 @@ public class ScrollNodeTests
         var ret = await sut.EnterAsync(context);
         ret.Should().BeNull();
 
-        invoker.ShouldContainSingle<IBackgroundScrollEvent>(
+        invoker.ShouldHadReceived<IBackgroundScrollEvent>(
             i => i.Should().BeEquivalentTo(new { Position = newPosition })
         );
 
@@ -50,6 +50,6 @@ public class ScrollNodeTests
 
         ret.Should().BeNull();
         context.State.Background.Should().BeSameAs(oldState);
-        invoker.Count.Should().Be(0);
+        invoker.HadReceivedEvent.Should().BeFalse();
     }
 }

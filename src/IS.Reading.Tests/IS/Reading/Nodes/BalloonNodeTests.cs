@@ -30,7 +30,7 @@ public class BalloonNodeTests
         var ret = await sut.EnterAsync(tester.Context);
         ret.Should().BeNull();
 
-        tester.Invoker.ShouldContainSingle<IBalloonOpenEvent>(
+        tester.Invoker.ShouldHadReceived<IBalloonOpenEvent>(
             i => i.Should().BeEquivalentTo(new
             {
                 BalloonType = balloonType,
@@ -49,7 +49,7 @@ public class BalloonNodeTests
 
         await sut.LeaveAsync(tester.Context);
 
-        tester.Invoker.ShouldContainSingle<IBalloonCloseEvent>(
+        tester.Invoker.ShouldHadReceived<IBalloonCloseEvent>(
             i => i.Should().BeEquivalentTo(new
             {
                 BalloonType = balloonType,

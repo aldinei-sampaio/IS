@@ -44,6 +44,7 @@ public static class ServiceProviderExtensionMethods
         services.AddSingleton<IPauseNodeParser, PauseNodeParser>();
         services.AddSingleton<IMoodNodeParser, MoodNodeParser>();
         services.AddSingleton<IPersonNodeParser, PersonNodeParser>();
+        services.AddSingleton<ITitleNodeParser, TitleNodeParser>();
         services.AddSingleton<ISetNodeParser, SetNodeParser>();
         services.AddSingleton<IIfNodeParser, IfNodeParser>();
         services.AddSingleton<IWhileNodeParser, WhileNodeParser>();
