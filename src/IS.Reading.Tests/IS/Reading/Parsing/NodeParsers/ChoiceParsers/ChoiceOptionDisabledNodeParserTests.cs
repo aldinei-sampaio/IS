@@ -27,7 +27,7 @@ public class ChoiceOptionDisabledNodeParserTests
     }
 
     [Fact]
-    public async void ShouldLogErrorWhenThereIsArgument()
+    public async Task ShouldLogErrorWhenThereIsArgument()
     {
         var errorMessage = "O comando 'disabled' não suporta argumento.";
 
@@ -41,7 +41,7 @@ public class ChoiceOptionDisabledNodeParserTests
     }
 
     [Fact]
-    public async void SuccessParsing()
+    public async Task SuccessParsing()
     {
         A.CallTo(() => documentReader.Argument).Returns(string.Empty);
 
