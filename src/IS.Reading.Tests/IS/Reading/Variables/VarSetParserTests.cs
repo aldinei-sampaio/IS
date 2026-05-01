@@ -107,10 +107,10 @@ public class VarSetParserTests
     [InlineData(null)]
     [InlineData("")]
     [InlineData("   ")]
-    public void EmptyText(string expression)
+    public void EmptyText(string? expression)
     {
         var sut = new VarSetParser();
-        var result = sut.Parse(expression);
+        var result = sut.Parse(expression!);
         result.IsOk.Should().BeFalse();
         result.ErrorMessage.Should().Be("Expressão não informada.");
     }

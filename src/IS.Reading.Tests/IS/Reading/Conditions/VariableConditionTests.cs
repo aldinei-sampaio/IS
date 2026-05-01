@@ -10,7 +10,7 @@ public class VariableConditionTests
     [InlineData("")]
     [InlineData(12345)]
     [InlineData(-132)]
-    public void Evaluate(object value)
+    public void Evaluate(object? value)
     {
         var variables = A.Fake<IVariableDictionary>(i => i.Strict());
         A.CallTo(() => variables["VarName"]).Returns(value);

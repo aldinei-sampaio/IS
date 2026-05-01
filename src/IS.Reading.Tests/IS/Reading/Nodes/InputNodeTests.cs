@@ -41,7 +41,7 @@ public class InputNodeTests
     [InlineData(null)]
     [InlineData("")]
     [InlineData("abcde")]
-    public async Task EnterAsync(string oldValue)
+    public async Task EnterAsync(string? oldValue)
     {
         A.CallTo(() => variableDictionary[key]).Returns(oldValue);
         A.CallTo(() => navigationState.WaitingFor).Returns(null);
@@ -61,7 +61,7 @@ public class InputNodeTests
     [InlineData(null)]
     [InlineData("")]
     [InlineData("abcde")]
-    public async Task EnterAsyncWithStateShouldRestoreVarValue(string oldValue)
+    public async Task EnterAsyncWithStateShouldRestoreVarValue(string? oldValue)
     {
         A.CallTo(() => variableDictionary[key]).Returns(A.Dummy<string>());
         A.CallToSet(() => variableDictionary[key]).To(oldValue).DoesNothing();

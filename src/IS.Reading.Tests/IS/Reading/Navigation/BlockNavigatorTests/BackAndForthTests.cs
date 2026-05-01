@@ -25,7 +25,7 @@ public class BackAndForthTests
         await tester.MoveAsync(true, "normal");
         tester.CurrentNodeIndex.Should().Be(0);
 
-        await tester.MoveAsync(true, null);
+        await tester.MoveAsync(true, (string?)null);
         tester.CurrentNodeIndex.Should().BeNull();
 
         await tester.MoveAsync(false, "reversed");
@@ -37,13 +37,13 @@ public class BackAndForthTests
         await tester.MoveAsync(false, "reversed");
         tester.CurrentNodeIndex.Should().BeNull();
 
-        await tester.MoveAsync(false, null);
+        await tester.MoveAsync(false, (string?)null);
         tester.CurrentNodeIndex.Should().BeNull();
 
         await tester.MoveAsync(true, "normal");
         tester.CurrentNodeIndex.Should().Be(0);
 
-        await tester.MoveAsync(true, null);
+        await tester.MoveAsync(true, (string?)null);
         tester.CurrentNodeIndex.Should().BeNull();
     }
 

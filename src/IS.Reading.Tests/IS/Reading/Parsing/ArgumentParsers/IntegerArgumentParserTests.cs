@@ -46,12 +46,12 @@ public class IntegerArgumentParserTests
     [InlineData("   ")]
     [InlineData("\r\n")]
     [InlineData("\t")]
-    public void Empty(string value)
+    public void Empty(string? value)
     {
         var message = $"Era esperado um argumento com um número inteiro entre {int.MinValue} e {int.MaxValue}.";
 
         var sut = new IntegerArgumentParser();
-        var result = sut.Parse(value, int.MinValue, int.MaxValue);
+        var result = sut.Parse(value!, int.MinValue, int.MaxValue);
         result.IsOk.Should().BeFalse();
         result.ErrorMessage.Should().Be(message);
     }

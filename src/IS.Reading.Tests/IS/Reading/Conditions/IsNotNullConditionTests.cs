@@ -11,7 +11,7 @@ public class IsNotNullConditionTests
     [InlineData(0, true)]
     [InlineData(123, true)]
     [InlineData(-12345, true)]
-    public void Evaluate(object operandValue, bool expectedResult)
+    public void Evaluate(object? operandValue, bool expectedResult)
     {
         var variables = A.Dummy<IVariableDictionary>();
 

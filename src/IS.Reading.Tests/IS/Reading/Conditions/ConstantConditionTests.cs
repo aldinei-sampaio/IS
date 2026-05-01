@@ -10,7 +10,7 @@ public class ConstantConditionTests
     [InlineData("")]
     [InlineData(12345)]
     [InlineData(-132)]
-    public void Evaluate(object value)
+    public void Evaluate(object? value)
     {
         var variables = A.Dummy<IVariableDictionary>();
 
@@ -26,7 +26,7 @@ public class ConstantConditionTests
     [InlineData("", "''")]
     [InlineData(123, "123")]
     [InlineData(-234, "-234")]
-    public void ToStringTest(object value, string expected)
+    public void ToStringTest(object? value, string expected)
     {
         var sut = new ConstantCondition(value);
         var actual = sut.ToString();

@@ -51,12 +51,12 @@ public class ColorArgumentParserTests
     [InlineData("   ")]
     [InlineData("\r\n")]
     [InlineData("\t")]
-    public void Empty(string value)
+    public void Empty(string? value)
     {
         var message = "Era esperado um argumento com a cor.";
 
         var sut = new ColorArgumentParser();
-        var result = sut.Parse(value);
+        var result = sut.Parse(value!);
         result.IsOk.Should().BeFalse();
         result.ErrorMessage.Should().Be(message);
     }

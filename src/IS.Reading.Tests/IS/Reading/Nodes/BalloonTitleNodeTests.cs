@@ -31,7 +31,7 @@ public class BalloonTitleNodeTests
     [Theory]
     [InlineData("Micalateia", null)]
     [InlineData("Dariana", "Aldebarda")]
-    public async Task ShouldSetTitleToSpecifiedValue(string newValue, string oldValue)
+    public async Task ShouldSetTitleToSpecifiedValue(string newValue, string? oldValue)
     {
         A.CallTo(() => textSource.Build(variables)).Returns(newValue ?? string.Empty);
         A.CallTo(() => state.Title).Returns(oldValue);
@@ -51,7 +51,7 @@ public class BalloonTitleNodeTests
     [InlineData(null)]
     [InlineData("Alpha")]
     [InlineData("Beta")]
-    public async Task ShouldNotRaiseEventWhenTitleWasNotChanged(string title)
+    public async Task ShouldNotRaiseEventWhenTitleWasNotChanged(string? title)
     {
         A.CallTo(() => textSource.Build(variables)).Returns(title ?? string.Empty);
         A.CallTo(() => state.Title).Returns(title);
@@ -65,7 +65,7 @@ public class BalloonTitleNodeTests
     [Theory]
     [InlineData("Micalateia", null)]
     [InlineData("Dariana", "Aldebarda")]
-    public async Task ShouldRaiseEventWithStateArg(string newValue, string oldValue)
+    public async Task ShouldRaiseEventWithStateArg(string newValue, string? oldValue)
     {
         A.CallTo(() => textSource.Build(variables)).Returns(newValue ?? string.Empty);
         A.CallTo(() => state.Title).Returns(oldValue);

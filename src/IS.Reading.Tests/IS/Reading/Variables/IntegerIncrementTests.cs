@@ -36,7 +36,7 @@ public class IntegerIncrementTests
     [InlineData(int.MinValue, -1, int.MinValue)]
     [InlineData(int.MaxValue - 10, 10000, int.MaxValue)]
     [InlineData(int.MinValue + 100, -10000, int.MinValue)]
-    public void Execute(object currentValue, int increment, int expectedResult)
+    public void Execute(object? currentValue, int increment, int expectedResult)
     {
         const string varName = "alpha";
         var variables = A.Fake<IVariableDictionary>(i => i.Strict());

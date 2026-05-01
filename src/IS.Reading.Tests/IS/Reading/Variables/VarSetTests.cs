@@ -19,7 +19,7 @@ public class VarSetTests
 
     [Theory]
     [ClassData(typeof(TestData))]
-    public void Initialization(string name, object value)
+    public void Initialization(string name, object? value)
     {
         var sut = new VarSet(name, value);
         sut.Should().BeEquivalentTo(new
@@ -31,7 +31,7 @@ public class VarSetTests
 
     [Theory]
     [ClassData(typeof(TestData))]
-    public void ExecuteShouldSetVariable(string name, object value)
+    public void ExecuteShouldSetVariable(string name, object? value)
     {
         var variables = A.Fake<IVariableDictionary>(i => i.Strict());
         A.CallTo(() => variables[name]).Returns(null);
@@ -51,7 +51,7 @@ public class VarSetTests
     [InlineData("epsilon", -131, "abc")]
     [InlineData("pi", "abc", "def")]
     [InlineData("rho", "abc", int.MaxValue)]
-    public void ExecuteShouldReturnOldValue(string name, object oldValue, object value)
+    public void ExecuteShouldReturnOldValue(string name, object? oldValue, object? value)
     {
         var variables = A.Dummy<IVariableDictionary>();
         A.CallTo(() => variables[name]).Returns(oldValue);
@@ -70,7 +70,7 @@ public class VarSetTests
     [InlineData("epsilon", -131, "epsilon=-131")]
     [InlineData("pi", "", "pi=''")]
     [InlineData("rho", "abc", "rho='abc'")]
-    public void ToStringTest(string name, object value, string expected)
+    public void ToStringTest(string name, object? value, string expected)
     {
         var sut = new VarSet(name, value);
         sut.ToString().Should().Be(expected);

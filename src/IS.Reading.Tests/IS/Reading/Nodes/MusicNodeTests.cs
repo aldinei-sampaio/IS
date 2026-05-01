@@ -71,7 +71,7 @@ public class MusicNodeTests
     [Theory]
     [InlineData(null)]
     [InlineData("helloworld")]
-    public async Task ShouldRaiseEventWithStateArg(string stateArg)
+    public async Task ShouldRaiseEventWithStateArg(string? stateArg)
     {
         var context = A.Dummy<INavigationContext>();
         context.State.MusicName = "theme";

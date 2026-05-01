@@ -24,7 +24,7 @@ public class HierarchyTests
     public async Task EmptyWithTester(bool forward)
     {
         var tester = new HierarchyTester();
-        tester.ConfigureMove(forward, null);
+        tester.ConfigureMove(forward, (INode?)null);
         await tester.MoveAsync(forward, null);
     }
 

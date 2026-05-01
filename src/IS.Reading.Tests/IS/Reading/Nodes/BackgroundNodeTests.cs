@@ -80,7 +80,7 @@ public class BackgroundNodeTests
     [InlineData(null)]
     [InlineData("Abc")]
     [InlineData(123)]
-    public async Task ShouldDoNothingWhenStateArgIsNotBackgroundState(object stateArg)
+    public async Task ShouldDoNothingWhenStateArgIsNotBackgroundState(object? stateArg)
     {
         var invoker = new TestInvoker(context);
         await sut.EnterAsync(context, stateArg);

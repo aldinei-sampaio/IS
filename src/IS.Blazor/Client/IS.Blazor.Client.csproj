@@ -5,16 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\assets\common\object\**" />
+    <Content Remove="wwwroot\assets\common\object\**" />
+    <EmbeddedResource Remove="wwwroot\assets\common\object\**" />
+    <None Remove="wwwroot\assets\common\object\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.8" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Shared\IS.Blazor.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\assets\common\object\" />
   </ItemGroup>
 
 </Project>

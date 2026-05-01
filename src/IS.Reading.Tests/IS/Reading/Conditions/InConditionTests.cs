@@ -26,7 +26,7 @@ public class InConditionTests
     [InlineData(true, 1, 1, "1")]
     [InlineData(false, 1, "1", 2)]
     [InlineData(false, 2, "2", 1)]
-    public void Evaluate(bool expectedResult, object operandValue, params object[] keywordValues)
+    public void Evaluate(bool expectedResult, object? operandValue, params object?[] keywordValues)
     {
         var variables = A.Dummy<IVariableDictionary>();
 

@@ -16,10 +16,10 @@ public class ImageArgumentParserTests
     [InlineData(null, null)]
     [InlineData("    ", null)]
     [InlineData("1234567890123456789012345678901234567890123456789012345678901234", "1234567890123456789012345678901234567890123456789012345678901234")]
-    public void Parse(string value, string expected)
+    public void Parse(string? value, string? expected)
     {
         var sut = new ImageArgumentParser();
-        var result = sut.Parse(value);
+        var result = sut.Parse(value!);
 
         if (expected is null)
         {
@@ -61,7 +61,7 @@ public class ImageArgumentParserTests
         var message = $"O texto '{value}' contém caracteres inválidos.";
 
         var sut = new ImageArgumentParser();
-        var result = sut.Parse(value);
+        var result = sut.Parse(value!);
         result.IsOk.Should().BeFalse();
         result.ErrorMessage.Should().Be(message);
     }
@@ -73,7 +73,7 @@ public class ImageArgumentParserTests
         var message = $"O texto contém 65 caracteres, o que excede a quantidade máxima de 64.";
 
         var sut = new ImageArgumentParser();
-        var result = sut.Parse(value);
+        var result = sut.Parse(value!);
         result.IsOk.Should().BeFalse();
         result.ErrorMessage.Should().Be(message);
     }
@@ -82,12 +82,12 @@ public class ImageArgumentParserTests
     [InlineData(null)]
     [InlineData("")]
     [InlineData("  ")]
-    public void Empty(string value)
+    public void Empty(string? value)
     {
         var message = "Era esperado um argumento com o nome da imagem.";
 
         var sut = new ImageArgumentParser();
-        var result = sut.Parse(value);
+        var result = sut.Parse(value!);
         result.IsOk.Should().BeFalse();
         result.ErrorMessage.Should().Be(message);
     }

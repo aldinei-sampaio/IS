@@ -18,7 +18,7 @@ public class EqualOrLowerThanConditionTests
     [InlineData("1", "2", true)]
     [InlineData("2", 2, false)]
     [InlineData(2, "5", false)]
-    public void Evaluate(object leftValue, object rightValue, bool expectedResult)
+    public void Evaluate(object? leftValue, object? rightValue, bool expectedResult)
     {
         var variables = A.Dummy<IVariableDictionary>();
 

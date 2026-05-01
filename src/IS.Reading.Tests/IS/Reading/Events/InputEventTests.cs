@@ -10,7 +10,7 @@ public class InputEventTests
     [InlineData("xyz", null, "Senha:", 24, "Usar a senha {0}?", null)]
     [InlineData("ghi", "Informação", "Entre seu nome:", 12, null, "Oberon")]
     [InlineData("jkl", null, null, 10, null, null)]
-    public void Initialization(string key, string title, string text, int maxLength, string confirmation, string defaultValue)
+    public void Initialization(string key, string? title, string? text, int maxLength, string? confirmation, string? defaultValue)
     {
         var sut = new InputEvent(key, title, text, maxLength, confirmation, defaultValue);
         sut.Key.Should().Be(key);

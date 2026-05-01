@@ -29,7 +29,7 @@ public class MainCharacterNodeTests
     [InlineData(null, "omega")]
     [InlineData("omega", null)]
     [InlineData("alpha", "beta")]
-    public async Task OnEnterAsyncShouldUpdateState(string currentValue, string newValue)
+    public async Task OnEnterAsyncShouldUpdateState(string? currentValue, string? newValue)
     {
         var context = A.Dummy<INavigationContext>();
         context.State.MainCharacterName = currentValue;
@@ -44,7 +44,7 @@ public class MainCharacterNodeTests
     [InlineData(null, "omega")]
     [InlineData("omega", null)]
     [InlineData("alpha", "beta")]
-    public async Task OnEnterShouldRaiseEvent(string currentValue, string newValue)
+    public async Task OnEnterShouldRaiseEvent(string? currentValue, string? newValue)
     {
         var context = A.Dummy<INavigationContext>();
         context.State.MainCharacterName = currentValue;
@@ -62,7 +62,7 @@ public class MainCharacterNodeTests
     [Theory]
     [InlineData(null)]
     [InlineData("omega")]
-    public async Task OnEnterAsyncShouldNotRaiseEventIfMainCharacterWasNotChanged(string value)
+    public async Task OnEnterAsyncShouldNotRaiseEventIfMainCharacterWasNotChanged(string? value)
     {
         var context = A.Dummy<INavigationContext>();
         context.State.MainCharacterName = value;
@@ -79,7 +79,7 @@ public class MainCharacterNodeTests
     [Theory]
     [InlineData(null)]
     [InlineData("gama")]
-    public async Task ShouldRaiseEventWithStateArg(string stageArg)
+    public async Task ShouldRaiseEventWithStateArg(string? stageArg)
     {
         var context = A.Dummy<INavigationContext>();
         context.State.MainCharacterName = "alpha";

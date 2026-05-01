@@ -8,7 +8,7 @@ public class BackAndForthTests
     public async Task Empty(bool forward)
     {
         var tester = new BackAndForthTester(forward);
-        await tester.MoveAsync(forward, null);
+        await tester.MoveAsync(forward, (string?)null);
     }
 
     [Theory]
@@ -20,7 +20,7 @@ public class BackAndForthTests
         tester.AddDummy();
         tester.AddDummy();
         tester.AddDummy();
-        await tester.MoveAsync(forward, null);
+        await tester.MoveAsync(forward, (string?)null);
     }
 
     [Theory]

@@ -6,12 +6,12 @@ public class NameArgumentParserTests
     [InlineData(null)]
     [InlineData("")]
     [InlineData(" ")]
-    public void EmptyValues(string toParse)
+    public void EmptyValues(string? toParse)
     {
         var errorMessage = "Era esperado um argumento.";
 
         var parser = new NameArgumentParser();
-        var result = parser.Parse(toParse);
+        var result = parser.Parse(toParse!);
         result.IsOk.Should().BeFalse();
         result.ErrorMessage.Should().Be(errorMessage);
     }

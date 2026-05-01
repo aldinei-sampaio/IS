@@ -40,7 +40,7 @@ public class VarSetNodeTests
     [InlineData(null)]
     [InlineData("abc")]
     [InlineData(123)]
-    public async Task ShouldSetValueToStateArg(object stageArg)
+    public async Task ShouldSetValueToStateArg(object? stageArg)
     {
         var context = A.Fake<INavigationContext>(i => i.Strict());
         var dic = A.Dummy<IVariableDictionary>();
