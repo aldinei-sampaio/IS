@@ -68,7 +68,7 @@ public class BalloonTextNodeTests
                 Text = balloonText,
                 BalloonType = balloonType,
                 IsMainCharacter = isMainCharacter,
-                Choice = (IChoice)null
+                Choice = (IChoice?)null
             })
         );
     }

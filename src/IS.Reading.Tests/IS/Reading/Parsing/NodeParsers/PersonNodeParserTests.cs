@@ -128,14 +128,14 @@ public class PersonNodeParserTests
         A.CallTo(() => nameArgumentParser.Parse(argument)).Returns(Result.Ok(argument));
         A.CallTo(() => parsingContext.IsSuccess).Returns(true);
         A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.Settings))
-            .Invokes(i => i.GetArgument<IParentParsingContext>(2).AddNode(dummyNode));
+            .Invokes(i => i.GetArgument<IParentParsingContext>(2)!.AddNode(dummyNode));
 
         await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
 
         parentParsingContext.ShouldContainSingle<PersonNode>(
-            i => i.ChildBlock.ShouldContain(
+            i => i.ChildBlock!.ShouldContain(
                 i => i.Should().BeSameAs(sut.InitializeMoodNode),
-                i => i.Should().BeOfType<BalloonTitleNode>().Which.TextSource.ToString().Should().Be("{joe}"),
+                i => i.Should().BeOfType<BalloonTitleNode>().Which.TextSource!.ToString().Should().Be("{joe}"),
                 i => i.Should().BeSameAs(dummyNode),
                 i => i.Should().BeSameAs(sut.DismissTitleNode),
                 i => i.Should().BeSameAs(sut.DismissMoodNode)
@@ -156,7 +156,7 @@ public class PersonNodeParserTests
         A.CallTo(() => parsingContext.IsSuccess).Returns(true);
         A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.Settings))
             .Invokes(i => {
-                var ctx = i.GetArgument<IParentParsingContext>(2);
+                var ctx = i.GetArgument<IParentParsingContext>(2)!;
                 ctx.AddNode(dummyPauseNode);
                 ctx.AddNode(dummyTitleNode);
             });
@@ -164,9 +164,9 @@ public class PersonNodeParserTests
         await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
 
         parentParsingContext.ShouldContainSingle<PersonNode>(
-            i => i.ChildBlock.ShouldContain(
+            i => i.ChildBlock!.ShouldContain(
                 i => i.Should().BeSameAs(sut.InitializeMoodNode),
-                i => i.Should().BeOfType<BalloonTitleNode>().Which.TextSource.ToString().Should().Be("{joe}"),
+                i => i.Should().BeOfType<BalloonTitleNode>().Which.TextSource!.ToString().Should().Be("{joe}"),
                 i => i.Should().BeSameAs(dummyPauseNode),
                 i => i.Should().BeSameAs(dummyTitleNode),
                 i => i.Should().BeSameAs(sut.DismissTitleNode),
@@ -189,7 +189,7 @@ public class PersonNodeParserTests
         A.CallTo(() => parsingContext.IsSuccess).Returns(true);
         A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.Settings))
             .Invokes(i => {
-                var ctx = i.GetArgument<IParentParsingContext>(2);
+                var ctx = i.GetArgument<IParentParsingContext>(2)!;
                 ctx.AddNode(dummyNodeWithChildren);
                 ctx.AddNode(dummyTitleNode);
             });
@@ -197,9 +197,9 @@ public class PersonNodeParserTests
         await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
 
         parentParsingContext.ShouldContainSingle<PersonNode>(
-            i => i.ChildBlock.ShouldContain(
+            i => i.ChildBlock!.ShouldContain(
                 i => i.Should().BeSameAs(sut.InitializeMoodNode),
-                i => i.Should().BeOfType<BalloonTitleNode>().Which.TextSource.ToString().Should().Be("{joe}"),
+                i => i.Should().BeOfType<BalloonTitleNode>().Which.TextSource!.ToString().Should().Be("{joe}"),
                 i => i.Should().BeSameAs(dummyNodeWithChildren),
                 i => i.Should().BeSameAs(dummyTitleNode),
                 i => i.Should().BeSameAs(sut.DismissTitleNode),
@@ -219,12 +219,12 @@ public class PersonNodeParserTests
         A.CallTo(() => nameArgumentParser.Parse(argument)).Returns(Result.Ok(argument));
         A.CallTo(() => parsingContext.IsSuccess).Returns(true);
         A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.Settings))
-            .Invokes(i => i.GetArgument<IParentParsingContext>(2).AddNode(dummyTitleNode));
+            .Invokes(i => i.GetArgument<IParentParsingContext>(2)!.AddNode(dummyTitleNode));
 
         await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
 
         parentParsingContext.ShouldContainSingle<PersonNode>(
-            i => i.ChildBlock.ShouldContain(
+            i => i.ChildBlock!.ShouldContain(
                 i => i.Should().BeSameAs(sut.InitializeMoodNode),
                 i => i.Should().BeSameAs(dummyTitleNode),
                 i => i.Should().BeSameAs(sut.DismissTitleNode),
@@ -244,13 +244,13 @@ public class PersonNodeParserTests
         A.CallTo(() => nameArgumentParser.Parse(argument)).Returns(Result.Ok(argument));
         A.CallTo(() => parsingContext.IsSuccess).Returns(true);
         A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.Settings))
-            .Invokes(i => i.GetArgument<IParentParsingContext>(2).AddNode(dummyMoodNode));
+            .Invokes(i => i.GetArgument<IParentParsingContext>(2)!.AddNode(dummyMoodNode));
 
         await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
 
         parentParsingContext.ShouldContainSingle<PersonNode>(
-            i => i.ChildBlock.ShouldContain(
-                i => i.Should().BeOfType<BalloonTitleNode>().Which.TextSource.ToString().Should().Be("{joe}"),
+            i => i.ChildBlock!.ShouldContain(
+                i => i.Should().BeOfType<BalloonTitleNode>().Which.TextSource!.ToString().Should().Be("{joe}"),
                 i => i.Should().BeSameAs(dummyMoodNode),
                 i => i.Should().BeSameAs(sut.DismissTitleNode),
                 i => i.Should().BeSameAs(sut.DismissMoodNode)
@@ -271,7 +271,7 @@ public class PersonNodeParserTests
         A.CallTo(() => parsingContext.IsSuccess).Returns(true);
         A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.Settings))
             .Invokes(i => {
-                var ctx = i.GetArgument<IParentParsingContext>(2);
+                var ctx = i.GetArgument<IParentParsingContext>(2)!;
                 ctx.AddNode(dummyPauseNode);
                 ctx.AddNode(dummyMoodNode);
             });
@@ -279,9 +279,9 @@ public class PersonNodeParserTests
         await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
 
         parentParsingContext.ShouldContainSingle<PersonNode>(
-            i => i.ChildBlock.ShouldContain(
+            i => i.ChildBlock!.ShouldContain(
                 i => i.Should().BeSameAs(sut.InitializeMoodNode),
-                i => i.Should().BeOfType<BalloonTitleNode>().Which.TextSource.ToString().Should().Be("{joe}"),
+                i => i.Should().BeOfType<BalloonTitleNode>().Which.TextSource!.ToString().Should().Be("{joe}"),
                 i => i.Should().BeSameAs(dummyPauseNode),
                 i => i.Should().BeSameAs(dummyMoodNode),
                 i => i.Should().BeSameAs(sut.DismissTitleNode),
@@ -304,7 +304,7 @@ public class PersonNodeParserTests
         A.CallTo(() => parsingContext.IsSuccess).Returns(true);
         A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.Settings))
             .Invokes(i => {
-                var ctx = i.GetArgument<IParentParsingContext>(2);
+                var ctx = i.GetArgument<IParentParsingContext>(2)!;
                 ctx.AddNode(dummyNodeWithChildren);
                 ctx.AddNode(dummyMoodNode);
             });
@@ -312,9 +312,9 @@ public class PersonNodeParserTests
         await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
 
         parentParsingContext.ShouldContainSingle<PersonNode>(
-            i => i.ChildBlock.ShouldContain(
+            i => i.ChildBlock!.ShouldContain(
                 i => i.Should().BeSameAs(sut.InitializeMoodNode),
-                i => i.Should().BeOfType<BalloonTitleNode>().Which.TextSource.ToString().Should().Be("{joe}"),
+                i => i.Should().BeOfType<BalloonTitleNode>().Which.TextSource!.ToString().Should().Be("{joe}"),
                 i => i.Should().BeSameAs(dummyNodeWithChildren),
                 i => i.Should().BeSameAs(dummyMoodNode),
                 i => i.Should().BeSameAs(sut.DismissTitleNode),

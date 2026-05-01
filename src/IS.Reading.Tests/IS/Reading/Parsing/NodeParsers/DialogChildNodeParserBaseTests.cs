@@ -121,7 +121,7 @@ public class DialogChildNodeParserBaseTests
         A.CallTo(() => documentReader.Argument).Returns(argument);
         A.CallTo(() => parsingContext.IsSuccess).Returns(true);
         A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, sut.Settings))
-            .Invokes(i => i.GetArgument<BalloonChildParsingContext>(2).ChoiceBuilder = choiceBuilder);
+            .Invokes(i => i.GetArgument<BalloonChildParsingContext>(2)!.ChoiceBuilder = choiceBuilder);
         A.CallTo(() => parsingSceneContext.Reset()).DoesNothing();
 
         await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);

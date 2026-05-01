@@ -134,8 +134,8 @@ end";
             Key = "a",
             Text = "Fazer silêncio",
             IsEnabled = true,
-            ImageName = (string)null,
-            Tip = (string)null
+            ImageName = (string?)null,
+            Tip = (string?)null
         });
 
         options.MoveNext();
@@ -144,7 +144,7 @@ end";
             Key = "b",
             Text = "Sair de perto",
             IsEnabled = false,
-            ImageName = (string)null,
+            ImageName = (string?)null,
             Tip = "Disponível na próxima versão"
         });
 
@@ -155,7 +155,7 @@ end";
             Text = "Perder a paciência",
             IsEnabled = true,
             ImageName = "pissed",
-            Tip = (string)null
+            Tip = (string?)null
         });
     }
 
@@ -173,7 +173,7 @@ end";
         e.Choice.Should().BeEquivalentTo(new
         {
             TimeLimit = (TimeSpan?)null,
-            Default = (string)null
+            Default = (string?)null
         });
 
         var options = e.Choice.Options.GetEnumerator();
@@ -184,8 +184,8 @@ end";
             Key = "a",
             Text = "Sair rua afora",
             IsEnabled = true,
-            ImageName = (string)null,
-            Tip = (string)null
+            ImageName = (string?)null,
+            Tip = (string?)null
         });
 
         options.MoveNext();
@@ -194,7 +194,7 @@ end";
             Key = "b",
             Text = "Sair de perto",
             IsEnabled = false,
-            ImageName = (string)null,
+            ImageName = (string?)null,
             Tip = "Disponível na próxima versão"
         });
 
@@ -205,7 +205,7 @@ end";
             Text = "Bater o pé no chão",
             IsEnabled = true,
             ImageName = "angry",
-            Tip = (string)null
+            Tip = (string?)null
         });
     }
 

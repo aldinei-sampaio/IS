@@ -137,7 +137,7 @@ public class InputNodeParserTests
             sut.Settings
         )).Invokes(i =>
         {
-            var ctx = i.GetArgument<InputParentParsingContext>(2);
+            var ctx = i.GetArgument<InputParentParsingContext>(2)!;
             ctx.InputBuilder.TitleSource = titleSource;
             ctx.InputBuilder.TextSource = textSource;
             ctx.InputBuilder.MaxLength = maxLength;

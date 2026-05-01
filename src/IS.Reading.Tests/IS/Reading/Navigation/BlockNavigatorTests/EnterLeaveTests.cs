@@ -11,9 +11,9 @@ public class EnterLeaveTests
 
     private static async Task CheckEmptyBlockAsync(NavigatorTester tester)
     {
-        await tester.MoveAsync(true, null);
+        await tester.MoveAsync(true, (string?)null);
         tester.CheckLog();
-        await tester.MoveAsync(false, null);
+        await tester.MoveAsync(false, (string?)null);
         tester.CheckLog();
     }
 
@@ -30,13 +30,13 @@ public class EnterLeaveTests
         await tester.MoveAsync(true, "normal");
         tester.CheckLog("Enter:normal");
 
-        await tester.MoveAsync(true, null);
+        await tester.MoveAsync(true, (string?)null);
         tester.CheckLog("Leave:normal");
 
         await tester.MoveAsync(false, "reversed");
         tester.CheckLog("Enter:reversed");
 
-        await tester.MoveAsync(false, null);
+        await tester.MoveAsync(false, (string?)null);
         tester.CheckLog("Leave:reversed");
 
         await tester.MoveAsync(true, "normal");

@@ -7,9 +7,9 @@ namespace IS;
 internal static class FluentAssertionsExtensionMethods
 {
     public static void ShouldSatisfy<T>(
-        this T subject, 
-        Action<T> predicate, 
-        [CallerArgumentExpression("subject")] string context = null
+        this T subject,
+        Action<T> predicate,
+        [CallerArgumentExpression("subject")] string? context = null
     )
     {
         using (new AssertionScope(context))

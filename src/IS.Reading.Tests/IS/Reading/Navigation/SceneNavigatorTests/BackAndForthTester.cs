@@ -53,7 +53,7 @@ public class BackAndForthTester
         queue.Enqueue(node);
     }
 
-    public async Task MoveAsync(bool forward, params string[] sceneNames)
+    public async Task MoveAsync(bool forward, params string?[] sceneNames)
     {
         if (sceneNames is null)
         {
@@ -69,7 +69,7 @@ public class BackAndForthTester
             else
             {
                 (await sut.MoveAsync(navigationContext, forward)).Should().BeTrue();
-                ((ITestPauseNode)navigationContext.CurrentNode).Name.Should().Be(sceneName);
+                ((ITestPauseNode)navigationContext.CurrentNode!).Name.Should().Be(sceneName);
             }
         }
     }

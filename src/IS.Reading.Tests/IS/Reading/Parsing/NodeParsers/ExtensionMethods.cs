@@ -7,7 +7,7 @@ namespace IS.Reading.Parsing.NodeParsers;
 internal static class ExtensionMethods
 {
     public static IParentParsingContext GetParentContext(this IFakeObjectCall fakeObjectCall)
-        => fakeObjectCall.GetArgument<IParentParsingContext>(2);
+        => fakeObjectCall.GetArgument<IParentParsingContext>(2)!;
 
     public static BuilderParentParsingContext<string> GetTestContext(this IFakeObjectCall fakeObjectCall)
         => GetCtx<string>(fakeObjectCall);
@@ -19,5 +19,5 @@ internal static class ExtensionMethods
     => GetCtx<IChoiceOptionPrototype>(fakeObjectCall);
 
     private static BuilderParentParsingContext<T> GetCtx<T>(IFakeObjectCall fakeObjectCall)
-        => fakeObjectCall.GetArgument<BuilderParentParsingContext<T>>(2);
+        => fakeObjectCall.GetArgument<BuilderParentParsingContext<T>>(2)!;
 }

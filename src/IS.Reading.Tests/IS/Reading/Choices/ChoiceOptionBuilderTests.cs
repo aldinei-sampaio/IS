@@ -47,7 +47,7 @@ public class ChoiceOptionBuilderTests
     [Fact]
     public void ShouldIgnoreOptionsWithoutText()
     {
-        var builder1 = new TestBuilder(i => i.Text = null);
+        var builder1 = new TestBuilder(i => i.Text = null!);
         var builder2 = new TestBuilder(i => i.Text = string.Empty);
 
         var items = new[] { builder1, builder2 };
@@ -73,7 +73,7 @@ public class ChoiceOptionBuilderTests
             new TestBuilder(i => i.Tip = tip)
         };
 
-        IChoiceOption option = null;
+        IChoiceOption? option = null;
 
         var choicePrototype = A.Fake<IChoicePrototype>(i => i.Strict());
         A.CallTo(() => choicePrototype.Add(A<IChoiceOption>.Ignored))
@@ -98,7 +98,7 @@ public class ChoiceOptionBuilderTests
     {
         var items = new[] { new TestBuilder(i => i.Text = "abc") };
 
-        IChoiceOption option = null;
+        IChoiceOption? option = null;
 
         var choicePrototype = A.Fake<IChoicePrototype>(i => i.Strict());
         A.CallTo(() => choicePrototype.Add(A<IChoiceOption>.Ignored))
@@ -113,8 +113,8 @@ public class ChoiceOptionBuilderTests
             Key = key,
             Text = "abc",
             IsEnabled = true,
-            ImageName = (string)null,
-            Tip = (string)null
+            ImageName = (string?)null,
+            Tip = (string?)null
         });
     }
 

@@ -2,7 +2,7 @@
 
 public class VarSetTests
 {
-    public class TestData : TheoryData<string, object>
+    public class TestData : TheoryData<string, object?>
     {
         public TestData()
         {

@@ -72,14 +72,14 @@ public class StoryboardTests
         var moveResult = true;
 
         A.CallTo(() => navigationState.WaitingFor).Returns("alabama");
-        A.CallToSet(() => navigationState.WaitingFor).To((string)null).DoesNothing();
+        A.CallToSet(() => navigationState.WaitingFor).To((string?)null).DoesNothing();
         A.CallTo(() => sceneNavigator.MoveAsync(sut.NavigationContext, forward)).Returns(moveResult);
 
         var result = await sut.MoveAsync(forward);
         result.Should().Be(moveResult);
 
         A.CallTo(() => sceneNavigator.MoveAsync(sut.NavigationContext, forward)).MustHaveHappenedOnceExactly();
-        A.CallToSet(() => navigationState.WaitingFor).To((string)null).MustHaveHappenedOnceExactly();
+        A.CallToSet(() => navigationState.WaitingFor).To((string?)null).MustHaveHappenedOnceExactly();
     }
 
     [Fact]
@@ -104,11 +104,11 @@ public class StoryboardTests
         A.CallTo(() => navigationContext.Variables).Returns(variableDictionary);
         A.CallToSet(() => variableDictionary[variableName]).To(variableValue).DoesNothing();        
         A.CallTo(() => navigationState.WaitingFor).Returns(variableName);
-        A.CallToSet(() => navigationState.WaitingFor).To((string)null).DoesNothing();
+        A.CallToSet(() => navigationState.WaitingFor).To((string?)null).DoesNothing();
 
         sut.Input(variableValue);
 
         A.CallToSet(() => variableDictionary[variableName]).To(variableValue).MustHaveHappenedOnceExactly();
-        A.CallToSet(() => navigationState.WaitingFor).To((string)null).MustHaveHappenedOnceExactly();
+        A.CallToSet(() => navigationState.WaitingFor).To((string?)null).MustHaveHappenedOnceExactly();
     }
 }

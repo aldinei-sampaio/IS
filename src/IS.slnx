@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/Build/">
+    <File Path="Directory.Build.props" />
+  </Folder>
+  <Folder Name="/Domain/">
+    <Project Path="IS.Core/IS.Core.csproj" />
+    <Project Path="IS.Reading.IntegrationTests/IS.Reading.IntegrationTests.csproj" />
+    <Project Path="IS.Reading.Tests/IS.Reading.Tests.csproj" />
+    <Project Path="IS.Reading/IS.Reading.csproj" />
+  </Folder>
+  <Folder Name="/UI/">
+    <Project Path="IS.Blazor/Client/IS.Blazor.Client.csproj" />
+    <Project Path="IS.Blazor/Server/IS.Blazor.Server.csproj" />
+    <Project Path="IS.Blazor/Shared/IS.Blazor.Shared.csproj" />
+    <Project Path="IS.HtmlResearch/IS.HtmlResearch.csproj" />
+  </Folder>
+</Solution>

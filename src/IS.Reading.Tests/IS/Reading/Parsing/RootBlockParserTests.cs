@@ -36,7 +36,7 @@ public class RootBlockParserTests
     {
         var parsed = A.Dummy<INode>();
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, elementParserSettings))
-            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(parsed));
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2)!.AddNode(parsed));
 
         var result = await sut.ParseAsync(reader, context);
         result.Should().ContainSingle().Which.Should().BeSameAs(parsed);

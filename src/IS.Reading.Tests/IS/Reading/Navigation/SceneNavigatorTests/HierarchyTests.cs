@@ -8,9 +8,9 @@ public class HierarchyTests
         var navigationContext = A.Dummy<INavigationContext>();
 
         var blockNavigator = A.Fake<IBlockNavigator>(i => i.Strict());
-        A.CallTo(() => blockNavigator.MoveAsync(null, null, null, true))
+        A.CallTo(() => blockNavigator.MoveAsync(null!, null!, null!, true))
             .WithAnyArguments()
-            .Returns((INode)null);
+            .Returns((INode?)null);
 
         var sut = new SceneNavigator(blockNavigator);
 

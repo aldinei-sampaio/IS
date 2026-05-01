@@ -34,7 +34,7 @@ public class BetweenConditionTests
     [InlineData("2", 2, "5", false)]
     [InlineData(2, "2", 5, false)]
     [InlineData(2, "2", "5", false)]
-    public void Evaluate(object operandValue, object minValue, object maxValue, bool expectedResult)
+    public void Evaluate(object? operandValue, object? minValue, object? maxValue, bool expectedResult)
     {
         var variables = A.Dummy<IVariableDictionary>();
 

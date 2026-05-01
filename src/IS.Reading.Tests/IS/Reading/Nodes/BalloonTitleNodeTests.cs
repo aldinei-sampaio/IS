@@ -85,7 +85,7 @@ public class BalloonTitleNodeTests
     [Fact]
     public async Task ShouldNotRaiseEventWithStateArgNull()
     {
-        string newValue = null;
+        string? newValue = null;
 
         A.CallTo(() => state.Title).Returns("alpha");
         A.CallToSet(() => state.Title).To(newValue).DoesNothing();
@@ -118,7 +118,7 @@ public class BalloonTitleNodeTests
     public async Task ShouldNotRaiseEventWhenTextSourceIsNull()
     {
         var oldValue = "omega";
-        string newValue = null;
+        string? newValue = null;
 
         A.CallTo(() => state.Title).Returns(oldValue);
         A.CallToSet(() => state.Title).To(newValue).DoesNothing();

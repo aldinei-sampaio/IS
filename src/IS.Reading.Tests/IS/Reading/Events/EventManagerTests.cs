@@ -176,7 +176,7 @@ public class EventManagerTests
 
     public class TestEvent : IReadingEvent
     {
-        public string Name { get; init; }
+        public string Name { get; init; } = null!;
     }
 
     public class TestEvent1 : TestEvent

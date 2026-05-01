@@ -79,7 +79,7 @@ public class BackgroundNodeParserTests
         await sut.ParseAsync(reader, context, parentContext);
 
         parentContext.ShouldContainSingle<BlockNode>(i => {
-            i.ChildBlock.ShouldContain(
+            i.ChildBlock!.ShouldContain(
                 i => i.Should().BeOfType<BackgroundNode>().Which.ShouldSatisfy(j =>
                 {
                     j.Should().NotBeNull();
@@ -107,7 +107,7 @@ public class BackgroundNodeParserTests
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
             .Invokes(i =>
             {
-                var ctx = i.Arguments.Get<IParentParsingContext>(2);
+                var ctx = i.Arguments.Get<IParentParsingContext>(2)!;
                 ctx.AddNode(parsedNode);
             });
 
@@ -115,7 +115,7 @@ public class BackgroundNodeParserTests
 
         parentContext.Nodes.Should().ContainSingle()
             .Which.Should().BeOfType<BlockNode>()
-            .Which.ChildBlock.ShouldContainOnly(parsedNode);
+            .Which.ChildBlock!.ShouldContainOnly(parsedNode);
     }
 
     [Fact]
@@ -127,7 +127,7 @@ public class BackgroundNodeParserTests
         A.CallTo(() => context.RegisterDismissNode(sut.DismissNode)).DoesNothing();
         A.CallTo(() => context.IsSuccess).Returns(true);
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
-            .Invokes(i => i.GetArgument<IParentParsingContext>(2).AddNode(parsedNode));
+            .Invokes(i => i.GetArgument<IParentParsingContext>(2)!.AddNode(parsedNode));
 
         await sut.ParseAsync(reader, context, parentContext);
 
@@ -146,12 +146,12 @@ public class BackgroundNodeParserTests
 
         var parsedNode = A.Dummy<INode>();
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
-            .Invokes(i => i.GetArgument<IParentParsingContext>(2).AddNode(parsedNode));
+            .Invokes(i => i.GetArgument<IParentParsingContext>(2)!.AddNode(parsedNode));
 
         await sut.ParseAsync(reader, context, parentContext);
 
         parentContext.ShouldContainSingle<BlockNode>(i => {
-            i.ChildBlock.ShouldContain(
+            i.ChildBlock!.ShouldContain(
                 i => i.Should().BeOfType<BackgroundNode>().Which.ShouldSatisfy(j =>
                 {
                     j.Should().NotBeNull();

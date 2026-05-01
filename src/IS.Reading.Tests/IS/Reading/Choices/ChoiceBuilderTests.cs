@@ -92,6 +92,7 @@ public class ChoiceBuilderTests
         var sut = new ChoiceBuilder(key, new[] { builder1, builder2 });
 
         var result = sut.Build(navigationContext);
+        result.Should().NotBeNull();
         result.Options.Should().BeSameAs(shuffled);
 
         A.CallTo(() => randomizer.Shuffle(A<IEnumerable<IChoiceOption>>.Ignored)).MustHaveHappenedOnceExactly();

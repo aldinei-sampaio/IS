@@ -70,14 +70,14 @@ public class DialogNodeParserBaseTests
 
         A.CallTo(() => context.IsSuccess).Returns(true);
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
-            .Invokes(i => i.GetArgument<IParentParsingContext>(2).AddNode(pauseNode));
+            .Invokes(i => i.GetArgument<IParentParsingContext>(2)!.AddNode(pauseNode));
 
         await sut.ParseAsync(reader, context, parentContext);
 
         parentContext.ShouldContainSingle<BalloonNode>(i =>
         {
             i.BallonType.Should().Be(BalloonType.Speech);
-            i.ChildBlock.ShouldContainOnly(pauseNode);
+            i.ChildBlock!.ShouldContainOnly(pauseNode);
         });
     }
 
@@ -91,7 +91,7 @@ public class DialogNodeParserBaseTests
         A.CallTo(() => context.IsSuccess).Returns(true);
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
             .Invokes(i => {
-                var parentContext = i.GetArgument<IParentParsingContext>(2);
+                var parentContext = i.GetArgument<IParentParsingContext>(2)!;
                 parentContext.AddNode(pauseNode1);
                 parentContext.AddNode(pauseNode2);
                 parentContext.AddNode(pauseNode3);
@@ -102,7 +102,7 @@ public class DialogNodeParserBaseTests
         parentContext.ShouldContainSingle<BalloonNode>(i =>
         {
             i.BallonType.Should().Be(BalloonType.Speech);
-            i.ChildBlock.ShouldBeEquivalentTo(pauseNode1, pauseNode2, pauseNode3);
+            i.ChildBlock!.ShouldBeEquivalentTo(pauseNode1, pauseNode2, pauseNode3);
         });
     }
 
@@ -119,7 +119,7 @@ public class DialogNodeParserBaseTests
         A.CallTo(() => context.IsSuccess).Returns(true);
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
             .Invokes(i => {
-                var parentContext = i.GetArgument<IParentParsingContext>(2);
+                var parentContext = i.GetArgument<IParentParsingContext>(2)!;
                 parentContext.AddNode(pauseNode1);
                 parentContext.AddNode(nonPauseNode1);
                 parentContext.AddNode(nonPauseNode2);
@@ -133,8 +133,8 @@ public class DialogNodeParserBaseTests
         parentContext.ShouldContainSingle<BalloonNode>(i =>
         {
             i.BallonType.Should().Be(BalloonType.Speech);
-            i.ChildBlock.ShouldBeEquivalentTo(
-                pauseNode1, 
+            i.ChildBlock!.ShouldBeEquivalentTo(
+                pauseNode1,
                 nonPauseNode1,
                 nonPauseNode2,
                 pauseNode2, 
@@ -157,7 +157,7 @@ public class DialogNodeParserBaseTests
         A.CallTo(() => context.IsSuccess).Returns(true);
         A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings))
             .Invokes(i => {
-                var parentContext = i.GetArgument<IParentParsingContext>(2);
+                var parentContext = i.GetArgument<IParentParsingContext>(2)!;
                 parentContext.AddNode(pauseNode1);
                 parentContext.AddNode(pauseNode2);
                 parentContext.AddNode(nonPauseNode1);
@@ -172,7 +172,7 @@ public class DialogNodeParserBaseTests
             i => i.Should().BeOfType<BalloonNode>().Which.ShouldSatisfy(i =>
             {
                 i.BallonType.Should().Be(BalloonType.Speech);
-                i.ChildBlock.ShouldBeEquivalentTo(pauseNode1, pauseNode2, nonPauseNode1, pauseNode3);
+                i.ChildBlock!.ShouldBeEquivalentTo(pauseNode1, pauseNode2, nonPauseNode1, pauseNode3);
             }, "Nodes[0]"),
             i => i.Should().BeSameAs(nonPauseNode2),
             i => i.Should().BeSameAs(nonPauseNode3)

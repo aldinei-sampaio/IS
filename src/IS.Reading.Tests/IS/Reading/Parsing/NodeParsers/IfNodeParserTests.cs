@@ -33,10 +33,10 @@ public class IfNodeParserTests
         blockFactory = A.Fake<IBlockFactory>(i => i.Strict());
         A.CallTo(() => blockFactory.Create(A<IReadOnlyList<INode>>.Ignored)).ReturnsLazily(i =>
         {
-            var nodes = i.GetArgument<IReadOnlyList<INode>>(0);
+            var nodes = i.GetArgument<IReadOnlyList<INode>>(0)!;
             var block = A.Dummy<IBlock>();
             A.CallTo(() => block.Nodes).Returns(nodes);
-            A.CallTo(() => block.While).Returns(null);
+            A.CallTo(() => block.While).Returns((ICondition?)null);
             return block;
         });
         A.CallTo(() => parsingContext.BlockFactory).Returns(blockFactory);
@@ -340,7 +340,7 @@ public class IfNodeParserTests
 
         var ifBlockNode = A.Dummy<INode>();
         A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, ifSettings))
-            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(ifBlockNode));
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2)!.AddNode(ifBlockNode));
 
         await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
 

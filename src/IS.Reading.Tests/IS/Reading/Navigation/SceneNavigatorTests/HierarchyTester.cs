@@ -30,31 +30,31 @@ public class HierarchyTester
         return block;
     }
 
-    public void ConfigureMove(bool forward, params INode[] nodes)
+    public void ConfigureMove(bool forward, params INode?[] nodes)
         => ConfigureMove(forward, RootBlock, nodes);
 
-    private void ConfigureMove(bool forward, IBlock block, params INode[] nodes)
+    private void ConfigureMove(bool forward, IBlock block, params INode?[] nodes)
     {
         if (nodes is null)
-            nodes = new INode[] { null };
+            nodes = new INode?[] { null };
 
         A.CallTo(() => blockNavigator.MoveAsync(block, A<IBlockState>.Ignored, navigationContext, forward))
             .ReturnsNextFromSequence(nodes);
     }
 
-    public async Task MoveAsync(bool forward, INode node)
+    public async Task MoveAsync(bool forward, INode? node)
     {
         (await sut.MoveAsync(navigationContext, forward)).Should().Be(node is not null);
         navigationContext.CurrentNode.Should().BeSameAs(node);
     }
 
-    public static INode CreateNode(string name, IBlock childBlock = null)
+    public static INode CreateNode(string name, IBlock? childBlock = null)
         => CreateNode<INode>(name, childBlock);
 
     public static IPauseNode CreatePauseNode(string name)
         => CreateNode<IPauseNode>(name, null);
 
-    private static T CreateNode<T>(string name, IBlock childBlock = null) where T : class, INode
+    private static T CreateNode<T>(string name, IBlock? childBlock = null) where T : class, INode
     {
         var node = A.Fake<T>(i => i.Strict());
         A.CallTo(() => node.ChildBlock).Returns(childBlock);
@@ -78,7 +78,7 @@ public class HierarchyTester
             this.block = block;
         }
 
-        public void MustReturn(params INode[] nodes)
+        public void MustReturn(params INode?[] nodes)
             => tester.ConfigureMove(forward, block, nodes);
     }
 }

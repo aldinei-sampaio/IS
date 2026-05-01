@@ -7,7 +7,7 @@ public class InConditionTests
     [Theory]
     [InlineData(false, null, 1)]
     [InlineData(false, null, 1, 2)]
-    [InlineData(true, null, new object[] { null })]
+    [InlineData(true, null, new object?[] { null })]
     [InlineData(true, null, 1, null)]
     [InlineData(true, 1, 1)]
     [InlineData(true, 2, 1, 2)]

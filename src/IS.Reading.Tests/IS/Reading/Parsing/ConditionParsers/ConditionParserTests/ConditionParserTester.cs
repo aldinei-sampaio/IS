@@ -4,8 +4,8 @@ namespace IS.Reading.Parsing.ConditionParsers.ConditionParserTests;
 
 internal class ConditionParserTester : IWordReader
 {
-    public List<WordType> WordTypes { get; set; }
-    public List<string> Words { get; set; }
+    public List<WordType> WordTypes { get; set; } = null!;
+    public List<string> Words { get; set; } = null!;
 
     private int current = -1;
 

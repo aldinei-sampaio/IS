@@ -187,7 +187,7 @@ public class WordReaderTests
         NextWord(sut, WordType.Variable);
     }
 
-    private static void NextWord(WordReader sut, WordType wordType, string word = null)
+    private static void NextWord(WordReader sut, WordType wordType, string? word = null)
     {
         sut.Read().Should().BeTrue();
         sut.WordType.Should().Be(wordType);

@@ -83,13 +83,13 @@ public class QueueTests
         blockIterationState.BackwardStack.Count.Should().Be(0);
     }
 
-    private async Task TestPreviousAsync(INode node)
+    private async Task TestPreviousAsync(INode? node)
     {
         await sut.MoveAsync(block, blockState, context, false);
         blockIterationState.CurrentNode.Should().BeSameAs(node);
     }
 
-    private async Task TestNextAsync(INode node)
+    private async Task TestNextAsync(INode? node)
     {
         await sut.MoveAsync(block, blockState, context, true);
         blockIterationState.CurrentNode.Should().BeSameAs(node);
@@ -98,11 +98,11 @@ public class QueueTests
     private static INode FakeNode(INavigationContext context, string name)
     {
         var node = A.Fake<INode>(i => i.Strict());
-        A.CallTo(() => node.EnterAsync(context)).Returns(Task.FromResult<object>(null));
+        A.CallTo(() => node.EnterAsync(context)).Returns(Task.FromResult<object?>(null));
         A.CallTo(() => node.EnterAsync(context, null)).DoesNothing();
         A.CallTo(() => node.LeaveAsync(context)).DoesNothing();
         A.CallTo(() => node.ToString()).Returns(name);
-        A.CallTo(() => node.ChildBlock).Returns(null);
+        A.CallTo(() => node.ChildBlock).Returns((IBlock?)null);
         return node;
     }
 }

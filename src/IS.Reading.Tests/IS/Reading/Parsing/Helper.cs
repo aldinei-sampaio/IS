@@ -10,7 +10,7 @@ public static class Helper
         return parser;
     }
 
-    public static T FakeParser<T>(string name, string nameRegex = null) where T : class, IParser
+    public static T FakeParser<T>(string name, string? nameRegex = null) where T : class, IParser
     {
         var parser = A.Fake<T>();
         A.CallTo(() => parser.Name).Returns(name);

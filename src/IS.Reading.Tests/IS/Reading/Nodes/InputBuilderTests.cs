@@ -53,11 +53,11 @@ public class InputBuilderTests
         @event.Should().BeEquivalentTo(new
         {
             Key = key,
-            Title = (string)null,
-            Text = (string)null,
+            Title = (string?)null,
+            Text = (string?)null,
             MaxLength = InputBuilder.MaxLenghtDefaultValue,
-            Confirmation = (string)null,
-            DefaultValue = (string)null
+            Confirmation = (string?)null,
+            DefaultValue = (string?)null
         });
     }
 

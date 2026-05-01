@@ -28,10 +28,10 @@ public class WhileNodeParserTests
         documentReader = A.Fake<IDocumentReader>(i => i.Strict());
         parsingContext = A.Fake<IParsingContext>(i => i.Strict());
         blockFactory = A.Fake<IBlockFactory>(i => i.Strict());
-        A.CallTo(() => blockFactory.Create(A<IReadOnlyList<INode>>.Ignored, A<ICondition>.Ignored)).ReturnsLazily(i =>
+        A.CallTo(() => blockFactory.Create(A<IReadOnlyList<INode>>.Ignored, A<ICondition?>.Ignored)).ReturnsLazily(i =>
         {
-            var nodes = i.GetArgument<IReadOnlyList<INode>>(0);
-            var condition = i.GetArgument<ICondition>(1);
+            var nodes = i.GetArgument<IReadOnlyList<INode>>(0)!;
+            var condition = i.GetArgument<ICondition?>(1);
             var block = A.Dummy<IBlock>();
             A.CallTo(() => block.Nodes).Returns(nodes);
             A.CallTo(() => block.While).Returns(condition);
@@ -103,13 +103,13 @@ public class WhileNodeParserTests
 
         var blockNode = A.Dummy<INode>();
         A.CallTo(() => elementParser.ParseAsync(documentReader, parsingContext, A<IParentParsingContext>.Ignored, elementParserSettings))
-            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2).AddNode(blockNode));
+            .Invokes(i => i.Arguments.Get<IParentParsingContext>(2)!.AddNode(blockNode));
 
         await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
 
         parentParsingContext.ShouldContainSingle<BlockNode>(i =>
         {
-            i.ChildBlock.While.Should().BeSameAs(condition);
+            i.ChildBlock!.While.Should().BeSameAs(condition);
             i.ChildBlock.ShouldContainOnly(blockNode);
         });
     }

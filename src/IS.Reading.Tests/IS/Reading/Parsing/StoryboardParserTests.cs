@@ -28,7 +28,7 @@ public class StoryboardParserTests
         dismissNodes = new();
         parsingContext = A.Fake<IParsingContext>(i => i.Strict());
         A.CallTo(() => parsingContext.RegisterDismissNode(A<INode>.Ignored))
-            .Invokes(i => dismissNodes.Add(i.Arguments.Get<INode>(0)));
+            .Invokes(i => dismissNodes.Add(i.Arguments.Get<INode>(0)!));
         A.CallTo(() => parsingContext.BlockFactory).Returns(blockFactory);
 
         rootBlockParser = A.Fake<IRootBlockParser>(i => i.Strict());

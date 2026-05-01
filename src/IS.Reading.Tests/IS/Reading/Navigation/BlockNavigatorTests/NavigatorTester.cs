@@ -31,7 +31,7 @@ public class NavigatorTester
         log.Clear();
     }
 
-    public async Task MoveAsync(bool forward, params string[] expectedNames)
+    public async Task MoveAsync(bool forward, params string?[] expectedNames)
     {
         if (expectedNames == null)
             await DoMoveAsync(forward, null);
@@ -40,9 +40,9 @@ public class NavigatorTester
                 await DoMoveAsync(forward, name);
     }
 
-    private async Task DoMoveAsync(bool forward, string expectedName)
+    private async Task DoMoveAsync(bool forward, string? expectedName)
     {
-        var item = (FakeNode)await Navigator.MoveAsync(Block, BlockState, Context, forward);
+        var item = (FakeNode?)await Navigator.MoveAsync(Block, BlockState, Context, forward);
         item?.LastEnteredName.Should().Be(expectedName);
         BlockState.GetCurrentIteration().CurrentNode.Should().BeSameAs(item);
     }

@@ -7,7 +7,7 @@ public class NotInConditionTests
     [Theory]
     [InlineData(true, null, 1)]
     [InlineData(true, null, 1, 2)]
-    [InlineData(false, null, new object[] { null })]
+    [InlineData(false, null, new object?[] { null })]
     [InlineData(false, null, 1, null)]
     [InlineData(false, 1, 1)]
     [InlineData(false, 2, 1, 2)]

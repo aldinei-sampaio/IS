@@ -16,7 +16,7 @@ public class FakeBlockFactory : IBlockFactory
     public IBlock Create(INode node1, INode node2)
         => Create(new List<INode> { node1, node2 });
 
-    public IBlock Create(IReadOnlyList<INode> nodes, ICondition @while)
+    public IBlock Create(IReadOnlyList<INode> nodes, ICondition? @while)
     {
         var block = A.Dummy<IBlock>();
         A.CallTo(() => block.Nodes).Returns(nodes);
