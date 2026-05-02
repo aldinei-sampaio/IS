@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(dotnet build *)",
-      "Bash(Select-String -Pattern \"warning\")"
+      "Bash(Select-String -Pattern \"warning\")",
+      "Bash(dotnet clean *)"
     ]
   }
 }

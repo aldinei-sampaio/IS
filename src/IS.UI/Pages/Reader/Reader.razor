@@ -1,6 +1,6 @@
 ﻿@page "/book/{name}/read"
 @inject IAssetManager assetManager
-@implements IDisposable
+@* @implements IDisposable
 @using IS.Reading
 @using IS.Reading.Parsers
 @using IS.UI.Pages.Reader
@@ -51,3 +51,4 @@ else
         storyboard.Context.Background.OnChange -= OnBackgroundChange;
     }
 }
+ *@

@@ -18,13 +18,13 @@ namespace IS.UI.Services
         }
 
         public async Task<IReadOnlyList<BookModel>> GetBooksAsync()
-            => await httpClient.GetFromJsonAsync<BookModel[]>($"data/books/books.json?{DateTime.Now:yyyyMMddHHmmss}");
+            => (await httpClient.GetFromJsonAsync<BookModel[]>($"data/books/books.json?{DateTime.Now:yyyyMMddHHmmss}"))!;
 
         public string GetBookCoverUrl(string bookName)
             => $"data/books/{bookName}/cover.jpg";
 
         public async Task<BookModel> GetBookAsync(string name)
-            => await httpClient.GetFromJsonAsync<BookModel>($"data/books/{name}/book.json?{DateTime.Now:yyyyMMddHHmmss}");
+            => (await httpClient.GetFromJsonAsync<BookModel>($"data/books/{name}/book.json?{DateTime.Now:yyyyMMddHHmmss}"))!;
 
         public async Task<string> GetChapterDataAsync(string name, int chapter)
             => await (await httpClient.GetAsync($"/data/books/{name}/{chapter:000}/sc01.xml?{DateTime.Now:yyyyMMddHHmmss}")).Content.ReadAsStringAsync();

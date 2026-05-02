@@ -1,12 +1,7 @@
-packages
 .vs
+.claude
+.vscode
 *.user
-*.vbw
 *.obj
-*.log
-*.exp
-*.lib
-*.tmp
 bin
 obj
-_framework

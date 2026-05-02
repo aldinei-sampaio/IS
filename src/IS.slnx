@@ -8,6 +8,9 @@
     <Project Path="IS.Reading.Tests/IS.Reading.Tests.csproj" />
     <Project Path="IS.Reading/IS.Reading.csproj" />
   </Folder>
+  <Folder Name="/Legacy/">
+    <Project Path="IS.UI/IS.UI.csproj" />
+  </Folder>
   <Folder Name="/UI/">
     <Project Path="IS.Blazor/Client/IS.Blazor.Client.csproj" />
     <Project Path="IS.Blazor/Server/IS.Blazor.Server.csproj" />
