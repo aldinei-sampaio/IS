@@ -30,7 +30,7 @@ jobs:
       - name: Deploy to GitHub Pages repo
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.PUBLISH_TOKEN }}
+          personal_token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
           external_repository: aldinei-sampaio/aldinei-sampaio.github.io
           publish_branch: main
           publish_dir: src/IS.App/bin/Release/net10.0/publish/wwwroot
