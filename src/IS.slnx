@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/doc/">
+    <File Path="../doc/CODE_PREFERENCES.md" />
+    <File Path="../doc/PROJECT_DESCRIPTION.md" />
+  </Folder>
+  <Project Path="IS.App/IS.App.csproj" />
+  <Project Path="IS.Reading.Tests/IS.Reading.Tests.csproj" />
+  <Project Path="IS.Reading/IS.Reading.csproj" />
+</Solution>

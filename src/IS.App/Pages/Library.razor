@@ -1,0 +1,35 @@
+@page "/"
+
+<div class="library">
+    <header class="library-header">
+        <img src="assets/logo.png" alt="Contos Interativos" class="library-logo" />
+    </header>
+
+    <div class="library-content">
+        @if (categories == null)
+        {
+            <div class="library-loading">Carregando...</div>
+        }
+        else
+        {
+            @foreach (var category in categories)
+            {
+                var categoryBooks = GetBooksByCategory(category.Id);
+                if (categoryBooks.Any())
+                {
+                    <section class="category-section">
+                        <h2 class="category-title">@category.Title</h2>
+                        <div class="book-row">
+                            @foreach (var book in categoryBooks)
+                            {
+                                <BookCard Book="@book"
+                                          ThumbnailUrl="@AssetManager.GetBookThumbnailUrl(book.Name)"
+                                          OnSelected="OnBookSelected" />
+                            }
+                        </div>
+                    </section>
+                }
+            }
+        }
+    </div>
+</div>

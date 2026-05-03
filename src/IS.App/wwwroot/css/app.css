@@ -1,0 +1,108 @@
+/* Estilos base — mobile-first, retrato */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000;
+    font-family: 'Segoe UI', sans-serif;
+    color: #f0f0f0;
+}
+
+#app {
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    background-color: #000;
+}
+
+/* Tela de carregamento do Blazor */
+.app-loading {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+/* Mesma altura da logo no cabeçalho da biblioteca (7.5rem) */
+.app-loading-logo {
+    height: 7.5rem;
+    object-fit: contain;
+}
+
+.loading-progress {
+    position: relative;
+    display: block;
+    fill: none;
+    stroke: #c0392b;
+    stroke-width: 0.35rem;
+    width: 5rem;
+    height: 5rem;
+}
+
+.loading-progress circle:last-child {
+    stroke-dasharray: calc(3.141592653589793 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
+    transition: stroke-dasharray 0.05s ease-in-out;
+}
+
+.loading-progress-text {
+    text-align: center;
+    color: #aaa;
+    margin-top: -1rem;
+}
+
+.loading-progress-text::after {
+    content: var(--blazor-load-percentage-text, 'Carregando...');
+}
+
+/* Overlay de aviso de rotação — oculto por padrão, visível em modo paisagem em celulares */
+#rotate-warning {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: #000;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.1rem;
+    z-index: 9999;
+}
+
+@media screen and (orientation: landscape) and (max-height: 500px) {
+    #rotate-warning {
+        display: flex;
+    }
+}
+
+/* Erro do Blazor */
+#blazor-error-ui {
+    background: #fff3cd;
+    color: #333;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}

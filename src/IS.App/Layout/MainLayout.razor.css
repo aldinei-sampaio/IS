@@ -1,0 +1,8 @@
+/* Área visível: proporção 1:2 (largura:altura) em desktop, tela cheia em mobile */
+.viewport {
+    width: min(100vw, 50dvh);
+    height: 100dvh;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+}

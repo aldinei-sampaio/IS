@@ -1,0 +1,17 @@
+[
+  {
+    "id": "enchanted_valley",
+    "title": "O Vale Encantado",
+    "categories": [ "short_story", "other" ]
+  },
+  {
+    "id": "background_test",
+    "title": "Testes com Background",
+    "categories": [ "test" ]
+  },
+  {
+    "id": "test2",
+    "title": "Teste",
+    "categories": [ "test", "other" ]
+  }
+]
