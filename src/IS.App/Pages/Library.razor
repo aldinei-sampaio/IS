@@ -23,7 +23,7 @@
                             @foreach (var book in categoryBooks)
                             {
                                 <BookCard Book="@book"
-                                          ThumbnailUrl="@AssetManager.GetBookThumbnailUrl(book.Name)"
+                                          ThumbnailUrl="@AssetManager.GetBookThumbnailUrl(book.Id)"
                                           OnSelected="OnBookSelected" />
                             }
                         </div>

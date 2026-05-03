@@ -1,0 +1,55 @@
+@page "/book/{Name}"
+
+@if (details == null)
+{
+    <div class="details-loading"></div>
+}
+else
+{
+    <div class="book-details" style="background-image: url('@coverUrl')">
+
+        <header class="details-header">
+            <button class="btn-icon" @onclick="Close" title="Voltar à biblioteca">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+            <button class="btn-icon" @onclick="ToggleMusic" title="@(isMusicEnabled ? "Desativar música" : "Ativar música")">
+                @if (isMusicEnabled)
+                {
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                    </svg>
+                }
+                else
+                {
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                        <line x1="23" y1="9" x2="17" y2="15" />
+                        <line x1="17" y1="9" x2="23" y2="15" />
+                    </svg>
+                }
+            </button>
+        </header>
+
+        <div class="details-info">
+            <h1 class="details-title">@details.Title</h1>
+            <p class="details-synopsis">@details.Synopsis</p>
+            <div class="details-tags">
+                @foreach (var tag in details.Tags)
+                {
+                    <span class="tag">@tag</span>
+                }
+            </div>
+            <p class="details-meta">
+                @details.ReleasedChapters capítulo@(details.ReleasedChapters != 1 ? "s" : "") &middot;
+                @(details.FullReleased ? "Publicação concluída" : "Publicação semanal")
+            </p>
+            <button class="btn-start" @onclick="StartReading">Iniciar leitura</button>
+        </div>
+
+    </div>
+}

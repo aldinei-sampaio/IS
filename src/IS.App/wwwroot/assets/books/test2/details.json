@@ -1,5 +1,6 @@
 {
-  "synopsis": "Este livro é apenas para teste da biblioteca.",
+  "title": "Teste",
+  "synopsis": "Este livro é apenas para teste da biblioteca. Esta sinopse foi propositalmente criada com um texto exageradamente grande para que possa ser testado como fica o mecanismo de salto de linha da biblioteca do aplicativo.",
   "tags": [ "Teste", "Sem História" ],
   "releasedChapters": 1,
   "fullReleased": true

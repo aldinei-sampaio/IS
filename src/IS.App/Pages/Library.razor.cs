@@ -9,6 +9,9 @@ public partial class Library
     [Inject]
     private IAssetManager AssetManager { get; set; } = default!;
 
+    [Inject]
+    private NavigationManager Navigation { get; set; } = default!;
+
     private IReadOnlyList<CategoryModel>? categories;
     private IReadOnlyList<BookModel>? books;
 
@@ -25,7 +28,5 @@ public partial class Library
         => books?.Where(b => b.Categories.Contains(categoryId)) ?? [];
 
     private void OnBookSelected(BookModel book)
-    {
-        // Navegar para detalhes do livro (a implementar)
-    }
+        => Navigation.NavigateTo($"/book/{book.Id}");
 }
