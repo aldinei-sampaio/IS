@@ -23,6 +23,8 @@ Tem as seguintes funcionalidades:
 
 Ao iniciar a biblioteca, caso a última sessão tenha encerrado no meio da leitura de um livro (ex: o usuário fechou o navegador com a aplicação no modo leitor), o sistema deve automaticamente abrir os detalhes do livro, de forma que ele possa retomar a leitura rapidamente.
 
+Não haverá música ou efeitos sonoros na biblioteca.
+
 ## Leitor
 
 O leitor é a UI mais complexa da aplicação, que deve apresentar a história do livro como se fosse uma história em quadrinhos, com balões de narrativa, pensamento e diálogo. Ao apresentar um balão de fala, o leitor deve apresentar tanbém a imagem e o nome do personagem que está falando. A imagem do personagem pode ter diversas variantes, com diferentes expressões faciais (normal, surpreso, triste, alegre e com raiva).
@@ -30,6 +32,8 @@ O leitor é a UI mais complexa da aplicação, que deve apresentar a história d
 Durante a leitura, existe sempre um personagem que é considerado o protagonista, cujo nome e imagem que devem aparecer do lado esquerdo da tela. Os demais personagens devem ser exibidos do lado direito, gerando uma clara diferenciação que facilita identificar o protagonista. O protagonista pode mudar durante a história, então ele não será sempre o mesmo.
 
 Em certas partes da história o usuário terá a oportunidade de escolher o que o protagonista irá dizer ou fazer. Essas escolhas poderão levar o usuário a ganhar troféus, que representam façanhas que o usuário conseguiu realizar graças às suas escolhas. O leitor deve permitir visualizar a lista de troféus adquiridos no capítulo atual. O usuário não perde os troféus adquiridos caso o progresso do capítulo ou mesmo do livro inteiro seja reiniciado.
+
+De acordo com o que estiver definido no storyboard do livro, o leitor deverá tocar certas faixas de música durante a leitura. O usuário deverá ter opção para ativar ou desativar a música de acordo com sua preferência. O storyboard irá determinar qual faixa deve ser tocada e em qual momento.
 
 Ao terminar um capítulo, a aplicação deve exibir novamente os detalhes do livro. O usuário então poderá usar a opção de continuar a leitura para ler o próimo capítulo.
 
@@ -91,15 +95,23 @@ Um ícone de troféu, transparente, que deve aparecer na parte superior direita 
 
 Se o usuário tocar nesse botão, o leitor deve exibir um diálogo mostrando a lista de troféus adquirida pelo usuário no capítulo atual, bem como os que ele não adquiriu ainda. Para os troféis não adquiridos, o nome e a descrição devem mostrar pontos de interrogação (ex: ??????)
 
+### Botão Música
+
+Um ícone transparente para permitir ativar ou desativar a música
+
 ### Botão "clique aqui"
 
 Um ícone que deve aparecer na parte inferior da tela quando tem algum balão aberto (mas sem opções) por mais do que 5 segundos. Serve para indicar ao usuário que a aplicação está aguardando ele tocar em qualquer parte da tela para continuar a história.
+
+### Entrada de texto
+
+Em certas situações (como sempre, isso é controlado pelo storyboard) será necessário abrir um pequeno diálogo para que o usuário possa digitar algum texto. Isso será usado para renomar um personagem ou para solicitar alguma informação necessária para prosseguir na história. O diálogo deverá exibir uma mensagem e um input, e poderá ter validação REGEX ou por quantidade de caracteres (o diálogo precisará ser capaz de exibir uma pequena mensagem de erro). Ao informar um texto e pressionar ENTER, o diálogo será fechado e a história prosseguirá seu curso normal, sendo que o storyboard irá decidir o que fazer com o texto que o usuário informou.
 
 ## Sobre a UI
 
 A UI deve ser projetada primariamente para ser acessada por dispositivos móveis, como smartphones. A área de visão deve se adequar aos tamanhos de tela mais comuns nesse tipo de dispositivo, sempre no padrão retrato (o recurso de rotacionamento de tela, comum do dispositivo, deve ser desativado, se possível) sendo que para dispositivos com tela mais larga, a proporção deve ser mantida incluindo um fundo escuro à esquerda e à direita da área de visão, de forma que fique centralizada.
 
-## Estrutura
+## Estrutura dos arquivos de recurso
 
 Sobre os livros a exibir na biblioteca, os dados ficarão em arquivos estáticos na pasta /assets/books:
 - categories.json: lista das categorias que devem aparecer da biblioteca
@@ -111,11 +123,12 @@ A pasta /assets/books terá uma subpasta para cada livro disponível no books.js
 - details.json: detalhes estáticos sobre o livro (sinopse, quantidade de capítulos publicados, se o livro já foi totalmente publicado ou se ainda serão lançados mais capítulos, etc)
 - trophies.json: a lista de todos os troféus de cada capítulo do livro
 
-A pasta do livro terá uma subpasta chamada "chapters", que conterá arquivos com os dados de cada capítulo individual. O nome dos arquivos deverá ser o número do capítulo com extensão .stbasic.
-
-O .stbasic é um arquivo texto contendo comandos na liguagem "Storybasic", que foi projetada exclusivamente para esta aplicação. Um dos módulos da aplicação é um parser para arquivos Storybasic.
-
-Arquivos referenciados no storyboard, como imagens, ficarão disponíveis numa subpasta chamada "assets" dentro da pasta do livro.
+A pasta do livro terá as seguintes subpastas:
+- chapters: conterá arquivos com o storyboard de cada capítulo individual. O nome dos arquivos deverá ser o número do capítulo com extensão .stbasic. O .stbasic é um arquivo texto contendo comandos na liguagem "Storybasic", que foi projetada exclusivamente para esta aplicação. Um dos módulos da aplicação é um parser para arquivos Storybasic.
+- char: imagens de personagens
+- window: imagens de janela
+- background: imagens de fundo
+- music: arquivos de música (mp3)
 
 ## Stack
 
