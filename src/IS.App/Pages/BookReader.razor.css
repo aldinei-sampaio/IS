@@ -1,0 +1,27 @@
+.book-reader {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.reader-overlay {
+    background-color: rgba(0, 0, 0, 0.65);
+    padding: 1.25rem 1.5rem;
+    border-radius: 0.75rem;
+    text-align: center;
+    max-width: 80%;
+}
+
+.reader-status {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.5;
+}

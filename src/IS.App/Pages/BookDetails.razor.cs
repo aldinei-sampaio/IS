@@ -30,8 +30,5 @@ public partial class BookDetails
 
     private void ToggleMusic() => isMusicEnabled = !isMusicEnabled;
 
-    private void StartReading()
-    {
-        // Iniciar leitura (a implementar)
-    }
+    private void StartReading() => Navigation.NavigateTo($"/book/{Name}/read/1");
 }

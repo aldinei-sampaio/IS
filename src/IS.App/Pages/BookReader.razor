@@ -1,0 +1,7 @@
+@page "/book/{BookId}/read/{Chapter:int}"
+
+<div class="book-reader" style="background-image: url('@coverUrl')" @onclick="Exit">
+    <div class="reader-overlay">
+        <p class="reader-status">@statusMessage</p>
+    </div>
+</div>
