@@ -39,4 +39,22 @@ public sealed class EventManager : IEventManager
 
     public void Subscribe(Func<IReadingEvent, Task> handler)
         => allSubscriptions.Add(handler);
+
+    public void Unsubscribe<T>(Func<T, Task> handler) where T : IReadingEvent
+    {
+        lock (individualSubscriptions)
+        {
+            if (!individualSubscriptions.TryGetValue(typeof(T), out var list) || !list.Remove(handler))
+                throw new EventHandlerNotFoundException();
+
+            if (list.Count == 0)
+                individualSubscriptions.Remove(typeof(T));
+        }
+    }
+
+    public void Unsubscribe(Func<IReadingEvent, Task> handler)
+    {
+        if (!allSubscriptions.Remove(handler))
+            throw new EventHandlerNotFoundException();
+    }
 }

@@ -154,6 +154,124 @@ public class EventManagerTests
         sut.SubscriptionCount.Should().Be(0);
     }
 
+    [Fact]
+    public async Task UnsubscribeTyped_ShouldPreventHandlerFromBeingInvoked()
+    {
+        var helper = new TestHelper();
+        Func<TestEvent1, Task> handler = i => helper.HandleAsync(i);
+
+        var sut = new EventManager();
+        sut.Subscribe(handler);
+        await sut.InvokeAsync(new TestEvent1 { Name = "antes" });
+        helper.Check("TestEvent1:antes ");
+
+        sut.Unsubscribe(handler);
+        await sut.InvokeAsync(new TestEvent1 { Name = "depois" });
+        helper.Check("TestEvent1:antes ");
+    }
+
+    [Fact]
+    public async Task UnsubscribeTyped_ShouldRemoveOnlyTheSpecifiedHandler()
+    {
+        var helper1 = new TestHelper();
+        var helper2 = new TestHelper();
+        Func<TestEvent1, Task> handler1 = i => helper1.HandleAsync(i);
+        Func<TestEvent1, Task> handler2 = i => helper2.HandleAsync(i);
+
+        var sut = new EventManager();
+        sut.Subscribe(handler1);
+        sut.Subscribe(handler2);
+
+        sut.Unsubscribe(handler1);
+        await sut.InvokeAsync(new TestEvent1 { Name = "e1" });
+
+        helper1.Check("");
+        helper2.Check("TestEvent1:e1 ");
+    }
+
+    [Fact]
+    public void UnsubscribeTyped_HandlerNotFound_ShouldThrow()
+    {
+        var sut = new EventManager();
+        Func<TestEvent1, Task> handler = _ => Task.CompletedTask;
+
+        var act = () => sut.Unsubscribe(handler);
+
+        act.Should().Throw<EventHandlerNotFoundException>();
+    }
+
+    [Fact]
+    public void UnsubscribeTyped_AfterAlreadyUnsubscribed_ShouldThrow()
+    {
+        var sut = new EventManager();
+        Func<TestEvent1, Task> handler = _ => Task.CompletedTask;
+        sut.Subscribe(handler);
+        sut.Unsubscribe(handler);
+
+        var act = () => sut.Unsubscribe(handler);
+
+        act.Should().Throw<EventHandlerNotFoundException>();
+    }
+
+    [Fact]
+    public async Task UnsubscribeAll_ShouldPreventHandlerFromBeingInvoked()
+    {
+        var helper = new TestHelper();
+        Func<IReadingEvent, Task> handler = i => helper.HandleAsync(i);
+
+        var sut = new EventManager();
+        sut.Subscribe(handler);
+        await sut.InvokeAsync(new TestEvent1 { Name = "antes" });
+        helper.Check("TestEvent1:antes ");
+
+        sut.Unsubscribe(handler);
+        await sut.InvokeAsync(new TestEvent1 { Name = "depois" });
+        helper.Check("TestEvent1:antes ");
+    }
+
+    [Fact]
+    public async Task UnsubscribeAll_ShouldRemoveOnlyTheSpecifiedHandler()
+    {
+        var helper1 = new TestHelper();
+        var helper2 = new TestHelper();
+        Func<IReadingEvent, Task> handler1 = i => helper1.HandleAsync(i);
+        Func<IReadingEvent, Task> handler2 = i => helper2.HandleAsync(i);
+
+        var sut = new EventManager();
+        sut.Subscribe(handler1);
+        sut.Subscribe(handler2);
+
+        sut.Unsubscribe(handler1);
+        await sut.InvokeAsync(new TestEvent1 { Name = "e1" });
+
+        helper1.Check("");
+        helper2.Check("TestEvent1:e1 ");
+    }
+
+    [Fact]
+    public void UnsubscribeAll_HandlerNotFound_ShouldThrow()
+    {
+        var sut = new EventManager();
+        Func<IReadingEvent, Task> handler = _ => Task.CompletedTask;
+
+        var act = () => sut.Unsubscribe(handler);
+
+        act.Should().Throw<EventHandlerNotFoundException>();
+    }
+
+    [Fact]
+    public void UnsubscribeAll_AfterAlreadyUnsubscribed_ShouldThrow()
+    {
+        var sut = new EventManager();
+        Func<IReadingEvent, Task> handler = _ => Task.CompletedTask;
+        sut.Subscribe(handler);
+        sut.Unsubscribe(handler);
+
+        var act = () => sut.Unsubscribe(handler);
+
+        act.Should().Throw<EventHandlerNotFoundException>();
+    }
+
     public class TestHelper
     {
         private readonly StringBuilder stringBuilder = new();
