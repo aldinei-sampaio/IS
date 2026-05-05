@@ -7,6 +7,7 @@
     <File Path="../doc/PROJECT_DESCRIPTION.md" />
   </Folder>
   <Project Path="IS.App/IS.App.csproj" />
+  <Project Path="IS.Reading.FunctionalTests/IS.Reading.FunctionalTests.csproj" />
   <Project Path="IS.Reading.Tests/IS.Reading.Tests.csproj" />
   <Project Path="IS.Reading/IS.Reading.csproj" />
 </Solution>

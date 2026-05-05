@@ -1,5 +1,4 @@
 using IS.App.Models;
-using IS.Reading;
 using System.Net.Http.Json;
 
 namespace IS.App.Services;
@@ -11,7 +10,7 @@ public interface IAssetManager
     Task<BookDetailsModel> GetBookDetailsAsync(string bookName);
     string GetBookThumbnailUrl(string bookName);
     string GetBookCoverUrl(string bookName);
-    Task<StoryBoard> GetChapterAsync(string bookId, int chapter);
+    string GetChapterUrl(string bookId, int chapter);
 }
 
 public class AssetManager(HttpClient httpClient) : IAssetManager
@@ -31,9 +30,6 @@ public class AssetManager(HttpClient httpClient) : IAssetManager
     public string GetBookCoverUrl(string bookName)
         => $"assets/books/{bookName}/cover.png";
 
-    public async Task<StoryBoard> GetChapterAsync(string bookId, int chapter)
-    {
-        var content = await httpClient.GetStringAsync($"assets/books/{bookId}/chapters/{chapter}.stbasic");
-        return StoryBoardParser.Parse(content);
-    }
+    public string GetChapterUrl(string bookId, int chapter)
+        => $"assets/books/{bookId}/chapters/{chapter}.stbasic";
 }

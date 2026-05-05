@@ -12,5 +12,6 @@ builder.Services.AddScoped(sp => new HttpClient
 });
 
 builder.Services.AddAppServices();
+builder.Services.AddISReading();
 
 await builder.Build().RunAsync();
