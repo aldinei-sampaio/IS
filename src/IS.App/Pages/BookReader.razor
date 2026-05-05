@@ -1,7 +1,17 @@
 @page "/book/{BookId}/read/{Chapter:int}"
 
-<div class="book-reader" style="background-image: url('@coverUrl')" @onclick="Exit">
-    <div class="reader-overlay">
-        <p class="reader-status">@statusMessage</p>
-    </div>
+<div class="book-reader" @onclick="OnTap">
+    @if (storyboard != null && !isAtEnd)
+    {
+        <p class="reader-slide">Slide @slideCount</p>
+    }
+    else
+    {
+        <div class="reader-splash">
+            <img src="assets/logo.png" alt="Contos Interativos" class="reader-logo" />
+            <p class="reader-splash-text">
+                @(isAtEnd ? "O capítulo chegou ao fim. Toque para continuar." : statusMessage)
+            </p>
+        </div>
+    }
 </div>

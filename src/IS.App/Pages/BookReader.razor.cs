@@ -25,14 +25,17 @@ public partial class BookReader
     [Inject]
     private NavigationManager Navigation { get; set; } = default!;
 
-    private string coverUrl = string.Empty;
     private string statusMessage = string.Empty;
     private IStoryboard? storyboard;
+    private int slideCount;
+    private bool isAtEnd;
 
     protected override async Task OnParametersSetAsync()
     {
+        storyboard?.Dispose();
         storyboard = null;
-        coverUrl = AssetManager.GetBookCoverUrl(BookId);
+        slideCount = 0;
+        isAtEnd = false;
         statusMessage = $"Carregando capítulo {Chapter}...";
         StateHasChanged();
 
@@ -43,7 +46,7 @@ public partial class BookReader
             using var lineReader = new DocumentLineReader(new StringReader(content));
             var docReader = new DocumentReader(lineReader);
             storyboard = await StoryboardParser.ParseAsync(docReader);
-            statusMessage = $"Capítulo {Chapter} carregado com sucesso. Toque para sair.";
+            await AdvanceAsync();
         }
         catch
         {
@@ -51,5 +54,22 @@ public partial class BookReader
         }
     }
 
-    private void Exit() => Navigation.NavigateTo($"/book/{BookId}");
+    private async Task AdvanceAsync()
+    {
+        var hasMore = await storyboard!.MoveAsync(true);
+        slideCount++;
+        if (!hasMore)
+            isAtEnd = true;
+    }
+
+    private async Task OnTap()
+    {
+        if (storyboard == null || isAtEnd)
+        {
+            storyboard?.Dispose();
+            Navigation.NavigateTo($"/book/{BookId}");
+            return;
+        }
+        await AdvanceAsync();
+    }
 }
