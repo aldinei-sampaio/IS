@@ -52,7 +52,6 @@ public class BackgroundNodeParser : IBackgroundNodeParser
 
             var state = new BackgroundState(result.Value, BackgroundType.Image, BackgroundPosition.Left);
             context.AddNode(new BackgroundNode(state));
-            context.AddNode(new ScrollNode());
         }
 
         await ElementParser.ParseAsync(reader, parsingContext, context, Settings);

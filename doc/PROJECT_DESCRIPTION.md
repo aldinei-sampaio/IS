@@ -114,16 +114,19 @@ A UI deve ser projetada primariamente para ser acessada por dispositivos móveis
 ## Estrutura dos arquivos de recurso
 
 Sobre os livros a exibir na biblioteca, os dados ficarão em arquivos estáticos na pasta /assets/books:
+
 - categories.json: lista das categorias que devem aparecer da biblioteca
 - books.json: lista dos livros disponíveis
 
 A pasta /assets/books terá uma subpasta para cada livro disponível no books.json. Essa pasta deve conter:
+
 - thumbnail.png: miniatura da capa do livro a ser exibida na lista de livros da biblioteca
 - cover.png: imagem grande da capa do livro, a ser exibida como imagem de fundo na tela de propriedades do livro
 - details.json: detalhes estáticos sobre o livro (sinopse, quantidade de capítulos publicados, se o livro já foi totalmente publicado ou se ainda serão lançados mais capítulos, etc)
 - trophies.json: a lista de todos os troféus de cada capítulo do livro
 
 A pasta do livro terá as seguintes subpastas:
+
 - chapters: conterá arquivos com o storyboard de cada capítulo individual. O nome dos arquivos deverá ser o número do capítulo com extensão .stbasic. O .stbasic é um arquivo texto contendo comandos na liguagem "Storybasic", que foi projetada exclusivamente para esta aplicação. Um dos módulos da aplicação é um parser para arquivos Storybasic.
 - char: imagens de personagens
 - window: imagens de janela

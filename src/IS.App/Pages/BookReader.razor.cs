@@ -46,6 +46,8 @@ public partial class BookReader
             using var lineReader = new DocumentLineReader(new StringReader(content));
             var docReader = new DocumentReader(lineReader);
             storyboard = await StoryboardParser.ParseAsync(docReader);
+            StateHasChanged();   // renders Background so it subscribes before Move is called
+            await Task.Yield();  // yields to the event loop, allowing Blazor to render
             await AdvanceAsync();
         }
         catch

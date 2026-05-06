@@ -1,3 +1,8 @@
 ' Storybasic 1.0
 background forest
+scroll
+pause
+scroll
+pause
+scroll
 pause

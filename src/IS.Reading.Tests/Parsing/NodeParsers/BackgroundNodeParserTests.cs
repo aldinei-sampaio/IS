@@ -89,8 +89,7 @@ public class BackgroundNodeParserTests
                         Type = BackgroundType.Image,
                         Position = BackgroundPosition.Left
                     });
-                }),
-                i => i.Should().BeOfType<ScrollNode>()
+                })
             );
         });
     }
@@ -162,7 +161,6 @@ public class BackgroundNodeParserTests
                         Position = BackgroundPosition.Left
                     });
                 }),
-                i => i.Should().BeOfType<ScrollNode>(),
                 i => i.Should().BeSameAs(parsedNode)
             );
         });

@@ -1,0 +1,11 @@
+.bg-container {
+    position: absolute;
+    inset: 0;
+    background-color: #000;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+
+.bg-scrolling {
+    transition: background-position 1s ease;
+}
