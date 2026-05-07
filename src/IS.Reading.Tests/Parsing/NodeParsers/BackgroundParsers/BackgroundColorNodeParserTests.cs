@@ -1,4 +1,4 @@
-﻿using IS.Reading.Nodes;
+using IS.Reading.Nodes;
 using IS.Reading.Parsing.ArgumentParsers;
 using IS.Reading.State;
 
@@ -10,13 +10,13 @@ public class BackgroundColorNodeParserTests
     private readonly IParsingContext parsingContext;
     private readonly FakeParentParsingContext parentParsingContext;
 
-    private readonly IColorArgumentParser colorArgumentParser;
+    private readonly IBackgroundColorArgumentParser backgroundColorArgumentParser;
     private readonly BackgroundColorNodeParser sut;
 
     public BackgroundColorNodeParserTests()
     {
-        colorArgumentParser = A.Fake<IColorArgumentParser>(i => i.Strict());
-        sut = new(colorArgumentParser);
+        backgroundColorArgumentParser = A.Fake<IBackgroundColorArgumentParser>(i => i.Strict());
+        sut = new(backgroundColorArgumentParser);
 
         documentReader = A.Fake<IDocumentReader>(i => i.Strict());
         parsingContext = Helper.FakeParsingContext();
@@ -28,7 +28,7 @@ public class BackgroundColorNodeParserTests
     {
         sut.Name.Should().Be("color");
         sut.IsArgumentRequired.Should().BeTrue();
-        sut.ColorArgumentParser.Should().BeSameAs(colorArgumentParser);
+        sut.BackgroundColorArgumentParser.Should().BeSameAs(backgroundColorArgumentParser);
     }
 
     [Fact]
@@ -37,7 +37,7 @@ public class BackgroundColorNodeParserTests
         var errorMessage = "Erro proposital.";
         var argument = "salmon";
         A.CallTo(() => documentReader.Argument).Returns(argument);
-        A.CallTo(() => colorArgumentParser.Parse(argument)).Returns(Result.Fail<string>(errorMessage));
+        A.CallTo(() => backgroundColorArgumentParser.Parse(argument)).Returns(Result.Fail<BackgroundColorArgument>(errorMessage));
         A.CallTo(() => parsingContext.LogError(documentReader, errorMessage)).DoesNothing();
 
         await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
@@ -49,18 +49,44 @@ public class BackgroundColorNodeParserTests
     [Fact]
     public async Task ParsingSuccess()
     {
-        var argument = "Gelo";
-        var parsed = "gelo";
+        var argument = "black";
 
         A.CallTo(() => documentReader.Argument).Returns(argument);
-        A.CallTo(() => colorArgumentParser.Parse(argument)).Returns(Result.Ok(parsed));
+        A.CallTo(() => backgroundColorArgumentParser.Parse(argument))
+            .Returns(Result.Ok(new BackgroundColorArgument("black", BackgroundAnimation.None, null)));
 
         await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
 
-        var expectedState = new BackgroundState(parsed, BackgroundType.Color, BackgroundPosition.Undefined);
+        var expectedState = new BackgroundState("black", BackgroundType.Color, BackgroundPosition.Undefined);
 
-        parentParsingContext.ShouldContainSingle<BackgroundNode>(
-            i => i.State.Should().Be(expectedState)
-        );
-    }    
+        parentParsingContext.ShouldContainSingle<BackgroundNode>(i =>
+        {
+            i.State.Should().Be(expectedState);
+            i.Animation.Should().Be(BackgroundAnimation.None);
+            i.FlashColor.Should().BeNull();
+        });
+    }
+
+    [Theory]
+    [InlineData(BackgroundAnimation.FadeIn,   null)]
+    [InlineData(BackgroundAnimation.Zoom,     null)]
+    [InlineData(BackgroundAnimation.Dissolve, null)]
+    [InlineData(BackgroundAnimation.Flash,    null)]
+    [InlineData(BackgroundAnimation.Flash,    "white")]
+    public async Task ParsingWithAnimation(BackgroundAnimation animation, string? flashColor)
+    {
+        var argument = $"black {animation}";
+
+        A.CallTo(() => documentReader.Argument).Returns(argument);
+        A.CallTo(() => backgroundColorArgumentParser.Parse(argument))
+            .Returns(Result.Ok(new BackgroundColorArgument("black", animation, flashColor)));
+
+        await sut.ParseAsync(documentReader, parsingContext, parentParsingContext);
+
+        parentParsingContext.ShouldContainSingle<BackgroundNode>(i =>
+        {
+            i.Animation.Should().Be(animation);
+            i.FlashColor.Should().Be(flashColor);
+        });
+    }
 }
