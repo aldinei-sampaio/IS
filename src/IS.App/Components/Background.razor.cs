@@ -71,8 +71,8 @@ public partial class Background : IDisposable
 
     // The animation requires two renders:
     // 1. First render shows the image at its initial position (displayPosition from HandleChange).
-    // 2. OnAfterRenderAsync detects pendingScroll, updates displayPosition to targetPosition,
-    //    enables the CSS transition, and re-renders. The browser then animates the change.
+    // 2. RunScrollAsync waits one frame (16ms) to ensure render 1 is painted, then enables the
+    //    CSS transition and updates displayPosition. The browser then animates the change.
     protected override Task OnAfterRenderAsync(bool firstRender)
     {
         if (!pendingScroll)
@@ -81,20 +81,18 @@ public partial class Background : IDisposable
         pendingScroll = false;
         scrollCts?.Cancel();
         scrollCts = new CancellationTokenSource();
-        var ct = scrollCts.Token;
-
-        displayPosition = targetPosition;
-        isScrolling = true;
-        StateHasChanged();
-
-        _ = FinishScrollAsync(ct);
+        _ = RunScrollAsync(scrollCts.Token);
         return Task.CompletedTask;
     }
 
-    private async Task FinishScrollAsync(CancellationToken ct)
+    private async Task RunScrollAsync(CancellationToken ct)
     {
         try
         {
+            await Task.Delay(16, ct);
+            displayPosition = targetPosition;
+            isScrolling = true;
+            await InvokeAsync(StateHasChanged);
             await Task.Delay(1000, ct);
             isScrolling = false;
             await InvokeAsync(StateHasChanged);
