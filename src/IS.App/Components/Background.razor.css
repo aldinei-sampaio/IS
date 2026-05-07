@@ -9,3 +9,42 @@
 .bg-scrolling {
     transition: background-position 1s ease;
 }
+
+@keyframes bg-fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.bg-fadein {
+    animation: bg-fadein 500ms ease forwards;
+}
+
+@keyframes bg-zoom {
+    from { background-size: auto 115%; }
+    to   { background-size: auto 100%; }
+}
+
+.bg-zoom {
+    animation: bg-zoom 500ms ease forwards;
+}
+
+@keyframes bg-dissolve {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.bg-dissolve {
+    animation: bg-dissolve 500ms linear forwards;
+}
+
+.bg-flash-overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 1;
+    pointer-events: none;
+    transition: opacity 500ms ease;
+}
+
+.bg-flash-overlay.bg-flash-fading {
+    opacity: 0;
+}

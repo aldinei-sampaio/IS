@@ -1,3 +1,7 @@
 @namespace IS.App.Components
 
-<div class="bg-container @(isScrolling ? "bg-scrolling" : "")" style="@GetStyle()"></div>
+<div class="bg-container @animationClass @(isScrolling ? "bg-scrolling" : "")" style="@GetStyle()"></div>
+@if (isFlashVisible)
+{
+    <div class="bg-flash-overlay @(isFlashFading ? "bg-flash-fading" : "")" style="background-color: @flashColor;"></div>
+}

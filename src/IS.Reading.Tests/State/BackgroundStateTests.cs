@@ -17,4 +17,5 @@ public class BackgroundStateTests
         var sut = new BackgroundState(name, type, position);
         sut.ToString().Should().Be(expected);
     }
+
 }

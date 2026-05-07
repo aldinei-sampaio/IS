@@ -32,6 +32,7 @@ public static class ReadingServiceExtensions
         // Argument parsers
         services.AddSingleton<IColorArgumentParser, ColorArgumentParser>();
         services.AddSingleton<IImageArgumentParser, ImageArgumentParser>();
+        services.AddSingleton<IBackgroundArgumentParser, BackgroundArgumentParser>();
         services.AddSingleton<IIntegerArgumentParser, IntegerArgumentParser>();
         services.AddSingleton<INameArgumentParser, NameArgumentParser>();
 

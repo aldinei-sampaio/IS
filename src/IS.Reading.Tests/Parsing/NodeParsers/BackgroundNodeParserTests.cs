@@ -13,7 +13,7 @@ public class BackgroundNodeParserTests
     private readonly FakeParentParsingContext parentContext = new();
     private readonly IElementParser elementParser;
 
-    private readonly IImageArgumentParser imageArgumentParser;
+    private readonly IBackgroundArgumentParser backgroundArgumentParser;
     private readonly IBackgroundColorNodeParser backgroundColorNodeParser;
     private readonly IBackgroundLeftNodeParser backgroundLeftNodeParser;
     private readonly IBackgroundRightNodeParser backgroundRightNodeParser;
@@ -27,7 +27,7 @@ public class BackgroundNodeParserTests
         context = Helper.FakeParsingContext();
         elementParser = A.Fake<IElementParser>(i => i.Strict());
 
-        imageArgumentParser = A.Dummy<IImageArgumentParser>();
+        backgroundArgumentParser = A.Dummy<IBackgroundArgumentParser>();
         backgroundColorNodeParser = Helper.FakeParser<IBackgroundColorNodeParser>("color");
         backgroundLeftNodeParser = Helper.FakeParser<IBackgroundLeftNodeParser>("left");
         backgroundRightNodeParser = Helper.FakeParser<IBackgroundRightNodeParser>("right");
@@ -35,8 +35,8 @@ public class BackgroundNodeParserTests
         pauseNodeParser = Helper.FakeParser<IPauseNodeParser>("pause");
 
         sut = new(
-            elementParser, 
-            imageArgumentParser,
+            elementParser,
+            backgroundArgumentParser,
             backgroundColorNodeParser,
             backgroundLeftNodeParser,
             backgroundRightNodeParser,
@@ -51,7 +51,7 @@ public class BackgroundNodeParserTests
         sut.Name.Should().Be("background");
         sut.IsArgumentRequired.Should().BeFalse();
         sut.ElementParser.Should().BeSameAs(elementParser);
-        sut.ImageArgumentParser.Should().BeSameAs(imageArgumentParser);
+        sut.BackgroundArgumentParser.Should().BeSameAs(backgroundArgumentParser);
 
         sut.Settings.Should().BeOfType<ElementParserSettings.Aggregated>()
             .Which.ChildParsers.Should().BeEquivalentTo(
@@ -70,7 +70,7 @@ public class BackgroundNodeParserTests
     public async Task ArgumentAndNoAggregation()
     {
         A.CallTo(() => reader.Argument).Returns("gama");
-        A.CallTo(() => imageArgumentParser.Parse("gama")).Returns(Result.Ok("gama"));
+        A.CallTo(() => backgroundArgumentParser.Parse("gama")).Returns(Result.Ok(new BackgroundArgument("gama", BackgroundAnimation.None, null)));
 
         A.CallTo(() => context.RegisterDismissNode(sut.DismissNode)).DoesNothing();
         A.CallTo(() => context.IsSuccess).Returns(true);
@@ -89,9 +89,40 @@ public class BackgroundNodeParserTests
                         Type = BackgroundType.Image,
                         Position = BackgroundPosition.Left
                     });
+                    j.Animation.Should().Be(BackgroundAnimation.None);
+                    j.FlashColor.Should().BeNull();
                 })
             );
         });
+    }
+
+    [Theory]
+    [InlineData(BackgroundAnimation.FadeIn,   null)]
+    [InlineData(BackgroundAnimation.Zoom,     null)]
+    [InlineData(BackgroundAnimation.Dissolve, null)]
+    [InlineData(BackgroundAnimation.Flash,    null)]
+    [InlineData(BackgroundAnimation.Flash,    "white")]
+    public async Task ArgumentWithAnimation(BackgroundAnimation animation, string? flashColor)
+    {
+        var arg = $"gama {animation}";
+        A.CallTo(() => reader.Argument).Returns(arg);
+        A.CallTo(() => backgroundArgumentParser.Parse(arg)).Returns(Result.Ok(new BackgroundArgument("gama", animation, flashColor)));
+
+        A.CallTo(() => context.RegisterDismissNode(sut.DismissNode)).DoesNothing();
+        A.CallTo(() => context.IsSuccess).Returns(true);
+        A.CallTo(() => elementParser.ParseAsync(reader, context, A<IParentParsingContext>.Ignored, sut.Settings)).DoesNothing();
+
+        await sut.ParseAsync(reader, context, parentContext);
+
+        parentContext.ShouldContainSingle<BlockNode>(i =>
+            i.ChildBlock!.ShouldContain(
+                i => i.Should().BeOfType<BackgroundNode>().Which.ShouldSatisfy(j =>
+                {
+                    j.Animation.Should().Be(animation);
+                    j.FlashColor.Should().Be(flashColor);
+                })
+            )
+        );
     }
 
     [Fact]
@@ -138,7 +169,7 @@ public class BackgroundNodeParserTests
     public async Task ArgumentAndAggregation()
     {
         A.CallTo(() => reader.Argument).Returns("gama");
-        A.CallTo(() => imageArgumentParser.Parse("gama")).Returns(Result.Ok("gama"));
+        A.CallTo(() => backgroundArgumentParser.Parse("gama")).Returns(Result.Ok(new BackgroundArgument("gama", BackgroundAnimation.None, null)));
 
         A.CallTo(() => context.RegisterDismissNode(sut.DismissNode)).DoesNothing();
         A.CallTo(() => context.IsSuccess).Returns(true);
@@ -160,6 +191,8 @@ public class BackgroundNodeParserTests
                         Type = BackgroundType.Image,
                         Position = BackgroundPosition.Left
                     });
+                    j.Animation.Should().Be(BackgroundAnimation.None);
+                    j.FlashColor.Should().BeNull();
                 }),
                 i => i.Should().BeSameAs(parsedNode)
             );
@@ -167,14 +200,14 @@ public class BackgroundNodeParserTests
     }
 
     [Fact]
-    public async Task ShouldLogImageParserErrors()
+    public async Task ShouldLogArgumentParserErrors()
     {
         var errorMessage = "Erro proposital.";
         var argument = "omega";
 
         A.CallTo(() => context.LogError(reader, errorMessage)).DoesNothing();
         A.CallTo(() => reader.Argument).Returns(argument);
-        A.CallTo(() => imageArgumentParser.Parse(argument)).Returns(Result.Fail<string>(errorMessage));
+        A.CallTo(() => backgroundArgumentParser.Parse(argument)).Returns(Result.Fail<BackgroundArgument>(errorMessage));
 
         await sut.ParseAsync(reader, context, parentContext);
 

@@ -22,9 +22,19 @@ public class BackgroundNodeTests
     }
 
     [Fact]
-    public void ConstructorShouldInitializeStateAndWhen()
+    public void ConstructorShouldInitializeProperties()
     {
         sut.State.Should().BeSameAs(newState);
+        sut.Animation.Should().Be(BackgroundAnimation.None);
+        sut.FlashColor.Should().BeNull();
+    }
+
+    [Fact]
+    public void ConstructorShouldInitializeAnimationProperties()
+    {
+        var node = new BackgroundNode(newState, BackgroundAnimation.Flash, "white");
+        node.Animation.Should().Be(BackgroundAnimation.Flash);
+        node.FlashColor.Should().Be("white");
     }
 
     [Fact]
@@ -32,7 +42,46 @@ public class BackgroundNodeTests
     {
         var invoker = new TestInvoker(context);
         await sut.EnterAsync(context);
-        invoker.ShouldHadReceived<IBackgroundChangeEvent>(i => i.State.Should().BeSameAs(newState));
+        invoker.ShouldHadReceived<IBackgroundChangeEvent>(i =>
+        {
+            i.State.Should().BeSameAs(newState);
+            i.Animation.Should().Be(BackgroundAnimation.None);
+            i.FlashColor.Should().BeNull();
+        });
+    }
+
+    [Theory]
+    [InlineData(BackgroundAnimation.FadeIn,   null)]
+    [InlineData(BackgroundAnimation.Zoom,     null)]
+    [InlineData(BackgroundAnimation.Dissolve, null)]
+    [InlineData(BackgroundAnimation.Flash,    null)]
+    [InlineData(BackgroundAnimation.Flash,    "white")]
+    public async Task EnterAsyncShouldForwardAnimationToEvent(BackgroundAnimation animation, string? flashColor)
+    {
+        var node = new BackgroundNode(newState, animation, flashColor);
+        var invoker = new TestInvoker(context);
+        await node.EnterAsync(context);
+        invoker.ShouldHadReceived<IBackgroundChangeEvent>(i =>
+        {
+            i.Animation.Should().Be(animation);
+            i.FlashColor.Should().Be(flashColor);
+        });
+    }
+
+    [Fact]
+    public async Task BackwardShouldRestoreStateWithNoAnimation()
+    {
+        var node = new BackgroundNode(newState, BackgroundAnimation.FadeIn, null);
+        await node.EnterAsync(context);
+
+        var invoker = new TestInvoker(context);
+        await node.EnterAsync(context, initialState);
+        invoker.ShouldHadReceived<IBackgroundChangeEvent>(i =>
+        {
+            i.State.Should().BeSameAs(initialState);
+            i.Animation.Should().Be(BackgroundAnimation.None);
+            i.FlashColor.Should().BeNull();
+        });
     }
 
     [Fact]

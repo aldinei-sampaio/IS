@@ -9,12 +9,12 @@ namespace IS.Reading.Parsing.NodeParsers;
 public class BackgroundNodeParser : IBackgroundNodeParser
 {
     public IElementParser ElementParser { get; }
-    public IImageArgumentParser ImageArgumentParser { get; }
+    public IBackgroundArgumentParser BackgroundArgumentParser { get; }
     public IElementParserSettings Settings { get; }
 
     public BackgroundNodeParser(
         IElementParser elementParser,
-        IImageArgumentParser imageArgumentParser,
+        IBackgroundArgumentParser backgroundArgumentParser,
         IBackgroundColorNodeParser backgroundColorNodeParser,
         IBackgroundLeftNodeParser backgroundLeftNodeParser,
         IBackgroundRightNodeParser backgroundRightNodeParser,
@@ -23,7 +23,7 @@ public class BackgroundNodeParser : IBackgroundNodeParser
     )
     {
         ElementParser = elementParser;
-        ImageArgumentParser = imageArgumentParser;
+        BackgroundArgumentParser = backgroundArgumentParser;
         Settings = new ElementParserSettings.Aggregated(
             backgroundColorNodeParser,
             backgroundLeftNodeParser,
@@ -43,15 +43,16 @@ public class BackgroundNodeParser : IBackgroundNodeParser
 
         if (!string.IsNullOrWhiteSpace(reader.Argument))
         {
-            var result = ImageArgumentParser.Parse(reader.Argument);
+            var result = BackgroundArgumentParser.Parse(reader.Argument);
             if (!result.IsOk)
             {
                 parsingContext.LogError(reader, result.ErrorMessage);
                 return;
             }
 
-            var state = new BackgroundState(result.Value, BackgroundType.Image, BackgroundPosition.Left);
-            context.AddNode(new BackgroundNode(state));
+            var arg = result.Value;
+            var state = new BackgroundState(arg.ImageName, BackgroundType.Image, BackgroundPosition.Left);
+            context.AddNode(new BackgroundNode(state, arg.Animation, arg.FlashColor));
         }
 
         await ElementParser.ParseAsync(reader, parsingContext, context, Settings);

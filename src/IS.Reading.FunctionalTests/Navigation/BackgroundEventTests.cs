@@ -36,6 +36,43 @@ pause";
         await tester.BackwardEndAsync("bg empty");
     }
 
+    [Theory]
+    [InlineData("fadein",   "bg left: fundo2 [fadein]")]
+    [InlineData("zoom",     "bg left: fundo2 [zoom]")]
+    [InlineData("dissolve", "bg left: fundo2 [dissolve]")]
+    [InlineData("flash",    "bg left: fundo2 [flash]")]
+    public async Task BackgroundWithAnimation(string keyword, string expectedEvent)
+    {
+        var stb =
+$@"' Storybasic 1.0
+background fundo2 {keyword}
+pause";
+
+        var tester = await StoryboardEventTester.CreateAsync(stb);
+        await tester.ForwardAsync(expectedEvent);
+        await tester.ForwardEndAsync("bg empty");
+        await tester.BackwardAsync("bg left: fundo2");
+        await tester.BackwardEndAsync("bg empty");
+    }
+
+    [Theory]
+    [InlineData("white",   "bg left: fundo2 [flash:white]")]
+    [InlineData("red",     "bg left: fundo2 [flash:red]")]
+    [InlineData("#ff0000", "bg left: fundo2 [flash:#ff0000]")]
+    public async Task BackgroundWithFlashColor(string color, string expectedEvent)
+    {
+        var stb =
+$@"' Storybasic 1.0
+background fundo2 flash {color}
+pause";
+
+        var tester = await StoryboardEventTester.CreateAsync(stb);
+        await tester.ForwardAsync(expectedEvent);
+        await tester.ForwardEndAsync("bg empty");
+        await tester.BackwardAsync("bg left: fundo2");
+        await tester.BackwardEndAsync("bg empty");
+    }
+
     [Fact]
     public async Task FowardAndBackward()
     {
