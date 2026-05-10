@@ -1,5 +1,3 @@
-using IS.Reading.State;
-
 namespace IS.Reading.Navigation;
 
 public class SceneNavigator(IBlockNavigator blockNavigator) : ISceneNavigator
@@ -14,6 +12,9 @@ public class SceneNavigator(IBlockNavigator blockNavigator) : ISceneNavigator
 
         var block = context.CurrentBlock;
         var blockState = context.CurrentBlockState;
+
+        if (!forward)
+            blockState.GetCurrentIteration().SkipFirstPause = true;
 
         while (true)
         {

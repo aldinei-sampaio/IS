@@ -80,6 +80,43 @@ O serviço deve ser registrado como **singleton** na DI do Blazor, garantindo in
 
 A lógica de exibição da lista de troféus será definida em uma ADR separada. Por ora, o botão deve existir visualmente mas não executar nenhuma ação ao ser clicado.
 
+## Adendo — Visibilidade, Slide Counter e Indicador de Inatividade
+
+**Data:** 2026-05-09
+
+### Visibilidade dos botões de navegação
+
+A regra de auto-ocultação é **removida**. Uma vez exibidos, os botões de navegação permanecem visíveis até que o usuário avance ou retroceda na história. Quando o storyboard é movido (para frente ou para trás), os botões voltam ao estado oculto e o temporizador de inatividade é reiniciado.
+
+A tabela de gatilhos de exibição atualizada:
+
+| Gatilho | Botões de navegação | Indicador de inatividade |
+| --- | --- | --- |
+| 5 s de inatividade | ✅ exibe | ✅ exibe |
+| Toque na área superior | ✅ exibe | ❌ não exibe |
+| Avanço ou retrocesso na história | ❌ oculta | ❌ oculta |
+
+### Contador de slides
+
+O campo `slideCount` do `BookReader` deve ser decrementado quando o storyboard for movido para trás (`MoveAsync(false)`). O comportamento é simétrico ao avanço.
+
+O botão **Voltar** deve ser renderizado **desabilitado** enquanto `slideCount == 1`, impedindo que o usuário tente retroceder antes do primeiro slide.
+
+### Botão "Clique aqui" (indicador de inatividade)
+
+Adicionar um ícone animado na **parte inferior** da área de leitura com a função exclusiva de sinalizar ao usuário que o aplicativo está aguardando interação.
+
+| Atributo | Valor |
+| --- | --- |
+| Posição | Inferior centralizado |
+| Exibição | Junto com os botões de navegação, somente no gatilho de 5 s de inatividade |
+| Animação | Pulsação ou bounce em loop, sugerindo "toque aqui" |
+| Ação ao tocar | Idêntica ao toque no fundo do leitor (avança a história) |
+
+O indicador **não aparece** quando o usuário toca na área superior para exibir os botões de navegação — nesse caso apenas os botões aparecem.
+
+Por ser um indicador de interação pendente e não um controle de navegação, o indicador deve ficar em uma camada separada dos botões, com `z-index` equivalente para garantir que o toque seja capturado corretamente.
+
 ## Análise de Viabilidade
 
 | Item | Viável | Observação |

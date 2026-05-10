@@ -10,6 +10,8 @@ public class BlockIterationState(IBlockStateFactory blockStateFactory) : IBlockI
 
     public INode? CurrentNode { get; set; }
 
+    public bool SkipFirstPause { get; set; }
+
     private IBlockStateDictionary? children;
 
     public IBlockStateDictionary Children

@@ -13,6 +13,15 @@ public partial class ReaderControls : IDisposable
     [Parameter, EditorRequired]
     public string BookId { get; set; } = string.Empty;
 
+    [Parameter]
+    public int SlideCount { get; set; }
+
+    [Parameter]
+    public EventCallback GoBackRequested { get; set; }
+
+    [Parameter]
+    public EventCallback AdvanceRequested { get; set; }
+
     [Inject]
     private IAudioService AudioService { get; set; } = default!;
 
@@ -23,6 +32,7 @@ public partial class ReaderControls : IDisposable
     private NavigationManager Navigation { get; set; } = default!;
 
     private bool isVisible;
+    private bool isIndicatorVisible;
     private string? lastMusicName;
     private CancellationTokenSource? timerCts;
     private Func<IMusicChangeEvent, Task>? musicHandler;
@@ -34,39 +44,37 @@ public partial class ReaderControls : IDisposable
         Storyboard.Events.Subscribe(musicHandler);
     }
 
-    // Chamado pelo BookReader após cada avanço de slide
+    // Chamado pelo BookReader após cada avanço ou recuo de slide
     public void OnSlideChanged()
     {
         isVisible = false;
-        StartTimer(showImmediately: false);
+        isIndicatorVisible = false;
+        StartInactivityTimer();
     }
 
-    private void OnUpperAreaTap() => StartTimer(showImmediately: true);
+    private void OnUpperAreaTap()
+    {
+        timerCts?.Cancel();
+        timerCts = null;
+        isVisible = true;
+        // isIndicatorVisible permanece false: toque no header exibe apenas os botões de nav
+        InvokeAsync(StateHasChanged);
+    }
 
-    private void StartTimer(bool showImmediately)
+    private void StartInactivityTimer()
     {
         timerCts?.Cancel();
         timerCts = new CancellationTokenSource();
-        if (showImmediately)
-        {
-            isVisible = true;
-            InvokeAsync(StateHasChanged);
-        }
-        _ = RunTimerAsync(showImmediately, timerCts.Token);
+        _ = InactivityTimerAsync(timerCts.Token);
     }
 
-    private async Task RunTimerAsync(bool showImmediately, CancellationToken ct)
+    private async Task InactivityTimerAsync(CancellationToken ct)
     {
         try
         {
-            if (!showImmediately)
-            {
-                await Task.Delay(5000, ct);
-                isVisible = true;
-                await InvokeAsync(StateHasChanged);
-            }
             await Task.Delay(5000, ct);
-            isVisible = false;
+            isVisible = true;
+            isIndicatorVisible = true;
             await InvokeAsync(StateHasChanged);
         }
         catch (OperationCanceledException) { }
@@ -87,7 +95,9 @@ public partial class ReaderControls : IDisposable
 
     private void GoTrophies() { }
 
-    private async Task GoBack() => await Storyboard.MoveAsync(false);
+    private async Task GoBack() => await GoBackRequested.InvokeAsync();
+
+    private async Task OnIndicatorTap() => await AdvanceRequested.InvokeAsync();
 
     private async Task ToggleSound()
     {

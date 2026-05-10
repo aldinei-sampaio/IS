@@ -67,6 +67,15 @@ public partial class BookReader
         readerControls?.OnSlideChanged();
     }
 
+    private async Task GoBackAsync()
+    {
+        if (storyboard == null || slideCount <= 1)
+            return;
+        await storyboard.MoveAsync(false);
+        slideCount--;
+        readerControls?.OnSlideChanged();
+    }
+
     private async Task OnTap()
     {
         if (storyboard == null || isAtEnd)

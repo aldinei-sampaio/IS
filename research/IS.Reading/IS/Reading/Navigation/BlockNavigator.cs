@@ -99,6 +99,9 @@ public class BlockNavigator : IBlockNavigator
 
         var index = blockState.CurrentNodeIndex ?? (block.Nodes.Count - 1);
 
+        if (index > 0 && block.Nodes[index] is IPauseNode)
+            index--;
+
         while (true)
         {
             if (!blockState.BackwardStack.TryPop(out var state))
@@ -110,12 +113,13 @@ public class BlockNavigator : IBlockNavigator
 
             if (state is not BlockedNode)
             {
-                var node = block.Nodes[index];
+                var node = index >= 0 ? block.Nodes[index] : null;
 
-                blockState.CurrentNodeIndex = blockState.CurrentNodeIndex = index > 0 ? index - 1: null;
+                blockState.CurrentNodeIndex = node is null ? null : index;
                 blockState.CurrentNode = node;
 
-                await node.EnterAsync(context, state);
+                if (node is not null)
+                    await node.EnterAsync(context, state);
 
                 return node;
             }

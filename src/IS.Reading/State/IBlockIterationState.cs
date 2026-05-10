@@ -7,5 +7,6 @@ public interface IBlockIterationState
     Stack<object?> BackwardStack { get; }
     int? CurrentNodeIndex { get; set; }
     INode? CurrentNode { get; set; }
+    bool SkipFirstPause { get; set; }
     IBlockStateDictionary Children { get; }
 }

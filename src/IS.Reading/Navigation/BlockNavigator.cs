@@ -12,6 +12,8 @@ public class BlockNavigator : IBlockNavigator
         }
     }
 
+    private readonly record struct IndexedEntry(int NodeIndex, object? State);
+
     public async Task<INode?> MoveAsync(IBlock block, IBlockState blockState, INavigationContext context, bool forward)
     {
         context.State.CurrentBlockId = block.Id;
@@ -48,7 +50,7 @@ public class BlockNavigator : IBlockNavigator
             return null;
 
         var reverseState = await item.EnterAsync(context);
-        blockState.BackwardStack.Push(reverseState);
+        blockState.BackwardStack.Push(new IndexedEntry(blockState.CurrentNodeIndex!.Value, reverseState));
 
         return item;
     }
@@ -97,30 +99,42 @@ public class BlockNavigator : IBlockNavigator
     {
         await LeaveCurrentNodeAsync(blockState, context);
 
-        var index = blockState.CurrentNodeIndex ?? (block.Nodes.Count - 1);
-
         while (true)
         {
-            if (!blockState.BackwardStack.TryPop(out var state))
+            if (!blockState.BackwardStack.TryPop(out var item))
             {
                 blockState.CurrentNodeIndex = null;
                 blockState.CurrentNode = null;
                 return null;
             }
 
-            if (state is not BlockedNode)
+            if (item is not IndexedEntry entry)
+                continue;
+
+            var node = block.Nodes[entry.NodeIndex];
+
+            if (node is IPauseNode)
             {
-                var node = block.Nodes[index];
-
-                blockState.CurrentNodeIndex = blockState.CurrentNodeIndex = index > 0 ? index - 1 : null;
+                if (blockState.SkipFirstPause)
+                {
+                    blockState.SkipFirstPause = false;
+                    continue;
+                }
+                // Re-push para preservar o marcador de parada para futuros passos de retorno.
+                blockState.BackwardStack.Push(entry);
+                blockState.CurrentNodeIndex = entry.NodeIndex;
                 blockState.CurrentNode = node;
-
-                await node.EnterAsync(context, state);
-
+                await node.EnterAsync(context, entry.State);
                 return node;
             }
 
-            index--;
+            blockState.SkipFirstPause = false;
+            blockState.CurrentNodeIndex = entry.NodeIndex > 0 ? entry.NodeIndex - 1 : null;
+            blockState.CurrentNode = node;
+
+            await node.EnterAsync(context, entry.State);
+
+            return node;
         }
     }
 }

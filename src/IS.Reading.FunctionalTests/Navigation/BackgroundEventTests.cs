@@ -5,10 +5,11 @@ public class BackgroundEventTests
     [Fact]
     public async Task BackgroundWithArgument()
     {
-        var stb =
-@"' Storybasic 1.0
-background fundo2
-pause";
+        var stb = """
+            ' Storybasic 1.0
+            background fundo2
+            pause
+            """;
 
         var tester = await StoryboardEventTester.CreateAsync(stb);
         await tester.ForwardAsync("bg left: fundo2");
@@ -20,12 +21,13 @@ pause";
     [Fact]
     public async Task BackgroundWithArgument2()
     {
-        var stb =
-@"' Storybasic 1.0
-background fundo1
-pause
-background fundo2
-pause";
+        var stb = """
+            ' Storybasic 1.0
+            background fundo1
+            pause
+            background fundo2
+            pause
+            """;
 
         var tester = await StoryboardEventTester.CreateAsync(stb);
         await tester.ForwardAsync("bg left: fundo1");
@@ -43,10 +45,11 @@ pause";
     [InlineData("flash",    "bg left: fundo2 [flash]")]
     public async Task BackgroundWithAnimation(string keyword, string expectedEvent)
     {
-        var stb =
-$@"' Storybasic 1.0
-background fundo2 {keyword}
-pause";
+        var stb = $"""
+            ' Storybasic 1.0
+            background fundo2 {keyword}
+            pause
+            """;
 
         var tester = await StoryboardEventTester.CreateAsync(stb);
         await tester.ForwardAsync(expectedEvent);
@@ -61,10 +64,11 @@ pause";
     [InlineData("#ff0000", "bg left: fundo2 [flash:#ff0000]")]
     public async Task BackgroundWithFlashColor(string color, string expectedEvent)
     {
-        var stb =
-$@"' Storybasic 1.0
-background fundo2 flash {color}
-pause";
+        var stb = $"""
+            ' Storybasic 1.0
+            background fundo2 flash {color}
+            pause
+            """;
 
         var tester = await StoryboardEventTester.CreateAsync(stb);
         await tester.ForwardAsync(expectedEvent);
@@ -80,11 +84,12 @@ pause";
     [InlineData("flash",    "bg color: black [flash]")]
     public async Task ColorWithAnimation(string keyword, string expectedEvent)
     {
-        var stb =
-$@"' Storybasic 1.0
-background
-color black {keyword}
-pause";
+        var stb = $"""
+            ' Storybasic 1.0
+            background
+            color black {keyword}
+            pause
+            """;
 
         var tester = await StoryboardEventTester.CreateAsync(stb);
         await tester.ForwardAsync(expectedEvent);
@@ -98,11 +103,12 @@ pause";
     [InlineData("red",     "bg color: black [flash:red]")]
     public async Task ColorWithFlashColor(string flashColor, string expectedEvent)
     {
-        var stb =
-$@"' Storybasic 1.0
-background
-color black flash {flashColor}
-pause";
+        var stb = $"""
+            ' Storybasic 1.0
+            background
+            color black flash {flashColor}
+            pause
+            """;
 
         var tester = await StoryboardEventTester.CreateAsync(stb);
         await tester.ForwardAsync(expectedEvent);
@@ -114,19 +120,20 @@ pause";
     [Fact]
     public async Task FowardAndBackward()
     {
-        var stb =
-@"' Storybasic 1.0
-background
-right fundo1
-scroll
-pause
-color black
-pause 250
-color white
-pause
+        var stb = """
+            ' Storybasic 1.0
+            background
+            right fundo1
+            scroll
+            pause
+            color black
+            pause 250
+            color white
+            pause
 
-background fundo2
-pause";
+            background fundo2
+            pause
+            """;
 
         var tester = await StoryboardEventTester.CreateAsync(stb);
 
@@ -138,6 +145,28 @@ pause";
         await tester.BackwardAsync("bg left: fundo2");
         await tester.BackwardAsync("bg color: white");
         await tester.BackwardAsync("bg color: black", "bg left: fundo1");
+        await tester.BackwardEndAsync("bg scroll", "bg empty");
+    }
+
+    [Fact]
+    public async Task ScrollEventOnBackward()
+    {
+        var stb = """
+            ' Storybasic 1.0
+            background fundo1
+            scroll
+            pause
+            scroll
+            pause
+            """;
+
+        var tester = await StoryboardEventTester.CreateAsync(stb);
+
+        await tester.ForwardAsync("bg left: fundo1", "bg scroll");
+        await tester.ForwardAsync("bg scroll");
+        await tester.BackwardAsync("bg scroll");
+        await tester.ForwardAsync("bg scroll");
+        await tester.BackwardAsync("bg scroll");
         await tester.BackwardEndAsync("bg scroll", "bg empty");
     }
 }

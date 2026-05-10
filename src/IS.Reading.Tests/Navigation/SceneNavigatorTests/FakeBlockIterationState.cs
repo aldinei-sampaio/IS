@@ -7,6 +7,7 @@ public class FakeBlockIterationState : IBlockIterationState
     public Stack<object?> BackwardStack { get; } = new();
     public int? CurrentNodeIndex { get; set; }
     public INode? CurrentNode { get; set; }
+    public bool SkipFirstPause { get; set; }
 
     public IBlockStateDictionary Children { get; } = new FakeBlockStateDictionary();
 }
