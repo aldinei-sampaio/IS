@@ -11,6 +11,7 @@ public interface IAssetManager
     string GetBookThumbnailUrl(string bookName);
     string GetBookCoverUrl(string bookName);
     string GetChapterUrl(string bookId, int chapter);
+    string GetMusicUrl(string bookId, string musicName);
 }
 
 public class AssetManager(HttpClient httpClient) : IAssetManager
@@ -32,4 +33,7 @@ public class AssetManager(HttpClient httpClient) : IAssetManager
 
     public string GetChapterUrl(string bookId, int chapter)
         => $"assets/books/{bookId}/chapters/{chapter}.stbasic";
+
+    public string GetMusicUrl(string bookId, string musicName)
+        => $"assets/books/{bookId}/music/{musicName}.mp3";
 }

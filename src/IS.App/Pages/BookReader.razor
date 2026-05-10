@@ -4,6 +4,7 @@
     @if (storyboard != null && !isAtEnd)
     {
         <Background Storyboard="storyboard" BookId="@BookId" />
+        <ReaderControls @ref="readerControls" Storyboard="storyboard" BookId="@BookId" />
         <p class="reader-slide">Slide @slideCount</p>
     }
     else

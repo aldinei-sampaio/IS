@@ -13,11 +13,18 @@ public partial class BookDetails
     private IAssetManager AssetManager { get; set; } = default!;
 
     [Inject]
+    private IAudioService AudioService { get; set; } = default!;
+
+    [Inject]
     private NavigationManager Navigation { get; set; } = default!;
 
     private BookDetailsModel? details;
     private string coverUrl = string.Empty;
-    private bool isMusicEnabled = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await AudioService.InitializeAsync();
+    }
 
     protected override async Task OnParametersSetAsync()
     {
@@ -28,7 +35,7 @@ public partial class BookDetails
 
     private void Close() => Navigation.NavigateTo("/");
 
-    private void ToggleMusic() => isMusicEnabled = !isMusicEnabled;
+    private async Task ToggleMusic() => await AudioService.SetEnabledAsync(!AudioService.IsEnabled, null);
 
     private void StartReading() => Navigation.NavigateTo($"/book/{Name}/read/1");
 }

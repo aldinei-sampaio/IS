@@ -1,3 +1,4 @@
+using IS.App.Components;
 using IS.App.Services;
 using IS.Reading.Navigation;
 using IS.Reading.Parsing;
@@ -29,6 +30,7 @@ public partial class BookReader
     private IStoryboard? storyboard;
     private int slideCount;
     private bool isAtEnd;
+    private ReaderControls? readerControls;
 
     protected override async Task OnParametersSetAsync()
     {
@@ -62,6 +64,7 @@ public partial class BookReader
         slideCount++;
         if (!hasMore)
             isAtEnd = true;
+        readerControls?.OnSlideChanged();
     }
 
     private async Task OnTap()
