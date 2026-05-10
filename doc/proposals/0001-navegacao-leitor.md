@@ -117,6 +117,31 @@ O indicador **não aparece** quando o usuário toca na área superior para exibi
 
 Por ser um indicador de interação pendente e não um controle de navegação, o indicador deve ficar em uma camada separada dos botões, com `z-index` equivalente para garantir que o toque seja capturado corretamente.
 
+## Adendo — Visibilidade dos botões ao retroceder
+
+**Data:** 2026-05-10
+
+A regra definida no adendo anterior (avanço ou retrocesso oculta os botões) é **parcialmente revisada** para o caso de retrocesso.
+
+Quando o usuário pressiona o botão **Voltar**, é comum que queira retroceder vários slides em sequência. Forçar a re-exibição dos botões a cada passo prejudica essa experiência.
+
+### Nova regra para o botão Voltar
+
+O retrocesso na história **não oculta os botões**. Eles permanecem visíveis durante toda a animação de transição e após sua conclusão, até que outro gatilho de ocultação ocorra.
+
+A tabela de gatilhos atualizada:
+
+| Gatilho | Botões de navegação | Indicador de inatividade |
+| --- | --- | --- |
+| 5 s de inatividade | ✅ exibe | ✅ exibe |
+| Toque na área superior | ✅ exibe | ❌ não exibe |
+| **Avanço** na história | ❌ oculta | ❌ oculta |
+| **Retrocesso** na história | ✅ mantém visível | ❌ oculta |
+
+### Implicação no temporizador
+
+Ao retroceder, o temporizador de inatividade é **reiniciado** (como antes), mas os botões **não são ocultados** — eles permanecem visíveis independentemente do temporizador enquanto o usuário continuar interagindo via botão Voltar.
+
 ## Análise de Viabilidade
 
 | Item | Viável | Observação |

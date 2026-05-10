@@ -45,9 +45,10 @@ public partial class ReaderControls : IDisposable
     }
 
     // Chamado pelo BookReader após cada avanço ou recuo de slide
-    public void OnSlideChanged()
+    public void OnSlideChanged(bool forward)
     {
-        isVisible = false;
+        if (forward)
+            isVisible = false;
         isIndicatorVisible = false;
         StartInactivityTimer();
     }
